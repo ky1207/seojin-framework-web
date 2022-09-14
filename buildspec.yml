@@ -1,0 +1,44 @@
+version: 0.2
+
+env:
+  shell: bash
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+  pre_build:
+    commands:
+#      - pip install --upgrade --user awscli
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - echo $AWS_DEFAULT_REGION
+      - REPOSITORY_URI=079544051825.dkr.ecr.ap-northeast-2.amazonaws.com/3top-ecr
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin 079544051825.dkr.ecr.ap-northeast-2.amazonaws.com
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
+      - source .env.development
+      - VERSION=$VERSION
+      - echo $VERSION
+      - npm install 
+  build:
+    commands:
+      - npm run build.dev
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+  post_build:
+    commands:
+      - aws s3 cp .nuxt/dist/client/ s3://top-front-cdn/$VERSION --recursive --cache-control "public, max-age=86400"  # .nuxt/dist/client to cdn
+      - aws s3 cp  static/ s3://top-front-cdn/$VERSION --recursive --cache-control "public, max-age=86400"
+      - echo Build completed on `date`
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - printf '[{"name":"bo-front","imageUri":"%s"}]' 079544051825.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/3top-ecr:$IMAGE_TAG > imagedefinitions.json 
+artifacts:
+  files:
+    - imagedefinitions.json 
+cache:
+  paths:
+    - node_modules/**/*
