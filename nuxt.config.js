@@ -36,7 +36,7 @@ export default {
     { src: '~/plugins/lib/tree.js' },
     { src: '~/plugins/lib/notify.js' },
     { src: '~/plugins/lib/common.js' },
-    { src: '~/plugins/lib/validator.js' },
+    { src: '~/plugins/lib/routertab.js' },
     { src: '~/plugins/client.js' }
   ],
 
@@ -83,6 +83,8 @@ export default {
   // },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    // Babel transpile dependencies
+    transpile: ['vue-router-tab'],
     extractCSS: { ignoreOrder: true }, // inline css를 파일로 저장한다. 그렇지 않으면 head 내에 inline으로 출력 kskim 2021-12-10   ***
     // publicPath:'http://test.org' // default='/_nuxt/
     publicPath: process.env.CDN_ASSETS,
@@ -100,8 +102,16 @@ export default {
   ],
   router: {
     // base: '/app/', //servlet에 context path 같은 것 kskim 12.20
-    middleware: ['auth']
-
+    middleware: ['auth'],
+    extendRoutes(routes, resolve) {
+      // add Iframe route
+      routes.push({
+        name: 'iframe',
+        path: '/iframe/:src/:title?/:icon?',
+        component: resolve(__dirname, 'pages/-Iframe.js'),
+        props: true
+      })
+    }
   },
   auth: {
     localStorage: false,
