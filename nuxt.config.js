@@ -1,4 +1,3 @@
-// import colors from 'vuetify/es5/util/colors'
 
 export default {
   ssr: false,
@@ -33,6 +32,7 @@ export default {
     { src: '~/plugins/filters.js' },
     { src: '~/plugins/prototype.js' },
     { src: '~/plugins/lib/ckeditor.js', mode: 'client', ssr: false },
+    { src: '~/plugins/lib/toastgrid.js', mode: 'client', ssr: false },
     { src: '~/plugins/lib/tree.js' },
     { src: '~/plugins/lib/notify.js' },
     { src: '~/plugins/lib/common.js' },
