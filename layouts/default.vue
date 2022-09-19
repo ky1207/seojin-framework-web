@@ -20,10 +20,24 @@
         서진시스템
       </nuxt-link>
     </nav>
-    <router-tab />
+    <router-tab :tabs="tabs" />
   </div>
 </template>
-
+<script>
+export default {
+  data () {
+    return {
+      tabs: [
+        {
+          to: '/Sample',
+          title: 'Sample',
+          closable: false
+        }
+      ]
+    }
+  }
+}
+</script>
 <style lang="scss">
 html,
 body {
@@ -96,7 +110,3 @@ $smallScreen: 767.98px;
   }
 }
 </style>
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms

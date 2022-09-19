@@ -17,7 +17,7 @@ export default {
   auth: 'guest',
   meta: {
     title: 'Sample',
-    closable: true
+    closable: false
   },
   data () {
     return {
@@ -54,13 +54,14 @@ export default {
           }
         ],
         options: {
-          pageOptions: {
-            useClient: true,
-            perPage: 10
-          }
+          bodyHeight: 500
         }
       }
     }
+  },
+  activated () {
+    // 화면 리사이즈 후, 본 화면 출력시 그리드 리로드 문제
+    this.$refs.grid.invoke('refreshLayout')
   },
   async mounted () {
     const result = await this.$axios.get('https://dummyjson.com/products?limit=1000')
