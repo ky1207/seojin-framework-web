@@ -17,9 +17,6 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: `${process.env.CDN_STATIC}favicon.ico` }
-    ],
-    script: [
-
     ]
   },
 
@@ -37,6 +34,7 @@ export default {
     { src: '~/plugins/lib/notify.js' },
     { src: '~/plugins/lib/common.js' },
     { src: '~/plugins/lib/routertab.js' },
+    { src: '~/plugins/lib/bootstrap.js' },
     { src: '~/plugins/client.js' }
   ],
 
@@ -62,7 +60,7 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     // '@nuxtjs/pwa'
-    '@nuxtjs/auth-next'
+    '@nuxtjs/auth-next',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

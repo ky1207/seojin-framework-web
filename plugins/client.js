@@ -8,4 +8,5 @@ export default ({ req, store }) => {
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress
     store.commit('client/setIp', ip)
   }
+  console.log('ipCheck')
 }

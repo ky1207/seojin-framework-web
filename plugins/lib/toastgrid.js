@@ -12,3 +12,14 @@ TuiGrid.setLanguage('ko')
 TuiGrid.applyTheme('striped')
 
 Vue.component('Grid', Grid)
+
+Vue.mixin({
+  activated () {
+    // 화면 리사이즈 후, 본 화면 출력시 그리드 리로드 문제
+    Object.keys(this.$refs).forEach((element) => {
+      if (this.$refs[element].invoke) {
+        this.$refs[element].invoke('refreshLayout')
+      }
+    })
+  }
+})

@@ -59,18 +59,12 @@ export default {
       }
     }
   },
-  activated () {
-    // 화면 리사이즈 후, 본 화면 출력시 그리드 리로드 문제
-    this.$refs.grid.invoke('refreshLayout')
-  },
   async mounted () {
     const result = await this.$axios.get('https://dummyjson.com/products?limit=1000')
     this.gridProps.data = result.data.products
     this.$refs.grid.invoke('resetData', this.gridProps.data)
   }
-
 }
-
 </script>
 
 <style>
