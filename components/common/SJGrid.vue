@@ -52,6 +52,14 @@ export default {
     value (newValue, oldValue) {
       this.$refs.grid.invoke('resetData', newValue)
     }
+  },
+  methods: {
+    getRootElement () {
+      return this.$refs.grid
+    },
+    invoke (methodName, ...args) {
+      return this.$refs.grid.invoke(methodName, args)
+    }
   }
 }
 </script>

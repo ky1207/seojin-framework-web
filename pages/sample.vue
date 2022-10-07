@@ -33,7 +33,7 @@ export default {
            { name: 'insertDate' }
          ],
         options: {
-          bodyHeight: 200
+
         }
       }
     }
