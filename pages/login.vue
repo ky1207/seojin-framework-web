@@ -1,34 +1,59 @@
 <template>
-  <div>
-    <div class="sidenav">
-      <div class="login-main-text">
-        <h2>서진시스템<br> </h2>
-        <p>로그인 하세요.</p>
-      </div>
-    </div>
-    <div class="main">
-      <div class="col-md-6 col-sm-12">
-        <div class="login-form">
-          <form>
-            <div class="form-group">
-              <label>아이디</label>
-              <input type="text" class="form-control" placeholder="User Name">
+  <section class="h-100 gradient-form" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-10">
+          <div class="card rounded-3 text-black">
+            <div class="row g-0">
+              <div class="col-lg-6">
+                <div class="card-body p-md-5 mx-md-4">
+                  <div class="text-center">
+                    <img
+                      src="@/assets/images/seojin.png"
+                      style="width: 185px;"
+                      alt="logo"
+                    >
+                    <h4 class="mt-1 mb-5 pb-1">
+                      신정보시스템
+                    </h4>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input
+                      id="form2Example11"
+                      type="email"
+                      class="form-control"
+                      placeholder="ID"
+                    >
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input id="form2Example22" type="password" class="form-control" placeholder="Password">
+                  </div>
+
+                  <div class="text-center pt-1 mb-5 pb-1">
+                    <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">
+                      Log in
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                  <h4 class="mb-4">
+                    서진시스템
+                  </h4>
+                  <p class="small mb-0">
+                    .....
+                  </p>
+                </div>
+              </div>
             </div>
-            <div class="form-group">
-              <label>패스워드</label>
-              <input type="password" class="form-control" placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-black">
-              Login
-            </button>
-            <button type="submit" class="btn btn-secondary">
-              Register
-            </button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -36,77 +61,28 @@ export default {
   layout: 'empty'
 }
 </script>
-
 <style scoped>
-body {
-  font-family: "Lato", sans-serif;
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #fccb90;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
 }
 
-.main-head{
-  height: 150px;
-  background: #FFF;
-
-}
-
-.sidenav {
-  height: 100%;
-  background-color: #000;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-
-.main {
-  padding: 0px 10px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-}
-
-@media screen and (max-width: 450px) {
-  .login-form{
-    margin-top: 10%;
+@media (min-width: 768px) {
+  .gradient-form {
+    height: 100vh !important;
   }
-
-  .register-form{
-    margin-top: 10%;
+}
+@media (min-width: 769px) {
+  .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
   }
 }
 
-@media screen and (min-width: 768px){
-  .main{
-    margin-left: 40%;
-  }
-
-  .sidenav{
-    width: 40%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-  }
-
-  .login-form{
-    margin-top: 80%;
-  }
-
-  .register-form{
-    margin-top: 20%;
-  }
-}
-
-.login-main-text{
-  margin-top: 20%;
-  padding: 60px;
-  color: #fff;
-}
-
-.login-main-text h2{
-  font-weight: 300;
-}
-
-.btn-black{
-  background-color: #000 !important;
-  color: #fff;
-}
 </style>

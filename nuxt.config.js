@@ -41,6 +41,7 @@ export default {
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [
     // Equivalent to { path: '~/components' }
+    '~/components/common'
   ],
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -61,6 +62,23 @@ export default {
     // https://go.nuxtjs.dev/pwa
     // '@nuxtjs/pwa'
     '@nuxtjs/auth-next',
+    ['@nuxtjs/i18n', {
+      locales: [
+        { code: 'ko', iso: 'ko-KR', file: 'ko.json' },
+        { code: 'en', iso: 'en-US', file: 'en.json' },
+        { code: 'vi', iso: 'vi-VN', file: 'vi.json' }
+      ],
+      defaultLocale: 'ko',
+      langDir: '~/i18n/',
+      strategy: 'no_prefix',
+      detectBrowserLanguage: {
+        useCookie: true,
+        cookieKey: 'i18n_redirected',
+        redirectOn: 'root',
+        cookieCrossOrigin: false
+      }
+    }
+    ]
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

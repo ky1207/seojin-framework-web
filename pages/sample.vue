@@ -1,68 +1,59 @@
 
 <template class="vtop-layout">
   <div>
-    <Grid
+    <SJGrid
       ref="grid"
-      :data="gridProps.data"
+      v-model="gridProps.data"
       :columns="gridProps.columns"
-      :row-headers="gridProps.rowHeaders"
-      :column-options="gridProps.columnOptions"
       :options="gridProps.options"
     />
+    <div @click="change('en')">
+      English
+    </div>
+    <div @click="change('ko')">
+      한국어
+    </div>
+    <div @click="change('vi')">
+      Vitenam
+    </div><br>
   </div>
 </template>
 
 <script>
 export default {
   auth: 'guest',
-  meta: {
-    title: 'Sample',
-    closable: false
-  },
+
   data () {
     return {
       gridProps: {
         data: [],
-        columns: [
-          // for columnData prop
-          {
-            header: 'Title',
-            name: 'title',
-            filter: 'select',
-            sortable: true
-          },
-          {
-            header: 'Brand',
-            name: 'brand',
-            filter: 'select',
-            sortable: true
-
-          },
-          {
-            header: 'Category',
-            name: 'category',
-            filter: 'select',
-            sortable: true
-
-          },
-          {
-            header: 'Price',
-            name: 'price',
-            filter: 'select',
-            sortable: true
-
-          }
-        ],
+        columns:
+         [
+           { name: 'title' },
+           { name: 'insertDate' }
+         ],
         options: {
-          bodyHeight: 500
+          bodyHeight: 200
         }
       }
     }
   },
+  computed: {
+    routeTab () {
+      return {
+        title: this.$t('sample'),
+        closable: false
+      }
+    }
+  },
   async mounted () {
-    const result = await this.$axios.get('https://dummyjson.com/products?limit=1000')
-    this.gridProps.data = result.data.products
-    this.$refs.grid.invoke('resetData', this.gridProps.data)
+    const result = await this.$axios.get('/api/v1.0/sample')
+    this.gridProps.data = result.data.Data
+  },
+  methods: {
+    change (lang) {
+      this.$i18n.setLocale(lang)
+    }
   }
 }
 </script>

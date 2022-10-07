@@ -23,3 +23,38 @@ Vue.mixin({
     })
   }
 })
+
+export default (ctx, inject) => {
+  console.log(ctx)
+  const grid = {
+    defined: {
+      title: {
+        header: ctx.i18n.t('grid.title'),
+        name: 'title',
+        filter: 'select',
+        sortable: true
+      },
+      insertDate: {
+        header: ctx.i18n.t('grid.insertDate'),
+        name: 'insertDate',
+        filter: 'select',
+        editor: {
+          type: 'datePicker',
+          options: {
+            format: 'yyyy-MM-dd'
+          }
+        },
+        sortable: true
+      }
+
+    },
+    getColumns: (c) => {
+      c.forEach((e, idx) => {
+        c[idx] = { ...grid.defined[e.name], ...e }
+      })
+      return c
+    }
+  }
+
+  inject('grid', grid)
+}
