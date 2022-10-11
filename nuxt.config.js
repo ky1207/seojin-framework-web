@@ -16,7 +16,8 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: `${process.env.CDN_STATIC}favicon.ico` }
+      // { rel: 'icon', type: 'image/x-icon', href: `${process.env.CDN_STATIC}favicon.ico` }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
 
@@ -52,7 +53,7 @@ export default {
     ['@nuxtjs/dotenv', { filename: `.env.${process.env.NODE_ENV}`, systemvars: true }]
   ],
   publicRuntimeConfig: {
-    CDN_STATIC: process.env.CDN_STATIC
+    // CDN_STATIC: process.env.CDN_STATIC
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
