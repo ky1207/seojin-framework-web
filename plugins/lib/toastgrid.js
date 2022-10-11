@@ -7,6 +7,7 @@ import 'tui-pagination/dist/tui-pagination.css'
 import { Grid } from '@toast-ui/vue-grid'
 
 import TuiGrid from 'tui-grid'
+import { DateFormatter } from '~/plugins/lib/grid/Formatter.js'
 
 TuiGrid.setLanguage('ko')
 TuiGrid.applyTheme('striped')
@@ -25,7 +26,6 @@ Vue.mixin({
 })
 
 export default (ctx, inject) => {
-  console.log(ctx)
   const grid = {
     defined: {
       title: {
@@ -38,12 +38,7 @@ export default (ctx, inject) => {
         header: ctx.i18n.t('grid.insertDate'),
         name: 'insertDate',
         filter: 'select',
-        editor: {
-          type: 'datePicker',
-          options: {
-            format: 'yyyy-MM-dd'
-          }
-        },
+        formatter: DateFormatter,
         sortable: true
       }
 
