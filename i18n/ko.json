@@ -3,5 +3,13 @@
   "grid": {
     "title": "제목",
     "insertDate":"등록일"
+  },
+  "contextMenu": {
+    "copy": "복사",
+    "copyColumns": "열 복사",
+    "copyRows": "행 복사",
+    "export": "내보내기",
+    "csvExport": "CSV로 내보내기",
+    "excelExport": "엑셀로 내보내기"
   }
 }

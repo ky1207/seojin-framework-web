@@ -26,14 +26,13 @@ export default {
   data () {
     return {
       gridProps: {
-        data: [],
+        data: {},
         columns:
          [
            { name: 'title' },
            { name: 'insertDate' }
          ],
         options: {
-
         }
       }
     }
@@ -48,11 +47,14 @@ export default {
   },
   async mounted () {
     const result = await this.$axios.get('/api/v1.0/sample')
-    this.gridProps.data = result.data.Data
+    this.gridProps.data = result.data
   },
   methods: {
     change (lang) {
       this.$i18n.setLocale(lang)
+
+      // iframe 사라짐
+      window.location.reload()
     }
   }
 }

@@ -3,5 +3,13 @@
   "grid": {
     "title": "Title",
     "insertDate":"Registration Date"
+  },
+  "contextMenu": {
+    "copy": "Copy",
+    "copyColumns": "Copy Columns",
+    "copyRows": "Copy Rows",
+    "export": "Export",
+    "csvExport": "CSV Export",
+    "excelExport": "Excel Export"
   }
 }

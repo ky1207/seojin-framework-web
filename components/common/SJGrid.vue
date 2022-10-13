@@ -2,7 +2,7 @@
   <div>
     <Grid
       ref="grid"
-      :data="value"
+      :data="getData"
       :columns="mergedColumns"
       :options="mergedOptions"
       v-on="$listeners"
@@ -13,7 +13,7 @@
 export default {
   props: {
     value: {
-      type: [Array, Object],
+      type: Object,
       required: true
     },
     columns: {
@@ -30,8 +30,51 @@ export default {
   data () {
     return {
       defaultOptions: {
+        contextMenu: () => [
+          [
+            {
+              name: 'copy',
+              label: this.$i18n.t('contextMenu.copy'),
+              action: 'copy'
+            },
+            {
+              name: 'copyColumns',
+              label: this.$i18n.t('contextMenu.copyColumns'),
+              action: 'copyColumns'
+            },
+            {
+              name: 'copyRows',
+              label: this.$i18n.t('contextMenu.copyRows'),
+              action: 'copyRows'
+            },
+            {
+              name: 'export',
+              label: this.$i18n.t('contextMenu.export'),
+              subMenu: [
+                {
+                  name: 'csvExport',
+                  label: this.$i18n.t('contextMenu.csvExport'),
+                  action: () => {
+                    this.printExcel('csv')
+                  }
+                },
+                {
+                  name: 'excelExport',
+                  label: this.$i18n.t('contextMenu.excelExport'),
+                  action: () => {
+                    this.printExcel('xlsx')
+                  }
+                }
+              ]
+            }
+          ]
+        ],
+        rowHeaders: ['rowNum'],
         columnOptions: {
           resizable: true
+        },
+        copyOptions: {
+          useFormattedValue: true
         },
         bodyHeight: 500
       }
@@ -46,14 +89,23 @@ export default {
     },
     mergedColumns () {
       return this.$grid.getColumns(this.columns)
+    },
+    getData () {
+      return (this.value.Data) ? this.value.Data : []
     }
+
   },
   watch: {
     value (newValue, oldValue) {
-      this.$refs.grid.invoke('resetData', newValue)
+      if (newValue.Data) {
+        this.$refs.grid.invoke('resetData', newValue.Data)
+      }
     }
   },
   methods: {
+    printExcel (type) {
+      this.$refs.grid.invoke('export', type, { useFormattedValue: true })
+    },
     getRootElement () {
       return this.$refs.grid
     },

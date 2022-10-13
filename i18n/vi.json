@@ -3,5 +3,13 @@
   "grid": {
     "title": "제목(베)",
     "insertDate":"등록일(베)"
+  },
+  "contextMenu": {
+    "copy": "Copy(베)",
+    "copyColumns": "Copy Columns(베)",
+    "copyRows": "Copy Rows(베)",
+    "export": "Export(베)",
+    "csvExport": "CSV Export(베",
+    "excelExport": "Excel Export(베)"
   }
 }

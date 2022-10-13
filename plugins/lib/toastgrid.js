@@ -10,7 +10,8 @@ import TuiGrid from 'tui-grid'
 import { DateFormatter } from '~/plugins/lib/grid/Formatter.js'
 
 TuiGrid.setLanguage('ko')
-TuiGrid.applyTheme('striped')
+// default나 clean이 아니면 적용 안됨
+TuiGrid.applyTheme('default', { cell: { editable: { background: '#ebf9fa' } } })
 
 Vue.component('Grid', Grid)
 
@@ -26,6 +27,14 @@ Vue.mixin({
 })
 
 export default (ctx, inject) => {
+  // toast grid의 locale을 vi는 없음
+  if (ctx.i18n.getLocaleCookie() !== 'vi') {
+    TuiGrid.setLanguage(ctx.i18n.getLocaleCookie())
+  } else {
+    // 베트남어는 지원하지 않으므로 가상의 Data를 셋 한다.
+    TuiGrid.setLanguage('vi', {})
+  }
+
   const grid = {
     defined: {
       title: {
