@@ -5,10 +5,7 @@
   "scripts": {
     "local": "cross-env NODE_ENV=local nuxt --dotenv .env.local",
     "build.dev": "cross-env NODE_ENV=development nuxt build --dotenv .env.development",
-    "dev": "cross-env NODE_ENV=development nuxt start --dotenv .env.development",
     "build": "cross-env  NODE_ENV=production nuxt build --dotenv .env.production",
-    "start": "cross-env  NODE_ENV=production nuxt start --dotenv .env.production",
-    "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint": "npm run lint:js"
   },
