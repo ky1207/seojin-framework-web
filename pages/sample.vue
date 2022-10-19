@@ -16,12 +16,10 @@
     <div @click="change('vi')">
       Vitenam
     </div><br>
-    <button type="button" class="btn btn-primary" @click="modal.show()">
+    <button type="button" class="btn btn-primary" @click="$refs.exampleModal.show()">
       Launch demo modal
     </button>
-    <div ref="exampleModal" class="modal fade" tabindex="-1" aria-hidden="true">
-      <SampleInsert />
-    </div>
+    <SampleInsert ref="exampleModal" />
   </div>
 </template>
 
@@ -55,7 +53,7 @@ export default {
     }
   },
   async mounted () {
-    this.modal = new this.$bootstrap.Modal(this.$refs.exampleModal)
+    // this.modal = new this.$bootstrap.Modal(this.$refs.exampleModal)
 
     const result = await this.$axios.get('/api/v1.0/sample')
     this.gridProps.data = result.data
