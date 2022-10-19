@@ -42,7 +42,7 @@ export default {
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [
     // Equivalent to { path: '~/components' }
-    '~/components/common'
+    '~/components/common', '~/components/modal'
   ],
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [

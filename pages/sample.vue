@@ -1,5 +1,5 @@
 
-<template class="vtop-layout">
+<template>
   <div>
     <SJGrid
       ref="grid"
@@ -16,15 +16,23 @@
     <div @click="change('vi')">
       Vitenam
     </div><br>
+    <button type="button" class="btn btn-primary" @click="modal.show()">
+      Launch demo modal
+    </button>
+    <div ref="exampleModal" class="modal fade" tabindex="-1" aria-hidden="true">
+      <SampleInsert />
+    </div>
   </div>
 </template>
 
 <script>
+
 export default {
   auth: 'guest',
 
   data () {
     return {
+      modal: null,
       gridProps: {
         data: {},
         columns:
@@ -37,6 +45,7 @@ export default {
       }
     }
   },
+
   computed: {
     routeTab () {
       return {
@@ -46,10 +55,15 @@ export default {
     }
   },
   async mounted () {
+    this.modal = new this.$bootstrap.Modal(this.$refs.exampleModal)
+
     const result = await this.$axios.get('/api/v1.0/sample')
     this.gridProps.data = result.data
   },
   methods: {
+    open () {
+
+    },
     change (lang) {
       this.$i18n.setLocale(lang)
 
