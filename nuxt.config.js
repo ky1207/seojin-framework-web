@@ -30,6 +30,7 @@ export default {
     { src: '~/plugins/filters.js' },
     { src: '~/plugins/prototype.js' },
     { src: '~/plugins/lib/ckeditor.js' },
+    { src: '~/plugins/lib/toasteditor.js' },
     { src: '~/plugins/lib/toastgrid.js' },
     { src: '~/plugins/lib/tree.js' },
     { src: '~/plugins/lib/notify.js' },
