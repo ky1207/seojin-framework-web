@@ -6,16 +6,16 @@
           <h5 id="exampleModalLabel" class="modal-title">
             Modal title
           </h5>
-          <button type="button" class="btn-close" aria-label="Close" />
+          <button type="button" class="btn-close" aria-label="Close" @click="close()" />
         </div>
         <div class="modal-body">
-          ...
+          <SJEditor v-model="item.content" />
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary">
+          <button type="button" class="btn btn-secondary" @click="close()">
             Close
           </button>
-          <button type="button" class="btn btn-primary">
+          <button type="button" class="btn btn-primary" @click="save()">
             Save changes
           </button>
         </div>
@@ -26,9 +26,33 @@
 
 <script>
 export default {
+  data () {
+    return {
+      test: 'test',
+      item: {
+        title: null,
+        content: null,
+        upload: []
+      },
+      resolve: null,
+      reject: null
+    }
+  },
   methods: {
-    show () {
+    open (params) {
       this.$refs.modal.show()
+      return new Promise((resolve, reject) => {
+        this.resolve = resolve
+        this.reject = reject
+      })
+    },
+    close () {
+      this.$refs.modal.hide()
+      this.resolve(false) // response의 응답
+    },
+    save () {
+      this.$refs.modal.hide()
+      this.resolve(true)
     }
   }
 }

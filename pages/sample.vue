@@ -16,7 +16,7 @@
     <div @click="change('vi')">
       Vitenam
     </div><br>
-    <button type="button" class="btn btn-primary" @click="$refs.exampleModal.show()">
+    <button type="button" class="btn btn-primary" @click="open()">
       Launch demo modal
     </button>
     <SampleInsert ref="exampleModal" />
@@ -30,6 +30,7 @@ export default {
 
   data () {
     return {
+      test: 'test',
       modal: null,
       gridProps: {
         data: {},
@@ -53,14 +54,16 @@ export default {
     }
   },
   async mounted () {
-    // this.modal = new this.$bootstrap.Modal(this.$refs.exampleModal)
-
     const result = await this.$axios.get('/api/v1.0/sample')
     this.gridProps.data = result.data
   },
   methods: {
-    open () {
-
+    async open () {
+      const response = await this.$refs.exampleModal.open(this.test)
+      //  if (response) {
+      console.log(response)
+      alert(response)
+      // }
     },
     change (lang) {
       this.$i18n.setLocale(lang)

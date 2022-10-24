@@ -16,6 +16,9 @@ export default {
   methods: {
     show () {
       this.modal.show()
+    },
+    hide () {
+      this.modal.hide()
     }
   }
 }
