@@ -1,11 +1,11 @@
 <template>
   <div>
-    <ckeditor
+    <editor
       v-bind="$attrs"
       ref="editor"
       v-model="innerValue"
-      :editor-url="editorUrl"
-      :config="editorConfig"
+      :options="editorOptions"
+      initial-edit-type="wysiwyg"
       v-on="$listeners"
     />
   </div>
@@ -18,13 +18,10 @@ export default {
       default: ''
     }
   },
-  data ({ $config: { CDN_STATIC } }) {
+  data () {
     return {
-      editorUrl: `${CDN_STATIC}ckeditor4/ckeditor.js`,
-      editorConfig: {
-        fileTools_requestHeaders: {
-          Authorization: this.$auth.$storage._state['_token.customStrategy']
-        }
+      editorOptions: {
+        hideModeSwitch: true
       }
     }
   },
