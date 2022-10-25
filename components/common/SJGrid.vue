@@ -34,33 +34,33 @@ export default {
           [
             {
               name: 'copy',
-              label: this.$i18n.t('contextMenu.copy'),
+              label: this.$t('contextMenu.copy'),
               action: 'copy'
             },
             {
               name: 'copyColumns',
-              label: this.$i18n.t('contextMenu.copyColumns'),
+              label: this.$t('contextMenu.copyColumns'),
               action: 'copyColumns'
             },
             {
               name: 'copyRows',
-              label: this.$i18n.t('contextMenu.copyRows'),
+              label: this.$t('contextMenu.copyRows'),
               action: 'copyRows'
             },
             {
               name: 'export',
-              label: this.$i18n.t('contextMenu.export'),
+              label: this.$t('contextMenu.export'),
               subMenu: [
                 {
                   name: 'csvExport',
-                  label: this.$i18n.t('contextMenu.csvExport'),
+                  label: this.$t('contextMenu.csvExport'),
                   action: () => {
                     this.printExcel('csv')
                   }
                 },
                 {
                   name: 'excelExport',
-                  label: this.$i18n.t('contextMenu.excelExport'),
+                  label: this.$t('contextMenu.excelExport'),
                   action: () => {
                     this.printExcel('xlsx')
                   }

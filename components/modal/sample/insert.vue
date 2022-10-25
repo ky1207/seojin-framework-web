@@ -4,7 +4,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 id="exampleModalLabel" class="modal-title">
-            Modal title
+            Modal title <SJInput v-model="test" :name="$t('sample')" type="text" rules="required" />
           </h5>
           <button type="button" class="btn-close" aria-label="Close" @click="close()" />
         </div>
@@ -28,7 +28,7 @@
 export default {
   data () {
     return {
-      test: 'test',
+      test: 'test1',
       item: {
         title: null,
         content: null,

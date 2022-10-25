@@ -19,12 +19,11 @@
     <button type="button" class="btn btn-primary" @click="open()">
       Launch demo modal
     </button>
-    <SampleInsert ref="exampleModal" />
+    <SampleInsert ref="exampleModal" /> {{ $t('sample') }}
   </div>
 </template>
 
 <script>
-
 export default {
   auth: 'guest',
 

@@ -36,13 +36,15 @@ export default {
     { src: '~/plugins/lib/common.js' },
     { src: '~/plugins/lib/routertab.js' },
     { src: '~/plugins/lib/bootstrap.js' },
+    { src: '~/plugins/lib/veevalidate.js' },
     { src: '~/plugins/client.js' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [
     // Equivalent to { path: '~/components' }
-    '~/components/common', '~/components/modal'
+    '~/components/common', '~/components/modal',
+    '~/components/ui/editor'
   ],
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -101,7 +103,7 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     // Babel transpile dependencies
-    transpile: ['vue-router-tab'],
+    transpile: ['vue-router-tab', 'vee-validate/dist/rules'],
     extractCSS: { ignoreOrder: true }, // inline css를 파일로 저장한다. 그렇지 않으면 head 내에 inline으로 출력 kskim 2021-12-10   ***
     // publicPath:'http://test.org' // default='/_nuxt/
     publicPath: process.env.CDN_ASSETS,
