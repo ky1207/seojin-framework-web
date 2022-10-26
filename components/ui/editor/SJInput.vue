@@ -1,7 +1,18 @@
 <template>
-  <ValidationProvider v-slot="{ errors }" :rules="rules" :name="name">
-    <input v-model="content" :type="type" @input="handleInput">
-    <div>{{ errors[0] }}</div>
+  <ValidationProvider v-slot="{ errors,classes }" :rules="rules" :name="name" tag="div" :disabled="disabledValidation">
+    <input
+      v-model="content"
+      :type="type"
+      class="form-control"
+      :class="disabledValidation?'':classes"
+      :aria-describedby="id+'-feedback'"
+      :disabled="disabled"
+      :readonly="readonly"
+      @input="handleInput"
+    >
+    <span :id="id+'-feedback'" class="invalid-feedback">
+      {{ errors[0] }}
+    </span>
   </ValidationProvider>
 </template>
 
@@ -22,7 +33,23 @@ export default {
     },
     name: {
       type: String,
-      default: ''
+      required: true
+    },
+    id: {
+      type: String,
+      required: true
+    },
+    disabledValidation: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -37,7 +64,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

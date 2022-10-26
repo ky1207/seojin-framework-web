@@ -1,10 +1,22 @@
 import Vue from 'vue'
-import { ValidationProvider, ValidationObserver, extend, localize } from 'vee-validate'
-
+import { ValidationProvider, ValidationObserver, extend, localize, configure } from 'vee-validate'
 import * as rules from 'vee-validate/dist/rules'
 import en from 'vee-validate/dist/locale/en.json'
 import vi from 'vee-validate/dist/locale/vi.json'
 import ko from 'vee-validate/dist/locale/ko.json'
+
+const config = {
+  classes: {
+    valid: 'is-valid',
+    invalid: 'is-invalid'
+  },
+  bails: true,
+  skipOptional: true,
+  mode: 'aggressive',
+  useConstraintAttrs: true
+}
+
+configure(config)
 
 localize({ en, vi, ko })
 
