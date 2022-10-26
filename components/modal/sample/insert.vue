@@ -4,11 +4,25 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 id="exampleModalLabel" class="modal-title">
-            Modal title <SJInput v-model="test" :name="$t('sample')" type="text" rules="required" />
+            Modal title
           </h5>
           <button type="button" class="btn-close" aria-label="Close" @click="close()" />
         </div>
         <div class="modal-body">
+          <SJInput
+            id="name"
+            v-model="test"
+            :name="$t('sample')"
+            type="text"
+            rules="required"
+          />
+          <SJSelect
+            id="select"
+            v-model="selected"
+            :options="options"
+            name="selectBox"
+            rules="required"
+          />
           <SJEditor v-model="item.content" />
         </div>
         <div class="modal-footer">
@@ -29,6 +43,8 @@ export default {
   data () {
     return {
       test: 'test1',
+      selected: null,
+      options: [{ value: 1, text: '사과' }, { value: 2, text: '바나나' }],
       item: {
         title: null,
         content: null,
