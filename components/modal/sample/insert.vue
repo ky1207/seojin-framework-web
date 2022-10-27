@@ -24,7 +24,7 @@
             rules="required"
           />
           <SJDatePicker id="date" v-model="current" name="date" /> {{ current }}
-          <SJEditor v-model="item.content" />
+          <SJEditor id="editor" v-model="item.content" name="내용" rules="required" />
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" @click="close()">
