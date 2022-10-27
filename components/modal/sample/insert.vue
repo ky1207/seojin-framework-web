@@ -23,6 +23,7 @@
             name="selectBox"
             rules="required"
           />
+          <SJDatePicker id="date" v-model="current" name="date" /> {{ current }}
           <SJEditor v-model="item.content" />
         </div>
         <div class="modal-footer">
@@ -42,6 +43,7 @@
 export default {
   data () {
     return {
+      current: null,
       test: 'test1',
       selected: null,
       options: [{ value: 1, text: '사과' }, { value: 2, text: '바나나' }],

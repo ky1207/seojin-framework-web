@@ -25,7 +25,8 @@
     "nuxt": "^2.12.2",
     "object-to-formdata": "^4.4.1",
     "vee-validate": "^3.4.14",
-    "vue-router-tab": "^1.2.11"
+    "vue-router-tab": "^1.2.11",
+    "vue2-datepicker": "^3.11.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
