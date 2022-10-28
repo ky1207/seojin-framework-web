@@ -9,35 +9,37 @@
           <button type="button" class="btn-close" aria-label="Close" @click="close()" />
         </div>
         <div class="modal-body">
-          <SJInput
-            id="name"
-            v-model="test"
-            :name="$t('sample')"
-            type="text"
-            rules="required"
-            placeholder="입력하세요"
-          />
-          <SJStepper
-            id="stepper"
-            v-model="counter"
-            name="stepper"
-            rules="required|min_value:2"
-          /> {{ counter }}
-          <SJSelect
-            id="select"
-            v-model="selected"
-            :options="options"
-            name="selectBox"
-            rules="required"
-          />
-          <SJDatePicker id="date" v-model="current" name="date" /> {{ current }}
-          <SJEditor id="editor" v-model="item.content" name="내용" rules="required" />
-          <SJTextarea
-            id="textarea"
-            v-model="item.content"
-            name="textarea"
-            rules="required"
-          />
+          <SJForm ref="form">
+            <SJInput
+              id="name"
+              v-model="test"
+              :name="$t('sample')"
+              type="text"
+              rules="required"
+              placeholder="입력하세요"
+            />
+            <SJStepper
+              id="stepper"
+              v-model="counter"
+              name="stepper"
+              rules="required|min_value:2"
+            /> {{ counter }}
+            <SJSelect
+              id="select"
+              v-model="selected"
+              :options="options"
+              name="selectBox"
+              rules="required"
+            />
+            <SJDatePicker id="date" v-model="current" name="date" /> {{ current }}
+            <SJEditor id="editor" v-model="item.content" name="내용" rules="required" />
+            <SJTextarea
+              id="textarea"
+              v-model="item.content"
+              name="textarea"
+              rules="required"
+            />
+          </SJForm>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" @click="close()">
@@ -79,12 +81,17 @@ export default {
       })
     },
     close () {
+      this.$refs.form.reset()
+
       this.$refs.modal.hide()
       this.resolve(false) // response의 응답
     },
-    save () {
-      this.$refs.modal.hide()
-      this.resolve(true)
+    async save () {
+      const result = await this.$refs.form.validate()
+      if (result) {
+        this.$refs.modal.hide()
+        this.resolve(true)
+      }
     }
   }
 }
