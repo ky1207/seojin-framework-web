@@ -8,6 +8,7 @@
       :aria-describedby="id+'-feedback'"
       :disabled="disabled"
       :readonly="readonly"
+      :placeholder="placeholder"
       @input="handleInput"
     >
     <span :id="id+'-feedback'" class="invalid-feedback">
@@ -38,6 +39,10 @@ export default {
     id: {
       type: String,
       required: true
+    },
+    placeholder: {
+      type: String,
+      default: ''
     },
     disabledValidation: {
       type: Boolean,

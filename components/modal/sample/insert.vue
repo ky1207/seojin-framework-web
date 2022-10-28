@@ -15,6 +15,7 @@
             :name="$t('sample')"
             type="text"
             rules="required"
+            placeholder="입력하세요"
           />
           <SJSelect
             id="select"
