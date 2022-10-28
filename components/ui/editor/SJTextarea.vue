@@ -2,7 +2,6 @@
   <ValidationProvider v-slot="{ errors,classes }" :rules="rules" :name="name" tag="div" :disabled="disabledValidation">
     <textarea
       v-model="content"
-      :type="type"
       class="form-control"
       :class="disabledValidation?'':classes"
       :aria-describedby="id+'-feedback'"

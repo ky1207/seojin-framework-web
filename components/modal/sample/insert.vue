@@ -20,7 +20,7 @@
           <SJStepper
             id="stepper"
             v-model="counter"
-            :name="stpeer"
+            name="stepper"
             rules="required|min_value:2"
           /> {{ counter }}
           <SJSelect
@@ -58,7 +58,7 @@ export default {
     return {
       current: null,
       counter: 10,
-      test: 1,
+      test: 'test',
       selected: null,
       options: [{ value: 1, text: '사과' }, { value: 2, text: '바나나' }],
       item: {

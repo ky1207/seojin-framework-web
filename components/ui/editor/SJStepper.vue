@@ -16,8 +16,8 @@
 export default {
   props: {
     value: {
-      type: String,
-      default: ''
+      type: Number,
+      default: 0
     },
     rules: {
       type: String,
@@ -46,12 +46,12 @@ export default {
   },
   data () {
     return {
-      content: this.value
+      content: this.value.toString()
     }
   },
   methods: {
     handleInput (e) {
-      this.$emit('input', this.content)
+      this.$emit('input', parseInt(this.content))
     }
   }
 }
