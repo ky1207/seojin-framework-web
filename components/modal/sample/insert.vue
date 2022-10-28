@@ -17,6 +17,12 @@
             rules="required"
             placeholder="입력하세요"
           />
+          <SJStepper
+            id="stepper"
+            v-model="counter"
+            :name="stpeer"
+            rules="required|min_value:2"
+          /> {{ counter }}
           <SJSelect
             id="select"
             v-model="selected"
@@ -51,7 +57,8 @@ export default {
   data () {
     return {
       current: null,
-      test: 'test1',
+      counter: 10,
+      test: 1,
       selected: null,
       options: [{ value: 1, text: '사과' }, { value: 2, text: '바나나' }],
       item: {
