@@ -11,12 +11,11 @@
 </template>
 
 <script>
+import { MENU } from '@/mixins' // tab menu를 표기를 위한 mixins
+
 export default {
   auth: 'guest',
-  meta: {
-    title: 'About',
-    closable: true
-  }
+  mixins: [MENU]
 }
 
 </script>

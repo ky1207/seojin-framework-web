@@ -1,4 +1,4 @@
 
 import POPUP from '@/mixins/pupup'
-
-export { POPUP }
+import MENU from '@/mixins/tab'
+export { POPUP, MENU }
