@@ -15,49 +15,12 @@
       </div>
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
-          <nuxt-link
-            to="/sample"
-            class="nav-link"
-            :class="{active: isActive('/sample'),'text-black':!isActive('/sample')}"
-            aria-current="page"
-          >
-            <svg class="bi me-2" width="16" height="16"><use xlink:href="#home" /></svg>
-            Sample
-          </nuxt-link>
-        </li>
-        <li>
-          <nuxt-link
-            to="/about"
-            class="nav-link"
-            :class="{active: isActive('/about'),'text-black':!isActive('/about')}"
-          >
-            <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2" /></svg>
-            About
-          </nuxt-link>
-        </li>
-        <li>
-          <nuxt-link
-            :to="{
-              name: 'iframe',
-              params: {
-                src: 'http://seojinsystem.net/',
-                title: '서진시스템'
-              }
-            }"
-            class="nav-link"
-            :class="{active: isActive('/iframe/http:%2F%2Fseojinsystem.net%2F/%EC%84%9C%EC%A7%84%EC%8B%9C%EC%8A%A4%ED%85%9C'),'text-black':!isActive('/iframe/http:%2F%2Fseojinsystem.net%2F/%EC%84%9C%EC%A7%84%EC%8B%9C%EC%8A%A4%ED%85%9C'
-            )}"
-          >
-            <svg class="bi me-2" width="16" height="16"><use xlink:href="#table" /></svg>
-            서진시스템
-          </nuxt-link>
-        </li>
+        <SJSlideBar :value="menus" />
       </ul>
       <hr>
     </div>
 
-    <router-tab :tabs="tabs" />
+    <router-tab :tabs="tabs" :contextmenu="false" />
   </div>
 </template>
 <script>
@@ -69,6 +32,47 @@ export default {
           to: '/sample',
           title: 'Sample',
           closable: false
+        }
+      ],
+      menus: [
+        {
+          id: 1,
+          name: 'Home',
+          children: [{
+            id: 2,
+            name: this.$t('sample'),
+            url: '/sample'
+          },
+          {
+            id: 3,
+            name: 'About',
+            url: '/about'
+          },
+          {
+            id: 4,
+            name: '서진시스템',
+            url: '/iframe/http:%2F%2Fseojinsystem.net%2F/%EC%84%9C%EC%A7%84%EC%8B%9C%EC%8A%A4%ED%85%9C'
+          }
+          ]
+        },
+        {
+          id: 11,
+          name: 'Second',
+          children: [{
+            id: 12,
+            name: 'Second child1'
+          },
+          {
+            id: 13,
+            name: 'Second child2',
+            url: '/sample'
+          },
+          {
+            id: 14,
+            name: 'Second child3',
+            url: '/sample'
+          }
+          ]
         }
       ]
     }
