@@ -9,7 +9,7 @@
         <div :id="m.name+'-collapse'" class="collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li v-for="sub in m.children" :key="sub.id">
-              <nuxt-link :to="{path:sub.url?sub.url:'/',query:{title:sub.name}}" class="link-dark d-inline-flex text-decoration-none rounded">
+              <nuxt-link :to="sub.url?sub.url:'/'" class="link-dark d-inline-flex text-decoration-none rounded">
                 {{ sub.name }}
               </nuxt-link>
             </li>
