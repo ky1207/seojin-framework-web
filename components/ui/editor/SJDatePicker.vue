@@ -26,6 +26,8 @@ export default {
     handleInput (p) {
       if (p !== null) {
         this.$emit('input', this.date.getTime())
+      } else {
+        this.$emit('input', null)
       }
     },
     handleChange (p) {
