@@ -15,17 +15,6 @@ TuiGrid.applyTheme('default', { cell: { editable: { background: '#ebf9fa' } } })
 
 Vue.component('Grid', Grid)
 
-Vue.mixin({
-  activated () {
-    // 화면 리사이즈 후, 본 화면 출력시 그리드 리로드 문제
-    Object.keys(this.$refs).forEach((element) => {
-      if (this.$refs[element].invoke) {
-        this.$refs[element].invoke('refreshLayout')
-      }
-    })
-  }
-})
-
 export default (ctx, inject) => {
   // toast grid의 locale을 vi는 없음
   if (ctx.i18n.getLocaleCookie() !== 'vi') {
