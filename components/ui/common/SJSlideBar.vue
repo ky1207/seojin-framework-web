@@ -7,7 +7,7 @@
         </a>
         <ul v-if="m.children" :id="m.name+'-collapse'" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li v-for="sub in m.children" :key="sub.id">
-            <nuxt-link :to="sub.url?sub.url:'/'" class="link-dark d-inline-flex text-decoration-none rounded">
+            <nuxt-link :to="sub.url?sub.url:'/'" :class="isActive(sub.url)">
               <i class="bi bi-circle" /> <span>{{ sub.name }}</span>
             </nuxt-link>
           </li>
@@ -24,6 +24,11 @@ export default {
     value: {
       type: Array,
       required: true
+    }
+  },
+  methods: {
+    isActive (url) {
+      return this.$route.path === url ? 'active' : ''
     }
   }
 }
