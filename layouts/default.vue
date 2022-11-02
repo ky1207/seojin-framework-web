@@ -3,15 +3,15 @@
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
       <div class="d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <img src="assets/img/logo.png" alt="">
-          <span class="d-none d-lg-block">SeoJin</span>
-        </a>
+        <nuxt-link to="/" class="logo d-flex align-items-center">
+          <img src="@/assets/images/seojin.png" alt="">
+          <span class="d-none d-lg-block" />
+        </nuxt-link>
         <i class="bi bi-list toggle-sidebar-btn" />
       </div><!-- End Logo -->
 
       <div class="search-bar">
-        <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <form class="search-form d-flex align-items-center" method="POST">
           <input type="text" name="query" placeholder="Search" title="Enter search keyword">
           <button type="submit" title="Search">
             <i class="bi bi-search" />
@@ -22,9 +22,9 @@
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
           <li class="nav-item d-block d-lg-none">
-            <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <div class="nav-link nav-icon search-bar-toggle">
               <i class="bi bi-search" />
-            </a>
+            </div>
           </li><!-- End Search Icon-->
 
           <li class="nav-item dropdown">
@@ -220,94 +220,7 @@
     </header><!-- End Header -->
 
     <!-- ======= Sidebar ======= -->
-    <aside id="sidebar" class="sidebar">
-      <ul id="sidebar-nav" class="sidebar-nav">
-        <li class="nav-item">
-          <nuxt-link class="nav-link " to="/about">
-            <i class="bi bi-grid" />
-            <span>About</span>
-          </nuxt-link>
-        </li><!-- End Dashboard Nav -->
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-menu-button-wide" /><span>Components</span><i class="bi bi-chevron-down ms-auto" />
-          </a>
-          <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-              <a href="components-alerts.html">
-                <i class="bi bi-circle" /><span>Alerts</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-accordion.html">
-                <i class="bi bi-circle" /><span>Accordion</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-badges.html">
-                <i class="bi bi-circle" /><span>Badges</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-breadcrumbs.html">
-                <i class="bi bi-circle" /><span>Breadcrumbs</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-buttons.html">
-                <i class="bi bi-circle" /><span>Buttons</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-cards.html">
-                <i class="bi bi-circle" /><span>Cards</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-carousel.html">
-                <i class="bi bi-circle" /><span>Carousel</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-list-group.html">
-                <i class="bi bi-circle" /><span>List group</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-modal.html">
-                <i class="bi bi-circle" /><span>Modal</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-tabs.html">
-                <i class="bi bi-circle" /><span>Tabs</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-pagination.html">
-                <i class="bi bi-circle" /><span>Pagination</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-progress.html">
-                <i class="bi bi-circle" /><span>Progress</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-spinners.html">
-                <i class="bi bi-circle" /><span>Spinners</span>
-              </a>
-            </li>
-            <li>
-              <a href="components-tooltips.html">
-                <i class="bi bi-circle" /><span>Tooltips</span>
-              </a>
-            </li>
-          </ul>
-        </li><!-- End Components Nav -->
-      </ul>
-    </aside><!-- End Sidebar-->
+    <SJSlideBar :value="menus" />
 
     <main id="main" class="main">
       <router-tab :tabs="tabs" :contextmenu="false" />
@@ -319,8 +232,6 @@
         &copy; Copyright <strong><span>SeoJin System</span></strong>. All Rights Reserved
       </div>
     </footer><!-- End Footer -->
-
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" /></a>
   </div>
 </template>
 <script>
@@ -373,8 +284,113 @@ export default {
             url: '/sample'
           }
           ]
+        }, {
+          id: 21,
+          name: 'Third'
         }
       ]
+    }
+  },
+  mounted () {
+    // 예제.. 추후 처리 컴포넌트로 처리해야함
+    /**
+     * Easy selector helper function
+     */
+    const select = (el, all = false) => {
+      el = el.trim()
+      if (all) {
+        return [...document.querySelectorAll(el)]
+      } else {
+        return document.querySelector(el)
+      }
+    }
+
+    /**
+     * Easy event listener function
+     */
+    const on = (type, el, listener, all = false) => {
+      if (all) {
+        select(el, all).forEach(e => e.addEventListener(type, listener))
+      } else {
+        select(el, all).addEventListener(type, listener)
+      }
+    }
+
+    /**
+     * Easy on scroll event listener
+     */
+    const onscroll = (el, listener) => {
+      el.addEventListener('scroll', listener)
+    }
+
+    /**
+     * Sidebar toggle
+     */
+    if (select('.toggle-sidebar-btn')) {
+      on('click', '.toggle-sidebar-btn', function (e) {
+        select('body').classList.toggle('toggle-sidebar')
+      })
+    }
+
+    /**
+     * Search bar toggle
+     */
+    if (select('.search-bar-toggle')) {
+      on('click', '.search-bar-toggle', function (e) {
+        select('.search-bar').classList.toggle('search-bar-show')
+      })
+    }
+
+    /**
+     * Navbar links active state on scroll
+     */
+    const navbarlinks = select('#navbar .scrollto', true)
+    const navbarlinksActive = () => {
+      const position = window.scrollY + 200
+      navbarlinks.forEach((navbarlink) => {
+        if (!navbarlink.hash) { return }
+        const section = select(navbarlink.hash)
+        if (!section) { return }
+        if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
+          navbarlink.classList.add('active')
+        } else {
+          navbarlink.classList.remove('active')
+        }
+      })
+    }
+    window.addEventListener('load', navbarlinksActive)
+    onscroll(document, navbarlinksActive)
+
+    /**
+     * Toggle .header-scrolled class to #header when page is scrolled
+     */
+    const selectHeader = select('#header')
+    if (selectHeader) {
+      const headerScrolled = () => {
+        if (window.scrollY > 100) {
+          selectHeader.classList.add('header-scrolled')
+        } else {
+          selectHeader.classList.remove('header-scrolled')
+        }
+      }
+      window.addEventListener('load', headerScrolled)
+      onscroll(document, headerScrolled)
+    }
+
+    /**
+     * Back to top button
+     */
+    const backtotop = select('.back-to-top')
+    if (backtotop) {
+      const toggleBacktotop = () => {
+        if (window.scrollY > 100) {
+          backtotop.classList.add('active')
+        } else {
+          backtotop.classList.remove('active')
+        }
+      }
+      window.addEventListener('load', toggleBacktotop)
+      onscroll(document, toggleBacktotop)
     }
   },
   methods: {

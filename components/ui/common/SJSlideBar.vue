@@ -1,24 +1,20 @@
 <template>
-  <div class="flex-shrink-0">
-    <ul v-for="m in value" :key="m.id" class="list-unstyled ps-1">
-      <!-- start of set-->
-      <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" :data-bs-target="'#'+m.name+'-collapse'" aria-expanded="false">
-          {{ m.name }}
-        </button>
-        <div :id="m.name+'-collapse'" class="collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li v-for="sub in m.children" :key="sub.id">
-              <nuxt-link :to="sub.url?sub.url:'/'" class="link-dark d-inline-flex text-decoration-none rounded">
-                {{ sub.name }}
-              </nuxt-link>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <!-- end of set -->
+  <aside id="sidebar" class="sidebar">
+    <ul v-for="m in value" id="sidebar-nav" :key="m.id" class="sidebar-nav">
+      <li class="nav-item">
+        <a class="nav-link collapsed" :data-bs-target="'#'+m.name+'-collapse'" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide" /><span>  {{ m.name }}</span><i v-if="m.children" class="bi bi-chevron-down ms-auto" />
+        </a>
+        <ul v-if="m.children" :id="m.name+'-collapse'" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li v-for="sub in m.children" :key="sub.id">
+            <nuxt-link :to="sub.url?sub.url:'/'" class="link-dark d-inline-flex text-decoration-none rounded">
+              <i class="bi bi-circle" /> <span>{{ sub.name }}</span>
+            </nuxt-link>
+          </li>
+        </ul>
+      </li><!-- End Components Nav -->
     </ul>
-  </div>
+  </aside>
 </template>
 
 <script>
