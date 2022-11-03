@@ -266,6 +266,7 @@ export default {
     if (select('.toggle-sidebar-btn')) {
       on('click', '.toggle-sidebar-btn', function (e) {
         select('body').classList.toggle('toggle-sidebar')
+        window.dispatchEvent(new Event('resize'))
       })
     }
 
