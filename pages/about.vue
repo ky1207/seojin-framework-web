@@ -14,7 +14,6 @@
 import { MENU } from '@/mixins' // tab menu를 표기를 위한 mixins
 
 export default {
-  auth: 'guest',
   mixins: [MENU]
 }
 

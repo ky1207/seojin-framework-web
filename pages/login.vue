@@ -20,19 +20,19 @@
 
                   <div class="form-outline mb-4">
                     <input
-                      id="form2Example11"
-                      type="email"
+                      v-model="username"
+                      type="text"
                       class="form-control"
                       placeholder="ID"
                     >
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input id="form2Example22" type="password" class="form-control" placeholder="Password">
+                    <input v-model="password" type="password" class="form-control" placeholder="Password">
                   </div>
 
                   <div class="text-center pt-1 mb-5 pb-1">
-                    <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">
+                    <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button" @click="login">
                       Log in
                     </button>
                   </div>
@@ -58,7 +58,35 @@
 
 <script>
 export default {
-  layout: 'empty'
+  layout: 'empty',
+  data () {
+    return {
+      username: 'devel',
+      password: 'test'
+
+    }
+  },
+  mounted () {
+    // popup일경우, 자신 창을 닫기
+    if (window.opener) {
+      this.$auth.$storage.setCookie('redirect', '/')
+      window.close()
+    }
+  },
+  methods: {
+    async login () {
+      try {
+        await this.$auth.loginWith('customStrategy', {
+          data: {
+            username: this.username,
+            password: this.password
+          }
+        })
+      } catch (e) {
+        this.error = e.response.data
+      }
+    }
+  }
 }
 </script>
 <style scoped>

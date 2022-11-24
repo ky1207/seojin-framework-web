@@ -177,8 +177,8 @@ export default {
     return {
       tabs: [
         {
-          to: '/sample',
-          title: 'Sample',
+          to: '/',
+          title: this.$t('sample'),
           closable: false
         }
       ],
@@ -189,7 +189,7 @@ export default {
           children: [{
             id: 2,
             name: this.$t('sample'),
-            url: '/sample'
+            url: '/'
           },
           {
             id: 3,
