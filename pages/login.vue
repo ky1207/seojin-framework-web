@@ -96,7 +96,8 @@ export default {
         await this.$auth.loginWith('customStrategy', {
           data: {
             username: this.username,
-            password: this.password
+            password: this.password,
+            coId: 'C_0000000001'
           }
         })
       } catch (e) {
