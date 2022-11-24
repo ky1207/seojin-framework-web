@@ -76,6 +76,7 @@ export default {
     return {
       username: 'devel',
       password: 'test',
+      coId: 'C_0000000001',
       error: null
 
     }
@@ -97,7 +98,7 @@ export default {
           data: {
             username: this.username,
             password: this.password,
-            coId: 'C_0000000001'
+            coId: this.coId
           }
         })
       } catch (e) {
