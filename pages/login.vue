@@ -16,26 +16,39 @@
                     <h4 class="mt-1 mb-5 pb-1">
                       신정보시스템
                     </h4>
+                    <div v-if="error" class="alert alert-danger" role="alert">
+                      {{ error.message }}
+                    </div>
                   </div>
+                  <SJForm ref="form">
+                    <div class="form-outline mb-4">
+                      <SJInput
+                        id="name"
+                        v-model="username"
+                        name="ID"
+                        type="text"
+                        rules="required"
+                        placeholder="ID"
+                      />
+                    </div>
 
-                  <div class="form-outline mb-4">
-                    <input
-                      v-model="username"
-                      type="text"
-                      class="form-control"
-                      placeholder="ID"
-                    >
-                  </div>
+                    <div class="form-outline mb-4">
+                      <SJInput
+                        id="name"
+                        v-model="password"
+                        name="Password"
+                        type="password"
+                        rules="required"
+                        placeholder="Password"
+                      />
+                    </div>
 
-                  <div class="form-outline mb-4">
-                    <input v-model="password" type="password" class="form-control" placeholder="Password">
-                  </div>
-
-                  <div class="text-center pt-1 mb-5 pb-1">
-                    <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button" @click="login">
-                      Log in
-                    </button>
-                  </div>
+                    <div class="text-center pt-1 mb-5 pb-1">
+                      <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button" @click="login">
+                        Log in
+                      </button>
+                    </div>
+                  </SJForm>
                 </div>
               </div>
               <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
@@ -44,7 +57,7 @@
                     서진시스템
                   </h4>
                   <p class="small mb-0">
-                    .....
+                    ....
                   </p>
                 </div>
               </div>
@@ -62,7 +75,8 @@ export default {
   data () {
     return {
       username: 'devel',
-      password: 'test'
+      password: 'test',
+      error: null
 
     }
   },
@@ -75,6 +89,9 @@ export default {
   },
   methods: {
     async login () {
+      this.error = null
+      const result = await this.$refs.form.validate()
+      if (!result) { return false }
       try {
         await this.$auth.loginWith('customStrategy', {
           data: {

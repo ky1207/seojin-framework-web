@@ -1,10 +1,7 @@
-import qs from 'qs'
-
 export default ({ $axios, app, redirect, store, error: nuxtError }) => {
   $axios.onRequest((config) => {
     config.headers['x-forwarded-for'] = store.state.client.ip
-
-    config.paramsSerializer = params => qs.stringify(params, { arrayFormat: 'comma' })
+    config.headers['Accept-Language'] = app.i18n.getLocaleCookie()
     return config
   })
   $axios.onError((e) => {

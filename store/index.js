@@ -1,7 +1,5 @@
 export const state = () => ({
   notifies: [],
-  // Authoriy
-  
   // current menu
   currentMenu: null
 })
@@ -14,7 +12,7 @@ export const mutations = {
   closeNotify (state) {
     state.notifies.shift()
   },
-  
+
   // Menu
   setMenu (state, menu) {
     state.currentMenu = menu
@@ -35,7 +33,7 @@ export const actions = {
   closeNotify (context) {
     context.commit('closeNotify')
   },
- 
+
   // menu
   setMenu (context, menu) {
     context.commit('setMenu', menu)

@@ -145,7 +145,7 @@
               </li>
 
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="#">
+                <a class="dropdown-item d-flex align-items-center" @click="logout">
                   <i class="bi bi-box-arrow-right" />
                   <span>Sign Out</span>
                 </a>
@@ -334,6 +334,9 @@ export default {
   methods: {
     isActive (url) {
       return this.$route.path === url
+    },
+    logout () {
+      this.$auth.logout()
     }
   }
 }
