@@ -45,7 +45,7 @@ export default {
   components: [
     // Equivalent to { path: '~/components' }
     '~/components/modal',
-    '~/components/ui/editor', '~/components/ui/common'
+    '~/components/ui/editor', '~/components/ui/common', '~/components/ui/layouts'
   ],
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [

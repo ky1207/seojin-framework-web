@@ -1,19 +1,9 @@
 
 <template>
-  <div>
-    <div class="pagetitle">
-      <h1>Dashboard</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="#">Home</a>
-          </li>
-          <li class="breadcrumb-item active">
-            Dashboard
-          </li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
+  <SJOneLayout>
+    <template #title>
+      게시판
+    </template>
     <SJGrid
       ref="grid"
       v-model="gridProps.data"
@@ -33,7 +23,7 @@
       Launch demo modal
     </button>
     <SampleInsert ref="exampleModal" /> {{ $t('sample') }}
-  </div>
+  </SJOneLayout>
 </template>
 
 <script>
