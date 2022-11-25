@@ -341,3 +341,9 @@ export default {
   }
 }
 </script>
+<style>
+ .router-tab__nav {
+   background: white;
+ }
+
+</style>
