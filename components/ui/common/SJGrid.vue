@@ -104,7 +104,12 @@ export default {
   },
   activated () {
     // 화면 리사이즈 후, 본 화면 출력시 그리드 리로드 문제
-    this.$refs.grid.invoke('refreshLayout')
+    window.removeEventListener('resize', this.refresh)
+    window.addEventListener('resize', this.refresh)
+    this.$refs.grid.invoke('customRefresh')
+  },
+  deactivated () {
+    window.removeEventListener('resize', this.refresh)
   },
   mounted () {
     window.removeEventListener('resize', this.refresh)
@@ -114,7 +119,7 @@ export default {
     refresh () {
       const _this = this
       setTimeout(() => {
-        _this.invoke('refreshLayout')
+        _this.invoke('customRefresh')
       }, 300)
     },
     printExcel (type) {
