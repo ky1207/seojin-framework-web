@@ -9,6 +9,10 @@ import { Grid as VueGrid } from '@toast-ui/vue-grid'
 
 import { DateFormatter } from '~/plugins/lib/grid/Formatter.js'
 
+TuiGrid.setLanguage('ko')
+// default나 clean이 아니면 적용 안됨
+TuiGrid.applyTheme('default', { cell: { editable: { background: '#ebf9fa' } } })
+
 TuiGrid.prototype.customRefresh = function () {
   const p = this.store.viewport.offsetTop
   this.dispatch('setScrollTop', 0)
@@ -16,13 +20,8 @@ TuiGrid.prototype.customRefresh = function () {
   this.refreshLayout()
 }
 
-TuiGrid.setLanguage('ko')
-// default나 clean이 아니면 적용 안됨
-TuiGrid.applyTheme('default', { cell: { editable: { background: '#ebf9fa' } } })
-
 Vue.component('Grid', VueGrid)
 
-console.log(TuiGrid)
 export default (ctx, inject) => {
   // toast grid의 locale을 vi는 없음
   if (ctx.i18n.getLocaleCookie() !== 'vi') {
