@@ -96,7 +96,12 @@
       <h5 class="card-title">
         소분류
       </h5>
-      <SJGrid ref="detail" v-model="detail.data" :columns="detail.columns" />
+      <SJGrid
+        ref="detail"
+        v-model="detail.data"
+        :columns="detail.columns"
+        :options="detail.options"
+      />
     </template>
   </SJSearchLRLayout>
 </template>
@@ -149,7 +154,9 @@ export default {
           {
             name: 'sortSeq'
           },
-          { name: 'useFlag' },
+          {
+            name: 'useFlag'
+          },
           {
             name: 'codeDesc',
             header: this.$t('page.code.column.012'),
@@ -186,7 +193,10 @@ export default {
             filter: 'select',
             sortable: true
           }
-        ]
+        ],
+        options: {
+          bodyHeight: 130
+        }
       }
     }
   }

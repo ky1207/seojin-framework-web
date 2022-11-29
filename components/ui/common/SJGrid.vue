@@ -74,7 +74,8 @@ export default {
         },
         rowHeaders: ['rowNum'],
         columnOptions: {
-          resizable: true
+          resizable: true,
+          minWidth: 100
         },
         copyOptions: {
           useFormattedValue: true
