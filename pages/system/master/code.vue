@@ -16,32 +16,40 @@
     </template>
     <template #default>
       <div class="row">
-        <div class="col">
+        <div class="col-md-2 bg-light">
           <label class="form-label">공통코드유형</label>
+        </div>
+        <div class="col-md-2">
           <SJSelect id="commonCode" name="공통코드유형" disabled-validation />
         </div>
-
-        <div class="col">
+        <div class="col-md-2 bg-light">
           <label class="form-label">사용모듈코드</label>
+        </div>
+        <div class="col-md-2">
           <SJSelect id="moduleCode" name="사용모듈코드" disabled-validation />
         </div>
-
-        <div class="col">
+        <div class="col-md-2 bg-light">
           <label class="form-label">대분류코드</label>
+        </div>
+        <div class="col-md-2">
           <SJInput id="large" name="대분류코드" type="text" disabled-validation />
         </div>
-
-        <div class="col">
+        <div class="col-md-2 bg-light">
           <label class="form-label">대분류명</label>
+        </div>
+        <div class="col-md-2">
           <SJInput id="lname" name="대분류명" type="text" disabled-validation />
         </div>
-
-        <div class="col">
+        <div class="col-md-2 bg-light">
           <label class="form-label">소분류명</label>
+        </div>
+        <div class="col-md-2">
           <SJInput id="small" name="소분류명" type="text" disabled-validation />
         </div>
-        <div class="col">
+        <div class="col-md-2 bg-light">
           <label class="form-label">사용여부</label>
+        </div>
+        <div class="col-md-2">
           <SJSelect id="commonCode" name="사용여부" disabled-validation />
         </div>
       </div>
@@ -59,35 +67,29 @@
     </template>
     <template #right>
       <div class="row">
-        <div class="col-12 col-xl-6">
-          <div class="mb-3">
-            <label class="form-label">대분류코드</label>
-            <SJInput id="large" name="대분류코드" type="text" disabled-validation />
-          </div>
-          <div class="mb-3">
-            <label class="form-label">사용모듈코드</label>
-            <SJSelect id="moduleCode" name="사용모듈코드" disabled-validation />
-          </div>
-          <div class="mb-3">
-            <label class="form-label">사용여부</label>
-            <SJSelect id="commonCode" name="사용여부" disabled-validation />
-          </div>
+        <div class="col-md-6 mt-3">
+          <label class="form-label">대분류코드</label>
+          <SJInput id="large" name="대분류코드" type="text" disabled-validation />
         </div>
-
-        <div class="col-12 col-xl-6">
-          <div class="mb-3">
-            <label class="form-label">대분류명</label>
-            <SJInput id="lname" name="대분류명" type="text" disabled-validation />
-          </div>
-          <div class="mb-3">
-            <label class="form-label">공통코드유형</label>
-            <SJSelect id="commonCode" name="공통코드유형" disabled-validation />
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">비고</label>
-            <SJTextarea id="textarea" name="textarea" rules="required" />
-          </div>
+        <div class="col-md-6 mt-3">
+          <label class="form-label">대분류명</label>
+          <SJInput id="lname" name="대분류명" type="text" disabled-validation />
+        </div>
+        <div class="col-md-6 mt-3">
+          <label class="form-label">사용모듈코드</label>
+          <SJSelect id="moduleCode" name="사용모듈코드" disabled-validation />
+        </div>
+        <div class="col-md-6 mt-3">
+          <label class="form-label">공통코드유형</label>
+          <SJSelect id="commonCode" name="공통코드유형" disabled-validation />
+        </div>
+        <div class="col-md-6 mt-3">
+          <label class="form-label">사용여부</label>
+          <SJSelect id="commonCode" name="사용여부" disabled-validation />
+        </div>
+        <div class="col-md-6 mt-3">
+          <label class="form-label">비고</label>
+          <SJTextarea id="textarea" name="textarea" rules="required" />
         </div>
       </div>
 

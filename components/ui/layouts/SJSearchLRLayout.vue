@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row pagetitle">
+    <div class="row pagetitle mt-1">
       <div class="col">
         <h1>Dashboard</h1>
         <nav>
