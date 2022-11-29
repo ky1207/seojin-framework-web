@@ -2,7 +2,8 @@
   "sample": "샘플(베)",
   "grid": {
     "title": "제목(베)",
-    "insertDate":"등록일(베)"
+    "insertDate":"등록일(베)",
+    "useFlag": "사용여부(베)"
   },
   "contextMenu": {
     "copy": "Copy(베)",
@@ -11,5 +12,14 @@
     "export": "Export(베)",
     "csvExport": "CSV Export(베",
     "excelExport": "Excel Export(베)"
+  },
+  "page": {
+    "code": {
+      "column": {
+        "001": "대분류코드(베)",
+        "002": "대분류명(베)",
+        "003": "사용모듈(베)"
+      }
+    }
   }
 }

@@ -2,7 +2,9 @@
   "sample": "Sample",
   "grid": {
     "title": "Title",
-    "insertDate":"Registration Date"
+    "insertDate":"Registration Date",
+    "useFlag": "Available"
+
   },
   "contextMenu": {
     "copy": "Copy",
@@ -11,5 +13,14 @@
     "export": "Export",
     "csvExport": "CSV Export",
     "excelExport": "Excel Export"
+  },
+  "page": {
+    "code": {
+      "column": {
+        "001": "대분류코드(en)",
+        "002": "대분류명(en)",
+        "003": "사용모듈(en)"
+      }
+    }
   }
 }

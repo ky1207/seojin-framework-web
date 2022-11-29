@@ -193,8 +193,8 @@ export default {
           },
           {
             id: 3,
-            name: 'About',
-            url: '/about'
+            name: 'code',
+            url: '/system/master/code'
           },
           {
             id: 4,

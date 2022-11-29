@@ -45,6 +45,18 @@ export default (ctx, inject) => {
         filter: 'select',
         formatter: DateFormatter,
         sortable: true
+      },
+      useFlag: {
+        header: ctx.i18n.t('grid.useFlag'),
+        name: 'useFlag',
+        filter: 'select',
+        sortable: true
+      },
+      sortSeq: {
+        name: 'sortSeq',
+        header: ctx.i18n.t('grid.sortSeq'),
+        filter: 'select',
+        sortable: true
       }
 
     },

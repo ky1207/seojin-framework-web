@@ -69,6 +69,9 @@ export default {
             }
           ]
         ],
+        header: {
+          height: 25
+        },
         rowHeaders: ['rowNum'],
         columnOptions: {
           resizable: true
@@ -76,7 +79,9 @@ export default {
         copyOptions: {
           useFormattedValue: true
         },
-        bodyHeight: 500
+        bodyHeight: 500,
+        rowHeight: 30,
+        minRowHeight: 30
       }
     }
   },
