@@ -1,6 +1,9 @@
 
 <template>
   <SJOneLayout>
+    <template #master-btn>
+      <SJPageButtons />
+    </template>
     <template #title>
       게시판
     </template>

@@ -1,18 +1,7 @@
 <template>
   <SJSearchLRLayout>
     <template #master-btn>
-      <button type="button" class="btn btn-outline-primary">
-        등록
-      </button>
-      <button type="button" class="btn btn-outline-primary">
-        저장
-      </button>
-      <button type="button" class="btn btn-outline-secondary">
-        삭제
-      </button>
-      <button type="button" class="btn btn-outline-dark">
-        HELP
-      </button>
+      <SJPageButtons f1-label="테스트" :f1-click="test" />
     </template>
     <template #default>
       <div class="row">
@@ -198,6 +187,11 @@ export default {
           bodyHeight: 130
         }
       }
+    }
+  },
+  methods: {
+    test () {
+      alert('test')
     }
   }
 }

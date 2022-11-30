@@ -1,5 +1,6 @@
 
 export default {
+  // *****client side이므로 fetch대신에.. created가 최최 한번 클라이언트쪽에서 호출된다.
   ssr: false,
 
   server: {
@@ -45,7 +46,10 @@ export default {
   components: [
     // Equivalent to { path: '~/components' }
     '~/components/modal',
-    '~/components/ui/editor', '~/components/ui/common', '~/components/ui/layouts'
+    '~/components/ui/editor',
+    '~/components/ui/common',
+    '~/components/ui/common/ext',
+    '~/components/ui/layouts'
   ],
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
