@@ -4,7 +4,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
       <div class="d-flex align-items-center justify-content-between">
         <nuxt-link to="/" class="logo d-flex align-items-center">
-          <img src="@/assets/images/seojin.png" alt="">
+          <img src="@/assets/images/seojin.png">
           <span class="d-none d-lg-block" />
         </nuxt-link>
         <i class="bi bi-list toggle-sidebar-btn" />

@@ -3,8 +3,8 @@
   "grid": {
     "title": "Title",
     "insertDate":"Registration Date",
-    "useFlag": "Available"
-
+    "useFlag": "Available",
+    "sortSeq": "정렬"
   },
   "contextMenu": {
     "copy": "Copy",
@@ -17,9 +17,17 @@
   "page": {
     "code": {
       "column": {
-        "001": "대분류코드(en)",
-        "002": "대분류명(en)",
-        "003": "사용모듈(en)"
+        "001": "대분류코드",
+        "002": "대분류명",
+        "003": "사용모듈",
+        "010": "소분류코드",
+        "011": "소분류명",
+        "012": "비고",
+        "013": "Option1",
+        "014": "Option2",
+        "015": "Option3",
+        "016": "Option4",
+        "017": "Option5"
       }
     }
   }
