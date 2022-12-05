@@ -1,7 +1,7 @@
 <template>
   <SJSearchLRLayout>
     <template #master-btn>
-      <SJPageButtons f1-label="테스트" :f1-click="test" />
+      <SJPageButtons f1-label="테스트" :action="ACTION" />
     </template>
     <template #default>
       <div class="row">
@@ -61,22 +61,23 @@
           <SJInput id="large" name="대분류코드" type="text" disabled-validation />
         </div>
         <div class="col-md-6 mt-3">
+          <label class="form-label">공통코드유형</label>
+          <SJSelect id="commonCode" name="공통코드유형" disabled-validation />
+        </div>
+        <div class="col-md-10 mt-3">
           <label class="form-label">대분류명</label>
-          <SJInput id="lname" name="대분류명" type="text" disabled-validation />
+          <SJMultiInput id="lname" v-model="data.lang" name="대분류명" type="text" disabled-validation />
         </div>
         <div class="col-md-6 mt-3">
           <label class="form-label">사용모듈코드</label>
           <SJSelect id="moduleCode" name="사용모듈코드" disabled-validation />
         </div>
-        <div class="col-md-6 mt-3">
-          <label class="form-label">공통코드유형</label>
-          <SJSelect id="commonCode" name="공통코드유형" disabled-validation />
-        </div>
+
         <div class="col-md-6 mt-3">
           <label class="form-label">사용여부</label>
           <SJSelect id="commonCode" name="사용여부" disabled-validation />
         </div>
-        <div class="col-md-6 mt-3">
+        <div class="col-md-12 mt-3">
           <label class="form-label">비고</label>
           <SJTextarea id="textarea" name="textarea" rules="required" />
         </div>
@@ -95,12 +96,15 @@
   </SJSearchLRLayout>
 </template>
 <script>
-import { MENU } from '@/mixins' // tab menu를 표기를 위한 mixins
+import { MENU, ACTION } from '@/mixins'
 
 export default {
-  mixins: [MENU],
+  mixins: [MENU, ACTION],
   data () {
     return {
+      data: {
+        lang: {}
+      },
       large: {
         data: {},
         columns: [
@@ -189,9 +193,48 @@ export default {
       }
     }
   },
+  created () {
+
+  },
+  mounted () {
+    console.log(this)
+  },
   methods: {
     test () {
       alert('test')
+    },
+    _makeAction () {
+      return {
+        f1Label: 'F1 Label',
+        f2Label: 'F2 Label',
+        f3Label: 'F3 Label',
+        f4Label: 'F4 Label',
+        f5Label: 'F5 Label',
+        f1Click: () => {
+          alert('f1Click')
+        },
+        f2Click: () => {
+          alert('f2Click')
+        },
+        f3Click: () => {
+          alert('f3Click')
+        },
+        f4Click: () => {
+          alert('f4Click')
+        },
+        f5Click: () => {
+          alert('f5Click')
+        },
+        searchClick: () => {
+          console.log('search')
+        },
+        saveClick: () => {
+          console.log('save')
+        },
+        delClick: () => {
+          console.log('del')
+        }
+      }
     }
   }
 }

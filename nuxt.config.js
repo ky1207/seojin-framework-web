@@ -47,6 +47,7 @@ export default {
     // Equivalent to { path: '~/components' }
     '~/components/modal',
     '~/components/ui/editor',
+    '~/components/ui/editor/ext',
     '~/components/ui/common',
     '~/components/ui/common/ext',
     '~/components/ui/layouts'

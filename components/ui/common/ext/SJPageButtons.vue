@@ -1,27 +1,27 @@
 <template>
   <div>
-    <button v-if="result.inqryAuth" type="button" class="btn btn-outline-primary">
+    <button v-if="result.inqryAuth" type="button" class="btn btn-outline-primary" @click="call('searchClick')">
       조회
     </button>
-    <button v-if="result.saveAuth" type="button" class="btn btn-outline-primary">
+    <button v-if="result.saveAuth" type="button" class="btn btn-outline-primary" @click="call('saveClick')">
       저장
     </button>
-    <button v-if="result.fn1Auth" type="button" class="btn btn-outline-info" @click="f1Click">
-      {{ f1Label }} (A1)
+    <button v-if="result.fn1Auth" type="button" class="btn btn-outline-info" @click="call('f1Click')">
+      {{ action.f1Label }} (A1)
     </button>
-    <button v-if="result.fn2Auth" type="button" class="btn btn-outline-info" @click="f2Click">
-      {{ f2Label }} (A2)
+    <button v-if="result.fn2Auth" type="button" class="btn btn-outline-info" @click="call('f2Click')">
+      {{ action.f2Label }} (A2)
     </button>
-    <button v-if="result.fn3Auth" type="button" class="btn btn-outline-info" @click="f3Click">
-      {{ f3Label }} (A3)
+    <button v-if="result.fn3Auth" type="button" class="btn btn-outline-info" @click="call('f3Click')">
+      {{ action.f3Label }} (A3)
     </button>
-    <button v-if="result.fn4Auth" type="button" class="btn btn-outline-info" @click="f4Click">
-      {{ f4Label }} (A4)
+    <button v-if="result.fn4Auth" type="button" class="btn btn-outline-info" @click="call('f4Click')">
+      {{ action.f4Label }} (A4)
     </button>
-    <button v-if="result.fn5Auth" type="button" class="btn btn-outline-info" @click="f5Click">
-      {{ f5Label }} (A5)
+    <button v-if="result.fn5Auth" type="button" class="btn btn-outline-info" @click="call('f5Click')">
+      {{ action.f5Label }} (A5)
     </button>
-    <button v-if="result.delAuth" type="button" class="btn btn-outline-secondary">
+    <button v-if="result.delAuth" type="button" class="btn btn-outline-secondary" @click="call('delClick')">
       삭제
     </button>
     <button type="button" class="btn btn-outline-dark">
@@ -33,49 +33,11 @@
 <script>
 export default {
   props: {
-    f1Label: {
-      type: String,
-      default: ''
-    },
-    f1Click: {
-      type: Function,
-      default: () => {}
-    },
-    f2Label: {
-      type: String,
-      default: ''
-    },
-    f2Click: {
-      type: Function,
-      default: () => {}
-    },
-
-    f3Label: {
-      type: String,
-      default: ''
-    },
-    f3Click: {
-      type: Function,
-      default: () => {}
-    },
-
-    f4Label: {
-      type: String,
-      default: ''
-    },
-    f4Click: {
-      type: Function,
-      default: () => {}
-    },
-
-    f5Label: {
-      type: String,
-      default: ''
-    },
-    f5Click: {
-      type: Function,
+    action: {
+      type: Object,
       default: () => {}
     }
+
   },
   data () {
     return {
@@ -97,6 +59,16 @@ export default {
     console.log(this.$route.path)
     console.log(this.$route.fullPath)
     console.log(this.$route)
+  },
+  methods: {
+    call (name) {
+      const fnc = this.action[name]
+      if (fnc) {
+        fnc()
+      } else {
+        console.log('function is not defined')
+      }
+    }
   }
 }
 </script>

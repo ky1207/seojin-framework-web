@@ -2,7 +2,7 @@
 <template>
   <SJOneLayout>
     <template #master-btn>
-      <SJPageButtons />
+      <SJPageButtons :action="{}" />
     </template>
     <template #title>
       게시판
@@ -30,7 +30,9 @@
 </template>
 
 <script>
+import { ACTION } from '@/mixins'
 export default {
+  mixins: [ACTION],
   data () {
     return {
       test: 'test',
@@ -74,6 +76,9 @@ export default {
 
       // iframe 사라짐
       window.location.reload()
+    },
+    _makeAction () {
+      return {}
     }
   }
 }
