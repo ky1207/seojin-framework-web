@@ -62,7 +62,7 @@ export default {
       counter: 10,
       test: 'test',
       selected: null,
-      options: [{ value: 1, text: '사과' }, { value: 2, text: '바나나' }],
+      options: null,
       item: {
         title: null,
         content: null,
@@ -71,6 +71,9 @@ export default {
       resolve: null,
       reject: null
     }
+  },
+  created () {
+    this.options = [{ value: 1, text: '사과' }, { value: 2, text: '바나나' }]
   },
   methods: {
     open (params) {

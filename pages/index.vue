@@ -60,7 +60,7 @@ export default {
     }
   },
   async mounted () {
-    const result = await this.$axios.get('/api/v1.0/sample')
+    const result = await this.$api.sample.list()
     this.gridProps.data = result.data
   },
   methods: {

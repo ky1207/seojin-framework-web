@@ -57,8 +57,6 @@ export default {
     // TODO: 권한조회...
     console.log('created')
     console.log(this.$route.path)
-    console.log(this.$route.fullPath)
-    console.log(this.$route)
   },
   methods: {
     call (name) {
@@ -66,7 +64,7 @@ export default {
       if (fnc) {
         fnc()
       } else {
-        console.log('function is not defined')
+        alert('function is not defined')
       }
     }
   }

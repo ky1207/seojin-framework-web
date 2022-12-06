@@ -9,13 +9,27 @@
           <label class="form-label">공통코드유형</label>
         </div>
         <div class="col-md-2">
-          <SJSelect id="commonCode" name="공통코드유형" disabled-validation />
+          <SJSelect
+            id="commonCode"
+            name="공통코드유형"
+            :options="common.CD_TYPE"
+            item-text="val"
+            item-value="codeId"
+            disabled-validation
+          />
         </div>
         <div class="col-md-2 bg-light">
           <label class="form-label">사용모듈코드</label>
         </div>
         <div class="col-md-2">
-          <SJSelect id="moduleCode" name="사용모듈코드" disabled-validation />
+          <SJSelect
+            id="moduleCode"
+            name="사용모듈코드"
+            :options="common.PG_MODULE_CD"
+            item-text="val"
+            item-value="codeId"
+            disabled-validation
+          />
         </div>
         <div class="col-md-2 bg-light">
           <label class="form-label">대분류코드</label>
@@ -39,7 +53,7 @@
           <label class="form-label">사용여부</label>
         </div>
         <div class="col-md-2">
-          <SJSelect id="commonCode" name="사용여부" disabled-validation />
+          <SJSelect id="useYN" name="사용여부" :options="$api.common.getYNCodes()" disabled-validation />
         </div>
       </div>
     </template>
@@ -58,28 +72,42 @@
       <div class="row">
         <div class="col-md-6 mt-3">
           <label class="form-label">대분류코드</label>
-          <SJInput id="large" name="대분류코드" type="text" disabled-validation />
+          <SJInput id="form_large" name="대분류코드" type="text" rules="required" />
         </div>
         <div class="col-md-6 mt-3">
           <label class="form-label">공통코드유형</label>
-          <SJSelect id="commonCode" name="공통코드유형" disabled-validation />
+          <SJSelect
+            id="form_commonCode"
+            name="공통코드유형"
+            :options="common.CD_TYPE"
+            item-text="val"
+            item-value="codeId"
+            rules="required"
+          />
         </div>
         <div class="col-md-10 mt-3">
           <label class="form-label">대분류명</label>
-          <SJMultiInput id="lname" v-model="data.lang" name="대분류명" type="text" disabled-validation />
+          <SJMultiInput id="form_lname" v-model="data.lang" name="대분류명" type="text" rules="required" />
         </div>
         <div class="col-md-6 mt-3">
           <label class="form-label">사용모듈코드</label>
-          <SJSelect id="moduleCode" name="사용모듈코드" disabled-validation />
+          <SJSelect
+            id="form_moduleCode"
+            name="사용모듈코드"
+            :options="common.PG_MODULE_CD"
+            item-text="val"
+            item-value="codeId"
+            rules="required"
+          />
         </div>
 
         <div class="col-md-6 mt-3">
           <label class="form-label">사용여부</label>
-          <SJSelect id="commonCode" name="사용여부" disabled-validation />
+          <SJSelect id="form_useYN" name="사용여부" :options="$api.common.getYNCodes()" rules="required" />
         </div>
         <div class="col-md-12 mt-3">
           <label class="form-label">비고</label>
-          <SJTextarea id="textarea" name="textarea" rules="required" />
+          <SJTextarea id="form_desc" name="textarea" rules="required" />
         </div>
       </div>
 
@@ -102,6 +130,7 @@ export default {
   mixins: [MENU, ACTION],
   data () {
     return {
+      common: {},
       data: {
         lang: {}
       },
@@ -193,11 +222,16 @@ export default {
       }
     }
   },
-  created () {
-
+  async created () {
+    const codes = await this.$api.common.getCommonCodes(['CD_TYPE', 'PG_MODULE_CD'])
+    console.log(codes.data.CD_TYPE)
+    this.common = codes.data
+    this.common.USE_YN = this.$api.common.getYNCodes()
+    // this.common.CD_TYPE = codes.data.CD_TYPE
+    // this.common.PG_MODULE_CD = codes.data.PG_MODULE_CD
   },
   mounted () {
-    console.log(this)
+
   },
   methods: {
     test () {

@@ -11,8 +11,8 @@
       <option value="">
         선택하세요
       </option>
-      <option v-for="option in options" :key="option.value" :value="option.value">
-        {{ option.text }}
+      <option v-for="option in options" :key="option[itemValue]" :value="option[itemValue]">
+        {{ option[itemText] }}
       </option>
     </select>
     <span :id="id+'-feedback'" class="invalid-feedback">
@@ -47,6 +47,14 @@ export default {
     disabledValidation: {
       type: Boolean,
       default: false
+    },
+    itemText: {
+      type: String,
+      default: 'text'
+    },
+    itemValue: {
+      type: String,
+      default: 'value'
     }
   },
   data () {
@@ -54,17 +62,16 @@ export default {
       selected: this.value
     }
   },
+  watch: {
+    options (newVal, oldVal) {
+      console.log(newVal)
+    }
+  },
   methods: {
     handleInput (e) {
       this.selected = e.target.value
-      console.log(this.selected)
       this.$emit('input', this.selected)
     }
   }
-
 }
 </script>
-
-<style scoped>
-
-</style>
