@@ -7,7 +7,7 @@ import 'tui-pagination/dist/tui-pagination.css'
 import TuiGrid from 'tui-grid'
 import { Grid as VueGrid } from '@toast-ui/vue-grid'
 
-import { DateFormatter } from '~/plugins/lib/grid/Formatter.js'
+import { DateFormatter, YNFormatter } from '~/plugins/lib/grid/Formatter.js'
 
 TuiGrid.setLanguage('ko')
 // default나 clean이 아니면 적용 안됨
@@ -50,6 +50,7 @@ export default (ctx, inject) => {
         header: ctx.i18n.t('grid.useFlag'),
         name: 'useFlag',
         filter: 'select',
+        formatter: YNFormatter,
         sortable: true
       },
       sortSeq: {

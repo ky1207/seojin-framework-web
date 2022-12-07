@@ -62,11 +62,6 @@ export default {
       selected: this.value
     }
   },
-  watch: {
-    options (newVal, oldVal) {
-      console.log(newVal)
-    }
-  },
   methods: {
     handleInput (e) {
       this.selected = e.target.value

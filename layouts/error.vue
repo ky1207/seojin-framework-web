@@ -1,5 +1,15 @@
 <template>
-  <div>error</div>
+  <div class="container">
+    <div>
+      <h1>error</h1>
+    </div>
+    <h1>
+      {{ error.statusCode }}
+    </h1>
+    <h1>
+      {{ error.message }}
+    </h1>
+  </div>
 </template>
 
 <script>

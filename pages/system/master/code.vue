@@ -18,19 +18,7 @@
             disabled-validation
           />
         </div>
-        <div class="col-md-2 bg-light">
-          <label class="form-label">사용모듈코드</label>
-        </div>
-        <div class="col-md-2">
-          <SJSelect
-            id="moduleCode"
-            name="사용모듈코드"
-            :options="common.PG_MODULE_CD"
-            item-text="val"
-            item-value="codeId"
-            disabled-validation
-          />
-        </div>
+
         <div class="col-md-2 bg-light">
           <label class="form-label">대분류코드</label>
         </div>
@@ -53,7 +41,12 @@
           <label class="form-label">사용여부</label>
         </div>
         <div class="col-md-2">
-          <SJSelect id="useYN" name="사용여부" :options="$api.common.getYNCodes()" disabled-validation />
+          <SJSelect
+            id="useYN"
+            name="사용여부"
+            :options="$api.common.getYNCodes()"
+            disabled-validation
+          />
         </div>
       </div>
     </template>
@@ -72,12 +65,13 @@
       <div class="row">
         <div class="col-md-6 mt-3">
           <label class="form-label">대분류코드</label>
-          <SJInput id="form_large" name="대분류코드" type="text" rules="required" />
+          <SJInput id="form_large" v-model="codeGroup.codeGroupId" name="대분류코드" type="text" rules="required" />
         </div>
         <div class="col-md-6 mt-3">
           <label class="form-label">공통코드유형</label>
           <SJSelect
             id="form_commonCode"
+            v-model="codeGroup.systemCodeFlag"
             name="공통코드유형"
             :options="common.CD_TYPE"
             item-text="val"
@@ -87,27 +81,16 @@
         </div>
         <div class="col-md-10 mt-3">
           <label class="form-label">대분류명</label>
-          <SJMultiInput id="form_lname" v-model="data.lang" name="대분류명" type="text" rules="required" />
-        </div>
-        <div class="col-md-6 mt-3">
-          <label class="form-label">사용모듈코드</label>
-          <SJSelect
-            id="form_moduleCode"
-            name="사용모듈코드"
-            :options="common.PG_MODULE_CD"
-            item-text="val"
-            item-value="codeId"
-            rules="required"
-          />
+          <SJMultiInput id="form_lname" v-model="codeGroup.lang" name="대분류명" type="text" rules="required" />
         </div>
 
         <div class="col-md-6 mt-3">
           <label class="form-label">사용여부</label>
-          <SJSelect id="form_useYN" name="사용여부" :options="$api.common.getYNCodes()" rules="required" />
+          <SJSelect id="form_useYN" v-model="codeGroup.useFlag" name="사용여부" :options="$api.common.getYNCodes()" rules="required" />
         </div>
         <div class="col-md-12 mt-3">
           <label class="form-label">비고</label>
-          <SJTextarea id="form_desc" name="textarea" rules="required" />
+          <SJTextarea id="form_desc" v-model="codeGroup.codeGroupDesc" name="비고" disabled-validation />
         </div>
       </div>
 
@@ -124,14 +107,15 @@
   </SJSearchLRLayout>
 </template>
 <script>
-import { MENU, ACTION } from '@/mixins'
+import { MENU, ACTION } from '~/mixins'
+import { CodeFormatter } from '~/plugins/lib/grid/Formatter'
 
 export default {
   mixins: [MENU, ACTION],
   data () {
     return {
       common: {},
-      data: {
+      codeGroup: {
         lang: {}
       },
       large: {
@@ -144,15 +128,28 @@ export default {
             sortable: true
           },
           {
-            name: 'codeGroupName',
-            header: this.$t('page.code.column.002'),
+            name: 'codeGroupNameKo',
+            header: this.$t('page.code.column.002') + '(ko)',
             filter: 'select',
             sortable: true
           },
           {
-            name: 'systemCodeFlag',
+            name: 'codeGroupNameEn',
+            header: this.$t('page.code.column.002') + '(en)',
+            filter: 'select',
+            sortable: true
+          },
+          {
+            name: 'codeGroupNameVi',
+            header: this.$t('page.code.column.002') + '(vi)',
+            filter: 'select',
+            sortable: true
+          },
+          {
+            name: 'systemCodeType',
             header: this.$t('page.code.column.003'),
             filter: 'select',
+            formatter: CodeFormatter,
             sortable: true
           },
           { name: 'useFlag' }
@@ -224,11 +221,8 @@ export default {
   },
   async created () {
     const codes = await this.$api.common.getCommonCodes(['CD_TYPE', 'PG_MODULE_CD'])
-    console.log(codes.data.CD_TYPE)
     this.common = codes.data
     this.common.USE_YN = this.$api.common.getYNCodes()
-    // this.common.CD_TYPE = codes.data.CD_TYPE
-    // this.common.PG_MODULE_CD = codes.data.PG_MODULE_CD
   },
   mounted () {
 
@@ -259,10 +253,13 @@ export default {
         f5Click: () => {
           alert('f5Click')
         },
-        searchClick: () => {
-          console.log('search')
+        searchClick: async () => {
+          const result = await this.$api.code.list({ test: 'test' })
+          this.large.data = result.data
         },
         saveClick: () => {
+          console.log(this.$api.common)
+          console.log(this.codeGroup)
           console.log('save')
         },
         delClick: () => {
