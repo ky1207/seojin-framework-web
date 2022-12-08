@@ -162,7 +162,7 @@
     <main id="main" class="main">
       <router-tab :tabs="tabs" :contextmenu="false" />
     </main><!-- End #main -->
-
+    <SJSpinner ref="spinner" />
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
       <div class="copyright">

@@ -65,6 +65,7 @@ export default {
   },
   methods: {
     async open () {
+      alert('click')
       const response = await this.$refs.exampleModal.open(this.test)
       //  if (response) {
       console.log(response)

@@ -35,35 +35,36 @@ export default (ctx, inject) => {
     defined: {
       title: {
         header: ctx.i18n.t('grid.title'),
-        name: 'title',
-        filter: 'select',
-        sortable: true
+        name: 'title'
       },
       insertDate: {
         header: ctx.i18n.t('grid.insertDate'),
         name: 'insertDate',
-        filter: 'select',
         formatter: DateFormatter,
-        sortable: true
+        align: 'center'
       },
       useFlag: {
         header: ctx.i18n.t('grid.useFlag'),
         name: 'useFlag',
-        filter: 'select',
         formatter: YNFormatter,
-        sortable: true
+        align: 'center'
       },
       sortSeq: {
         name: 'sortSeq',
-        header: ctx.i18n.t('grid.sortSeq'),
-        filter: 'select',
-        sortable: true
+        header: ctx.i18n.t('grid.sortSeq')
       }
 
     },
     getColumns: (c) => {
       c.forEach((e, idx) => {
-        c[idx] = { ...grid.defined[e.name], ...e }
+        c[idx] = {
+          ...{
+            ...grid.defined[e.name],
+            filter: 'select',
+            sortable: 'true'
+          },
+          ...e
+        }
       })
       return c
     }

@@ -2,6 +2,7 @@ export default ({ $axios, app, redirect, store, error: nuxtError }) => {
   $axios.onRequest((config) => {
     config.headers['x-forwarded-for'] = store.state.client.ip
     config.headers['Accept-Language'] = app.i18n.getLocaleCookie()
+    app.store.dispatch('loader/loading', true)
     return config
   })
   $axios.onError((e) => {
@@ -21,6 +22,8 @@ export default ({ $axios, app, redirect, store, error: nuxtError }) => {
   })
 
   $axios.onResponse((response) => {
+    app.store.dispatch('loader/loading', false)
+
     if (response.data.data) {
       response.data = response.data.data
     }

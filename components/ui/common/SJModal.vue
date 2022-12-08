@@ -7,18 +7,18 @@
 export default {
   data () {
     return {
-      modal: null
+      w: null
     }
   },
   mounted () {
-    this.modal = new this.$bootstrap.Modal(this.$refs.modal)
+    this.w = new this.$bootstrap.Modal(this.$refs.modal)
   },
   methods: {
     show () {
-      this.modal.show()
+      this.w.show()
     },
     hide () {
-      this.modal.hide()
+      this.w.hide()
     }
   }
 }

@@ -123,34 +123,28 @@ export default {
         columns: [
           {
             name: 'codeGroupId',
-            header: this.$t('page.code.column.001'),
-            filter: 'select',
-            sortable: true
+            header: this.$t('page.code.column.001')
+
           },
           {
             name: 'codeGroupNameKo',
-            header: this.$t('page.code.column.002') + '(ko)',
-            filter: 'select',
-            sortable: true
+            header: this.$t('page.code.column.002') + '(ko)'
+
           },
           {
             name: 'codeGroupNameEn',
-            header: this.$t('page.code.column.002') + '(en)',
-            filter: 'select',
-            sortable: true
+            header: this.$t('page.code.column.002') + '(en)'
+
           },
           {
             name: 'codeGroupNameVi',
-            header: this.$t('page.code.column.002') + '(vi)',
-            filter: 'select',
-            sortable: true
+            header: this.$t('page.code.column.002') + '(vi)'
+
           },
           {
             name: 'systemCodeType',
             header: this.$t('page.code.column.003'),
-            filter: 'select',
-            formatter: CodeFormatter,
-            sortable: true
+            formatter: CodeFormatter
           },
           { name: 'useFlag' }
         ]
@@ -160,15 +154,11 @@ export default {
         columns: [
           {
             name: 'codeId',
-            header: this.$t('page.code.column.010'),
-            filter: 'select',
-            sortable: true
+            header: this.$t('page.code.column.010')
           },
           {
             name: 'codeName',
-            header: this.$t('page.code.column.011'),
-            filter: 'select',
-            sortable: true
+            header: this.$t('page.code.column.011')
           },
           {
             name: 'sortSeq'
@@ -178,39 +168,27 @@ export default {
           },
           {
             name: 'codeDesc',
-            header: this.$t('page.code.column.012'),
-            filter: 'select',
-            sortable: true
+            header: this.$t('page.code.column.012')
           },
           {
             name: 'rsvVal1',
-            header: this.$t('page.code.column.013'),
-            filter: 'select',
-            sortable: true
+            header: this.$t('page.code.column.013')
           },
           {
             name: 'rsvVal2',
-            header: this.$t('page.code.column.014'),
-            filter: 'select',
-            sortable: true
+            header: this.$t('page.code.column.014')
           },
           {
             name: 'rsvVal3',
-            header: this.$t('page.code.column.015'),
-            filter: 'select',
-            sortable: true
+            header: this.$t('page.code.column.015')
           },
           {
             name: 'rsvVal4',
-            header: this.$t('page.code.column.016'),
-            filter: 'select',
-            sortable: true
+            header: this.$t('page.code.column.016')
           },
           {
             name: 'rsvVal5',
-            header: this.$t('page.code.column.017'),
-            filter: 'select',
-            sortable: true
+            header: this.$t('page.code.column.017')
           }
         ],
         options: {
