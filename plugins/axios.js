@@ -6,6 +6,7 @@ export default ({ $axios, app, redirect, store, error: nuxtError }) => {
     return config
   })
   $axios.onError((e) => {
+    app.store.dispatch('loader/loading', false)
     const code = parseInt(e.response && e.response.status)
     if ([504, 401, 403].includes(code)) { // api 서버 응답 없음
       nuxtError(e)

@@ -21,7 +21,6 @@ export default {
   },
   watch: {
     isLoading (val, old) {
-      console.log(val)
       if (val) {
         this.$refs.icon.show()
       } else {

@@ -1,7 +1,7 @@
 <template>
   <ValidationProvider v-slot="{ errors,classes }" :rules="rules" :name="name" tag="div" :disabled="disabledValidation">
     <input
-      v-model="content"
+      v-model="inputVal"
       :type="type"
       class="form-control"
       :class="disabledValidation?'':classes"
@@ -9,7 +9,6 @@
       :disabled="disabled"
       :readonly="readonly"
       :placeholder="placeholder"
-      @input="handleInput"
     >
     <span :id="id+'-feedback'" class="invalid-feedback">
       {{ errors[0] }}
@@ -57,14 +56,14 @@ export default {
       default: false
     }
   },
-  data () {
-    return {
-      content: this.value
-    }
-  },
-  methods: {
-    handleInput (e) {
-      this.$emit('input', this.content)
+  computed: {
+    inputVal: {
+      get () {
+        return this.value
+      },
+      set (val) {
+        this.$emit('input', val)
+      }
     }
   }
 }

@@ -8,7 +8,7 @@
 export default {
   methods: {
     reset () {
-      this.$refs.observer.reset()
+      return this.$refs.observer.reset()
     },
     validate () {
       return this.$refs.observer.validate()

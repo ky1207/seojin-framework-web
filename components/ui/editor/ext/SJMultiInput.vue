@@ -1,36 +1,20 @@
 <template>
   <ValidationProvider v-slot="{ errors,classes }" :rules="rules" :name="name" tag="div" :disabled="disabledValidation">
-    ko<input
-      v-model="data.ko"
-      type="text"
-      class="form-control"
-      :aria-describedby="id+'-feedback'"
-      :disabled="disabled"
-      :readonly="readonly"
-      :class="disabledValidation?'':classes"
-      @blur="copy"
-      @input="handleInput"
-    >
-    en<input
-      v-model="data.en"
-      type="text"
-      class="form-control"
-      :aria-describedby="id+'-feedback'"
-      :disabled="disabled"
-      :readonly="readonly"
-      :class="disabledValidation?'':classes"
-      @input="handleInput"
-    >
-    vi<input
-      v-model="data.vi"
-      type="text"
-      class="form-control"
-      :aria-describedby="id+'-feedback'"
-      :disabled="disabled"
-      :readonly="readonly"
-      :class="disabledValidation?'':classes"
-      @input="handleInput"
-    >
+    <template v-for="(l,idx) in data">
+      {{ l.langCode }}
+      <input
+        :key="l.langCode"
+        v-model="l.val"
+        type="text"
+        class="form-control"
+        :aria-describedby="id+'-feedback'"
+        :disabled="disabled"
+        :readonly="readonly"
+        :class="disabledValidation?'':classes"
+        @blur="copy(idx)"
+        @input="handleInput"
+      >
+    </template>
     <span :id="id+'-feedback'" class="invalid-feedback">
       {{ errors[0] }}
     </span>
@@ -42,8 +26,8 @@ import Utils from '~/assets/js/utils'
 export default {
   props: {
     value: {
-      type: Object,
-      default: () => { return { ko: null, en: null, vi: null } }
+      type: Array,
+      default: () => [{ langCode: 'ko', val: null }, { langCode: 'en', val: null }, { langCode: 'vi', val: null }]
     },
     id: {
       type: String,
@@ -71,24 +55,28 @@ export default {
     }
 
   },
-  data () {
-    return {
-      data: this.value
+  computed: {
+    data: {
+      get () {
+        return this.value
+      },
+      set (val) {
+        this.$emit('input', val)
+      }
     }
   },
   methods: {
-    copy () {
-      if (this.data.ko) {
-        if (Utils.isEmpty(this.data.en)) { // empty
-          this.data.en = this.data.ko
+    copy (idx) {
+      if (idx === 0 && !Utils.isEmpty(this.data[0].val)) {
+        if (Utils.isEmpty(this.data[1].val)) { // empty
+          this.data[1].val = this.data[0].val
         }
-        if (Utils.isEmpty(this.data.vi)) { // emtpy
-          this.data.vi = this.data.ko
+        if (Utils.isEmpty(this.data[2].val)) { // emtpy
+          this.data[2].val = this.data[0].val
         }
       }
     },
     handleInput (e) {
-      console.log('handleinput')
       this.$emit('input', this.data)
     }
   }

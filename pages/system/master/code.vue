@@ -62,38 +62,39 @@
       대분류상세
     </template>
     <template #right>
-      <div class="row">
-        <div class="col-md-6 mt-3">
-          <label class="form-label">대분류코드</label>
-          <SJInput id="form_large" v-model="codeGroup.codeGroupId" name="대분류코드" type="text" rules="required" />
-        </div>
-        <div class="col-md-6 mt-3">
-          <label class="form-label">공통코드유형</label>
-          <SJSelect
-            id="form_commonCode"
-            v-model="codeGroup.systemCodeFlag"
-            name="공통코드유형"
-            :options="common.CD_TYPE"
-            item-text="val"
-            item-value="codeId"
-            rules="required"
-          />
-        </div>
-        <div class="col-md-10 mt-3">
-          <label class="form-label">대분류명</label>
-          <SJMultiInput id="form_lname" v-model="codeGroup.lang" name="대분류명" type="text" rules="required" />
-        </div>
+      <SJForm ref="form">
+        <div class="row">
+          <div class="col-md-6 mt-3">
+            <label class="form-label">대분류코드</label>
+            <SJInput id="form_large" v-model="codeGroup.codeGroupId" name="대분류코드" type="text" rules="required" />
+          </div>
+          <div class="col-md-6 mt-3">
+            <label class="form-label">공통코드유형</label>
+            <SJSelect
+              id="form_commonCode"
+              v-model="codeGroup.systemCodeType"
+              name="공통코드유형"
+              :options="common.CD_TYPE"
+              item-text="val"
+              item-value="codeId"
+              rules="required"
+            />
+          </div>
+          <div class="col-md-10 mt-3">
+            <label class="form-label">대분류명</label>
+            <SJMultiInput id="form_lname" v-model="codeGroup.langs" name="대분류명" type="text" rules="required" />
+          </div>
 
-        <div class="col-md-6 mt-3">
-          <label class="form-label">사용여부</label>
-          <SJSelect id="form_useYN" v-model="codeGroup.useFlag" name="사용여부" :options="$api.common.getYNCodes()" rules="required" />
+          <div class="col-md-6 mt-3">
+            <label class="form-label">사용여부</label>
+            <SJSelect id="form_useYN" v-model="codeGroup.useFlag" name="사용여부" :options="$api.common.getYNCodes()" rules="required" />
+          </div>
+          <div class="col-md-12 mt-3">
+            <label class="form-label">비고</label>
+            <SJTextarea id="form_desc" v-model="codeGroup.codeGroupDesc" name="비고" disabled-validation />
+          </div>
         </div>
-        <div class="col-md-12 mt-3">
-          <label class="form-label">비고</label>
-          <SJTextarea id="form_desc" v-model="codeGroup.codeGroupDesc" name="비고" disabled-validation />
-        </div>
-      </div>
-
+      </SJForm>
       <h5 class="card-title">
         소분류
       </h5>
@@ -116,7 +117,7 @@ export default {
     return {
       common: {},
       codeGroup: {
-        lang: {}
+        codeGroupId: 'TEST'
       },
       large: {
         data: {},
@@ -235,12 +236,18 @@ export default {
           const result = await this.$api.code.list({ test: 'test' })
           this.large.data = result.data
         },
-        saveClick: () => {
-          console.log(this.$api.common)
-          console.log(this.codeGroup)
-          console.log('save')
+        saveClick: async () => {
+          const result = await this.$refs.form.validate()
+          if (result) {
+            // TODO:응답 받아서.. 확인. 실패..처리
+            await this.$api.code.save(this.codeGroup)
+            this.codeGroup = {}
+            this.$refs.form.reset()
+          }
         },
         delClick: () => {
+          this.codeGroup = {}
+          this.$refs.form.reset()
           console.log('del')
         }
       }
@@ -249,5 +256,8 @@ export default {
 }
 </script>
 <style scoped>
-
+.blurEffect {
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+}
 </style>

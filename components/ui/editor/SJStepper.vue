@@ -1,14 +1,13 @@
 <template>
   <SJInput
     :id="id"
-    v-model="content"
+    v-model="inputVal"
     type="number"
     :rules="rules"
     :name="name"
     :disabled-validation="disabledValidation"
     :disabled="disabled"
     :readonly="readonly"
-    @input="handleInput"
   />
 </template>
 
@@ -44,15 +43,16 @@ export default {
       default: false
     }
   },
-  data () {
-    return {
-      content: this.value.toString()
-    }
-  },
-  methods: {
-    handleInput (e) {
-      this.$emit('input', parseInt(this.content))
+  computed: {
+    inputVal: {
+      get () {
+        return this.value.toString()
+      },
+      set (val) {
+        this.$emit('input', parseInt(val))
+      }
     }
   }
+
 }
 </script>
