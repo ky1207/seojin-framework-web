@@ -6,7 +6,7 @@
       class="form-select"
       aria-label="Default select example"
       :class="disabledValidation?'':classes"
-      @change="handleInput($event)"
+      @change="handleInput"
     >
       <option value="">
         선택하세요
@@ -57,15 +57,19 @@ export default {
       default: 'value'
     }
   },
-  data () {
-    return {
-      selected: this.value
+  computed: {
+    selected: {
+      get () {
+        return this.value
+      },
+      set (val) {
+        this.$emit('input', val)
+      }
     }
   },
   methods: {
     handleInput (e) {
       this.selected = e.target.value
-      this.$emit('input', this.selected)
     }
   }
 }
