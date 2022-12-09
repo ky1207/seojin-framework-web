@@ -218,19 +218,22 @@ export default {
         f4Label: 'F4 Label',
         f5Label: 'F5 Label',
         f1Click: () => {
-          alert('f1Click')
+          this.$notify.info('info askjdlfjaslkdjfkljasldkfjlasjf')
         },
         f2Click: () => {
-          alert('f2Click')
+          this.$notify.success('succes asdfasdfasfdsf')
         },
         f3Click: () => {
-          alert('f3Click')
+          this.$notify.warning('warning')
         },
         f4Click: () => {
-          alert('f4Click')
+          this.$notify.error('error')
         },
-        f5Click: () => {
+        f5Click: async () => {
           alert('f5Click')
+          // test
+          const result = await this.$api.code.read('PLC_TYPE')
+          console.log(result.data)
         },
         searchClick: async () => {
           const result = await this.$api.code.list({ test: 'test' })

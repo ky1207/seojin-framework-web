@@ -156,14 +156,15 @@
       </nav><!-- End Icons Navigation -->
     </header><!-- End Header -->
 
-    <!-- ======= Sidebar ======= -->
     <SJSlideBar :value="menus" />
-
+    <SJNotify />
+    <!-- ======= Sidebar ======= -->
     <main id="main" class="main">
       <router-tab :tabs="tabs" :contextmenu="false" />
     </main><!-- End #main -->
     <SJSpinner ref="spinner" />
     <!-- ======= Footer ======= -->
+
     <footer id="footer" class="footer">
       <div class="copyright">
         &copy; Copyright <strong><span>SeoJin System</span></strong>. All Rights Reserved

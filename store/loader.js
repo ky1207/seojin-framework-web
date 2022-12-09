@@ -1,3 +1,4 @@
+// loader용 vuex는 loader에서만 사용하므로 별로 api는 작성하지 않음.
 export const state = () => ({
   loading: false
 })
