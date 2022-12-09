@@ -1,5 +1,12 @@
 <template>
-  <div ref="modal" class="modal fade" tabindex="-1" aria-hidden="true">
+  <div
+    ref="modal"
+    class="modal fade"
+    tabindex="-1"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    aria-hidden="true"
+  >
     <slot />
   </div>
 </template>

@@ -218,10 +218,10 @@ export default {
         f4Label: 'F4 Label',
         f5Label: 'F5 Label',
         f1Click: () => {
-          this.$notify.info('info askjdlfjaslkdjfkljasldkfjlasjf')
+          this.$notify.info('info 메시지 테스트')
         },
         f2Click: () => {
-          this.$notify.success('succes asdfasdfasfdsf')
+          this.$notify.success('success 메시지 테스트......................')
         },
         f3Click: () => {
           this.$notify.warning('warning')
