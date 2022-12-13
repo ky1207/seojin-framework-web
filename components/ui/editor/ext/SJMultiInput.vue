@@ -27,7 +27,7 @@ export default {
   props: {
     value: {
       type: Array,
-      default: () => [{ langCode: 'ko', val: null }, { langCode: 'en', val: null }, { langCode: 'vi', val: null }]
+      default: () => []
     },
     id: {
       type: String,
@@ -58,7 +58,7 @@ export default {
   computed: {
     data: {
       get () {
-        return this.value
+        return [...this.value, ...this.getDefault()]
       },
       set (val) {
         this.$emit('input', val)
@@ -66,6 +66,17 @@ export default {
     }
   },
   methods: {
+    getDefault () {
+      const defaults = [{ langCode: 'ko', val: null }, { langCode: 'en', val: null }, { langCode: 'vi', val: null }]
+
+      const langs = this.value.map((e) => {
+        return e.langCode
+      })
+
+      return defaults.filter((e) => {
+        return langs.findIndex(l => l === e.langCode) === -1
+      })
+    },
     copy (idx) {
       if (idx === 0 && !Utils.isEmpty(this.data[0].val)) {
         if (Utils.isEmpty(this.data[1].val)) { // empty
