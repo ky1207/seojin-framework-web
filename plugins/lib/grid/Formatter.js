@@ -22,3 +22,8 @@ export const CodeFormatter = (obj) => {
 export const YNFormatter = (obj) => {
   return (obj.value === 1 || obj.value === true) ? 'Yes' : 'No'
 }
+
+export const MulitLanguageFormatter = (obj) => {
+  if (obj.value && obj.value.length > 0) { return obj.value[0].val }
+  return ''
+}
