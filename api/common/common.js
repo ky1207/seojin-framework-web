@@ -10,13 +10,19 @@ export default axios => ({
     })
     return result
   },
+  /**
+   * Map을 이용하는 경우 1=>true
+   * Boolean true
+   * boolean true
+   * @returns {[{text: string, value: boolean},{text: string, value: boolean}]}
+   */
   getYNCodes () {
     return [{
       text: 'Yes',
-      value: 'True'
+      value: true
     }, {
       text: 'No',
-      value: 'False'
+      value: false
     }
     ]
   }
