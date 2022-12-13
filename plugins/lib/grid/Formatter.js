@@ -18,6 +18,7 @@ export const CodeFormatter = (obj) => {
   return GLOBAL_CODES.getCode(obj.value)
 }
 
+// map을 이용한 경우 1/0 , object boolean은 true/false이다
 export const YNFormatter = (obj) => {
-  return (obj.value === 1) ? 'Yes' : 'No'
+  return (obj.value === 1 || obj.value === true) ? 'Yes' : 'No'
 }
