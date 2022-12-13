@@ -82,7 +82,8 @@ export default {
         },
         bodyHeight: 500,
         rowHeight: 30,
-        minRowHeight: 30
+        minRowHeight: 30,
+        selectionUnit: 'row'
       }
     }
   },
