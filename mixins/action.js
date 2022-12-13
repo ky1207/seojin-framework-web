@@ -6,15 +6,15 @@ const ACTION = {
     }
   },
   created () {
-    if (this._makeAction) {
+    if (this.ACTION_REGISTRY) {
       this.ACTION = this.ACTION_makeAction()
     } else {
-      alert('_makeAction is not defined!')
+      alert('ACTION_REGISTRY is not defined!')
     }
   },
   methods: {
     ACTION_makeAction () {
-      return this._makeAction()
+      return this.ACTION_REGISTRY()
     }
   }
 }

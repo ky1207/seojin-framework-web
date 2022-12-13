@@ -4,11 +4,11 @@
       <SJPageButtons f1-label="테스트" :action="ACTION" />
     </template>
     <template #default>
-      <div class="row">
-        <div class="col-md-2 bg-light">
+      <div class="d-flex align-items-center flex-wrap">
+        <div class="col-md-1 bg-light">
           <label class="form-label">공통코드유형</label>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-1">
           <SJSelect
             id="commonCode"
             name="공통코드유형"
@@ -19,28 +19,28 @@
           />
         </div>
 
-        <div class="col-md-2 bg-light">
+        <div class="col-md-1 bg-light">
           <label class="form-label">대분류코드</label>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-1">
           <SJInput id="large" name="대분류코드" type="text" disabled-validation />
         </div>
-        <div class="col-md-2 bg-light">
+        <div class="col-md-1 bg-light">
           <label class="form-label">대분류명</label>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-1">
           <SJInput id="lname" name="대분류명" type="text" disabled-validation />
         </div>
-        <div class="col-md-2 bg-light">
+        <div class="col-md-1 bg-light">
           <label class="form-label">소분류명</label>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-1">
           <SJInput id="small" name="소분류명" type="text" disabled-validation />
         </div>
-        <div class="col-md-2 bg-light">
+        <div class="col-md-1 bg-light">
           <label class="form-label">사용여부</label>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-1">
           <SJSelect
             id="useYN"
             name="사용여부"
@@ -55,11 +55,20 @@
       대분류
     </template>
     <template #left>
-      <SJGrid ref="large" v-model="large.data" :columns="large.columns" />
+      <SJGrid ref="large" v-model="large.data" :columns="large.columns" @click="onMasterClick" />
     </template>
 
     <template #rightTitle>
-      대분류상세
+      <div class="row align-items-center">
+        <div class="col">
+          대분류상세
+        </div>
+        <div class="col-auto">
+          <button class="btn btn-outline-dark" @click="createCodeGroup">
+            신규 코드
+          </button>
+        </div>
+      </div>
     </template>
     <template #right>
       <SJForm ref="form">
@@ -96,7 +105,19 @@
         </div>
       </SJForm>
       <h5 class="card-title">
-        소분류
+        <div class="row align-items-center">
+          <div class="col">
+            소분류
+          </div>
+          <div class="col-auto">
+            <button class="btn btn-outline-dark" @click="appendRow">
+              추가
+            </button>
+            <button class="btn btn-outline-dark" @click="removeRow">
+              삭제
+            </button>
+          </div>
+        </div>
       </h5>
       <SJGrid
         ref="detail"
@@ -109,15 +130,17 @@
 </template>
 <script>
 import { MENU, ACTION } from '~/mixins'
-import { CodeFormatter } from '~/plugins/lib/grid/Formatter'
+import { CodeFormatter, MulitLanguageFormatter } from '~/plugins/lib/grid/Formatter'
+import { CustomCheckBoxRenderer } from '~/plugins/lib/grid/editor/CustomCheckBoxRenderer'
+import { CustomMultiLanguageEditor } from '~/plugins/lib/grid/editor/CustomMultiLanguageEditor'
 
 export default {
   mixins: [MENU, ACTION],
   data () {
     return {
+      isUpdate: false,
       common: {},
       codeGroup: {
-        codeGroupId: 'TEST'
       },
       large: {
         data: {},
@@ -125,21 +148,10 @@ export default {
           {
             name: 'codeGroupId',
             header: this.$t('page.code.column.001')
-
           },
           {
-            name: 'codeGroupNameKo',
-            header: this.$t('page.code.column.002') + '(ko)'
-
-          },
-          {
-            name: 'codeGroupNameEn',
-            header: this.$t('page.code.column.002') + '(en)'
-
-          },
-          {
-            name: 'codeGroupNameVi',
-            header: this.$t('page.code.column.002') + '(vi)'
+            name: 'codeGroupName',
+            header: this.$t('page.code.column.002')
 
           },
           {
@@ -158,14 +170,19 @@ export default {
             header: this.$t('page.code.column.010')
           },
           {
-            name: 'codeName',
-            header: this.$t('page.code.column.011')
+            name: 'langs',
+            header: this.$t('page.code.column.011'),
+            formatter: MulitLanguageFormatter,
+            editor: {
+              type: CustomMultiLanguageEditor
+            }
           },
           {
             name: 'sortSeq'
           },
           {
-            name: 'useFlag'
+            name: 'useFlag',
+            renderer: CustomCheckBoxRenderer
           },
           {
             name: 'codeDesc',
@@ -186,6 +203,7 @@ export default {
           {
             name: 'rsvVal4',
             header: this.$t('page.code.column.016')
+
           },
           {
             name: 'rsvVal5',
@@ -193,6 +211,7 @@ export default {
           }
         ],
         options: {
+          rowHeaders: ['checkbox'],
           bodyHeight: 130
         }
       }
@@ -210,7 +229,32 @@ export default {
     test () {
       alert('test')
     },
-    _makeAction () {
+    async onMasterClick (ev) {
+      const item = this.$refs.large.invoke('getRow', ev.rowKey)
+      const result = await this.$api.code.load(item.codeGroupId)
+      this.codeGroup = result.data
+      this.isUpdate = true
+      this.detail.data = {
+        Data: this.codeGroup.codes
+      }
+    },
+    createCodeGroup () {
+      this.isUpdate = false
+      this._resetForm()
+    },
+    _resetForm () {
+      this.codeGroup = {}
+      this.detail.data = {
+        Data: []
+      }
+    },
+    appendRow () {
+      this.$refs.detail.invoke('appendRow')
+    },
+    removeRow () {
+      this.$refs.detail.invoke('removeCheckedRows')
+    },
+    ACTION_REGISTRY () {
       return {
         f1Label: 'F1 Label',
         f2Label: 'F2 Label',
@@ -229,11 +273,12 @@ export default {
         f4Click: () => {
           this.$notify.error('error')
         },
-        f5Click: async () => {
+        f5Click: () => {
           alert('f5Click')
+
+          console.log(this.$refs.detail.invoke('getModifiedRows'))
+
           // test
-          const result = await this.$api.code.read('PLC_TYPE')
-          console.log(result.data)
         },
         searchClick: async () => {
           const result = await this.$api.code.list({ test: 'test' })
@@ -242,8 +287,12 @@ export default {
         saveClick: async () => {
           const result = await this.$refs.form.validate()
           if (result) {
-            // TODO:응답 받아서.. 확인. 실패..처리
-            await this.$api.code.save(this.codeGroup)
+            if (this.isUpdate) {
+              // update
+            } else {
+              // TODO:응답 받아서.. 확인. 실패..처리
+              await this.$api.code.save(this.codeGroup)
+            }
             this.codeGroup = {}
             this.$refs.form.reset()
           }

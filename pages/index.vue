@@ -78,7 +78,7 @@ export default {
       // iframe 사라짐
       window.location.reload()
     },
-    _makeAction () {
+    ACTION_REGISTRY () {
       return {}
     }
   }
