@@ -1,11 +1,9 @@
 <template>
   <SJModal ref="icon">
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center align-items-center h-100">
       <div class="modal-dialog">
         <div class="spinner-border text-primary" role="status">
-          <div>
-            <span class="visually-hidden">Loading...</span>
-          </div>
+          <span class="visually-hidden">Loading...</span>
         </div>
       </div>
     </div>
@@ -28,12 +26,6 @@ export default {
           this.$refs.icon.hide()
         }, 500)
       }
-    }
-  },
-  methods: {
-    close () {
-      alert('close')
-      this.$refs.icon.hide()
     }
   }
 }
