@@ -7,5 +7,8 @@ export default axios => ({
   },
   load (codeGroupId) {
     return axios.get(`/api/v1.0/code/${codeGroupId}`)
+  },
+  update (codeGroupId, data) {
+    return axios.post(`/api/v1.0/code/${codeGroupId}`, data)
   }
 })
