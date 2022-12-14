@@ -265,6 +265,7 @@ export default {
       this._resetForm()
     },
     _resetForm () {
+      this.$refs.form.reset()
       this.codeGroup = {}
       this.detail.data = {
         Data: []
@@ -274,7 +275,7 @@ export default {
       this.$refs.detail.invoke('appendRow')
     },
     removeRow () {
-      this.$refs.detail.invoke('removeCheckedRows', false) // TODO: confirm을 true로 하려면 베트남어 삽입해야 함.
+      this.$refs.detail.invoke('removeCheckedRows', false) //  confirm을 true로 하려면 베트남어 삽입해야 함.
     },
     ACTION_REGISTRY () {
       return {
@@ -313,7 +314,6 @@ export default {
               const data = { codeGroup: rest, gridRequest: this.$refs.detail.invoke('getModifiedRows') }
               await this.$api.code.update(rest.codeGroupId, data)
             } else {
-              // TODO:응답 받아서.. 확인. 실패..처리
               await this.$api.code.save(this.codeGroup)
             }
             this._resetForm()
