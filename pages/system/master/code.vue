@@ -11,6 +11,7 @@
         <div class="col-md-1">
           <SJSelect
             id="commonCode"
+            v-model="search.systemCodeType"
             name="공통코드유형"
             :options="common.CD_TYPE"
             item-text="val"
@@ -23,19 +24,19 @@
           <label class="form-label">대분류코드</label>
         </div>
         <div class="col-md-1">
-          <SJInput id="large" name="대분류코드" type="text" disabled-validation />
+          <SJInput id="large" v-model="search.codeGroupId" name="대분류코드" type="text" disabled-validation />
         </div>
         <div class="col-md-1 bg-light">
           <label class="form-label">대분류명</label>
         </div>
         <div class="col-md-1">
-          <SJInput id="lname" name="대분류명" type="text" disabled-validation />
+          <SJInput id="lname" v-model="search.codeGroupName" name="대분류명" type="text" disabled-validation />
         </div>
         <div class="col-md-1 bg-light">
           <label class="form-label">소분류명</label>
         </div>
         <div class="col-md-1">
-          <SJInput id="small" name="소분류명" type="text" disabled-validation />
+          <SJInput id="small" v-model="search.codeName" name="소분류명" type="text" disabled-validation />
         </div>
         <div class="col-md-1 bg-light">
           <label class="form-label">사용여부</label>
@@ -43,6 +44,7 @@
         <div class="col-md-1">
           <SJSelect
             id="useYN"
+            v-model="search.useFlag"
             name="사용여부"
             :options="$api.common.getYNCodes()"
             disabled-validation
@@ -140,6 +142,7 @@ export default {
     return {
       isUpdate: false,
       common: {},
+      search: {},
       codeGroup: {
       },
       large: {
@@ -178,7 +181,10 @@ export default {
             }
           },
           {
-            name: 'sortSeq'
+            name: 'sortSeq',
+            editor: {
+              type: 'text'
+            }
           },
           {
             name: 'useFlag',
@@ -186,28 +192,46 @@ export default {
           },
           {
             name: 'codeDesc',
-            header: this.$t('page.code.column.012')
+            header: this.$t('page.code.column.012'),
+            editor: {
+              type: 'text'
+            }
           },
           {
             name: 'rsvVal1',
-            header: this.$t('page.code.column.013')
+            header: this.$t('page.code.column.013'),
+            editor: {
+              type: 'text'
+            }
           },
           {
             name: 'rsvVal2',
-            header: this.$t('page.code.column.014')
+            header: this.$t('page.code.column.014'),
+            editor: {
+              type: 'text'
+            }
           },
           {
             name: 'rsvVal3',
-            header: this.$t('page.code.column.015')
+            header: this.$t('page.code.column.015'),
+            editor: {
+              type: 'text'
+            }
           },
           {
             name: 'rsvVal4',
-            header: this.$t('page.code.column.016')
+            header: this.$t('page.code.column.016'),
+            editor: {
+              type: 'text'
+            }
 
           },
           {
             name: 'rsvVal5',
-            header: this.$t('page.code.column.017')
+            header: this.$t('page.code.column.017'),
+            editor: {
+              type: 'text'
+            }
           }
         ],
         options: {
@@ -226,9 +250,6 @@ export default {
 
   },
   methods: {
-    test () {
-      alert('test')
-    },
     async onMasterClick (ev) {
       const item = this.$refs.large.invoke('getRow', ev.rowKey)
       const result = await this.$api.code.load(item.codeGroupId)
@@ -252,7 +273,7 @@ export default {
       this.$refs.detail.invoke('appendRow')
     },
     removeRow () {
-      this.$refs.detail.invoke('removeCheckedRows')
+      this.$refs.detail.invoke('removeCheckedRows', false) // TODO: confirm을 true로 하려면 베트남어 삽입해야 함.
     },
     ACTION_REGISTRY () {
       return {
@@ -263,44 +284,43 @@ export default {
         f5Label: 'F5 Label',
         f1Click: () => {
           this.$notify.info('info 메시지 테스트')
-        },
-        f2Click: () => {
-          this.$notify.success('success 메시지 테스트......................')
-        },
-        f3Click: () => {
+          this.$notify.success('success 메시지 테스트.')
           this.$notify.warning('warning')
-        },
-        f4Click: () => {
           this.$notify.error('error')
         },
+        f2Click: () => {
+
+        },
+        f3Click: () => {
+
+        },
+        f4Click: () => {
+
+        },
         f5Click: () => {
-          alert('f5Click')
-
-          console.log(this.$refs.detail.invoke('getModifiedRows'))
-
-          // test
         },
         searchClick: async () => {
-          const result = await this.$api.code.list({ test: 'test' })
+          const result = await this.$api.code.list(this.search)
           this.large.data = result.data
         },
         saveClick: async () => {
           const result = await this.$refs.form.validate()
           if (result) {
             if (this.isUpdate) {
-              // update
+              // TODO:수정시 편집 못하게 해야함. codeGroupID
+              const { codes, ...rest } = this.codeGroup
+              const data = { codeGroup: rest, gridRequest: this.$refs.detail.invoke('getModifiedRows') }
+              await this.$api.code.update(rest.codeGroupId, data)
             } else {
               // TODO:응답 받아서.. 확인. 실패..처리
               await this.$api.code.save(this.codeGroup)
             }
-            this.codeGroup = {}
-            this.$refs.form.reset()
+            this._resetForm()
+            this.$notify.success('처리되었습니다.') // TODO:다국어 처리
+            await this.ACTION_REGISTRY().searchClick()
           }
         },
         delClick: () => {
-          this.codeGroup = {}
-          this.$refs.form.reset()
-          console.log('del')
         }
       }
     }

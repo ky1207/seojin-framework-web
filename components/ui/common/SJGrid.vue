@@ -135,7 +135,7 @@ export default {
     getRootElement () {
       return this.$refs.grid
     },
-    invoke (methodName, ...args) {
+    invoke (methodName, args) {
       return this.$refs.grid.invoke(methodName, args)
     }
   }
