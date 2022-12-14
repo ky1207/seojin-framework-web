@@ -251,6 +251,7 @@ export default {
   },
   methods: {
     async onMasterClick (ev) {
+      if (ev.rowKey === undefined) { return }
       const item = this.$refs.large.invoke('getRow', ev.rowKey)
       const result = await this.$api.code.load(item.codeGroupId)
       this.codeGroup = result.data
