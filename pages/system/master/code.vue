@@ -1,7 +1,7 @@
 <template>
   <SJSearchLRLayout>
     <template #master-btn>
-      <SJPageButtons f1-label="테스트" :action="ACTION" />
+      <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
       <div class="d-flex align-items-center flex-wrap">

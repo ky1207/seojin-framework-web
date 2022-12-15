@@ -2,7 +2,7 @@
 <template>
   <SJOneLayout>
     <template #master-btn>
-      <SJPageButtons :action="{}" />
+      <SJPageButtons :action="ACTION" />
     </template>
     <template #title>
       게시판
@@ -79,7 +79,29 @@ export default {
       window.location.reload()
     },
     ACTION_REGISTRY () {
-      return {}
+      return {
+        f1Label: 'S1 Label',
+        f2Label: 'S2 Label',
+        f3Label: 'S3 Label',
+        f4Label: 'S4 Label',
+        f5Label: 'S5 Label',
+        f1Click: () => {
+        },
+        f2Click: () => {
+        },
+        f3Click: () => {
+        },
+        f4Click: () => {
+        },
+        f5Click: () => {
+        },
+        searchClick: () => {
+        },
+        saveClick: () => {
+        },
+        delClick: () => {
+        }
+      }
     }
   }
 }
