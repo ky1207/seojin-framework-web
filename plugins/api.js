@@ -1,4 +1,4 @@
-import code from '~/api/system/code/code'
+import code from '~/api/system/code'
 import common from '~/api/common/common'
 import sample from '~/api/sample/sample'
 
