@@ -41,22 +41,12 @@ export default {
   },
   data () {
     return {
-      result: {
-        inqryAuth: true,
-        saveAuth: true,
-        fn1Auth: true,
-        fn2Auth: true,
-        fn3Auth: true,
-        fn4Auth: true,
-        fn5Auth: true,
-        delAuth: true
-      }
+      result: {}
     }
   },
-  created () {
-    // TODO: 권한조회...
-    console.log('created')
-    console.log(this.$route.path)
+  async created () {
+    const program = await this.$api.system.program.programAuth(this.$route.path)
+    this.result = program.data
   },
   methods: {
     call (name) {
