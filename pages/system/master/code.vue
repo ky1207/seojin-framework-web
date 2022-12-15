@@ -253,7 +253,7 @@ export default {
     async onMasterClick (ev) {
       if (ev.rowKey === undefined) { return }
       const item = this.$refs.large.invoke('getRow', ev.rowKey)
-      const result = await this.$api.code.load(item.codeGroupId)
+      const result = await this.$api.system.code.load(item.codeGroupId)
       this.codeGroup = result.data
       this.isUpdate = true
       this.detail.data = {
@@ -302,7 +302,7 @@ export default {
         f5Click: () => {
         },
         searchClick: async () => {
-          const result = await this.$api.code.list(this.search)
+          const result = await this.$api.system.code.list(this.search)
           this.large.data = result.data
         },
         saveClick: async () => {
@@ -312,9 +312,9 @@ export default {
               // TODO:수정시 편집 못하게 해야함. codeGroupID
               const { codes, ...rest } = this.codeGroup
               const data = { codeGroup: rest, gridRequest: this.$refs.detail.invoke('getModifiedRows') }
-              await this.$api.code.update(rest.codeGroupId, data)
+              await this.$api.system.code.update(rest.codeGroupId, data)
             } else {
-              await this.$api.code.save(this.codeGroup)
+              await this.$api.system.code.save(this.codeGroup)
             }
             this._resetForm()
             this.$notify.success('처리되었습니다.') // TODO:다국어 처리

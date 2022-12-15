@@ -69,7 +69,6 @@ export default {
       const response = await this.$refs.exampleModal.open(this.test)
       //  if (response) {
       console.log(response)
-      alert(response)
       // }
     },
     change (lang) {
