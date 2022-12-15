@@ -86,20 +86,28 @@ export default {
         f4Label: 'S4 Label',
         f5Label: 'S5 Label',
         f1Click: () => {
+          this.$notify.success('A1 click')
         },
         f2Click: () => {
+          this.$notify.info('A2 click')
         },
         f3Click: () => {
+          this.$notify.warning('A3 click')
         },
         f4Click: () => {
+          this.$notify.error('A click')
         },
         f5Click: () => {
+          this.$notify.success('A5 click')
         },
         searchClick: () => {
+          this.$notify.success('Search click')
         },
         saveClick: () => {
+          this.$notify.success('Save click')
         },
         delClick: () => {
+          this.$notify.success('Del click')
         }
       }
     }
