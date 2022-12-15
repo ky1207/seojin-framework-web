@@ -76,7 +76,7 @@ export default {
     return {
       username: 'devel',
       password: 'test',
-      coId: 'C_0000000001',
+      coId: 'C00000000001',
       error: null
 
     }

@@ -194,11 +194,16 @@ export default {
           },
           {
             id: 3,
-            name: 'code',
+            name: '공통코드 관리',
             url: '/system/master/code'
           },
           {
             id: 4,
+            name: '프로그램 관리',
+            url: '/system/master/program'
+          },
+          {
+            id: 5,
             name: '서진시스템',
             url: '/iframe/http:%2F%2Fseojinsystem.net%2F/%EC%84%9C%EC%A7%84%EC%8B%9C%EC%8A%A4%ED%85%9C'
           }

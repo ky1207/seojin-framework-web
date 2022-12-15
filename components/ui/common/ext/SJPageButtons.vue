@@ -45,7 +45,7 @@ export default {
     }
   },
   async created () {
-    const program = await this.$api.system.program.programAuth(this.$route.path)
+    const program = await this.$api.system.menu.menuAuth(this.$route.path)
     this.result = program.data
   },
   methods: {
