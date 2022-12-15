@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import Utils from '~/assets/js/utils'
+import Utils from '~/api/utils'
 export default {
   props: {
     value: {
