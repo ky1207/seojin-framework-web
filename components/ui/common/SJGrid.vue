@@ -1,13 +1,11 @@
 <template>
-  <div>
-    <Grid
-      ref="grid"
-      :data="getData"
-      :columns="mergedColumns"
-      :options="mergedOptions"
-      v-on="$listeners"
-    />
-  </div>
+  <Grid
+    ref="grid"
+    :data="getData"
+    :columns="mergedColumns"
+    :options="mergedOptions"
+    v-on="$listeners"
+  />
 </template>
 <script>
 export default {
@@ -75,7 +73,7 @@ export default {
         rowHeaders: ['rowNum'],
         columnOptions: {
           resizable: true,
-          minWidth: 100
+          minWidth: 50
         },
         copyOptions: {
           useFormattedValue: true
