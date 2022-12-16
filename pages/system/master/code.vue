@@ -77,7 +77,14 @@
         <div class="row">
           <div class="col-md-6 mt-3">
             <label class="form-label">대분류코드</label>
-            <SJInput id="form_large" v-model="codeGroup.codeGroupId" name="대분류코드" type="text" rules="required" />
+            <SJInput
+              id="form_large"
+              v-model="codeGroup.codeGroupId"
+              name="대분류코드"
+              type="text"
+              rules="required"
+              :disabled="isUpdate"
+            />
           </div>
           <div class="col-md-6 mt-3">
             <label class="form-label">공통코드유형</label>
