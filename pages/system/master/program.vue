@@ -59,7 +59,8 @@ export default {
             editor: {
               type: 'text'
             },
-            width: 150
+            width: 150,
+            validation: { required: true }
           },
           {
             name: 'progPath',
@@ -67,7 +68,8 @@ export default {
             editor: {
               type: 'text'
             },
-            width: 300
+            width: 300,
+            validation: { required: true }
           },
           {
             name: 'authCheckFlag',
@@ -166,8 +168,14 @@ export default {
           this.grid.data = result.data
         },
         saveClick: async () => {
+          const error = this.$refs.grid.invoke('validate')
+          if (error.length > 0) {
+            this.$notify.warning('Grid 입력값을 확인하세요.') // TODO:다국어 처리
+            return false
+          }
           const data = this.$refs.grid.invoke('getModifiedRows')
           await this.$api.system.program.update(data)
+          await this.ACTION_REGISTRY().searchClick()
         }
       }
     }
