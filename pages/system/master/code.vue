@@ -67,7 +67,7 @@
         </div>
         <div class="col-auto">
           <button class="btn btn-outline-dark" @click="createCodeGroup">
-            신규 코드
+            신규 코드 <i class="bi bi-pencil-fill" />
           </button>
         </div>
       </div>
@@ -120,10 +120,10 @@
           </div>
           <div class="col-auto">
             <button class="btn btn-outline-dark" @click="appendRow">
-              추가
+              추가 <i class="bi bi-file-plus" />
             </button>
             <button class="btn btn-outline-dark" @click="removeRow">
-              삭제
+              삭제 <i class="bi bi-file-minus" />
             </button>
           </div>
         </div>
