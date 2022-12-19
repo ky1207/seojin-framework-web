@@ -1,7 +1,6 @@
 <template>
   <ValidationProvider v-slot="{ errors,classes }" :rules="rules" :name="name" tag="div" :disabled="disabledValidation">
     <template v-for="(l,idx) in data">
-      {{ l.langCode }}
       <input
         :key="l.langCode"
         v-model="l.val"
@@ -10,6 +9,7 @@
         :aria-describedby="id+'-feedback'"
         :disabled="disabled"
         :readonly="readonly"
+        :placeholder="l.langCode"
         :class="disabledValidation?'':classes"
         @blur="copy(idx)"
         @input="handleInput"
