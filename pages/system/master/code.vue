@@ -5,7 +5,7 @@
     </template>
     <template>
       <div class="d-flex align-items-center flex-wrap">
-        <div class="col-md-1 bg-light">
+        <div class="col-md-1 text-center">
           공통코드유형
         </div>
         <div class="col-md-1">
@@ -20,25 +20,25 @@
           />
         </div>
 
-        <div class="col-md-1 bg-light">
+        <div class="col-md-1 text-center">
           대분류코드
         </div>
         <div class="col-md-1">
           <SJInput id="large" v-model="search.codeGroupId" name="대분류코드" type="text" disabled-validation />
         </div>
-        <div class="col-md-1 bg-light">
+        <div class="col-md-1 text-center">
           대분류명
         </div>
         <div class="col-md-1">
           <SJInput id="lname" v-model="search.codeGroupName" name="대분류명" type="text" disabled-validation />
         </div>
-        <div class="col-md-1 bg-light">
+        <div class="col-md-1 text-center">
           소분류명
         </div>
         <div class="col-md-1">
           <SJInput id="small" v-model="search.codeName" name="소분류명" type="text" disabled-validation />
         </div>
-        <div class="col-md-1 bg-light">
+        <div class="col-md-1 text-center">
           사용여부
         </div>
         <div class="col-md-1">

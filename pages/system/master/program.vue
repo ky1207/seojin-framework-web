@@ -5,7 +5,7 @@
     </template>
     <template>
       <div class="d-flex align-items-center flex-wrap">
-        <div class="col-md-1 bg-light">
+        <div class="col-md-1 text-center">
           프로그램명
         </div>
         <div class="col-md-2">
