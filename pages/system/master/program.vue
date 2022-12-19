@@ -6,7 +6,7 @@
     <template>
       <div class="d-flex align-items-center flex-wrap">
         <div class="col-md-1 bg-light">
-          <label class="form-label">프로그램명</label>
+          프로그램명
         </div>
         <div class="col-md-2">
           <SJInput id="search" v-model="search.progName" name="검색" type="text" disabled-validation />
@@ -175,6 +175,7 @@ export default {
           }
           const data = this.$refs.grid.invoke('getModifiedRows')
           await this.$api.system.program.update(data)
+          this.$notify.success('처리되었습니다.') // TODO:다국어 처리
           await this.ACTION_REGISTRY().searchClick()
         }
       }

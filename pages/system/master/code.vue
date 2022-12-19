@@ -6,7 +6,7 @@
     <template>
       <div class="d-flex align-items-center flex-wrap">
         <div class="col-md-1 bg-light">
-          <label class="form-label">공통코드유형</label>
+          공통코드유형
         </div>
         <div class="col-md-1">
           <SJSelect
@@ -21,25 +21,25 @@
         </div>
 
         <div class="col-md-1 bg-light">
-          <label class="form-label">대분류코드</label>
+          대분류코드
         </div>
         <div class="col-md-1">
           <SJInput id="large" v-model="search.codeGroupId" name="대분류코드" type="text" disabled-validation />
         </div>
         <div class="col-md-1 bg-light">
-          <label class="form-label">대분류명</label>
+          대분류명
         </div>
         <div class="col-md-1">
           <SJInput id="lname" v-model="search.codeGroupName" name="대분류명" type="text" disabled-validation />
         </div>
         <div class="col-md-1 bg-light">
-          <label class="form-label">소분류명</label>
+          소분류명
         </div>
         <div class="col-md-1">
           <SJInput id="small" v-model="search.codeName" name="소분류명" type="text" disabled-validation />
         </div>
         <div class="col-md-1 bg-light">
-          <label class="form-label">사용여부</label>
+          사용여부
         </div>
         <div class="col-md-1">
           <SJSelect
@@ -76,7 +76,7 @@
       <SJForm ref="form">
         <div class="row">
           <div class="col-md-6 mt-3">
-            <label class="form-label">대분류코드</label>
+            <label>대분류코드</label>
             <SJInput
               id="form_large"
               v-model="codeGroup.codeGroupId"
@@ -87,7 +87,7 @@
             />
           </div>
           <div class="col-md-6 mt-3">
-            <label class="form-label">공통코드유형</label>
+            <label>공통코드유형</label>
             <SJSelect
               id="form_commonCode"
               v-model="codeGroup.systemCodeType"
@@ -99,16 +99,16 @@
             />
           </div>
           <div class="col-md-10 mt-3">
-            <label class="form-label">대분류명</label>
+            <label>대분류명</label>
             <SJMultiInput id="form_lname" v-model="codeGroup.langs" name="대분류명" type="text" rules="required" />
           </div>
 
           <div class="col-md-6 mt-3">
-            <label class="form-label">사용여부</label>
+            <label>사용여부</label>
             <SJSelect id="form_useYN" v-model="codeGroup.useFlag" name="사용여부" :options="$api.common.getYNCodes()" rules="required" />
           </div>
           <div class="col-md-12 mt-3">
-            <label class="form-label">비고</label>
+            <label>비고</label>
             <SJTextarea id="form_desc" v-model="codeGroup.codeGroupDesc" name="비고" disabled-validation />
           </div>
         </div>
