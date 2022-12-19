@@ -78,7 +78,7 @@ export default {
         copyOptions: {
           useFormattedValue: true
         },
-        bodyHeight: 500,
+        bodyHeight: 560,
         rowHeight: 30,
         minRowHeight: 30,
         selectionUnit: 'row'
