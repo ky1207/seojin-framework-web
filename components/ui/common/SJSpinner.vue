@@ -1,17 +1,14 @@
 <template>
-  <SJModal ref="icon">
-    <div class="d-flex justify-content-center align-items-center h-100">
-      <div class="modal-dialog">
-        <div class="spinner-border text-primary" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-      </div>
-    </div>
-  </SJModal>
+  <div v-show="show" id="cover-spin" />
 </template>
 
 <script>
 export default {
+  data () {
+    return {
+      show: false
+    }
+  },
   computed: {
     isLoading () {
       return this.$store.getters['loader/isLoading']()
@@ -19,14 +16,50 @@ export default {
   },
   watch: {
     isLoading (val, old) {
+      console.log(val)
       if (val) {
-        this.$refs.icon.show()
+        this.show = true
       } else {
         setTimeout(() => {
-          this.$refs.icon.hide()
-        }, 500)
+          this.show = false
+        }, 100)
       }
     }
   }
 }
 </script>
+<style>
+#cover-spin {
+  position:fixed;
+  width:100%;
+  left:0;right:0;top:0;bottom:0;
+  background-color: rgba(0,0,0,0.7);
+  z-index:9999;
+  display:block;
+}
+
+@-webkit-keyframes spin {
+  from {-webkit-transform:rotate(0deg);}
+  to {-webkit-transform:rotate(360deg);}
+}
+
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+
+#cover-spin::after {
+  content:'';
+  display:block;
+  position:absolute;
+  left:48%;top:40%;
+  width:40px;height:40px;
+  border-style:solid;
+  border-color:black;
+  border-top-color:transparent;
+  border-width: 4px;
+  border-radius:50%;
+  -webkit-animation: spin .8s linear infinite;
+  animation: spin .8s linear infinite;
+}
+</style>
