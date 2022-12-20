@@ -3,7 +3,7 @@
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
     </template>
-    <template>
+    <template #default>
       <div class="d-flex align-items-center flex-wrap">
         <div class="col-md-1 text-center">
           프로그램명
