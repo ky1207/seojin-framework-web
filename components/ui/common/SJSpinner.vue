@@ -16,7 +16,6 @@ export default {
   },
   watch: {
     isLoading (val, old) {
-      console.log(val)
       if (val) {
         this.show = true
       } else {
