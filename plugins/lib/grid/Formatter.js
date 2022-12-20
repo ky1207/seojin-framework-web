@@ -20,7 +20,7 @@ export const CodeFormatter = (obj) => {
 
 // map을 이용한 경우 1/0 , object boolean은 true/false이다
 export const YNFormatter = (obj) => {
-  return (obj.value === 1 || obj.value === true) ? 'Yes' : 'No'
+  return (obj.value === 1 || obj.value === true) ? 'Y' : 'N'
 }
 
 export const MulitLanguageFormatter = (obj) => {
