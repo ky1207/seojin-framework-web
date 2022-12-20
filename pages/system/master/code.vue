@@ -279,6 +279,10 @@ export default {
       }
     },
     appendRow () {
+      if (!this.codeGroup.codeGroupId) {
+        this.$notify.warning('공통코드를 선택하세요.')
+        return false
+      }
       this.$refs.detail.invoke('appendRow')
     },
     removeRow () {
