@@ -13,6 +13,7 @@
             id="company"
             v-model="search.coId"
             name="회사"
+            :options="common.COMPANY"
             disabled-validation
           />
         </div>
@@ -48,7 +49,7 @@
             id="useYN"
             v-model="search.useFlag"
             name="사용여부"
-            :options="$api.common.getYNCodes()"
+            :options="common.USE_YN"
             disabled-validation
           />
         </div>
@@ -79,8 +80,10 @@
             <label>회사</label>
             <SJSelect
               id="form_company"
+              v-model="auth.coId"
               name="회사"
-              disabled-validation
+              :options="common.COMPANY"
+              rules="required"
             />
           </div>
           <div class="col-md-4">
@@ -89,7 +92,7 @@
               id="form_useFlag"
               v-model="auth.useFlag"
               name="사용여부"
-              :options="$api.common.getYNCodes()"
+              :options="common.USE_YN"
               rules="required"
             />
           </div>
@@ -102,8 +105,8 @@
               v-model="auth.authGroupId"
               name="권한코드"
               type="text"
-              rules="required"
-              :disabled="isUpdate"
+              disabled-validation
+              disabled
             />
           </div>
 
@@ -123,7 +126,7 @@
               id="form_defaultFlag"
               v-model="auth.defaultAuthFlag"
               name="Default권한"
-              :options="$api.common.getYNCodes()"
+              :options="common.USE_YN"
               disabled-validation
             />
           </div>
@@ -174,8 +177,7 @@ export default {
         data: {},
         columns: [
           {
-            name: 'coId',
-            header: '회사'
+            name: 'coId'
           },
           {
             name: 'authGroupId',
@@ -227,9 +229,9 @@ export default {
     }
   },
   async created () {
-    const codes = await this.$api.common.getCommonCodes(['CD_TYPE', 'PG_MODULE_CD'])
-    this.common = codes.data
     this.common.USE_YN = this.$api.common.getYNCodes()
+    const company = await this.$api.common.getCompanyCodes()
+    this.common = { USE_YN: this.$api.common.getYNCodes(), COMPANY: company.data }
   },
   methods: {
     async onMasterClick (ev) {
@@ -254,10 +256,10 @@ export default {
       }
     },
     addUser () {
-      this.$refs.detailGrid.invoke('appendRow')
+      this.$refs.detail.invoke('appendRow')
     },
     removeRow () {
-      this.$refs.detailGrid.invoke('removeCheckedRows', false)
+      this.$refs.detail.invoke('removeCheckedRows', false)
     },
 
     ACTION_REGISTRY () {
@@ -286,7 +288,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

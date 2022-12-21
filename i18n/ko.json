@@ -4,7 +4,8 @@
     "title": "제목",
     "insertDate":"등록일",
     "useFlag": "사용여부",
-    "sortSeq": "정렬"
+    "sortSeq": "정렬",
+    "coId": "회사"
   },
   "contextMenu": {
     "copy": "복사",
