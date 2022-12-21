@@ -19,7 +19,7 @@ export class CustomCheckBoxRenderer {
 
   render (props) {
     this.el.checked = false
-    if (props.value === true || props.value === 'true') {
+    if (props.value === true || props.value === 1) {
       this.el.checked = true
     }
   }
