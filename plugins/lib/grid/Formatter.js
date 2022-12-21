@@ -4,6 +4,8 @@ export const DateFormatter = (obj) => {
 
 export const GLOBAL_CODES = {
   codes: [],
+  // 공통코드가 아니라서 중복 가능성이 있어 따로 유지함
+  company: [],
   setCodes (codes) {
     codes.forEach((e) => {
       this.codes[e.codeId] = e.val
@@ -11,6 +13,14 @@ export const GLOBAL_CODES = {
   },
   getCode (key) {
     return this.codes[key]
+  },
+  setCompany (company) {
+    company.forEach((e) => {
+      this.company[e.value] = e.text
+    })
+  },
+  getCompany (key) {
+    return this.company[key]
   }
 }
 
@@ -26,4 +36,8 @@ export const YNFormatter = (obj) => {
 export const MulitLanguageFormatter = (obj) => {
   if (obj.value && obj.value.length > 0) { return obj.value[0].val }
   return ''
+}
+
+export const CompanyFormatter = (obj) => {
+  return GLOBAL_CODES.getCompany(obj.value)
 }

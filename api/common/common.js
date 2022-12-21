@@ -10,6 +10,11 @@ export default axios => ({
     })
     return result
   },
+  async getCompanyCodes () {
+    const result = await axios.get('/api/v1.0/company/codes')
+    GLOBAL_CODES.setCompany(result.data)
+    return result
+  },
   /**
    * Map을 이용하는 경우 1=>true
    * Boolean true
