@@ -6,6 +6,7 @@ export const GLOBAL_CODES = {
   codes: [],
   // 공통코드가 아니라서 중복 가능성이 있어 따로 유지함
   company: [],
+  department: [],
   setCodes (codes) {
     codes.forEach((e) => {
       this.codes[e.codeId] = e.val
@@ -21,6 +22,14 @@ export const GLOBAL_CODES = {
   },
   getCompany (key) {
     return this.company[key]
+  },
+  setDepartment (department) {
+    department.forEach((e) => {
+      this.department[e.value] = e.text
+    })
+  },
+  getDepartment (key) {
+    return this.department[key]
   }
 }
 
@@ -40,4 +49,8 @@ export const MulitLanguageFormatter = (obj) => {
 
 export const CompanyFormatter = (obj) => {
   return GLOBAL_CODES.getCompany(obj.value)
+}
+
+export const DepartmentFormatter = (obj) => {
+  return GLOBAL_CODES.getDepartment(obj.value)
 }

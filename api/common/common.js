@@ -15,6 +15,11 @@ export default axios => ({
     GLOBAL_CODES.setCompany(result.data)
     return result
   },
+  async getDepartmentCodes () {
+    const result = await axios.get('/api/v1.0/department/codes')
+    GLOBAL_CODES.setDepartment(result.data)
+    return result
+  },
   /**
    * Map을 이용하는 경우 1=>true
    * Boolean true
