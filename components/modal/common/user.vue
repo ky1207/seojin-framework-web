@@ -7,7 +7,7 @@
       <button type="button" class="btn btn-primary" @click="list">
         조회
       </button>
-      <button type="button" class="btn btn-primary">
+      <button type="button" class="btn btn-primary" @click="confirm">
         확인
       </button>
       <button type="button" class="btn btn-secondary" @click="close">
@@ -100,13 +100,9 @@ export default {
     const result = await this.$api.common.getDepartmentCodes()
     this.common = { DEPARTMENT: result.data }
   },
-  mounted () {
-
-  },
   methods: {
     open () {
       this.$refs.modal.show()
-      this.$refs.grid.invoke('refreshLayout')
       return new Promise((resolve, reject) => {
         this.resolve = resolve
         this.reject = reject
@@ -115,6 +111,11 @@ export default {
     async list () {
       const result = await this.$api.system.user.list(this.search)
       this.gridProps.data = result.data
+      // TODO : event 트리걸 해결해야함.
+      this.$refs.grid.invoke('refreshLayout')
+    },
+    confirm () {
+
     },
     close () {
       this.$refs.modal.hide()
