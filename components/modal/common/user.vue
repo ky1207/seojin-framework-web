@@ -99,6 +99,13 @@ export default {
   async created () {
     const result = await this.$api.common.getDepartmentCodes()
     this.common = { DEPARTMENT: result.data }
+
+    this.$nuxt.$on('modal.show', () => {
+      this.$refs.grid.invoke('refreshLayout')
+    })
+  },
+  beforeDestroy () {
+    this.$nuxt.$off('modal.show')
   },
   methods: {
     open () {
@@ -111,8 +118,6 @@ export default {
     async list () {
       const result = await this.$api.system.user.list(this.search)
       this.gridProps.data = result.data
-      // TODO : event 트리걸 해결해야함.
-      this.$refs.grid.invoke('refreshLayout')
     },
     confirm () {
 

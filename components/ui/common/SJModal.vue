@@ -46,6 +46,9 @@ export default {
   methods: {
     show () {
       this.w.show()
+      setTimeout(() => {
+        this.$nuxt.$emit('modal.show')
+      }, 200)
     },
     hide () {
       this.w.hide()
