@@ -1,56 +1,51 @@
 <template>
   <SJModal ref="modal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 id="exampleModalLabel" class="modal-title">
-            Modal title
-          </h5>
-          <button type="button" class="btn-close" aria-label="Close" @click="close()" />
-        </div>
-        <div class="modal-body">
-          <SJForm ref="form">
-            <SJInput
-              id="name"
-              v-model="test"
-              :name="$t('sample')"
-              type="text"
-              rules="required"
-              placeholder="입력하세요"
-            />
-            <SJStepper
-              id="stepper"
-              v-model="counter"
-              name="stepper"
-              rules="required|min_value:2"
-            /> {{ counter }}
-            <SJSelect
-              id="select"
-              v-model="selected"
-              :options="options"
-              name="selectBox"
-              rules="required"
-            />
-            <SJDatePicker id="date" v-model="current" name="date" /> {{ current }}
-            <SJEditor id="editor" v-model="item.content" name="내용" rules="required" />
-            <SJTextarea
-              id="textarea"
-              v-model="item.content"
-              name="textarea"
-              rules="required"
-            />
-          </SJForm>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" @click="close()">
-            Close
-          </button>
-          <button type="button" class="btn btn-primary" @click="save()">
-            Save changes
-          </button>
-        </div>
-      </div>
-    </div>
+    <template #title>
+      Modal title
+    </template>
+
+    <template #default>
+      <SJForm ref="form">
+        <SJInput
+          id="name"
+          v-model="test"
+          :name="$t('sample')"
+          type="text"
+          rules="required"
+          placeholder="입력하세요"
+        />
+        <SJStepper
+          id="stepper"
+          v-model="counter"
+          name="stepper"
+          rules="required|min_value:2"
+        /> {{ counter }}
+        <SJSelect
+          id="select"
+          v-model="selected"
+          :options="options"
+          name="selectBox"
+          rules="required"
+        />
+        <SJDatePicker id="date" v-model="current" name="date" /> {{ current }}
+        <SJEditor id="editor" v-model="item.content" name="내용" rules="required" />
+        <SJTextarea
+          id="textarea"
+          v-model="item.content"
+          name="textarea"
+          rules="required"
+        />
+      </SJForm>
+    </template>
+
+    <template #footer>
+      <button type="button" class="btn btn-secondary" @click="close()">
+        Close
+      </button>
+      <button type="button" class="btn btn-primary" @click="save()">
+        Save changes
+      </button>
+    </template>
   </SJModal>
 </template>
 
@@ -76,7 +71,7 @@ export default {
     this.options = [{ value: 1, text: '사과' }, { value: 2, text: '바나나' }]
   },
   methods: {
-    open (params) {
+    open () {
       this.$refs.modal.show()
       return new Promise((resolve, reject) => {
         this.resolve = resolve
