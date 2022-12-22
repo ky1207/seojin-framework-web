@@ -2,6 +2,7 @@ import code from '~/api/system/code'
 import program from '~/api/system/program'
 import menu from '~/api/system/menu'
 import authority from '~/api/system/authority'
+import user from '~/api/system/user'
 import common from '~/api/common/common'
 import sample from '~/api/sample/sample'
 
@@ -11,7 +12,8 @@ export default ({ $axios }, inject) => {
       code: code($axios),
       program: program($axios),
       menu: menu($axios),
-      authority: authority($axios)
+      authority: authority($axios),
+      user: user($axios)
     },
     common: common($axios),
     sample: sample($axios)

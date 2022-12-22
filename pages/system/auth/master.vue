@@ -143,7 +143,7 @@
           </div>
           <div class="col-auto">
             <button class="btn btn-outline-dark" @click="addUser">
-              추가 <i class="bi bi-file-plus" />
+              사용자추가 <i class="bi bi-file-plus" />
             </button>
             <button class="btn btn-outline-dark" @click="removeRow">
               삭제 <i class="bi bi-file-minus" />
@@ -157,6 +157,7 @@
         :columns="detailGrid.columns"
         :options="detailGrid.options"
       />
+      <CommonUser ref="userModal" />
     </template>
   </SJSearchLRLayout>
 </template>
@@ -255,8 +256,12 @@ export default {
         Data: []
       }
     },
-    addUser () {
-      this.$refs.detail.invoke('appendRow')
+    async addUser () {
+      const response = await this.$refs.userModal.open()
+      if (response) {
+        console.log(response)
+      }
+      // this.$refs.detail.invoke('appendRow')
     },
     removeRow () {
       this.$refs.detail.invoke('removeCheckedRows', false)
