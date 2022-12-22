@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row pagetitle mt-1">
-      <div class="col">
+      <div v-if="!disabledNavigator" class="col">
         <h1>Dashboard</h1>
         <nav>
           <ol class="breadcrumb">
@@ -42,3 +42,15 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    disabledNavigator: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
+
+  }
+}
+</script>
