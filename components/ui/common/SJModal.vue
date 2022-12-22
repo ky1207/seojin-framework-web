@@ -13,7 +13,9 @@
           <h5 id="exampleModalLabel" class="modal-title">
             <slot name="title" />
           </h5>
-          <button type="button" class="btn-close" aria-label="Close" @click="hide()" />
+          <div>
+            <slot name="button" />
+          </div>
         </div>
         <div class="modal-body">
           <slot />
