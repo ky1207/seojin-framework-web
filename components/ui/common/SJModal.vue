@@ -7,7 +7,7 @@
     data-bs-keyboard="false"
     aria-hidden="true"
   >
-    <div class="modal-dialog">
+    <div class="modal-dialog" :class="size">
       <div class="modal-content">
         <div class="modal-header">
           <h5 id="exampleModalLabel" class="modal-title">
@@ -27,6 +27,12 @@
 </template>
 <script>
 export default {
+  props: {
+    size: {
+      type: String,
+      default: '' // modal-xl,modal-lg,modal-sm
+    }
+  },
   data () {
     return {
       w: null
