@@ -208,6 +208,11 @@ export default {
             url: '/system/auth/master'
           },
           {
+            id: 6,
+            name: '메뉴관리',
+            url: '/system/master/menu'
+          },
+          {
             id: 10,
             name: '서진시스템',
             url: '/iframe/http:%2F%2Fseojinsystem.net%2F/%EC%84%9C%EC%A7%84%EC%8B%9C%EC%8A%A4%ED%85%9C'
