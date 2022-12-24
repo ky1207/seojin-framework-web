@@ -89,6 +89,7 @@ export default {
           }
         ],
         options: {
+          rowHeaders: ['rowNum', 'checkbox'],
           bodyHeight: 450
         }
       },
@@ -120,11 +121,13 @@ export default {
       this.gridProps.data = result.data
     },
     confirm () {
-
+      const data = this.$refs.grid.invoke('getCheckedRows')
+      this.resolve(data)
+      this.$refs.modal.hide()
     },
     close () {
       this.$refs.modal.hide()
-      this.resolve(false) // response의 응답
+      this.resolve([]) // response의 응답
     }
   }
 }

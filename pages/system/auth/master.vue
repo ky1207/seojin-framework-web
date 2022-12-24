@@ -257,11 +257,14 @@ export default {
       }
     },
     async addUser () {
-      const response = await this.$refs.userModal.open()
-      if (response) {
-        console.log(response)
+      const data = await this.$refs.userModal.open()
+      if (data.length > 0) {
+        console.log(data)
+        this.$refs.detail.invoke()
+
+        this.$refs.detail.invoke('appendRows', data)
+        this.$notify.success('추가되었습니다.')
       }
-      // this.$refs.detail.invoke('appendRow')
     },
     removeRow () {
       this.$refs.detail.invoke('removeCheckedRows', false)
