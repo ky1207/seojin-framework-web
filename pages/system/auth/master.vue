@@ -136,7 +136,7 @@
           </div>
         </div>
       </SJForm>
-      <h5 class="card-title">
+      <h5 v-if="isUpdate" class="card-title">
         <div class="row align-items-center">
           <div class="col">
             권한그룹별 담당
@@ -152,6 +152,7 @@
         </div>
       </h5>
       <SJGrid
+        v-if="isUpdate"
         ref="detail"
         v-model="detailGrid.data"
         :columns="detailGrid.columns"
@@ -257,13 +258,17 @@ export default {
       }
     },
     async addUser () {
+      if (!this.isUpdate) {
+        this.$notify.info('권한그룹을 선택하세요')
+        return false
+      }
       const data = await this.$refs.userModal.open()
       if (data.length > 0) {
-        console.log(data)
-        this.$refs.detail.invoke()
-
-        this.$refs.detail.invoke('appendRows', data)
-        this.$notify.success('추가되었습니다.')
+        const filtered = data.filter((e) => {
+          return !this.$refs.detail.invoke('getData').some(d => d.loginId === e.loginId)
+        })
+        this.$refs.detail.invoke('appendRows', filtered)
+        this.$notify.success(`${filtered.length}명이 추가되었습니다.`)
       }
     },
     removeRow () {

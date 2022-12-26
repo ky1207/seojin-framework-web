@@ -76,8 +76,8 @@ export default {
             header: '사용자명'
           },
           {
-            name: 'deptId',
-            header: '부서'
+            name: 'deptName',
+            header: '부서명'
           },
           {
             name: 'pos',
