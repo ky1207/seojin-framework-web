@@ -8,7 +8,7 @@
       :class="disabledValidation?'':classes"
       @change="handleInput"
     >
-      <option value="">
+      <option v-if="!disabledFirstMessage" value="">
         선택하세요
       </option>
       <option v-for="option in options" :key="option[itemValue]" :value="option[itemValue]">
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import Utils from '~/api/utils'
 export default {
   props: {
     value: {
@@ -55,6 +56,10 @@ export default {
     itemValue: {
       type: String,
       default: 'value'
+    },
+    disabledFirstMessage: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -63,7 +68,7 @@ export default {
         return this.value
       },
       set (val) {
-        this.$emit('input', val)
+        if (!Utils.isEmpty(val)) { this.$emit('input', val) }
       }
     }
   },
