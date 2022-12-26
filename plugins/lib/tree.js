@@ -1,20 +1,19 @@
 const tree = {
   treeGridSort (oriList, root, id, p, f) {
     const copyList = []
-    const rootId = root ?? '00000'
-    const idName = id ?? 'menuNo'
-    const parentName = p ?? 'upMenuNo'
-    const fullPathMenuNo = f ?? 'fullPathMenuNo'
-
+    const rootId = root ?? 'M00000000000'
+    const idName = id ?? 'menuId'
+    const parentName = p ?? 'upperMenuId'
+    const level = f ?? 'level'
     for (let i = 0; i < oriList.length; i++) {
       if (!oriList[i]) { break }
       if (oriList[i][parentName] === rootId) {
         const obj = (oriList.splice(i, 1))[0]
-        obj.depth = obj[fullPathMenuNo]?.split('^').length
+        obj.depth = obj[level]
         i--
-        const childList = this.treeGridSort(oriList, obj[idName], idName, parentName, fullPathMenuNo)
+        const childList = this.treeGridSort(oriList, obj[idName], idName, parentName, level)
         if (childList.length > 0) {
-          obj.children = childList
+          obj._children = childList
         }
         copyList.push(obj)
       }
