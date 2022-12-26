@@ -14,6 +14,7 @@ const tree = {
         const childList = this.treeGridSort(oriList, obj[idName], idName, parentName, level)
         if (childList.length > 0) {
           obj._children = childList
+          obj._attributes = { expanded: true }
         }
         copyList.push(obj)
       }
