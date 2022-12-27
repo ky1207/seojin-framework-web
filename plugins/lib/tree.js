@@ -1,7 +1,7 @@
 const tree = {
   treeGridSort (oriList, root, id, p, f) {
     const copyList = []
-    const rootId = root ?? 'M00000000000'
+    const rootId = root ?? '00000'
     const idName = id ?? 'menuId'
     const parentName = p ?? 'upperMenuId'
     const level = f ?? 'level'
@@ -38,6 +38,10 @@ const tree = {
       }
     }
     return null
+  },
+  getNewNode (node) {
+    node._attributes = { expanded: true }
+    return node
   }
 }
 
