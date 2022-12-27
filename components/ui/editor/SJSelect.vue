@@ -1,8 +1,8 @@
 <template>
   <ValidationProvider v-slot="{ errors,classes }" :rules="rules" :name="name" tag="div" :disabled="disabledValidation">
     <select
-      :aria-describedby="id+'-feedback'"
       :value="selected"
+      :aria-describedby="id+'-feedback'"
       class="form-select"
       aria-label="Default select example"
       :class="disabledValidation?'':classes"
@@ -69,6 +69,13 @@ export default {
       },
       set (val) {
         if (!Utils.isEmpty(val)) { this.$emit('input', val) }
+      }
+    }
+  },
+  watch: {
+    options () {
+      if (Utils.isEmpty(this.$props.value) && this.$props.disabledFirstMessage) {
+        this.selected = this.$props.options[0][this.$props.itemValue]
       }
     }
   },
