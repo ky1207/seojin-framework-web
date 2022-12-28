@@ -24,7 +24,7 @@
         <div class="col-md-1">
           <SJSelect
             id="menuGroup"
-            v-model="search.menuGroup"
+            v-model="search.menuGroupId"
             name="메뉴그룹"
             :options="common.MENU_GROUP"
             item-text="val"
@@ -53,7 +53,14 @@
     </template>
 
     <template #left>
-      <SJGrid ref="menuGrid" v-model="menus.data" :columns="menus.columns" :options="menus.options" />
+      <SJGrid
+        ref="menuGrid"
+        v-model="menus.data"
+        :columns="menus.columns"
+        :options="menus.options"
+        @click="read"
+        @drop="dropped"
+      />
     </template>
 
     <template #rightTitle>
@@ -73,72 +80,72 @@
             />
           </div>
           <div class="col-md-4">
-            <label>사용여부</label>
-            <SJSelect
-              id="form_useFlag"
-              v-model="auth.useFlag"
-              name="사용여부"
-              :options="common.USE_YN"
-              rules="required"
+            <label>메뉴아이콘</label>
+            <SJInput
+              id="form_menuIcon"
+              v-model="menu.iconName"
+              name="메뉴아이콘"
+              type="text"
+              disabled-validation
             />
           </div>
         </div>
         <div class="row">
           <div class="col-md-4">
-            <label>권한코드</label>
+            <label>프로그램명</label>
+            <SJSelect
+              id="form_company"
+              v-model="menu.progId"
+              name="프로그램명"
+              data-live-search
+              :options="common.PROGRAM"
+              rules="required"
+            />
+          </div>
+
+          <div class="col-md-4">
+            <label>메뉴코드</label>
             <SJInput
-              id="form_authGroupId"
-              v-model="auth.authGroupId"
-              name="권한코드"
+              id="form_menuId"
+              v-model="menu.menuId"
+              name="메뉴코드"
               type="text"
               disabled-validation
               disabled
             />
           </div>
-
           <div class="col-md-4">
-            <label>권한명</label>
+            <label>App메뉴코드</label>
             <SJInput
-              id="form_authName"
-              v-model="auth.authName"
-              name="권한명"
+              id="form_applnMenuCode"
+              v-model="menu.applnMenuCode"
+              name="App메뉴코드"
               type="text"
-              rules="required"
-            />
-          </div>
-          <div class="col-md-4">
-            <label>Default권한</label>
-            <SJSelect
-              id="form_defaultFlag"
-              v-model="auth.defaultAuthFlag"
-              name="Default권한"
-              :options="common.USE_YN"
               disabled-validation
             />
           </div>
           <div class="col-md-12 mt-3">
-            <label>비고</label>
-            <SJTextarea id="form_desc" v-model="auth.remark" name="비고" disabled-validation />
+            <label>메뉴명</label>
+            <SJMultiInput id="form_lname" v-model="menu.langs" name="메뉴명" type="text" rules="required" />
           </div>
         </div>
       </SJForm>
-      <h5 v-if="isUpdate" class="card-title">
+      <h5 class="card-title">
         <div class="row align-items-center">
           <div class="col">
             권한그룹별 담당
           </div>
           <div class="col-auto">
-            <button class="btn btn-outline-dark" @click="addUser">
+            <button class="btn btn-outline-dark">
               사용자추가 <i class="bi bi-file-plus" />
             </button>
-            <button class="btn btn-outline-dark" @click="removeRow">
+            <button class="btn btn-outline-dark">
               삭제 <i class="bi bi-file-minus" />
             </button>
           </div>
         </div>
       </h5>
       <SJGrid
-        v-if="isUpdate"
         ref="detail"
         v-model="auth.data"
         :columns="auth.columns"
@@ -156,8 +163,7 @@ export default {
   mixins: [MENU, ACTION],
   data () {
     return {
-      isUpdate: false,
-      common: {},
+      common: { },
       search: {},
       menu: {},
       menus: {
@@ -171,31 +177,65 @@ export default {
         options: {
           treeColumnOptions: {
             name: 'menuName'
-          }
+          },
+          rowHeaders: ['rowNum', 'checkbox'],
+          draggable: true
         }
       },
       auth: {
         data: {},
-        columns: []
-      },
-      options: {
+        columns: [],
+        options: {
 
+        }
       }
     }
   },
   async created () {
-    const codes = await this.$api.common.getCommonCodes(['MENU_GROUP'])
-    this.common.USE_YN = this.$api.common.getYNCodes()
-    const company = await this.$api.common.getCompanyCodes()
-    this.common = { ...codes.data, USE_YN: this.$api.common.getYNCodes(), COMPANY: company.data }
+    await Promise.all([this.$api.common.getCommonCodes(['MENU_GROUP']),
+      this.$api.common.getCompanyCodes(),
+      this.$api.common.getProgramCodes()])
+      .then((response) => {
+        this.common = {
+          ...response[0].data,
+          COMPANY: response[1].data,
+          PROGRAM: response[2].data,
+          USE_YN: this.$api.common.getYNCodes()
+
+        }
+      })
     await this.ACTION_REGISTRY().searchClick()
   },
   methods: {
-    addMenu () {
+    async read (e) {
+      if (e.rowKey === undefined) { return }
+      const node = this.$refs.menuGrid.invoke('getRow', e.rowKey)
+      const result = await this.$api.system.menu.load(node.menuId)
+      this.menu = result.data
+    },
+    dropped (e) {
+      // rowKey: dropped 된 위치
+      // targetRowKey: 상위
+      // appended: child여부
 
+      console.log(e)
+    },
+    addMenu () {
+      const node = this.$refs.menuGrid.invoke('getFocusedCell')
+      if (node.rowKey === null) {
+        this.$notify.warning('메뉴를 선택하세요')
+        return false
+      }
+      const parent = this.$refs.menuGrid.invoke('getRow', node.rowKey)
+      const newNode = this.$tree.getNewNode({ menuName: '새메뉴', upperMenuId: parent.upperMenuId, level: parent.level + 1 })
+      this.menu = newNode
+      this.$refs.menuGrid.invoke('appendTreeRow', newNode, { parentRowKey: node.rowKey, focus: true })
+      this.$refs.menuGrid.invoke('expand', node.rowKey, true)
+
+      // 바로 임시저장하고 로딩한다.
     },
     deleteMenu () {
-
+      // 바로 삭제한다.
     },
     ACTION_REGISTRY () {
       return {
@@ -207,8 +247,17 @@ export default {
             Data: this.$tree.treeGridSort(result.data.Data)
           }
         },
-        saveClick: () => {
-
+        saveClick: async () => {
+          if (!this.menu.menuId) {
+            this.$notify.warning('메뉴를 선택하세요')
+            return false
+          }
+          const result = await this.$refs.form.validate()
+          if (result) {
+            await this.$api.system.menu.update(this.menu.menuId, this.menu)
+            this.$notify.success('처리되었습니다.')
+            await this.ACTION_REGISTRY().searchClick()
+          }
         }
       }
     }

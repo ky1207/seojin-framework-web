@@ -20,6 +20,10 @@ export default axios => ({
     GLOBAL_CODES.setDepartment(result.data)
     return result
   },
+  async getProgramCodes () {
+    const result = await axios.get('/api/v1.0/program/codes')
+    return result
+  },
   /**
    * Map을 이용하는 경우 1=>true
    * Boolean true
