@@ -15,6 +15,7 @@
             name="회사"
             :options="common.COMPANY"
             disabled-validation
+            disabled-first-message
           />
         </div>
         <div class="col-md-1 text-center">
