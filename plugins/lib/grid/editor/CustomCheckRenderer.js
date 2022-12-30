@@ -1,13 +1,15 @@
 export class CustomCheckRenderer {
   constructor (props) {
     let el
-    if (props.value === 'N') {
+    if (props.value === 'false') {
       el = document.createElement('div')
-      el.innerText = props.value
+      el.innerText = '-'
     } else {
       el = document.createElement('input')
       el.type = 'checkbox'
-      el.value = props.value
+      el.value = props.value === '1' ? 'true' : 'false'
+
+      props.grid.dispatch('setValue', props.rowKey, props.columnInfo.name, props.value === '1')
       el.addEventListener('change', (e) => {
         const rowKey = props.rowKey
         const name = props.columnInfo.name
@@ -26,7 +28,7 @@ export class CustomCheckRenderer {
 
   render (props) {
     this.el.checked = false
-    if (props.value === true || props.value === 1 || props.value === '1') {
+    if (props.value === true || props.value === 1) {
       this.el.checked = true
     }
   }
