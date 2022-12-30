@@ -139,7 +139,7 @@
 </template>
 <script>
 import { MENU, ACTION } from '~/mixins'
-import { CodeFormatter, MulitLanguageFormatter } from '~/plugins/lib/grid/Formatter'
+import { MulitLanguageFormatter } from '~/plugins/lib/grid/Formatter'
 import { CustomCheckBoxRenderer } from '~/plugins/lib/grid/editor/CustomCheckBoxRenderer'
 import { CustomMultiLanguageEditor } from '~/plugins/lib/grid/editor/CustomMultiLanguageEditor'
 
@@ -156,18 +156,13 @@ export default {
         data: {},
         columns: [
           {
-            name: 'codeGroupId',
-            header: this.$t('page.code.column.001')
+            name: 'codeGroupId'
           },
           {
-            name: 'codeGroupName',
-            header: this.$t('page.code.column.002')
-
+            name: 'codeGroupName'
           },
           {
-            name: 'systemCodeType',
-            header: this.$t('page.code.column.003'),
-            formatter: CodeFormatter
+            name: 'systemCodeType'
           },
           { name: 'useFlag' }
         ]
@@ -176,8 +171,7 @@ export default {
         data: {},
         columns: [
           {
-            name: 'codeId',
-            header: this.$t('page.code.column.010')
+            name: 'codeId'
           },
           {
             name: 'langs',
@@ -199,35 +193,30 @@ export default {
           },
           {
             name: 'codeDesc',
-            header: this.$t('page.code.column.012'),
             editor: {
               type: 'text'
             }
           },
           {
             name: 'rsvVal1',
-            header: this.$t('page.code.column.013'),
             editor: {
               type: 'text'
             }
           },
           {
             name: 'rsvVal2',
-            header: this.$t('page.code.column.014'),
             editor: {
               type: 'text'
             }
           },
           {
             name: 'rsvVal3',
-            header: this.$t('page.code.column.015'),
             editor: {
               type: 'text'
             }
           },
           {
             name: 'rsvVal4',
-            header: this.$t('page.code.column.016'),
             editor: {
               type: 'text'
             }
@@ -235,7 +224,6 @@ export default {
           },
           {
             name: 'rsvVal5',
-            header: this.$t('page.code.column.017'),
             editor: {
               type: 'text'
             }

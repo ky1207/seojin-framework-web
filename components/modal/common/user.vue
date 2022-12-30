@@ -68,24 +68,19 @@ export default {
         data: {},
         columns: [
           {
-            name: 'loginId',
-            header: '로그인ID'
+            name: 'loginId'
           },
           {
-            name: 'userName',
-            header: '사용자명'
+            name: 'userName'
           },
           {
-            name: 'deptName',
-            header: '부서명'
+            name: 'deptName'
           },
           {
-            name: 'pos',
-            header: '직급'
+            name: 'pos'
           },
           {
-            name: 'email',
-            header: 'EMail'
+            name: 'email'
           }
         ],
         options: {

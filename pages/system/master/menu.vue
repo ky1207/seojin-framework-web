@@ -183,75 +183,47 @@ export default {
         data: {},
         columns: [
           {
-            name: 'authGroupId',
-            header: '권한그룹코드'
+            name: 'authGroupId'
           },
           {
-            name: 'authName',
-            header: '권한그룹명'
+            name: 'authName'
           },
           {
             name: 'inqryAuth',
-            header: '조회',
-            renderer: CustomCheckRenderer,
-            align: 'center',
-            filter: null
+            renderer: CustomCheckRenderer
+
           },
           {
             name: 'saveAuth',
-            header: '저장',
-            align: 'center',
-            renderer: CustomCheckRenderer,
-            filter: null
+            renderer: CustomCheckRenderer
           },
           {
             name: 'excelAuth',
-            header: '엑셀',
-            renderer: CustomCheckRenderer,
-            align: 'center',
-            filter: null
+            renderer: CustomCheckRenderer
           },
           {
             name: 'delAuth',
-            header: '삭제',
-            renderer: CustomCheckRenderer,
-            align: 'center',
-            filter: null
+            renderer: CustomCheckRenderer
           },
           {
             name: 'fn1Auth',
-            header: 'FN1',
-            renderer: CustomCheckRenderer,
-            align: 'center',
-            filter: null
+            renderer: CustomCheckRenderer
           },
           {
             name: 'fn2Auth',
-            header: 'FN2',
-            renderer: CustomCheckRenderer,
-            align: 'center',
-            filter: null
+            renderer: CustomCheckRenderer
           },
           {
             name: 'fn3Auth',
-            header: 'FN3',
-            renderer: CustomCheckRenderer,
-            align: 'center',
-            filter: null
+            renderer: CustomCheckRenderer
           },
           {
             name: 'fn4Auth',
-            header: 'FN4',
-            renderer: CustomCheckRenderer,
-            align: 'center',
-            filter: null
+            renderer: CustomCheckRenderer
           },
           {
             name: 'fn5Auth',
-            header: 'FN5',
-            renderer: CustomCheckRenderer,
-            align: 'center',
-            filter: null
+            renderer: CustomCheckRenderer
           }
         ],
         options: {

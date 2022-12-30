@@ -38,7 +38,6 @@
 // 메뉴 화면
 // 기능권한버튼을 사용하는 경우
 import { MENU, ACTION } from '~/mixins'
-import { CustomCheckBoxRenderer } from '~/plugins/lib/grid/editor/CustomCheckBoxRenderer'
 
 export default {
   mixins: [MENU, ACTION],
@@ -55,7 +54,6 @@ export default {
         columns: [
           {
             name: 'progName',
-            header: '프로그램명', // this.$t('page.code.column.001')
             editor: {
               type: 'text'
             },
@@ -64,7 +62,6 @@ export default {
           },
           {
             name: 'progPath',
-            header: '경로',
             editor: {
               type: 'text'
             },
@@ -72,79 +69,39 @@ export default {
             validation: { required: true }
           },
           {
-            name: 'authCheckFlag',
-            header: '권한체크',
-            renderer: CustomCheckBoxRenderer,
-            align: 'center',
-            filter: null
+            name: 'authCheckFlag'
           },
           {
-            name: 'inqryAuth',
-            header: '조회',
-            renderer: CustomCheckBoxRenderer,
-            align: 'center',
-            filter: null
+            name: 'inqryAuth'
           },
           {
-            name: 'saveAuth',
-            header: '저장',
-            align: 'center',
-            renderer: CustomCheckBoxRenderer,
-            filter: null
+            name: 'saveAuth'
           },
           {
-            name: 'excelAuth',
-            header: '엑셀',
-            renderer: CustomCheckBoxRenderer,
-            align: 'center',
-            filter: null
+            name: 'excelAuth'
           },
           {
-            name: 'delAuth',
-            header: '삭제',
-            renderer: CustomCheckBoxRenderer,
-            align: 'center',
-            filter: null
+            name: 'delAuth'
           },
           {
-            name: 'fn1Auth',
-            header: 'FN1',
-            renderer: CustomCheckBoxRenderer,
-            align: 'center',
-            filter: null
+            name: 'fn1Auth'
+
           },
           {
-            name: 'fn2Auth',
-            header: 'FN2',
-            renderer: CustomCheckBoxRenderer,
-            align: 'center',
-            filter: null
+            name: 'fn2Auth'
           },
           {
-            name: 'fn3Auth',
-            header: 'FN3',
-            renderer: CustomCheckBoxRenderer,
-            align: 'center',
-            filter: null
+            name: 'fn3Auth'
           },
           {
-            name: 'fn4Auth',
-            header: 'FN4',
-            renderer: CustomCheckBoxRenderer,
-            align: 'center',
-            filter: null
+            name: 'fn4Auth'
+
           },
           {
-            name: 'fn5Auth',
-            header: 'FN5',
-            renderer: CustomCheckBoxRenderer,
-            align: 'center',
-            filter: null
+            name: 'fn5Auth'
           },
           {
             name: 'remark',
-            header: '비고',
-            filter: null,
             editor: {
               type: 'text'
             },

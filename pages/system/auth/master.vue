@@ -166,7 +166,6 @@
 
 <script>
 import { ACTION, MENU } from '~/mixins'
-import { YNFormatter } from '~/plugins/lib/grid/Formatter'
 
 export default {
   mixins: [MENU, ACTION],
@@ -183,18 +182,13 @@ export default {
             name: 'coId'
           },
           {
-            name: 'authGroupId',
-            header: '권한코드'
+            name: 'authGroupId'
           },
           {
-            name: 'authName',
-            header: '권한명'
+            name: 'authName'
           },
           {
-            name: 'defaultAuthFlag',
-            header: '기본권한',
-            formatter: YNFormatter,
-            align: 'center'
+            name: 'defaultAuthFlag'
           },
           {
             name: 'useFlag'
@@ -208,20 +202,16 @@ export default {
         data: {},
         columns: [
           {
-            name: 'loginId',
-            header: '계정'
+            name: 'loginId'
           },
           {
-            name: 'userName',
-            header: '사용자명'
+            name: 'userName'
           },
           {
-            name: 'deptName',
-            header: '부서명'
+            name: 'deptName'
           },
           {
-            name: 'email',
-            header: 'email'
+            name: 'email'
           }
         ],
         options: {

@@ -6,8 +6,7 @@ import 'tui-time-picker/dist/tui-time-picker.css'
 import 'tui-pagination/dist/tui-pagination.css'
 import TuiGrid from 'tui-grid'
 import { Grid as VueGrid } from '@toast-ui/vue-grid'
-
-import { CompanyFormatter, DateFormatter, YNFormatter } from '~/plugins/lib/grid/Formatter.js'
+import columns from '~/plugins/lib/grid/columns'
 
 TuiGrid.setLanguage('ko')
 // default나 clean이 아니면 적용 안됨
@@ -31,48 +30,7 @@ export default (ctx, inject) => {
     TuiGrid.setLanguage('vi', {})
   }
 
-  const grid = {
-    defined: {
-      title: {
-        header: ctx.i18n.t('grid.title'),
-        name: 'title'
-      },
-      insertDate: {
-        header: ctx.i18n.t('grid.insertDate'),
-        name: 'insertDate',
-        formatter: DateFormatter,
-        align: 'center'
-      },
-      useFlag: {
-        header: ctx.i18n.t('grid.useFlag'),
-        name: 'useFlag',
-        formatter: YNFormatter,
-        align: 'center'
-      },
-      sortSeq: {
-        name: 'sortSeq',
-        header: ctx.i18n.t('grid.sortSeq')
-      },
-      coId: {
-        header: ctx.i18n.t('grid.coId'),
-        formatter: CompanyFormatter
-      }
-
-    },
-    getColumns: (c) => {
-      c.forEach((e, idx) => {
-        c[idx] = {
-          ...{
-            ...grid.defined[e.name],
-            filter: 'select',
-            sortable: 'true'
-          },
-          ...e
-        }
-      })
-      return c
-    }
-  }
+  const grid = columns(ctx)
 
   inject('grid', grid)
 }
