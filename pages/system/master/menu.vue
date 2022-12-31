@@ -100,6 +100,7 @@
               data-live-search
               :options="common.PROGRAM"
               rules="required"
+              @change="changeProgram"
             />
           </div>
 
@@ -191,7 +192,6 @@ export default {
           {
             name: 'inqryAuth',
             renderer: CustomCheckRenderer
-
           },
           {
             name: 'saveAuth',
@@ -242,7 +242,6 @@ export default {
           COMPANY: response[1].data,
           PROGRAM: response[2].data,
           USE_YN: this.$api.common.getYNCodes()
-
         }
       })
     await this.ACTION_REGISTRY().searchClick()
@@ -256,15 +255,23 @@ export default {
       const node = this.$refs.menuGrid.invoke('getRow', e.rowKey)
       const result = await this.$api.system.menu.load(node.menuId)
       this.menu = result.data
-      await this._readProgramAuth(node.menuId, this.menu.progId)
+      await this._readProgramAuth(this.menu.menuId, this.menu.progId)
     },
     async _readProgramAuth (menuId, progId) {
-      this.auth.data = { Data: [] }
+      this.auth.data = { }
       if (Utils.isEmpty(progId)) {
         return
       }
       const result = await this.$api.system.menu.menuProgramAuth({ menuId, progId })
       this.auth.data = result.data
+    },
+    async changeProgram (e) {
+      await this._readProgramAuth(this.menu.menuId, e.target._value)
+    },
+    _resetForm () {
+      this.$refs.form.reset()
+      this.menu = {}
+      this.auth.data = {}
     },
     dropped (e) {
       // rowKey: dropped 된 위치
@@ -316,8 +323,8 @@ export default {
     ACTION_REGISTRY () {
       return {
         searchClick: async () => {
+          this._resetForm()
           const result = await this.$api.system.menu.list(this.search)
-
           this.menus.data = {
             Total: result.data.Total,
             Data: this.$tree.treeGridSort(result.data.Data)
