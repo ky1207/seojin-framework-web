@@ -59,10 +59,20 @@ export default ctx => ({
       header: 'Option5'
     },
     progName: {
-      header: '프로그램명'
+      header: '프로그램명',
+      editor: {
+        type: 'text'
+      },
+      width: 150,
+      validation: { required: true }
     },
     progPath: {
-      header: '경로'
+      header: '경로',
+      editor: {
+        type: 'text'
+      },
+      width: 300,
+      validation: { required: true }
     },
     authCheckFlag: {
       header: '권한체크',
@@ -126,6 +136,10 @@ export default ctx => ({
     },
     remark: {
       header: '비고',
+      editor: {
+        type: 'text'
+      },
+      width: 300,
       filter: null
     },
     authGroupId: {

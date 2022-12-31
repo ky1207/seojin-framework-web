@@ -53,20 +53,10 @@ export default {
         },
         columns: [
           {
-            name: 'progName',
-            editor: {
-              type: 'text'
-            },
-            width: 150,
-            validation: { required: true }
+            name: 'progName'
           },
           {
-            name: 'progPath',
-            editor: {
-              type: 'text'
-            },
-            width: 300,
-            validation: { required: true }
+            name: 'progPath'
           },
           {
             name: 'authCheckFlag'
@@ -85,7 +75,6 @@ export default {
           },
           {
             name: 'fn1Auth'
-
           },
           {
             name: 'fn2Auth'
@@ -95,17 +84,12 @@ export default {
           },
           {
             name: 'fn4Auth'
-
           },
           {
             name: 'fn5Auth'
           },
           {
-            name: 'remark',
-            editor: {
-              type: 'text'
-            },
-            width: 300
+            name: 'remark'
           }
         ]
       }
