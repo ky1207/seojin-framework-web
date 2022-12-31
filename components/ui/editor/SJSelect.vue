@@ -6,7 +6,8 @@
       class="form-select"
       aria-label="Default select example"
       :class="disabledValidation?'':classes"
-      @change="handleInput"
+      @input="handleInput"
+      @change="handleChange"
     >
       <option v-if="!disabledFirstMessage" value="">
         선택하세요
@@ -62,17 +63,16 @@ export default {
       default: false
     }
   },
-  computed: {
-    selected: {
-      get () {
-        return this.value
-      },
-      set (val) {
-        if (!Utils.isEmpty(val)) { this.$emit('input', val) }
-      }
-    }
+  data () {
+    return { selected: this.$props.value }
   },
   watch: {
+    value (newValue) {
+      this.selected = newValue
+    },
+    selected () {
+      this.$emit('input', this.selected)
+    },
     options () {
       if (Utils.isEmpty(this.$props.value) && this.$props.disabledFirstMessage) {
         this.selected = this.$props.options[0][this.$props.itemValue]
@@ -82,6 +82,9 @@ export default {
   methods: {
     handleInput (e) {
       this.selected = e.target.value
+    },
+    handleChange (e) {
+      this.$emit('change', e)
     }
   }
 }
