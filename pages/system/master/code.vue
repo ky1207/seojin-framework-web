@@ -262,9 +262,7 @@ export default {
     _resetForm () {
       this.$refs.form.reset()
       this.codeGroup = {}
-      this.detail.data = {
-        Data: []
-      }
+      this.detail.data = {}
     },
     appendRow () {
       if (!this.codeGroup.codeGroupId) {
@@ -301,6 +299,7 @@ export default {
         f5Click: () => {
         },
         searchClick: async () => {
+          this._resetForm()
           const result = await this.$api.system.code.list(this.search)
           this.large.data = result.data
         },

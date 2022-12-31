@@ -244,9 +244,7 @@ export default {
     _resetForm () {
       this.$refs.form.reset()
       this.auth = {}
-      this.detailGrid.data = {
-        Data: []
-      }
+      this.detailGrid.data = {}
     },
     async addUser () {
       if (!this.isUpdate) {
@@ -269,6 +267,7 @@ export default {
     ACTION_REGISTRY () {
       return {
         searchClick: async () => {
+          this._resetForm()
           const result = await this.$api.system.authority.list(this.search)
           this.authGrid.data = result.data
         },
