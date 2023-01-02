@@ -81,6 +81,10 @@ export default {
   },
   methods: {
     handleInput (e) {
+      if (Utils.isEmpty(e.target.value)) {
+        this.selected = null
+        return
+      }
       this.selected = e.target.value
     },
     handleChange (e) {
