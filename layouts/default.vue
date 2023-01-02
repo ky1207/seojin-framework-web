@@ -183,66 +183,13 @@ export default {
           closable: false
         }
       ],
-      menus: [
-        {
-          id: 1,
-          name: 'Home',
-          children: [{
-            id: 2,
-            name: this.$t('sample'),
-            url: '/'
-          },
-          {
-            id: 3,
-            name: '공통코드 관리',
-            url: '/system/master/code'
-          },
-          {
-            id: 4,
-            name: '프로그램 관리',
-            url: '/system/master/program'
-          },
-          {
-            id: 5,
-            name: '권한마스터',
-            url: '/system/auth/master'
-          },
-          {
-            id: 6,
-            name: '메뉴관리',
-            url: '/system/master/menu'
-          },
-          {
-            id: 10,
-            name: '서진시스템',
-            url: '/iframe/http:%2F%2Fseojinsystem.net%2F/%EC%84%9C%EC%A7%84%EC%8B%9C%EC%8A%A4%ED%85%9C'
-          }
-          ]
-        },
-        {
-          id: 11,
-          name: 'Second',
-          children: [{
-            id: 12,
-            name: 'Second child1'
-          },
-          {
-            id: 13,
-            name: 'Second child2',
-            url: '/13'
-          },
-          {
-            id: 14,
-            name: 'Second child3',
-            url: '/14'
-          }
-          ]
-        }, {
-          id: 21,
-          name: 'Third'
-        }
-      ]
+      menus: []
     }
+  },
+  async created () {
+    const result = await this.$api.common.menu()
+    this.menus = this.$tree.treeGridSort(result.data)[0]._children
+    console.log(this.menus)
   },
   mounted () {
     // 예제.. 추후 처리 컴포넌트로 처리해야함

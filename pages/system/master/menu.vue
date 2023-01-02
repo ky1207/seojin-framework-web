@@ -99,7 +99,7 @@
               name="프로그램명"
               data-live-search
               :options="common.PROGRAM"
-              rules="required"
+              disabled-validation
               @change="changeProgram"
             />
           </div>

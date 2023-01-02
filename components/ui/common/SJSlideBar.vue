@@ -1,18 +1,39 @@
 <template>
   <aside id="sidebar" class="sidebar">
-    <ul v-for="m in value" id="sidebar-nav" :key="m.id" class="sidebar-nav">
+    <ul v-for="m in value" id="sidebar-nav" :key="m.menuId" class="sidebar-nav">
       <li class="nav-item">
-        <a class="nav-link collapsed" :data-bs-target="'#'+m.name+'-collapse'" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide" /><span>  {{ m.name }}</span><i v-if="m.children" class="bi bi-chevron-down ms-auto" />
+        <a class="nav-link collapsed" :data-bs-target="'#'+m.menuId+'-collapse'" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide" /><span>  {{ m.menuName }}</span><i v-if="m._children" class="bi bi-chevron-down ms-auto" />
         </a>
-        <ul v-if="m.children" :id="m.name+'-collapse'" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li v-for="sub in m.children" :key="sub.id">
-            <nuxt-link :to="sub.url?sub.url:'/'" :class="isActive(sub.url)">
-              <i class="bi bi-circle" /> <span>{{ sub.name }}</span>
+      </li>
+      <ul v-if="m._children" :id="m.menuId+'-collapse'" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li v-for="sub in m._children" :key="sub.menuId">
+          <template v-if="sub._children">
+            <ul id="sub-sidebar-nav" class="sidebar-nav">
+              <li class="nav-item">
+                <a class="nav-link collapsed" :data-bs-target="'#'+sub.menuId+'-collapse'" data-bs-toggle="collapse" href="#">
+                  <i class="bi bi-menu-button-wide-fill" /><span>  {{ sub.menuName }}</span><i v-if="sub._children" class="bi bi-chevron-down ms-auto" />
+                </a>
+              </li>
+              <ul v-if="sub._children" :id="sub.menuId+'-collapse'" class="nav-content collapse " data-bs-parent="#sub-sidebar-nav">
+                <li v-for="sub2 in sub._children" :key="sub2.menuId">
+                  <nuxt-link :to="sub2.progPath?sub2.progPath:'/'" :class="isActive(sub2.progPath)">
+                    <i class="bi bi-circle" /> <span>{{ sub2.menuName }}</span>
+                  </nuxt-link>
+                </li>
+              </ul>
+            </ul>
+          </template>
+          <template v-else>
+            <nuxt-link :to="sub.progPath?sub.progPath:'/'" :class="isActive(sub.progPath)">
+              <i class="bi bi-circle" /> <span>{{ sub.menuName }}</span>
             </nuxt-link>
-          </li>
-        </ul>
-      </li><!-- End Components Nav -->
+          </template>
+          <!--          <nuxt-link :to="sub.progPath?sub.progPath:'/'" :class="isActive(sub.progPath)">-->
+          <!--            <i class="bi bi-circle" /> <span>{{ sub.menuName }}</span>-->
+          <!--          </nuxt-link>-->
+        </li>
+      </ul>
     </ul>
   </aside>
 </template>

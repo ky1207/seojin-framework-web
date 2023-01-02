@@ -1,6 +1,9 @@
 import { GLOBAL_CODES } from '~/plugins/lib/grid/Formatter'
 
 export default axios => ({
+  menu () {
+    return axios.get('/api/v1.0/common/menu')
+  },
   async getCommonCodes (params) {
     const data = params.map((codeGroupId) => { return { codeGroupId } })
     const result = await axios.post('/api/v1.0/code/codes', data)
