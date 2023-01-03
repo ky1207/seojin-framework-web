@@ -18,7 +18,7 @@ export default ({ $axios, app, redirect, store, error: nuxtError }) => {
       nuxtError(e)
       return new Promise(() => { })
     }
-
+    app.$notify.error(e.response.data.message)
     return Promise.reject(e)
   })
 
