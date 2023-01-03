@@ -59,9 +59,6 @@ export default {
     data: {
       get () {
         return [...this.value, ...this.getDefault()]
-      },
-      set (val) {
-        this.$emit('input', val)
       }
     }
   },
