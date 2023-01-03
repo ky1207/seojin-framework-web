@@ -58,6 +58,7 @@
         v-model="menus.data"
         :columns="menus.columns"
         :options="menus.options"
+        disable-context
         @click="read"
         @drop="dropped"
       />
@@ -143,6 +144,7 @@
         v-model="auth.data"
         :columns="auth.columns"
         :options="auth.options"
+        disable-context
       />
     </template>
   </SJSearchLRLayout>
@@ -273,12 +275,38 @@ export default {
       this.menu = {}
       this.auth.data = {}
     },
-    dropped (e) {
-      // rowKey: dropped 된 위치
-      // targetRowKey: 상위
-      // appended: child여부
-
+    async dropped (e) {
+      // appended:true --자식으로 이동
+      // appended:false -- sibling 사이에서 이동
       console.log(e)
+      if (e.targetRowKey === e.rowKey) { return }
+      if (e.targetRowKey === 0 || e.rowKey === 0) {
+        this.$notify.info('최상위 루트는 변경 할 수 없습니다.')
+        await this.ACTION_REGISTRY().searchClick()
+        return
+      }
+      const moved = await this.$refs.menuGrid.invoke('getRow', e.rowKey)
+      let parent
+      if (e.appended) {
+        parent = await this.$refs.menuGrid.invoke('getRow', e.targetRowKey)
+        moved.upperMenuId = parent.menuId
+        moved.level = parent.level + 1
+        console.log('자식노드로 추가 ')
+        moved.sort = parent._children.findIndex(element => element.menuId === moved.menuId) + 1
+      } else {
+        parent = await this.$refs.menuGrid.invoke('getParentRow', e.rowKey)
+        const target = await this.$refs.menuGrid.invoke('getRow', e.targetRowKey)
+        moved.sort = (target.upperMenuId === moved.upperMenuId) ? target.sort : parent._children.findIndex(element => element.menuId === moved.menuId) + 1
+        if (target.upperMenuId !== moved.upperMenuId) {
+          moved.upperMenuId = target.upperMenuId
+          moved.level = target.level
+        }
+        console.log('순서변경')
+      }
+
+      await this.$api.system.menu.move(moved)
+      this.$notify.success('처리되었습니다.')
+      await this.ACTION_REGISTRY().searchClick()
     },
     async addMenu () {
       const node = this.$refs.menuGrid.invoke('getFocusedCell')
