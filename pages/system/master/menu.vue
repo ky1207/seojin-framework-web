@@ -291,7 +291,6 @@ export default {
         parent = await this.$refs.menuGrid.invoke('getRow', e.targetRowKey)
         moved.upperMenuId = parent.menuId
         moved.level = parent.level + 1
-        console.log('자식노드로 추가 ')
         moved.sort = parent._children.findIndex(element => element.menuId === moved.menuId) + 1
       } else {
         parent = await this.$refs.menuGrid.invoke('getParentRow', e.rowKey)
@@ -301,7 +300,6 @@ export default {
           moved.upperMenuId = target.upperMenuId
           moved.level = target.level
         }
-        console.log('순서변경')
       }
 
       await this.$api.system.menu.move(moved)
