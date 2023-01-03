@@ -189,7 +189,6 @@ export default {
   async created () {
     const result = await this.$api.common.menu()
     this.menus = this.$tree.treeGridSort(result.data)[0]._children
-    console.log(this.menus)
   },
   mounted () {
     // 예제.. 추후 처리 컴포넌트로 처리해야함

@@ -85,6 +85,8 @@ export default {
         if (Utils.isEmpty(this.data[2].val)) { // emtpy
           this.data[2].val = this.data[0].val
         }
+
+        this.$emit('input', this.data)
       }
     },
     handleInput (e) {

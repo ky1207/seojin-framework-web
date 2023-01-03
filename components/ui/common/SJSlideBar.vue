@@ -3,7 +3,7 @@
     <ul v-for="m in value" id="sidebar-nav" :key="m.menuId" class="sidebar-nav">
       <li class="nav-item">
         <a class="nav-link collapsed" :data-bs-target="'#'+m.menuId+'-collapse'" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide" /><span>  {{ m.menuName }}</span><i v-if="m._children" class="bi bi-chevron-down ms-auto" />
+          <i class="bi" :class="m.iconName?m.iconName:'bi-menu-button-wide'" /><span>  {{ m.menuName }}</span><i v-if="m._children" class="bi bi-chevron-down ms-auto" />
         </a>
       </li>
       <ul v-if="m._children" :id="m.menuId+'-collapse'" class="nav-content collapse " data-bs-parent="#sidebar-nav">
