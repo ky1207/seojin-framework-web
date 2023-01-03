@@ -278,7 +278,6 @@ export default {
     async dropped (e) {
       // appended:true --자식으로 이동
       // appended:false -- sibling 사이에서 이동
-      console.log(e)
       if (e.targetRowKey === e.rowKey) { return }
       if (e.targetRowKey === 0 || e.rowKey === 0) {
         this.$notify.info('최상위 루트는 변경 할 수 없습니다.')
