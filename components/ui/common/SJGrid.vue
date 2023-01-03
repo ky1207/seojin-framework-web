@@ -14,6 +14,10 @@ export default {
       type: Object,
       required: true
     },
+    disableContext: {
+      type: Boolean,
+      required: false
+    },
     columns: {
       type: Array,
       required: true
@@ -87,6 +91,10 @@ export default {
   },
   computed: {
     mergedOptions () {
+      if (this.$props.disableContext) {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.defaultOptions.contextMenu = null
+      }
       return {
         ...this.defaultOptions,
         ...this.options
