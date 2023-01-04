@@ -1,11 +1,11 @@
 <template>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        {{ menu?menu.menuName:'' }}
+      <li v-for="p in path" :key="p" class="breadcrumb-item">
+        {{ p }}
       </li>
       <li class="breadcrumb-item active">
-        Dashboard
+        {{ menu? menu.menuName:'' }}
       </li>
     </ol>
   </nav>
@@ -16,6 +16,12 @@ export default {
   computed: {
     menu () {
       return this.$store.getters.getCurrentMenu(this.$route.path)
+    },
+    path () {
+      if (this.menu) {
+        return this.$store.getters.getSearchPath(this.menu.upperMenuId)
+      }
+      return ''
     }
   }
 

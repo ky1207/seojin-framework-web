@@ -41,6 +41,9 @@ export const actions = {
 export const getters = {
   getCurrentMenu: state => (path) => {
     return tree.searchTree(state.menus, 'progPath', path)
+  },
+  getSearchPath: state => (id) => {
+    return tree.searchPath(state.menus, 'menuId', id)
   }
 
 }

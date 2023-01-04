@@ -40,8 +40,24 @@ export const tree = {
     }
 
     return null
-    // })
   },
+
+  searchPath (element, type, value) {
+    const result = []
+    let parent
+    let parentId = value
+    do {
+      parent = this.searchTree(element, type, parentId)
+      parentId = null
+      if (parent !== null) {
+        parentId = parent.upperMenuId
+        result.push(parent.menuName)
+      }
+    } while (parentId !== null)
+
+    return result.reverse().slice(1)
+  },
+
   getNewNode (node) {
     node._attributes = { expanded: true }
     return node
