@@ -1,7 +1,7 @@
+import { tree } from '~/plugins/lib/tree'
 export const state = () => ({
   notifies: [],
-  // current menu
-  currentMenu: null
+  menus: []
 })
 
 export const mutations = {
@@ -13,9 +13,8 @@ export const mutations = {
     state.notifies.shift()
   },
 
-  // Menu
-  setMenu (state, menu) {
-    state.currentMenu = menu
+  setMenus (state, menus) {
+    state.menus = menus
   }
 
 }
@@ -33,16 +32,15 @@ export const actions = {
   },
 
   // menu
-  setMenu (context, menu) {
-    context.commit('setMenu', menu)
+  setMenus (context, menu) {
+    context.commit('setMenus', menu)
   }
 
 }
 
 export const getters = {
-
-  getCurrentMenu: state => () => {
-    return state.currentMenu
+  getCurrentMenu: state => (path) => {
+    return tree.searchTree(state.menus, 'progPath', path)
   }
 
 }

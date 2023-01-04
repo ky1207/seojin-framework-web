@@ -1,18 +1,8 @@
 <template>
   <div>
     <div class="row pagetitle mt-1">
-      <div class="col">
-        <h1>Dashboard</h1>
-        <nav>
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="#">Home</a>
-            </li>
-            <li class="breadcrumb-item active">
-              Dashboard
-            </li>
-          </ol>
-        </nav>
+      <div v-if="!disabledNavigator" class="col">
+        <SJNavbar />
       </div>
       <div class="col-auto">
         <slot name="master-btn" />
@@ -28,3 +18,15 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    disabledNavigator: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
+
+  }
+}
+</script>

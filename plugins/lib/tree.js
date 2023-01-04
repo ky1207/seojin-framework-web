@@ -1,4 +1,4 @@
-const tree = {
+export const tree = {
   treeGridSort (oriList, root, id, p, f) {
     const copyList = []
     const rootId = root ?? '00000'
@@ -28,23 +28,25 @@ const tree = {
     if (element[type] && element[type] === value) {
       return element
     }
-    if (element.children != null) {
+
+    if (element._children != null) {
       let result = null
-      for (let i = 0; i < element.children.length; i++) {
-        result = this.searchTree(element.children[i], type, value)
+      for (let i = 0; i < element._children.length; i++) {
+        result = this.searchTree(element._children[i], type, value)
         if (result) {
           return result
         }
       }
     }
+
     return null
+    // })
   },
   getNewNode (node) {
     node._attributes = { expanded: true }
     return node
   }
 }
-
 export default (ctx, inject) => {
   ctx.$tree = tree
   inject('tree', tree)

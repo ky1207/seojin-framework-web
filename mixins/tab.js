@@ -6,15 +6,15 @@ const TAB = {
     // context 이용시 ,meta 가 아닌 computed: routeTab() 이용해야함
     routeTab () {
       return {
-        title: this._getTabMeunName(this.$route.path),
+        title: this._getTabMenuName(this.$route.path),
         closable: true
       }
     }
   },
   methods: {
-    _getTabMeunName (url) {
-      // TODO: menu목록에서 이름 가져오는 작업 필요
-      return 'Tab Template'
+    _getTabMenuName (url) {
+      const menu = this.$store.getters.getCurrentMenu(url)
+      return menu ? menu.menuName : ''
     }
   }
 }
