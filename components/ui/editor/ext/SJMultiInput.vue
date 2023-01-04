@@ -23,6 +23,9 @@
 
 <script>
 import Utils from '~/api/utils'
+
+const DEFAULT = [{ langCode: 'ko', val: null }, { langCode: 'en', val: null }, { langCode: 'vi', val: null }]
+
 export default {
   props: {
     value: {
@@ -58,19 +61,20 @@ export default {
   computed: {
     data: {
       get () {
-        return [...this.value, ...this.getDefault()]
+        return [...this.value, ...this.getDefault()].sort((a, b) => {
+          return DEFAULT.findIndex(l => l.langCode === a.langCode) - DEFAULT.findIndex(l => l.langCode === b.langCode)
+        })
       }
     }
   },
   methods: {
     getDefault () {
-      const defaults = [{ langCode: 'ko', val: null }, { langCode: 'en', val: null }, { langCode: 'vi', val: null }]
-
+      // 받아온것중에 lang
       const langs = this.value.map((e) => {
         return e.langCode
       })
-
-      return defaults.filter((e) => {
+      // 받아온것 제외하고 리턴
+      return DEFAULT.filter((e) => {
         return langs.findIndex(l => l === e.langCode) === -1
       })
     },
