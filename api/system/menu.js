@@ -17,7 +17,7 @@ export default axios => ({
   menuAuth (path) {
     return axios.post('/api/v1.0/menu/menuAuth', { path })
   },
-  insertTempMenu (menu) {
+  insertMenu (menu) {
     return axios.post('/api/v1.0/menu', menu)
   },
   move (menu) {

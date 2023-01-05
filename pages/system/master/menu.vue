@@ -305,7 +305,10 @@ export default {
       this.$notify.success('처리되었습니다.')
       await this.ACTION_REGISTRY().searchClick()
     },
-    async addMenu () {
+    addMenu () {
+      this.isUpdate = false
+      this.auth.data = {}
+
       const node = this.$refs.menuGrid.invoke('getFocusedCell')
       if (node.rowKey === null) {
         this.$notify.warning('메뉴를 선택하세요')
@@ -325,20 +328,15 @@ export default {
       const temp = rest
       temp.langs = [{ langCode: 'ko', val: '새메뉴' }]
 
-      const result = await this.$api.system.menu.insertTempMenu(temp)
-      this.menu = result.data
-      temp.menuId = this.menu.menuId
-
+      this.menu = temp
       this.$refs.menuGrid.invoke('appendTreeRow', newNode, { parentRowKey: node.rowKey, focus: true })
       this.$refs.menuGrid.invoke('expand', node.rowKey, true)
-
-      // 바로 임시저장하고 로딩한다.
     },
     async deleteMenu () {
       const checkedData = this.$refs.menuGrid.invoke('getCheckedRows')
       const menus = checkedData.map(menu => menu.menuId)
       if (menus.length === 0) {
-        this.$notify.warning('메뉴를 선택하세요.')
+        this.$notify.warning('삭제 할 메뉴를 체크하세요.')
         return
       }
       await this.$api.system.menu.delete(menus)
@@ -356,17 +354,22 @@ export default {
           }
         },
         saveClick: async () => {
-          if (!this.menu.menuId) {
-            this.$notify.warning('메뉴를 선택하세요')
-            return false
-          }
           const result = await this.$refs.form.validate()
-          if (result) {
+          if (!result) {
+            return
+          }
+          if (this.isUpdate) {
+            if (!this.menu.menuId) {
+              this.$notify.warning('메뉴를 선택하세요')
+              return false
+            }
             await this.$api.system.menu.update(this.menu.menuId,
               { menu: this.menu, gridRequest: this.$refs.authGrid.invoke('getModifiedRows') })
-            this.$notify.success('처리되었습니다.')
-            await this.ACTION_REGISTRY().searchClick()
+          } else {
+            await this.$api.system.menu.insertMenu({ menu: this.menu, gridRequest: this.$refs.authGrid.invoke('getModifiedRows') })
           }
+          this.$notify.success('처리되었습니다.')
+          await this.ACTION_REGISTRY().searchClick()
         }
       }
     }
