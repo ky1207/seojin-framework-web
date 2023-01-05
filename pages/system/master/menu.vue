@@ -284,24 +284,9 @@ export default {
         await this.ACTION_REGISTRY().searchClick()
         return
       }
-      const moved = await this.$refs.menuGrid.invoke('getRow', e.rowKey)
-      let parent
-      if (e.appended) {
-        parent = await this.$refs.menuGrid.invoke('getRow', e.targetRowKey)
-        moved.upperMenuId = parent.menuId
-        moved.level = parent.level + 1
-        moved.sort = parent._children.findIndex(element => element.menuId === moved.menuId) + 1
-      } else {
-        parent = await this.$refs.menuGrid.invoke('getParentRow', e.rowKey)
-        const target = await this.$refs.menuGrid.invoke('getRow', e.targetRowKey)
-        moved.sort = (target.upperMenuId === moved.upperMenuId) ? target.sort : parent._children.findIndex(element => element.menuId === moved.menuId) + 1
-        if (target.upperMenuId !== moved.upperMenuId) {
-          moved.upperMenuId = target.upperMenuId
-          moved.level = target.level
-        }
-      }
-
-      await this.$api.system.menu.move(moved)
+      const selected = await this.$refs.menuGrid.invoke('getRow', e.rowKey)
+      const target = await this.$refs.menuGrid.invoke('getRow', e.targetRowKey)
+      await this.$api.system.menu.move(selected.menuId, target.menuId, e.appended)
       this.$notify.success('처리되었습니다.')
       await this.ACTION_REGISTRY().searchClick()
     },

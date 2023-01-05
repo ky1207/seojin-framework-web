@@ -20,7 +20,7 @@ export default axios => ({
   insertMenu (menu) {
     return axios.post('/api/v1.0/menu', menu)
   },
-  move (menu) {
-    return axios.post(`/api/v1.0/menu/move/${menu.menuId}`, menu)
+  move (menuId, targetId, appended) {
+    return axios.post(`/api/v1.0/menu/move/${menuId}`, { targetId, appended })
   }
 })
