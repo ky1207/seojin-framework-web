@@ -22,5 +22,11 @@ export default axios => ({
   },
   move (menuId, targetId, appended) {
     return axios.post(`/api/v1.0/menu/move/${menuId}`, { targetId, appended })
+  },
+  menuAuthByMenuId (menuId) {
+    return axios.get(`/api/v1.0/menu/authority/menu/${menuId}`)
+  },
+  updateAuthByMenuId (menuId, data) {
+    return axios.post(`/api/v1.0/menu/authority/menu/${menuId}`, data)
   }
 })
