@@ -172,11 +172,20 @@ export default ctx => ({
   },
   getColumns (c) {
     c.forEach((e, idx) => {
+      let filterValue = 'select'
+      if (this.defined[e.name]?.filter !== undefined) {
+        filterValue = this.defined[e.name].filter
+      }
+      let sortValue = true
+      if (this.defined[e.name]?.sortable !== undefined) {
+        sortValue = this.defined[e.name].sortable
+      }
+
       c[idx] = {
         ...{
           ...this.defined[e.name],
-          filter: 'select',
-          sortable: 'true'
+          filter: filterValue,
+          sortable: sortValue
         },
         ...e
       }
