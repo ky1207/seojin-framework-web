@@ -276,28 +276,7 @@ export default {
     },
     ACTION_REGISTRY () {
       return {
-        f1Label: 'F1 Label',
-        f2Label: 'F2 Label',
-        f3Label: 'F3 Label',
-        f4Label: 'F4 Label',
-        f5Label: 'F5 Label',
-        f1Click: () => {
-          this.$notify.info('info 메시지 테스트')
-          this.$notify.success('success 메시지 테스트.')
-          this.$notify.warning('warning')
-          this.$notify.error('error')
-        },
-        f2Click: () => {
 
-        },
-        f3Click: () => {
-
-        },
-        f4Click: () => {
-
-        },
-        f5Click: () => {
-        },
         searchClick: async () => {
           this._resetForm()
           const result = await this.$api.system.code.list(this.search)
