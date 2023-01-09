@@ -2,6 +2,7 @@
 export default {
   // *****client side이므로 fetch대신에.. created가 최최 한번 클라이언트쪽에서 호출된다.
   ssr: false,
+  target: 'static',
   server: {
     host: '0.0.0.0'
   },
