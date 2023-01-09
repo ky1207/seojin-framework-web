@@ -120,6 +120,12 @@ export default {
           drop_console: true
         }
       }
+    },
+    optimization: {
+      splitChunks: {
+        minSize: 15000,
+        maxSize: 250000
+      }
     }
   },
   serverMiddleware: [
