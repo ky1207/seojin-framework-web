@@ -167,8 +167,12 @@ export default ctx => ({
     },
     email: {
       header: 'Email'
+    },
+    menuName: {
+      header: '메뉴명',
+      filter: null,
+      sortable: false
     }
-
   },
   getColumns (c) {
     c.forEach((e, idx) => {

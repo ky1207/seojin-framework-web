@@ -81,10 +81,7 @@ export default {
         data: {},
         columns: [
           {
-            name: 'menuName',
-            header: '메뉴명',
-            filter: null,
-            sortable: false
+            name: 'menuName'
           }
         ],
         options: {
