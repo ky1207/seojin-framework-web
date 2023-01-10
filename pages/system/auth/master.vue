@@ -222,7 +222,6 @@ export default {
     }
   },
   async created () {
-    this.common.USE_YN = this.$api.common.getYNCodes()
     const company = await this.$api.common.getCompanyCodes()
     this.common = { USE_YN: this.$api.common.getYNCodes(), COMPANY: company.data }
   },
