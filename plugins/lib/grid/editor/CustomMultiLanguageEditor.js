@@ -1,10 +1,13 @@
 export class CustomMultiLanguageEditor {
+  DEFAULT = [{ langCode: 'ko', val: null }, { langCode: 'en', val: null }, { langCode: 'vi', val: null }]
+
   constructor (props) {
     if (props.value === null) {
-      console.log('null')
       props.value = [{ langCode: 'ko', val: '' }]
     }
-    this.data = [...props.value]
+    this.data = [...props.value].sort((a, b) => {
+      return this.DEFAULT.findIndex(l => l.langCode === a.langCode) - this.DEFAULT.findIndex(l => l.langCode === b.langCode)
+    })
 
     const el = document.createElement('div')
 
@@ -52,7 +55,6 @@ export class CustomMultiLanguageEditor {
     this.getValueByLocale('ko').val = this.ko.value
     this.getValueByLocale('en').val = this.en.value
     this.getValueByLocale('vi').val = this.vi.value
-
     return this.data
   }
 }

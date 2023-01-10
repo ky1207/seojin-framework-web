@@ -42,7 +42,7 @@ export const YNFormatter = (obj) => {
   return (obj.value === 1 || obj.value === true) ? 'Y' : 'N'
 }
 
-export const MulitLanguageFormatter = (obj) => {
+export const MultiLanguageFormatter = (obj) => {
   if (obj.value && obj.value.length > 0) { return obj.value[0].val }
   return ''
 }
