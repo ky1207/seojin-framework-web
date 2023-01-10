@@ -1,5 +1,8 @@
 <template>
   <div>
+    <button type="button" class="btn btn-outline-dark" @click="refresh">
+      <i class="bi bi-arrow-clockwise" />
+    </button>
     <button v-if="result.inqryAuth" type="button" class="btn btn-outline-primary" @click="call('searchClick')">
       조회 <i class="bi bi-search" />
     </button>
@@ -49,6 +52,9 @@ export default {
     this.result = program.data
   },
   methods: {
+    refresh () {
+      this.$tabs.refresh()
+    },
     call (name) {
       const fnc = this.action[name]
       if (fnc) {
