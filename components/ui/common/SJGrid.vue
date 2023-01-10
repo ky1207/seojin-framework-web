@@ -142,8 +142,11 @@ export default {
         const height = grid.height + (autoHeightArea.bottom - parent.bottom - 30)
         this.$refs.grid.invoke('setBodyHeight', height)
       }
+      const _this = this
       await new Promise((resolve) => {
-        this.invoke('customRefresh')
+        setTimeout(() => {
+          _this.invoke('customRefresh')
+        }, 300)
       })
     },
     printExcel (type) {
