@@ -55,8 +55,6 @@ export default {
   },
   methods: {
     refresh () {
-      console.log('refresh--layout3')
-
       const absoluteTop = this.$refs.autoHeight.getBoundingClientRect().top
       const absoluteBottom = this.$refs.autoHeight.getBoundingClientRect().bottom
 

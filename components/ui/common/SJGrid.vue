@@ -133,7 +133,6 @@ export default {
   },
   methods: {
     async refresh () {
-      console.log('refresh--grid')
       if (this.$refs.grid.$el.closest('[autoHeight]')) {
         const autoHeightArea = this.$refs.grid.$el.closest('[autoHeight]').getBoundingClientRect()
         const parent = this.$refs.grid.$el.parentElement.closest('div').getBoundingClientRect()
