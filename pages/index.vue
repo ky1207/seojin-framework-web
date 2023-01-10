@@ -7,25 +7,27 @@
     <template #title>
       게시판
     </template>
-    <SJGrid
-      ref="grid"
-      v-model="gridProps.data"
-      :columns="gridProps.columns"
-      :options="gridProps.options"
-    />
-    <div @click="change('en')">
-      English
-    </div>
-    <div @click="change('ko')">
-      한국어
-    </div>
-    <div @click="change('vi')">
-      Vitenam
-    </div><br>
-    <button type="button" class="btn btn-primary" @click="open()">
-      Launch demo modal
-    </button>
-    <SampleInsert ref="exampleModal" /> {{ $t('sample') }}
+    <template #default>
+      <SJGrid
+        ref="grid"
+        v-model="gridProps.data"
+        :columns="gridProps.columns"
+        :options="gridProps.options"
+      />
+      <div @click="change('en')">
+        English
+      </div>
+      <div @click="change('ko')">
+        한국어
+      </div>
+      <div @click="change('vi')">
+        Vitenam
+      </div><br>
+      <button type="button" class="btn btn-primary" @click="open()">
+        Launch demo modal
+      </button>
+      <SampleInsert ref="exampleModal" /> {{ $t('sample') }}
+    </template>
   </SJOneLayout>
 </template>
 
