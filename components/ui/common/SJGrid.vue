@@ -82,7 +82,7 @@ export default {
         copyOptions: {
           useFormattedValue: true
         },
-        bodyHeight: 560,
+        // bodyHeight: 560,
         rowHeight: 30,
         minRowHeight: 30,
         selectionUnit: 'row'
@@ -132,11 +132,19 @@ export default {
     window.addEventListener('resize', this.refresh)
   },
   methods: {
-    refresh () {
-      const _this = this
-      setTimeout(() => {
-        _this.invoke('customRefresh')
-      }, 300)
+    async refresh () {
+      console.log('refresh--grid')
+      if (this.$refs.grid.$el.closest('[autoHeight]')) {
+        const autoHeightArea = this.$refs.grid.$el.closest('[autoHeight]').getBoundingClientRect()
+        const parent = this.$refs.grid.$el.parentElement.closest('div').getBoundingClientRect()
+        const grid = this.$refs.grid.$el.getBoundingClientRect()
+
+        const height = grid.height + (autoHeightArea.bottom - parent.bottom - 30)
+        this.$refs.grid.invoke('setBodyHeight', height)
+      }
+      await new Promise((resolve) => {
+        this.invoke('customRefresh')
+      })
     },
     printExcel (type) {
       this.$refs.grid.invoke('export', type, { useFormattedValue: true })

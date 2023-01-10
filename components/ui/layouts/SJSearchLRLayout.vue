@@ -17,27 +17,31 @@
         </div>
       </div>
       <div class="col-lg-6">
-        <div class="card">
+        <div ref="autoHeight" class="card" autoHeight>
           <div class="card-body">
             <h5 class="card-title">
               <slot name="leftTitle" />  <!--left 타이틀명 -->
             </h5>
 
             <!-- left -->
-            <slot name="left" />
+            <div>
+              <slot name="left" />
+            </div>
             <!-- End left-->
           </div>
         </div>
       </div>
 
       <div class="col-lg-6">
-        <div class="card">
+        <div ref="autoHeight2" class="card" autoHeight>
           <div class="card-body">
             <h5 class="card-title">
               <slot name="rightTitle" />  <!--right 타이틀명 -->
             </h5>
             <!-- left -->
-            <slot name="right" />
+            <div>
+              <slot name="right" />
+            </div>
             <!-- End left-->
           </div>
         </div>
@@ -53,7 +57,28 @@ export default {
       required: false,
       default: false
     }
+  },
+  activated () {
+    window.addEventListener('resize', this.refresh)
+  },
+  deactivated () {
+    window.removeEventListener('resize', this.refresh)
+  },
+  mounted () {
+    this.refresh()
+    window.dispatchEvent(new Event('resize'))
+  },
+  methods: {
+    refresh () {
+      console.log('refresh--layout2')
 
+      const absoluteTop = this.$refs.autoHeight.getBoundingClientRect().top
+      const absoluteBottom = this.$refs.autoHeight.getBoundingClientRect().bottom
+
+      this.$refs.autoHeight.style.height = (window.innerHeight - absoluteBottom + (absoluteBottom - absoluteTop)) + 'px'
+      this.$refs.autoHeight2.style.height = this.$refs.autoHeight.style.height
+    }
   }
+
 }
 </script>

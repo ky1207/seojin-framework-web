@@ -8,12 +8,14 @@
         <slot name="master-btn" />
       </div>
     </div><!-- End Page Title -->
-    <div class="card">
+    <div ref="autoHeight" autoHeight class="card">
       <div class="card-body">
         <h5 class="card-title">
           <slot name="title" />
         </h5>
-        <slot />
+        <div>
+          <slot />
+        </div>
       </div>
     </div>
   </div>
@@ -26,7 +28,25 @@ export default {
       required: false,
       default: false
     }
+  },
+  activated () {
+    window.addEventListener('resize', this.refresh)
+  },
+  deactivated () {
+    window.removeEventListener('resize', this.refresh)
+  },
+  mounted () {
+    this.refresh()
+    window.dispatchEvent(new Event('resize'))
+  },
+  methods: {
+    refresh () {
+      console.log('refresh--layout1')
+      const absoluteTop = this.$refs.autoHeight.getBoundingClientRect().top
+      const absoluteBottom = this.$refs.autoHeight.getBoundingClientRect().bottom
 
+      this.$refs.autoHeight.style.height = (window.innerHeight - absoluteBottom + (absoluteBottom - absoluteTop)) + 'px'
+    }
   }
 }
 </script>

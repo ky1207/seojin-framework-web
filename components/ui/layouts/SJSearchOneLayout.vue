@@ -17,14 +17,16 @@
         </div>
       </div>
       <div class="col-lg-12">
-        <div class="card">
+        <div ref="autoHeight" class="card" autoHeight>
           <div class="card-body">
             <h5 class="card-title">
               <slot name="bodyTitle" />  <!--body 타이틀명 -->
             </h5>
 
             <!-- body -->
-            <slot name="body" />
+            <div>
+              <slot name="body" />
+            </div>
             <!-- End body-->
           </div>
         </div>
@@ -40,7 +42,26 @@ export default {
       required: false,
       default: false
     }
+  },
+  activated () {
+    window.addEventListener('resize', this.refresh)
+  },
+  deactivated () {
+    window.removeEventListener('resize', this.refresh)
+  },
+  mounted () {
+    this.refresh()
+    window.dispatchEvent(new Event('resize'))
+  },
+  methods: {
+    refresh () {
+      console.log('refresh--layout3')
 
+      const absoluteTop = this.$refs.autoHeight.getBoundingClientRect().top
+      const absoluteBottom = this.$refs.autoHeight.getBoundingClientRect().bottom
+
+      this.$refs.autoHeight.style.height = (window.innerHeight - absoluteBottom + (absoluteBottom - absoluteTop)) + 'px'
+    }
   }
 }
 </script>
