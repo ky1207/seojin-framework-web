@@ -5,7 +5,28 @@
     "insertDate":"등록일",
     "useFlag": "사용여부",
     "sortSeq": "정렬",
-    "coId": "회사"
+    "coId": "회사",
+    "codeGroupId": "대분류코드",
+    "codeGroupName": "대분류명",
+    "systemCodeType": "사용모듈",
+    "codeId": "소분류코드",
+    "codeDesc": "비고",
+    "progName": "프로그램명",
+    "progPath": "경로",
+    "authCheckFlag": "권한체크",
+    "inqryAuth": "조회'",
+    "saveAuth": "저장",
+    "excelAuth": "엑셀",
+    "delAuth": "삭제",
+    "remark": "비고",
+    "authGroupId": "권한코드",
+    "authName": "권한명",
+    "defaultAuthFlag": "기본권한",
+    "loginId": "로그인ID",
+    "userName": "사용자명",
+    "deptName": "부서명",
+    "pos": "직급",
+    "menuName": "메뉴명"
   },
   "contextMenu": {
     "copy": "복사",
@@ -16,7 +37,7 @@
     "excelExport": "엑셀로 내보내기"
   },
   "page": {
-    "code": {
+    "system": {
 
     }
   }

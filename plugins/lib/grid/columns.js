@@ -28,20 +28,20 @@ export default ctx => ({
       formatter: CompanyFormatter
     },
     codeGroupId: {
-      header: '대분류코드'
+      header: ctx.i18n.t('grid.codeGroupId')
     },
     codeGroupName: {
-      header: '대분류명'
+      header: ctx.i18n.t('grid.codeGroupName')
     },
     systemCodeType: {
-      header: '사용모듈',
+      header: ctx.i18n.t('grid.systemCodeType'),
       formatter: CodeFormatter
     },
     codeId: {
-      header: '소분류코드'
+      header: ctx.i18n.t('grid.codeId')
     },
     codeDesc: {
-      header: '비고'
+      header: ctx.i18n.t('grid.codeDesc')
     },
     rsvVal1: {
       header: 'Option1'
@@ -59,7 +59,7 @@ export default ctx => ({
       header: 'Option5'
     },
     progName: {
-      header: '프로그램명',
+      header: ctx.i18n.t('grid.progName'),
       editor: {
         type: 'text'
       },
@@ -67,7 +67,7 @@ export default ctx => ({
       validation: { required: true }
     },
     progPath: {
-      header: '경로',
+      header: ctx.i18n.t('grid.progPath'),
       editor: {
         type: 'text'
       },
@@ -75,31 +75,31 @@ export default ctx => ({
       validation: { required: true }
     },
     authCheckFlag: {
-      header: '권한체크',
+      header: ctx.i18n.t('grid.authCheckFlag'),
       renderer: CustomCheckBoxRenderer,
       align: 'center',
       filter: null
     },
     inqryAuth: {
-      header: '조회',
+      header: ctx.i18n.t('grid.inqryAuth'),
       renderer: CustomCheckBoxRenderer,
       align: 'center',
       filter: null
     },
     saveAuth: {
-      header: '저장',
+      header: ctx.i18n.t('grid.saveAuth'),
       align: 'center',
       renderer: CustomCheckBoxRenderer,
       filter: null
     },
     excelAuth: {
-      header: '엑셀',
+      header: ctx.i18n.t('grid.excelAuth'),
       renderer: CustomCheckBoxRenderer,
       align: 'center',
       filter: null
     },
     delAuth: {
-      header: '삭제',
+      header: ctx.i18n.t('grid.delAuth'),
       renderer: CustomCheckBoxRenderer,
       align: 'center',
       filter: null
@@ -135,7 +135,7 @@ export default ctx => ({
       filter: null
     },
     remark: {
-      header: '비고',
+      header: ctx.i18n.t('grid.remark'),
       editor: {
         type: 'text'
       },
@@ -143,33 +143,33 @@ export default ctx => ({
       filter: null
     },
     authGroupId: {
-      header: '권한코드'
+      header: ctx.i18n.t('grid.authGroupId')
     },
     authName: {
-      header: '권한명'
+      header: ctx.i18n.t('grid.authName')
     },
     defaultAuthFlag: {
-      header: '기본권한',
+      header: ctx.i18n.t('grid.defaultAuthFlag'),
       formatter: YNFormatter,
       align: 'center'
     },
     loginId: {
-      header: '로그인ID'
+      header: ctx.i18n.t('grid.loginId')
     },
     userName: {
-      header: '사용자명'
+      header: ctx.i18n.t('grid.userName')
     },
     deptName: {
-      header: '부서명'
+      header: ctx.i18n.t('grid.deptName')
     },
     pos: {
-      header: '직급'
+      header: ctx.i18n.t('grid.pos')
     },
     email: {
       header: 'Email'
     },
     menuName: {
-      header: '메뉴명',
+      header: ctx.i18n.t('grid.menuName'),
       filter: null,
       sortable: false
     }
