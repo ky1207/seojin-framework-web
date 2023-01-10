@@ -139,7 +139,6 @@
 </template>
 <script>
 import { MENU, ACTION } from '~/mixins'
-import { MultiLanguageFormatter } from '~/plugins/lib/grid/Formatter'
 import { CustomCheckBoxRenderer } from '~/plugins/lib/grid/editor/CustomCheckBoxRenderer'
 import { CustomMultiLanguageEditor } from '~/plugins/lib/grid/editor/CustomMultiLanguageEditor'
 
@@ -176,7 +175,9 @@ export default {
           {
             name: 'langs',
             header: this.$t('page.code.column.011'),
-            formatter: MultiLanguageFormatter,
+            formatter: (e) => {
+              return e.value[e.value.findIndex(l => l.langCode === this.$i18n.getLocaleCookie())].val
+            },
             editor: {
               type: CustomMultiLanguageEditor
             }
