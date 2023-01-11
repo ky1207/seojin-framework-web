@@ -26,7 +26,10 @@
     "userName": "사용자명",
     "deptName": "부서명",
     "pos": "직급",
-    "menuName": "메뉴명"
+    "menuName": "메뉴명",
+    "coName": "회사명",
+    "biznum": "사업자번호",
+    "repName": "대표자명"
   },
   "contextMenu": {
     "copy": "복사",

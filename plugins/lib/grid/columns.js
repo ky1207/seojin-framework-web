@@ -172,6 +172,15 @@ export default ctx => ({
       header: ctx.i18n.t('grid.menuName'),
       filter: null,
       sortable: false
+    },
+    coName: {
+      header: ctx.i18n.t('grid.coName')
+    },
+    biznum: {
+      header: ctx.i18n.t('grid.biznum')
+    },
+    repName: {
+      header: ctx.i18n.t('grid.repName')
     }
   },
   getColumns (c) {
