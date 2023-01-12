@@ -120,6 +120,7 @@ export default {
   },
   activated () {
     // 화면 리사이즈 후, 본 화면 출력시 그리드 리로드 문제
+    window.removeEventListener('resize', this.refresh)
     window.addEventListener('resize', this.refresh)
     this.$refs.grid.invoke('customRefresh')
   },
