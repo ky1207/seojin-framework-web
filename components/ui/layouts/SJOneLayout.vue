@@ -39,6 +39,9 @@ export default {
     this.refresh()
     window.dispatchEvent(new Event('resize'))
   },
+  beforeDestroy () {
+    window.removeEventListener('resize', this.refresh)
+  },
   methods: {
     refresh () {
       const absoluteTop = this.$refs.autoHeight.getBoundingClientRect().top
