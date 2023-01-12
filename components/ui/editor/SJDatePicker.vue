@@ -1,5 +1,5 @@
 <template>
-  <DatePicker v-model="date" :type="type" :clearable="false" @input="handleInput" @change="handleChange" />
+  <DatePicker v-model="data" :type="type" :clearable="false" @input="handleInput" @change="handleChange" />
 </template>
 
 <script>
@@ -7,7 +7,7 @@ export default {
   props: {
     value: {
       type: Number,
-      default: () => new Date()
+      default: () => null
     },
     type: {
       type: String,
@@ -19,18 +19,27 @@ export default {
       date: (this.value) ? new Date(this.value) : new Date()
     }
   },
-  mounted () {
-    this.handleInput(this.date)
+  computed: {
+    data: {
+      get () {
+        return (this.value) ? new Date(this.value) : null
+      },
+      set (value) {
+        this.date = value.getTime()
+        this.handleChange(this.date)
+      }
+    }
   },
   methods: {
     handleInput (p) {
       if (p !== null) {
-        this.$emit('input', this.date.getTime())
+        this.$emit('input', this.date)
       } else {
         this.$emit('input', null)
       }
     },
     handleChange (p) {
+      this.handleInput(p)
     }
   }
 }
