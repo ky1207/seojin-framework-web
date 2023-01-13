@@ -247,7 +247,7 @@ export default {
     },
     async addUser () {
       if (!this.isUpdate) {
-        this.$notify.info('권한그룹을 선택하세요')
+        this.$notify.info(this.$t('message.00008')) // '권한그룹을 선택하세요'
         return false
       }
       const data = await this.$refs.userModal.open()
@@ -256,7 +256,7 @@ export default {
           return !this.$refs.detail.invoke('getData').some(d => d.loginId === e.loginId)
         })
         this.$refs.detail.invoke('appendRows', filtered)
-        this.$notify.success(`${filtered.length}명이 추가되었습니다.`)
+        this.$notify.success(this.$t('message.00009', { count: filtered.length })) // `{count}명이 추가되었습니다.` filtered.length
       }
     },
     removeRow () {
@@ -281,7 +281,7 @@ export default {
               await this.$api.system.authority.save(this.auth)
             }
             this._resetForm()
-            this.$notify.success('처리되었습니다.') // TODO:다국어 처리
+            this.$notify.success(this.$t('message.00002'))
             await this.ACTION_REGISTRY().searchClick()
           }
         }

@@ -181,7 +181,7 @@ export default {
         },
         saveClick: async () => {
           await this.$api.system.menu.updateAuthByMenuId(this.menuId, this.$refs.authGrid.invoke('getModifiedRows'))
-          this.$notify.success('처리되었습니다.')
+          this.$notify.success(this.$t('message.00002'))
           await this.ACTION_REGISTRY().searchClick()
         }
 

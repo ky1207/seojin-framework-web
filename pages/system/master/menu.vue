@@ -277,14 +277,14 @@ export default {
       // appended:false -- sibling 사이에서 이동
       if (e.targetRowKey === e.rowKey) { return }
       if (e.targetRowKey === 0 || e.rowKey === 0) {
-        this.$notify.info('최상위 루트는 변경 할 수 없습니다.')
+        this.$notify.info(this.$t('message.00005'))// '최상위 루트는 변경 할 수 없습니다.'
         await this.ACTION_REGISTRY().searchClick()
         return
       }
       const selected = await this.$refs.menuGrid.invoke('getRow', e.rowKey)
       const target = await this.$refs.menuGrid.invoke('getRow', e.targetRowKey)
       await this.$api.system.menu.move(selected.menuId, target.menuId, e.appended)
-      this.$notify.success('처리되었습니다.')
+      this.$notify.success(this.$t('message.00002'))
       await this.ACTION_REGISTRY().searchClick()
     },
     addMenu () {
@@ -293,7 +293,7 @@ export default {
 
       const node = this.$refs.menuGrid.invoke('getFocusedCell')
       if (node.rowKey === null) {
-        this.$notify.warning('메뉴를 선택하세요')
+        this.$notify.warning(this.$t('message.00006')) // '메뉴를 선택하세요'
         return false
       }
       const parent = this.$refs.menuGrid.invoke('getRow', node.rowKey)
@@ -318,11 +318,11 @@ export default {
       const checkedData = this.$refs.menuGrid.invoke('getCheckedRows')
       const menus = checkedData.map(menu => menu.menuId)
       if (menus.length === 0) {
-        this.$notify.warning('삭제 할 메뉴를 체크하세요.')
+        this.$notify.warning(this.$t('message.00004'))
         return
       }
       await this.$api.system.menu.delete(menus)
-      this.$notify.success('처리되었습니다.')
+      this.$notify.success(this.$t('message.00002'))
       await this.ACTION_REGISTRY().searchClick()
     },
     ACTION_REGISTRY () {
@@ -342,7 +342,7 @@ export default {
           }
           if (this.isUpdate) {
             if (!this.menu.menuId) {
-              this.$notify.warning('메뉴를 선택하세요')
+              this.$notify.warning(this.$t('message.00003'))
               return false
             }
             await this.$api.system.menu.update(this.menu.menuId,
@@ -350,7 +350,7 @@ export default {
           } else {
             await this.$api.system.menu.insertMenu({ menu: this.menu, gridRequest: this.$refs.authGrid.invoke('getModifiedRows') })
           }
-          this.$notify.success('처리되었습니다.')
+          this.$notify.success(this.$t('message.00002'))
           await this.ACTION_REGISTRY().searchClick()
         }
       }

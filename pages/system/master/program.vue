@@ -111,12 +111,12 @@ export default {
         saveClick: async () => {
           const error = this.$refs.grid.invoke('validate')
           if (error.length > 0) {
-            this.$notify.warning('Grid 입력값을 확인하세요.') // TODO:다국어 처리
+            this.$notify.warning(this.$t('message.00007')) // Grid 입력값을 확인하세요.
             return false
           }
           const data = this.$refs.grid.invoke('getModifiedRows')
           await this.$api.system.program.update(data)
-          this.$notify.success('처리되었습니다.') // TODO:다국어 처리
+          this.$notify.success(this.$t('message.00002'))
           await this.ACTION_REGISTRY().searchClick()
         }
       }

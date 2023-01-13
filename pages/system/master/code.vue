@@ -267,7 +267,7 @@ export default {
     },
     appendRow () {
       if (!this.codeGroup.codeGroupId) {
-        this.$notify.warning('공통코드를 선택하세요.')
+        this.$notify.warning(this.$t('message.00001'))
         return false
       }
       this.$refs.detail.invoke('appendRow')
@@ -287,7 +287,6 @@ export default {
           const result = await this.$refs.form.validate()
           if (result) {
             if (this.isUpdate) {
-              // TODO:수정시 편집 못하게 해야함. codeGroupID
               const { codes, ...rest } = this.codeGroup
               const data = { codeGroup: rest, gridRequest: this.$refs.detail.invoke('getModifiedRows') }
               await this.$api.system.code.update(rest.codeGroupId, data)
@@ -295,7 +294,7 @@ export default {
               await this.$api.system.code.save(this.codeGroup)
             }
             this._resetForm()
-            this.$notify.success('처리되었습니다.') // TODO:다국어 처리
+            this.$notify.success(this.$t('message.00002'))
             await this.ACTION_REGISTRY().searchClick()
           }
         },
