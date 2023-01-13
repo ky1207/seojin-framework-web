@@ -231,8 +231,7 @@ export default {
           }
         ],
         options: {
-          rowHeaders: ['checkbox'],
-          bodyHeight: 130
+          rowHeaders: ['checkbox']
         }
       }
     }

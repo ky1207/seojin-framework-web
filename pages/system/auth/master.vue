@@ -137,28 +137,29 @@
           </div>
         </div>
       </SJForm>
-      <h5 v-if="isUpdate" class="card-title">
-        <div class="row align-items-center">
-          <div class="col">
-            권한그룹별 담당
+      <div v-if="isUpdate">
+        <h5 class="card-title">
+          <div class="row align-items-center">
+            <div class="col">
+              권한그룹별 담당
+            </div>
+            <div class="col-auto">
+              <button class="btn btn-outline-dark" @click="addUser">
+                사용자추가 <i class="bi bi-file-plus" />
+              </button>
+              <button class="btn btn-outline-dark" @click="removeRow">
+                삭제 <i class="bi bi-file-minus" />
+              </button>
+            </div>
           </div>
-          <div class="col-auto">
-            <button class="btn btn-outline-dark" @click="addUser">
-              사용자추가 <i class="bi bi-file-plus" />
-            </button>
-            <button class="btn btn-outline-dark" @click="removeRow">
-              삭제 <i class="bi bi-file-minus" />
-            </button>
-          </div>
-        </div>
-      </h5>
-      <SJGrid
-        v-if="isUpdate"
-        ref="detail"
-        v-model="detailGrid.data"
-        :columns="detailGrid.columns"
-        :options="detailGrid.options"
-      />
+        </h5>
+        <SJGrid
+          ref="detail"
+          v-model="detailGrid.data"
+          :columns="detailGrid.columns"
+          :options="detailGrid.options"
+        />
+      </div>
       <CommonUser ref="userModal" />
     </template>
   </SJSearchLRLayout>
@@ -215,10 +216,16 @@ export default {
           }
         ],
         options: {
-          rowHeaders: ['checkbox'],
-          bodyHeight: 295
+          rowHeaders: ['checkbox']
         }
       }
+    }
+  },
+  watch: {
+    isUpdate () { // hidden 그리드 일경우, 높이 계산이 최초 안됨.
+      setTimeout(() => {
+        window.dispatchEvent(new Event('resize'))
+      }, 100)
     }
   },
   async created () {

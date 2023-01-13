@@ -226,7 +226,6 @@ export default {
           }
         ],
         options: {
-          bodyHeight: 270
         }
       }
     }
