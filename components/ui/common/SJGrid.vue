@@ -135,6 +135,9 @@ export default {
   },
   methods: {
     async refresh () {
+      if (this.$refs.grid.$el.closest('.modal-dialog')) {
+        return
+      }
       if (this.$refs.grid.$el.closest('[autoHeight]')) {
         const autoHeightArea = this.$refs.grid.$el.closest('[autoHeight]').getBoundingClientRect()
         const parent = this.$refs.grid.$el.parentElement.closest('div').getBoundingClientRect()

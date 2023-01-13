@@ -58,10 +58,15 @@ export default {
   },
   methods: {
     refresh () {
+      const height = window.innerHeight
+      if (this.$refs.autoHeight.closest('.modal-dialog')) {
+        // height = window.innerHeight / 2
+        return
+      }
       const absoluteTop = this.$refs.autoHeight.getBoundingClientRect().top
       const absoluteBottom = this.$refs.autoHeight.getBoundingClientRect().bottom
 
-      this.$refs.autoHeight.style.height = (window.innerHeight - absoluteBottom + (absoluteBottom - absoluteTop)) + 'px'
+      this.$refs.autoHeight.style.height = (height - absoluteBottom + (absoluteBottom - absoluteTop)) + 'px'
     }
   }
 }
