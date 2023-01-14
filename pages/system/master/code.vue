@@ -98,7 +98,7 @@
               rules="required"
             />
           </div>
-          <div class="col-md-10 mt-3">
+          <div class="col-md-12 mt-3">
             <label>대분류명</label>
             <SJMultiInput id="form_lname" v-model="codeGroup.langs" name="대분류명" type="text" rules="required" />
           </div>

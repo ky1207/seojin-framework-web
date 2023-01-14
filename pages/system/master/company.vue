@@ -65,7 +65,7 @@
               disabled
             />
           </div>
-          <div class="col-md-6 mt-3">
+          <div class="col-md-4  mt-3">
             <label>회사명</label>
             <SJInput
               id="form_coName"
@@ -76,7 +76,8 @@
               disabled-validation
             />
           </div>
-
+        </div>
+        <div class="row">
           <div class="col-md-4 mt-3">
             <label>사업자번호</label>
             <SJInput
@@ -97,7 +98,7 @@
               disabled-validation
             />
           </div>
-          <div class="col-md-3 mt-3">
+          <div class="col-md-4 mt-3">
             <label>대표자명</label>
             <SJInput
               id="form_repName"
@@ -128,7 +129,7 @@
               disabled-validation
             />
           </div>
-          <div class="col-md-3 mt-3">
+          <div class="col-md-4 mt-3">
             <label>회사 FAX</label>
             <SJInput
               id="form_fax"
@@ -153,7 +154,7 @@
               disabled-validation
             />
           </div>
-          <div class="col-md-3 mt-3">
+          <div class="col-md-4 mt-3">
             <label>종목</label>
             <SJInput
               id="form_bizitem"
@@ -183,12 +184,12 @@
               rules="required|min_value:1"
             />
           </div>
-          <div class="col-md-3 mt-3">
+          <div class="col-md-4 mt-3">
             <label>사용여부</label>
             <SJSelect id="form_useYN" v-model="companyDetail.useFlag" name="사용여부" :options="$api.common.getYNCodes()" rules="required" />
           </div>
 
-          <div class="col-md-11 mt-3">
+          <div class="col-md-12 mt-3">
             <label>주소</label>
             <SJInput
               id="form_addr1"
@@ -206,7 +207,7 @@
             />
           </div>
 
-          <div class="col-md-11 mt-3">
+          <div class="col-md-12 mt-3">
             <label>영문주소</label>
             <SJInput
               id="form_addr3"
