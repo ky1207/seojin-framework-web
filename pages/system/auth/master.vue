@@ -6,50 +6,50 @@
     <template #default>
       <div class="d-flex align-items-center flex-wrap">
         <div class="col-md-1 text-center">
-          회사
+          {{ $t('page.system.00001') }}
         </div>
         <div class="col-md-1">
           <SJSelect
             id="company"
             v-model="search.coId"
-            name="회사"
+            :name="$t('page.system.00001')"
             :options="common.COMPANY"
             disabled-validation
             disabled-first-message
           />
         </div>
         <div class="col-md-1 text-center">
-          권한코드
+          {{ $t('page.system.00002') }}
         </div>
         <div class="col-md-1">
           <SJInput
             id="authCode"
             v-model="search.authGroupId"
-            name="권한코드"
+            :name="$t('page.system.00002')"
             type="text"
             disabled-validation
           />
         </div>
         <div class="col-md-1 text-center">
-          권한명
+          {{ $t('page.system.00003') }}
         </div>
         <div class="col-md-1">
           <SJInput
             id="authName"
             v-model="search.authName"
-            name="권한명"
+            :name="$t('page.system.00003')"
             type="text"
             disabled-validation
           />
         </div>
         <div class="col-md-1 text-center">
-          사용여부
+          {{ $t('page.system.00004') }}
         </div>
         <div class="col-md-1">
           <SJSelect
             id="useYN"
             v-model="search.useFlag"
-            name="사용여부"
+            :name="$t('page.system.00004')"
             :options="common.USE_YN"
             disabled-validation
           />
@@ -57,7 +57,7 @@
       </div>
     </template>
     <template #leftTitle>
-      권한그룹
+      {{ $t('page.system.00005') }}
     </template>
     <template #left>
       <SJGrid ref="authGrid" v-model="authGrid.data" :columns="authGrid.columns" @click="onMasterClick" />
@@ -65,11 +65,11 @@
     <template #rightTitle>
       <div class="row align-items-center">
         <div class="col">
-          권한그룹상세
+          {{ $t('page.system.00006') }}
         </div>
         <div class="col-auto">
           <button class="btn btn-outline-dark" @click="createAuthGroup">
-            신규권한 생성 <i class="bi bi-pencil-fill" />
+            {{ $t('page.system.00007') }}<i class="bi bi-pencil-fill" />
           </button>
         </div>
       </div>
@@ -78,21 +78,21 @@
       <SJForm ref="form">
         <div class="row">
           <div class="col-md-4">
-            <label>회사</label>
+            <label> {{ $t('page.system.00001') }}</label>
             <SJSelect
               id="form_company"
               v-model="auth.coId"
-              name="회사"
+              :name="$t('page.system.00001')"
               :options="common.COMPANY"
               rules="required"
             />
           </div>
           <div class="col-md-4">
-            <label>사용여부</label>
+            <label>{{ $t('page.system.00004') }}</label>
             <SJSelect
               id="form_useFlag"
               v-model="auth.useFlag"
-              name="사용여부"
+              :name="$t('page.system.00004')"
               :options="common.USE_YN"
               rules="required"
             />
@@ -100,11 +100,11 @@
         </div>
         <div class="row">
           <div class="col-md-4">
-            <label>권한코드</label>
+            <label>{{ $t('page.system.00002') }}</label>
             <SJInput
               id="form_authGroupId"
               v-model="auth.authGroupId"
-              name="권한코드"
+              :name="$t('page.system.00002')"
               type="text"
               disabled-validation
               disabled
@@ -112,28 +112,28 @@
           </div>
 
           <div class="col-md-4">
-            <label>권한명</label>
+            <label>{{ $t('page.system.00003') }}</label>
             <SJInput
               id="form_authName"
               v-model="auth.authName"
-              name="권한명"
+              :name="$t('page.system.00003')"
               type="text"
               rules="required"
             />
           </div>
           <div class="col-md-4">
-            <label>Default권한</label>
+            <label>{{ $t('page.system.00008') }}</label>
             <SJSelect
               id="form_defaultFlag"
               v-model="auth.defaultAuthFlag"
-              name="Default권한"
+              :name="$t('page.system.00008')"
               :options="common.USE_YN"
               disabled-validation
             />
           </div>
           <div class="col-md-12 mt-3">
-            <label>비고</label>
-            <SJTextarea id="form_desc" v-model="auth.remark" name="비고" disabled-validation />
+            <label>{{ $t('page.system.00009') }}</label>
+            <SJTextarea id="form_desc" v-model="auth.remark" :name="$t('page.system.00009')" disabled-validation />
           </div>
         </div>
       </SJForm>
@@ -141,14 +141,14 @@
         <h5 class="card-title">
           <div class="row align-items-center">
             <div class="col">
-              권한그룹별 담당
+              {{ $t('page.system.00010') }}
             </div>
             <div class="col-auto">
               <button class="btn btn-outline-dark" @click="addUser">
-                사용자추가 <i class="bi bi-file-plus" />
+                {{ $t('page.system.00011') }} <i class="bi bi-file-plus" />
               </button>
               <button class="btn btn-outline-dark" @click="removeRow">
-                삭제 <i class="bi bi-file-minus" />
+                {{ $t('page.system.00012') }} <i class="bi bi-file-minus" />
               </button>
             </div>
           </div>

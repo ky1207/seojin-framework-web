@@ -6,26 +6,26 @@
     <template #default>
       <div class="d-flex align-items-center flex-wrap">
         <div class="col-md-1 text-center">
-          회사
+          {{ $t('page.system.00001') }}
         </div>
         <div class="col-md-1">
           <SJSelect
             id="company"
             v-model="search.coId"
-            name="회사"
+            :name="$t('page.system.00001')"
             :options="common.COMPANY"
             disabled-validation
             disabled-first-message
           />
         </div>
         <div class="col-md-1 text-center">
-          메뉴그룹
+          {{ $t('page.system.00013') }}
         </div>
         <div class="col-md-1">
           <SJSelect
             id="menuGroup"
             v-model="search.menuGroupId"
-            name="메뉴그룹"
+            :name="$t('page.system.00013')"
             :options="common.MENU_GROUP"
             item-text="val"
             item-value="codeId"
@@ -39,14 +39,14 @@
     <template #leftTitle>
       <div class="row align-items-center">
         <div class="col">
-          메뉴목록
+          {{ $t('page.system.00014') }}
         </div>
         <div class="col-auto">
           <button class="btn btn-outline-dark" @click="addMenu">
-            추가 <i class="bi bi-file-plus" />
+            {{ $t('page.system.00026') }} <i class="bi bi-file-plus" />
           </button>
           <button class="btn btn-outline-dark" @click="deleteMenu">
-            삭제 <i class="bi bi-file-minus" />
+            {{ $t('page.system.00012') }} <i class="bi bi-file-minus" />
           </button>
         </div>
       </div>
@@ -65,27 +65,27 @@
     </template>
 
     <template #rightTitle>
-      프로그램설정
+      {{ $t('page.system.00027') }}
     </template>
     <template #right>
       <SJForm ref="form">
         <div class="row">
           <div class="col-md-4">
-            <label>회사</label>
+            <label>{{ $t('page.system.00001') }}</label>
             <SJSelect
               id="form_company"
               v-model="menu.coId"
-              name="회사"
+              :name="$t('page.system.00001')"
               :options="common.COMPANY"
               rules="required"
             />
           </div>
           <div class="col-md-4">
-            <label>메뉴아이콘</label>
+            <label>{{ $t('page.system.00028') }}</label>
             <SJInput
               id="form_menuIcon"
               v-model="menu.iconName"
-              name="메뉴아이콘"
+              :name="$t('page.system.00028')"
               type="text"
               disabled-validation
             />
@@ -93,11 +93,11 @@
         </div>
         <div class="row">
           <div class="col-md-4">
-            <label>프로그램명</label>
+            <label>{{ $t('page.system.00029') }}</label>
             <SJSelect
               id="form_company"
               v-model="menu.progId"
-              name="프로그램명"
+              :name="$t('page.system.00029')"
               data-live-search
               :options="common.PROGRAM"
               disabled-validation
@@ -106,36 +106,36 @@
           </div>
 
           <div class="col-md-4">
-            <label>메뉴코드</label>
+            <label>{{ $t('page.system.00030') }}</label>
             <SJInput
               id="form_menuId"
               v-model="menu.menuId"
-              name="메뉴코드"
+              :name="$t('page.system.00030')"
               type="text"
               disabled-validation
               disabled
             />
           </div>
           <div class="col-md-4">
-            <label>App메뉴코드</label>
+            <label>{{ $t('page.system.00031') }}</label>
             <SJInput
               id="form_applnMenuCode"
               v-model="menu.applnMenuCode"
-              name="App메뉴코드"
+              :name="$t('page.system.00031')"
               type="text"
               disabled-validation
             />
           </div>
           <div class="col-md-12 mt-3">
-            <label>메뉴명</label>
-            <SJMultiInput id="form_lname" v-model="menu.langs" name="메뉴명" type="text" rules="required" />
+            <label>{{ $t('page.system.00033') }}</label>
+            <SJMultiInput id="form_lname" v-model="menu.langs" :name="$t('page.system.00033')" type="text" rules="required" />
           </div>
         </div>
       </SJForm>
       <h5 class="card-title mt-3">
         <div class="row align-items-center">
           <div class="col">
-            권한그룹 설정
+            {{ $t('page.system.00032') }}
           </div>
         </div>
       </h5>

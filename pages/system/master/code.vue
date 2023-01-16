@@ -6,13 +6,13 @@
     <template #default>
       <div class="d-flex align-items-center flex-wrap">
         <div class="col-md-1 text-center">
-          공통코드유형
+          {{ $t('page.system.00017') }}
         </div>
         <div class="col-md-1">
           <SJSelect
             id="commonCode"
             v-model="search.systemCodeType"
-            name="공통코드유형"
+            name="$t('page.system.00017')"
             :options="common.CD_TYPE"
             item-text="val"
             item-value="codeId"
@@ -21,31 +21,31 @@
         </div>
 
         <div class="col-md-1 text-center">
-          대분류코드
+          {{ $t('page.system.00018') }}
         </div>
         <div class="col-md-1">
-          <SJInput id="large" v-model="search.codeGroupId" name="대분류코드" type="text" disabled-validation />
+          <SJInput id="large" v-model="search.codeGroupId" :name="$t('page.system.00018')" type="text" disabled-validation />
         </div>
         <div class="col-md-1 text-center">
-          대분류명
+          {{ $t('page.system.00019') }}
         </div>
         <div class="col-md-1">
-          <SJInput id="lname" v-model="search.codeGroupName" name="대분류명" type="text" disabled-validation />
+          <SJInput id="lname" v-model="search.codeGroupName" :name="$t('page.system.00019')" type="text" disabled-validation />
         </div>
         <div class="col-md-1 text-center">
-          소분류명
+          {{ $t('page.system.00009') }}
         </div>
         <div class="col-md-1">
-          <SJInput id="small" v-model="search.codeName" name="소분류명" type="text" disabled-validation />
+          <SJInput id="small" v-model="search.codeName" :name="$t('page.system.00009')" type="text" disabled-validation />
         </div>
         <div class="col-md-1 text-center">
-          사용여부
+          {{ $t('page.system.00004') }}
         </div>
         <div class="col-md-1">
           <SJSelect
             id="useYN"
             v-model="search.useFlag"
-            name="사용여부"
+            :name=" $t('page.system.00004')"
             :options="$api.common.getYNCodes()"
             disabled-validation
           />
@@ -54,7 +54,7 @@
     </template>
 
     <template #leftTitle>
-      대분류
+      {{ $t('page.system.00021') }}
     </template>
     <template #left>
       <SJGrid ref="large" v-model="large.data" :columns="large.columns" @click="onMasterClick" />
@@ -63,11 +63,11 @@
     <template #rightTitle>
       <div class="row align-items-center">
         <div class="col">
-          대분류상세
+          {{ $t('page.system.00022') }}
         </div>
         <div class="col-auto">
           <button class="btn btn-outline-dark" @click="createCodeGroup">
-            신규 코드 <i class="bi bi-pencil-fill" />
+            {{ $t('page.system.00023') }} <i class="bi bi-pencil-fill" />
           </button>
         </div>
       </div>
@@ -76,22 +76,22 @@
       <SJForm ref="form">
         <div class="row">
           <div class="col-md-6 mt-3">
-            <label>대분류코드</label>
+            <label>  {{ $t('page.system.00018') }}</label>
             <SJInput
               id="form_large"
               v-model="codeGroup.codeGroupId"
-              name="대분류코드"
+              :name="$t('page.system.00018')"
               type="text"
               rules="required"
               :disabled="isUpdate"
             />
           </div>
           <div class="col-md-6 mt-3">
-            <label>공통코드유형</label>
+            <label>{{ $t('page.system.00017') }}</label>
             <SJSelect
               id="form_commonCode"
               v-model="codeGroup.systemCodeType"
-              name="공통코드유형"
+              :name="$t('page.system.00017')"
               :options="common.CD_TYPE"
               item-text="val"
               item-value="codeId"
@@ -99,31 +99,31 @@
             />
           </div>
           <div class="col-md-12 mt-3">
-            <label>대분류명</label>
-            <SJMultiInput id="form_lname" v-model="codeGroup.langs" name="대분류명" type="text" rules="required" />
+            <label>{{ $t('page.system.00019') }}</label>
+            <SJMultiInput id="form_lname" v-model="codeGroup.langs" :name="$t('page.system.00019')" type="text" rules="required" />
           </div>
 
           <div class="col-md-6 mt-3">
-            <label>사용여부</label>
-            <SJSelect id="form_useYN" v-model="codeGroup.useFlag" name="사용여부" :options="$api.common.getYNCodes()" rules="required" />
+            <label>{{ $t('page.system.00004') }}</label>
+            <SJSelect id="form_useYN" v-model="codeGroup.useFlag" :name="$t('page.system.00004')" :options="$api.common.getYNCodes()" rules="required" />
           </div>
           <div class="col-md-12 mt-3">
-            <label>비고</label>
-            <SJTextarea id="form_desc" v-model="codeGroup.codeGroupDesc" name="비고" disabled-validation />
+            <label>{{ $t('page.system.00009') }}</label>
+            <SJTextarea id="form_desc" v-model="codeGroup.codeGroupDesc" :name="$t('page.system.00009')" disabled-validation />
           </div>
         </div>
       </SJForm>
       <h5 class="card-title">
         <div class="row align-items-center">
           <div class="col">
-            소분류
+            {{ $t('page.system.00025') }}
           </div>
           <div class="col-auto">
             <button class="btn btn-outline-dark" @click="appendRow">
-              추가 <i class="bi bi-file-plus" />
+              {{ $t('page.system.00026') }} <i class="bi bi-file-plus" />
             </button>
             <button class="btn btn-outline-dark" @click="removeRow">
-              삭제 <i class="bi bi-file-minus" />
+              {{ $t('page.system.00012') }} <i class="bi bi-file-minus" />
             </button>
           </div>
         </div>

@@ -6,24 +6,24 @@
     <template #default>
       <div class="d-flex align-items-center flex-wrap">
         <div class="col-md-1 text-center">
-          프로그램명
+          {{ $t('page.system.00029') }}
         </div>
         <div class="col-md-2">
-          <SJInput id="search" v-model="search.progName" name="검색" type="text" disabled-validation />
+          <SJInput id="search" v-model="search.progName" :name="$t('page.system.00029')" type="text" disabled-validation />
         </div>
       </div>
     </template>
     <template #bodyTitle>
       <div class="row align-items-center">
         <div class="col">
-          프로그램
+          {{ $t('page.system.00034') }}
         </div>
         <div class="col-auto">
           <button class="btn btn-outline-dark" @click="appendRow">
-            추가 <i class="bi bi-file-plus" />
+            {{ $t('page.system.00026') }} <i class="bi bi-file-plus" />
           </button>
           <button class="btn btn-outline-dark" @click="removeRow">
-            삭제 <i class="bi bi-file-minus" />
+            {{ $t('page.system.00012') }} <i class="bi bi-file-minus" />
           </button>
         </div>
       </div>
