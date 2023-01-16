@@ -4,6 +4,7 @@ import menu from '~/api/system/menu'
 import authority from '~/api/system/authority'
 import user from '~/api/system/user'
 import company from '~/api/system/company'
+import department from '~/api/system/department'
 import common from '~/api/common/common'
 import sample from '~/api/sample/sample'
 
@@ -15,7 +16,8 @@ export default ({ $axios }, inject) => {
       menu: menu($axios),
       authority: authority($axios),
       user: user($axios),
-      company: company($axios)
+      company: company($axios),
+      department: department($axios)
     },
     common: common($axios),
     sample: sample($axios)

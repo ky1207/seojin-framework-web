@@ -290,12 +290,6 @@ export default {
     },
     ACTION_REGISTRY () {
       return {
-        f1Click: () => {
-          this.$notify.info('info 메시지 테스트')
-          this.$notify.success('success 메시지 테스트.')
-          this.$notify.warning('warning')
-          this.$notify.error('error')
-        },
         searchClick: async () => {
           this._resetForm()
           const result = await this.$api.system.company.list(this.search)
