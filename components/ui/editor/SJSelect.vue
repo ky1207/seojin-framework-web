@@ -4,13 +4,13 @@
       :value="selected"
       :aria-describedby="id+'-feedback'"
       class="form-select"
-      aria-label="Default select example"
+      aria-label="Default select"
       :class="disabledValidation?'':classes"
       @input="handleInput"
       @change="handleChange"
     >
       <option v-if="!disabledFirstMessage" value="">
-        선택하세요
+        {{ $t('components.ui.00004') }}
       </option>
       <option v-for="option in options" :key="option[itemValue]" :value="option[itemValue]">
         {{ option[itemText] }}

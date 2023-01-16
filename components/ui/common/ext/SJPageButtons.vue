@@ -4,10 +4,10 @@
       <i class="bi bi-arrow-clockwise" />
     </button>
     <button v-if="result.inqryAuth" type="button" class="btn btn-outline-primary" @click="call('searchClick')">
-      조회 <i class="bi bi-search" />
+      {{ $t('components.ui.00001') }} <i class="bi bi-search" />
     </button>
     <button v-if="result.saveAuth" type="button" class="btn btn-outline-primary" @click="call('saveClick')">
-      저장 <i class="bi bi-save-fill" />
+      {{ $t('components.ui.00002') }} <i class="bi bi-save-fill" />
     </button>
     <button v-if="result.fn1Auth" type="button" class="btn btn-outline-info" @click="call('f1Click')">
       {{ action.f1Label }} (A1)
@@ -25,7 +25,7 @@
       {{ action.f5Label }} (A5)
     </button>
     <button v-if="result.delAuth" type="button" class="btn btn-outline-secondary" @click="call('delClick')">
-      삭제 <i class="bi bi-trash" />
+      {{ $t('components.ui.00003') }} <i class="bi bi-trash" />
     </button>
     <button type="button" class="btn btn-outline-dark">
       HELP <i class="bi bi-question-lg" />
