@@ -1,17 +1,17 @@
 <template>
   <SJModal ref="modal" size="modal-xl">
     <template #title>
-      사용자조회
+      {{ $t('components.modal.00001') }}
     </template>
     <template #button>
       <button type="button" class="btn btn-primary" @click="list">
-        조회
+        {{ $t('components.modal.00002') }}
       </button>
       <button type="button" class="btn btn-primary" @click="confirm">
-        확인
+        {{ $t('components.modal.00003') }}
       </button>
       <button type="button" class="btn btn-secondary" @click="close">
-        닫기
+        {{ $t('components.modal.00004') }}
       </button>
     </template>
     <template #default>
@@ -19,28 +19,28 @@
         <template #default>
           <div class="d-flex align-items-center flex-wrap">
             <div class="col-md-1 text-center">
-              부서
+              {{ $t('components.modal.00005') }}
             </div>
             <div class="col-md-1">
               <SJSelect
                 id="search_department"
                 v-model="search.deptId"
-                name="부서"
+                :name="$t('components.modal.00005')"
                 :options="common.DEPARTMENT"
                 disabled-validation
               />
             </div>
             <div class="col-md-1 text-center">
-              로그인아이디
+              {{ $t('components.modal.00006') }}
             </div>
             <div class="col-md-1">
-              <SJInput id="search_loginId" v-model="search.loginId" name="로그인아이디" type="text" disabled-validation />
+              <SJInput id="search_loginId" v-model="search.loginId" :name="$t('components.modal.00006')" type="text" disabled-validation />
             </div>
             <div class="col-md-1 text-center">
-              사용자명
+              {{ $t('components.modal.00007') }}
             </div>
             <div class="col-md-1">
-              <SJInput id="search_userName" v-model="search.userName" name="사용자명" type="text" disabled-validation />
+              <SJInput id="search_userName" v-model="search.userName" :name="$t('components.modal.00007')" type="text" disabled-validation />
             </div>
           </div>
         </template>
