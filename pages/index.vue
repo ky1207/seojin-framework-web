@@ -13,6 +13,8 @@
         v-model="gridProps.data"
         :columns="gridProps.columns"
         :options="gridProps.options"
+        pageable
+        @moveToGridPage="page"
       />
       <div @click="change('en')">
         English
@@ -43,10 +45,12 @@ export default {
         data: {},
         columns:
           [
-            { name: 'title' },
+            { name: 'id', header: 'ID', width: 100, filter: null, sortable: false },
+            { name: 'title', filter: null, sortable: false },
             { name: 'insertDate' }
           ],
         options: {
+
         }
       }
     }
@@ -66,6 +70,11 @@ export default {
     this.gridProps.data = result.data
   },
   methods: {
+    async page (e) {
+      console.log(e)
+      const result = await this.$api.sample.list(e.page)
+      this.gridProps.data = result.data
+    },
     async open () {
       alert('click')
       const response = await this.$refs.exampleModal.open(this.test)

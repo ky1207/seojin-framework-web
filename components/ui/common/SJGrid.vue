@@ -1,13 +1,18 @@
 <template>
-  <Grid
-    ref="grid"
-    :data="getData"
-    :columns="mergedColumns"
-    :options="mergedOptions"
-    v-on="$listeners"
-  />
+  <div>
+    <Grid
+      ref="grid"
+      :data="getData"
+      :columns="mergedColumns"
+      :options="mergedOptions"
+      v-on="$listeners"
+    />
+    <div ref="page" class="tui-pagination tui-grid-pagination" />
+  </div>
 </template>
 <script>
+import Pagination from 'tui-pagination'
+
 export default {
   props: {
     value: {
@@ -17,6 +22,12 @@ export default {
     disableContext: {
       type: Boolean,
       required: false
+    },
+    pageable: {
+      type: Boolean,
+      default () {
+        return false
+      }
     },
     columns: {
       type: Array,
@@ -31,6 +42,8 @@ export default {
   },
   data () {
     return {
+      pagination: null,
+      page: 1,
       defaultOptions: {
         contextMenu: () => [
           [
@@ -82,7 +95,6 @@ export default {
         copyOptions: {
           useFormattedValue: true
         },
-        // bodyHeight: 560,
         rowHeight: 30,
         minRowHeight: 30,
         selectionUnit: 'row'
@@ -95,10 +107,14 @@ export default {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.defaultOptions.contextMenu = null
       }
-      return {
+      const options = {
         ...this.defaultOptions,
         ...this.options
       }
+      if (options.pageOptions?.useClient) {
+        options.pageOptions.perPage = 30
+      }
+      return options
     },
     mergedColumns () {
       return this.$grid.getColumns(this.columns)
@@ -115,6 +131,15 @@ export default {
       } else {
         this.$refs.grid.invoke('resetData', [])
       }
+
+      if (this.$props.pageable) {
+        if (newValue.Total) {
+          this.pagination.setTotalItems(newValue.Total)
+        } else {
+          this.pagination.setTotalItems(0)
+        }
+        this.pagination._paginate(this.page)
+      }
     },
     deep: true
   },
@@ -123,15 +148,30 @@ export default {
     window.removeEventListener('resize', this.refresh)
     window.addEventListener('resize', this.refresh)
     this.$refs.grid.invoke('customRefresh')
+    if (this.$props.pageable) {
+      this.pagination.on('afterMove', this.moveToGridPage)
+    }
   },
   deactivated () {
     window.removeEventListener('resize', this.refresh)
+    if (this.$props.pageable) {
+      this.pagination.off('afterMove', this.moveToGridPage)
+    }
   },
   mounted () {
+    if (this.$props.pageable) {
+      this.pagination = new Pagination(this.$refs.page, {
+        usageStatistics: false,
+        itemsPerPage: 30
+      })
+    }
     window.addEventListener('resize', this.refresh)
   },
   beforeDestroy () {
     window.removeEventListener('resize', this.refresh)
+    if (this.$props.pageable) {
+      this.pagination.off('afterMove', this.moveToGridPage)
+    }
   },
   methods: {
     async refresh () {
@@ -140,10 +180,13 @@ export default {
       }
       if (this.$refs.grid.$el.closest('[autoHeight]')) {
         const autoHeightArea = this.$refs.grid.$el.closest('[autoHeight]').getBoundingClientRect()
-        const parent = this.$refs.grid.$el.parentElement.closest('div').getBoundingClientRect()
+        const parent = this.$refs.grid.$el.parentElement.parentElement.closest('div').getBoundingClientRect()
         const grid = this.$refs.grid.$el.getBoundingClientRect()
 
-        const height = grid.height + (autoHeightArea.bottom - parent.bottom - 30)
+        let height = grid.height + (autoHeightArea.bottom - parent.bottom - 30)
+        if (this.$props.pageable) {
+          height -= 50
+        }
         this.$refs.grid.invoke('setBodyHeight', height)
       }
       const _this = this
@@ -152,6 +195,10 @@ export default {
           _this.invoke('customRefresh')
         }, 300)
       })
+    },
+    moveToGridPage (e) {
+      this.page = e.page
+      this.$emit('moveToGridPage', e)
     },
     printExcel (type) {
       this.$refs.grid.invoke('export', type, { useFormattedValue: true })
