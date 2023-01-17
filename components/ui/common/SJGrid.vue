@@ -7,7 +7,7 @@
       :options="mergedOptions"
       v-on="$listeners"
     />
-    <div ref="page" class="tui-pagination tui-grid-pagination" />
+    <div v-if="$props.pageable" ref="page" class="tui-pagination tui-grid-pagination" />
   </div>
 </template>
 <script>
@@ -188,6 +188,7 @@ export default {
 
         let height = grid.height + (autoHeightArea.bottom - parent.bottom - 30)
         if (this.$props.pageable) {
+          console.log(this.$props.pageable)
           height -= 50
         }
         this.$refs.grid.invoke('setBodyHeight', height)
