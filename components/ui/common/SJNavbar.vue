@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <ol class="breadcrumb">
+    <ol class="mt-3 m-lg-2 breadcrumb">
       <li v-for="p in path" :key="p" class="breadcrumb-item">
         {{ p }}
       </li>

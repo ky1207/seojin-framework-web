@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="m-lg-0">
     <button type="button" class="btn btn-mb3 btn-mr3 btn-light" @click="refresh">
       <i class="bi bi-arrow-clockwise" />
     </button>
