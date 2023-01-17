@@ -216,3 +216,10 @@ export default {
   }
 }
 </script>
+<style>
+/*** tui-grid ***/
+.tui-grid-btn-sorting , .tui-grid-btn-filter {
+ filter: brightness(0) invert(1);
+}
+
+</style>

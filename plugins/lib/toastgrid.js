@@ -11,7 +11,23 @@ import columns from '~/plugins/lib/grid/columns'
 
 TuiGrid.setLanguage('ko')
 // default나 clean이 아니면 적용 안됨
-TuiGrid.applyTheme('default', { cell: { editable: { background: '#ebf9fa' } } })
+TuiGrid.applyTheme('default',
+  {
+    cell: {
+      editable: {
+        background: '#ebf9fa'
+      },
+      header: {
+        background: '#3f4d71',
+        text: '#FFF'
+      },
+      rowHeader: {
+        background: '',
+        text: ''
+      }
+    }
+  }
+)
 
 TuiGrid.prototype.customRefresh = function () {
   const p = this.store.viewport.offsetTop
