@@ -159,6 +159,9 @@ export default {
     }
   },
   mounted () {
+    // grid자체 페이징 기능은 data가 바뀌면 1페이지로 가는 문제가 있으며
+    // Data set을 이용하면 json 포맷이 tui Grid에 고정되는 문제가 있음.
+    // 자체적으로 기능을 분리하여 추가 -- kskim 23.01.17
     if (this.$props.pageable) {
       this.pagination = new Pagination(this.$refs.page, {
         usageStatistics: false,
