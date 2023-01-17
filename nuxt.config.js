@@ -134,7 +134,7 @@ export default {
   ],
   router: {
     // base: '/app/', //servlet에 context path 같은 것 kskim 12.20
-    middleware: ['auth'],
+    middleware: ['auth','menu'],
     extendRoutes (routes, resolve) {
       // add Iframe route
       routes.push({
