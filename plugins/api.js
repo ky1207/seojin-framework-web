@@ -5,7 +5,10 @@ import authority from '~/api/system/authority'
 import user from '~/api/system/user'
 import company from '~/api/system/company'
 import department from '~/api/system/department'
+import log from '~/api/system/log'
+
 import common from '~/api/common/common'
+
 import sample from '~/api/sample/sample'
 
 export default ({ $axios }, inject) => {
@@ -17,7 +20,8 @@ export default ({ $axios }, inject) => {
       authority: authority($axios),
       user: user($axios),
       company: company($axios),
-      department: department($axios)
+      department: department($axios),
+      log: log($axios)
     },
     common: common($axios),
     sample: sample($axios)

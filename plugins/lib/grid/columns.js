@@ -14,6 +14,16 @@ export default ctx => ({
       align: 'center'
     },
     // A
+    acsIp: {
+      header: 'Access Ip',
+      filter: null,
+      sortable: false
+    },
+    api: {
+      header: 'Api URL',
+      filter: null,
+      sortable: false
+    },
     authCheckFlag: {
       header: ctx.i18n.t('grid.authCheckFlag'),
       renderer: CustomCheckBoxRenderer,
@@ -116,6 +126,12 @@ export default ctx => ({
       filter: null
     },
     // L
+    logId: {
+      header: 'ID',
+      width: 100,
+      filter: null,
+      sortable: false
+    },
     loginId: {
       header: ctx.i18n.t('grid.loginId')
     },
@@ -173,9 +189,10 @@ export default ctx => ({
       header: ctx.i18n.t('grid.repName')
     },
     regDtm: {
-      header: ctx.i18n.t('grid.insertDate'),
+      header: ctx.i18n.t('grid.regDtm'),
       formatter: DateFormatter,
       align: 'center'
+
     },
     // S
     sortSeq: {
