@@ -13,16 +13,24 @@ export default ctx => ({
       formatter: DateFormatter,
       align: 'center'
     },
-    useFlag: {
-      header: ctx.i18n.t('grid.useFlag'),
-      name: 'useFlag',
-      formatter: YNFormatter,
-      align: 'center'
+    // A
+    authCheckFlag: {
+      header: ctx.i18n.t('grid.authCheckFlag'),
+      renderer: CustomCheckBoxRenderer,
+      align: 'center',
+      filter: null
     },
-    sortSeq: {
-      name: 'sortSeq',
-      header: ctx.i18n.t('grid.sortSeq')
+    authGroupId: {
+      header: ctx.i18n.t('grid.authGroupId')
     },
+    authName: {
+      header: ctx.i18n.t('grid.authName')
+    },
+    // B
+    biznum: {
+      header: ctx.i18n.t('grid.biznum')
+    },
+    // C
     coId: {
       header: ctx.i18n.t('grid.coId'),
       formatter: CompanyFormatter
@@ -33,70 +41,20 @@ export default ctx => ({
     codeGroupName: {
       header: ctx.i18n.t('grid.codeGroupName')
     },
-    systemCodeType: {
-      header: ctx.i18n.t('grid.systemCodeType'),
-      formatter: CodeFormatter
-    },
     codeId: {
       header: ctx.i18n.t('grid.codeId')
     },
     codeDesc: {
       header: ctx.i18n.t('grid.codeDesc')
     },
-    rsvVal1: {
-      header: 'Option1'
+    coName: {
+      header: ctx.i18n.t('grid.coName')
     },
-    rsvVal2: {
-      header: 'Option2'
-    },
-    rsvVal3: {
-      header: 'Option3'
-    },
-    rsvVal4: {
-      header: 'Option4'
-    },
-    rsvVal5: {
-      header: 'Option5'
-    },
-    progName: {
-      header: ctx.i18n.t('grid.progName'),
-      editor: {
-        type: 'text'
-      },
-      width: 150,
-      validation: { required: true }
-    },
-    progPath: {
-      header: ctx.i18n.t('grid.progPath'),
-      editor: {
-        type: 'text'
-      },
-      width: 300,
-      validation: { required: true }
-    },
-    authCheckFlag: {
-      header: ctx.i18n.t('grid.authCheckFlag'),
-      renderer: CustomCheckBoxRenderer,
-      align: 'center',
-      filter: null
-    },
-    inqryAuth: {
-      header: ctx.i18n.t('grid.inqryAuth'),
-      renderer: CustomCheckBoxRenderer,
-      align: 'center',
-      filter: null
-    },
-    saveAuth: {
-      header: ctx.i18n.t('grid.saveAuth'),
-      align: 'center',
-      renderer: CustomCheckBoxRenderer,
-      filter: null
-    },
-    excelAuth: {
-      header: ctx.i18n.t('grid.excelAuth'),
-      renderer: CustomCheckBoxRenderer,
-      align: 'center',
-      filter: null
+    // D
+    defaultAuthFlag: {
+      header: ctx.i18n.t('grid.defaultAuthFlag'),
+      formatter: YNFormatter,
+      align: 'center'
     },
     delAuth: {
       header: ctx.i18n.t('grid.delAuth'),
@@ -104,6 +62,22 @@ export default ctx => ({
       align: 'center',
       filter: null
     },
+    deptName: {
+      header: ctx.i18n.t('grid.deptName')
+    },
+
+    // E
+    excelAuth: {
+      header: ctx.i18n.t('grid.excelAuth'),
+      renderer: CustomCheckBoxRenderer,
+      align: 'center',
+      filter: null
+    },
+    email: {
+      header: 'Email'
+    },
+
+    // F
     fn1Auth: {
       header: 'FN1',
       renderer: CustomCheckBoxRenderer,
@@ -134,6 +108,59 @@ export default ctx => ({
       align: 'center',
       filter: null
     },
+    // I
+    inqryAuth: {
+      header: ctx.i18n.t('grid.inqryAuth'),
+      renderer: CustomCheckBoxRenderer,
+      align: 'center',
+      filter: null
+    },
+    // L
+    loginId: {
+      header: ctx.i18n.t('grid.loginId')
+    },
+    // M
+    menuName: {
+      header: ctx.i18n.t('grid.menuName'),
+      filter: null,
+      sortable: false
+    },
+    // P
+    pos: {
+      header: ctx.i18n.t('grid.pos')
+    },
+    progName: {
+      header: ctx.i18n.t('grid.progName'),
+      editor: {
+        type: 'text'
+      },
+      width: 150,
+      validation: { required: true }
+    },
+    progPath: {
+      header: ctx.i18n.t('grid.progPath'),
+      editor: {
+        type: 'text'
+      },
+      width: 300,
+      validation: { required: true }
+    },
+    // R
+    rsvVal1: {
+      header: 'Option1'
+    },
+    rsvVal2: {
+      header: 'Option2'
+    },
+    rsvVal3: {
+      header: 'Option3'
+    },
+    rsvVal4: {
+      header: 'Option4'
+    },
+    rsvVal5: {
+      header: 'Option5'
+    },
     remark: {
       header: ctx.i18n.t('grid.remark'),
       editor: {
@@ -142,46 +169,40 @@ export default ctx => ({
       width: 300,
       filter: null
     },
-    authGroupId: {
-      header: ctx.i18n.t('grid.authGroupId')
+    repName: {
+      header: ctx.i18n.t('grid.repName')
     },
-    authName: {
-      header: ctx.i18n.t('grid.authName')
+    regDtm: {
+      header: ctx.i18n.t('grid.insertDate'),
+      formatter: DateFormatter,
+      align: 'center'
     },
-    defaultAuthFlag: {
-      header: ctx.i18n.t('grid.defaultAuthFlag'),
+    // S
+    sortSeq: {
+      name: 'sortSeq',
+      header: ctx.i18n.t('grid.sortSeq')
+    },
+    systemCodeType: {
+      header: ctx.i18n.t('grid.systemCodeType'),
+      formatter: CodeFormatter
+    },
+    saveAuth: {
+      header: ctx.i18n.t('grid.saveAuth'),
+      align: 'center',
+      renderer: CustomCheckBoxRenderer,
+      filter: null
+    },
+    // U
+    useFlag: {
+      header: ctx.i18n.t('grid.useFlag'),
+      name: 'useFlag',
       formatter: YNFormatter,
       align: 'center'
     },
-    loginId: {
-      header: ctx.i18n.t('grid.loginId')
-    },
     userName: {
       header: ctx.i18n.t('grid.userName')
-    },
-    deptName: {
-      header: ctx.i18n.t('grid.deptName')
-    },
-    pos: {
-      header: ctx.i18n.t('grid.pos')
-    },
-    email: {
-      header: 'Email'
-    },
-    menuName: {
-      header: ctx.i18n.t('grid.menuName'),
-      filter: null,
-      sortable: false
-    },
-    coName: {
-      header: ctx.i18n.t('grid.coName')
-    },
-    biznum: {
-      header: ctx.i18n.t('grid.biznum')
-    },
-    repName: {
-      header: ctx.i18n.t('grid.repName')
     }
+
   },
   getColumns (c) {
     c.forEach((e, idx) => {
