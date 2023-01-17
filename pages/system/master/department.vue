@@ -6,13 +6,13 @@
     <template #default>
       <div class="d-flex align-items-center flex-wrap">
         <div class="col-md-1 text-center">
-          회사
+          {{ $t('page.system.00001') }}
         </div>
         <div class="col-md-1">
           <SJSelect
             id="company"
             v-model="search.coId"
-            name="회사"
+            :name="$t('page.system.00001')"
             :options="common.COMPANY"
             disabled-validation
             disabled-first-message
@@ -31,13 +31,13 @@
           <SJInput id="deptName" v-model="search.deptName" name="부서명" type="text" disabled-validation />
         </div>
         <div class="col-md-1 text-center">
-          사용여부
+          {{ $t('page.system.00004') }}
         </div>
         <div class="col-md-1">
           <SJSelect
             id="useYN"
             v-model="search.useFlag"
-            name="사용여부"
+            :name=" $t('page.system.00004')"
             :options="$api.common.getYNCodes()"
             disabled-validation
           />
@@ -89,7 +89,7 @@
               rules="required"
             />
           </div>
-          <div class="col-md-4 mt-3">
+          <div class="col-md-4">
             <label>부서코드</label>
             <SJInput
               id="form_deptId"
@@ -152,13 +152,11 @@ export default {
   },
   async created () {
     await Promise.all([this.$api.common.getCommonCodes(['DEPT_GROUP']),
-      this.$api.common.getCompanyCodes(),
-      this.$api.common.getProgramCodes()])
+      this.$api.common.getCompanyCodes()])
       .then((response) => {
         this.common = {
           ...response[0].data,
           COMPANY: response[1].data,
-          PROGRAM: response[2].data,
           USE_YN: this.$api.common.getYNCodes()
         }
       })
@@ -173,8 +171,6 @@ export default {
       const node = this.$refs.deptGrid.invoke('getRow', e.rowKey)
       const result = await this.$api.system.department.load(node.deptId)
       this.dept = result.data
-    },
-    async changeProgram (e) {
     },
     _resetForm () {
       this.$refs.form.reset()
@@ -238,7 +234,7 @@ export default {
           const result = await this.$api.system.department.list(this.search)
           this.depts.data = {
             Total: result.data.Total,
-            Data: this.$tree.treeGridSort(result.data.Data)
+            Data: this.$tree.treeGridSort(result.data.Data, null, 'deptId', 'upperDeptId')
           }
         },
         saveClick: async () => {
@@ -251,10 +247,9 @@ export default {
               this.$notify.warning('부서를 선택하세요')
               return false
             }
-            await this.$api.system.department.update(this.dept.deptId,
-              { dept: this.dept })
+            await this.$api.system.department.update(this.dept.deptId, this.dept)
           } else {
-            await this.$api.system.department.insertDept({ dept: this.dept })
+            await this.$api.system.department.insertDept(this.dept)
           }
           this.$notify.success('처리되었습니다.')
           await this.ACTION_REGISTRY().searchClick()
