@@ -68,8 +68,8 @@
           {{ $t('page.system.00006') }}
         </div>
         <div class="col-auto">
-          <button class="btn btn-outline-dark" @click="createAuthGroup">
-            {{ $t('page.system.00007') }}<i class="bi bi-pencil-fill" />
+          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="createAuthGroup">
+            {{ $t('page.system.00007') }} <i class="bi bi-pencil-fill" />
           </button>
         </div>
       </div>

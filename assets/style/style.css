@@ -1259,3 +1259,184 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+
+/*----------
+# button by kskim
+*/
+.btn {
+  border-radius: 4px;
+  font-size: 13px;
+  padding: 8px 25px;
+  border: none;
+  letter-spacing: .02rem;
+  -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease;
+}
+
+.btn.btn-sm {
+  font-size: 12px;
+  padding: 5px 15px;
+}
+
+.btn.btn-lg {
+  font-size: 16px;
+  padding: 15px 30px;
+}
+
+.btn:hover, .btn:active, .btn:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/* Primary */
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #006adb;
+}
+
+/* Secondary */
+.btn-secondary:hover, .btn-secondary:focus {
+  background-color: #5b636a;
+}
+
+/* Success */
+.btn-success:hover, .btn-success:focus {
+  background-color: #218a39;
+}
+
+/* Info */
+.btn-info:hover, .btn-info:focus {
+  background-color: #138698;
+}
+
+/* Warning */
+.btn-warning:hover, .btn-warning:focus {
+  background-color: #e2aa00;
+}
+
+/* Danger */
+.btn-danger:hover, .btn-danger:focus {
+  background-color: #ca2333;
+}
+
+/* Orange */
+.btn-orange {
+  background-color: #fd7e14;
+  color: #fff;
+}
+
+.btn-orange:hover, .btn-orange:focus {
+  background-color: #eb6c02;
+  color: #fff;
+}
+
+/* Indigo */
+.btn-indigo {
+  background-color: #6610f2;
+  color: #fff;
+}
+
+.btn-indigo:hover, .btn-indigo:focus {
+  background-color: #570bd3;
+  color: #fff;
+}
+
+/* Pink */
+.btn-pink {
+  background-color: #e83e8c;
+  color: #fff;
+}
+
+.btn-pink:hover, .btn-pink:focus {
+  background-color: #e41e79;
+  color: #fff;
+}
+
+/* Purple */
+.btn-purple {
+  background-color: #6f42c1;
+  color: #fff;
+}
+
+.btn-purple:hover, .btn-purple:focus {
+  background-color: #5f37a8;
+  color: #fff;
+}
+
+/* Blue */
+.btn-blue {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-blue:hover, .btn-blue:focus {
+  background-color: #006adb;
+  color: #fff;
+}
+
+/* Brown */
+.btn-brown {
+  background-color: #a0855b;
+  color: #fff;
+}
+
+.btn-brown:hover, .btn-brown:focus {
+  background-color: #89724e;
+  color: #fff;
+}
+
+/* Blue gray */
+.btn-blue-gray {
+  background-color: #3f4d71;
+  color: #fff;
+}
+
+.btn-blue-gray:hover, .btn-blue-gray:focus {
+  background-color: #323d5a;
+  color: #fff;
+}
+
+/* Deep orange */
+.btn-deep-orange {
+  background-color: #ffac8e;
+  color: #fff;
+}
+
+.btn-deep-orange:hover, .btn-deep-orange:focus {
+  background-color: #ff926a;
+  color: #fff;
+}
+
+/* Aqua */
+.btn-aqua {
+  background-color: #3fc5f0;
+  color: #fff;
+}
+
+.btn-aqua:hover, .btn-aqua:focus {
+  background-color: #1ebbed;
+  color: #fff;
+}
+
+/* Dark */
+.btn-dark {
+  background-color: #393e46;
+  color: #fff;
+}
+
+.btn-dark:hover, .btn-dark:focus {
+  background-color: #292d32;
+  color: #fff;
+}
+
+.btn-black {
+  background-color: #000;
+  color: #fff;
+}
+
+.btn-black:hover, .btn-black:focus {
+  background-color: black;
+  color: #fff;
+}

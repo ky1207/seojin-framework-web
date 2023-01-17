@@ -1,33 +1,33 @@
 <template>
   <div>
-    <button type="button" class="btn btn-outline-dark" @click="refresh">
+    <button type="button" class="btn btn-mb3 btn-mr3 btn-light" @click="refresh">
       <i class="bi bi-arrow-clockwise" />
     </button>
-    <button v-if="result.inqryAuth" type="button" class="btn btn-outline-primary" @click="call('searchClick')">
+    <button v-if="result.inqryAuth" type="button" class="btn btn-mb3 btn-mr3 btn-primary" @click="call('searchClick')">
       {{ $t('components.ui.00001') }} <i class="bi bi-search" />
     </button>
-    <button v-if="result.saveAuth" type="button" class="btn btn-outline-primary" @click="call('saveClick')">
+    <button v-if="result.saveAuth" type="button" class="btn btn-mb3 btn-mr3 btn-primary" @click="call('saveClick')">
       {{ $t('components.ui.00002') }} <i class="bi bi-save-fill" />
     </button>
-    <button v-if="result.fn1Auth" type="button" class="btn btn-outline-info" @click="call('f1Click')">
+    <button v-if="result.fn1Auth" type="button" class="btn btn-mb3 btn-mr3 btn-secondary" @click="call('f1Click')">
       {{ action.f1Label }} (A1)
     </button>
-    <button v-if="result.fn2Auth" type="button" class="btn btn-outline-info" @click="call('f2Click')">
+    <button v-if="result.fn2Auth" type="button" class="btn btn-mb3 btn-mr3 btn-secondary" @click="call('f2Click')">
       {{ action.f2Label }} (A2)
     </button>
-    <button v-if="result.fn3Auth" type="button" class="btn btn-outline-info" @click="call('f3Click')">
+    <button v-if="result.fn3Auth" type="button" class="btn btn-mb3 btn-mr3 btn-secondary" @click="call('f3Click')">
       {{ action.f3Label }} (A3)
     </button>
-    <button v-if="result.fn4Auth" type="button" class="btn btn-outline-info" @click="call('f4Click')">
+    <button v-if="result.fn4Auth" type="button" class="btn btn-mb3 btn-mr3 btn-secondary" @click="call('f4Click')">
       {{ action.f4Label }} (A4)
     </button>
-    <button v-if="result.fn5Auth" type="button" class="btn btn-outline-info" @click="call('f5Click')">
+    <button v-if="result.fn5Auth" type="button" class="btn btn-mb3 btn-mr3 btn-secondary" @click="call('f5Click')">
       {{ action.f5Label }} (A5)
     </button>
-    <button v-if="result.delAuth" type="button" class="btn btn-outline-secondary" @click="call('delClick')">
+    <button v-if="result.delAuth" type="button" class="btn btn-mb3 btn-mr3 btn-info" @click="call('delClick')">
       {{ $t('components.ui.00003') }} <i class="bi bi-trash" />
     </button>
-    <button type="button" class="btn btn-outline-dark">
+    <button type="button" class="btn btn-mb3 btn-mr3 btn-blue-gray">
       HELP <i class="bi bi-question-lg" />
     </button>
   </div>

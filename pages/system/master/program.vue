@@ -19,10 +19,10 @@
           {{ $t('page.system.00034') }}
         </div>
         <div class="col-auto">
-          <button class="btn btn-outline-dark" @click="appendRow">
+          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="appendRow">
             {{ $t('page.system.00026') }} <i class="bi bi-file-plus" />
           </button>
-          <button class="btn btn-outline-dark" @click="removeRow">
+          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="removeRow">
             {{ $t('page.system.00012') }} <i class="bi bi-file-minus" />
           </button>
         </div>
