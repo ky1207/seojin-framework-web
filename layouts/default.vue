@@ -180,11 +180,9 @@ export default {
       menus: []
     }
   },
-  async created () {
-    const result = await this.$api.common.menu()
-    const sortedTree = this.$tree.treeGridSort(result.data)[0]
+  created () {
+    const sortedTree = this.$store.getters.getMenus()
     this.menus = sortedTree._children
-    await this.$store.dispatch('setMenus', sortedTree)
   },
   mounted () {
     // 예제.. 추후 처리 컴포넌트로 처리해야함

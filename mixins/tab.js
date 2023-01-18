@@ -13,7 +13,7 @@ const TAB = {
   },
   methods: {
     _getTabMenuName (url) {
-      const menu = this.$store.getters.getCurrentMenu(url)
+      const menu = this.$store.getters.getMenu(url)
       return menu ? menu.menuName : ''
     }
   }
