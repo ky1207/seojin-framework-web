@@ -188,7 +188,6 @@ export default {
 
         let height = grid.height + (autoHeightArea.bottom - parent.bottom - 30)
         if (this.$props.pageable) {
-          console.log(this.$props.pageable)
           height -= 50
         }
         this.$refs.grid.invoke('setBodyHeight', height)
