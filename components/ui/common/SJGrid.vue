@@ -96,8 +96,8 @@ export default {
           useFormattedValue: true
         },
         rowHeight: 30,
-        minRowHeight: 30,
-        selectionUnit: 'row'
+        minRowHeight: 30
+        // selectionUnit: 'row'
       }
     }
   },
