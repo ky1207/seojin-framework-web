@@ -10,6 +10,15 @@ export default axios => ({
   },
   delete (depts) {
     return axios.delete('/api/v1.0/department', { data: depts })
+  },
+  insertDept (dept) {
+    return axios.post('/api/v1.0/department', dept)
+  },
+  move (deptId, targetId, appended) {
+    return axios.post(`/api/v1.0/department/move/${deptId}`, { targetId, appended })
+  },
+  getDepartmentCodesByCoId (coId) {
+    return axios.get(`/api/v1.0/department/codesByCoId/${coId}`)
   }
 
 })
