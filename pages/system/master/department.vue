@@ -18,7 +18,7 @@
             disabled-first-message
           />
         </div>
-        <div class="col-md-1 text-center">
+        <!--        <div class="col-md-1 text-center">
           부서코드
         </div>
         <div class="col-md-1">
@@ -29,19 +29,7 @@
         </div>
         <div class="col-md-1">
           <SJInput id="deptName" v-model="search.deptName" name="부서명" type="text" disabled-validation />
-        </div>
-        <div class="col-md-1 text-center">
-          {{ $t('page.system.00004') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="useYN"
-            v-model="search.useFlag"
-            :name=" $t('page.system.00004')"
-            :options="$api.common.getYNCodes()"
-            disabled-validation
-          />
-        </div>
+        </div>-->
       </div>
     </template>
 

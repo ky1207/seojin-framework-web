@@ -72,8 +72,7 @@
               v-model="companyDetail.coName"
               name="회사명"
               type="text"
-              rules="required"
-              disabled-validation
+              rules="required|max:50"
             />
           </div>
         </div>
@@ -85,7 +84,7 @@
               v-model="companyDetail.biznum"
               name="사업자번호"
               type="text"
-              disabled-validation
+              rules="max:50"
             />
           </div>
           <div class="col-md-4 mt-3">
@@ -95,7 +94,7 @@
               v-model="companyDetail.coNum"
               name="법인번호"
               type="text"
-              disabled-validation
+              rules="max:50"
             />
           </div>
           <div class="col-md-4 mt-3">
@@ -105,7 +104,7 @@
               v-model="companyDetail.repName"
               name="대표자명"
               type="text"
-              disabled-validation
+              rules="max:50"
             />
           </div>
 
@@ -116,7 +115,7 @@
               v-model="companyDetail.email"
               name="담당자Email"
               type="text"
-              disabled-validation
+              rules="email|max:50"
             />
           </div>
           <div class="col-md-4 mt-3">
@@ -126,7 +125,7 @@
               v-model="companyDetail.phone"
               name="회사전화"
               type="text"
-              disabled-validation
+              rules="max:20"
             />
           </div>
           <div class="col-md-4 mt-3">
@@ -136,7 +135,7 @@
               v-model="companyDetail.fax"
               name="회사FAX"
               type="text"
-              disabled-validation
+              rules="max:20"
             />
           </div>
 
@@ -151,7 +150,7 @@
               v-model="companyDetail.biztype"
               name="업태"
               type="text"
-              disabled-validation
+              rules="max:12"
             />
           </div>
           <div class="col-md-4 mt-3">
@@ -161,7 +160,7 @@
               v-model="companyDetail.bizitem"
               name="종목"
               type="text"
-              disabled-validation
+              rules="max:12"
             />
           </div>
 
@@ -172,7 +171,7 @@
               v-model="companyDetail.lang"
               name="언어"
               type="text"
-              disabled-validation
+              rules="max:12"
             />
           </div>
           <div class="col-md-4 mt-3">
@@ -225,7 +224,7 @@
               v-model="companyDetail.coType"
               name="코드약어"
               type="text"
-              rules="required"
+              rules="required|max:12"
             />
           </div>
           <div class="col-md-4 mt-3">
@@ -235,7 +234,7 @@
               v-model="companyDetail.logoName"
               name="로고파일명"
               type="text"
-              rules="required"
+              rules="required|max:50"
             />
           </div>
         </div>

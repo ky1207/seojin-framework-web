@@ -74,7 +74,8 @@
               v-model="userDetail.loginId"
               name="아이디"
               type="text"
-              rules="required"
+              rules="required|max:12"
+              :disabled="isUpdate"
             />
           </div>
           <div class="col-md-4  mt-3">
@@ -84,7 +85,7 @@
               v-model="userDetail.userName"
               name="사용자명"
               type="text"
-              rules="required"
+              rules="required|max:50"
             />
           </div>
           <div class="col-md-4  mt-3">
@@ -94,7 +95,7 @@
               v-model="userDetail.userEnName"
               name="사용자명영문"
               type="text"
-              disabled-validation
+              rules="max:50"
             />
           </div>
         </div>
@@ -104,20 +105,19 @@
             <SJInput
               id="form_pswd"
               v-model="userDetail.pswd"
-              name="비밀번호"
-              type="text"
-              rules="required"
-              disabled-validation
+              name="password"
+              type="password"
+              :rules="isUpdate ? '' : 'required'"
             />
           </div>
           <div class="col-md-4  mt-3">
             <label>비밀번호 확인</label>
             <SJInput
               id="form_pswdChk"
-              name="비밀번호확인"
+              v-model="userDetail.pswdChk"
+              name="password_confirmation"
               type="password"
-              rules="required"
-              disabled-validation
+              rules="confirmed:password"
             />
           </div>
         </div>
@@ -127,9 +127,9 @@
             <SJInput
               id="form_email"
               v-model="userDetail.email"
-              name="이메일"
+              name="email"
               type="text"
-              disabled-validation
+              rules="email|max:50"
             />
           </div>
           <div class="col-md-4 mt-3">
@@ -139,7 +139,7 @@
               v-model="userDetail.mobile"
               name="휴대폰번호"
               type="text"
-              disabled-validation
+              rules="numeric|max:20"
             />
           </div>
           <div class="col-md-4 mt-3">
@@ -227,7 +227,7 @@
 
 <script>
 import { ACTION, MENU } from '~/mixins'
-import { GLOBAL_CODES } from '~/plugins/lib/grid/Formatter'
+import { CodeFormatter, GLOBAL_CODES } from '~/plugins/lib/grid/Formatter'
 
 export default {
   mixins: [MENU, ACTION],
@@ -254,7 +254,9 @@ export default {
             name: 'job'
           },
           {
-            name: 'pos'
+            name: 'pos',
+            header: '직책',
+            formatter: CodeFormatter
           },
           {
             name: 'systemType'
@@ -316,7 +318,16 @@ export default {
             if (this.isUpdate) {
               await this.$api.system.user.update(this.userId, this.userDetail)
             } else {
-              await this.$api.system.user.save(this.userDetail)
+              // ID 중복 체크
+              this.search.coId = this.userDetail.coId
+              this.search.loginId = this.userDetail.loginId
+              const userDupCnt = await this.$api.system.user.getUserDupChk(this.search)
+              if (userDupCnt.data > 0) {
+                this.$notify.error('동일한 아이디가 존재합니다.')
+                return false
+              } else {
+                await this.$api.system.user.save(this.userDetail)
+              }
             }
             this._resetForm()
             this.$notify.success('처리되었습니다.') // TODO:다국어 처리

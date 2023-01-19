@@ -10,5 +10,8 @@ export default axios => ({
   },
   update (userId, user) {
     return axios.post(`/api/v1.0/user/${userId}`, user)
+  },
+  getUserDupChk (search) {
+    return axios.get('/api/v1.0/user/dupChk', { params: search })
   }
 })

@@ -125,6 +125,11 @@ export default ctx => ({
       align: 'center',
       filter: null
     },
+    // J
+    job: {
+      header: '직급',
+      formatter: CodeFormatter
+    },
     // L
     logId: {
       header: 'ID',
@@ -208,6 +213,10 @@ export default ctx => ({
       align: 'center',
       renderer: CustomCheckBoxRenderer,
       filter: null
+    },
+    systemType: {
+      header: '시스템유형',
+      formatter: CodeFormatter
     },
     // U
     useFlag: {
