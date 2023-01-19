@@ -269,10 +269,8 @@ export default {
           }
         ]
       },
-      departmentForm: {
-      },
-      departmentSearch: {
-      }
+      departmentForm: [],
+      departmentSearch: []
     }
   },
   async created () {
@@ -349,7 +347,7 @@ export default {
         GLOBAL_CODES.setDepartment(result.data)
         this.departmentForm = result.data
       } else {
-        this.departmentForm = {}
+        this.departmentForm = []
       }
     },
     async changeCompanySearch (event) {
@@ -359,7 +357,7 @@ export default {
         GLOBAL_CODES.setDepartment(result.data)
         this.departmentSearch = result.data
       } else {
-        this.departmentSearch = {}
+        this.departmentSearch = []
       }
     }
   }
