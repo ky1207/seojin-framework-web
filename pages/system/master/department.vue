@@ -39,10 +39,10 @@
           부서목록
         </div>
         <div class="col-auto">
-          <button class="btn btn-outline-dark" @click="addDept">
+          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="addDept">
             추가 <i class="bi bi-file-plus" />
           </button>
-          <button class="btn btn-outline-dark" @click="deleteDept">
+          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="deleteDept">
             삭제 <i class="bi bi-file-minus" />
           </button>
         </div>

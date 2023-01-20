@@ -58,7 +58,7 @@
           사용자 정보
         </div>
         <div class="col-auto">
-          <button class="btn btn-outline-dark" @click="createUser">
+          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="createUser">
             신규 사용자 <i class="bi bi-pencil-fill" />
           </button>
         </div>

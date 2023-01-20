@@ -45,7 +45,7 @@
           회사 상세
         </div>
         <div class="col-auto">
-          <button class="btn btn-outline-dark" @click="createCompany">
+          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="createCompany">
             신규 회사 <i class="bi bi-pencil-fill" />
           </button>
         </div>
