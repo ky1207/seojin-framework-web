@@ -26,7 +26,7 @@
       </div>
     </template>
     <template #bodyTitle>
-      사용자로그
+      {{ $t('page.system.00036') }}
     </template>
     <template #body>
       <SJGrid
