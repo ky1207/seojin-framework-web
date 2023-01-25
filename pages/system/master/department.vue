@@ -36,14 +36,14 @@
     <template #leftTitle>
       <div class="row align-items-center">
         <div class="col">
-          부서목록
+          {{ $t('page.system.00055') }}
         </div>
         <div class="col-auto">
           <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="addDept">
-            추가 <i class="bi bi-file-plus" />
+            {{ $t('page.system.00026') }} <i class="bi bi-file-plus" />
           </button>
           <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="deleteDept">
-            삭제 <i class="bi bi-file-minus" />
+            {{ $t('page.system.00012') }} <i class="bi bi-file-minus" />
           </button>
         </div>
       </div>
@@ -62,46 +62,46 @@
     </template>
 
     <template #rightTitle>
-      부서 상세
+      {{ $t('page.system.00056') }}
     </template>
     <template #right>
       <SJForm ref="form">
         <div class="row">
           <div class="col-md-4">
-            <label>회사</label>
+            <label>{{ $t('page.system.00001') }}</label>
             <SJSelect
               id="form_coId"
               v-model="dept.coId"
-              name="회사"
+              :name="$t('page.system.00001')"
               :options="common.COMPANY"
               rules="required"
             />
           </div>
           <div class="col-md-4">
-            <label>부서코드</label>
+            <label>{{ $t('page.system.00057') }}</label>
             <SJInput
               id="form_deptId"
               v-model="dept.deptId"
-              name="부서코드"
+              :name="$t('page.system.00057')"
               type="text"
               disabled-validation
               disabled
             />
           </div>
           <div class="col-md-6 mt-3">
-            <label>부서명</label>
+            <label>{{ $t('page.system.00058') }}</label>
             <SJInput
               id="form_deptName"
               v-model="dept.deptName"
-              name="부서명"
+              :name="$t('page.system.00058')"
               type="text"
               rules="required"
               disabled-validation
             />
           </div>
           <div class="col-md-12 mt-3">
-            <label>비고</label>
-            <SJTextarea id="form_remark" v-model="dept.remark" name="비고" disabled-validation />
+            <label>{{ $t('page.system.00009') }}</label>
+            <SJTextarea id="form_remark" v-model="dept.remark" :name="$t('page.system.00009')" disabled-validation />
           </div>
         </div>
       </SJForm>
@@ -169,14 +169,14 @@ export default {
       // appended:false -- sibling 사이에서 이동
       if (e.targetRowKey === e.rowKey) { return }
       if (e.targetRowKey === 0 || e.rowKey === 0) {
-        this.$notify.info('최상위 루트는 변경 할 수 없습니다.')
+        this.$notify.info(this.$t('message.00005'))// '최상위 루트는 변경 할 수 없습니다.'
         await this.ACTION_REGISTRY().searchClick()
         return
       }
       const selected = await this.$refs.deptGrid.invoke('getRow', e.rowKey)
       const target = await this.$refs.deptGrid.invoke('getRow', e.targetRowKey)
       await this.$api.system.department.move(selected.deptId, target.deptId, e.appended)
-      this.$notify.success('처리되었습니다.')
+      this.$notify.success(this.$t('message.00002'))// '최상위 루트는 변경 할 수 없습니다.'
       await this.ACTION_REGISTRY().searchClick()
     },
     addDept () {
@@ -184,7 +184,7 @@ export default {
 
       const node = this.$refs.deptGrid.invoke('getFocusedCell')
       if (node.rowKey === null) {
-        this.$notify.warning('부서를 선택하세요')
+        this.$notify.warning(this.$t('message.00010'))// '부서를 선택하세요'
         return false
       }
       const parent = this.$refs.deptGrid.invoke('getRow', node.rowKey)
@@ -208,11 +208,11 @@ export default {
       const checkedData = this.$refs.deptGrid.invoke('getCheckedRows')
       const depts = checkedData.map(dept => dept.deptId)
       if (depts.length === 0) {
-        this.$notify.warning('삭제 할 부서를 체크하세요.')
+        this.$notify.warning(this.$t('message.00011'))// '삭제 할 부서를 체크하세요.'
         return
       }
       await this.$api.system.department.delete(depts)
-      this.$notify.success('처리되었습니다.')
+      this.$notify.success(this.$t('message.00002'))// '처리되었습니다.'
       await this.ACTION_REGISTRY().searchClick()
     },
     ACTION_REGISTRY () {
@@ -232,14 +232,14 @@ export default {
           }
           if (this.isUpdate) {
             if (!this.dept.deptId) {
-              this.$notify.warning('부서를 선택하세요')
+              this.$notify.warning(this.$t('message.00010'))// '부서를 선택하세요'
               return false
             }
             await this.$api.system.department.update(this.dept.deptId, this.dept)
           } else {
             await this.$api.system.department.insertDept(this.dept)
           }
-          this.$notify.success('처리되었습니다.')
+          this.$notify.success(this.$t('message.00002'))// '처리되었습니다.'
           await this.ACTION_REGISTRY().searchClick()
         }
       }

@@ -6,7 +6,7 @@
     <template #default>
       <div class="d-flex align-items-center flex-wrap">
         <div class="col-md-1 text-center">
-          회사
+          {{ $t('page.system.00001') }}
         </div>
         <div class="col-md-1">
           <SJSelect
@@ -19,13 +19,13 @@
           />
         </div>
         <div class="col-md-1 text-center">
-          부서
+          {{ $t('page.system.00059') }}
         </div>
         <div class="col-md-1">
           <SJSelect
             id="search_department"
             v-model="search.deptId"
-            :name="$t('components.modal.00005')"
+            :name="$t('page.system.00059')"
             :options="departmentSearch"
             disabled-validation
           />
@@ -37,16 +37,16 @@
           <SJInput id="loginId" v-model="search.loginId" name="ID" type="text" disabled-validation />
         </div>
         <div class="col-md-1 text-center">
-          이름
+          {{ $t('page.system.00060') }}
         </div>
         <div class="col-md-1">
-          <SJInput id="userName" v-model="search.userName" name="이름" type="text" disabled-validation />
+          <SJInput id="userName" v-model="search.userName" :name="$t('page.system.00060')" type="text" disabled-validation />
         </div>
       </div>
     </template>
 
     <template #leftTitle>
-      사용자 목록
+      {{ $t('page.system.00061') }}
     </template>
     <template #left>
       <SJGrid ref="user" v-model="user.data" :columns="user.columns" @click="onMasterClick" />
@@ -55,11 +55,11 @@
     <template #rightTitle>
       <div class="row align-items-center">
         <div class="col">
-          사용자 정보
+          {{ $t('page.system.00062') }}
         </div>
         <div class="col-auto">
           <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="createUser">
-            신규 사용자 <i class="bi bi-pencil-fill" />
+            {{ $t('page.system.00063') }} <i class="bi bi-pencil-fill" />
           </button>
         </div>
       </div>
@@ -68,32 +68,32 @@
       <SJForm ref="form">
         <div class="row">
           <div class="col-md-4 mt-3">
-            <label>아이디</label>
+            <label>{{ $t('page.system.00064') }}</label>
             <SJInput
               id="form_loginId"
               v-model="userDetail.loginId"
-              name="아이디"
+              :name="$t('page.system.00064')"
               type="text"
               rules="required|max:12"
               :disabled="isUpdate"
             />
           </div>
           <div class="col-md-4  mt-3">
-            <label>사용자명</label>
+            <label>{{ $t('page.system.00035') }}</label>
             <SJInput
               id="form_userName"
               v-model="userDetail.userName"
-              name="사용자명"
+              :name="$t('page.system.00035')"
               type="text"
               rules="required|max:50"
             />
           </div>
           <div class="col-md-4  mt-3">
-            <label>사용자명 영문</label>
+            <label>{{ $t('page.system.00065') }}</label>
             <SJInput
               id="form_userEnName"
               v-model="userDetail.userEnName"
-              name="사용자명영문"
+              :name="$t('page.system.00065')"
               type="text"
               rules="max:50"
             />
@@ -101,7 +101,7 @@
         </div>
         <div class="row">
           <div class="col-md-4 mt-3">
-            <label>비밀번호</label>
+            <label>{{ $t('page.system.00066') }}</label>
             <SJInput
               id="form_pswd"
               v-model="userDetail.pswd"
@@ -111,7 +111,7 @@
             />
           </div>
           <div class="col-md-4  mt-3">
-            <label>비밀번호 확인</label>
+            <label>{{ $t('page.system.00067') }}</label>
             <SJInput
               id="form_pswdChk"
               v-model="userDetail.pswdChk"
@@ -123,7 +123,7 @@
         </div>
         <div class="row">
           <div class="col-md-4 mt-3">
-            <label>이메일</label>
+            <label>{{ $t('page.system.00068') }}</label>
             <SJInput
               id="form_email"
               v-model="userDetail.email"
@@ -133,18 +133,18 @@
             />
           </div>
           <div class="col-md-4 mt-3">
-            <label>휴대폰번호</label>
+            <label>{{ $t('page.system.00069') }}</label>
             <SJInput
               id="form_mobile"
               v-model="userDetail.mobile"
-              name="휴대폰번호"
+              :name="$t('page.system.00069')"
               type="text"
               rules="numeric|max:20"
             />
           </div>
           <div class="col-md-4 mt-3">
-            <label>사용여부</label>
-            <SJSelect id="form_useYN" v-model="userDetail.useFlag" name="사용여부" :options="$api.common.getYNCodes()" rules="required" />
+            <label>{{ $t('page.system.00004') }}</label>
+            <SJSelect id="form_useYN" v-model="userDetail.useFlag" :name="$t('page.system.00004')" :options="$api.common.getYNCodes()" rules="required" />
           </div>
         </div>
         <div class="row">
@@ -160,21 +160,21 @@
             />
           </div>
           <div class="col-md-4 mt-3">
-            <label>부서</label>
+            <label> {{ $t('page.system.00059') }}</label>
             <SJSelect
               id="form_department"
               v-model="userDetail.deptId"
-              :name="$t('components.modal.00005')"
+              :name="$t('page.system.00059')"
               :options="departmentForm"
               rules="required"
             />
           </div>
           <div class="col-md-4 mt-3">
-            <label>직위</label>
+            <label>{{ $t('page.system.00070') }}</label>
             <SJSelect
               id="commonCode"
               v-model="userDetail.job"
-              name="직위"
+              :name="$t('page.system.00070')"
               :options="common.USR_POSTN"
               item-text="val"
               item-value="codeId"
@@ -184,11 +184,11 @@
         </div>
         <div class="row">
           <div class="col-md-4 mt-3">
-            <label>직책</label>
+            <label>{{ $t('page.system.00071') }}</label>
             <SJSelect
               id="commonCode"
               v-model="userDetail.pos"
-              name="직책"
+              :name="$t('page.system.00071')"
               :options="common.USER_DUTY"
               item-text="val"
               item-value="codeId"
@@ -196,11 +196,11 @@
             />
           </div>
           <div class="col-md-4 mt-3">
-            <label>시스템유형</label>
+            <label>{{ $t('page.system.00072') }}</label>
             <SJSelect
               id="commonCode"
               v-model="userDetail.systemType"
-              name="시스템유형"
+              :name="$t('page.system.00072')"
               :options="common.SYSTEM_TYPE"
               item-text="val"
               item-value="codeId"
@@ -208,11 +208,11 @@
             />
           </div>
           <div class="col-md-4 mt-3">
-            <label>계정상태</label>
+            <label>{{ $t('page.system.00073') }}</label>
             <SJSelect
               id="commonCode"
               v-model="userDetail.status"
-              name="계정상태"
+              :name="$t('page.system.00073')"
               :options="common.USER_ST"
               item-text="val"
               item-value="codeId"
@@ -321,14 +321,14 @@ export default {
               this.search.loginId = this.userDetail.loginId
               const userDupCnt = await this.$api.system.user.getUserDupChk(this.search)
               if (userDupCnt.data > 0) {
-                this.$notify.error('동일한 아이디가 존재합니다.')
+                this.$notify.error(this.$t('message.00012'))// 동일한 아이디가 존재합니다.
                 return false
               } else {
                 await this.$api.system.user.save(this.userDetail)
               }
             }
             this._resetForm()
-            this.$notify.success('처리되었습니다.') // TODO:다국어 처리
+            this.$notify.success(this.$t('message.00002'))// '처리되었습니다.'
             await this.ACTION_REGISTRY().searchClick()
           }
         },

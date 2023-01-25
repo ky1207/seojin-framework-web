@@ -6,25 +6,25 @@
     <template #default>
       <div class="d-flex align-items-center flex-wrap">
         <div class="col-md-1 text-center">
-          회사코드
+          {{ $t('page.system.00074') }}
         </div>
         <div class="col-md-1">
-          <SJInput id="companyId" v-model="search.coId" name="회사코드" type="text" disabled-validation />
+          <SJInput id="companyId" v-model="search.coId" :name="$t('page.system.00074')" type="text" disabled-validation />
         </div>
         <div class="col-md-1 text-center">
-          회사명
+          {{ $t('page.system.00075') }}
         </div>
         <div class="col-md-1">
-          <SJInput id="companyName" v-model="search.coName" name="회사명" type="text" disabled-validation />
+          <SJInput id="companyName" v-model="search.coName" :name="$t('page.system.00075')" type="text" disabled-validation />
         </div>
         <div class="col-md-1 text-center">
-          사용여부
+          {{ $t('page.system.00004') }}
         </div>
         <div class="col-md-1">
           <SJSelect
             id="useYN"
             v-model="search.useFlag"
-            name="사용여부"
+            :name="$t('page.system.00004')"
             :options="$api.common.getYNCodes()"
             disabled-validation
           />
@@ -33,7 +33,7 @@
     </template>
 
     <template #leftTitle>
-      회사
+      {{ $t('page.system.00001') }}
     </template>
     <template #left>
       <SJGrid ref="company" v-model="company.data" :columns="company.columns" @click="onMasterClick" />
@@ -42,11 +42,11 @@
     <template #rightTitle>
       <div class="row align-items-center">
         <div class="col">
-          회사 상세
+          {{ $t('page.system.00038') }}
         </div>
         <div class="col-auto">
           <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="createCompany">
-            신규 회사 <i class="bi bi-pencil-fill" />
+            {{ $t('page.system.00039') }} <i class="bi bi-pencil-fill" />
           </button>
         </div>
       </div>
@@ -55,22 +55,22 @@
       <SJForm ref="form">
         <div class="row">
           <div class="col-md-4 mt-3">
-            <label>회사코드</label>
+            <label>{{ $t('page.system.00074') }}</label>
             <SJInput
               id="form_coId"
               v-model="companyDetail.coId"
-              name="회사코드"
+              :name="$t('page.system.00074')"
               type="text"
               disabled-validation
               disabled
             />
           </div>
           <div class="col-md-4  mt-3">
-            <label>회사명</label>
+            <label>{{ $t('page.system.00075') }}</label>
             <SJInput
               id="form_coName"
               v-model="companyDetail.coName"
-              name="회사명"
+              :name="$t('page.system.00075')"
               type="text"
               rules="required|max:50"
             />
@@ -78,104 +78,104 @@
         </div>
         <div class="row">
           <div class="col-md-4 mt-3">
-            <label>사업자번호</label>
+            <label>{{ $t('page.system.00040') }}</label>
             <SJInput
               id="form_biznum"
               v-model="companyDetail.biznum"
-              name="사업자번호"
+              :name="$t('page.system.00040')"
               type="text"
               rules="max:50"
             />
           </div>
           <div class="col-md-4 mt-3">
-            <label>법인번호</label>
+            <label>{{ $t('page.system.00041') }}</label>
             <SJInput
               id="form_coNum"
               v-model="companyDetail.coNum"
-              name="법인번호"
+              :name="$t('page.system.00041')"
               type="text"
               rules="max:50"
             />
           </div>
           <div class="col-md-4 mt-3">
-            <label>대표자명</label>
+            <label>{{ $t('page.system.00042') }}</label>
             <SJInput
               id="form_repName"
               v-model="companyDetail.repName"
-              name="대표자명"
+              :name="$t('page.system.00042')"
               type="text"
               rules="max:50"
             />
           </div>
 
           <div class="col-md-4 mt-3">
-            <label>담당자 Email</label>
+            <label>{{ $t('page.system.00043') }}</label>
             <SJInput
               id="form_email"
               v-model="companyDetail.email"
-              name="담당자Email"
+              :name="$t('page.system.00043')"
               type="text"
               rules="email|max:50"
             />
           </div>
           <div class="col-md-4 mt-3">
-            <label>회사 전화</label>
+            <label>{{ $t('page.system.00044') }}</label>
             <SJInput
               id="form_phone"
               v-model="companyDetail.phone"
-              name="회사전화"
+              :name="$t('page.system.00044')"
               type="text"
               rules="max:20"
             />
           </div>
           <div class="col-md-4 mt-3">
-            <label>회사 FAX</label>
+            <label>{{ $t('page.system.00045') }}</label>
             <SJInput
               id="form_fax"
               v-model="companyDetail.fax"
-              name="회사FAX"
+              :name="$t('page.system.00045')"
               type="text"
               rules="max:20"
             />
           </div>
 
           <div class="col-md-4 mt-3">
-            <label>설립일</label>
-            <SJDatePicker id="form_estabDt" v-model="companyDetail.estabDt" name="설립일" disabled-validation />
+            <label>{{ $t('page.system.00046') }}</label>
+            <SJDatePicker id="form_estabDt" v-model="companyDetail.estabDt" name="$t('page.system.00046')" disabled-validation />
           </div>
           <div class="col-md-4 mt-3">
-            <label>업태</label>
+            <label>{{ $t('page.system.00047') }}</label>
             <SJInput
               id="form_biztype"
               v-model="companyDetail.biztype"
-              name="업태"
+              :name="$t('page.system.00047')"
               type="text"
               rules="max:12"
             />
           </div>
           <div class="col-md-4 mt-3">
-            <label>종목</label>
+            <label>{{ $t('page.system.00048') }}</label>
             <SJInput
               id="form_bizitem"
               v-model="companyDetail.bizitem"
-              name="종목"
+              :name="$t('page.system.00048')"
               type="text"
               rules="max:12"
             />
           </div>
 
           <div class="col-md-4 mt-3">
-            <label>언어</label>
+            <label>{{ $t('page.system.00049') }}</label>
             <SJInput
               id="form_lang"
               v-model="companyDetail.lang"
-              name="언어"
+              :name="$t('page.system.00049')"
               type="text"
               rules="max:12"
             />
           </div>
           <div class="col-md-4 mt-3">
-            <label>정렬</label>
+            <label>{{ $t('page.system.00050') }}</label>
             <SJStepper
               id="form_sort"
               v-model="companyDetail.sort"
@@ -184,55 +184,55 @@
             />
           </div>
           <div class="col-md-4 mt-3">
-            <label>사용여부</label>
-            <SJSelect id="form_useYN" v-model="companyDetail.useFlag" name="사용여부" :options="$api.common.getYNCodes()" rules="required" />
+            <label>{{ $t('page.system.00004') }}</label>
+            <SJSelect id="form_useYN" v-model="companyDetail.useFlag" :name="$t('page.system.00004')" :options="$api.common.getYNCodes()" rules="required" />
           </div>
 
           <div class="col-md-12 mt-3">
-            <label>주소</label>
+            <label>{{ $t('page.system.00051') }}</label>
             <SJInput
               id="form_addr1"
               v-model="companyDetail.addr1"
-              name="주소"
+              :name="$t('page.system.00051')"
               type="text"
               disabled-validation
             />
             <SJInput
               id="form_addr2"
               v-model="companyDetail.addr2"
-              name="주소"
+              :name="$t('page.system.00051')"
               type="text"
               disabled-validation
             />
           </div>
 
           <div class="col-md-12 mt-3">
-            <label>영문주소</label>
+            <label>{{ $t('page.system.00052') }}</label>
             <SJInput
               id="form_addr3"
               v-model="companyDetail.addr3"
-              name="영문주소"
+              :name="$t('page.system.00052')"
               type="text"
               disabled-validation
             />
           </div>
 
           <div class="col-md-4 mt-3">
-            <label>코드약어</label>
+            <label>{{ $t('page.system.00053') }}</label>
             <SJInput
               id="form_coType"
               v-model="companyDetail.coType"
-              name="코드약어"
+              :name="$t('page.system.00053')"
               type="text"
               rules="required|max:12"
             />
           </div>
           <div class="col-md-4 mt-3">
-            <label>로고파일명</label>
+            <label>{{ $t('page.system.00054') }}</label>
             <SJInput
               id="form_logoName"
               v-model="companyDetail.logoName"
-              name="로고파일명"
+              :name="$t('page.system.00054')"
               type="text"
               rules="required|max:50"
             />
@@ -304,7 +304,7 @@ export default {
               await this.$api.system.company.save(this.companyDetail)
             }
             this._resetForm()
-            this.$notify.success('처리되었습니다.') // TODO:다국어 처리
+            this.$notify.success(this.$t('message.00002'))// '처리되었습니다.'
             await this.ACTION_REGISTRY().searchClick()
           }
         },
