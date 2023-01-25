@@ -19,6 +19,11 @@ export default ctx => ({
       filter: null,
       sortable: false
     },
+    acsLogId: {
+      header: 'ID',
+      filter: null,
+      sortable: false
+    },
     api: {
       header: 'Api URL',
       filter: null,
@@ -88,6 +93,11 @@ export default ctx => ({
     },
 
     // F
+    failReasonCode: {
+      header: ctx.i18n.t('grid.failReasonCode'),
+      filter: null,
+      sortable: false
+    },
     fn1Auth: {
       header: 'FN1',
       renderer: CustomCheckBoxRenderer,
