@@ -174,7 +174,7 @@ export default {
           },
           {
             name: 'langs',
-            header: this.$t('page.code.column.011'),
+            header: this.$t('grid.codeName'),
             formatter: (e) => {
               return e.value[e.value.findIndex(l => l.langCode === this.$i18n.getLocaleCookie())].val
             },

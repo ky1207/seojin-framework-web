@@ -9,6 +9,7 @@
     "codeGroupId": "대분류코드",
     "codeGroupName": "대분류명",
     "codeId": "소분류코드",
+    "codeName": "소분류명",
     "codeDesc": "비고",
     "coName": "회사명",
     "delAuth": "삭제",
