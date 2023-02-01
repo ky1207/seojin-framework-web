@@ -28,5 +28,8 @@ export default axios => ({
   },
   updateAuthByMenuId (menuId, data) {
     return axios.post(`/api/v1.0/menu/authority/menu/${menuId}`, data)
+  },
+  menuByAuth (params) {
+    return axios.get('/api/v1.0/menu/authority/menuByAuth', { params })
   }
 })
