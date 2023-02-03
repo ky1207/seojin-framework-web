@@ -19,13 +19,13 @@
           />
         </div>
         <div class="col-md-1 text-center">
-          {{ $t('page.system.00001') }}
+          {{ $t('page.system.00077') }}
         </div>
         <div class="col-md-1">
           <SJSelect
             id="menuGroupId"
             v-model="search.menuGroupId"
-            :name="$t('page.system.00070')"
+            :name="$t('page.system.00077')"
             :options="common.MENU_GROUP"
             item-text="val"
             item-value="codeId"
@@ -68,7 +68,7 @@
     <template #rightTitle>
       <div class="row align-items-center">
         <div class="col">
-          {{ $t('page.system.00006') }}
+          {{ $t('page.system.00076') }}
         </div>
       </div>
     </template>
@@ -81,13 +81,11 @@
 <script>
 import { ACTION, MENU } from '~/mixins'
 import { CustomCheckRenderer } from '~/plugins/lib/grid/editor/CustomCheckRenderer'
-import { CustomCheckBoxRenderer } from '~/plugins/lib/grid/editor/CustomCheckBoxRenderer'
 
 export default {
   mixins: [MENU, ACTION],
   data () {
     return {
-      isUpdate: false,
       common: {},
       search: {},
       searchMenu: {},
@@ -123,8 +121,7 @@ export default {
           },
           {
             name: 'useFlag',
-            formatter: null,
-            renderer: CustomCheckBoxRenderer,
+            renderer: CustomCheckRenderer,
             align: 'center',
             filter: null
           },
@@ -171,13 +168,6 @@ export default {
       }
     }
   },
-  watch: {
-    isUpdate () { // hidden 그리드 일경우, 높이 계산이 최초 안됨.
-      setTimeout(() => {
-        window.dispatchEvent(new Event('resize'))
-      }, 100)
-    }
-  },
   async created () {
     const codes = await this.$api.common.getCommonCodes(['MENU_GROUP'])
     const company = await this.$api.common.getCompanyCodes()
@@ -194,7 +184,6 @@ export default {
       this.searchMenu.authGroupId = item.authGroupId
 
       const result = await this.$api.system.menu.menuByAuth(this.searchMenu)
-      this.isUpdate = true
       this.authMenuGrid.data = result.data
     },
     _resetForm () {
@@ -210,14 +199,7 @@ export default {
           this.authGrid.data = result.data
         },
         saveClick: async () => {
-          if (this.isUpdate) {
-            const { authorityUsers, ...rest } = this.auth
-            const data = { authority: rest, gridRequest: this.$refs.detail.invoke('getModifiedRows') }
-            await this.$api.system.authority.update(rest.authGroupId, data)
-          } else {
-            await this.$api.system.authority.save(this.auth)
-          }
-          this._resetForm()
+          await this.$api.system.menu.updateMenuAuthByAuthority(this.$refs.authMenuGrid.invoke('getModifiedRows'))
           this.$notify.success(this.$t('message.00002'))
           await this.ACTION_REGISTRY().searchClick()
         }
