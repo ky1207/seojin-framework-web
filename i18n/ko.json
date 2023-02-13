@@ -32,7 +32,9 @@
     "systemCodeType": "사용모듈",
     "title": "제목",
     "useFlag": "사용여부",
-    "userName": "사용자명"
+    "userName": "사용자명",
+    "notifyTmpltId": "알림코드",
+    "notifyTmpltName": "알림명"
   },
   "contextMenu": {
     "copy": "복사",

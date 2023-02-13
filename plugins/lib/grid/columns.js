@@ -91,6 +91,12 @@ export default ctx => ({
     email: {
       header: 'Email'
     },
+    emailFlag: {
+      header: 'EMAIL',
+      name: 'emailFlag',
+      renderer: CustomCheckBoxRenderer,
+      align: 'center'
+    },
 
     // F
     failReasonCode: {
@@ -156,6 +162,22 @@ export default ctx => ({
       filter: null,
       sortable: false
     },
+    // N
+    notifyTmpltId: {
+      header: ctx.i18n.t('grid.notifyTmpltId'),
+      width: 100,
+      filter: null,
+      sortable: false,
+      align: 'center'
+    },
+    notifyTmpltName: {
+      header: ctx.i18n.t('grid.notifyTmpltName'),
+      editor: {
+        type: 'text'
+      },
+      width: 150,
+      validation: { required: true }
+    },
     // P
     pos: {
       header: ctx.i18n.t('grid.pos')
@@ -175,6 +197,12 @@ export default ctx => ({
       },
       width: 300,
       validation: { required: true }
+    },
+    pushFlag: {
+      header: 'PUSH',
+      name: 'pushFlag',
+      renderer: CustomCheckBoxRenderer,
+      align: 'center'
     },
     // R
     rsvVal1: {
