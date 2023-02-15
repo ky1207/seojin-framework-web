@@ -230,7 +230,6 @@ export default {
           const result = await this.$refs.form.validate()
           if (result) {
             const data = { coId: this.search.coId, notifyTmpltId: this.alarm.notifyTmpltId, gridRequestAlarmReceiver: this.$refs.detailGrid.invoke('getModifiedRows') }
-            debugger
             await this.$api.system.alarm.updateAlarmReceiver(data)
 
             this._resetForm()
