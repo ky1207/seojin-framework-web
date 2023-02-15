@@ -3,10 +3,27 @@
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
     </template>
+    <template #default>
+      <div class="d-flex align-items-center flex-wrap">
+        <div class="col-md-1 text-center">
+          {{ $t('page.system.00001') }}
+        </div>
+        <div class="col-md-1">
+          <SJSelect
+            id="company"
+            v-model="search.coId"
+            :name="$t('page.system.00001')"
+            :options="common.COMPANY"
+            disabled-validation
+            disabled-first-message
+          />
+        </div>
+      </div>
+    </template>
     <template #bodyTitle>
       <div class="row align-items-center">
         <div class="col">
-          {{ $t('page.system.00034') }}
+          {{ $t('page.system.00078') }}
         </div>
         <div class="col-auto">
           <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="appendRow">
@@ -44,6 +61,10 @@ export default {
         columns: [
           {
             name: 'notifyTmpltId'
+          },
+          {
+            name: 'coId',
+            hidden: true
           },
           {
             name: 'notifyTmpltName'
@@ -97,7 +118,7 @@ export default {
             this.$notify.warning(this.$t('message.00007')) // Grid 입력값을 확인하세요.
             return false
           }
-          const data = this.$refs.grid.invoke('getModifiedRows')
+          const data = { coId: this.search.coId, gridRequest: this.$refs.grid.invoke('getModifiedRows') }
           await this.$api.system.alarm.update(data)
           this.$notify.success(this.$t('message.00002'))
           await this.ACTION_REGISTRY().searchClick()
