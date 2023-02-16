@@ -97,7 +97,12 @@ export default ctx => ({
       renderer: CustomCheckBoxRenderer,
       align: 'center'
     },
-
+    emailSentFlag: {
+      header: ctx.i18n.t('grid.emailSentFlag')
+    },
+    emailInqryFlag: {
+      header: ctx.i18n.t('grid.emailInqryFlag')
+    },
     // F
     failReasonCode: {
       header: ctx.i18n.t('grid.failReasonCode'),
@@ -178,6 +183,13 @@ export default ctx => ({
       width: 150,
       validation: { required: true }
     },
+    notifyId: {
+      header: ctx.i18n.t('grid.notifyId'),
+      width: 100,
+      filter: null,
+      sortable: false,
+      align: 'center'
+    },
     // P
     pos: {
       header: ctx.i18n.t('grid.pos')
@@ -203,6 +215,12 @@ export default ctx => ({
       name: 'pushFlag',
       renderer: CustomCheckBoxRenderer,
       align: 'center'
+    },
+    pushSentFlag: {
+      header: ctx.i18n.t('grid.pushSentFlag')
+    },
+    pushInqryFlag: {
+      header: ctx.i18n.t('grid.pushInqryFlag')
     },
     // R
     rsvVal1: {
@@ -237,6 +255,12 @@ export default ctx => ({
       align: 'center'
 
     },
+    rcvrId: {
+      header: ctx.i18n.t('grid.rcvrId')
+    },
+    rcvrEmail: {
+      header: ctx.i18n.t('grid.rcvrEmail')
+    },
     // S
     sortSeq: {
       name: 'sortSeq',
@@ -253,8 +277,14 @@ export default ctx => ({
       filter: null
     },
     systemType: {
-      header: '시스템유형',
+      header: ctx.i18n.t('grid.systemType'),
       formatter: CodeFormatter
+    },
+    sndrId: {
+      header: ctx.i18n.t('grid.sndrId')
+    },
+    sndrEmail: {
+      header: ctx.i18n.t('grid.sndrId')
     },
     // U
     useFlag: {

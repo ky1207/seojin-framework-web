@@ -34,7 +34,20 @@
     "useFlag": "사용여부",
     "userName": "사용자명",
     "notifyTmpltId": "알림코드",
-    "notifyTmpltName": "알림명"
+    "notifyTmpltName": "알림명",
+    "notifyId": "일련번호",
+    "sndrId": "발신자",
+    "sndrEmail": "발신메일주소",
+    "rcvrId": "수신자",
+    "rcvrEmail": "수신메일주소",
+    "title": "메일제목",
+    "emailFlag": "메일대상",
+    "pushFlag": "푸시대상",
+    "emailSentFlag": "메일전송",
+    "pushSentFlag": "푸시전송",
+    "emailInqryFlag": "메일읽음",
+    "pushInqryFlag": "푸시읽음",
+    "systemType": "시스템유형"
   },
   "contextMenu": {
     "copy": "복사",
@@ -126,7 +139,8 @@
       "00079": "알림양식 상세",
       "00080": "알림코드",
       "00081": "알림명",
-      "00082": "제목"
+      "00082": "제목",
+      "00083": "전송일자"
     }
   },
   "message": {
