@@ -176,6 +176,9 @@ export default {
             name: 'langs',
             header: this.$t('grid.codeName'),
             formatter: (e) => {
+              if (e.value === null) {
+                return ''
+              }
               return e.value[e.value.findIndex(l => l.langCode === this.$i18n.getLocaleCookie())].val
             },
             editor: {
