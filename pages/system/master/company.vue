@@ -85,6 +85,7 @@
               :name="$t('page.system.00040')"
               type="text"
               rules="max:50"
+              disabled-validation
             />
           </div>
           <div class="col-md-4 mt-3">
@@ -95,6 +96,7 @@
               :name="$t('page.system.00041')"
               type="text"
               rules="max:50"
+              disabled-validation
             />
           </div>
           <div class="col-md-4 mt-3">
@@ -105,6 +107,7 @@
               :name="$t('page.system.00042')"
               type="text"
               rules="max:50"
+              disabled-validation
             />
           </div>
 
@@ -116,6 +119,7 @@
               :name="$t('page.system.00043')"
               type="text"
               rules="email|max:50"
+              disabled-validation
             />
           </div>
           <div class="col-md-4 mt-3">
@@ -126,6 +130,7 @@
               :name="$t('page.system.00044')"
               type="text"
               rules="max:20"
+              disabled-validation
             />
           </div>
           <div class="col-md-4 mt-3">
@@ -136,6 +141,7 @@
               :name="$t('page.system.00045')"
               type="text"
               rules="max:20"
+              disabled-validation
             />
           </div>
 
@@ -151,6 +157,7 @@
               :name="$t('page.system.00047')"
               type="text"
               rules="max:12"
+              disabled-validation
             />
           </div>
           <div class="col-md-4 mt-3">
@@ -161,6 +168,7 @@
               :name="$t('page.system.00048')"
               type="text"
               rules="max:12"
+              disabled-validation
             />
           </div>
 
@@ -172,6 +180,7 @@
               :name="$t('page.system.00049')"
               type="text"
               rules="max:12"
+              disabled-validation
             />
           </div>
           <div class="col-md-4 mt-3">

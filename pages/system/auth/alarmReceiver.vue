@@ -129,9 +129,6 @@ export default {
       alarm: {},
       alarmGrid: {
         data: {},
-        options: {
-          rowHeaders: ['checkbox']
-        },
         columns: [
           {
             name: 'notifyTmpltId'
@@ -146,7 +143,9 @@ export default {
           {
             name: 'useFlag'
           }
-        ]
+        ],
+        options: {
+        }
       },
       detailGrid: {
         data: {},

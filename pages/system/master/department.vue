@@ -96,7 +96,6 @@
               :name="$t('page.system.00058')"
               type="text"
               rules="required"
-              disabled-validation
             />
           </div>
           <div class="col-md-12 mt-3">

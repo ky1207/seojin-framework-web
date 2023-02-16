@@ -98,10 +98,12 @@ export default ctx => ({
       align: 'center'
     },
     emailSentFlag: {
-      header: ctx.i18n.t('grid.emailSentFlag')
+      header: ctx.i18n.t('grid.emailSentFlag'),
+      formatter: YNFormatter
     },
     emailInqryFlag: {
-      header: ctx.i18n.t('grid.emailInqryFlag')
+      header: ctx.i18n.t('grid.emailInqryFlag'),
+      formatter: YNFormatter
     },
     // F
     failReasonCode: {
@@ -167,6 +169,12 @@ export default ctx => ({
       filter: null,
       sortable: false
     },
+    modDtm: {
+      header: ctx.i18n.t('grid.modDtm')
+    },
+    modUserName: {
+      header: ctx.i18n.t('grid.modUserName')
+    },
     // N
     notifyTmpltId: {
       header: ctx.i18n.t('grid.notifyTmpltId'),
@@ -217,10 +225,12 @@ export default ctx => ({
       align: 'center'
     },
     pushSentFlag: {
-      header: ctx.i18n.t('grid.pushSentFlag')
+      header: ctx.i18n.t('grid.pushSentFlag'),
+      formatter: YNFormatter
     },
     pushInqryFlag: {
-      header: ctx.i18n.t('grid.pushInqryFlag')
+      header: ctx.i18n.t('grid.pushInqryFlag'),
+      formatter: YNFormatter
     },
     // R
     rsvVal1: {
@@ -284,7 +294,7 @@ export default ctx => ({
       header: ctx.i18n.t('grid.sndrId')
     },
     sndrEmail: {
-      header: ctx.i18n.t('grid.sndrId')
+      header: ctx.i18n.t('grid.sndrEmail')
     },
     // U
     useFlag: {

@@ -15,6 +15,7 @@
             :name="$t('page.system.00001')"
             :options="common.COMPANY"
             disabled-validation
+            disabled-first-message
             @change="changeCompanySearch($event)"
           />
         </div>
@@ -96,6 +97,7 @@
               :name="$t('page.system.00065')"
               type="text"
               rules="max:50"
+              disabled-validation
             />
           </div>
         </div>
@@ -118,6 +120,7 @@
               name="password_confirmation"
               type="password"
               rules="confirmed:password"
+              disabled-validation
             />
           </div>
         </div>
@@ -130,6 +133,7 @@
               name="email"
               type="text"
               rules="email|max:50"
+              disabled-validation
             />
           </div>
           <div class="col-md-4 mt-3">
@@ -140,6 +144,7 @@
               :name="$t('page.system.00069')"
               type="text"
               rules="numeric|max:20"
+              disabled-validation
             />
           </div>
           <div class="col-md-4 mt-3">
@@ -156,6 +161,7 @@
               :name="$t('page.system.00001')"
               :options="common.COMPANY"
               rules="required"
+              :disabled="isUpdate"
               @change="changeCompanyForm($event)"
             />
           </div>
@@ -167,6 +173,7 @@
               :name="$t('page.system.00059')"
               :options="departmentForm"
               rules="required"
+              :disabled="isUpdate"
             />
           </div>
           <div class="col-md-4 mt-3">
@@ -255,7 +262,7 @@ export default {
           },
           {
             name: 'pos',
-            header: '직책',
+            header: this.$t('page.system.00071'),
             formatter: CodeFormatter
           },
           {
