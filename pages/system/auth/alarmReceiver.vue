@@ -138,10 +138,14 @@ export default {
             hidden: true
           },
           {
-            name: 'notifyTmpltName'
+            name: 'notifyTmpltName',
+            editor: null,
+            validation: null,
+            width: null
           },
           {
-            name: 'useFlag'
+            name: 'useFlag',
+            width: 100
           }
         ],
         options: {
