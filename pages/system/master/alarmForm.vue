@@ -67,13 +67,15 @@ export default {
             hidden: true
           },
           {
-            name: 'notifyTmpltName'
+            name: 'notifyTmpltName',
+            width: 300
           },
           {
             name: 'title',
             editor: {
               type: 'text'
-            }
+            },
+            width: 600
           },
           {
             name: 'emailFlag'
@@ -85,7 +87,9 @@ export default {
             name: 'sortSeq',
             editor: {
               type: 'text'
-            }
+            },
+            width: 150,
+            align: 'center'
           },
           {
             name: 'useFlag',

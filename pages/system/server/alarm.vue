@@ -95,7 +95,8 @@ export default {
             name: 'rcvrEmail'
           },
           {
-            name: 'title'
+            name: 'title',
+            width: 200
           },
           {
             name: 'emailFlag',

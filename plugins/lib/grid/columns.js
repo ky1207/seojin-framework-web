@@ -99,11 +99,13 @@ export default ctx => ({
     },
     emailSentFlag: {
       header: ctx.i18n.t('grid.emailSentFlag'),
-      formatter: YNFormatter
+      formatter: YNFormatter,
+      align: 'center'
     },
     emailInqryFlag: {
       header: ctx.i18n.t('grid.emailInqryFlag'),
-      formatter: YNFormatter
+      formatter: YNFormatter,
+      align: 'center'
     },
     // F
     failReasonCode: {
@@ -226,11 +228,13 @@ export default ctx => ({
     },
     pushSentFlag: {
       header: ctx.i18n.t('grid.pushSentFlag'),
-      formatter: YNFormatter
+      formatter: YNFormatter,
+      align: 'center'
     },
     pushInqryFlag: {
       header: ctx.i18n.t('grid.pushInqryFlag'),
-      formatter: YNFormatter
+      formatter: YNFormatter,
+      align: 'center'
     },
     // R
     rsvVal1: {
@@ -269,7 +273,8 @@ export default ctx => ({
       header: ctx.i18n.t('grid.rcvrId')
     },
     rcvrEmail: {
-      header: ctx.i18n.t('grid.rcvrEmail')
+      header: ctx.i18n.t('grid.rcvrEmail'),
+      width: 180
     },
     // S
     sortSeq: {
@@ -294,7 +299,8 @@ export default ctx => ({
       header: ctx.i18n.t('grid.sndrId')
     },
     sndrEmail: {
-      header: ctx.i18n.t('grid.sndrEmail')
+      header: ctx.i18n.t('grid.sndrEmail'),
+      width: 180
     },
     // U
     useFlag: {
