@@ -6,6 +6,7 @@
       class="form-select"
       aria-label="Default select"
       :class="disabledValidation?'':classes"
+      :disabled="disabled"
       @input="handleInput"
       @change="handleChange"
     >
@@ -59,6 +60,10 @@ export default {
       default: 'value'
     },
     disabledFirstMessage: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
       type: Boolean,
       default: false
     }
