@@ -52,7 +52,14 @@
       </div>
     </template>
     <template #body>
-      <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
+      <SJGrid
+        ref="grid"
+        v-model="grid.data"
+        :columns="grid.columns"
+        :options="grid.options"
+        pageable
+        @moveToGridPage="goPage"
+      />
     </template>
   </SJSearchOneLayout>
 </template>
@@ -77,56 +84,86 @@ export default {
         },
         columns: [
           {
-            name: 'notifyTmpltId'
+            name: 'notifyTmpltId',
+            filter: null,
+            sortable: false
           },
           {
-            name: 'notifyId'
+            name: 'notifyId',
+            filter: null,
+            sortable: false
           },
           {
-            name: 'sndrId'
+            name: 'sndrId',
+            filter: null,
+            sortable: false
           },
           {
-            name: 'sndrEmail'
+            name: 'sndrEmail',
+            filter: null,
+            sortable: false
           },
           {
-            name: 'rcvrId'
+            name: 'rcvrId',
+            filter: null,
+            sortable: false
           },
           {
-            name: 'rcvrEmail'
+            name: 'rcvrEmail',
+            filter: null,
+            sortable: false
           },
           {
             name: 'title',
-            width: 200
+            width: 200,
+            filter: null,
+            sortable: false
           },
           {
             name: 'emailFlag',
             header: this.$t('page.system.00087'),
             formatter: YNFormatter,
-            renderer: null
+            renderer: null,
+            filter: null,
+            sortable: false
           },
           {
             name: 'pushFlag',
             header: this.$t('page.system.00088'),
             formatter: YNFormatter,
-            renderer: null
+            renderer: null,
+            filter: null,
+            sortable: false
           },
           {
-            name: 'emailSentFlag'
+            name: 'emailSentFlag',
+            filter: null,
+            sortable: false
           },
           {
-            name: 'pushSentFlag'
+            name: 'pushSentFlag',
+            filter: null,
+            sortable: false
           },
           {
-            name: 'emailInqryFlag'
+            name: 'emailInqryFlag',
+            filter: null,
+            sortable: false
           },
           {
-            name: 'pushInqryFlag'
+            name: 'pushInqryFlag',
+            filter: null,
+            sortable: false
           },
           {
-            name: 'modDtm'
+            name: 'modDtm',
+            filter: null,
+            sortable: false
           },
           {
-            name: 'modUserName'
+            name: 'modUserName',
+            filter: null,
+            sortable: false
           }
         ]
       }
@@ -137,14 +174,20 @@ export default {
     this.common = { COMPANY: company.data }
   },
   methods: {
+    goPage (e) {
+      this.list(e.page)
+    },
+    async list (page) {
+      const result = await this.$api.system.alarm.alarmList(this.search, page)
+      this.grid.data = result.data
+    },
     sendAlarm () {
       // TO-DO : 배치 개발 완료 시 배치 호출
     },
     ACTION_REGISTRY () {
       return {
-        searchClick: async () => {
-          const result = await this.$api.system.alarm.alarmList(this.search)
-          this.grid.data = result.data
+        searchClick: () => {
+          this.list()
         }
       }
     }
