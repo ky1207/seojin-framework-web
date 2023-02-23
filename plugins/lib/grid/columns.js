@@ -41,6 +41,12 @@ export default ctx => ({
     authName: {
       header: ctx.i18n.t('grid.authName')
     },
+    applnUseFlag: {
+      header: ctx.i18n.t('grid.applnUseFlag'),
+      renderer: CustomCheckBoxRenderer,
+      align: 'center',
+      filter: null
+    },
     // B
     biznum: {
       header: ctx.i18n.t('grid.biznum')
@@ -235,6 +241,12 @@ export default ctx => ({
       header: ctx.i18n.t('grid.pushInqryFlag'),
       formatter: YNFormatter,
       align: 'center'
+    },
+    pdaUseFlag: {
+      header: ctx.i18n.t('grid.pdaUseFlag'),
+      renderer: CustomCheckBoxRenderer,
+      align: 'center',
+      filter: null
     },
     // R
     rsvVal1: {
