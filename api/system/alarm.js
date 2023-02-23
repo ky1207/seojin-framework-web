@@ -2,11 +2,17 @@ export default axios => ({
   list (search) {
     return axios.get('/api/v1.0/alarm', { params: search })
   },
-  update (data) {
-    return axios.post('/api/v1.0/alarm', data)
+  update (notifyTmpltId, alarmForm) {
+    return axios.post(`/api/v1.0/alarm/${notifyTmpltId}`, alarmForm)
+  },
+  save (alarmForm) {
+    return axios.post('/api/v1.0/alarm', alarmForm)
   },
   load (search) {
     return axios.get('/api/v1.0/alarm/detail', { params: search })
+  },
+  delete (data) {
+    return axios.post('/api/v1.0/alarm/delete', data)
   },
   updateAlarmReceiver (data) {
     return axios.post('/api/v1.0/alarm/updateAlarmReceiver', data)
