@@ -6,6 +6,7 @@ import user from '~/api/system/user'
 import company from '~/api/system/company'
 import department from '~/api/system/department'
 import log from '~/api/system/log'
+import schedule from '~/api/system/schedule'
 import alarm from '~/api/system/alarm'
 
 import common from '~/api/common/common'
@@ -23,6 +24,7 @@ export default ({ $axios }, inject) => {
       company: company($axios),
       department: department($axios),
       log: log($axios),
+      schedule: schedule($axios),
       alarm: alarm($axios)
     },
     common: common($axios),
