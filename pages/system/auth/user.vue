@@ -4,8 +4,8 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <div class="d-flex align-items-center flex-wrap">
-        <div class="col-md-1 text-center">
+      <div class="search-area">
+        <div class="col-md-1 search-label">
           {{ $t('page.system.00001') }}
         </div>
         <div class="col-md-1">
@@ -19,7 +19,7 @@
             @change="changeCompanySearch($event)"
           />
         </div>
-        <div class="col-md-1 text-center">
+        <div class="col-md-1 search-label">
           {{ $t('page.system.00059') }}
         </div>
         <div class="col-md-1">
@@ -31,13 +31,13 @@
             disabled-validation
           />
         </div>
-        <div class="col-md-1 text-center">
+        <div class="col-md-1 search-label">
           ID
         </div>
         <div class="col-md-1">
           <SJInput id="loginId" v-model="search.loginId" name="ID" type="text" disabled-validation />
         </div>
-        <div class="col-md-1 text-center">
+        <div class="col-md-1 search-label">
           {{ $t('page.system.00060') }}
         </div>
         <div class="col-md-1">
@@ -161,7 +161,8 @@
               :name="$t('page.system.00001')"
               :options="common.COMPANY"
               rules="required"
-              :disabled="isUpdate"
+              disabled
+              disabled-first-message
               @change="changeCompanyForm($event)"
             />
           </div>
@@ -173,7 +174,6 @@
               :name="$t('page.system.00059')"
               :options="departmentForm"
               rules="required"
-              :disabled="isUpdate"
             />
           </div>
           <div class="col-md-4 mt-3">
@@ -309,12 +309,18 @@ export default {
     createUser () {
       this.isUpdate = false
       this._resetForm()
+      this.userDetail.coId = this.search.coId
     },
     ACTION_REGISTRY () {
       return {
         searchClick: async () => {
           this._resetForm()
           const result = await this.$api.system.user.list(this.search)
+          this.userDetail.coId = this.search.coId
+          // TO-DO 회사 선택 시 부서 change event 걸기
+          /* const select = document.querySelector('#form_company')
+          select.value = this.search.coId
+          select.dispatchEvent(new Event('change')) */
           this.user.data = result.data
         },
         saveClick: async () => {
