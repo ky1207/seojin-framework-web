@@ -20,8 +20,8 @@ export default axios => ({
   deleteSchedule (schedule) {
     return axios.delete(`/api/v1.0/system/schedule/${schedule.jobGroup}/${schedule.jobName}`)
   },
-  scheduleLog (schedule) {
-    return axios.get(`/api/v1.0/system/schedule/${schedule.jobGroup}/${schedule.jobName}/schedulelog`)
+  scheduleLog (schedule, page = 1) {
+    return axios.get(`/api/v1.0/system/schedule/${schedule.jobGroup}/${schedule.jobName}/schedulelog`, { params: { pageNum: page } })
   },
   batchJobLog (scheduleLog) {
     return axios.get(`/api/v1.0/system/schedule/${scheduleLog.jobName}/batchjoblog/${scheduleLog.jobExecutionId}`)
