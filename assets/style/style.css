@@ -705,7 +705,7 @@ h6 {
   color: #4154f1;
   transition: 0.3;
   background: #f6f9ff;
-  padding: 10px 15px;
+  padding: 5px 15px;
   border-radius: 4px;
 }
 
@@ -755,7 +755,7 @@ h6 {
   font-weight: 600;
   color: #012970;
   transition: 0.3;
-  padding: 10px 0 10px 40px;
+  padding: 5px 0 5px 40px;
   transition: 0.3s;
 }
 
@@ -1446,4 +1446,26 @@ h6 {
 /** label **/
 label {
   font-size: 14px;
+}
+
+
+.mx-input {
+  padding: 0.15rem 0.75rem;
+  font-size: 0.875rem;
+  display: block;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  height: inherit;
+}
+.mx-datepicker {
+  width: 100%;
 }
