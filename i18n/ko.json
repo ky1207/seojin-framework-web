@@ -49,7 +49,9 @@
     "pushInqryFlag": "푸시읽음",
     "systemType": "시스템유형",
     "modDtm": "수정일",
-    "modUserName": "수정자"
+    "modUserName": "수정자",
+    "applnUseFlag": "APP사용",
+    "pdaUseFlag": "PDA사용"
   },
   "contextMenu": {
     "copy": "복사",
