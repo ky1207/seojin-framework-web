@@ -1472,8 +1472,8 @@ label {
 
 /** Search **/
 .search-area {
-  border-top: 0.1rem solid;
-  border-bottom: 0.1rem solid;
+  border-top: 0.1rem solid #b5b5b5;
+  border-bottom: 0.1rem solid #b5b5b5;
   padding: 2px 0;
   display: flex;
   flex-wrap: wrap;
