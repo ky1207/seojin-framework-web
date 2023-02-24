@@ -250,8 +250,8 @@ h6 {
 }
 
 .card-title {
-  padding: 5px 0 5px 0;
-  font-size: 18px;
+  /*padding: 2px 0 5px 0;*/
+  font-size: 16px;
   font-weight: 500;
   color: #012970;
   font-family: "Poppins", sans-serif;
@@ -265,6 +265,7 @@ h6 {
 
 .card-body {
   padding: 10px 10px 10px 10px;
+  font-size: 14px;
 }
 
 .card-img-overlay {
@@ -1265,8 +1266,8 @@ h6 {
 */
 .btn {
   border-radius: 4px;
-  font-size: 13px;
-  padding: 8px 25px;
+  font-size: 12px;
+  padding: 5px 15px;
   border: none;
   letter-spacing: .02rem;
   -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
@@ -1277,8 +1278,8 @@ h6 {
 }
 
 .btn.btn-sm {
-  font-size: 12px;
-  padding: 5px 15px;
+  /*font-size: 12px;*/
+  /*padding: 5px 15px;*/
 }
 
 .btn.btn-lg {
@@ -1441,3 +1442,8 @@ h6 {
   color: #fff;
 }
 
+
+/** label **/
+label {
+  font-size: 14px;
+}
