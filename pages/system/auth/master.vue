@@ -77,7 +77,7 @@
     <template #right>
       <SJForm ref="form">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4 mt-3">
             <label> {{ $t('page.system.00001') }}</label>
             <SJSelect
               id="form_company"
@@ -87,7 +87,7 @@
               rules="required"
             />
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 mt-3">
             <label>{{ $t('page.system.00004') }}</label>
             <SJSelect
               id="form_useFlag"
@@ -99,7 +99,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4 mt-3">
             <label>{{ $t('page.system.00002') }}</label>
             <SJInput
               id="form_authGroupId"
@@ -111,7 +111,7 @@
             />
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-4 mt-3">
             <label>{{ $t('page.system.00003') }}</label>
             <SJInput
               id="form_authName"
@@ -121,7 +121,7 @@
               rules="required"
             />
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 mt-3">
             <label>{{ $t('page.system.00008') }}</label>
             <SJSelect
               id="form_defaultFlag"

@@ -70,7 +70,7 @@
     <template #right>
       <SJForm ref="form">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4 mt-3">
             <label>{{ $t('page.system.00001') }}</label>
             <SJSelect
               id="form_company"
@@ -80,7 +80,7 @@
               rules="required"
             />
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 mt-3">
             <label>{{ $t('page.system.00028') }}</label>
             <SJInput
               id="form_menuIcon"
@@ -92,7 +92,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4 mt-3">
             <label>{{ $t('page.system.00029') }}</label>
             <SJSelect
               id="form_company"
@@ -105,7 +105,7 @@
             />
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-4 mt-3">
             <label>{{ $t('page.system.00030') }}</label>
             <SJInput
               id="form_menuId"
@@ -116,7 +116,7 @@
               disabled
             />
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 mt-3">
             <label>{{ $t('page.system.00031') }}</label>
             <SJInput
               id="form_applnMenuCode"
