@@ -4,8 +4,8 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <div class="d-flex align-items-center flex-wrap">
-        <div class="col-md-1 text-center">
+      <div class="search-area">
+        <div class="col-md-1 search-label ">
           {{ $t('page.system.00017') }}
         </div>
         <div class="col-md-1">
@@ -20,25 +20,25 @@
           />
         </div>
 
-        <div class="col-md-1 text-center">
+        <div class="col-md-1 search-label">
           {{ $t('page.system.00018') }}
         </div>
         <div class="col-md-1">
           <SJInput id="large" v-model="search.codeGroupId" :name="$t('page.system.00018')" type="text" disabled-validation />
         </div>
-        <div class="col-md-1 text-center">
+        <div class="col-md-1 search-label">
           {{ $t('page.system.00019') }}
         </div>
         <div class="col-md-1">
           <SJInput id="lname" v-model="search.codeGroupName" :name="$t('page.system.00019')" type="text" disabled-validation />
         </div>
-        <div class="col-md-1 text-center">
+        <div class="col-md-1 search-label">
           {{ $t('page.system.00009') }}
         </div>
         <div class="col-md-1">
           <SJInput id="small" v-model="search.codeName" :name="$t('page.system.00009')" type="text" disabled-validation />
         </div>
-        <div class="col-md-1 text-center">
+        <div class="col-md-1 search-label">
           {{ $t('page.system.00004') }}
         </div>
         <div class="col-md-1">
@@ -154,24 +154,16 @@ export default {
       large: {
         data: {},
         columns: [
-          {
-            name: 'codeGroupId'
-          },
-          {
-            name: 'codeGroupName'
-          },
-          {
-            name: 'systemCodeType'
-          },
+          { name: 'codeGroupId' },
+          { name: 'codeGroupName' },
+          { name: 'systemCodeType' },
           { name: 'useFlag' }
         ]
       },
       detail: {
         data: {},
         columns: [
-          {
-            name: 'codeId'
-          },
+          { name: 'codeId' },
           {
             name: 'langs',
             header: this.$t('grid.codeName'),
@@ -191,10 +183,7 @@ export default {
               type: 'text'
             }
           },
-          {
-            name: 'useFlag',
-            renderer: CustomCheckBoxRenderer
-          },
+          { name: 'useFlag', renderer: CustomCheckBoxRenderer },
           {
             name: 'codeDesc',
             editor: {

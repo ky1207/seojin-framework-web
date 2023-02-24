@@ -4,8 +4,8 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <div class="d-flex align-items-center flex-wrap">
-        <div class="col-md-1 text-center">
+      <div class="search-area">
+        <div class="col-md-1 search-label">
           {{ $t('page.system.00001') }}
         </div>
         <div class="col-md-1">
@@ -18,7 +18,7 @@
             disabled-first-message
           />
         </div>
-        <div class="col-md-1 text-center">
+        <div class="col-md-1 search-label">
           {{ $t('page.system.00002') }}
         </div>
         <div class="col-md-1">
@@ -30,7 +30,7 @@
             disabled-validation
           />
         </div>
-        <div class="col-md-1 text-center">
+        <div class="col-md-1 search-label">
           {{ $t('page.system.00003') }}
         </div>
         <div class="col-md-1">
@@ -42,7 +42,7 @@
             disabled-validation
           />
         </div>
-        <div class="col-md-1 text-center">
+        <div class="col-md-1 search-label">
           {{ $t('page.system.00004') }}
         </div>
         <div class="col-md-1">

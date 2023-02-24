@@ -4,8 +4,8 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <div class="d-flex align-items-center flex-wrap">
-        <div class="col-md-1 text-center">
+      <div class="search-area">
+        <div class="col-md-1 search-label">
           {{ $t('page.system.00029') }}
         </div>
         <div class="col-md-2">
@@ -52,45 +52,19 @@ export default {
           rowHeaders: ['checkbox', 'rowNum']
         },
         columns: [
-          {
-            name: 'progName'
-          },
-          {
-            name: 'progPath'
-          },
-          {
-            name: 'authCheckFlag'
-          },
-          {
-            name: 'inqryAuth'
-          },
-          {
-            name: 'saveAuth'
-          },
-          {
-            name: 'excelAuth'
-          },
-          {
-            name: 'delAuth'
-          },
-          {
-            name: 'fn1Auth'
-          },
-          {
-            name: 'fn2Auth'
-          },
-          {
-            name: 'fn3Auth'
-          },
-          {
-            name: 'fn4Auth'
-          },
-          {
-            name: 'fn5Auth'
-          },
-          {
-            name: 'remark'
-          }
+          { name: 'progName' },
+          { name: 'progPath' },
+          { name: 'authCheckFlag' },
+          { name: 'inqryAuth' },
+          { name: 'saveAuth' },
+          { name: 'excelAuth' },
+          { name: 'delAuth' },
+          { name: 'fn1Auth' },
+          { name: 'fn2Auth' },
+          { name: 'fn3Auth' },
+          { name: 'fn4Auth' },
+          { name: 'fn5Auth' },
+          { name: 'remark' }
         ]
       }
     }
