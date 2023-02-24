@@ -4,8 +4,8 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <div class="d-flex align-items-center flex-wrap">
-        <div class="col-md-1 text-center">
+      <div class="search-area">
+        <div class="col-md-1 search-label">
           {{ $t('page.system.00001') }}
         </div>
         <div class="col-md-1">
@@ -19,7 +19,7 @@
             @change="changeCompanySearch($event)"
           />
         </div>
-        <div class="col-md-1 text-center">
+        <div class="col-md-1 search-label">
           {{ $t('page.system.00059') }}
         </div>
         <div class="col-md-1">
@@ -31,13 +31,13 @@
             disabled-validation
           />
         </div>
-        <div class="col-md-1 text-center">
+        <div class="col-md-1 search-label">
           ID
         </div>
         <div class="col-md-1">
           <SJInput id="loginId" v-model="search.loginId" name="ID" type="text" disabled-validation />
         </div>
-        <div class="col-md-1 text-center">
+        <div class="col-md-1 search-label">
           {{ $t('page.system.00060') }}
         </div>
         <div class="col-md-1">
