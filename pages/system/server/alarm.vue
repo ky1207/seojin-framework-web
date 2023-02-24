@@ -21,7 +21,7 @@
         <div class="col-md-1 text-center">
           {{ $t('page.system.00083') }}
         </div>
-        <div class="col-md-4">
+        <div class="col-md-1">
           <SJDatePicker
             id="sentStartDtm"
             v-model="search.sentStartDtm"
@@ -29,7 +29,11 @@
             show-current="true"
             disabled-validation
           />
+        </div>
+        <div>
           ~
+        </div>
+        <div class="col-md-1">
           <SJDatePicker
             id="sentEndDtm"
             v-model="search.sentEndDtm"
