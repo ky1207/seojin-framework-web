@@ -113,7 +113,7 @@
           </div>
         </div>
       </SJForm>
-      <h5 class="card-title">
+      <h5 class="card-title mt-3 mb-3">
         <div class="row align-items-center">
           <div class="col">
             {{ $t('page.system.00025') }}
