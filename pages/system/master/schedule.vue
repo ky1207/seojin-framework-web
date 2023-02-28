@@ -148,21 +148,23 @@ export default {
     }
   },
   methods: {
-    add () {
-      this.$refs.manage.open()
+    async add () {
+      const result = await this.$refs.manage.open()
+      if (result) { await this.ACTION_REGISTRY().searchClick() }
     },
     async page (e) {
       await this.scheduleLog(this.selectedSchedule, e.page)
     },
-    scheduleClick (e) {
+    async scheduleClick (e) {
       const schedule = this.$refs.grid.invoke('getRow', e.rowKey)
       if (schedule === null) { return }
       if (e.columnName === '') {
-        this.$refs.manage.open(schedule)
+        const result = await this.$refs.manage.open(schedule)
+        if (result) { await this.ACTION_REGISTRY().searchClick() }
         return
       }
       this.selectedSchedule = schedule
-      this.scheduleLog(this.selectedSchedule)
+      await this.scheduleLog(this.selectedSchedule)
     },
     async scheduleLog (schedule, page = 1) {
       const result = await this.$api.system.schedule.scheduleLog(this.selectedSchedule, page)

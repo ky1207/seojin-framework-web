@@ -81,7 +81,7 @@
                   v-model="schedule.parameters"
                   name="Parameters"
                   type="text"
-                  rules="required"
+                  disabled-validation
                 />
                 <span class="text">
                   ex.<br>
