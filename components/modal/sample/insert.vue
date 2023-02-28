@@ -27,7 +27,7 @@
           name="selectBox"
           rules="required"
         />
-        <SJDatePicker id="date" v-model="current" name="date" /> {{ current }}
+
         <SJEditor id="editor" v-model="item.content" name="내용" rules="required" />
         <SJTextarea
           id="textarea"
@@ -35,6 +35,7 @@
           name="textarea"
           rules="required"
         />
+        <SJDatePicker id="date" v-model="current" name="date" rules="required" /> {{ current }}
       </SJForm>
     </template>
 

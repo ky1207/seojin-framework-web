@@ -1,5 +1,26 @@
 <template>
-  <DatePicker v-model="data" :type="type" :clearable="false" @input="handleInput" @change="handleChange" />
+  <ValidationProvider
+    ref="provider"
+    v-slot="{ errors,classes }"
+    :rules="rules"
+    :name="name"
+    tag="div"
+    :disabled="disabledValidation"
+  >
+    <DatePicker
+      v-model="data"
+      :type="type"
+      :clearable="false"
+      :class="disabledValidation?'':classes"
+      :aria-describedby="id+'-feedback'"
+      @input="handleInput"
+      @change="handleChange"
+      @blur="validate"
+    />
+    <span :id="id+'-feedback'" class="invalid-feedback">
+      {{ errors[0] }}
+    </span>
+  </validationprovider>
 </template>
 
 <script>
@@ -12,6 +33,22 @@ export default {
     type: {
       type: String,
       default: 'date'
+    },
+    rules: {
+      type: String,
+      default: ''
+    },
+    name: {
+      type: String,
+      required: true
+    },
+    id: {
+      type: String,
+      required: true
+    },
+    disabledValidation: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -25,7 +62,11 @@ export default {
         return (this.value) ? new Date(this.value) : null
       },
       set (value) {
-        this.date = value.getTime()
+        if (value) {
+          this.date = value.getTime()
+        } else {
+          this.date = null
+        }
         this.handleChange(this.date)
       }
     }
@@ -37,9 +78,15 @@ export default {
       } else {
         this.$emit('input', null)
       }
+      this.validate()
     },
     handleChange (p) {
       this.handleInput(p)
+      this.validate()
+    },
+    validate () {
+      this.$refs.provider.value = this.date
+      this.$refs.provider.validate()
     }
   }
 }
