@@ -9,8 +9,7 @@
         :aria-describedby="id+'-feedback'"
         :disabled="disabled"
         :readonly="readonly"
-        :placeholder="l.langCode"
-        :class="disabledValidation?'':classes"
+        :class="disabledValidation? id+'_bg': { ...classes , [l.langCode+'_bg']: true, 'MultiInput_bg':true }"
         @blur="copy(idx)"
         @input="handleInput"
       >
@@ -97,3 +96,22 @@ export default {
 
 }
 </script>
+<style scoped>
+.MultiInput_bg {
+  padding-right: 30px;
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+.vi_bg {
+  background-image: url("~/assets/images/flag/vi.png") !important;
+}
+.ko_bg {
+  background-image: url("~/assets/images/flag/ko.png")  !important;
+}
+.en_bg {
+  background-image: url("~/assets/images/flag/en.png")  !important;
+}
+input {
+  margin-bottom: 5px;
+}
+</style>

@@ -23,7 +23,10 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['~/assets/transition.css', '~/assets/style/custom.scss', '~/assets/style/style.css'],
+  css: ['~/assets/transition.css',
+    '~/assets/style/custom.scss',
+    '~/assets/style/style.css',
+    '~/assets/style/grid.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [

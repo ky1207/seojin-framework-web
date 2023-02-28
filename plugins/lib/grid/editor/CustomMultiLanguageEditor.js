@@ -16,16 +16,19 @@ export class CustomMultiLanguageEditor {
     const viDiv = document.createElement('div')
 
     this.ko = document.createElement('input')
+    this.ko.className = 'CustomMultiLanguageEditor ko_bg'
     this.ko.type = 'text'
     this.ko.value = this.getValueByLocale('ko').val
     koDiv.append(this.ko)
 
     this.en = document.createElement('input')
+    this.en.className = 'CustomMultiLanguageEditor en_bg'
     this.en.type = 'text'
     this.en.value = this.getValueByLocale('en').val
     enDiv.append(this.en)
 
     this.vi = document.createElement('input')
+    this.vi.className = 'CustomMultiLanguageEditor vi_bg'
     this.vi.type = 'text'
     this.vi.value = this.getValueByLocale('vi').val
     viDiv.append(this.vi)

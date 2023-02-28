@@ -175,7 +175,8 @@ export default {
             },
             editor: {
               type: CustomMultiLanguageEditor
-            }
+            },
+            width: 150
           },
           {
             name: 'sortSeq',

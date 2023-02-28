@@ -1,0 +1,14 @@
+.CustomMultiLanguageEditor {
+  padding-right: 30px;
+  background-position: right center;
+  background-repeat: no-repeat !important;
+}
+.vi_bg {
+  background-image: url("~/assets/images/flag/vi.png") !important;
+}
+.ko_bg {
+  background-image: url("~/assets/images/flag/ko.png")  !important;
+}
+.en_bg {
+  background-image: url("~/assets/images/flag/en.png")  !important;
+}
