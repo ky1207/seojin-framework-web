@@ -2,6 +2,8 @@
   <SJSearchTLRLayout>
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
+      <SJConfirm ref="confirm" />
+      <SystemScheduleManage ref="manage" />
     </template>
     <template #default>
       <div class="search-area">
@@ -19,11 +21,8 @@
           스케줄
         </div>
         <div class="col-auto">
-          <button class="btn btn-mb3 btn-mr3 btn-blue-gray">
+          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="add">
             {{ $t('page.system.00026') }} <i class="bi bi-file-plus" />
-          </button>
-          <button class="btn btn-mb3 btn-mr3 btn-blue-gray">
-            {{ $t('page.system.00012') }} <i class="bi bi-file-minus" />
           </button>
         </div>
       </div>
@@ -63,6 +62,7 @@
 <script>
 import { MENU, ACTION } from '~/mixins'
 import { DateFormatter } from '~/plugins/lib/grid/Formatter'
+import { ButtonRenderer } from '~/plugins/lib/grid/editor/ButtonRenderer'
 
 export default {
   mixins: [MENU, ACTION],
@@ -75,7 +75,7 @@ export default {
       grid: {
         data: {},
         options: {
-          rowHeaders: ['checkbox', 'rowNum']
+          rowHeaders: ['rowNum']
         },
         columns: [
           { name: 'jobName', header: 'JOB Name' },
@@ -85,7 +85,19 @@ export default {
           { name: 'parameters', header: 'Params' },
           { name: 'prevFireTime', header: 'Prev Fire Time', formatter: DateFormatter, align: 'center' },
           { name: 'nextFireTime', header: 'Next Fire Time', formatter: DateFormatter, align: 'center' },
-          { name: 'triggerState', header: 'State', align: 'center' }
+          { name: 'triggerState', header: 'State', align: 'center' },
+          {
+            name: '',
+            renderer: {
+              type: ButtonRenderer,
+              options: {
+                title: 'EDIT'
+              }
+            },
+            align: 'center',
+            filter: null,
+            sortable: false
+          }
 
         ]
       },
@@ -136,12 +148,19 @@ export default {
     }
   },
   methods: {
+    add () {
+      this.$refs.manage.open()
+    },
     async page (e) {
       await this.scheduleLog(this.selectedSchedule, e.page)
     },
     scheduleClick (e) {
       const schedule = this.$refs.grid.invoke('getRow', e.rowKey)
       if (schedule === null) { return }
+      if (e.columnName === '') {
+        this.$refs.manage.open(schedule)
+        return
+      }
       this.selectedSchedule = schedule
       this.scheduleLog(this.selectedSchedule)
     },
@@ -184,7 +203,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>
