@@ -6,6 +6,7 @@ export default {
   server: {
     host: '0.0.0.0'
   },
+  loading: false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - seojin-framework-web',
