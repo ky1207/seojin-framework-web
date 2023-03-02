@@ -1486,7 +1486,7 @@ label {
   margin: 0 2px;
 }
 
-/*span.invalid-feedback {
+form  span.invalid-feedback {
   height: 16px !important;
   display:block;
-}*/
+}
