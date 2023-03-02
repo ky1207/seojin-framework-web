@@ -4,10 +4,10 @@
       {{ $t('components.modal.00008') }}
     </template>
     <template #button>
-      <button v-if="parameter" type="button" class="btn btn-secondary" @click="resume">
+      <button v-if="parameter&&schedule.triggerState==='PAUSED'" type="button" class="btn btn-secondary" @click="resume">
         {{ $t('components.modal.00010') }}
       </button>
-      <button v-if="parameter" type="button" class="btn btn-secondary" @click="pause">
+      <button v-if="parameter&&schedule.triggerState!=='PAUSED'" type="button" class="btn btn-secondary" @click="pause">
         {{ $t('components.modal.00011') }}
       </button>
       <button v-if="parameter" type="button" class="btn btn-secondary" @click="execute">
@@ -33,11 +33,13 @@
             <div class="row">
               <div class="mt-3">
                 <label>Job Group</label>
-                <SJInput
+                <SJSelect
                   id="jobGroup"
                   v-model="schedule.jobGroup"
                   name="Job Group"
-                  type="text"
+                  :options="common.JOB_GROUP"
+                  item-text="val"
+                  item-value="codeId"
                   rules="required"
                   :disabled="!!parameter"
                 />
@@ -109,7 +111,7 @@
 export default {
   data () {
     return {
-      // common: {},
+      common: {},
       parameter: null,
       schedule: {},
       resolve: null,
@@ -117,8 +119,8 @@ export default {
     }
   },
   async created () {
-    // const result = await this.$api.common.getDepartmentCodes()
-    // this.common = { DEPARTMENT: result.data }
+    const codes = await this.$api.common.getCommonCodes(['JOB_GROUP'])
+    this.common = codes.data
   },
   methods: {
     async open (schedule) {

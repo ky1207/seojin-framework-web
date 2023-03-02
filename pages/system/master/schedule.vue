@@ -61,13 +61,14 @@
 
 <script>
 import { MENU, ACTION } from '~/mixins'
-import { DateFormatter } from '~/plugins/lib/grid/Formatter'
+import { CodeFormatter, DateFormatter } from '~/plugins/lib/grid/Formatter'
 import { ButtonRenderer } from '~/plugins/lib/grid/editor/ButtonRenderer'
 
 export default {
   mixins: [MENU, ACTION],
   data () {
     return {
+      common: {},
       selectedSchedule: null,
       search: {
         jobName: ''
@@ -79,7 +80,7 @@ export default {
         },
         columns: [
           { name: 'jobName', header: 'JOB Name' },
-          { name: 'jobGroup', header: 'JOB Group' },
+          { name: 'jobGroup', header: 'JOB Group', formatter: CodeFormatter },
           { name: 'cronExpression', header: 'Cron' },
           { name: 'description', header: 'Desc' },
           { name: 'parameters', header: 'Params' },
@@ -146,6 +147,10 @@ export default {
         ]
       }
     }
+  },
+  async created () {
+    const codes = await this.$api.common.getCommonCodes(['JOB_GROUP'])
+    this.common = codes.data
   },
   methods: {
     async add () {
