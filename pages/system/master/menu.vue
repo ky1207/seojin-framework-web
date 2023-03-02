@@ -70,7 +70,7 @@
     <template #right>
       <SJForm ref="form">
         <SJFormRow>
-          <SJFormField class="col" :label="$tc('page.system.00001')">
+          <SJFormField :label="$tc('page.system.00001')">
             <SJSelect
               id="form_company"
               v-model="menu.coId"
@@ -79,7 +79,7 @@
               rules="required"
             />
           </SJFormField>
-          <SJFormField class="col" :label="$tc('page.system.00030')">
+          <SJFormField :label="$tc('page.system.00030')">
             <SJInput
               id="form_menuId"
               v-model="menu.menuId"
@@ -89,7 +89,7 @@
               disabled
             />
           </SJFormField>
-          <SJFormField class="col" :label="$tc('page.system.00028')">
+          <SJFormField :label="$tc('page.system.00028')">
             <SJInput
               id="form_menuIcon"
               v-model="menu.iconName"
@@ -122,7 +122,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col" :label="$tc('page.system.00033') ">
+          <SJFormField :label="$tc('page.system.00033') ">
             <SJMultiInput id="form_lname" v-model="menu.langs" :name="$t('page.system.00033')" type="text" rules="required" />
           </SJFormField>
         </SJFormRow>

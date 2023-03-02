@@ -75,7 +75,7 @@
     <template #right>
       <SJForm ref="form">
         <SJFormRow>
-          <SJFormField class="col" :label="$tc('page.system.00018')">
+          <SJFormField :label="$tc('page.system.00018')">
             <SJInput
               id="form_large"
               v-model="codeGroup.codeGroupId"
@@ -85,7 +85,7 @@
               :disabled="isUpdate"
             />
           </SJFormField>
-          <SJFormField class="col" :label="$tc('page.system.00017')">
+          <SJFormField :label="$tc('page.system.00017')">
             <SJSelect
               id="form_commonCode"
               v-model="codeGroup.systemCodeType"
@@ -98,7 +98,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col" :label="$tc('page.system.00019') ">
+          <SJFormField :label="$tc('page.system.00019') ">
             <SJMultiInput id="form_lname" v-model="codeGroup.langs" :name="$t('page.system.00019')" type="text" rules="required" />
           </SJFormField>
         </SJFormRow>
@@ -108,7 +108,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col" :label="$t('page.system.00009')">
+          <SJFormField :label="$t('page.system.00009')">
             <SJTextarea id="form_desc" v-model="codeGroup.codeGroupDesc" :name="$t('page.system.00009')" disabled-validation />
           </SJFormField>
         </SJFormRow>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="col">
     <label>{{ $props.label }}</label>
     <slot />
   </div>
