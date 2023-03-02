@@ -103,12 +103,12 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-6" :label="$t('page.system.00004')">
+          <SJFormField class="col-md-6" :label="$tc('page.system.00004')">
             <SJSelect id="form_useYN" v-model="codeGroup.useFlag" :name="$t('page.system.00004')" :options="$api.common.getYNCodes()" rules="required" />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField :label="$t('page.system.00009')">
+          <SJFormField :label="$tc('page.system.00009')">
             <SJTextarea id="form_desc" v-model="codeGroup.codeGroupDesc" :name="$t('page.system.00009')" disabled-validation />
           </SJFormField>
         </SJFormRow>
