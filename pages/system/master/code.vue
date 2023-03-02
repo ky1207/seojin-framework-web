@@ -74,9 +74,8 @@
     </template>
     <template #right>
       <SJForm ref="form">
-        <div class="row">
-          <div class="col-md-6 mt-3">
-            <label>  {{ $t('page.system.00018') }}</label>
+        <SJFormRow>
+          <SJFormField class="col" :label="$tc('page.system.00018')">
             <SJInput
               id="form_large"
               v-model="codeGroup.codeGroupId"
@@ -85,9 +84,8 @@
               rules="required"
               :disabled="isUpdate"
             />
-          </div>
-          <div class="col-md-6 mt-3">
-            <label>{{ $t('page.system.00017') }}</label>
+          </SJFormField>
+          <SJFormField class="col" :label="$tc('page.system.00017')">
             <SJSelect
               id="form_commonCode"
               v-model="codeGroup.systemCodeType"
@@ -97,23 +95,25 @@
               item-value="codeId"
               rules="required"
             />
-          </div>
-          <div class="col-md-12 mt-3">
-            <label>{{ $t('page.system.00019') }}</label>
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField class="col" :label="$tc('page.system.00019') ">
             <SJMultiInput id="form_lname" v-model="codeGroup.langs" :name="$t('page.system.00019')" type="text" rules="required" />
-          </div>
-
-          <div class="col-md-6 mt-3">
-            <label>{{ $t('page.system.00004') }}</label>
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField class="col-md-6" :label="$t('page.system.00004')">
             <SJSelect id="form_useYN" v-model="codeGroup.useFlag" :name="$t('page.system.00004')" :options="$api.common.getYNCodes()" rules="required" />
-          </div>
-          <div class="col-md-12 mt-3">
-            <label>{{ $t('page.system.00009') }}</label>
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField class="col" :label="$t('page.system.00009')">
             <SJTextarea id="form_desc" v-model="codeGroup.codeGroupDesc" :name="$t('page.system.00009')" disabled-validation />
-          </div>
-        </div>
+          </SJFormField>
+        </SJFormRow>
       </SJForm>
-      <h5 class="card-title mt-3 mb-3">
+      <h5 class="card-title">
         <div class="row align-items-center">
           <div class="col">
             {{ $t('page.system.00025') }}
