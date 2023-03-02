@@ -88,9 +88,10 @@ export default {
         },
         columns: [
           {
-            name: 'notifyTmpltId',
+            name: 'notifyTmpltName',
             filter: null,
-            sortable: false
+            sortable: false,
+            editor: null
           },
           {
             name: 'notifyId',
