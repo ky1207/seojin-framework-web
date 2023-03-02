@@ -69,9 +69,8 @@
     </template>
     <template #right>
       <SJForm ref="form">
-        <div class="row">
-          <div class="col-md-4 mt-3">
-            <label>{{ $t('page.system.00001') }}</label>
+        <SJFormRow>
+          <SJFormField class="col" :label="$tc('page.system.00001')">
             <SJSelect
               id="form_company"
               v-model="menu.coId"
@@ -79,9 +78,18 @@
               :options="common.COMPANY"
               rules="required"
             />
-          </div>
-          <div class="col-md-4 mt-3">
-            <label>{{ $t('page.system.00028') }}</label>
+          </SJFormField>
+          <SJFormField class="col" :label="$tc('page.system.00030')">
+            <SJInput
+              id="form_menuId"
+              v-model="menu.menuId"
+              :name="$t('page.system.00030')"
+              type="text"
+              disabled-validation
+              disabled
+            />
+          </SJFormField>
+          <SJFormField class="col" :label="$tc('page.system.00028')">
             <SJInput
               id="form_menuIcon"
               v-model="menu.iconName"
@@ -89,11 +97,10 @@
               type="text"
               disabled-validation
             />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 mt-3">
-            <label>{{ $t('page.system.00029') }}</label>
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00029')">
             <SJSelect
               id="form_company"
               v-model="menu.progId"
@@ -103,21 +110,8 @@
               disabled-validation
               @change="changeProgram"
             />
-          </div>
-
-          <div class="col-md-4 mt-3">
-            <label>{{ $t('page.system.00030') }}</label>
-            <SJInput
-              id="form_menuId"
-              v-model="menu.menuId"
-              :name="$t('page.system.00030')"
-              type="text"
-              disabled-validation
-              disabled
-            />
-          </div>
-          <div class="col-md-4 mt-3">
-            <label>{{ $t('page.system.00031') }}</label>
+          </SJFormField>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00031')">
             <SJInput
               id="form_applnMenuCode"
               v-model="menu.applnMenuCode"
@@ -125,12 +119,13 @@
               type="text"
               disabled-validation
             />
-          </div>
-          <div class="col-md-12 mt-3">
-            <label>{{ $t('page.system.00033') }}</label>
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField class="col" :label="$tc('page.system.00033') ">
             <SJMultiInput id="form_lname" v-model="menu.langs" :name="$t('page.system.00033')" type="text" rules="required" />
-          </div>
-        </div>
+          </SJFormField>
+        </SJFormRow>
       </SJForm>
       <h5 class="card-title mt-3">
         <div class="row align-items-center">
