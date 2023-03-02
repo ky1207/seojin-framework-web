@@ -76,9 +76,8 @@
     </template>
     <template #right>
       <SJForm ref="form">
-        <div class="row">
-          <div class="col-md-4 mt-3">
-            <label> {{ $t('page.system.00001') }}</label>
+        <SJFormRow>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00001')">
             <SJSelect
               id="form_company"
               v-model="auth.coId"
@@ -86,9 +85,8 @@
               :options="common.COMPANY"
               rules="required"
             />
-          </div>
-          <div class="col-md-4 mt-3">
-            <label>{{ $t('page.system.00004') }}</label>
+          </SJFormField>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00004')">
             <SJSelect
               id="form_useFlag"
               v-model="auth.useFlag"
@@ -96,11 +94,10 @@
               :options="common.USE_YN"
               rules="required"
             />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 mt-3">
-            <label>{{ $t('page.system.00002') }}</label>
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField :label="$tc('page.system.00002')">
             <SJInput
               id="form_authGroupId"
               v-model="auth.authGroupId"
@@ -109,10 +106,9 @@
               disabled-validation
               disabled
             />
-          </div>
+          </SJFormField>
 
-          <div class="col-md-4 mt-3">
-            <label>{{ $t('page.system.00003') }}</label>
+          <SJFormField :label="$tc('page.system.00003')">
             <SJInput
               id="form_authName"
               v-model="auth.authName"
@@ -120,9 +116,8 @@
               type="text"
               rules="required"
             />
-          </div>
-          <div class="col-md-4 mt-3">
-            <label>{{ $t('page.system.00008') }}</label>
+          </SJFormField>
+          <SJFormField :label="$tc('page.system.00008')">
             <SJSelect
               id="form_defaultFlag"
               v-model="auth.defaultAuthFlag"
@@ -130,12 +125,13 @@
               :options="common.USE_YN"
               disabled-validation
             />
-          </div>
-          <div class="col-md-12 mt-3">
-            <label>{{ $t('page.system.00009') }}</label>
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField :label="$tc('page.system.00009')">
             <SJTextarea id="form_desc" v-model="auth.remark" :name="$t('page.system.00009')" disabled-validation />
-          </div>
-        </div>
+          </SJFormField>
+        </SJFormRow>
       </SJForm>
       <div v-if="isUpdate">
         <h5 class="card-title">

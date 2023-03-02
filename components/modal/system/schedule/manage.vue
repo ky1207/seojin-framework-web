@@ -30,9 +30,8 @@
         </template>
         <template #default>
           <SJForm ref="form">
-            <div class="row">
-              <div class="mt-3">
-                <label>Job Group</label>
+            <SJFormRow>
+              <SJFormField label="Job Group">
                 <SJSelect
                   id="jobGroup"
                   v-model="schedule.jobGroup"
@@ -43,9 +42,10 @@
                   rules="required"
                   :disabled="!!parameter"
                 />
-              </div>
-              <div class="mt-3">
-                <label>Job Name</label>
+              </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField label="Job Name">
                 <SJInput
                   id="jobName"
                   v-model="schedule.jobName"
@@ -54,9 +54,10 @@
                   rules="required"
                   :disabled="!!parameter"
                 />
-              </div>
-              <div class="mt-3">
-                <label>Description</label>
+              </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField label="Description">
                 <SJInput
                   id="description"
                   v-model="schedule.description"
@@ -64,9 +65,10 @@
                   type="text"
                   rules="required"
                 />
-              </div>
-              <div class="mt-3">
-                <label>Cron Expression</label>
+              </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField label="Cron Expression">
                 <SJInput
                   id="cronExpression"
                   v-model="schedule.cronExpression"
@@ -75,9 +77,10 @@
                   rules="required"
                 />
                 <span class="text" v-html="$t('components.modal.00014')" />
-              </div>
-              <div class="mt-3">
-                <label>Parameters</label>
+              </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField label="Parameters">
                 <SJInput
                   id="parameters"
                   v-model="schedule.parameters"
@@ -89,17 +92,18 @@
                   ex.<br>
                   a=b&amp;c=d
                 </span>
-              </div>
-              <div class="mt-3">
-                <label>Start Date</label>
+              </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField label="Start Date">
                 <SJDatePicker
                   id="startDtm"
                   v-model="schedule.startDtm"
                   name="Start Date"
                   rules="required"
                 />
-              </div>
-            </div>
+              </SJFormField>
+            </SJFormRow>
           </SJForm>
         </template>
       </SJOneLayout>
