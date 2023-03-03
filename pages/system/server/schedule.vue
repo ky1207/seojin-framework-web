@@ -8,7 +8,7 @@
     <template #default>
       <div class="search-area">
         <div class="col-md-1 search-label">
-          배치명
+          JOB Name
         </div>
         <div class="col-md-2">
           <SJInput id="search" v-model="search.jobName" name="배치명" type="text" disabled-validation />
@@ -18,7 +18,7 @@
     <template #topTitle>
       <div class="row search-label">
         <div class="col">
-          스케줄
+          Schedule
         </div>
         <div class="col-auto">
           <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="add">
@@ -31,7 +31,7 @@
       <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" @click="scheduleClick" />
     </template>
     <template #leftTitle>
-      실행로그(페이징)
+      Schedule Log
     </template>
     <template #left>
       <SJGrid
@@ -45,13 +45,13 @@
       />
     </template>
     <template #rightTitle1>
-      배치잡로그
+      Batch Job Log
     </template>
     <template #right1>
       <SJGrid ref="batchJobLogGrid" v-model="batchJobLogGrid.data" :columns="batchJobLogGrid.columns" :options="batchJobLogGrid.options" @click="batchJobLogGridClick" />
     </template>
     <template #rightTitle2>
-      배치잡스텝로그
+      Batch Job Step Log
     </template>
     <template #right2>
       <SJGrid ref="batchStepLogGrid" v-model="batchStepLogGrid.data" :columns="batchStepLogGrid.columns" :options="batchStepLogGrid.options" />
@@ -201,10 +201,8 @@ export default {
           this.scheduleLogGrid.data = {}
           this.batchJobLogGrid.data = {}
           this.batchStepLogGrid.data = {}
-        },
-        saveClick: async () => {
-
         }
+
       }
     }
   }
