@@ -1485,8 +1485,3 @@ label {
   padding: 0.15rem 0;
   margin: 0 2px;
 }
-
-form  span.invalid-feedback {
-  height: 16px !important;
-  display:block;
-}

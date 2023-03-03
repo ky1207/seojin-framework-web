@@ -17,6 +17,9 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+form  span.invalid-feedback {
+  height: 16px !important;
+  display:block;
+}
 </style>
