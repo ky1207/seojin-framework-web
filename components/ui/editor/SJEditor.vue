@@ -46,6 +46,10 @@ export default {
     disabledValidation: {
       type: Boolean,
       default: false
+    },
+    modelValue: {
+      type: String,
+      default: ''
     }
   },
   data () {
@@ -63,6 +67,14 @@ export default {
       },
       set (_val) {
         this.$emit('input', _val)
+      }
+    },
+    inputVal: {
+      get () {
+        return this.value
+      },
+      set (val) {
+        this.$emit('input', val)
       }
     }
   },

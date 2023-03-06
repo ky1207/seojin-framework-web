@@ -47,6 +47,9 @@ export default ctx => ({
       align: 'center',
       filter: null
     },
+    appType: {
+      header: ctx.i18n.t('grid.appType')
+    },
     // B
     biznum: {
       header: ctx.i18n.t('grid.biznum')
@@ -170,6 +173,11 @@ export default ctx => ({
     },
     loginId: {
       header: ctx.i18n.t('grid.loginId')
+    },
+    lastUpdateFlag: {
+      header: ctx.i18n.t('grid.lastUpdateFlag'),
+      renderer: CustomCheckBoxRenderer,
+      align: 'center'
     },
     // M
     menuName: {
@@ -323,8 +331,16 @@ export default ctx => ({
     },
     userName: {
       header: ctx.i18n.t('grid.userName')
+    },
+    updateId: {
+      header: ctx.i18n.t('grid.updateId')
+    },
+    updateTitle: {
+      header: ctx.i18n.t('grid.title')
+    },
+    updateCntn: {
+      header: ctx.i18n.t('grid.cntn')
     }
-
   },
   getColumns (c) {
     c.forEach((e, idx) => {

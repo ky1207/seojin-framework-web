@@ -40,7 +40,6 @@
     "sndrEmail": "발신메일주소",
     "rcvrId": "수신자",
     "rcvrEmail": "수신메일주소",
-    "title": "메일제목",
     "emailFlag": "메일대상",
     "pushFlag": "푸시대상",
     "emailSentFlag": "메일전송",
@@ -51,7 +50,11 @@
     "modDtm": "수정일",
     "modUserName": "수정자",
     "applnUseFlag": "APP사용",
-    "pdaUseFlag": "PDA사용"
+    "pdaUseFlag": "PDA사용",
+    "lastUpdateFlag": "최종",
+    "updateId": "업데이트코드",
+    "appType": "업데이트유형",
+    "cntn": "내용"
   },
   "contextMenu": {
     "copy": "복사",
@@ -151,7 +154,13 @@
       "00087": "메일대상",
       "00088": "푸시대상",
       "00089": "신규 양식",
-      "00090": "내용"
+      "00090": "내용",
+      "00091": "업데이트유형",
+      "00092": "업데이트코드",
+      "00093": "버전",
+      "00094": "파일첨부",
+      "00095": "APP 업데이트 목록",
+      "00096": "신규 업데이트"
     }
   },
   "message": {
