@@ -167,7 +167,8 @@ export default {
         },
         columns: [
           {
-            name: 'notifyTmpltId'
+            name: 'notifyTmpltId',
+            editor: null
           },
           {
             name: 'coId',
@@ -175,10 +176,12 @@ export default {
           },
           {
             name: 'notifyTmpltName',
-            width: 500
+            width: 500,
+            editor: null
           },
           {
-            name: 'useFlag'
+            name: 'useFlag',
+            editor: null
           }
         ]
       }

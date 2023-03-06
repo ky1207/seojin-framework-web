@@ -204,8 +204,7 @@ export default ctx => ({
       editor: {
         type: 'text'
       },
-      width: 150,
-      validation: { required: true }
+      width: 150
     },
     notifyId: {
       header: ctx.i18n.t('grid.notifyId'),
