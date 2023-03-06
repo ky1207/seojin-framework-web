@@ -47,9 +47,8 @@
     </template>
     <template #right>
       <SJForm ref="form">
-        <div class="row">
-          <div class="col-md-4">
-            <label>{{ $t('page.system.00080') }}</label>
+        <SJFormRow>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00080')">
             <SJInput
               id="form_notifyTmpltId"
               v-model="alarm.notifyTmpltId"
@@ -58,10 +57,8 @@
               disabled-validation
               disabled
             />
-          </div>
-
-          <div class="col-md-4">
-            <label>{{ $t('page.system.00081') }}</label>
+          </SJFormField>
+          <SJFormField class="col-md-8" :label="$tc('page.system.00081')">
             <SJInput
               id="form_notifyTmpltName"
               v-model="alarm.notifyTmpltName"
@@ -70,9 +67,10 @@
               disabled-validation
               disabled
             />
-          </div>
-          <div class="col-md-12">
-            <label>{{ $t('page.system.00082') }}</label>
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField class="col-md-12" :label="$tc('page.system.00082')">
             <SJInput
               id="form_title"
               v-model="alarm.title"
@@ -81,12 +79,13 @@
               disabled-validation
               disabled
             />
-          </div>
-          <div class="col-md-12 mt-3">
-            <label>{{ $t('page.system.00009') }}</label>
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField class="col-md-12" :label="$tc('page.system.00009')">
             <SJTextarea id="form_desc" v-model="alarm.remark" :name="$t('page.system.00009')" disabled-validation disabled />
-          </div>
-        </div>
+          </SJFormField>
+        </SJFormRow>
       </SJForm>
       <div v-if="isUpdate">
         <h5 class="card-title">
