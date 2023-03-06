@@ -7,6 +7,9 @@
       :options="mergedOptions"
       v-on="$listeners"
     />
+    <div v-if="!$props.pageable" class="SJGrid_total">
+      {{ rowRange[0]+1 }}-{{ rowRange[1] }} of  {{ getTotal }}
+    </div>
     <div v-if="$props.pageable" ref="page" class="tui-pagination tui-grid-pagination" />
   </div>
 </template>
@@ -42,6 +45,8 @@ export default {
   },
   data () {
     return {
+      viewport: null,
+      rowRange: [],
       pagination: null,
       page: 1,
       defaultOptions: {
@@ -98,10 +103,15 @@ export default {
         rowHeight: 30,
         minRowHeight: 30
         // selectionUnit: 'row'
+
       }
     }
   },
   computed: {
+    getTotal () {
+      if (this.value.Total) { return this.value.Total }
+      return this.value.Data ? this.value.Data.length : 0
+    },
     mergedOptions () {
       if (this.$props.disableContext) {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
@@ -125,7 +135,15 @@ export default {
 
   },
   watch: {
+    viewport: {
+      handler (newValue, oldValue) {
+        this.rowRange = newValue?.rowRange
+      },
+      deep: true
+    },
     value (newValue, oldValue) {
+      this.rowRange = [0, 0]
+
       if (newValue.Data) {
         this.$refs.grid.invoke('resetData', newValue.Data)
       } else {
@@ -140,8 +158,8 @@ export default {
         }
         this.pagination._paginate(this.page)
       }
-    },
-    deep: true
+      this.rowRange = this.viewport.rowRange
+    }
   },
   activated () {
     // 화면 리사이즈 후, 본 화면 출력시 그리드 리로드 문제
@@ -162,6 +180,9 @@ export default {
     // grid자체 페이징 기능은 data가 바뀌면 1페이지로 가는 문제가 있으며
     // Data set을 이용하면 json 포맷이 tui Grid에 고정되는 문제가 있음.
     // 자체적으로 기능을 분리하여 추가 -- kskim 23.01.17
+
+    this.viewport = this.$refs.grid.gridInstance.store.viewport
+
     if (this.$props.pageable) {
       this.pagination = new Pagination(this.$refs.page, {
         usageStatistics: false,
@@ -219,6 +240,10 @@ export default {
 /*** tui-grid ***/
 .tui-grid-btn-sorting , .tui-grid-btn-filter {
  filter: brightness(0) invert(1);
+}
+.SJGrid_total {
+  border-bottom: 1px solid black;
+  text-align: right;
 }
 
 </style>
