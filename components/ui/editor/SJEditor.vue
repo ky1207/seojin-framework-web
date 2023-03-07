@@ -10,7 +10,6 @@
     <Editor
       v-bind="$attrs"
       ref="editor"
-      :initial-value="innerValue"
       :options="editorOptions"
       initial-edit-type="wysiwyg"
       :class="disabledValidation?'':classes"
@@ -55,16 +54,24 @@ export default {
       }
     }
   },
-
   computed: {
     innerValue: {
       get () {
         return this.$options.filters.unescapeHTML(this.value)
       },
       set (_val) {
+        this.$refs.editor.invoke('setHTML', _val)
         this.$emit('input', _val)
       }
     }
+  },
+  watch: {
+    value (newValue) {
+      this.innerValue = newValue
+    }
+  },
+  mounted () {
+    this.innerValue = this.$props.value
   },
   methods: {
     handleInput (e) {
