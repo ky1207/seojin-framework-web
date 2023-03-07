@@ -67,9 +67,8 @@
     </template>
     <template #right>
       <SJForm ref="form">
-        <div class="row">
-          <div class="col-md-4">
-            <label>{{ $t('page.system.00080') }}</label>
+        <SJFormRow>
+          <SJFormField class="col-md-6" :label="$tc('page.system.00080')">
             <SJStepper
               id="form_notifyTmpltId"
               v-model="alarm.notifyTmpltId"
@@ -78,9 +77,8 @@
               disabled-validation
               disabled
             />
-          </div>
-          <div class="col-md-4">
-            <label>{{ $t('page.system.00081') }}</label>
+          </SJFormField>
+          <SJFormField class="col-md-6" :label="$tc('page.system.00081')">
             <SJInput
               id="form_notifyTmpltName"
               v-model="alarm.notifyTmpltName"
@@ -88,9 +86,10 @@
               type="text"
               disabled-validation
             />
-          </div>
-          <div class="col-md-12">
-            <label>{{ $t('page.system.00082') }}</label>
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField class="col-md-12" :label="$tc('page.system.00082')">
             <SJInput
               id="form_title"
               v-model="alarm.title"
@@ -98,51 +97,55 @@
               type="text"
               disabled-validation
             />
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-              <label>{{ $t('page.system.00004') }}</label>
-              <SJSelect
-                id="form_useYN"
-                v-model="alarm.useFlag"
-                :name="$t('page.system.00004')"
-                :options="$api.common.getYNCodes()"
-                rules="required"
-                disabled-first-message
-              />
-            </div>
-            <div class="col-md-4">
-              <label>EMAIL</label>
-              <SJSelect
-                id="form_emailFlag"
-                v-model="alarm.emailFlag"
-                name="EMAIL"
-                :options="$api.common.getYNCodes()"
-                rules="required"
-                disabled-first-message
-              />
-            </div>
-            <div class="col-md-4">
-              <label>PUSH</label>
-              <SJSelect
-                id="form_pushFlag"
-                v-model="alarm.pushFlag"
-                name="PUSH"
-                :options="$api.common.getYNCodes()"
-                rules="required"
-                disabled-first-message
-              />
-            </div>
-          </div>
-          <div class="col-md-12 mt-3">
-            <label>{{ $t('page.system.00090') }}</label>
-            <SJTextarea id="form_cntn" v-model="alarm.cntn" :name="$t('page.system.00090')" disabled-validation />
-          </div>
-          <div class="col-md-12 mt-3">
-            <label>{{ $t('page.system.00009') }}</label>
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00004')">
+            <SJSelect
+              id="form_useYN"
+              v-model="alarm.useFlag"
+              :name="$t('page.system.00004')"
+              :options="$api.common.getYNCodes()"
+              rules="required"
+              disabled-first-message
+            />
+          </SJFormField>
+          <SJFormField class="col-md-4" label="EMAIL">
+            <SJSelect
+              id="form_emailFlag"
+              v-model="alarm.emailFlag"
+              name="EMAIL"
+              :options="$api.common.getYNCodes()"
+              rules="required"
+              disabled-first-message
+            />
+          </SJFormField>
+          <SJFormField class="col-md-4" label="PUSH">
+            <SJSelect
+              id="form_pushFlag"
+              v-model="alarm.pushFlag"
+              name="PUSH"
+              :options="$api.common.getYNCodes()"
+              rules="required"
+              disabled-first-message
+            />
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField class="col-md-12" :label="$tc('page.system.00090')">
+            <SJEditor
+              id="form_cntn"
+              v-model="alarm.cntn"
+              :name="$t('page.system.00090')"
+              disabled-validation
+            />
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField class="col-md-12" :label="$tc('page.system.00009')">
             <SJTextarea id="form_desc" v-model="alarm.remark" :name="$t('page.system.00009')" disabled-validation />
-          </div>
-        </div>
+          </SJFormField>
+        </SJFormRow>
       </SJForm>
     </template>
   </SJSearchLRLayout>
@@ -159,7 +162,8 @@ export default {
     return {
       common: { },
       search: {},
-      alarm: {},
+      alarm: {
+      },
       alarmGrid: {
         data: {},
         options: {
