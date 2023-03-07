@@ -16,7 +16,6 @@
             :options="common.COMPANY"
             disabled-validation
             disabled-first-message
-            @change="changeCompanySearch($event)"
           />
         </div>
         <div class="col-md-1 search-label">
@@ -27,7 +26,7 @@
             id="search_department"
             v-model="search.deptId"
             :name="$t('page.system.00059')"
-            :options="departmentSearch"
+            :options="common.DEPARTMENT"
             disabled-validation
           />
         </div>
@@ -35,13 +34,13 @@
           ID
         </div>
         <div class="col-md-1">
-          <SJInput id="loginId" v-model="search.loginId" name="ID" type="text" disabled-validation />
+          <SJInput id="search_loginId" v-model="search.loginId" name="ID" type="text" disabled-validation />
         </div>
         <div class="col-md-1 search-label">
           {{ $t('page.system.00060') }}
         </div>
         <div class="col-md-1">
-          <SJInput id="userName" v-model="search.userName" :name="$t('page.system.00060')" type="text" disabled-validation />
+          <SJInput id="search_userName" v-model="search.userName" :name="$t('page.system.00060')" type="text" disabled-validation />
         </div>
       </div>
     </template>
@@ -67,9 +66,8 @@
     </template>
     <template #right>
       <SJForm ref="form">
-        <div class="row">
-          <div class="col-md-4 mt-3">
-            <label>{{ $t('page.system.00064') }}</label>
+        <SJFormRow>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00064')">
             <SJInput
               id="form_loginId"
               v-model="userDetail.loginId"
@@ -78,9 +76,8 @@
               rules="required|max:12"
               :disabled="isUpdate"
             />
-          </div>
-          <div class="col-md-4  mt-3">
-            <label>{{ $t('page.system.00035') }}</label>
+          </SJFormField>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00035')">
             <SJInput
               id="form_userName"
               v-model="userDetail.userName"
@@ -88,9 +85,8 @@
               type="text"
               rules="required|max:50"
             />
-          </div>
-          <div class="col-md-4  mt-3">
-            <label>{{ $t('page.system.00065') }}</label>
+          </SJFormField>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00065')">
             <SJInput
               id="form_userEnName"
               v-model="userDetail.userEnName"
@@ -99,11 +95,10 @@
               rules="max:50"
               disabled-validation
             />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 mt-3">
-            <label>{{ $t('page.system.00066') }}</label>
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField class="col-md-6" :label="$tc('page.system.00066')">
             <SJInput
               id="form_pswd"
               v-model="userDetail.pswd"
@@ -111,9 +106,8 @@
               type="password"
               :rules="isUpdate ? '' : 'required'"
             />
-          </div>
-          <div class="col-md-4  mt-3">
-            <label>{{ $t('page.system.00067') }}</label>
+          </SJFormField>
+          <SJFormField class="col-md-6" :label="$tc('page.system.00067')">
             <SJInput
               id="form_pswdChk"
               v-model="userDetail.pswdChk"
@@ -122,11 +116,10 @@
               rules="confirmed:password"
               disabled-validation
             />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 mt-3">
-            <label>{{ $t('page.system.00068') }}</label>
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00068')">
             <SJInput
               id="form_email"
               v-model="userDetail.email"
@@ -135,9 +128,8 @@
               rules="email|max:50"
               disabled-validation
             />
-          </div>
-          <div class="col-md-4 mt-3">
-            <label>{{ $t('page.system.00069') }}</label>
+          </SJFormField>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00069')">
             <SJInput
               id="form_mobile"
               v-model="userDetail.mobile"
@@ -146,15 +138,13 @@
               rules="numeric|max:20"
               disabled-validation
             />
-          </div>
-          <div class="col-md-4 mt-3">
-            <label>{{ $t('page.system.00004') }}</label>
+          </SJFormField>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00004')">
             <SJSelect id="form_useYN" v-model="userDetail.useFlag" :name="$t('page.system.00004')" :options="$api.common.getYNCodes()" rules="required" />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 mt-3">
-            <label> {{ $t('page.system.00001') }}</label>
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00001')">
             <SJSelect
               id="form_company"
               v-model="userDetail.coId"
@@ -163,21 +153,18 @@
               rules="required"
               disabled
               disabled-first-message
-              @change="changeCompanyForm($event)"
             />
-          </div>
-          <div class="col-md-4 mt-3">
-            <label> {{ $t('page.system.00059') }}</label>
+          </SJFormField>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00059')">
             <SJSelect
               id="form_department"
               v-model="userDetail.deptId"
               :name="$t('page.system.00059')"
-              :options="departmentForm"
+              :options="common.DEPARTMENT"
               rules="required"
             />
-          </div>
-          <div class="col-md-4 mt-3">
-            <label>{{ $t('page.system.00070') }}</label>
+          </SJFormField>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00070')">
             <SJSelect
               id="commonCode"
               v-model="userDetail.job"
@@ -187,11 +174,10 @@
               item-value="codeId"
               disabled-validation
             />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 mt-3">
-            <label>{{ $t('page.system.00071') }}</label>
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00071')">
             <SJSelect
               id="commonCode"
               v-model="userDetail.pos"
@@ -201,9 +187,8 @@
               item-value="codeId"
               disabled-validation
             />
-          </div>
-          <div class="col-md-4 mt-3">
-            <label>{{ $t('page.system.00072') }}</label>
+          </SJFormField>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00072')">
             <SJSelect
               id="commonCode"
               v-model="userDetail.systemType"
@@ -213,9 +198,8 @@
               item-value="codeId"
               rules="required"
             />
-          </div>
-          <div class="col-md-4 mt-3">
-            <label>{{ $t('page.system.00073') }}</label>
+          </SJFormField>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00073')">
             <SJSelect
               id="commonCode"
               v-model="userDetail.status"
@@ -225,8 +209,8 @@
               item-value="codeId"
               disabled-validation
             />
-          </div>
-        </div>
+          </SJFormField>
+        </SJFormRow>
       </SJForm>
     </template>
   </SJSearchLRLayout>
@@ -234,7 +218,7 @@
 
 <script>
 import { ACTION, MENU } from '~/mixins'
-import { CodeFormatter, GLOBAL_CODES } from '~/plugins/lib/grid/Formatter'
+import { CodeFormatter } from '~/plugins/lib/grid/Formatter'
 
 export default {
   mixins: [MENU, ACTION],
@@ -283,27 +267,22 @@ export default {
   async created () {
     const codes = await this.$api.common.getCommonCodes(['USR_POSTN', 'USER_DUTY', 'SYSTEM_TYPE', 'USER_ST'])
     const company = await this.$api.common.getCompanyCodes()
+    const department = await this.$api.common.getDepartmentCodes()
     this.common = codes.data
     this.common.USE_YN = this.$api.common.getYNCodes()
     this.common.COMPANY = company.data
+    this.common.DEPARTMENT = department.data
   },
   methods: {
     async onMasterClick (ev) {
       if (ev.rowKey === undefined) { return }
       const item = this.$refs.user.invoke('getRow', ev.rowKey)
       const result = await this.$api.system.user.load(item.userId)
-      const resultCoId = await this.$api.system.department.getDepartmentCodesByCoId(result.data.coId)
       this.userDetail = result.data
       this.isUpdate = true
 
       this.userDetail.data = {
         Data: this.userDetail.codes
-      }
-
-      // 부서
-      if (result.data.coId != null && result.data.coId !== '') {
-        GLOBAL_CODES.setDepartment(resultCoId.data)
-        this.departmentForm = resultCoId.data
       }
     },
     createUser () {
@@ -317,10 +296,6 @@ export default {
           this._resetForm()
           const result = await this.$api.system.user.list(this.search)
           this.userDetail.coId = this.search.coId
-          // TO-DO 회사 선택 시 부서 change event 걸기
-          /* const select = document.querySelector('#form_company')
-          select.value = this.search.coId
-          select.dispatchEvent(new Event('change')) */
           this.user.data = result.data
         },
         saveClick: async () => {
@@ -333,6 +308,7 @@ export default {
               this.search.coId = this.userDetail.coId
               this.search.loginId = this.userDetail.loginId
               const userDupCnt = await this.$api.system.user.getUserDupChk(this.search)
+              this.search.loginId = null
               if (userDupCnt.data > 0) {
                 this.$notify.error(this.$t('message.00012'))// 동일한 아이디가 존재합니다.
                 return false
@@ -352,26 +328,6 @@ export default {
     _resetForm () {
       this.$refs.form.reset()
       this.userDetail = {}
-    },
-    async changeCompanyForm (event) {
-      const value = event.target.value
-      if (value != null && value !== '') {
-        const result = await this.$api.system.department.getDepartmentCodesByCoId(value)
-        GLOBAL_CODES.setDepartment(result.data)
-        this.departmentForm = result.data
-      } else {
-        this.departmentForm = []
-      }
-    },
-    async changeCompanySearch (event) {
-      const value = event.target.value
-      if (value != null && value !== '') {
-        const result = await this.$api.system.department.getDepartmentCodesByCoId(value)
-        GLOBAL_CODES.setDepartment(result.data)
-        this.departmentSearch = result.data
-      } else {
-        this.departmentSearch = []
-      }
     }
   }
 }

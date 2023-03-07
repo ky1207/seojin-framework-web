@@ -16,7 +16,6 @@
             :options="common.COMPANY"
             disabled-validation
             disabled-first-message
-            @change="changeCompanySearch($event)"
           />
         </div>
         <div class="col-md-1 search-label">
@@ -27,7 +26,7 @@
             id="search_department"
             v-model="search.deptId"
             :name="$t('page.system.00059')"
-            :options="departmentSearch"
+            :options="common.DEPARTMENT"
             disabled-validation
           />
         </div>
@@ -57,7 +56,7 @@
 
 <script>
 import { ACTION, MENU } from '~/mixins'
-import { CodeFormatter, GLOBAL_CODES } from '~/plugins/lib/grid/Formatter'
+import { CodeFormatter } from '~/plugins/lib/grid/Formatter'
 
 export default {
   mixins: [MENU, ACTION],
@@ -102,7 +101,8 @@ export default {
   },
   async created () {
     const company = await this.$api.common.getCompanyCodes()
-    this.common = { COMPANY: company.data }
+    const department = await this.$api.common.getDepartmentCodes()
+    this.common = { COMPANY: company.data, DEPARTMENT: department.data }
   },
   methods: {
     ACTION_REGISTRY () {
@@ -122,16 +122,6 @@ export default {
           this.$notify.success(this.$t('message.00002'))// '처리되었습니다.'
           await this.ACTION_REGISTRY().searchClick()
         }
-      }
-    },
-    async changeCompanySearch (event) {
-      const value = event.target.value
-      if (value != null && value !== '') {
-        const result = await this.$api.system.department.getDepartmentCodesByCoId(value)
-        GLOBAL_CODES.setDepartment(result.data)
-        this.departmentSearch = result.data
-      } else {
-        this.departmentSearch = []
       }
     }
   }
