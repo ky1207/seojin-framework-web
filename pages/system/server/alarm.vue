@@ -78,8 +78,10 @@ export default {
   data () {
     return {
       common: { },
+      afterOneWeek: {},
       search: {
-        progName: ''
+        sentStartDtm: new Date().getTime(),
+        sentEndDtm: new Date(new Date().setDate(new Date().getDate() + 7)).getTime()
       },
       grid: {
         data: {},
