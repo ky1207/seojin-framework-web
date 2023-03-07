@@ -61,7 +61,7 @@ export default {
   computed: {
     innerValue: {
       get () {
-        return this.$options.filters.unescapeHTML(this.value)
+        return this.value
       },
       set (_val) {
         this.$refs.editor.invoke('setHTML', this.$options.filters.unescapeHTML(_val))
