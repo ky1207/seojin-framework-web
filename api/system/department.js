@@ -16,9 +16,6 @@ export default axios => ({
   },
   move (deptId, targetId, appended) {
     return axios.post(`/api/v1.0/department/move/${deptId}`, { targetId, appended })
-  },
-  getDepartmentCodesByCoId (coId) {
-    return axios.get(`/api/v1.0/department/codesByCoId/${coId}`)
   }
 
 })
