@@ -8,7 +8,9 @@
       v-on="$listeners"
     />
     <div v-if="!$props.pageable" class="SJGrid_total">
-      {{ rowRange[0]+1 }}-{{ rowRange[1] }} of  {{ getTotal }}
+      <div v-if="getTotal>0">
+        {{ rowRange[0]+1 }}-{{ rowRange[1] }} of  {{ getTotal }}
+      </div>
     </div>
     <div v-if="$props.pageable" ref="page" class="tui-pagination tui-grid-pagination" />
   </div>
@@ -244,6 +246,6 @@ export default {
 .SJGrid_total {
   border-bottom: 1px solid black;
   text-align: right;
+  height: 18px;
 }
-
 </style>
