@@ -3,7 +3,7 @@
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
     </template>
-    <template #default>
+    <!--    <template #default>
       <div class="search-area">
         <div class="col-md-1 search-label">
           {{ $t('page.system.00001') }}
@@ -18,7 +18,7 @@
             disabled-first-message
           />
         </div>
-        <!--        <div class="col-md-1 text-center">
+        <div class="col-md-1 text-center">
           부서코드
         </div>
         <div class="col-md-1">
@@ -29,9 +29,9 @@
         </div>
         <div class="col-md-1">
           <SJInput id="deptName" v-model="search.deptName" name="부서명" type="text" disabled-validation />
-        </div>-->
+        </div>
       </div>
-    </template>
+    </template>-->
 
     <template #leftTitle>
       <div class="row align-items-center">
@@ -66,19 +66,8 @@
     </template>
     <template #right>
       <SJForm ref="form">
-        <div class="row">
-          <div class="col-md-4">
-            <label>{{ $t('page.system.00001') }}</label>
-            <SJSelect
-              id="form_coId"
-              v-model="dept.coId"
-              :name="$t('page.system.00001')"
-              :options="common.COMPANY"
-              rules="required"
-            />
-          </div>
-          <div class="col-md-4">
-            <label>{{ $t('page.system.00057') }}</label>
+        <SJFormRow>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00057')">
             <SJInput
               id="form_deptId"
               v-model="dept.deptId"
@@ -87,9 +76,8 @@
               disabled-validation
               disabled
             />
-          </div>
-          <div class="col-md-6 mt-3">
-            <label>{{ $t('page.system.00058') }}</label>
+          </SJFormField>
+          <SJFormField class="col-md-8" :label="$tc('page.system.00058')">
             <SJInput
               id="form_deptName"
               v-model="dept.deptName"
@@ -97,12 +85,13 @@
               type="text"
               rules="required"
             />
-          </div>
-          <div class="col-md-12 mt-3">
-            <label>{{ $t('page.system.00009') }}</label>
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField class="col-md-12" :label="$tc('page.system.00009')">
             <SJTextarea id="form_remark" v-model="dept.remark" :name="$t('page.system.00009')" disabled-validation />
-          </div>
-        </div>
+          </SJFormField>
+        </SJFormRow>
       </SJForm>
     </template>
   </SJSearchLRLayout>
