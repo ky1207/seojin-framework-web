@@ -64,7 +64,7 @@ export default {
         return this.$options.filters.unescapeHTML(this.value)
       },
       set (_val) {
-        this.$refs.editor.invoke('setHTML', _val)
+        this.$refs.editor.invoke('setHTML', this.$options.filters.unescapeHTML(_val))
         this.$emit('input', _val)
       }
     }
