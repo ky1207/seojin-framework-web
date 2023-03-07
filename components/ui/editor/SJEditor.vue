@@ -15,8 +15,7 @@
       :class="disabledValidation?'':classes"
       :aria-describedby="id+'-feedback'"
       v-on="$listeners"
-      @change="handleInput"
-      @blur="validate"
+      @blur="handleInput"
     />
     <span :id="id+'-feedback'" class="invalid-feedback">
       {{ errors[0] }}
@@ -58,30 +57,15 @@ export default {
       }
     }
   },
-  computed: {
-    innerValue: {
-      get () {
-        return this.value
-      },
-      set (_val) {
-        this.$refs.editor.invoke('setHTML', this.$options.filters.unescapeHTML(_val))
-        this.$emit('input', _val)
-      }
-    }
-  },
   watch: {
     value (newValue) {
-      this.innerValue = newValue
+      this.$refs.editor.invoke('setHTML', this.$options.filters.unescapeHTML(newValue))
     }
-  },
-  mounted () {
-    if (this.$props.value) { this.innerValue = this.$props.value }
   },
   methods: {
     handleInput (e) {
       const html = this.$refs.editor.invoke('getHTML')
       this.$emit('input', html)
-      this.$refs.provider.value = html
       this.validate()
     },
     validate () {
