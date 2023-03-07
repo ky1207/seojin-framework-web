@@ -67,14 +67,6 @@ export default {
         this.$refs.editor.invoke('setHTML', _val)
         this.$emit('input', _val)
       }
-    },
-    inputVal: {
-      get () {
-        return this.value
-      },
-      set (val) {
-        this.$emit('input', val)
-      }
     }
   },
   watch: {
@@ -83,7 +75,7 @@ export default {
     }
   },
   mounted () {
-    this.innerValue = this.$props.value
+    if (this.$props.value) { this.innerValue = this.$props.value }
   },
   methods: {
     handleInput (e) {
