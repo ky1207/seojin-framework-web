@@ -9,7 +9,7 @@
       </div>
     </div><!-- End Page Title -->
     <div class="row">
-      <div class="col-lg-12">
+      <div v-if="!disabledSearch" class="col-lg-12">
         <div class="card">
           <div class="card-body">
             <slot />
@@ -37,6 +37,11 @@
 <script>
 export default {
   props: {
+    disabledSearch: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
     disabledNavigator: {
       type: Boolean,
       required: false,
