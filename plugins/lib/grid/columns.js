@@ -186,7 +186,9 @@ export default ctx => ({
       sortable: false
     },
     modDtm: {
-      header: ctx.i18n.t('grid.modDtm')
+      header: ctx.i18n.t('grid.modDtm'),
+      formatter: DateFormatter,
+      align: 'center'
     },
     modUserName: {
       header: ctx.i18n.t('grid.modUserName')
