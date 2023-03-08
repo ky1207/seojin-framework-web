@@ -16,6 +16,14 @@ const TAB = {
       const menu = this.$store.getters.getMenu(url)
       return menu ? menu.menuName : ''
     }
+  },
+  mounted () {
+    if (this.$tabs.items.length > 14) {
+      setTimeout(() => {
+        const item = this.$tabs.items[1]
+        this.$tabs.close(item.id)
+      }, 100)
+    }
   }
 }
 
