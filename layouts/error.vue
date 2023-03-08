@@ -1,15 +1,18 @@
 <template>
-  <div class="container">
-    <div>
-      <h1>error</h1>
+  <SJOneLayout>
+    <div class="page-wrap d-flex flex-row align-items-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12 text-center">
+            <span class="display-1 d-block"> {{ error.statusCode }}</span>
+            <div class="mb-4 lead">
+              {{ error.message }}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <h1>
-      {{ error.statusCode }}
-    </h1>
-    <h1>
-      {{ error.message }}
-    </h1>
-  </div>
+  </SJOneLayout>
 </template>
 
 <script>
@@ -20,17 +23,11 @@ export default {
       type: Object,
       default: null
     }
-  },
-  data () {
-    return {
-
-    }
   }
 
 }
 </script>
-
-<style scoped>
+<style>
 h1 {
   font-size: 20px;
 }
