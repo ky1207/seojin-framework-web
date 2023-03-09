@@ -9,7 +9,7 @@
       </div>
     </div><!-- End Page Title -->
     <div class="row">
-      <div v-if="!disabledSearch" class="col-lg-12">
+      <div v-if="!disabledSearch" class="SJSearchOneLayout_full">
         <div class="card">
           <div class="card-body">
             <slot />
@@ -76,3 +76,9 @@ export default {
   }
 }
 </script>
+<style>
+.SJSearchOneLayout_full {
+  flex: 0 0 auto;
+  width: 100%;
+}
+</style>

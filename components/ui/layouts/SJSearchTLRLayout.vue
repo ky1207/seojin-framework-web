@@ -9,14 +9,14 @@
       </div>
     </div><!-- End Page Title -->
     <div class="row">
-      <div v-if="!disabledSearch" class="col-lg-12">
+      <div v-if="!disabledSearch" class="SJSearchTLRLayout_full">
         <div class="card">
           <div class="card-body">
             <slot />
           </div>
         </div>
       </div>
-      <div class="col-lg-12">
+      <div class="SJSearchTLRLayout_full">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">
@@ -28,7 +28,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="SJSearchTLRLayout_half">
         <div ref="autoHeight" class="card" autoHeight>
           <div class="card-body">
             <h5 class="card-title">
@@ -44,7 +44,7 @@
         </div>
       </div>
 
-      <div class="col-lg-6">
+      <div class="SJSearchTLRLayout_half">
         <div class="row">
           <div ref="topAutoHeight" class="card">
             <div class="card-body">
@@ -121,3 +121,13 @@ export default {
 
 }
 </script>
+<style>
+.SJSearchTLRLayout_full {
+  flex: 0 0 auto;
+  width: 100%;
+}
+.SJSearchTLRLayout_half {
+  flex: 0 0 auto;
+  width: 50%;
+}
+</style>

@@ -16,10 +16,9 @@ export default {
   }
 }
 </script>
-
 <style>
 form  span.invalid-feedback {
-  height: 16px !important;
+  height: 9px !important;
   display:block;
 }
 </style>

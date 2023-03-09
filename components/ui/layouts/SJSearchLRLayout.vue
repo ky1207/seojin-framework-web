@@ -9,14 +9,14 @@
       </div>
     </div><!-- End Page Title -->
     <div class="row">
-      <div v-if="!disabledSearch" class="col-lg-12">
+      <div v-if="!disabledSearch" class="SJSearchLRLayout_full">
         <div class="card">
           <div class="card-body">
             <slot />
           </div>
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="SJSearchLRLayout_half">
         <div ref="autoHeight" class="card" autoHeight>
           <div class="card-body">
             <h5 class="card-title">
@@ -32,7 +32,7 @@
         </div>
       </div>
 
-      <div class="col-lg-6">
+      <div class="SJSearchLRLayout_half">
         <div ref="autoHeight2" class="card" autoHeight>
           <div class="card-body">
             <h5 class="card-title">
@@ -93,3 +93,13 @@ export default {
 
 }
 </script>
+<style>
+.SJSearchLRLayout_full {
+  flex: 0 0 auto;
+  width: 100%;
+}
+.SJSearchLRLayout_half {
+  flex: 0 0 auto;
+  width: 50%;
+}
+</style>
