@@ -1,0 +1,313 @@
+<template>
+  <SJSearchLRLayout>
+    <template #master-btn>
+      <SJPageButtons :action="ACTION" />
+    </template>
+    <template #default>
+      <div class="search-area">
+        <div class="col-md-1 search-label">
+          {{ $t('page.system.00001') }}
+        </div>
+        <div class="col-md-1">
+          <SJSelect
+            id="search_company"
+            v-model="search.coId"
+            :name="$t('page.system.00001')"
+            :options="common.COMPANY"
+            disabled-validation
+            disabled-first-message
+          />
+        </div>
+        <div class="col-md-1 search-label">
+          {{ $t('page.system.00091') }}
+        </div>
+        <div class="col-md-1">
+          <SJSelect
+            id="search_appType"
+            v-model="search.appType"
+            :name="$t('page.system.00091')"
+            :options="common.UPDATE_TYPE"
+            item-text="val"
+            item-value="codeId"
+            disabled-validation
+            disabled-first-message
+          />
+        </div>
+      </div>
+    </template>
+
+    <template #leftTitle>
+      {{ $t('page.system.00095') }}
+    </template>
+    <template #left>
+      <SJGrid ref="appUpdate" v-model="appUpdate.data" :columns="appUpdate.columns" @click="onMasterClick" />
+    </template>
+
+    <template #rightTitle>
+      <div class="row align-items-center">
+        <div class="col">
+          {{ $t('page.system.00062') }}
+        </div>
+        <div class="col-auto">
+          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="createAppUpdate">
+            {{ $t('page.system.00096') }} <i class="bi bi-pencil-fill" />
+          </button>
+        </div>
+      </div>
+    </template>
+    <template #right>
+      <SJForm ref="form">
+        <SJFormRow>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00001')">
+            <SJSelect
+              id="form_company"
+              v-model="appUpdateDetail.coId"
+              :name="$t('page.system.00001')"
+              :options="common.COMPANY"
+              rules="required"
+              disabled-first-message
+            />
+          </SJFormField>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00092')">
+            <SJStepper
+              id="form_updateId"
+              v-model="appUpdateDetail.updateId"
+              :name="$t('page.system.00092')"
+              type="text"
+              disabled
+              disabled-validation
+            />
+          </SJFormField>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00091')">
+            <SJSelect
+              id="form_appType"
+              v-model="appUpdateDetail.appType"
+              :name="$t('page.system.00091')"
+              :options="common.UPDATE_TYPE"
+              item-text="val"
+              item-value="codeId"
+              rules="required"
+            />
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField class="col-md-8" :label="$tc('page.system.00082')">
+            <SJInput
+              id="form_updateTitle"
+              v-model="appUpdateDetail.updateTitle"
+              :name="$t('page.system.00082')"
+              type="text"
+              rules="required"
+            />
+          </SJFormField>
+          <SJFormField class="col-md-4" :label="$tc('page.system.00093')">
+            <SJInput
+              id="form_updateTitle"
+              v-model="appUpdateDetail.updateVersion"
+              :name="$t('page.system.00093')"
+              type="text"
+              disabled-validation
+            />
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField class="col-md-12" :label="$tc('page.system.00090')">
+            <SJTextarea id="form_updateCntn" v-model="appUpdateDetail.updateCntn" :name="$t('page.system.00090')" disabled-validation />
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField class="col-md-12" :label="$tc('page.system.00094')">
+            <input
+              id="form_file"
+              ref="file"
+              class="form-control"
+              type="file"
+              multiple
+              :v-model="appUpdateDetail.files"
+              :name="$t('page.system.00094')"
+              disabled-validation
+              data-show-upload="true"
+              data-show-caption="true"
+              @change="fileChange"
+            >
+          </SJFormField>
+          <p v-for="item in appUpdateDetail.files" :key="item">
+            {{ item.fileName }}
+            <br>
+            <!-- vue.js는 태그 애트리뷰트를 변수 값을 대입시키려면 머스터치를 사용하지 않고, 태그 애트리뷰트 앞에 :을 입력 후 변수명을 입력 -->
+            <!-- <img src="{{item.image}}" /> -->
+          </p>
+        </SJFormRow>
+      </SJForm>
+    </template>
+  </SJSearchLRLayout>
+</template>
+
+<script>
+import { ACTION, MENU } from '~/mixins'
+
+export default {
+  mixins: [MENU, ACTION],
+  data () {
+    return {
+      isUpdate: false,
+      common: {},
+      search: {},
+      appUpdateDetail: {
+      },
+      appUpdate: {
+        data: {},
+        columns: [
+          {
+            name: 'coId'
+          },
+          {
+            name: 'lastUpdateFlag'
+          },
+          {
+            name: 'updateId'
+          },
+          {
+            name: 'appType'
+          },
+          {
+            name: 'updateTitle'
+          },
+          {
+            name: 'updateCntn'
+          },
+          {
+            name: 'modDtm'
+          },
+          {
+            name: 'modUserName'
+          }
+        ]
+      }
+    }
+  },
+  async created () {
+    const codes = await this.$api.common.getCommonCodes(['UPDATE_TYPE'])
+    const company = await this.$api.common.getCompanyCodes()
+    this.common = codes.data
+    this.common.COMPANY = company.data
+  },
+  methods: {
+    async onMasterClick (ev) {
+      if (ev.rowKey === undefined) { return }
+      const item = this.$refs.appUpdate.invoke('getRow', ev.rowKey)
+      const result = await this.$api.system.appUpdate.load(item.updateId)
+      this.appUpdateDetail = result.data
+      this.isUpdate = true
+
+      this.appUpdateDetail.data = {
+        Data: this.appUpdateDetail.codes
+      }
+    },
+    createAppUpdate () {
+      this.isUpdate = false
+      this._resetForm()
+      this.appUpdateDetail.coId = this.search.coId
+    },
+    ACTION_REGISTRY () {
+      return {
+        searchClick: async () => {
+          this._resetForm()
+          const result = await this.$api.system.appUpdate.list(this.search)
+          this.appUpdateDetail.coId = this.search.coId
+          this.appUpdate.data = result.data
+        },
+        saveClick: async () => {
+          const result = await this.$refs.form.validate()
+          if (result) {
+            if (this.isUpdate) {
+              const formData = new FormData()
+
+              // 첨부파일
+              if (this.file != null && this.file.length > 0) {
+                for (let i = 0; i < this.file.length; i++) {
+                  const file = this.file[i]
+                  formData.append('files', file)
+                }
+              }
+
+              // 입력폼
+              const appUpdateDetail = JSON.stringify(this.appUpdateDetail)
+              const appUpdateDetailData = new Blob([appUpdateDetail], { type: 'application/json' })
+              formData.append(
+                'appUpdate',
+                appUpdateDetailData
+              )
+
+              await this.$api.system.appUpdate.update(this.appUpdateDetail.updateId, formData)
+            } else {
+              const formData = new FormData()
+
+              // 첨부파일
+              if (this.file != null && this.file.length > 0) {
+                for (let i = 0; i < this.file.length; i++) {
+                  const file = this.file[i]
+                  formData.append('files', file)
+                }
+              }
+
+              // 입력폼
+              const appUpdateDetail = JSON.stringify(this.appUpdateDetail)
+              const appUpdateDetailData = new Blob([appUpdateDetail], { type: 'application/json' })
+              formData.append(
+                'appUpdate',
+                appUpdateDetailData
+              )
+
+              // FormData의 key / value 확인
+              /* for (const key of formData.keys()) {
+                console.log(key)
+              }
+              for (const value of formData.values()) {
+                console.log(value)
+              } */
+
+              await this.$api.system.appUpdate.save(formData)
+            }
+            this._resetForm()
+            this.$notify.success(this.$t('message.00002'))// '처리되었습니다.'
+            await this.ACTION_REGISTRY().searchClick()
+          }
+        },
+        delClick: () => {
+        }
+      }
+    },
+    _resetForm () {
+      this.$refs.form.reset()
+      this.appUpdateDetail = {}
+    },
+    fileChange (e) {
+      const file = e.target.files
+      let validation = true
+      let message = ''
+
+      /* if (file.length > 1) {
+        validation = false
+        message = '파일은 한개만 등록 가능합니다.'
+      } */
+
+      if (file[0].size > 1024 * 1024 * 2) {
+        message = `${message}, 파일은 용량은 2MB 이하만 가능합니다.`
+        validation = false
+      }
+
+      if (validation) {
+        this.file = file
+      } else {
+        this.file = ''
+        alert(message)
+      }
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+</style>

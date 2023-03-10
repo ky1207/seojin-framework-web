@@ -176,7 +176,7 @@ export default ctx => ({
     },
     lastUpdateFlag: {
       header: ctx.i18n.t('grid.lastUpdateFlag'),
-      renderer: CustomCheckBoxRenderer,
+      formatter: YNFormatter,
       align: 'center'
     },
     // M

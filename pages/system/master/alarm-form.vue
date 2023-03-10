@@ -84,7 +84,7 @@
               v-model="alarm.notifyTmpltName"
               :name="$t('page.system.00081')"
               type="text"
-              disabled-validation
+              rules="required"
             />
           </SJFormField>
         </SJFormRow>
@@ -95,7 +95,7 @@
               v-model="alarm.title"
               :name="$t('page.system.00082')"
               type="text"
-              disabled-validation
+              rules="required"
             />
           </SJFormField>
         </SJFormRow>
@@ -137,7 +137,7 @@
               id="form_cntn"
               v-model="alarm.cntn"
               :name="$t('page.system.00090')"
-              disabled-validation
+              rules="required"
             />
           </SJFormField>
         </SJFormRow>
