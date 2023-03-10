@@ -16,7 +16,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-12">
+      <div class="SJSearchOneLayout_full">
         <div ref="autoHeight" class="card" autoHeight>
           <div class="card-body">
             <h5 class="card-title">
