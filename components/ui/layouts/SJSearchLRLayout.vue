@@ -93,7 +93,7 @@ export default {
 
 }
 </script>
-<style>
+<style scoped>
 .SJSearchLRLayout_full {
   flex: 0 0 auto;
   width: 100%;

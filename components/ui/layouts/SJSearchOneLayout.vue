@@ -76,7 +76,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .SJSearchOneLayout_full {
   flex: 0 0 auto;
   width: 100%;

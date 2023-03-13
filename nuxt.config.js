@@ -24,9 +24,8 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['~/assets/transition.css',
-    '~/assets/style/custom.scss',
-    '~/assets/style/style.css',
+  css: ['~/assets/style/scss/custom.scss',
+    '~/assets/transition.css',
     '~/assets/style/grid.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -113,6 +112,11 @@ export default {
   // },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    loaders: {
+      scss: {
+        // additionalData: '@import '@/assets/style/style.css';'
+      }
+    },
     // Babel transpile dependencies
     transpile: ['vue-router-tab', 'vee-validate/dist/rules'],
     extractCSS: { ignoreOrder: true }, // inline css를 파일로 저장한다. 그렇지 않으면 head 내에 inline으로 출력 kskim 2021-12-10   ***
