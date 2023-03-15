@@ -26,7 +26,30 @@
               <i class="bi bi-search" />
             </div>
           </li><!-- End Search Icon-->
+          <li class="nav-item dropdown pe-3">
+            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+              <span class="d-none d-md-block dropdown-toggle ps-2">{{ currentLang }}</span>
+            </a><!-- End Profile Iamge Icon -->
 
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+              <li>
+                <a class="dropdown-item d-flex align-items-center" @click="change18n('en')">
+                  <span>English</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center" @click="change18n('ko')">
+                  <span>한국어</span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center" @click="change18n('vi')">
+                  <span>베트남어</span>
+                </a>
+              </li>
+            </ul><!-- End Profile Dropdown Items -->
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link nav-icon" href="#" @click="alarmModalOpen()">
               <i class="bi bi-bell" />
@@ -106,6 +129,16 @@ export default {
       menus: [],
       pushCnt: 0,
       search: {}
+    }
+  },
+  computed: {
+    currentLang () {
+      if (this.$i18n.getLocaleCookie() === 'en') {
+        return 'English'
+      } else if (this.$i18n.getLocaleCookie() === 'vi') {
+        return '베트남어'
+      }
+      return '한국어'
     }
   },
   async created () {
@@ -224,6 +257,12 @@ export default {
     }
   },
   methods: {
+    change18n (lang) {
+      this.$i18n.setLocale(lang)
+
+      // iframe 사라짐
+      window.location.reload()
+    },
     isActive (url) {
       return this.$route.path === url
     },

@@ -16,15 +16,6 @@
         pageable
         @moveToGridPage="page"
       />
-      <div @click="change('en')">
-        English
-      </div>
-      <div @click="change('ko')">
-        한국어
-      </div>
-      <div @click="change('vi')">
-        Vitenam
-      </div><br>
       <button type="button" class="btn btn-primary" @click="open()">
         Launch demo modal
       </button>
@@ -90,12 +81,7 @@ export default {
       console.log(response)
       // }
     },
-    change (lang) {
-      this.$i18n.setLocale(lang)
 
-      // iframe 사라짐
-      window.location.reload()
-    },
     ACTION_REGISTRY () {
       return {
         f1Label: 'S1 Label',
