@@ -10,11 +10,6 @@
       <li v-if="file.method !== 'delete'" class="list-group-item">
         {{ file.filename }} ( {{ file.filesize }} byte)
         <span class="badge bg-secondary" @click="onDelete(i)">삭제</span>
-        <input type="hidden" :name="name? name+'['+i+']'+'.id': 'id'" :value="file.id">
-        <input type="hidden" :name="name? name+'['+i+']'+'.filename': 'filename'" :value="file.filename">
-        <input type="hidden" :name="name? name+'['+i+']'+'.filepath': 'path'" :value="file.path">
-        <input type="hidden" :name="name? name+'['+i+']'+'.method' : 'method'" :value="file.method">
-        <input type="hidden" :name="name? name+'['+i+']'+'.filesize' : 'filesize'" :value="file.filesize">
       </li>
     </ul>
   </div>
