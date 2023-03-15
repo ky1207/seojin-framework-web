@@ -27,7 +27,10 @@ export default axios => ({
   loadAlarm (notifyId) {
     return axios.get(`/api/v1.0/alarm/detailAlarm/${notifyId}`)
   },
-  updateAlarm (data) {
-    return axios.post('/api/v1.0/alarm/updateAlarm', data)
+  readAlarm (alarms) {
+    return axios.delete('/api/v1.0/alarm/readAlarm', { data: alarms })
+  },
+  deleteAlarm (alarms) {
+    return axios.delete('/api/v1.0/alarm/deleteAlarm', { data: alarms })
   }
 })

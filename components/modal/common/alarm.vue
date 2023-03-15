@@ -90,11 +90,9 @@
             </SJFormRow>
             <SJFormRow>
               <SJFormField class="col-md-12" :label="$tc('page.system.00090')">
-                <SJEditor
-                  id="form_cntn"
-                  v-model="alarmDetail.cntn"
-                  :name="$t('page.system.00090')"
-                  disabled="true"
+                <div
+                  class="cntn-area"
+                  v-html="alarmDetail.cntn != null ? alarmDetail.cntn.unescapeHtml() : ''"
                 />
               </SJFormField>
             </SJFormRow>
@@ -172,9 +170,15 @@ export default {
       const result = await this.$api.system.alarm.loadAlarm(item.notifyId)
       this.alarmDetail = result.data
 
+      // 알림 읽음 처리
+      const alarms = [item.notifyId]
+      await this.$api.system.alarm.readAlarm(alarms)
+
       this.alarmDetail.data = {
         Data: this.alarmDetail.codes
       }
+
+      this.$refs.grid.invoke('addCellClassName', '0', 'notifyTmpltName', 'font-red')
     },
     open () {
       this.$refs.modal.show()
@@ -201,13 +205,23 @@ export default {
       this.resolve([]) // response의 응답
     },
     async readPush () {
-      await this.$api.system.alarm.alarmList(this.search)
+      const checkedData = this.$refs.grid.invoke('getCheckedRows')
+      const alarms = checkedData.map(alarm => alarm.notifyId)
+      if (alarms.length === 0) {
+        this.$notify.warning(this.$t('message.00011'))// '삭제 할 부서를 체크하세요.'
+        return
+      }
+      await this.$api.system.alarm.readAlarm(alarms)
+      await this.list(1)
     },
     async deletePush () {
-      this.$refs.grid.invoke('removeCheckedRows', false)
-      const data = this.$refs.grid.invoke('getModifiedRows')
-      await this.$api.system.alarm.updateAlarm(data)
-      this.$notify.success(this.$t('message.00002'))
+      const checkedData = this.$refs.grid.invoke('getCheckedRows')
+      const alarms = checkedData.map(alarm => alarm.notifyId)
+      if (alarms.length === 0) {
+        this.$notify.warning(this.$t('message.00011'))// '삭제 할 부서를 체크하세요.'
+        return
+      }
+      await this.$api.system.alarm.deleteAlarm(alarms)
       await this.list(1)
     }
   }
