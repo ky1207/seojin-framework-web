@@ -1,7 +1,7 @@
 <template>
   <div>
     <div ref="uploadDiv" class="col-sm-10">
-      <input style="display:none;" type="file" @change="onChange">
+      <input style="display:none;" type="file" multiple @change="onChange">
       <button type="button" class="btn btn-primary" @click="OnSelect">
         첨부파일
       </button>
@@ -51,21 +51,25 @@ export default {
       this.$refs.uploadDiv.childNodes[0].click()
     },
     onChange (e) {
-      const file = e.target.files[0]
       const input = this.$refs.uploadDiv.childNodes
       const oldInput = input[0].cloneNode(true)
       oldInput.style.display = 'none'
       oldInput.name = this.name + this.index++
       this.$refs.uploadDiv.appendChild(oldInput)
+
+      const files = e.target.files
+      console.log(files)
+      for (let i = 0; i < files.length; i++) {
+        const upload = { id: null, method: 'insert', file: files[i], filename: files[i].name, filesize: files[i].size }
+        this.inputValue.push(upload)
+      }
       input[0].value = null
-      const upload = { id: null, method: 'insert', file, filename: file.name, filesize: file.size, link: oldInput }
-      this.inputValue.push(upload)
     },
     onDelete (index) {
       const file = this.value[index]
       if (file.method === 'insert') {
         this.inputValue.splice(index, 1)
-        file.link.remove()
+        // file.link.remove()
       } else {
         file.method = 'delete'
       }
