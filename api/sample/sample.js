@@ -5,7 +5,6 @@ export default axios => ({
     return axios.get('/api/v1.0/sample', { params: { pageNum: page } })
   },
   write (sample) {
-    console.log(sample)
     const axiosConfig = {
       headers: {
         'Content-Type': 'multipart/form-data'
