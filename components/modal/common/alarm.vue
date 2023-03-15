@@ -167,7 +167,6 @@ export default {
   },
   methods: {
     async onMasterClick (ev) {
-      debugger
       if (ev.rowKey === undefined) { return }
       const item = this.$refs.grid.invoke('getRow', ev.rowKey)
       const result = await this.$api.system.alarm.loadAlarm(item.notifyId)
