@@ -26,7 +26,7 @@ export default ({ $axios, app, redirect, store, error: nuxtError }) => {
   $axios.onResponse((response) => {
     app.store.dispatch('loader/loading', false)
 
-    if (response.data.data) {
+    if (Object.hasOwn(response.data, 'data')) {
       response.data = response.data.data
     }
     return response
