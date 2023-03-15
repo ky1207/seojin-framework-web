@@ -28,7 +28,11 @@
       <button type="button" class="btn btn-primary" @click="open()">
         Launch demo modal
       </button>
+      <button type="button" class="btn btn-primary" @click="write()">
+        쓰기
+      </button>
       <SampleInsert ref="exampleModal" /> {{ $t('sample') }}
+      <SampleWrite ref="writeModal" />
     </template>
   </SJOneLayout>
 </template>
@@ -71,13 +75,17 @@ export default {
   },
   methods: {
     async page (e) {
-      console.log(e)
       const result = await this.$api.sample.list(e.page)
       this.gridProps.data = result.data
     },
     async open () {
-      alert('click')
       const response = await this.$refs.exampleModal.open(this.test)
+      //  if (response) {
+      console.log(response)
+      // }
+    },
+    async write () {
+      const response = await this.$refs.writeModal.open()
       //  if (response) {
       console.log(response)
       // }
