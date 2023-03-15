@@ -28,9 +28,9 @@
           </li><!-- End Search Icon-->
 
           <li class="nav-item dropdown">
-            <a class="nav-link nav-icon" href="#">
+            <a class="nav-link nav-icon" href="#" @click="alarmModalOpen()">
               <i class="bi bi-bell" />
-              <span class="badge bg-primary badge-number">4</span>
+              <span class="badge bg-primary badge-number">{{ pushCnt }}</span>
             </a><!-- End Notification Icon -->
           </li><!-- End Notification Nav -->
 
@@ -89,6 +89,7 @@
     </main><!-- End #main -->
     <SJSpinner ref="spinner" />
     <!-- ======= Footer ======= -->
+    <CommonAlarm ref="alarmModal" />
   </div>
 </template>
 <script>
@@ -102,14 +103,24 @@ export default {
           closable: false
         }
       ],
-      menus: []
+      menus: [],
+      pushCnt: 0,
+      search: {}
     }
   },
-  created () {
+  async created () {
     const sortedTree = this.$store.getters.getMenus()
     this.menus = sortedTree._children
+
+    /* 상단 푸시 알림 숫자 */
+    this.search.rcvrId = this.$auth.user.userId
+    this.search.pushInqryFlag = false
+    const pushCntData = await this.$api.system.alarm.alarmCnt(this.search)
+    this.pushCnt = pushCntData.data
   },
   mounted () {
+    //
+    // this.pushCnt = 5
     // 예제.. 추후 처리 컴포넌트로 처리해야함
     /**
      * Easy selector helper function
@@ -218,6 +229,10 @@ export default {
     },
     logout () {
       this.$auth.logout()
+    },
+    async alarmModalOpen () {
+      const data = await this.$refs.alarmModal.open()
+      console.log(data)
     }
   }
 }

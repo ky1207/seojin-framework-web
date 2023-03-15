@@ -323,6 +323,10 @@ export default ctx => ({
       header: ctx.i18n.t('grid.sndrEmail'),
       width: 180
     },
+    sndrName: {
+      header: ctx.i18n.t('grid.sndrName'),
+      width: 180
+    },
     // U
     useFlag: {
       header: ctx.i18n.t('grid.useFlag'),
