@@ -112,15 +112,11 @@ export default {
   // },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    loaders: {
-      scss: {
-        // additionalData: '@import '@/assets/style/style.css';'
-      }
-    },
     // Babel transpile dependencies
     transpile: ['vue-router-tab', 'vee-validate/dist/rules'],
-    extractCSS: { ignoreOrder: true }, // inline css를 파일로 저장한다. 그렇지 않으면 head 내에 inline으로 출력 kskim 2021-12-10   ***
+    extractCSS: true, // inline css를 파일로 저장한다. 그렇지 않으면 head 내에 inline으로 출력 kskim 2021-12-10   ***
     // publicPath:'http://test.org' // default='/_nuxt/
+
     publicPath: process.env.CDN_ASSETS,
     terser: {
       // https://github.com/terser/terser#compress-options
@@ -132,8 +128,17 @@ export default {
     },
     optimization: {
       splitChunks: {
-        minSize: 15000,
-        maxSize: 250000
+        chunks: 'all',
+        minSize: 30000,
+        maxSize: 100000,
+        automaticNameDelimiter: '.',
+        cacheGroups: {
+          vendors: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all'
+          }
+        }
       }
     }
   },
