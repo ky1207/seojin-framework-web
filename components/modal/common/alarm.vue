@@ -25,6 +25,7 @@
         </template>
         <template #leftTitle>
           <div class="row align-items-center">
+            <div class="col" />
             <div class="col-auto">
               <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="readPush">
                 {{ $t('components.modal.00019') }}
@@ -108,7 +109,10 @@ export default {
   data () {
     return {
       common: {},
-      search: {},
+      search: {
+        rcvrId: null,
+        pushInqryFlag: null
+      },
       alarmDetail: {},
       gridProps: {
         data: {},
@@ -144,7 +148,12 @@ export default {
         ],
         options: {
           rowHeaders: ['rowNum', 'checkbox'],
-          bodyHeight: 450
+          bodyHeight: 450,
+          cell: {
+            normal: {
+              text: 'red'
+            }
+          }
         }
       },
       resolve: null,
