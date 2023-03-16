@@ -68,7 +68,7 @@
     <template #right>
       <SJForm ref="form">
         <SJFormRow>
-          <SJFormField class="col-md-6" :label="$tc('page.system.00080')">
+          <SJFormField :label="$tc('page.system.00080')">
             <SJStepper
               id="form_notifyTmpltId"
               v-model="alarm.notifyTmpltId"
@@ -78,7 +78,7 @@
               disabled
             />
           </SJFormField>
-          <SJFormField class="col-md-6" :label="$tc('page.system.00081')">
+          <SJFormField :label="$tc('page.system.00081')">
             <SJInput
               id="form_notifyTmpltName"
               v-model="alarm.notifyTmpltName"
@@ -89,7 +89,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-12" :label="$tc('page.system.00082')">
+          <SJFormField :label="$tc('page.system.00082')">
             <SJInput
               id="form_title"
               v-model="alarm.title"
@@ -100,7 +100,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00004')">
+          <SJFormField :label="$tc('page.system.00004')">
             <SJSelect
               id="form_useYN"
               v-model="alarm.useFlag"
@@ -110,7 +110,7 @@
               disabled-first-message
             />
           </SJFormField>
-          <SJFormField class="col-md-4" label="EMAIL">
+          <SJFormField label="EMAIL">
             <SJSelect
               id="form_emailFlag"
               v-model="alarm.emailFlag"
@@ -120,7 +120,7 @@
               disabled-first-message
             />
           </SJFormField>
-          <SJFormField class="col-md-4" label="PUSH">
+          <SJFormField label="PUSH">
             <SJSelect
               id="form_pushFlag"
               v-model="alarm.pushFlag"
@@ -132,7 +132,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-12" :label="$tc('page.system.00090')">
+          <SJFormField :label="$tc('page.system.00090')">
             <SJEditor
               id="form_cntn"
               v-model="alarm.cntn"
@@ -142,7 +142,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-12" :label="$tc('page.system.00009')">
+          <SJFormField :label="$tc('page.system.00009')">
             <SJTextarea id="form_desc" v-model="alarm.remark" :name="$t('page.system.00009')" disabled-validation />
           </SJFormField>
         </SJFormRow>
