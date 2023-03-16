@@ -6,9 +6,9 @@
         첨부파일
       </button>
     </div>
-    <ul v-for="(file,i) in value" :key="file.id" class="list-group">
+    <ul v-for="(file,i) in value" :key="file.fileId" class="list-group">
       <li v-if="file.method !== 'delete'" class="list-group-item">
-        {{ file.filename }} ( {{ file.filesize }} byte)
+        {{ file.fileName }} ( {{ file.fileSize }} byte)
         <span class="badge bg-secondary" @click="onDelete(i)">삭제</span>
       </li>
     </ul>
@@ -55,7 +55,7 @@ export default {
       const files = e.target.files
       console.log(files)
       for (let i = 0; i < files.length; i++) {
-        const upload = { id: null, method: 'insert', file: files[i], filename: files[i].name, filesize: files[i].size }
+        const upload = { fileId: null, method: 'insert', file: files[i], fileName: files[i].name, fileSize: files[i].size }
         this.inputValue.push(upload)
       }
       input[0].value = null
