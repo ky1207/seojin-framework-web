@@ -22,6 +22,9 @@
       <button type="button" class="btn btn-primary" @click="write()">
         쓰기
       </button>
+      <div @click="doDownload(43)">
+        파일 다운로드
+      </div>
       <SampleInsert ref="exampleModal" /> {{ $t('sample') }}
       <SampleWrite ref="writeModal" />
     </template>
@@ -65,6 +68,9 @@ export default {
     this.gridProps.data = result.data
   },
   methods: {
+    doDownload (id) {
+      this.$api.sample.download(id)
+    },
     async page (e) {
       const result = await this.$api.sample.list(e.page)
       this.gridProps.data = result.data
