@@ -11,7 +11,7 @@ import columns from '~/plugins/lib/grid/columns'
 
 TuiGrid.setLanguage('ko')
 // default나 clean이 아니면 적용 안됨
-TuiGrid.applyTheme('default',
+TuiGrid.applyTheme('striped',
   {
     cell: {
       editable: {
