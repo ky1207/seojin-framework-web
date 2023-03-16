@@ -116,27 +116,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-12" :label="$tc('page.system.00094')">
-            <input
-              id="form_file"
-              ref="file"
-              class="form-control"
-              type="file"
-              multiple
-              :v-model="appUpdateDetail.files"
-              :name="$t('page.system.00094')"
-              disabled-validation
-              data-show-upload="true"
-              data-show-caption="true"
-              @change="fileChange"
-            >
-          </SJFormField>
-          <p v-for="item in appUpdateDetail.files" :key="item">
-            {{ item.fileName }}
-            <br>
-            <!-- vue.js는 태그 애트리뷰트를 변수 값을 대입시키려면 머스터치를 사용하지 않고, 태그 애트리뷰트 앞에 :을 입력 후 변수명을 입력 -->
-            <!-- <img src="{{item.image}}" /> -->
-          </p>
+          <SJFileUpload v-model="appUpdateDetail.files" name="files" />
         </SJFormRow>
       </SJForm>
     </template>
@@ -154,6 +134,7 @@ export default {
       common: {},
       search: {},
       appUpdateDetail: {
+        files: []
       },
       appUpdate: {
         data: {},
@@ -221,53 +202,10 @@ export default {
           const result = await this.$refs.form.validate()
           if (result) {
             if (this.isUpdate) {
-              const formData = new FormData()
-
-              // 첨부파일
-              if (this.file != null && this.file.length > 0) {
-                for (let i = 0; i < this.file.length; i++) {
-                  const file = this.file[i]
-                  formData.append('files', file)
-                }
-              }
-
-              // 입력폼
-              const appUpdateDetail = JSON.stringify(this.appUpdateDetail)
-              const appUpdateDetailData = new Blob([appUpdateDetail], { type: 'application/json' })
-              formData.append(
-                'appUpdate',
-                appUpdateDetailData
-              )
-
-              await this.$api.system.appUpdate.update(this.appUpdateDetail.updateId, formData)
+              await this.$api.appUpdate.update(this.appUpdateDetail)
             } else {
-              const formData = new FormData()
-
-              // 첨부파일
-              if (this.file != null && this.file.length > 0) {
-                for (let i = 0; i < this.file.length; i++) {
-                  const file = this.file[i]
-                  formData.append('files', file)
-                }
-              }
-
-              // 입력폼
-              const appUpdateDetail = JSON.stringify(this.appUpdateDetail)
-              const appUpdateDetailData = new Blob([appUpdateDetail], { type: 'application/json' })
-              formData.append(
-                'appUpdate',
-                appUpdateDetailData
-              )
-
-              // FormData의 key / value 확인
-              /* for (const key of formData.keys()) {
-                console.log(key)
-              }
-              for (const value of formData.values()) {
-                console.log(value)
-              } */
-
-              await this.$api.system.appUpdate.save(formData)
+              console.log(this.appUpdateDetail)
+              await this.$api.system.appUpdate.save(this.appUpdateDetail)
             }
             this._resetForm()
             this.$notify.success(this.$t('message.00002'))// '처리되었습니다.'
@@ -282,27 +220,13 @@ export default {
       this.$refs.form.reset()
       this.appUpdateDetail = {}
     },
-    fileChange (e) {
-      const file = e.target.files
-      let validation = true
-      let message = ''
-
-      /* if (file.length > 1) {
-        validation = false
-        message = '파일은 한개만 등록 가능합니다.'
-      } */
-
-      if (file[0].size > 1024 * 1024 * 2) {
-        message = `${message}, 파일은 용량은 2MB 이하만 가능합니다.`
-        validation = false
-      }
-
-      if (validation) {
-        this.file = file
-      } else {
-        this.file = ''
-        alert(message)
-      }
+    downloadFile (fileId) {
+      // await this.$api.system.appUpdate.downloadFile(fileId)
+      this.$refs.form.reset()
+      this.appUpdateDetail = {}
+    },
+    getFile ($event) {
+      this.file = $event
     }
   }
 }
