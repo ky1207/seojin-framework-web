@@ -6,7 +6,7 @@
         첨부파일
       </button>
     </div>
-    <ul v-for="(file,i) in value" :key="file.fileId" class="list-group">
+    <ul v-for="(file,i) in inputValue" :key="file.fileId" class="list-group">
       <li v-if="file.method !== 'delete'" class="list-group-item">
         {{ file.fileName }} ( {{ file.fileSize }} byte)
         <span class="badge bg-secondary" @click="onDelete(i)">삭제</span>
@@ -53,7 +53,6 @@ export default {
       this.$refs.uploadDiv.appendChild(oldInput)
 
       const files = e.target.files
-      console.log(files)
       for (let i = 0; i < files.length; i++) {
         const upload = { fileId: null, method: 'insert', file: files[i], fileName: files[i].name, fileSize: files[i].size }
         this.inputValue.push(upload)
@@ -61,12 +60,13 @@ export default {
       input[0].value = null
     },
     onDelete (index) {
-      const file = this.value[index]
+      const file = this.inputValue[index]
       if (file.method === 'insert') {
         this.inputValue.splice(index, 1)
         // file.link.remove()
       } else {
         file.method = 'delete'
+        this.inputValue = [...this.inputValue]
       }
     }
   }
