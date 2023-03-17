@@ -58,7 +58,7 @@
     <template #right>
       <SJForm ref="form">
         <SJFormRow>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00001')">
+          <SJFormField :label="$tc('page.system.00001')">
             <SJSelect
               id="form_company"
               v-model="appUpdateDetail.coId"
@@ -68,7 +68,7 @@
               disabled-first-message
             />
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00092')">
+          <SJFormField :label="$tc('page.system.00092')">
             <SJStepper
               id="form_updateId"
               v-model="appUpdateDetail.updateId"
@@ -78,7 +78,7 @@
               disabled-validation
             />
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00091')">
+          <SJFormField :label="$tc('page.system.00091')">
             <SJSelect
               id="form_appType"
               v-model="appUpdateDetail.appType"
@@ -100,7 +100,7 @@
               rules="required"
             />
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00093')">
+          <SJFormField :label="$tc('page.system.00093')">
             <SJInput
               id="form_updateTitle"
               v-model="appUpdateDetail.updateVersion"
@@ -111,7 +111,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-12" :label="$tc('page.system.00090')">
+          <SJFormField :label="$tc('page.system.00090')">
             <SJTextarea id="form_updateCntn" v-model="appUpdateDetail.updateCntn" :name="$t('page.system.00090')" disabled-validation />
           </SJFormField>
         </SJFormRow>

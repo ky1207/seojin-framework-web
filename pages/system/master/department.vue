@@ -77,7 +77,7 @@
               disabled
             />
           </SJFormField>
-          <SJFormField class="col-md-8" :label="$tc('page.system.00058')">
+          <SJFormField :label="$tc('page.system.00058')">
             <SJInput
               id="form_deptName"
               v-model="dept.deptName"
@@ -88,7 +88,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-12" :label="$tc('page.system.00009')">
+          <SJFormField :label="$tc('page.system.00009')">
             <SJTextarea id="form_remark" v-model="dept.remark" :name="$t('page.system.00009')" disabled-validation />
           </SJFormField>
         </SJFormRow>

@@ -54,7 +54,7 @@
     <template #right>
       <SJForm ref="form">
         <SJFormRow>
-          <SJFormField class="col-md-6" :label="$tc('page.system.00074')">
+          <SJFormField :label="$tc('page.system.00074')">
             <SJInput
               id="form_coId"
               v-model="companyDetail.coId"
@@ -64,7 +64,7 @@
               disabled
             />
           </SJFormField>
-          <SJFormField class="col-md-6" :label="$tc('page.system.00075')">
+          <SJFormField :label="$tc('page.system.00075')">
             <SJInput
               id="form_coName"
               v-model="companyDetail.coName"
@@ -75,7 +75,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00040')">
+          <SJFormField :label="$tc('page.system.00040')">
             <SJInput
               id="form_biznum"
               v-model="companyDetail.biznum"
@@ -85,7 +85,7 @@
               disabled-validation
             />
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00041')">
+          <SJFormField :label="$tc('page.system.00041')">
             <SJInput
               id="form_coNum"
               v-model="companyDetail.coNum"
@@ -95,7 +95,7 @@
               disabled-validation
             />
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00042')">
+          <SJFormField :label="$tc('page.system.00042')">
             <SJInput
               id="form_repName"
               v-model="companyDetail.repName"
@@ -107,7 +107,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00043')">
+          <SJFormField :label="$tc('page.system.00043')">
             <SJInput
               id="form_email"
               v-model="companyDetail.email"
@@ -117,7 +117,7 @@
               disabled-validation
             />
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00044')">
+          <SJFormField :label="$tc('page.system.00044')">
             <SJInput
               id="form_phone"
               v-model="companyDetail.phone"
@@ -127,7 +127,7 @@
               disabled-validation
             />
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00045')">
+          <SJFormField :label="$tc('page.system.00045')">
             <SJInput
               id="form_fax"
               v-model="companyDetail.fax"
@@ -139,10 +139,10 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00046')">
+          <SJFormField :label="$tc('page.system.00046')">
             <SJDatePicker id="form_estabDt" v-model="companyDetail.estabDt" name="$t('page.system.00046')" disabled-validation />
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00047')">
+          <SJFormField :label="$tc('page.system.00047')">
             <SJInput
               id="form_biztype"
               v-model="companyDetail.biztype"
@@ -152,7 +152,7 @@
               disabled-validation
             />
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00048')">
+          <SJFormField :label="$tc('page.system.00048')">
             <SJInput
               id="form_bizitem"
               v-model="companyDetail.bizitem"
@@ -164,7 +164,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00049')">
+          <SJFormField :label="$tc('page.system.00049')">
             <SJInput
               id="form_lang"
               v-model="companyDetail.lang"
@@ -174,7 +174,7 @@
               disabled-validation
             />
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00050')">
+          <SJFormField :label="$tc('page.system.00050')">
             <SJStepper
               id="form_sort"
               v-model="companyDetail.sort"
@@ -182,12 +182,12 @@
               rules="required|min_value:1"
             />
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00004')">
+          <SJFormField :label="$tc('page.system.00004')">
             <SJSelect id="form_useYN" v-model="companyDetail.useFlag" :name="$t('page.system.00004')" :options="$api.common.getYNCodes()" rules="required" />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-12" :label="$tc('page.system.00051')">
+          <SJFormField :label="$tc('page.system.00051')">
             <SJInput
               id="form_addr1"
               v-model="companyDetail.addr1"
@@ -205,7 +205,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-12" :label="$tc('page.system.00052')">
+          <SJFormField :label="$tc('page.system.00052')">
             <SJInput
               id="form_addr3"
               v-model="companyDetail.addr3"
@@ -216,7 +216,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-6" :label="$tc('page.system.00053')">
+          <SJFormField :label="$tc('page.system.00053')">
             <SJInput
               id="form_coType"
               v-model="companyDetail.coType"
@@ -225,7 +225,7 @@
               rules="required|max:12"
             />
           </SJFormField>
-          <SJFormField class="col-md-6" :label="$tc('page.system.00054')">
+          <SJFormField :label="$tc('page.system.00054')">
             <SJInput
               id="form_logoName"
               v-model="companyDetail.logoName"

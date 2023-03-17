@@ -48,7 +48,7 @@
     <template #right>
       <SJForm ref="form">
         <SJFormRow>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00080')">
+          <SJFormField :label="$tc('page.system.00080')">
             <SJInput
               id="form_notifyTmpltId"
               v-model="alarm.notifyTmpltId"
@@ -70,7 +70,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-12" :label="$tc('page.system.00082')">
+          <SJFormField :label="$tc('page.system.00082')">
             <SJInput
               id="form_title"
               v-model="alarm.title"
@@ -82,7 +82,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-12" :label="$tc('page.system.00009')">
+          <SJFormField :label="$tc('page.system.00009')">
             <SJTextarea id="form_desc" v-model="alarm.remark" :name="$t('page.system.00009')" disabled-validation disabled />
           </SJFormField>
         </SJFormRow>
