@@ -7,7 +7,7 @@
       </button>
     </div>
     <ul v-for="(file,i) in inputValue" :key="file.fileId" class="list-group">
-      <li v-if="file.method !== 'delete'" class="list-group-item" :style="file.fileId !== null ? 'cursor : pointer;' : ''" @click="file.fileId !== null ? doDownload(file.fileId) : ''">
+      <li v-if="file.method !== 'delete'" class="list-group-item" style="cursor : pointer;" @click="file.fileId !== null ? doDownload(file.fileId) : doDownloadByFile(file.file)">
         {{ file.filename }} ( {{ file.filesize }} byte)
         <span class="badge bg-secondary" @click="onDelete(i)">삭제</span>
       </li>
@@ -15,6 +15,7 @@
   </div>
 </template>
 <script>
+import Utils from '~/api/utils'
 export default {
   props: {
     name: {
@@ -71,6 +72,9 @@ export default {
     },
     doDownload (fileId) {
       this.$emit('fileDownload', fileId)
+    },
+    doDownloadByFile (file) {
+      Utils.fileDownloadByFile(file)
     }
   }
 }

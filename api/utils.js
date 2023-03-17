@@ -16,6 +16,14 @@ const Utils = {
     link.download = response.data.filename
     link.click()
     window.URL.revokeObjectURL(url)
+  },
+  fileDownloadByFile (file) {
+    const url = URL.createObjectURL(file)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = file.name
+    link.click()
+    window.URL.revokeObjectURL(url)
   }
 }
 
