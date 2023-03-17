@@ -270,8 +270,7 @@ export default {
       this.$auth.logout()
     },
     async alarmModalOpen () {
-      const data = await this.$refs.alarmModal.open()
-      console.log(data)
+      await this.$refs.alarmModal.open()
     }
   }
 }

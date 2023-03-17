@@ -1,4 +1,5 @@
 import { serialize } from 'object-to-formdata'
+import Utils from '~/api/utils'
 
 export default axios => ({
   list (search) {
@@ -15,10 +16,16 @@ export default axios => ({
     }
     return axios.post('/api/v1.0/appUpdate', serialize(appUpdateDetail, { indices: true, dotsForObjectNotation: true }), axiosConfig)
   },
-  update (updateId, formData) {
-    return axios.post(`/api/v1.0/appUpdate/${updateId}`, formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+  update (appUpdateDetail) {
+    const axiosConfig = {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    }
+    return axios.post('/api/v1.0/appUpdate/update/', serialize(appUpdateDetail, { indices: true, dotsForObjectNotation: true }), axiosConfig)
   },
-  downloadFile (fileId) {
-    return axios.get(`/api/v1.0/appUpdate/downloadFile/${fileId}`)
+  async download (fileId) {
+    const response = await axios.get(`/api/v1.0/appUpdate/download/${fileId}`)
+    Utils.fileDownload(response)
   }
 })

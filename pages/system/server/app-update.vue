@@ -116,7 +116,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFileUpload v-model="appUpdateDetail.files" name="files" />
+          <SJFileUpload v-model="appUpdateDetail.files" name="files" @fileDownload="fileDownload" />
         </SJFormRow>
       </SJForm>
     </template>
@@ -202,9 +202,8 @@ export default {
           const result = await this.$refs.form.validate()
           if (result) {
             if (this.isUpdate) {
-              await this.$api.appUpdate.update(this.appUpdateDetail)
+              await this.$api.system.appUpdate.update(this.appUpdateDetail)
             } else {
-              console.log(this.appUpdateDetail)
               await this.$api.system.appUpdate.save(this.appUpdateDetail)
             }
             this._resetForm()
@@ -220,13 +219,8 @@ export default {
       this.$refs.form.reset()
       this.appUpdateDetail = {}
     },
-    downloadFile (fileId) {
-      // await this.$api.system.appUpdate.downloadFile(fileId)
-      this.$refs.form.reset()
-      this.appUpdateDetail = {}
-    },
-    getFile ($event) {
-      this.file = $event
+    fileDownload (fileId) {
+      this.$api.system.appUpdate.download(fileId)
     }
   }
 }
