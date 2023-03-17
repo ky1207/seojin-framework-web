@@ -48,7 +48,8 @@ export default ctx => ({
       filter: null
     },
     appType: {
-      header: ctx.i18n.t('grid.appType')
+      header: ctx.i18n.t('grid.appType'),
+      formatter: CodeFormatter
     },
     // B
     biznum: {
