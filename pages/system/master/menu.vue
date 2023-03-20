@@ -100,10 +100,21 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00029')">
+          <SJFormField :label="$tc('page.system.00097')">
             <SJSelect
-              id="form_company"
+              id="form_folderFlag"
+              v-model="menu.folderFlag"
+              :name="$t('page.system.00097')"
+              :options="$api.common.getYNCodes()"
+              rules="required"
+              @change="changeUseFolder"
+            />
+          </SJFormField>
+          <SJFormField :label="$tc('page.system.00029')">
+            <SJSelect
+              id="form_progId"
               v-model="menu.progId"
+              :disabled="menu.folderFlag==='true'||menu.folderFlag===true"
               :name="$t('page.system.00029')"
               data-live-search
               :options="common.PROGRAM"
@@ -111,7 +122,7 @@
               @change="changeProgram"
             />
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00031')">
+          <SJFormField :label="$tc('page.system.00031')">
             <SJInput
               id="form_applnMenuCode"
               v-model="menu.applnMenuCode"
@@ -248,7 +259,11 @@ export default {
       const node = this.$refs.menuGrid.invoke('getRow', e.rowKey)
       const result = await this.$api.system.menu.load(node.menuId)
       this.menu = result.data
-      await this._readProgramAuth(this.menu.menuId, this.menu.progId)
+      if (this.menu.folderFlag) {
+        await this._readFolderAuth(this.menu.menuId, this.menu.progId)
+      } else {
+        await this._readProgramAuth(this.menu.menuId, this.menu.progId)
+      }
     },
     async _readProgramAuth (menuId, progId) {
       this.auth.data = { }
@@ -258,8 +273,19 @@ export default {
       const result = await this.$api.system.menu.menuProgramAuth({ menuId, progId })
       this.auth.data = result.data
     },
+
     async changeProgram (e) {
       await this._readProgramAuth(this.menu.menuId, e.target._value)
+    },
+    async _readFolderAuth (menuId) {
+      this.auth.data = { }
+      const result = await this.$api.system.menu.menuFolderAuth({ menuId })
+      this.auth.data = result.data
+    },
+    async changeUseFolder (e) {
+      if (e.target.value === 'true') {
+        await this._readFolderAuth(this.menu.menuId)
+      }
     },
     _resetForm () {
       this.$refs.form.reset()

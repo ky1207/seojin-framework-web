@@ -14,6 +14,9 @@ export default axios => ({
   menuProgramAuth (params) {
     return axios.get('/api/v1.0/menu/authority/', { params })
   },
+  menuFolderAuth (params) {
+    return axios.get('/api/v1.0/menu/folder/authority/', { params })
+  },
   menuAuth (path) {
     return axios.post('/api/v1.0/menu/menuAuth', { path })
   },
