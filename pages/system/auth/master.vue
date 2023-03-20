@@ -140,10 +140,10 @@
               {{ $t('page.system.00010') }}
             </div>
             <div class="col-auto">
-              <button class="btn btn-outline-dark" @click="addUser">
+              <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="addUser">
                 {{ $t('page.system.00011') }} <i class="bi bi-file-plus" />
               </button>
-              <button class="btn btn-outline-dark" @click="removeRow">
+              <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="removeRow">
                 {{ $t('page.system.00012') }} <i class="bi bi-file-minus" />
               </button>
             </div>
