@@ -108,8 +108,3 @@ export default {
   }
 }
 </script>
-<style>
-input[type='file']::before {
-  content: "";
-}
-</style>
