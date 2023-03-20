@@ -1,18 +1,33 @@
 <template>
-  <div>
-    <div ref="uploadDiv" class="col-sm-10">
-      <input style="display:none;" type="file" multiple @change="onChange">
-      <button type="button" class="btn btn-primary" @click="OnSelect">
-        첨부파일
-      </button>
+  <ValidationProvider
+    ref="provider"
+    v-slot="{ errors,classes }"
+    :rules="rules"
+    :name="name"
+    tag="div"
+    :disabled="disabledValidation"
+  >
+    <div
+      :class="disabledValidation?'':classes"
+      :aria-describedby="id+'-feedback'"
+    >
+      <div ref="uploadDiv" class="col-sm-10">
+        <input style="display:none;" type="file" multiple @change="onChange">
+        <button type="button" class="btn btn-primary" @click="OnSelect">
+          첨부파일
+        </button>
+      </div>
+      <ul v-for="(file,i) in inputValue" :key="file.fileId" class="list-group">
+        <li v-if="file.method !== 'delete'" class="list-group-item" style="cursor : pointer;" @click="file.fileId !== null ? doDownload(file.fileId) : doDownloadByFile(file.file)">
+          {{ file.filename }} ( {{ file.filesize }} byte)
+          <span class="badge bg-secondary" @click="onDelete(i)">삭제</span>
+        </li>
+      </ul>
+      <span :id="id+'-feedback'" class="invalid-feedback">
+        {{ errors[0] }}
+      </span>
     </div>
-    <ul v-for="(file,i) in inputValue" :key="file.fileId" class="list-group">
-      <li v-if="file.method !== 'delete'" class="list-group-item" style="cursor : pointer;" @click="file.fileId !== null ? doDownload(file.fileId) : doDownloadByFile(file.file)">
-        {{ file.filename }} ( {{ file.filesize }} byte)
-        <span class="badge bg-secondary" @click="onDelete(i)">삭제</span>
-      </li>
-    </ul>
-  </div>
+  </ValidationProvider>
 </template>
 <script>
 import Utils from '~/api/utils'
@@ -25,6 +40,14 @@ export default {
     value: {
       type: Array,
       default: () => []
+    },
+    rules: {
+      type: String,
+      default: ''
+    },
+    disabledValidation: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -59,6 +82,8 @@ export default {
         this.inputValue.push(upload)
       }
       input[0].value = null
+
+      this.validate()
     },
     onDelete (index) {
       const file = this.inputValue[index]
@@ -75,6 +100,10 @@ export default {
     },
     doDownloadByFile (file) {
       Utils.fileDownloadByFile(file)
+    },
+    validate () {
+      this.$refs.provider.value = this.inputValue
+      this.$refs.provider.validate()
     }
   }
 }

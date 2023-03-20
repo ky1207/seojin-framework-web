@@ -15,7 +15,7 @@
           placeholder="입력하세요"
         />
         <SJEditor id="editor" v-model="item.content" name="내용" rules="required" />
-        <SJFileUpload v-model="item.files" name="files" />
+        <SJFileUpload id="file" v-model="item.files" name="첨부" rules="required" />
       </SJForm>
     </template>
 
