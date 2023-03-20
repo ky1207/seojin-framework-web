@@ -8,6 +8,7 @@
       :class="disabledValidation?'':classes"
       :disabled="disabled"
       @input="handleInput"
+      @change="handleChange"
     >
       <option v-if="!disabledFirstMessage" value="">
         {{ $t('components.ui.00004') }}
@@ -90,8 +91,10 @@ export default {
         return
       }
       this.selected = e.target.value
+    },
+    handleChange (e) {
+      this.$emit('change', e)
     }
-
   }
 }
 </script>
