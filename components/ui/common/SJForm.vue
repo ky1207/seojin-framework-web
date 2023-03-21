@@ -1,6 +1,8 @@
 <template>
-  <ValidationObserver ref="observer" tag="form">
-    <slot />
+  <ValidationObserver ref="observer">
+    <form @submit.prevent>
+      <slot />
+    </form>
   </ValidationObserver>
 </template>
 
