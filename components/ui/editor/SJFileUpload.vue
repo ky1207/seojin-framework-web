@@ -41,6 +41,10 @@ export default {
       type: Array,
       default: () => []
     },
+    id: {
+      type: String,
+      required: true
+    },
     rules: {
       type: String,
       default: ''
