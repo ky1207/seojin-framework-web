@@ -57,10 +57,8 @@ export default {
       }
     }
   },
-  watch: {
-    value (newValue) {
-      this.$refs.editor.invoke('setHTML', this.$options.filters.unescapeHTML(newValue))
-    }
+  mounted () {
+    this.$refs.editor.invoke('setHTML', this.$options.filters.unescapeHTML(this.value))
   },
   methods: {
     handleInput (e) {
