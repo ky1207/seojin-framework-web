@@ -20,7 +20,7 @@ export default {
 </script>
 <style>
 form  span.invalid-feedback {
-  height: 9px !important;
+  height: 15px !important;
   display:block;
 }
 .was-validated .form-select:valid:not([multiple]):not([size]), .was-validated .form-select:valid:not([multiple])[size="1"], .form-select.is-valid:not([multiple]):not([size]), .form-select.is-valid:not([multiple])[size="1"]  {
