@@ -30,7 +30,7 @@ export default {
   props: {
     value: {
       type: String,
-      default: ''
+      default: '<p></p>'
     },
     rules: {
       type: String,
