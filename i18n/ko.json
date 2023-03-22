@@ -29,7 +29,7 @@
     "repName": "대표자명",
     "saveAuth": "저장",
     "sortSeq": "정렬",
-    "systemCodeType": "사용모듈",
+    "systemCodeType": "공통코드유형",
     "title": "제목",
     "useFlag": "사용여부",
     "userName": "사용자명",
@@ -48,6 +48,7 @@
     "pushInqryFlag": "푸시읽음",
     "systemType": "시스템유형",
     "modDtm": "수정일",
+    "moduleCodeType": "사용모듈",
     "modUserName": "수정자",
     "applnUseFlag": "APP사용",
     "pdaUseFlag": "PDA사용",
@@ -165,7 +166,8 @@
       "00097": "폴더여부",
       "00098": "경로",
       "00099": "프로그램코드",
-      "00100": "프로그램도움말"
+      "00100": "프로그램도움말",
+      "00101": "사용모듈"
     }
   },
   "message": {

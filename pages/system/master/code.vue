@@ -85,6 +85,20 @@
               :disabled="isUpdate"
             />
           </SJFormField>
+          <SJFormField :label="$tc('page.system.00101')">
+            <SJSelect
+              id="form_moduleCode"
+              v-model="codeGroup.moduleCodeType"
+              :name="$t('page.system.00101')"
+              :options="common.PG_MODULE_CD"
+              item-text="val"
+              item-value="codeId"
+              rules="required"
+            />
+          </SJFormField>
+        </SJFormRow>
+
+        <SJFormRow>
           <SJFormField :label="$tc('page.system.00017')">
             <SJSelect
               id="form_commonCode"
@@ -96,15 +110,13 @@
               rules="required"
             />
           </SJFormField>
+          <SJFormField :label="$tc('page.system.00004')">
+            <SJSelect id="form_useYN" v-model="codeGroup.useFlag" :name="$t('page.system.00004')" :options="$api.common.getYNCodes()" rules="required" />
+          </SJFormField>
         </SJFormRow>
         <SJFormRow>
           <SJFormField :label="$tc('page.system.00019') ">
             <SJMultiInput id="form_lname" v-model="codeGroup.langs" :name="$t('page.system.00019')" type="text" rules="required" />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField class="col-md-6" :label="$tc('page.system.00004')">
-            <SJSelect id="form_useYN" v-model="codeGroup.useFlag" :name="$t('page.system.00004')" :options="$api.common.getYNCodes()" rules="required" />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
@@ -156,6 +168,7 @@ export default {
         columns: [
           { name: 'codeGroupId' },
           { name: 'codeGroupName' },
+          { name: 'moduleCodeType' },
           { name: 'systemCodeType' },
           { name: 'useFlag' }
         ]

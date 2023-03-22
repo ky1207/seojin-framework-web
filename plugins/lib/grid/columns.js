@@ -191,6 +191,11 @@ export default ctx => ({
       formatter: DateFormatter,
       align: 'center'
     },
+    moduleCodeType: {
+      header: ctx.i18n.t('grid.moduleCodeType'),
+      formatter: CodeFormatter,
+      align: 'center'
+    },
     modUserName: {
       header: ctx.i18n.t('grid.modUserName')
     },
@@ -305,7 +310,8 @@ export default ctx => ({
     },
     systemCodeType: {
       header: ctx.i18n.t('grid.systemCodeType'),
-      formatter: CodeFormatter
+      formatter: CodeFormatter,
+      align: 'center'
     },
     saveAuth: {
       header: ctx.i18n.t('grid.saveAuth'),
