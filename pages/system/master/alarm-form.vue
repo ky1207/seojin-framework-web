@@ -139,6 +139,7 @@
               :name="$t('page.system.00090')"
               rules="required"
             />
+            <!--            <SJTextarea id="form_cntn" v-model="alarm.cntn" :name="$t('page.system.00090')" rules="required" />-->
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
