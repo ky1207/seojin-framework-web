@@ -27,7 +27,7 @@
     <button v-if="result.delAuth" type="button" class="btn btn-mb3 btn-mr3 btn-info" @click="call('delClick')">
       {{ $t('components.ui.00003') }} <i class="bi bi-trash" />
     </button>
-    <button type="button" class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="openProgramHelpModal()">
+    <button type="button" class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="openProgramHelpModal(progId)">
       HELP <i class="bi bi-question-lg" />
     </button>
     <CommonHelp ref="programHelpModal" />
@@ -45,7 +45,8 @@ export default {
   },
   data () {
     return {
-      result: {}
+      result: {},
+      progId: 'P00000000001'
     }
   },
   async created () {
@@ -64,8 +65,8 @@ export default {
         alert('function is not defined')
       }
     },
-    async openProgramHelpModal () {
-      await this.$refs.programHelpModal.open()
+    async openProgramHelpModal (progId) {
+      await this.$refs.programHelpModal.open(progId)
     }
   }
 }

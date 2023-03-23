@@ -50,7 +50,8 @@ export default {
       common: {},
       help: {},
       resolve: null,
-      reject: null
+      reject: null,
+      progId: null
     }
   },
   beforeDestroy () {
@@ -58,9 +59,9 @@ export default {
     this.$nuxt.$off('modal.show')
   },
   methods: {
-    open () {
+    open (progId) {
       this.$refs.modal.show()
-      this.searchHelp()
+      this.searchHelp(progId)
       return new Promise((resolve, reject) => {
         this.resolve = resolve
         this.reject = reject
@@ -73,8 +74,8 @@ export default {
     doDownload (fileId) {
       this.$api.system.program.downloadHelp(fileId)
     },
-    async searchHelp () {
-      const result = await this.$api.system.program.loadHelp('P00000000001')
+    async searchHelp (progId) {
+      const result = await this.$api.system.program.loadHelp(progId)
       this.help = result.data
     }
   }
