@@ -138,8 +138,7 @@ export default {
             width: 250
           },
           {
-            name: 'remark',
-            width: 200
+            name: 'remark'
           }
         ]
       }
