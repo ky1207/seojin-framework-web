@@ -11,11 +11,9 @@
       v-bind="$attrs"
       ref="editor"
       v-model="innerValue"
-      :editor="editor"
       :class="disabledValidation?'':classes"
       :config="editorConfig"
       v-on="$listeners"
-      @blur="handleInput"
     />
 
     <span :id="id+'-feedback'" class="invalid-feedback">
@@ -24,8 +22,6 @@
   </ValidationProvider>
 </template>
 <script>
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
-
 export default {
   props: {
     value: {
@@ -55,12 +51,14 @@ export default {
   },
   data () {
     return {
-      editor: ClassicEditor,
       editorConfig: {
-        toolbar: {
-          items: ['heading', '|', 'bold', 'sourceEditing', 'italic', 'bulletedList', 'numberedList', '|']
-        },
-        language: 'en'
+        height: '200px',
+        resize_enabled: false,
+        toolbar: [
+          { name: 'document', items: ['Source', '-', 'NewPage', 'Preview', '-', 'Templates'] },
+          { name: 'basicstyles', items: ['Bold', 'Italic'] },
+          { name: 'clipboard', items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'] }
+        ]
       }
     }
   },
@@ -75,11 +73,7 @@ export default {
     }
   },
   methods: {
-    handleInput (e) {
-      // const html = this.$refs.editor.invoke('getHTML')
-      // this.$emit('input', html)
-      this.validate()
-    },
+
     validate () {
       // this.$refs.provider.value = this.$refs.editor.invoke('getMarkdown')
       this.$refs.provider.validate()
@@ -88,8 +82,3 @@ export default {
 }
 
 </script>
-<style>
-.ck-editor__editable {
-  height: 200px;
-}
-</style>
