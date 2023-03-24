@@ -47,36 +47,31 @@
 export default {
   data () {
     return {
-      common: {},
       help: {},
-      resolve: null,
-      reject: null,
       progId: null
     }
   },
   beforeDestroy () {
-    // 위의 이벤트를 삭제 한다. this.$nuxt.$on('modal.show')
     this.$nuxt.$off('modal.show')
   },
   methods: {
-    open (progId) {
+    async open (progId) {
+      const result = await this.searchHelp(progId)
+      if (result.data.progId === undefined) {
+        this.$notify.info(this.$t('message.00013'))
+        return
+      }
       this.$refs.modal.show()
-      this.searchHelp(progId)
-      return new Promise((resolve, reject) => {
-        this.resolve = resolve
-        this.reject = reject
-      })
+      this.help = result.data
     },
     close () {
       this.$refs.modal.hide()
-      this.resolve([]) // response의 응답
     },
     doDownload (fileId) {
       this.$api.system.program.downloadHelp(fileId)
     },
-    async searchHelp (progId) {
-      const result = await this.$api.system.program.loadHelp(progId)
-      this.help = result.data
+    searchHelp (progId) {
+      return this.$api.system.program.loadHelp(progId)
     }
   }
 }
