@@ -18,7 +18,7 @@
             <div class="col-md-1 text-center">
               {{ $t('page.system.00082') }}
             </div>
-            <div class="col-md-4">
+            <div class="col-md-10">
               <SJInput id="search_title" v-model="search.title" :name="$t('page.system.00082')" type="text" disabled-validation />
             </div>
           </div>
@@ -50,7 +50,7 @@
         <template #right>
           <SJForm ref="form">
             <SJFormRow>
-              <SJFormField class="col-md-4" :label="$tc('components.modal.00016')">
+              <SJFormField :label="$tc('components.modal.00016')">
                 <SJInput
                   id="form_sndrId"
                   v-model="alarmDetail.sndrId"
@@ -59,7 +59,7 @@
                   disabled
                 />
               </SJFormField>
-              <SJFormField class="col-md-4" :label="$tc('components.modal.00017')">
+              <SJFormField :label="$tc('components.modal.00017')">
                 <SJInput
                   id="form_sndrName"
                   v-model="alarmDetail.sndrName"
@@ -68,7 +68,9 @@
                   disabled
                 />
               </SJFormField>
-              <SJFormField class="col-md-4" :label="$tc('components.modal.00018')">
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField :label="$tc('components.modal.00018')">
                 <SJInput
                   id="form_sndrEmail"
                   v-model="alarmDetail.sndrEmail"
@@ -79,7 +81,7 @@
               </SJFormField>
             </SJFormRow>
             <SJFormRow>
-              <SJFormField class="col-md-12" :label="$tc('page.system.00082')">
+              <SJFormField :label="$tc('page.system.00082')">
                 <SJInput
                   id="form_title"
                   v-model="alarmDetail.title"
@@ -90,7 +92,7 @@
               </SJFormField>
             </SJFormRow>
             <SJFormRow>
-              <SJFormField class="col-md-12" :label="$tc('page.system.00090')">
+              <SJFormField :label="$tc('page.system.00090')">
                 <div
                   class="cntn-area"
                   v-html="alarmDetail.cntn != null ? alarmDetail.cntn.unescapeHtml() : ''"

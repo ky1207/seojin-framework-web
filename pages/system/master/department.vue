@@ -67,7 +67,7 @@
     <template #right>
       <SJForm ref="form">
         <SJFormRow>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00057')">
+          <SJFormField class="col-md-6" :label="$tc('page.system.00057')">
             <SJInput
               id="form_deptId"
               v-model="dept.deptId"
@@ -77,6 +77,7 @@
               disabled
             />
           </SJFormField>
+          <SJFormRow />
           <SJFormField :label="$tc('page.system.00058')">
             <SJInput
               id="form_deptName"

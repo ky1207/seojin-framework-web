@@ -95,6 +95,8 @@
               disabled-validation
             />
           </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
           <SJFormField :label="$tc('page.system.00042')">
             <SJInput
               id="form_repName"
@@ -105,8 +107,6 @@
               disabled-validation
             />
           </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
           <SJFormField :label="$tc('page.system.00043')">
             <SJInput
               id="form_email"
@@ -117,6 +117,8 @@
               disabled-validation
             />
           </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
           <SJFormField :label="$tc('page.system.00044')">
             <SJInput
               id="form_phone"
@@ -152,6 +154,8 @@
               disabled-validation
             />
           </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
           <SJFormField :label="$tc('page.system.00048')">
             <SJInput
               id="form_bizitem"
@@ -162,8 +166,6 @@
               disabled-validation
             />
           </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
           <SJFormField :label="$tc('page.system.00049')">
             <SJInput
               id="form_lang"
@@ -174,6 +176,8 @@
               disabled-validation
             />
           </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
           <SJFormField :label="$tc('page.system.00050')">
             <SJStepper
               id="form_sort"

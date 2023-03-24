@@ -46,7 +46,7 @@
     <template #rightTitle>
       <div class="row align-items-center">
         <div class="col">
-          {{ $t('page.system.00062') }}
+          {{ $t('page.system.00102') }}
         </div>
         <div class="col-auto">
           <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="createAppUpdate">
@@ -58,17 +58,7 @@
     <template #right>
       <SJForm ref="form">
         <SJFormRow>
-          <SJFormField :label="$tc('page.system.00001')">
-            <SJSelect
-              id="form_company"
-              v-model="appUpdateDetail.coId"
-              :name="$t('page.system.00001')"
-              :options="common.COMPANY"
-              rules="required"
-              disabled-first-message
-            />
-          </SJFormField>
-          <SJFormField :label="$tc('page.system.00092')">
+          <SJFormField class="col-md-6" :label="$tc('page.system.00092')">
             <SJStepper
               id="form_updateId"
               v-model="appUpdateDetail.updateId"
@@ -78,6 +68,8 @@
               disabled-validation
             />
           </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
           <SJFormField :label="$tc('page.system.00091')">
             <SJSelect
               id="form_appType"
@@ -89,17 +81,6 @@
               rules="required"
             />
           </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField class="col-md-8" :label="$tc('page.system.00082')">
-            <SJInput
-              id="form_updateTitle"
-              v-model="appUpdateDetail.updateTitle"
-              :name="$t('page.system.00082')"
-              type="text"
-              rules="required"
-            />
-          </SJFormField>
           <SJFormField :label="$tc('page.system.00093')">
             <SJInput
               id="form_updateTitle"
@@ -107,6 +88,17 @@
               :name="$t('page.system.00093')"
               type="text"
               disabled-validation
+            />
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField :label="$tc('page.system.00082')">
+            <SJInput
+              id="form_updateTitle"
+              v-model="appUpdateDetail.updateTitle"
+              :name="$t('page.system.00082')"
+              type="text"
+              rules="required"
             />
           </SJFormField>
         </SJFormRow>
