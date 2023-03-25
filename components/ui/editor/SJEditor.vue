@@ -22,6 +22,7 @@
   </ValidationProvider>
 </template>
 <script>
+
 export default {
   props: {
     value: {
@@ -54,6 +55,7 @@ export default {
       editorConfig: {
         height: '200px',
         resize_enabled: false,
+        baseFloatZIndex: 999999,
         toolbar: [
           { name: 'document', items: ['Source', '-', 'NewPage', 'Preview', '-', 'Templates'] },
           { name: 'basicstyles', items: ['Bold', 'Italic'] },
@@ -72,13 +74,19 @@ export default {
       }
     }
   },
+  mounted () {
+    console.log(this)
+  },
   methods: {
-
     validate () {
-      // this.$refs.provider.value = this.$refs.editor.invoke('getMarkdown')
       this.$refs.provider.validate()
     }
   }
 }
 
 </script>
+<style>
+.cke {
+  z-index: -100 !important;
+}
+</style>
