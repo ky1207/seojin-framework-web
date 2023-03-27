@@ -8,12 +8,11 @@
     :disabled="disabledValidation"
   >
     <ckeditor
-      v-bind="$attrs"
       ref="editor"
       v-model="innerValue"
+      :aria-describedby="id+'-feedback'"
       :class="disabledValidation?'':classes"
       :config="editorConfig"
-      v-on="$listeners"
     />
 
     <span :id="id+'-feedback'" class="invalid-feedback">
@@ -59,7 +58,7 @@ export default {
         toolbar: [
           { name: 'document', items: ['Source', '-', 'NewPage', 'Preview', '-', 'Templates'] },
           { name: 'basicstyles', items: ['Bold', 'Italic'] },
-          { name: 'clipboard', items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'] }
+          { name: 'clipboard', items: ['Cut', 'Copy', '-', 'Undo', 'Redo'] }
         ]
       }
     }
@@ -73,15 +72,13 @@ export default {
         this.$emit('input', _val)
       }
     }
-  },
-  mounted () {
-    console.log(this)
-  },
-  methods: {
-    validate () {
-      this.$refs.provider.validate()
-    }
   }
+  // methods: {
+  //   validate () {
+  //     this.$refs.provider.value = this.innerValue
+  //     this.$refs.provider.validate()
+  //   }
+  // }
 }
 
 </script>
