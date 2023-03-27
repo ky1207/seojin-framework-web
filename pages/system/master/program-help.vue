@@ -118,7 +118,8 @@ export default {
     return {
       search: {},
       help: {
-        files: []
+        files: [],
+        cntn: null
       },
       grid: {
         data: {},
@@ -146,20 +147,26 @@ export default {
   },
   methods: {
     async onMasterClick (ev) {
+      this._resetForm()
       if (ev.rowKey === undefined) { return }
       const item = this.$refs.grid.invoke('getRow', ev.rowKey)
       const result = await this.$api.system.program.loadHelp(item.progId)
       this.help = result.data
+      if (result.data.cntn === undefined) {
+        this.help.cntn = null
+      }
       this.help.progId = item.progId
       this.help.progName = item.progName
     },
     _resetForm () {
       this.$refs.form.reset()
       this.help = {}
+      this.help.cntn = null
     },
     ACTION_REGISTRY () {
       return {
         searchClick: async () => {
+          this._resetForm()
           const result = await this.$api.system.program.list(this.search)
           this.grid.data = result.data
         },
