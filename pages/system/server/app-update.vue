@@ -108,7 +108,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFileUpload v-model="appUpdateDetail.files" name="files" @fileDownload="fileDownload" />
+          <SJFileUpload id="form_files" v-model="appUpdateDetail.files" name="files" @fileDownload="fileDownload" />
         </SJFormRow>
       </SJForm>
     </template>
