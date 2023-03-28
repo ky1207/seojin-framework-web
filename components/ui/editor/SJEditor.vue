@@ -98,7 +98,6 @@ export default {
             'italic',
             'underline',
             'strikethrough',
-            'essentials',
             '|',
             'insertImage',
             'imageUpload',
@@ -111,8 +110,9 @@ export default {
   computed: {
     innerValue: {
       get () {
+        console.log(this.value)
         if (this.value === null) {
-          return ''
+          return this.$options.filters.unescapeHTML(' ')
         }
         return this.$options.filters.unescapeHTML(this.value)
       },
