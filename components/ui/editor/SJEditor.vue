@@ -131,4 +131,7 @@ export default {
 .ck-source-editing-area {
   height: 300px;
 }
+.ck-source-editing-area textarea {
+  overflow-y: auto;
+}
 </style>
