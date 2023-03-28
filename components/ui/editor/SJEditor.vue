@@ -8,8 +8,10 @@
     :disabled="disabledValidation"
   >
     <ckeditor
-      ref="editor"
+      :id="editorKey"
+      ref="ckeditor"
       v-model="innerValue"
+      :editor="editor"
       :aria-describedby="id+'-feedback'"
       :class="disabledValidation?'':classes"
       :config="editorConfig"
@@ -51,6 +53,8 @@ export default {
   },
   data () {
     return {
+      editor: null,
+      editorKey: 0,
       editorConfig: {
         height: '200px',
         resize_enabled: false,
@@ -72,18 +76,29 @@ export default {
         this.$emit('input', _val)
       }
     }
-  }
-  // methods: {
+  },
+  created () {
+
+  },
+  mounted () {
+    this.editorKey = 'editor_' + this._uid
+    // eslint-disable-next-line no-undef
+    this.editor = CKEDITOR.replace(this.editorKey, {
+      contenteditable: true
+    })
+  },
+  beforeDestroy () {
+    if (this.editor) {
+      this.editor.destroy()
+    }
+  },
+  methods: {
   //   validate () {
   //     this.$refs.provider.value = this.innerValue
   //     this.$refs.provider.validate()
   //   }
-  // }
+  }
+
 }
 
 </script>
-<style>
-.cke {
-  z-index: -100 !important;
-}
-</style>
