@@ -45,8 +45,7 @@ export default {
   },
   data () {
     return {
-      result: {},
-      progId: 'P00000000001'
+      result: {}
     }
   },
   async created () {
@@ -67,6 +66,10 @@ export default {
     },
     async openProgramHelpModal () {
       const menu = this.$store.getters.getMenu(this.$route.path)
+      if (menu === null) {
+        this.$notify.info(this.$t('message.00013'))
+        return
+      }
       await this.$refs.programHelpModal.open(menu.progId)
     }
   }
