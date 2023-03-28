@@ -24,7 +24,7 @@
         <SJFormRow>
           <SJFormField :label="$tc('page.system.00090')">
             <div
-              class="cntn-area"
+              class="Help_content-area"
               v-html="help.cntn != null ? help.cntn.unescapeHtml() : ''"
             />
           </SJFormField>
@@ -76,3 +76,15 @@ export default {
   }
 }
 </script>
+<style>
+.Help_content-area {
+  border:1px solid #ced4da;
+  height:415px;
+  overflow:auto;
+}
+.Help_content-area img {
+  width: 100%;
+  height: auto;
+}
+
+</style>
