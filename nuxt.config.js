@@ -1,3 +1,6 @@
+const path = require('path')
+const CKEditorWebpackPlugin = require('@ckeditor/ckeditor5-dev-webpack-plugin')
+const CKEditorStyles = require('@ckeditor/ckeditor5-dev-utils').styles
 
 export default {
   // *****client side이므로 fetch대신에.. created가 최최 한번 클라이언트쪽에서 호출된다.
@@ -116,7 +119,40 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     // Babel transpile dependencies
-    transpile: ['vue-router-tab', 'vee-validate/dist/rules'],
+    transpile: ['vue-router-tab', 'vee-validate/dist/rules', /ckeditor5-[^/\\]+[/\\]src[/\\].+\.js$/],
+    plugins: [
+      // If you set ssr: true that will cause the following error. This error does not affect the operation.
+      // ERROR  [CKEditorWebpackPlugin] Error: No translation has been found for the zh language.
+      new CKEditorWebpackPlugin({
+        // See https://ckeditor.com/docs/ckeditor5/latest/features/ui-language.html
+        language: 'ko',
+        additionalLanguages: 'all',
+        addMainLanguageTranslationsToAllAssets: true
+      })
+    ],
+
+    postcss: CKEditorStyles.getPostCssConfig({
+      themeImporter: {
+        themePath: require.resolve('@ckeditor/ckeditor5-theme-lark')
+      },
+      minify: true
+    }),
+
+    extend (config, ctx) {
+      // If you do not exclude and use raw-loader to load svg, the following errors will be caused.
+      // Cannot read property 'getAttribute' of null
+      const svgRule = config.module.rules.find((item) => {
+        return /svg/.test(item.test)
+      })
+      svgRule.exclude = [path.join(__dirname, 'node_modules', '@ckeditor')]
+
+      // add svg to load raw-loader
+      config.module.rules.push({
+        test: /ckeditor5-[^/\\]+[/\\]theme[/\\]icons[/\\][^/\\]+\.svg$/,
+        use: ['raw-loader']
+      })
+    },
+
     extractCSS: true, // inline css를 파일로 저장한다. 그렇지 않으면 head 내에 inline으로 출력 kskim 2021-12-10   ***
     // publicPath:'http://test.org' // default='/_nuxt/
 
