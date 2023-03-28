@@ -200,9 +200,9 @@ export default ctx => ({
       header: ctx.i18n.t('grid.modUserName')
     },
     // N
-    notifyTmpltId: {
-      header: ctx.i18n.t('grid.notifyTmpltId'),
-      width: 100,
+    notifyTmpltCode: {
+      header: ctx.i18n.t('grid.notifyTmpltCode'),
+      width: 150,
       filter: null,
       sortable: false,
       align: 'center'
@@ -212,7 +212,7 @@ export default ctx => ({
       editor: {
         type: 'text'
       },
-      width: 150
+      width: 300
     },
     notifyId: {
       header: ctx.i18n.t('grid.notifyId'),

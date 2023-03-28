@@ -50,8 +50,8 @@
         <SJFormRow>
           <SJFormField class="col-md-6" :label="$tc('page.system.00080')">
             <SJInput
-              id="form_notifyTmpltId"
-              v-model="alarm.notifyTmpltId"
+              id="form_notifyTmpltCode"
+              v-model="alarm.notifyTmpltCode"
               :name="$t('page.system.00080')"
               type="text"
               disabled-validation
@@ -132,7 +132,7 @@ export default {
         data: {},
         columns: [
           {
-            name: 'notifyTmpltId'
+            name: 'notifyTmpltCode'
           },
           {
             name: 'coId',
@@ -233,7 +233,7 @@ export default {
         saveClick: async () => {
           const result = await this.$refs.form.validate()
           if (result) {
-            const data = { coId: this.search.coId, notifyTmpltId: this.alarm.notifyTmpltId, gridRequestAlarmReceiver: this.$refs.detailGrid.invoke('getModifiedRows') }
+            const data = { coId: this.search.coId, notifyTmpltCode: this.alarm.notifyTmpltCode, gridRequestAlarmReceiver: this.$refs.detailGrid.invoke('getModifiedRows') }
             await this.$api.system.alarm.updateAlarmReceiver(data)
 
             this._resetForm()

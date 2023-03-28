@@ -69,13 +69,12 @@
       <SJForm ref="form">
         <SJFormRow>
           <SJFormField :label="$tc('page.system.00080')">
-            <SJStepper
-              id="form_notifyTmpltId"
-              v-model="alarm.notifyTmpltId"
+            <SJInput
+              id="form_notifyTmpltCode"
+              v-model="alarm.notifyTmpltCode"
               :name="$t('page.system.00080')"
               type="text"
-              disabled-validation
-              disabled
+              rules="required"
             />
           </SJFormField>
           <SJFormField :label="$tc('page.system.00081')">
@@ -139,7 +138,6 @@
               :name="$t('page.system.00090')"
               rules="required"
             />
-            <!--            <SJTextarea id="form_cntn" v-model="alarm.cntn" :name="$t('page.system.00090')" rules="required" />-->
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
@@ -164,6 +162,7 @@ export default {
       common: { },
       search: {},
       alarm: {
+        cntn: null
       },
       alarmGrid: {
         data: {},
@@ -172,7 +171,7 @@ export default {
         },
         columns: [
           {
-            name: 'notifyTmpltId',
+            name: 'notifyTmpltCode',
             editor: null
           },
           {
@@ -181,7 +180,6 @@ export default {
           },
           {
             name: 'notifyTmpltName',
-            width: 500,
             editor: null
           },
           {
@@ -199,11 +197,16 @@ export default {
   },
   methods: {
     async onMasterClick (ev) {
+      this._resetForm()
       if (ev.rowKey === undefined) { return }
       const item = this.$refs.alarmGrid.invoke('getRow', ev.rowKey)
       this.search.notifyTmpltId = item.notifyTmpltId
       const result = await this.$api.system.alarm.load(this.search)
       this.alarm = result.data
+      if (result.data.cntn === undefined) {
+        this.alarm.cntn = null
+      }
+
       this.isUpdate = true
     },
     createAlarmForm () {
@@ -213,6 +216,7 @@ export default {
     _resetForm () {
       this.$refs.form.reset()
       this.alarm = {}
+      this.alarm.cntn = null
     },
     async removeRow () {
       this.$refs.alarmGrid.invoke('removeCheckedRows', false)
@@ -224,26 +228,27 @@ export default {
     ACTION_REGISTRY () {
       return {
         searchClick: async () => {
+          this._resetForm()
           const result = await this.$api.system.alarm.list(this.search)
           this.alarmGrid.data = result.data
         },
         saveClick: async () => {
-          /* const error = this.$refs.alarmGrid.invoke('validate')
-          if (error.length > 0) {
-            this.$notify.warning(this.$t('message.00007')) // Grid 입력값을 확인하세요.
-            return false
-          }
-          const data = { coId: this.search.coId, gridRequest: this.$refs.alarmGrid.invoke('getModifiedRows') }
-          await this.$api.system.alarm.update(data)
-          this.$notify.success(this.$t('message.00002'))
-          await this.ACTION_REGISTRY().searchClick() */
           const result = await this.$refs.form.validate()
           if (result) {
+            this.alarm.coId = this.search.coId
             if (this.isUpdate) {
-              await this.$api.system.alarm.update(this.notifyTmpltId, this.alarm)
+              await this.$api.system.alarm.update(this.alarm)
             } else {
-              this.alarm.coId = this.search.coId
-              await this.$api.system.alarm.save(this.alarm)
+              // 알림코드 중복 체크
+              this.search.notifyTmpltCode = this.alarm.notifyTmpltCode
+              const alarmFormDupCnt = await this.$api.system.alarm.getAlarmFormDupChk(this.search)
+              this.search.notifyTmpltCode = null
+              if (alarmFormDupCnt.data > 0) {
+                this.$notify.error(this.$t('message.00014'))// 동일한 알림코드가 존재합니다.
+                return false
+              } else {
+                await this.$api.system.alarm.save(this.alarm)
+              }
             }
             this._resetForm()
             this.$notify.success(this.$t('message.00002'))// '처리되었습니다.'
