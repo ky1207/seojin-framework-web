@@ -17,6 +17,9 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
+    script: [
+      { hid: 'stripe', src: 'https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js', defer: true }
+    ],
     link: [
       // { rel: 'icon', type: 'image/x-icon', href: `${process.env.CDN_STATIC}favicon.ico` }
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
