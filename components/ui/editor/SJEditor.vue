@@ -110,7 +110,6 @@ export default {
   computed: {
     innerValue: {
       get () {
-        console.log(this.value)
         if (this.value === null) {
           return this.$options.filters.unescapeHTML(' ')
         }
