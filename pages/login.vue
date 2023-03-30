@@ -16,9 +16,6 @@
                     <h4 class="mt-1 mb-5 pb-1">
                       신정보시스템
                     </h4>
-                    <div v-if="error" class="alert alert-danger" role="alert">
-                      {{ error.message }}
-                    </div>
                   </div>
                   <SJForm ref="form">
                     <div class="form-outline mb-4">
@@ -76,8 +73,7 @@ export default {
     return {
       username: 'devel',
       password: 'test',
-      coId: 'C00000000001',
-      error: null
+      coId: 'C00000000001'
 
     }
   },
@@ -93,17 +89,14 @@ export default {
       this.error = null
       const result = await this.$refs.form.validate()
       if (!result) { return false }
-      try {
-        await this.$auth.loginWith('customStrategy', {
-          data: {
-            username: this.username,
-            password: this.password,
-            coId: this.coId
-          }
-        })
-      } catch (e) {
-        this.error = e.response.data
-      }
+
+      await this.$auth.loginWith('customStrategy', {
+        data: {
+          username: this.username,
+          password: this.password,
+          coId: this.coId
+        }
+      })
     }
   }
 }

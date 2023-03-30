@@ -1,6 +1,7 @@
 <template>
   <div>
     <Nuxt />
+    <SJNotify />
   </div>
 </template>
 <script>
