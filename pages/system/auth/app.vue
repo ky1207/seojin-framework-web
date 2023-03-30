@@ -108,6 +108,7 @@ export default {
     ACTION_REGISTRY () {
       return {
         searchClick: async () => {
+          this.search.useFlag = true
           const result = await this.$api.system.user.list(this.search)
           this.user.data = result.data
         },
