@@ -99,8 +99,7 @@ export default {
             'underline',
             'strikethrough',
             '|',
-            'insertImage',
-            'imageUpload',
+            'imageInsert',
             'sourceEditing'
           ]
         }
