@@ -112,6 +112,7 @@ export default {
       })
     },
     async list () {
+      this.search.useFlag = true
       const result = await this.$api.system.user.list(this.search)
       this.gridProps.data = result.data
     },

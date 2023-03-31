@@ -6,19 +6,6 @@
     <template #default>
       <div class="search-area">
         <div class="col-md-1 search-label">
-          {{ $t('page.system.00001') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="search_company"
-            v-model="search.coId"
-            :name="$t('page.system.00001')"
-            :options="common.COMPANY"
-            disabled-validation
-            disabled-first-message
-          />
-        </div>
-        <div class="col-md-1 search-label">
           {{ $t('page.system.00059') }}
         </div>
         <div class="col-md-1">
@@ -67,7 +54,7 @@
     <template #right>
       <SJForm ref="form">
         <SJFormRow>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00064')">
+          <SJFormField :label="$tc('page.system.00064')">
             <SJInput
               id="form_loginId"
               v-model="userDetail.loginId"
@@ -77,7 +64,12 @@
               :disabled="isUpdate"
             />
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00035')">
+          <SJFormField :label="$tc('page.system.00004')">
+            <SJSelect id="form_useYN" v-model="userDetail.useFlag" :name="$t('page.system.00004')" :options="$api.common.getYNCodes()" rules="required" />
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField :label="$tc('page.system.00035')">
             <SJInput
               id="form_userName"
               v-model="userDetail.userName"
@@ -86,7 +78,7 @@
               rules="required|max:50"
             />
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00065')">
+          <SJFormField :label="$tc('page.system.00065')">
             <SJInput
               id="form_userEnName"
               v-model="userDetail.userEnName"
@@ -98,7 +90,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-6" :label="$tc('page.system.00066')">
+          <SJFormField :label="$tc('page.system.00066')">
             <SJInput
               id="form_pswd"
               v-model="userDetail.pswd"
@@ -107,7 +99,7 @@
               :rules="isUpdate ? '' : 'required'"
             />
           </SJFormField>
-          <SJFormField class="col-md-6" :label="$tc('page.system.00067')">
+          <SJFormField :label="$tc('page.system.00067')">
             <SJInput
               id="form_pswdChk"
               v-model="userDetail.pswdChk"
@@ -119,7 +111,7 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00068')">
+          <SJFormField :label="$tc('page.system.00068')">
             <SJInput
               id="form_email"
               v-model="userDetail.email"
@@ -129,7 +121,7 @@
               disabled-validation
             />
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00069')">
+          <SJFormField :label="$tc('page.system.00069')">
             <SJInput
               id="form_mobile"
               v-model="userDetail.mobile"
@@ -139,23 +131,17 @@
               disabled-validation
             />
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00004')">
-            <SJSelect id="form_useYN" v-model="userDetail.useFlag" :name="$t('page.system.00004')" :options="$api.common.getYNCodes()" rules="required" />
-          </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00001')">
-            <SJSelect
-              id="form_company"
-              v-model="userDetail.coId"
-              :name="$t('page.system.00001')"
-              :options="common.COMPANY"
-              rules="required"
-              disabled
-              disabled-first-message
-            />
+          <SJFormField :label="$tc('page.system.00001')">
+            <div v-for="company in common.COMPANY" :key="company.value">
+              <input :id="'form_coUser_'+company.value" v-model="userDetail.coUsers" type="checkbox" :value="company.value">
+              <label>
+                {{ company.text }}
+              </label>
+            </div>
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00059')">
+          <SJFormField :label="$tc('page.system.00059')">
             <SJSelect
               id="form_department"
               v-model="userDetail.deptId"
@@ -164,7 +150,9 @@
               rules="required"
             />
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00070')">
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField :label="$tc('page.system.00070')">
             <SJSelect
               id="commonCode"
               v-model="userDetail.job"
@@ -175,9 +163,7 @@
               disabled-validation
             />
           </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00071')">
+          <SJFormField :label="$tc('page.system.00071')">
             <SJSelect
               id="commonCode"
               v-model="userDetail.pos"
@@ -188,7 +174,9 @@
               disabled-validation
             />
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00072')">
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField :label="$tc('page.system.00072')">
             <SJSelect
               id="commonCode"
               v-model="userDetail.systemType"
@@ -199,7 +187,7 @@
               rules="required"
             />
           </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00073')">
+          <SJFormField :label="$tc('page.system.00073')">
             <SJSelect
               id="commonCode"
               v-model="userDetail.status"
@@ -227,7 +215,12 @@ export default {
       isUpdate: false,
       common: {},
       search: {},
+      itemText: {
+      },
+      itemValue: {
+      },
       userDetail: {
+        coUsers: []
       },
       user: {
         data: {},
@@ -288,14 +281,12 @@ export default {
     createUser () {
       this.isUpdate = false
       this._resetForm()
-      this.userDetail.coId = this.search.coId
     },
     ACTION_REGISTRY () {
       return {
         searchClick: async () => {
           this._resetForm()
           const result = await this.$api.system.user.list(this.search)
-          this.userDetail.coId = this.search.coId
           this.user.data = result.data
         },
         saveClick: async () => {
@@ -305,7 +296,6 @@ export default {
               await this.$api.system.user.update(this.userId, this.userDetail)
             } else {
               // ID 중복 체크
-              this.search.coId = this.userDetail.coId
               this.search.loginId = this.userDetail.loginId
               const userDupCnt = await this.$api.system.user.getUserDupChk(this.search)
               this.search.loginId = null
