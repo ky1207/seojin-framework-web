@@ -125,27 +125,29 @@
           </SJFormField>
         </SJFormRow>
       </SJForm>
-      <h5 class="card-title">
-        <div class="row align-items-center">
-          <div class="col">
-            {{ $t('page.system.00025') }}
+      <div v-if="isUpdate">
+        <h5 class="card-title">
+          <div class="row align-items-center">
+            <div class="col">
+              {{ $t('page.system.00025') }}
+            </div>
+            <div class="col-auto">
+              <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="appendRow">
+                {{ $t('page.system.00026') }} <i class="bi bi-file-plus" />
+              </button>
+              <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="removeRow">
+                {{ $t('page.system.00012') }} <i class="bi bi-file-minus" />
+              </button>
+            </div>
           </div>
-          <div class="col-auto">
-            <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="appendRow">
-              {{ $t('page.system.00026') }} <i class="bi bi-file-plus" />
-            </button>
-            <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="removeRow">
-              {{ $t('page.system.00012') }} <i class="bi bi-file-minus" />
-            </button>
-          </div>
-        </div>
-      </h5>
-      <SJGrid
-        ref="detail"
-        v-model="detail.data"
-        :columns="detail.columns"
-        :options="detail.options"
-      />
+        </h5>
+        <SJGrid
+          ref="detail"
+          v-model="detail.data"
+          :columns="detail.columns"
+          :options="detail.options"
+        />
+      </div>
     </template>
   </SJSearchLRLayout>
 </template>
@@ -242,13 +244,17 @@ export default {
       }
     }
   },
+  watch: {
+    isUpdate () {
+      setTimeout(() => {
+        window.dispatchEvent(new Event('resize'))
+      }, 100)
+    }
+  },
   async created () {
     const codes = await this.$api.common.getCommonCodes(['CD_TYPE', 'PG_MODULE_CD'])
     this.common = codes.data
     this.common.USE_YN = this.$api.common.getYNCodes()
-  },
-  mounted () {
-
   },
   methods: {
     async onMasterClick (ev) {
