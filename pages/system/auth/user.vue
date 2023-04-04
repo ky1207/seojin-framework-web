@@ -134,13 +134,15 @@
         </SJFormRow>
         <SJFormRow>
           <SJFormField :label="$tc('page.system.00001')">
-            <div v-for="company in common.COMPANY" :key="company.value">
-              <input :id="'form_coUser_'+company.value" v-model="userDetail.coUsers" type="checkbox" :value="company.value">
-              <label>
-                {{ company.text }}
-              </label>
-            </div>
+            <SJCheckboxGroup
+              v-model="checkedData"
+              :items="common.COMPANY"
+              rules="required|min_selections:2"
+              :name="$t('page.system.00001')"
+            />
           </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
           <SJFormField :label="$tc('page.system.00059')">
             <SJSelect
               id="form_department"
@@ -215,10 +217,7 @@ export default {
       isUpdate: false,
       common: {},
       search: {},
-      itemText: {
-      },
-      itemValue: {
-      },
+      checkedData: [],
       userDetail: {
         coUsers: []
       },
@@ -277,6 +276,8 @@ export default {
       this.userDetail.data = {
         Data: this.userDetail.codes
       }
+
+      this.checkedData = result.data.coUsers
     },
     createUser () {
       this.isUpdate = false
@@ -292,6 +293,7 @@ export default {
         saveClick: async () => {
           const result = await this.$refs.form.validate()
           if (result) {
+            this.userDetail.coUsers = this.checkedData
             if (this.isUpdate) {
               await this.$api.system.user.update(this.userId, this.userDetail)
             } else {
@@ -318,6 +320,7 @@ export default {
     _resetForm () {
       this.$refs.form.reset()
       this.userDetail = {}
+      this.checkedData = []
     }
   }
 }
