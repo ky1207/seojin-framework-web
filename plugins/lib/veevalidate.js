@@ -31,12 +31,12 @@ Vue.component('ValidationObserver', ValidationObserver)
 // validator 다국어 처리
 export default (ctx) => {
   localize(ctx.i18n.getLocaleCookie())
-}
 
-extend('min_selections', {
-  validate: (value, { min }) => {
-    return value && value.length >= min
-  },
-  params: ['min'],
-  message: '최소 {min}개 이상 선택해주세요.'
-})
+  extend('min_selections', {
+    validate: (value, { min }) => {
+      return value && value.length >= min
+    },
+    params: ['min'],
+    message: ctx.i18n.t('err.validate.01', { min: '{min}' })
+  })
+}
