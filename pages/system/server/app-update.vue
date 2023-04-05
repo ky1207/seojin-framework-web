@@ -6,19 +6,6 @@
     <template #default>
       <div class="search-area">
         <div class="col-md-1 search-label">
-          {{ $t('page.system.00001') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="search_company"
-            v-model="search.coId"
-            :name="$t('page.system.00001')"
-            :options="common.COMPANY"
-            disabled-validation
-            disabled-first-message
-          />
-        </div>
-        <div class="col-md-1 search-label">
           {{ $t('page.system.00091') }}
         </div>
         <div class="col-md-1">
@@ -58,18 +45,6 @@
     <template #right>
       <SJForm ref="form">
         <SJFormRow>
-          <SJFormField class="col-md-6" :label="$tc('page.system.00092')">
-            <SJStepper
-              id="form_updateId"
-              v-model="appUpdateDetail.updateId"
-              :name="$t('page.system.00092')"
-              type="text"
-              disabled
-              disabled-validation
-            />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
           <SJFormField :label="$tc('page.system.00091')">
             <SJSelect
               id="form_appType"
@@ -79,6 +54,7 @@
               item-text="val"
               item-value="codeId"
               rules="required"
+              :disabled="isUpdate"
             />
           </SJFormField>
           <SJFormField :label="$tc('page.system.00093')">
@@ -87,7 +63,8 @@
               v-model="appUpdateDetail.updateVersion"
               :name="$t('page.system.00093')"
               type="text"
-              disabled-validation
+              rules="required"
+              :disabled="isUpdate"
             />
           </SJFormField>
         </SJFormRow>
@@ -99,16 +76,32 @@
               :name="$t('page.system.00082')"
               type="text"
               rules="required"
+              :disabled="isUpdate"
             />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
           <SJFormField :label="$tc('page.system.00090')">
-            <SJTextarea id="form_updateCntn" v-model="appUpdateDetail.updateCntn" :name="$t('page.system.00090')" disabled-validation />
+            <SJTextarea id="form_updateCntn" v-model="appUpdateDetail.updateCntn" :name="$t('page.system.00090')" disabled-validation :disabled="isUpdate" />
           </SJFormField>
         </SJFormRow>
-        <SJFormRow>
-          <SJFileUpload id="form_files" v-model="appUpdateDetail.files" name="files" @fileDownload="fileDownload" />
+        <SJFormRow v-if="!isUpdate">
+          <SJFileUpload
+            id="form_files"
+            v-model="appUpdateDetail.files"
+            name="files"
+            rules="required"
+            @fileDownload="fileDownload"
+          />
+        </SJFormRow>
+        <SJFormRow v-if="isUpdate">
+          <SJFormField :label="$tc('components.modal.00021')">
+            <ul v-for="(file) in appUpdateDetail.files" :key="file.fileId" class="list-group">
+              <li v-if="file.method !== 'delete'" class="list-group-item" style="cursor : pointer;" @click="fileDownload(file.fileId)">
+                {{ file.filename }} ( {{ file.filesize }} byte)
+              </li>
+            </ul>
+          </SJFormField>
         </SJFormRow>
       </SJForm>
     </template>
@@ -132,13 +125,7 @@ export default {
         data: {},
         columns: [
           {
-            name: 'coId'
-          },
-          {
             name: 'lastUpdateFlag'
-          },
-          {
-            name: 'updateId'
           },
           {
             name: 'appType'
@@ -180,14 +167,12 @@ export default {
     createAppUpdate () {
       this.isUpdate = false
       this._resetForm()
-      this.appUpdateDetail.coId = this.search.coId
     },
     ACTION_REGISTRY () {
       return {
         searchClick: async () => {
           this._resetForm()
           const result = await this.$api.system.appUpdate.list(this.search)
-          this.appUpdateDetail.coId = this.search.coId
           this.appUpdate.data = result.data
         },
         saveClick: async () => {
@@ -210,6 +195,7 @@ export default {
     _resetForm () {
       this.$refs.form.reset()
       this.appUpdateDetail = {}
+      this.appUpdateDetail.files = []
     },
     fileDownload (fileId) {
       this.$api.system.appUpdate.download(fileId)
