@@ -86,13 +86,15 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow v-if="!isUpdate">
-          <SJFileUpload
-            id="form_files"
-            v-model="appUpdateDetail.files"
-            name="files"
-            rules="required"
-            @fileDownload="fileDownload"
-          />
+          <SJFormField :label="$tc('page.system.00103')">
+            <SJFileUpload
+              id="form_files"
+              v-model="appUpdateDetail.files"
+              name="files"
+              rules="required"
+              @fileDownload="fileDownload"
+            />
+          </SJFormField>
         </SJFormRow>
         <SJFormRow v-if="isUpdate">
           <SJFormField :label="$tc('components.modal.00021')">

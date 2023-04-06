@@ -100,7 +100,9 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFileUpload id="form_files" v-model="help.files" name="files" @fileDownload="fileDownload" />
+          <SJFormField :label="$tc('page.system.00103')">
+            <SJFileUpload id="form_files" v-model="help.files" name="files" @fileDownload="fileDownload" />
+          </SJFormField>
         </SJFormRow>
       </SJForm>
     </template>
