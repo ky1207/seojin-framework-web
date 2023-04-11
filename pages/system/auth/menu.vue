@@ -6,14 +6,14 @@
     <template #default>
       <div class="search-area">
         <div class="col-md-1 search-label">
-          {{ $t('page.system.00001') }}
+          {{ $t('page.system.00104') }}
         </div>
         <div class="col-md-1">
           <SJSelect
             id="company"
-            v-model="search.coId"
-            name="$t('page.system.00001')"
-            :options="common.COMPANY"
+            v-model="search.bsnsId"
+            name="$t('page.system.00104')"
+            :options="common.BUSINESS"
             disabled-validation
             disabled-first-message
           />
@@ -24,7 +24,7 @@
         <div class="col-md-1">
           <SJSelect
             id="menuGroup"
-            v-model="search.menuGroupId"
+            v-model="search.menuGroupCode"
             name="$t('page.system.00013')"
             :options="common.MENU_GROUP"
             item-text="val"
@@ -95,7 +95,7 @@ export default {
         data: {},
         columns: [
           {
-            name: 'authGroupId'
+            name: 'authGroupCode'
           },
           {
             name: 'authName'
@@ -145,11 +145,11 @@ export default {
   },
   async created () {
     await Promise.all([this.$api.common.getCommonCodes(['MENU_GROUP']),
-      this.$api.common.getCompanyCodes()])
+      this.$api.common.getBusinessCodes()])
       .then((response) => {
         this.common = {
           ...response[0].data,
-          COMPANY: response[1].data,
+          BUSINESS: response[1].data,
           USE_YN: this.$api.common.getYNCodes()
         }
       })
