@@ -28,7 +28,7 @@ import Utils from '~/api/utils'
 export default {
   props: {
     value: {
-      type: [String, Boolean],
+      type: [String, Boolean, Number],
       default: null
     },
     options: {
@@ -79,7 +79,7 @@ export default {
       this.$emit('input', this.selected)
     },
     options () {
-      if (Utils.isEmpty(this.$props.value) && this.$props.disabledFirstMessage) {
+      if (this.$props.options.length > 0 && Utils.isEmpty(this.$props.value) && this.$props.disabledFirstMessage) {
         this.selected = this.$props.options[0][this.$props.itemValue]
       }
     }

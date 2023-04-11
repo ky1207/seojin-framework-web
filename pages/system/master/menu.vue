@@ -6,14 +6,14 @@
     <template #default>
       <div class="search-area">
         <div class="col-md-1 search-label">
-          {{ $t('page.system.00001') }}
+          {{ $t('page.system.00104') }}
         </div>
         <div class="col-md-1">
           <SJSelect
-            id="company"
-            v-model="search.coId"
-            :name="$t('page.system.00001')"
-            :options="common.COMPANY"
+            id="business"
+            v-model="search.bsnsId"
+            :name="$t('page.system.00104')"
+            :options="common.BUSINESS"
             disabled-validation
             disabled-first-message
           />
@@ -24,7 +24,7 @@
         <div class="col-md-1">
           <SJSelect
             id="menuGroup"
-            v-model="search.menuGroupId"
+            v-model="search.menuGroupCode"
             :name="$t('page.system.00013')"
             :options="common.MENU_GROUP"
             item-text="val"
@@ -70,23 +70,24 @@
     <template #right>
       <SJForm ref="form">
         <SJFormRow>
-          <SJFormField :label="$tc('page.system.00001')">
+          <SJFormField :label="$tc('page.system.00104')">
             <SJSelect
-              id="form_company"
-              v-model="menu.coId"
-              :name="$t('page.system.00001')"
-              :options="common.COMPANY"
+              id="form_business"
+              v-model="menu.bsnsId"
+              :name="$t('page.system.00104')"
+              :options="common.BUSINESS"
               rules="required"
             />
           </SJFormField>
           <SJFormField :label="$tc('page.system.00030')">
             <SJInput
-              id="form_menuId"
-              v-model="menu.menuId"
+              id="form_menuCode"
+              v-model="menu.menuCode"
               :name="$t('page.system.00030')"
               type="text"
-              disabled-validation
-              disabled
+              :disabled-validation="isUpdate"
+              rules="required"
+              :disabled="isUpdate"
             />
           </SJFormField>
           <SJFormField :label="$tc('page.system.00028')">
@@ -167,6 +168,7 @@ export default {
   data () {
     return {
       gridCheck: true,
+      isUpdate: false,
       common: { },
       search: {},
       menu: {},
@@ -238,17 +240,17 @@ export default {
   },
   async created () {
     await Promise.all([this.$api.common.getCommonCodes(['MENU_GROUP']),
-      this.$api.common.getCompanyCodes(),
+      this.$api.common.getBusinessCodes(),
       this.$api.common.getProgramCodes()])
       .then((response) => {
         this.common = {
           ...response[0].data,
-          COMPANY: response[1].data,
+          BUSINESS: response[1].data,
           PROGRAM: response[2].data,
           USE_YN: this.$api.common.getYNCodes()
         }
       })
-    await this.ACTION_REGISTRY().searchClick()
+    // await this.ACTION_REGISTRY().searchClick()
   },
   methods: {
     async read (e) {
