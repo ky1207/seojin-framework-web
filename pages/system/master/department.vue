@@ -3,36 +3,6 @@
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
     </template>
-    <!--    <template #default>
-      <div class="search-area">
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00001') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="company"
-            v-model="search.coId"
-            :name="$t('page.system.00001')"
-            :options="common.COMPANY"
-            disabled-validation
-            disabled-first-message
-          />
-        </div>
-        <div class="col-md-1 text-center">
-          부서코드
-        </div>
-        <div class="col-md-1">
-          <SJInput id="deptId" v-model="search.deptId" name="부서코드" type="text" disabled-validation />
-        </div>
-        <div class="col-md-1 text-center">
-          부서명
-        </div>
-        <div class="col-md-1">
-          <SJInput id="deptName" v-model="search.deptName" name="부서명" type="text" disabled-validation />
-        </div>
-      </div>
-    </template>-->
-
     <template #leftTitle>
       <div class="row align-items-center">
         <div class="col">
@@ -69,12 +39,10 @@
         <SJFormRow>
           <SJFormField class="col-md-6" :label="$tc('page.system.00057')">
             <SJInput
-              id="form_deptId"
-              v-model="dept.deptId"
+              id="form_deptCode"
+              v-model="dept.deptCode"
               :name="$t('page.system.00057')"
               type="text"
-              disabled-validation
-              disabled
             />
           </SJFormField>
           <SJFormRow />
