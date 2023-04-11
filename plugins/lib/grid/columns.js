@@ -1,4 +1,10 @@
-import { CodeFormatter, CompanyFormatter, DateFormatter, YNFormatter } from '~/plugins/lib/grid/Formatter'
+import {
+  BusinessFormatter,
+  CodeFormatter,
+  CompanyFormatter,
+  DateFormatter,
+  YNFormatter
+} from '~/plugins/lib/grid/Formatter'
 import { CustomCheckBoxRenderer } from '~/plugins/lib/grid/editor/CustomCheckBoxRenderer'
 
 export default ctx => ({
@@ -35,8 +41,8 @@ export default ctx => ({
       align: 'center',
       filter: null
     },
-    authGroupId: {
-      header: ctx.i18n.t('grid.authGroupId')
+    authGroupCode: {
+      header: ctx.i18n.t('grid.authGroupCode')
     },
     authName: {
       header: ctx.i18n.t('grid.authName')
@@ -54,6 +60,11 @@ export default ctx => ({
     // B
     biznum: {
       header: ctx.i18n.t('grid.biznum')
+    },
+    bsnsId: {
+      header: ctx.i18n.t('grid.bsnsId'),
+      formatter: BusinessFormatter,
+      align: 'center'
     },
     // C
     coId: {

@@ -2,9 +2,10 @@
   "sample": "샘플",
   "grid": {
     "authCheckFlag": "권한체크",
-    "authGroupId": "권한코드",
+    "authGroupCode": "권한코드",
     "authName": "권한명",
     "biznum": "사업자번호",
+    "bsnsId": "사업장",
     "coId": "회사",
     "coCode": "회사코드",
     "codeGroupId": "대분류코드",

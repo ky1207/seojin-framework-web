@@ -6,14 +6,14 @@
     <template #default>
       <div class="search-area">
         <div class="col-md-1 search-label">
-          {{ $t('page.system.00001') }}
+          {{ $t('page.system.00104') }}
         </div>
         <div class="col-md-1">
           <SJSelect
-            id="company"
-            v-model="search.coId"
-            :name="$t('page.system.00001')"
-            :options="common.COMPANY"
+            id="bsnsId"
+            v-model="search.bsnsId"
+            :name="$t('page.system.00104')"
+            :options="common.BUSINESS"
             disabled-validation
             disabled-first-message
           />
@@ -77,12 +77,12 @@
     <template #right>
       <SJForm ref="form">
         <SJFormRow>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00001')">
+          <SJFormField class="col-md-4" :label="$tc('page.system.00104')">
             <SJSelect
-              id="form_company"
-              v-model="auth.coId"
-              :name="$t('page.system.00001')"
-              :options="common.COMPANY"
+              id="form_bnsnId"
+              v-model="auth.bsnsId"
+              :name="$t('page.system.00104')"
+              :options="common.BUSINESS"
               rules="required"
             />
           </SJFormField>
@@ -99,12 +99,11 @@
         <SJFormRow>
           <SJFormField :label="$tc('page.system.00002')">
             <SJInput
-              id="form_authGroupId"
-              v-model="auth.authGroupId"
+              id="form_authGroupCode"
+              v-model="auth.authGroupCode"
               :name="$t('page.system.00002')"
               type="text"
-              disabled-validation
-              disabled
+              rules="required"
             />
           </SJFormField>
 
@@ -176,10 +175,10 @@ export default {
         data: {},
         columns: [
           {
-            name: 'coId'
+            name: 'bsnsId'
           },
           {
-            name: 'authGroupId'
+            name: 'authGroupCode'
           },
           {
             name: 'authName'
@@ -225,8 +224,8 @@ export default {
     }
   },
   async created () {
-    const company = await this.$api.common.getCompanyCodes()
-    this.common = { USE_YN: this.$api.common.getYNCodes(), COMPANY: company.data }
+    const business = await this.$api.common.getBusinessCodes()
+    this.common = { USE_YN: this.$api.common.getYNCodes(), BUSINESS: business.data }
   },
   methods: {
     async onMasterClick (ev) {
