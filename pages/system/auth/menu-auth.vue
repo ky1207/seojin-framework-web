@@ -6,14 +6,14 @@
     <template #default>
       <div class="search-area">
         <div class="col-md-1 search-label">
-          {{ $t('page.system.00001') }}
+          {{ $t('page.system.00104') }}
         </div>
         <div class="col-md-1">
           <SJSelect
-            id="company"
-            v-model="search.coId"
-            :name="$t('page.system.00001')"
-            :options="common.COMPANY"
+            id="business"
+            v-model="search.bsnsId"
+            :name="$t('page.system.00104')"
+            :options="common.BUSINESS"
             disabled-validation
             disabled-first-message
           />
@@ -24,7 +24,7 @@
         <div class="col-md-1">
           <SJSelect
             id="menuGroupId"
-            v-model="search.menuGroupId"
+            v-model="search.menuGroupCode"
             :name="$t('page.system.00077')"
             :options="common.MENU_GROUP"
             item-text="val"
@@ -39,7 +39,7 @@
         <div class="col-md-1">
           <SJInput
             id="authCode"
-            v-model="search.authGroupId"
+            v-model="search.authGroupCode"
             :name="$t('page.system.00002')"
             type="text"
             disabled-validation
@@ -94,10 +94,10 @@ export default {
         data: {},
         columns: [
           {
-            name: 'coId'
+            name: 'bsnsId'
           },
           {
-            name: 'authGroupId'
+            name: 'authGroupCode'
           },
           {
             name: 'authName'
@@ -170,17 +170,16 @@ export default {
   },
   async created () {
     const codes = await this.$api.common.getCommonCodes(['MENU_GROUP'])
-    const company = await this.$api.common.getCompanyCodes()
+    const business = await this.$api.common.getBusinessCodes()
     this.common = codes.data
-    this.common.COMPANY = company.data
+    this.common.BUSINESS = business.data
   },
   methods: {
     async onMasterClick (ev) {
       if (ev.rowKey === undefined) { return }
       const item = this.$refs.authGrid.invoke('getRow', ev.rowKey)
 
-      this.searchMenu.coId = this.search.coId
-      this.searchMenu.menuGroupId = this.search.menuGroupId
+      this.searchMenu.bsnsId = item.bsnsId
       this.searchMenu.authGroupId = item.authGroupId
 
       const result = await this.$api.system.menu.menuByAuth(this.searchMenu)
