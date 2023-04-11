@@ -38,7 +38,7 @@
                   name="Job Group"
                   :options="common.JOB_GROUP"
                   item-text="val"
-                  item-value="codeId"
+                  item-value="subCode"
                   rules="required"
                   :disabled="!!parameter"
                 />

@@ -66,9 +66,6 @@ export default ctx => ({
     codeGroupName: {
       header: ctx.i18n.t('grid.codeGroupName')
     },
-    codeId: {
-      header: ctx.i18n.t('grid.codeId')
-    },
     codeDesc: {
       header: ctx.i18n.t('grid.codeDesc')
     },
@@ -333,6 +330,9 @@ export default ctx => ({
     sndrName: {
       header: ctx.i18n.t('grid.sndrName'),
       width: 180
+    },
+    subCode: {
+      header: ctx.i18n.t('grid.subCode')
     },
     // U
     useFlag: {

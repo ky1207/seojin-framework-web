@@ -73,7 +73,7 @@ export default {
     return {
       username: 'devel',
       password: 'test',
-      coId: 'C00000000001'
+      bsnsId: 1
 
     }
   },
@@ -94,7 +94,7 @@ export default {
         data: {
           username: this.username,
           password: this.password,
-          coId: this.coId
+          bsnsId: this.bsnsId
         }
       })
     }

@@ -161,7 +161,7 @@
               :name="$t('page.system.00070')"
               :options="common.USR_POSTN"
               item-text="val"
-              item-value="codeId"
+              item-value="subCode"
               disabled-validation
             />
           </SJFormField>
@@ -172,7 +172,7 @@
               :name="$t('page.system.00071')"
               :options="common.USER_DUTY"
               item-text="val"
-              item-value="codeId"
+              item-value="subCode"
               disabled-validation
             />
           </SJFormField>
@@ -185,7 +185,7 @@
               :name="$t('page.system.00072')"
               :options="common.SYSTEM_TYPE"
               item-text="val"
-              item-value="codeId"
+              item-value="subCode"
               rules="required"
             />
           </SJFormField>
@@ -196,7 +196,7 @@
               :name="$t('page.system.00073')"
               :options="common.USER_ST"
               item-text="val"
-              item-value="codeId"
+              item-value="subCode"
               disabled-validation
             />
           </SJFormField>

@@ -2,20 +2,20 @@
   <aside id="sidebar" class="sidebar">
     <ul v-for="m in value" id="sidebar-nav" :key="m.menuId" class="sidebar-nav">
       <li class="nav-item">
-        <a class="nav-link collapsed" :data-bs-target="'#'+m.menuId+'-collapse'" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" :data-bs-target="'#m'+m.menuId+'-collapse'" data-bs-toggle="collapse" href="#">
           <i class="bi" :class="m.iconName?m.iconName:'bi-menu-button-wide'" /><span>  {{ m.menuName }}</span><i v-if="m._children" class="bi bi-chevron-down ms-auto" />
         </a>
       </li>
-      <ul v-if="m._children" :id="m.menuId+'-collapse'" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <ul v-if="m._children" :id="'m'+m.menuId+'-collapse'" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li v-for="sub in m._children" :key="sub.menuId">
           <template v-if="sub._children">
             <ul id="sub-sidebar-nav" class="sidebar-nav">
               <li class="nav-item">
-                <a class="nav-link collapsed" :data-bs-target="'#'+sub.menuId+'-collapse'" data-bs-toggle="collapse" href="#">
+                <a class="nav-link collapsed" :data-bs-target="'#m'+sub.menuId+'-collapse'" data-bs-toggle="collapse" href="#">
                   <i class="bi bi-menu-button-wide-fill" /><span>  {{ sub.menuName }}</span><i v-if="sub._children" class="bi bi-chevron-down ms-auto" />
                 </a>
               </li>
-              <ul v-if="sub._children" :id="sub.menuId+'-collapse'" class="nav-content collapse " data-bs-parent="#sub-sidebar-nav">
+              <ul v-if="sub._children" :id="'m'+sub.menuId+'-collapse'" class="nav-content collapse " data-bs-parent="#sub-sidebar-nav">
                 <li v-for="sub2 in sub._children" :key="sub2.menuId">
                   <nuxt-link :to="sub2.progPath?sub2.progPath:'/'" :class="isActive(sub2.progPath)">
                     <i class="bi bi-circle" /> <span>{{ sub2.menuName }}</span>

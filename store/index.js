@@ -55,6 +55,7 @@ export const getters = {
     return state.menus
   },
   getMenu: state => (path) => {
+    if (state.menus === null || state.menus === undefined) { return null }
     return tree.searchTree(state.menus, 'progPath', path)
   },
   getSearchPath: state => (id) => {

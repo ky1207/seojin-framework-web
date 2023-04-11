@@ -15,7 +15,7 @@
             name="$t('page.system.00017')"
             :options="common.CD_TYPE"
             item-text="val"
-            item-value="codeId"
+            item-value="subCode"
             disabled-validation
           />
         </div>
@@ -92,7 +92,7 @@
               :name="$t('page.system.00101')"
               :options="common.PG_MODULE_CD"
               item-text="val"
-              item-value="codeId"
+              item-value="subCode"
               rules="required"
             />
           </SJFormField>
@@ -106,7 +106,7 @@
               :name="$t('page.system.00017')"
               :options="common.CD_TYPE"
               item-text="val"
-              item-value="codeId"
+              item-value="subCode"
               rules="required"
             />
           </SJFormField>
@@ -178,7 +178,7 @@ export default {
       detail: {
         data: {},
         columns: [
-          { name: 'codeId' },
+          { name: 'subCode' },
           {
             name: 'langs',
             header: this.$t('grid.codeName'),

@@ -9,7 +9,7 @@ export const GLOBAL_CODES = {
   department: [],
   setCodes (codes) {
     codes.forEach((e) => {
-      this.codes[e.codeId] = e.val
+      this.codes[e.subCode] = e.val
     })
   },
   getCode (key) {

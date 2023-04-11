@@ -143,7 +143,7 @@ export default {
   },
   async created () {
     const sortedTree = this.$store.getters.getMenus()
-    this.menus = sortedTree._children
+    this.menus = sortedTree?._children
 
     /* 상단 푸시 알림 숫자 */
     this.search.rcvrId = this.$auth.user.userId

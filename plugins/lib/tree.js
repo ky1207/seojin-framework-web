@@ -1,7 +1,7 @@
 export const tree = {
   treeGridSort (oriList, root, id, p, f) {
     const copyList = []
-    const rootId = root ?? '00000'
+    const rootId = root ?? 0
     const idName = id ?? 'menuId'
     const parentName = p ?? 'upperMenuId'
     const level = f ?? 'level'

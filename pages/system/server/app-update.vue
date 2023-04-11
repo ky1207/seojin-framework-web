@@ -15,7 +15,7 @@
             :name="$t('page.system.00091')"
             :options="common.UPDATE_TYPE"
             item-text="val"
-            item-value="codeId"
+            item-value="subCode"
             disabled-validation
             disabled-first-message
           />
@@ -52,7 +52,7 @@
               :name="$t('page.system.00091')"
               :options="common.UPDATE_TYPE"
               item-text="val"
-              item-value="codeId"
+              item-value="subCode"
               rules="required"
               :disabled="isUpdate"
             />

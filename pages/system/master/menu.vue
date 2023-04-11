@@ -28,7 +28,7 @@
             :name="$t('page.system.00013')"
             :options="common.MENU_GROUP"
             item-text="val"
-            item-value="codeId"
+            item-value="subCode"
             disabled-validation
             disabled-first-message
           />
