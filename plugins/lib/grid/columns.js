@@ -186,6 +186,11 @@ export default ctx => ({
       filter: null,
       sortable: false
     },
+    menuCode: {
+      header: ctx.i18n.t('grid.menuCode'),
+      filter: null,
+      sortable: false
+    },
     modDtm: {
       header: ctx.i18n.t('grid.modDtm'),
       formatter: DateFormatter,

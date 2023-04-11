@@ -177,6 +177,10 @@ export default {
         columns: [
           {
             name: 'menuName'
+          },
+          {
+            name: 'menuCode',
+            width: 150
           }
         ],
         options: {

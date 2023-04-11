@@ -21,6 +21,7 @@
     "inqryAuth": "조회",
     "loginId": "로그인ID",
     "menuName": "메뉴명",
+    "menuCode": "메뉴코드",
     "progName": "프로그램명",
     "progPath": "경로",
     "pos": "직급",
