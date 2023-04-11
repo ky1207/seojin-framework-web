@@ -60,6 +60,9 @@ export default ctx => ({
       header: ctx.i18n.t('grid.coId'),
       formatter: CompanyFormatter
     },
+    coCode: {
+      header: ctx.i18n.t('grid.coCode')
+    },
     codeGroupId: {
       header: ctx.i18n.t('grid.codeGroupId')
     },

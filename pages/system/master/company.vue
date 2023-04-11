@@ -56,12 +56,12 @@
         <SJFormRow>
           <SJFormField :label="$tc('page.system.00074')">
             <SJInput
-              id="form_coId"
-              v-model="companyDetail.coId"
+              id="form_coCode"
+              v-model="companyDetail.coCode"
               :name="$t('page.system.00074')"
               type="text"
-              disabled-validation
-              disabled
+              rules="required|max:12"
+              :disabled="isUpdate"
             />
           </SJFormField>
           <SJFormField :label="$tc('page.system.00075')">
@@ -172,7 +172,7 @@
               v-model="companyDetail.lang"
               :name="$t('page.system.00049')"
               type="text"
-              rules="max:12"
+              rules="max:2"
               disabled-validation
             />
           </SJFormField>
@@ -259,6 +259,9 @@ export default {
       company: {
         data: {},
         columns: [
+          {
+            name: 'coCode'
+          },
           {
             name: 'coName'
           },

@@ -6,6 +6,7 @@
     "authName": "권한명",
     "biznum": "사업자번호",
     "coId": "회사",
+    "coCode": "회사코드",
     "codeGroupId": "대분류코드",
     "codeGroupName": "대분류명",
     "codeName": "소분류명",
