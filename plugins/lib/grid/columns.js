@@ -66,6 +66,9 @@ export default ctx => ({
       formatter: BusinessFormatter,
       align: 'center'
     },
+    bsnsName: {
+      header: ctx.i18n.t('grid.bsnsName')
+    },
     // C
     coId: {
       header: ctx.i18n.t('grid.coId'),

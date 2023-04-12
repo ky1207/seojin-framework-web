@@ -195,7 +195,7 @@ export default {
         data: {},
         columns: [
           {
-            name: 'authGroupId'
+            name: 'authGroupCode'
           },
           {
             name: 'authName'
