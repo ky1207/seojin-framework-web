@@ -133,12 +133,12 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField :label="$tc('page.system.00001')">
+          <SJFormField :label="$tc('page.system.00104')">
             <SJCheckboxGroup
               v-model="checkedData"
-              :items="common.COMPANY"
-              rules="required|min_selections:2"
-              :name="$t('page.system.00001')"
+              :items="common.BUSINESS"
+              rules="required"
+              :name="$t('page.system.00104')"
             />
           </SJFormField>
         </SJFormRow>
@@ -258,11 +258,11 @@ export default {
   },
   async created () {
     const codes = await this.$api.common.getCommonCodes(['USR_POSTN', 'USER_DUTY', 'SYSTEM_TYPE', 'USER_ST'])
-    const company = await this.$api.common.getCompanyCodes()
+    const business = await this.$api.common.getBusinessCodes()
     const department = await this.$api.common.getDepartmentCodes()
     this.common = codes.data
     this.common.USE_YN = this.$api.common.getYNCodes()
-    this.common.COMPANY = company.data
+    this.common.BUSINESS = business.data
     this.common.DEPARTMENT = department.data
   },
   methods: {
@@ -277,7 +277,7 @@ export default {
         Data: this.userDetail.codes
       }
 
-      this.checkedData = result.data.coUsers
+      this.checkedData = result.data.bsnsUsers
     },
     createUser () {
       this.isUpdate = false
@@ -293,7 +293,7 @@ export default {
         saveClick: async () => {
           const result = await this.$refs.form.validate()
           if (result) {
-            this.userDetail.coUsers = this.checkedData
+            this.userDetail.bsnsUsers = this.checkedData
             if (this.isUpdate) {
               await this.$api.system.user.update(this.userId, this.userDetail)
             } else {
