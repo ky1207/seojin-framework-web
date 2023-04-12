@@ -63,6 +63,13 @@ export default {
             sortable: false
           },
           {
+            name: 'bsnsName',
+            width: 200,
+            align: 'center',
+            filter: null,
+            sortable: false
+          },
+          {
             name: 'userName',
             width: 140,
             align: 'center',
