@@ -219,7 +219,7 @@ export default {
       search: {},
       checkedData: [],
       userDetail: {
-        coUsers: []
+        bsnsUsers: []
       },
       user: {
         data: {},
@@ -325,7 +325,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>
