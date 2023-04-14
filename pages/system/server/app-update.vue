@@ -150,9 +150,7 @@ export default {
   },
   async created () {
     const codes = await this.$api.common.getCommonCodes(['UPDATE_TYPE'])
-    const company = await this.$api.common.getCompanyCodes()
     this.common = codes.data
-    this.common.COMPANY = company.data
   },
   methods: {
     async onMasterClick (ev) {

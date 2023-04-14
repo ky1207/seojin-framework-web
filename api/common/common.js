@@ -13,7 +13,7 @@ export default axios => ({
     })
     return result
   },
-  async getCompanyCodes () {
+  async getCompanyIds () {
     const result = await axios.get('/api/v1.0/company/codes')
     GLOBAL_CODES.setCompany(result.data)
     return result

@@ -76,8 +76,7 @@ export default {
     }
   },
   async created () {
-    const company = await this.$api.common.getCompanyCodes()
-    this.common = { COMPANY: company.data }
+
   },
   methods: {
     ACTION_REGISTRY () {

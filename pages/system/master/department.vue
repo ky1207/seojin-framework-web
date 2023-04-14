@@ -96,12 +96,10 @@ export default {
     }
   },
   async created () {
-    await Promise.all([this.$api.common.getCommonCodes(['DEPT_GROUP']),
-      this.$api.common.getCompanyCodes()])
+    await Promise.all([this.$api.common.getCommonCodes(['DEPT_GROUP'])])
       .then((response) => {
         this.common = {
           ...response[0].data,
-          COMPANY: response[1].data,
           USE_YN: this.$api.common.getYNCodes()
         }
       })
