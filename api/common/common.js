@@ -18,7 +18,7 @@ export default axios => ({
     GLOBAL_CODES.setCompany(result.data)
     return result
   },
-  async getBusinessCodes () {
+  async getBusinessIds () {
     const result = await axios.get('/api/v1.0/business/codes')
     GLOBAL_CODES.setBusiness(result.data)
     return result

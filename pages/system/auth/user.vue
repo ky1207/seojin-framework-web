@@ -258,7 +258,7 @@ export default {
   },
   async created () {
     const codes = await this.$api.common.getCommonCodes(['USR_POSTN', 'USER_DUTY', 'SYSTEM_TYPE', 'USER_ST'])
-    const business = await this.$api.common.getBusinessCodes()
+    const business = await this.$api.common.getBusinessIds()
     const department = await this.$api.common.getDepartmentCodes()
     this.common = codes.data
     this.common.USE_YN = this.$api.common.getYNCodes()

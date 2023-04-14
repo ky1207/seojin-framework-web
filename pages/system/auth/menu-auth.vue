@@ -170,7 +170,7 @@ export default {
   },
   async created () {
     const codes = await this.$api.common.getCommonCodes(['MENU_GROUP'])
-    const business = await this.$api.common.getBusinessCodes()
+    const business = await this.$api.common.getBusinessIds()
     this.common = codes.data
     this.common.BUSINESS = business.data
   },

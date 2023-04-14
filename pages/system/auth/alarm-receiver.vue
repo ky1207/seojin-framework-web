@@ -185,7 +185,7 @@ export default {
     }
   },
   async created () {
-    const business = await this.$api.common.getBusinessCodes()
+    const business = await this.$api.common.getBusinessIds()
     this.common = { USE_YN: this.$api.common.getYNCodes(), BUSINESS: business.data }
   },
   methods: {

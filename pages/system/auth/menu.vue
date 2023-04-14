@@ -145,7 +145,7 @@ export default {
   },
   async created () {
     await Promise.all([this.$api.common.getCommonCodes(['MENU_GROUP']),
-      this.$api.common.getBusinessCodes()])
+      this.$api.common.getBusinessIds()])
       .then((response) => {
         this.common = {
           ...response[0].data,
