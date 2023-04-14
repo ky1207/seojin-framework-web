@@ -77,6 +77,7 @@
               :name="$t('page.system.00104')"
               :options="common.BUSINESS"
               rules="required"
+              disabled
             />
           </SJFormField>
           <SJFormField :label="$tc('page.system.00030')">
@@ -258,11 +259,14 @@ export default {
   },
   methods: {
     async read (e) {
-      this.isUpdate = true
-
       if (e.rowKey === undefined) { return }
       if (e.columnName !== 'menuName') { return }
       const node = this.$refs.menuGrid.invoke('getRow', e.rowKey)
+      if (!node.menuId || !this.isUpdate) {
+        this.$notify.warning(this.$t('message.00015'))
+        return
+      }
+      this.isUpdate = true
       const result = await this.$api.system.menu.load(node.menuId)
       this.menu = result.data
       if (this.menu.folderFlag) {
@@ -294,8 +298,9 @@ export default {
       }
     },
     _resetForm () {
+      this.isUpdate = true
       this.$refs.form.reset()
-      this.menu = {}
+      this.menu = { langs: [] }
       this.auth.data = {}
     },
     async dropped (e) {
@@ -314,6 +319,10 @@ export default {
       await this.ACTION_REGISTRY().searchClick()
     },
     addMenu () {
+      if (!this.isUpdate) {
+        this.$notify.warning(this.$t('message.00015')) // 메뉴를 입력중입니다.
+        return
+      }
       this.isUpdate = false
       this.auth.data = {}
 
@@ -325,7 +334,7 @@ export default {
       const parent = this.$refs.menuGrid.invoke('getRow', node.rowKey)
       const newNode = this.$tree.getNewNode(
         {
-          menuName: '새메뉴',
+          menuName: this.$t('page.system.00105'),
           upperMenuId: parent.menuId,
           menuGroupId: parent.menuGroupId,
           level: parent.level + 1
@@ -334,9 +343,11 @@ export default {
       const { menuName, ...rest } = newNode
 
       const temp = rest
-      temp.langs = [{ langCode: 'ko', val: '새메뉴' }]
+      temp.langs = [{ langCode: 'ko', val: '새메뉴' }] // 다국어 처리할 필요 없음
 
       this.menu = temp
+      this.menu.menuGroupCode = this.search.menuGroupCode
+      this.menu.bsnsId = this.search.bsnsId
       this.$refs.menuGrid.invoke('appendTreeRow', newNode, { parentRowKey: node.rowKey, focus: true })
       this.$refs.menuGrid.invoke('expand', node.rowKey, true)
     },
