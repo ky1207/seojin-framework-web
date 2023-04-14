@@ -6,14 +6,14 @@
     <template #default>
       <div class="search-area">
         <div class="col-md-1 search-label">
-          {{ $t('page.system.00001') }}
+          {{ $t('page.system.00104') }}
         </div>
         <div class="col-md-1">
           <SJSelect
             id="company"
-            v-model="search.coId"
-            :name="$t('page.system.00001')"
-            :options="common.COMPANY"
+            v-model="search.bsnsId"
+            :name="$t('page.system.00104')"
+            :options="common.BUSINESS"
             disabled-validation
             disabled-first-message
           />
@@ -135,7 +135,7 @@ export default {
             name: 'notifyTmpltCode'
           },
           {
-            name: 'coId',
+            name: 'bsnsId',
             hidden: true
           },
           {
@@ -185,8 +185,8 @@ export default {
     }
   },
   async created () {
-    const company = await this.$api.common.getCompanyCodes()
-    this.common = { USE_YN: this.$api.common.getYNCodes(), COMPANY: company.data }
+    const business = await this.$api.common.getBusinessCodes()
+    this.common = { USE_YN: this.$api.common.getYNCodes(), BUSINESS: business.data }
   },
   methods: {
     async onMasterClick (ev) {
@@ -233,7 +233,7 @@ export default {
         saveClick: async () => {
           const result = await this.$refs.form.validate()
           if (result) {
-            const data = { coId: this.search.coId, notifyTmpltCode: this.alarm.notifyTmpltCode, gridRequestAlarmReceiver: this.$refs.detailGrid.invoke('getModifiedRows') }
+            const data = { bsnsId: this.search.bsnsId, notifyTmpltCode: this.alarm.notifyTmpltCode, gridRequestAlarmReceiver: this.$refs.detailGrid.invoke('getModifiedRows') }
             await this.$api.system.alarm.updateAlarmReceiver(data)
 
             this._resetForm()
