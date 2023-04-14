@@ -6,14 +6,14 @@
     <template #default>
       <div class="search-area">
         <div class="col-md-1 search-label">
-          {{ $t('page.system.00001') }}
+          {{ $t('page.system.00104') }}
         </div>
         <div class="col-md-1">
           <SJSelect
             id="company"
-            v-model="search.coId"
-            :name="$t('page.system.00001')"
-            :options="common.COMPANY"
+            v-model="search.bsnsId"
+            :name="$t('page.system.00104')"
+            :options="common.BUSINESS"
             disabled-validation
             disabled-first-message
           />
@@ -191,8 +191,8 @@ export default {
     }
   },
   async created () {
-    const company = await this.$api.common.getCompanyCodes()
-    this.common = { COMPANY: company.data }
+    const business = await this.$api.common.getBusinessCodes()
+    this.common = { BUSINESS: business.data }
     this.common.USE_YN = this.$api.common.getYNCodes()
   },
   methods: {
@@ -235,7 +235,7 @@ export default {
         saveClick: async () => {
           const result = await this.$refs.form.validate()
           if (result) {
-            this.alarm.coId = this.search.coId
+            this.alarm.bsnsId = this.search.bsnsId
             if (this.isUpdate) {
               await this.$api.system.alarm.update(this.alarm)
             } else {

@@ -57,16 +57,6 @@
     <template #right>
       <SJForm ref="form">
         <SJFormRow>
-          <SJFormField :label="$tc('page.system.00099')">
-            <SJInput
-              id="form_progId"
-              v-model="help.progId"
-              :name="$t('page.system.00099')"
-              type="text"
-              disabled-validation
-              disabled
-            />
-          </SJFormField>
           <SJFormField :label="$tc('page.system.00029')">
             <SJInput
               id="form_progName"
@@ -162,8 +152,7 @@ export default {
     },
     _resetForm () {
       this.$refs.form.reset()
-      this.help = {}
-      this.help.cntn = null
+      this.help = { cntn: '' }
     },
     ACTION_REGISTRY () {
       return {

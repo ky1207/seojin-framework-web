@@ -6,7 +6,7 @@
     :name="name"
     tag="div"
     :disabled="disabledValidation"
-    :immediate="immediate"
+    mode="lazy"
   >
     <ckeditor
       ref="ckeditor"
@@ -69,7 +69,7 @@ export default {
   data () {
     return {
       immediate: false,
-      mounted: false,
+      // mounted: false,
       editor: ClassicEditor,
       editorConfig: {
         resize_enabled: false,
@@ -109,8 +109,8 @@ export default {
   computed: {
     innerValue: {
       get () {
-        if (this.value === null) {
-          return this.$options.filters.unescapeHTML(' ')
+        if (this.value === null || this.value === undefined) {
+          return ''
         }
         return this.$options.filters.unescapeHTML(this.value)
       },
