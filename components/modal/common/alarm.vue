@@ -163,7 +163,7 @@ export default {
     }
   },
   async created () {
-    const result = await this.$api.common.getDepartmentCodes()
+    const result = await this.$api.common.getDepartmentIds()
     this.common = { DEPARTMENT: result.data }
     // 모달에서 그리드 사용시, 그리드를 모달 크기에 맞추기 위함.
     this.$nuxt.$on('modal.show', () => {

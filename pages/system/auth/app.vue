@@ -101,7 +101,7 @@ export default {
   },
   async created () {
     const business = await this.$api.common.getBusinessIds()
-    const department = await this.$api.common.getDepartmentCodes()
+    const department = await this.$api.common.getDepartmentIds()
     this.common = { BUSINESS: business.data, DEPARTMENT: department.data }
   },
   methods: {

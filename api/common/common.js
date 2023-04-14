@@ -24,7 +24,7 @@ export default axios => ({
     return result
   },
 
-  async getDepartmentCodes () {
+  async getDepartmentIds () {
     const result = await axios.get('/api/v1.0/department/codes')
     GLOBAL_CODES.setDepartment(result.data)
     return result
