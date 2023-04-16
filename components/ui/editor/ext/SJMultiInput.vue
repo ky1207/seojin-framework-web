@@ -73,7 +73,7 @@ export default {
         return e.langCode
       })
       // 받아온것 제외하고 리턴
-      const T = JSON.parse(JSON.stringify(DEFAULT));
+      const T = JSON.parse(JSON.stringify(DEFAULT))
       return T.filter((e) => {
         return langs.findIndex(l => l === e.langCode) === -1
       })
