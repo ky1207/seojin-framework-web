@@ -78,6 +78,7 @@ export default {
   data () {
     return {
       gridCheck: true,
+      isUpdate: false,
       common: { },
       search: {},
       dept: {},
@@ -109,15 +110,19 @@ export default {
   },
   methods: {
     async read (e) {
-      this.isUpdate = true
-
       if (e.rowKey === undefined) { return }
       if (e.columnName !== 'deptName') { return }
       const node = this.$refs.deptGrid.invoke('getRow', e.rowKey)
+      if (!node.deptId || !this.isUpdate) {
+        this.$notify.warning(this.$t('message.00016'))
+        return
+      }
+      this.isUpdate = true
       const result = await this.$api.system.department.load(node.deptId)
       this.dept = result.data
     },
     _resetForm () {
+      this.isUpdate = true
       this.$refs.form.reset()
       this.dept = {}
     },
@@ -137,6 +142,11 @@ export default {
       await this.ACTION_REGISTRY().searchClick()
     },
     addDept () {
+      if (!this.isUpdate) {
+        this.$notify.warning(this.$t('message.00016')) // 부서를 입력중입니다.
+        return
+      }
+
       this.isUpdate = false
 
       const node = this.$refs.deptGrid.invoke('getFocusedCell')
@@ -147,7 +157,7 @@ export default {
       const parent = this.$refs.deptGrid.invoke('getRow', node.rowKey)
       const newNode = this.$tree.getNewNode(
         {
-          deptName: '새부서',
+          deptName: this.$t('page.system.00106'),
           upperDeptId: parent.deptId,
           level: parent.level + 1
         }
@@ -155,7 +165,7 @@ export default {
       const { deptName, ...rest } = newNode
 
       const temp = rest
-      temp.langs = [{ langCode: 'ko', val: '부서관리' }]
+      temp.deptName = this.$t('page.system.00106')
 
       this.dept = temp
       this.$refs.deptGrid.invoke('appendTreeRow', newNode, { parentRowKey: node.rowKey, focus: true })
