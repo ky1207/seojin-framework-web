@@ -54,7 +54,7 @@
     <template #right>
       <SJForm ref="form">
         <SJFormRow>
-          <SJFormField :label="$tc('page.system.00074')">
+          <SJFormField class="col-6" :label="$tc('page.system.00074')">
             <SJInput
               id="form_coCode"
               v-model="companyDetail.coCode"
@@ -64,11 +64,22 @@
               :disabled="isUpdate"
             />
           </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
           <SJFormField :label="$tc('page.system.00075')">
             <SJInput
               id="form_coName"
               v-model="companyDetail.coName"
               :name="$t('page.system.00075')"
+              type="text"
+              rules="required|max:50"
+            />
+          </SJFormField>
+          <SJFormField :label="$tc('page.system.00107')">
+            <SJInput
+              id="form_emCoName"
+              v-model="companyDetail.enCoName"
+              :name="$t('page.system.00107')"
               type="text"
               rules="required|max:50"
             />
