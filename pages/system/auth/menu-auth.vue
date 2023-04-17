@@ -120,12 +120,6 @@ export default {
             name: 'menuName'
           },
           {
-            name: 'useFlag',
-            renderer: CustomCheckRenderer,
-            align: 'center',
-            filter: null
-          },
-          {
             name: 'inqryAuth',
             renderer: CustomCheckRenderer
           },
@@ -200,7 +194,6 @@ export default {
         saveClick: async () => {
           await this.$api.system.menu.updateMenuAuthByAuthority(this.$refs.authMenuGrid.invoke('getModifiedRows'))
           this.$notify.success(this.$t('message.00002'))
-          await this.ACTION_REGISTRY().searchClick()
         }
       }
     }
