@@ -270,18 +270,10 @@ export default {
       company: {
         data: {},
         columns: [
-          {
-            name: 'coCode'
-          },
-          {
-            name: 'coName'
-          },
-          {
-            name: 'biznum'
-          },
-          {
-            name: 'repName'
-          },
+          { name: 'coCode' },
+          { name: 'coName' },
+          { name: 'biznum' },
+          { name: 'repName' },
           { name: 'useFlag' }
         ]
       }
