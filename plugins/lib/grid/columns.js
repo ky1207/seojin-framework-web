@@ -42,7 +42,8 @@ export default ctx => ({
       filter: null
     },
     authGroupCode: {
-      header: ctx.i18n.t('grid.authGroupCode')
+      header: ctx.i18n.t('grid.authGroupCode'),
+      align: 'center'
     },
     authName: {
       header: ctx.i18n.t('grid.authName')
@@ -75,7 +76,8 @@ export default ctx => ({
       formatter: CompanyFormatter
     },
     coCode: {
-      header: ctx.i18n.t('grid.coCode')
+      header: ctx.i18n.t('grid.coCode'),
+      align: 'center'
     },
     codeGroupId: {
       header: ctx.i18n.t('grid.codeGroupId')
@@ -103,6 +105,7 @@ export default ctx => ({
     },
     deptCode: {
       header: ctx.i18n.t('grid.deptCode'),
+      align: 'center',
       width: '150'
     },
     deptName: {
@@ -206,6 +209,7 @@ export default ctx => ({
     },
     menuCode: {
       header: ctx.i18n.t('grid.menuCode'),
+      align: 'center',
       filter: null,
       sortable: false
     },
