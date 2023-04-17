@@ -48,5 +48,19 @@ export default axios => ({
       value: false
     }
     ]
+  },
+  getLanguageCode () {
+    return [{
+      text: 'ko',
+      value: 'ko'
+    }, {
+      text: 'en',
+      value: 'en'
+    }, {
+      text: 'vi',
+      value: 'vi'
+    }
+    ]
   }
+
 })

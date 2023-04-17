@@ -178,13 +178,12 @@
             />
           </SJFormField>
           <SJFormField :label="$tc('page.system.00049')">
-            <SJInput
+            <SJSelect
               id="form_lang"
               v-model="companyDetail.lang"
               :name="$t('page.system.00049')"
-              type="text"
-              rules="max:2"
-              disabled-validation
+              :options="common.LANGUAGES"
+              rules="required"
             />
           </SJFormField>
         </SJFormRow>
@@ -278,6 +277,9 @@ export default {
         ]
       }
     }
+  },
+  created () {
+    this.common.LANGUAGES = this.$api.common.getLanguageCode()
   },
   methods: {
     async onMasterClick (ev) {
