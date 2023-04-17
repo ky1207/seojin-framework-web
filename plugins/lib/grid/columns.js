@@ -101,6 +101,10 @@ export default ctx => ({
       align: 'center',
       filter: null
     },
+    deptCode: {
+      header: ctx.i18n.t('grid.deptCode'),
+      width: '150'
+    },
     deptName: {
       header: ctx.i18n.t('grid.deptName')
     },

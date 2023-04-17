@@ -37,12 +37,15 @@
     <template #right>
       <SJForm ref="form">
         <SJFormRow>
-          <SJFormField class="col-md-6" :label="$tc('page.system.00057')">
+          <SJFormField :label="$tc('page.system.00057')">
             <SJInput
               id="form_deptCode"
               v-model="dept.deptCode"
               :name="$t('page.system.00057')"
               type="text"
+              :disabled-validation="isUpdate"
+              rules="required"
+              :disabled="isUpdate"
             />
           </SJFormField>
           <SJFormRow />
@@ -81,9 +84,8 @@ export default {
       depts: {
         data: {},
         columns: [
-          {
-            name: 'deptName'
-          }
+          { name: 'deptName' },
+          { name: 'deptCode' }
         ],
         options: {
           treeColumnOptions: {
