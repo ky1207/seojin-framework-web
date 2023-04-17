@@ -77,33 +77,15 @@
     <template #right>
       <SJForm ref="form">
         <SJFormRow>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00104')">
-            <SJSelect
-              id="form_bnsnId"
-              v-model="auth.bsnsId"
-              :name="$t('page.system.00104')"
-              :options="common.BUSINESS"
-              rules="required"
-            />
-          </SJFormField>
-          <SJFormField class="col-md-4" :label="$tc('page.system.00004')">
-            <SJSelect
-              id="form_useFlag"
-              v-model="auth.useFlag"
-              :name="$t('page.system.00004')"
-              :options="common.USE_YN"
-              rules="required"
-            />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
           <SJFormField :label="$tc('page.system.00002')">
             <SJInput
               id="form_authGroupCode"
               v-model="auth.authGroupCode"
               :name="$t('page.system.00002')"
               type="text"
+              :disabled-validation="isUpdate"
               rules="required"
+              :disabled="isUpdate"
             />
           </SJFormField>
 
@@ -113,6 +95,17 @@
               v-model="auth.authName"
               :name="$t('page.system.00003')"
               type="text"
+              rules="required"
+            />
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField :label="$tc('page.system.00004')">
+            <SJSelect
+              id="form_useFlag"
+              v-model="auth.useFlag"
+              :name="$t('page.system.00004')"
+              :options="common.USE_YN"
               rules="required"
             />
           </SJFormField>
@@ -280,6 +273,7 @@ export default {
               const data = { authority: rest, gridRequest: this.$refs.detail.invoke('getModifiedRows') }
               await this.$api.system.authority.update(rest.authGroupId, data)
             } else {
+              this.auth.bsnsId = this.search.bsnsId
               await this.$api.system.authority.save(this.auth)
             }
             this._resetForm()
