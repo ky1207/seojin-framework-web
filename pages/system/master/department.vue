@@ -73,7 +73,6 @@
 import { ACTION, MENU } from '~/mixins'
 
 export default {
-  name: 'DEPARTMENT',
   mixins: [MENU, ACTION],
   data () {
     return {
