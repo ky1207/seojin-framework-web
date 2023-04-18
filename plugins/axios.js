@@ -9,7 +9,13 @@ export default ({ $axios, app, redirect, store, error: nuxtError }) => {
     app.store.dispatch('loader/loading', false)
     const code = parseInt(e.response && e.response.status)
 
-    if ([504, 401, 403].includes(code)) { // api 서버 응답 없음
+    if (code === 401) {
+      app.router.push({ path: '/' })
+      // redirect('/')
+      return false
+    }
+
+    if ([504, 403].includes(code)) { // api 서버 응답 없음
       nuxtError(e)
       return false
     }
