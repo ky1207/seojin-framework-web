@@ -34,6 +34,7 @@
 <script>
 import { ACTION } from '@/mixins'
 export default {
+  name: 'Index',
   mixins: [ACTION],
   data () {
     return {

@@ -165,6 +165,44 @@ export default {
         }
       }
     },
+    // nuxt의 템플릿에 문제가 있어 사용하는 템플릿 입니다.
+    // builder/template은 수정하지 마세요
+    template: {
+      dependencies: {
+        'node-fetch': '^2.6.1',
+        ufo: '^0.7.4',
+        unfetch: '^4.2.0',
+        vue: '^2.6.12',
+        'vue-client-only': '^2.0.0',
+        'vue-meta': '^2.4.0',
+        'vue-no-ssr': '^1.1.1',
+        'vue-router': '^3.5.1',
+        'vue-template-compiler': '^2.6.12',
+        vuex: '^3.6.2'
+      },
+      dir: './builder/template',
+      files: [
+        'App.js',
+        'client.js',
+        'index.js',
+        'jsonp.js',
+        'router.js',
+        'router.scrollBehavior.js',
+        'routes.json',
+        'server.js',
+        'utils.js',
+        'empty.js',
+        'mixins/fetch.server.js',
+        'mixins/fetch.client.js',
+        'components/nuxt-error.vue',
+        'components/nuxt-child.js',
+        'components/nuxt-link.server.js',
+        'components/nuxt-link.client.js',
+        'components/nuxt.js',
+        'views/app.template.html',
+        'views/error.html'
+      ]
+    },
     optimization: {
       splitChunks: {
         chunks: 'all',
