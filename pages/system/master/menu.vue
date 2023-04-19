@@ -164,7 +164,6 @@ import Utils from '~/api/utils'
 import { CustomCheckRenderer } from '~/plugins/lib/grid/editor/CustomCheckRenderer'
 
 export default {
-  name: 'Menu',
   mixins: [MENU, ACTION],
   data () {
     return {
