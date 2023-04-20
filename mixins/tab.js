@@ -18,12 +18,12 @@ const TAB = {
     }
   },
   mounted () {
-    if (this.$tabs.items.length > 14) {
-      setTimeout(() => {
-        const item = this.$tabs.items[1]
-        this.$tabs.close(item.id)
-      }, 100)
-    }
+    // if (this.$tabs.items.length > 14) {
+    //   setTimeout(() => {
+    //     const item = this.$tabs.items[1]
+    //     this.$tabs.close(item.id)
+    //   }, 100)
+    // }
   }
 }
 

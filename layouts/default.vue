@@ -11,6 +11,7 @@
       </div><!-- End Logo -->
 
       <div class="search-bar">
+        <div><span @click="removeLast">remove</span></div>
         <form class="search-form d-flex align-items-center" method="POST">
           <input type="text" name="query" placeholder="Search" title="Enter search keyword">
           <button type="submit" title="Search">
@@ -108,7 +109,11 @@
     <SJNotify />
     <!-- ======= Sidebar ======= -->
     <main id="main" class="main">
-      <router-tab :tabs="tabs" :contextmenu="false" />
+      <div>
+        <span>test</span>
+      </div>
+      <nuxt ref="view" keep-alive :keep-alive-props="{include:cacheArray}" />
+      <!--      <router-tab :tabs="tabs" :contextmenu="false" />-->
     </main><!-- End #main -->
     <SJSpinner ref="spinner" />
     <!-- ======= Footer ======= -->
@@ -127,10 +132,12 @@ export default {
         }
       ],
       menus: [],
+      cacheArray: ['index'],
       pushCnt: 0,
       search: {}
     }
   },
+
   computed: {
     currentLang () {
       if (this.$i18n.getLocaleCookie() === 'en') {
@@ -139,6 +146,14 @@ export default {
         return '베트남어'
       }
       return '한국어'
+    }
+  },
+  watch: {
+    $route (to, from) {
+      console.log(to)
+      // console.log(this.$route.name)
+      const menu = this.$store.getters.getMenu(to.path)
+      this.addTab(menu)
     }
   },
   async created () {
@@ -152,6 +167,11 @@ export default {
     this.pushCnt = pushCntData.data
   },
   mounted () {
+    if (this.$route.path !== '/') {
+      const menu = this.$store.getters.getMenu(this.$route.path)
+      this.addTab(menu)
+    }
+
     //
     // this.pushCnt = 5
     // 예제.. 추후 처리 컴포넌트로 처리해야함
@@ -257,6 +277,18 @@ export default {
     }
   },
   methods: {
+    removeLast () {
+      console.log('removeLast')
+      this.cacheArray.pop()
+    },
+    addTab (menu) {
+      if (this.tabs.findIndex(e => e.progPath === menu.progPath) < 0) {
+        // 최초이면
+        this.cacheArray.push(this.$route.name) // cache추가
+        this.tabs.push(menu)
+      }
+      console.log(this.$refs.view.$children)
+    },
     change18n (lang) {
       this.$i18n.setLocale(lang)
 
