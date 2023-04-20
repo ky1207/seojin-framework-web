@@ -13,16 +13,16 @@
           <nav class="header-nav">
             <ul class="header-nav-list d-flex">
               <li class="header-nav-item position-relative">
-                <i class="fa-solid fa-user " />
+                <FontAwesomeIcon icon="fa-solid fa-user " />
                 <p class="position-absolute">
                   99
                 </p>
               </li>
               <li class="header-nav-item">
-                <i class="fa-solid fa-power-off" />
+                <FontAwesomeIcon icon="fa-solid fa-power-off" />
               </li>
               <li class="header-nav-item">
-                <i class="fa-solid fa-bars" />
+                <FontAwesomeIcon icon="fa-solid fa-bars" />
               </li>
             </ul>
           </nav>
@@ -43,13 +43,13 @@
               aria-expanded="false"
               aria-controls="#menu-area"
             >
-              <i class="fa-solid fa-circle-arrow-left text-white" />
+              <FontAwesomeIcon icon="fa-solid fa-circle-arrow-left" class="text-white" />
             </button>
             <div class="inb-wrap-link">
-              <i class="fa-solid fa-list text-white" />
+              <FontAwesomeIcon icon="fa-solid fa-list" class="text-white" />
             </div>
             <div class="inb-wrap-link">
-              <i class="fa-solid fa-star text-white" />
+              <FontAwesomeIcon icon="fa-solid fa-star " class="text-white" />
             </div>
           </div>
           <div id="menu-area" class="menu-area collapse-in">

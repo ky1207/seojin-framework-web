@@ -52,7 +52,8 @@ export default {
     { src: '~/plugins/lib/veevalidate.js' },
     { src: '~/plugins/lib/vue2datepicker.js' },
     { src: '~/plugins/client.js' },
-    { src: '~/plugins/api.js' }
+    { src: '~/plugins/api.js' },
+    { src: '~/plugins/lib/fontawesome.js' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
