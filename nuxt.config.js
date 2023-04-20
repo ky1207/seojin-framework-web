@@ -16,23 +16,26 @@ export default {
     title: 'seojin',
     meta: [
       { charset: 'utf-8' },
-      // { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { httpEquiv: 'X-UA-Compatible', content: 'ie=edge' }
+
     ],
     script: [
-      { hid: 'stripe', src: 'https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js', defer: true }
     ],
     link: [
       // { rel: 'icon', type: 'image/x-icon', href: `${process.env.CDN_STATIC}favicon.ico` }
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
+    bodyAttrs: {
+      class: 'd-flex flex-column'
+    }
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['~/assets/style/scss/custom.scss',
+  css: ['~/assets/style/scss/custom.scss', '~/assets/style/scss/reset.css',
     '~/assets/transition.css',
-    '~/assets/style/grid.css'],
+    '~/assets/style/grid.css',
+    '@fortawesome/fontawesome-svg-core/styles.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [

@@ -1,123 +1,437 @@
 <template>
   <div>
-    <!-- ======= Header ======= -->
-    <header id="header" class="header fixed-top d-flex align-items-center">
-      <div class="d-flex align-items-center justify-content-between">
-        <nuxt-link to="/" class="logo d-flex align-items-center">
-          <img src="@/assets/images/seojin.png">
-          <span class="d-none d-lg-block" />
-        </nuxt-link>
-        <i class="bi bi-list toggle-sidebar-btn" />
-      </div><!-- End Logo -->
-
-      <div class="search-bar">
-        <div><span @click="removeLast">remove</span></div>
-        <form class="search-form d-flex align-items-center" method="POST">
-          <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-          <button type="submit" title="Search">
-            <i class="bi bi-search" />
-          </button>
-        </form>
-      </div><!-- End Search Bar -->
-
-      <nav class="header-nav ms-auto">
-        <ul class="d-flex align-items-center">
-          <li class="nav-item d-block d-lg-none">
-            <div class="nav-link nav-icon search-bar-toggle">
-              <i class="bi bi-search" />
-            </div>
-          </li><!-- End Search Icon-->
-          <li class="nav-item dropdown pe-3">
-            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-              <span class="d-none d-md-block dropdown-toggle ps-2">{{ currentLang }}</span>
-            </a><!-- End Profile Iamge Icon -->
-
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-              <li>
-                <a class="dropdown-item d-flex align-items-center" @click="change18n('en')">
-                  <span>English</span>
-                </a>
+    <header id="header" class="header fixed-top">
+      <div class="navbar">
+        <div class="logo">
+          <img class="logo-image" src="~/assets/images/logo.png" alt="">
+        </div>
+        <div class="nav-wrap">
+          <div class="search-bar">
+            <input type="text" name="search" placeholder="SEARCH" class="search-bar-input">
+            <i class="search-bar-icon fa-solid fa-magnifying-glass" />
+          </div>
+          <nav class="header-nav">
+            <ul class="header-nav-list d-flex">
+              <li class="header-nav-item position-relative">
+                <i class="fa-solid fa-user " />
+                <p class="position-absolute">
+                  99
+                </p>
               </li>
-              <li>
-                <a class="dropdown-item d-flex align-items-center" @click="change18n('ko')">
-                  <span>한국어</span>
-                </a>
+              <li class="header-nav-item">
+                <i class="fa-solid fa-power-off" />
               </li>
-              <li>
-                <a class="dropdown-item d-flex align-items-center" @click="change18n('vi')">
-                  <span>베트남어</span>
-                </a>
+              <li class="header-nav-item">
+                <i class="fa-solid fa-bars" />
               </li>
-            </ul><!-- End Profile Dropdown Items -->
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link nav-icon" href="#" @click="alarmModalOpen()">
-              <i class="bi bi-bell" />
-              <span class="badge bg-primary badge-number">{{ pushCnt }}</span>
-            </a><!-- End Notification Icon -->
-          </li><!-- End Notification Nav -->
-
-          <li class="nav-item dropdown pe-3">
-            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-              <span class="d-none d-md-block dropdown-toggle ps-2">{{ $auth.user?.userName }}</span>
-            </a><!-- End Profile Iamge Icon -->
-
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-              <li class="dropdown-header">
-                <h6>{{ $auth.user?.userName }}</h6>
-                <span>{{ $auth.user?.userEnName }}</span>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                  <i class="bi bi-gear" />
-                  <span>Account Settings</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                  <i class="bi bi-question-circle" />
-                  <span>Need Help?</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-
-              <li>
-                <a class="dropdown-item d-flex align-items-center" @click="logout">
-                  <i class="bi bi-box-arrow-right" />
-                  <span>Sign Out</span>
-                </a>
-              </li>
-            </ul><!-- End Profile Dropdown Items -->
-          </li><!-- End Profile Nav -->
-        </ul>
-      </nav><!-- End Icons Navigation -->
-    </header><!-- End Header -->
-
-    <SJSlideBar :value="menus" />
-    <SJNotify />
-    <!-- ======= Sidebar ======= -->
-    <main id="main" class="main">
-      <div>
-        <span>test</span>
+            </ul>
+          </nav>
+        </div>
       </div>
-      <nuxt ref="view" keep-alive :keep-alive-props="{include:cacheArray}" />
-      <!--      <router-tab :tabs="tabs" :contextmenu="false" />-->
-    </main><!-- End #main -->
-    <SJSpinner ref="spinner" />
-    <!-- ======= Footer ======= -->
-    <CommonAlarm ref="alarmModal" />
+    </header>
+
+    <main id="main" class="main">
+      <aside class="aside">
+        <div class="slider d-flex">
+          <div class="inb-wrap">
+            <button
+              id="toggle-button"
+              class="inb-wrap-link rotate"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#menu-area"
+              aria-expanded="false"
+              aria-controls="#menu-area"
+            >
+              <i class="fa-solid fa-circle-arrow-left text-white" />
+            </button>
+            <div class="inb-wrap-link">
+              <i class="fa-solid fa-list text-white" />
+            </div>
+            <div class="inb-wrap-link">
+              <i class="fa-solid fa-star text-white" />
+            </div>
+          </div>
+          <div id="menu-area" class="menu-area collapse-in">
+            <ul id="menuAccordion" class="main-menu accordion">
+              <li class="main-menu-item">
+                <div class="main-menu-link">
+                  <a href="#">기존정보관리</a>
+                </div>
+              </li>
+              <li class="main-menu-item">
+                <div class="main-menu-link">
+                  <a href="#">영업관리</a>
+                </div>
+              </li>
+              <li class="main-menu-item">
+                <div class="main-menu-link">
+                  <a href="#">구매자재관리</a>
+                </div>
+              </li>
+              <li class="main-menu-item">
+                <div class="main-menu-link">
+                  <a href="#">SCM</a>
+                </div>
+              </li>
+              <li class="main-menu-item">
+                <div class="main-menu-link">
+                  <a href="#">재고관리</a>
+                </div>
+              </li>
+              <li class="main-menu-item">
+                <div class="main-menu-link">
+                  <a href="#">생산관리</a>
+                </div>
+              </li>
+              <li class="main-menu-item">
+                <div class="main-menu-link">
+                  <a href="#">품질관리</a>
+                </div>
+              </li>
+              <li class="main-menu-item">
+                <div class="main-menu-link">
+                  <a href="#">현황관리</a>
+                </div>
+              </li>
+              <li class="main-menu-item">
+                <div class="main-menu-link">
+                  <a href="#">커뮤니티</a>
+                </div>
+              </li>
+              <li class="main-menu-item">
+                <a
+                  id="heading-ten"
+                  class="main-menu-link btn collapsed accordion-button-one"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapse-ten"
+                >
+                  시스템관리
+                </a>
+                <ul
+                  id="collapse-ten"
+                  class="sub-menu accordion-collapse collapse"
+                  data-bs-parent="#menuAccordion"
+                >
+                  <li id="heading-sub-one" class="accordion-item accordion-header">
+                    <a
+                      class="btn sub-menu-item active accordion-button"
+                      href="#"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-sub-one"
+                    >
+                      기준정보관리
+                    </a>
+                    <ul
+                      id="collapse-sub-one"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#accordionExample"
+                    >
+                      <li class="sub-menu-list accordion-body">
+                        <a href="#">공통코드관리</a>
+                      </li>
+                      <li class="sub-menu-list accordion-body">
+                        <a href="#">프로그램관리</a>
+                      </li>
+                      <li class="sub-menu-list accordion-body">
+                        <a href="#">회사관리</a>
+                      </li>
+                      <li class="sub-menu-list accordion-body">
+                        <a href="#">부서관리</a>
+                      </li>
+                      <li class="sub-menu-list accordion-body">
+                        <a href="#">일일양식관리</a>
+                      </li>
+                      <li class="sub-menu-list accordion-body">
+                        <a href="#">프로그램 도움말</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li id="heading-sub-two" class="accordion-item accordion-header">
+                    <a
+                      class="btn sub-menu-item accordion-button"
+                      href="#"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-sub-two"
+                    >
+                      권한관리
+                    </a>
+                    <ul
+                      id="collapse-sub-two"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#accordionExample"
+                    />
+                  </li>
+                  <li id="heading-sub-three" class="accordion-item accordion-header">
+                    <a
+                      class="btn sub-menu-item accordion-button"
+                      href="#"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-sub-three"
+                    >
+                      서버관리
+                    </a>
+                    <ul
+                      id="collapse-sub-three"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#accordionExample"
+                    />
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+
+      <section class="section">
+        <div class="home-wrap">
+          <div class="d-flex align-items-center">
+            <div class="home-wrap-icon">
+              <i class="fa-solid fa-house" />
+            </div>
+            <ul class="home-bar">
+              <li class="home-bar-item active">
+                공통코드관리
+                <i class="fa-solid fa-xmark" />
+              </li>
+              <li class="home-bar-item">
+                기준정보관리
+                <i class="fa-solid fa-xmark" />
+              </li>
+              <li class="home-bar-item">
+                Home
+                <i class="fa-solid fa-xmark" />
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="navi-wrap">
+          <div class="navi">
+            <i class="navi-icon active fa-solid fa-star" />
+            <div class="navi-link">
+              home
+            </div>
+            <i class="navi-icon fa-solid fa-chevron-right" />
+            <div class="navi-link">
+              기준정보관리
+            </div>
+            <i class="navi-icon fa-solid fa-chevron-right" />
+            <div class="navi-link">
+              기준정보관리
+            </div>
+          </div>
+          <div class="d-flex">
+            <div class="btn-bar">
+              <button class="btn-gray-bg">
+                조회
+              </button>
+              <button class="btn-gray-bg">
+                조회
+              </button>
+              <button class="btn-gray-bg">
+                조회
+              </button>
+              <button class="btn-gray-bg">
+                조회
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-search">
+          <div class="code-search-form">
+            <label>공통코드유형</label>
+            <select class="code-search-select" name="code">
+              <option value="선택하세요">
+                선택하세요
+              </option>
+              <option value="선택하세요">
+                선택하세요
+              </option>
+              <option value="선택하세요">
+                선택하세요
+              </option>
+            </select>
+          </div>
+          <div class="code-search-form">
+            <label>대분류코드</label>
+            <input class="code-search-input" type="text">
+          </div>
+          <div class="code-search-form">
+            <label>대분류명 </label>
+            <input class="code-search-input" type="text">
+          </div>
+          <div class="code-search-form">
+            <label>대분류명</label>
+            <input class="code-search-input" type="text">
+          </div>
+          <div class="code-search-form">
+            <label>사용여부 </label>
+            <select class="code-search-select" name="code">
+              <option value="선택하세요">
+                선택하세요
+              </option>
+              <option value="선택하세요">
+                선택하세요
+              </option>
+              <option value="선택하세요">
+                선택하세요
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="contents">
+          <div class="left-contents">
+            <div class="txt-wrap">
+              <h3><i class="fa-regular fa-folder-open" /> 대분류</h3>
+            </div>
+            <div class="grid-wrap">
+              <div class="grid">
+                <div>No</div>
+                <div class="flex-fill text-center">
+                  대분류코드
+                </div>
+                <div>
+                  대분류코드
+                </div>
+                <div>대분류코드</div>
+                <div>대분류코드</div>
+                <div>대분류코드</div>
+                <div>대분류코드</div>
+                <div>대분류코드</div>
+              </div>
+              <div class="data-box">
+                <p>데이터가 존재하지 않습니다.</p>
+                <span class="number">1-25 of 102</span>
+              </div>
+            </div>
+          </div>
+          <span class="bar" />
+          <div class="right-contents">
+            <div class="top-form">
+              <div class="txt-wrap">
+                <h3><i class="fa-regular fa-folder-open" /> 대분류상세</h3>
+                <div class="btn-bar">
+                  <button class="btn-blue-bg">
+                    신규코드
+                  </button>
+                </div>
+              </div>
+              <form>
+                <div class="sj-form-field">
+                  <fieldset>
+                    <legend>대분류코드<i class="fa-solid fa-asterisk fa-2xs" /></legend>
+                    <div>
+                      <input type="text" class="inp-field">
+                      <span class="inp-alert">대분류명 항목은 필수 정보입니다.</span>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="sj-form-field">
+                  <fieldset>
+                    <legend>사용모듈</legend>
+                    <div>
+                      <input type="text" class="inp-field">
+                      <span class="inp-alert">대분류명 항목은 필수 정보입니다.</span>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="sj-form-field">
+                  <fieldset>
+                    <legend>공통코드유형<i class="fa-solid fa-asterisk fa-2xs" /></legend>
+                    <div>
+                      <input type="text" class="inp-field">
+                      <span class="inp-alert">대분류명 항목은 필수 정보입니다.</span>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="sj-form-field">
+                  <fieldset>
+                    <legend>사용여부</legend>
+                    <div>
+                      <input type="text" class="inp-field">
+                      <span class="inp-alert">대분류명 항목은 필수 정보입니다.</span>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="sj-form-field">
+                  <fieldset>
+                    <legend>대분류명</legend>
+                    <div>
+                      <input type="text" disabled class="inp-field">
+                      <input type="text" disabled class="inp-field">
+                      <input type="text" disabled class="inp-field">
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="sj-form-field">
+                  <fieldset>
+                    <legend>비고</legend>
+                    <div>
+                      <textarea name="combox" class="inp-field" rows="3" />
+                    </div>
+                  </fieldset>
+                </div>
+              </form>
+            </div>
+
+            <div class="right-grid">
+              <div class="txt-wrap">
+                <h3><i class="fa-regular fa-folder-open" /> 소분류</h3>
+                <div class="btn-bar">
+                  <button class="btn-white-bg">
+                    추가
+                  </button>
+                  <button class="btn-white-bg">
+                    제외
+                  </button>
+                </div>
+              </div>
+              <div class="grid d-flex">
+                <div><input type="checkbox" name="check"></div>
+                <div class="flex-fill text-center">
+                  대분류코드
+                </div>
+                <div class="flex-fill">
+                  소분류명
+                </div>
+                <div class="flex-fill">
+                  정렬
+                </div>
+                <div class="flex-fill">
+                  사용여부
+                </div>
+                <div class="flex-fill">
+                  비고
+                </div>
+                <div>Option</div>
+                <div>Option</div>
+              </div>
+              <div class="data-box">
+                <p>데이터가 존재하지 않습니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class=" fixed-bottom d-flex justify-content-end align-items-center">
+      <div class="ft-txt">
+        <i class="fa-regular fa-circle-user" />
+        <p>개발자님 안녕하세요.</p>
+      </div>
+      <div class="ft-btn">
+        <button class="btn d-flex justify-content-center align-items-center">
+          조회
+        </button>
+        <button class="btn d-flex justify-content-center align-items-center">
+          조회
+        </button>
+      </div>
+    </footer>
   </div>
 </template>
 <script>
@@ -308,8 +622,8 @@ export default {
 }
 </script>
 <style>
- .router-tab__nav {
-   background: white;
- }
+body {
+  background: #E8ECF4;
+}
 
 </style>

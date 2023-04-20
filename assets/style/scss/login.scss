@@ -1,0 +1,74 @@
+
+.login-layer-wrap{
+  height: 100%;
+  display: flex; justify-content: center; align-items: center;
+}
+.login-layout{
+  width: 500px;
+  height: 650px;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+
+  .login-layout-title{
+    width: 100%;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    p{
+      width: 120px;
+      height: 120px;
+      background: #10597E;
+      display: flex;
+      justify-content: center;align-items: center;
+      font-size: 60px; color: #fff;
+      border-radius: 100px;
+    }
+    h2{
+      font-size: 60px;
+      font-weight: bold;
+      color: #10597E;
+      letter-spacing: 0.05em;
+    }
+
+  }
+
+  .login-layout-form{
+    width: 100%;
+    height: 220px; text-align: center;
+    display: flex;align-items: center; justify-content: center;  flex-direction: column;
+    .form-wrap{
+      display: flex;
+      label{
+        display: flex;
+        justify-content: center;align-items: center;
+        margin-right: 50px;
+        font-size: 14px; font-weight: bold;color: #464C5D;
+      }
+      .select{
+        width: 300px;
+        height: 35px;
+        margin-left: auto;
+        border: solid 1px #999;
+        font-size: 11px; color: #999;
+      }
+    }
+  }
+  .id-box{
+    width: 434px;
+    height: 25px;
+    line-height: 25px;
+    display: flex;
+    margin-bottom: 5px;
+    p{
+      color: #999;
+      font-size: 12px; font-weight: bold;
+      margin-right: 20px;
+    }
+  }
+  .btn-blue-bg{
+    width: 440px;
+    height: 55px;
+    border-radius: 10px;
+    font-size: 18px;
+  }
+}
