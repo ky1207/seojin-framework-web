@@ -186,7 +186,7 @@
       </aside>
 
       <section class="section">
-        <div class="home-wrap">
+        <div class="home-wrap" style="padding:5px 0">
           <div class="d-flex align-items-center">
             <div class="home-wrap-icon">
               <i class="fa-solid fa-house" />
@@ -433,7 +433,7 @@
         <i class="fa-regular fa-circle-user" />
         <p>개발자님 안녕하세요.</p>
       </div>
-      <div class="ft-btn">
+      <div class="ft-btn d-flex align-items-center">
         <button class="btn d-flex justify-content-center align-items-center">
           조회
         </button>
