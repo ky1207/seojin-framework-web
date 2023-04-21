@@ -40,7 +40,7 @@
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#menu-area"
-              aria-expanded="false"
+              aria-expanded="true"
               aria-controls="#menu-area"
             >
               <i class="fa-solid fa-circle-arrow-left text-white" />
