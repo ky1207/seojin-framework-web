@@ -2,7 +2,7 @@
   <div class="navi">
     <i class="navi-icon active fa-solid fa-star" />
     <template v-for="p in path">
-      <div :key="p" class="navi-link">
+      <div :key="p.menuId" class="navi-link">
         {{ p }}
       </div>
       <i :key="p" class="navi-icon fa-solid fa-chevron-right" />

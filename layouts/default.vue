@@ -63,17 +63,9 @@
               <i class="fa-solid fa-house" />
             </div>
             <ul class="home-bar">
-              <li class="home-bar-item active">
-                공통코드관리
-                <i class="fa-solid fa-xmark" />
-              </li>
-              <li class="home-bar-item">
-                기준정보관리
-                <i class="fa-solid fa-xmark" />
-              </li>
-              <li class="home-bar-item">
-                Home
-                <i class="fa-solid fa-xmark" />
+              <li v-for="(tab) in tabs" :key="tab.menuId" class="home-bar-item" :class="tab?.progPath===$route.path?'active':''" @click="linkTo(tab)">
+                {{ tab.menuName }}
+                <i class="fa-solid fa-xmark" @click="remove(tab)" />
               </li>
             </ul>
           </div>
@@ -292,13 +284,7 @@
 export default {
   data () {
     return {
-      tabs: [
-        {
-          to: '/',
-          title: this.$t('sample'),
-          closable: false
-        }
-      ],
+      tabs: [],
       menus: [],
       cacheArray: ['index'],
       pushCnt: 0,
@@ -445,9 +431,16 @@ export default {
     // }
   },
   methods: {
-    removeLast () {
-      console.log('removeLast')
-      this.cacheArray.pop()
+    linkTo (menu) {
+      if (menu?.progPath) {
+        this.$router.push(menu.progPath)
+      }
+    },
+    remove (menu) {
+      const index = this.tabs.findIndex(e => e.menuId === menu.menuId)
+      this.tabs.splice(index, 1)
+      this.cacheArray.splice(index, 1) // cache 삭제
+      this.linkTo(this.tabs[this.tabs.length - 1])
     },
     addTab (menu) {
       if (this.tabs.findIndex(e => e.progPath === menu.progPath) < 0) {
