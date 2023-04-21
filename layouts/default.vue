@@ -52,136 +52,7 @@
               <i class="fa-solid fa-star text-white" />
             </div>
           </div>
-          <div id="menu-area" class="menu-area collapse-in">
-            <ul id="menuAccordion" class="main-menu accordion">
-              <li class="main-menu-item">
-                <div class="main-menu-link">
-                  <a href="#">기존정보관리</a>
-                </div>
-              </li>
-              <li class="main-menu-item">
-                <div class="main-menu-link">
-                  <a href="#">영업관리</a>
-                </div>
-              </li>
-              <li class="main-menu-item">
-                <div class="main-menu-link">
-                  <a href="#">구매자재관리</a>
-                </div>
-              </li>
-              <li class="main-menu-item">
-                <div class="main-menu-link">
-                  <a href="#">SCM</a>
-                </div>
-              </li>
-              <li class="main-menu-item">
-                <div class="main-menu-link">
-                  <a href="#">재고관리</a>
-                </div>
-              </li>
-              <li class="main-menu-item">
-                <div class="main-menu-link">
-                  <a href="#">생산관리</a>
-                </div>
-              </li>
-              <li class="main-menu-item">
-                <div class="main-menu-link">
-                  <a href="#">품질관리</a>
-                </div>
-              </li>
-              <li class="main-menu-item">
-                <div class="main-menu-link">
-                  <a href="#">현황관리</a>
-                </div>
-              </li>
-              <li class="main-menu-item">
-                <div class="main-menu-link">
-                  <a href="#">커뮤니티</a>
-                </div>
-              </li>
-              <li class="main-menu-item">
-                <a
-                  id="heading-ten"
-                  class="main-menu-link btn collapsed accordion-button-one"
-                  href="#"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapse-ten"
-                >
-                  시스템관리
-                </a>
-                <ul
-                  id="collapse-ten"
-                  class="sub-menu accordion-collapse collapse"
-                  data-bs-parent="#menuAccordion"
-                >
-                  <li id="heading-sub-one" class="accordion-item accordion-header">
-                    <a
-                      class="btn sub-menu-item active accordion-button"
-                      href="#"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-sub-one"
-                    >
-                      기준정보관리
-                    </a>
-                    <ul
-                      id="collapse-sub-one"
-                      class="accordion-collapse collapse"
-                      data-bs-parent="#accordionExample"
-                    >
-                      <li class="sub-menu-list accordion-body">
-                        <a href="#">공통코드관리</a>
-                      </li>
-                      <li class="sub-menu-list accordion-body">
-                        <a href="#">프로그램관리</a>
-                      </li>
-                      <li class="sub-menu-list accordion-body">
-                        <a href="#">회사관리</a>
-                      </li>
-                      <li class="sub-menu-list accordion-body">
-                        <a href="#">부서관리</a>
-                      </li>
-                      <li class="sub-menu-list accordion-body">
-                        <a href="#">일일양식관리</a>
-                      </li>
-                      <li class="sub-menu-list accordion-body">
-                        <a href="#">프로그램 도움말</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li id="heading-sub-two" class="accordion-item accordion-header">
-                    <a
-                      class="btn sub-menu-item accordion-button"
-                      href="#"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-sub-two"
-                    >
-                      권한관리
-                    </a>
-                    <ul
-                      id="collapse-sub-two"
-                      class="accordion-collapse collapse"
-                      data-bs-parent="#accordionExample"
-                    />
-                  </li>
-                  <li id="heading-sub-three" class="accordion-item accordion-header">
-                    <a
-                      class="btn sub-menu-item accordion-button"
-                      href="#"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-sub-three"
-                    >
-                      서버관리
-                    </a>
-                    <ul
-                      id="collapse-sub-three"
-                      class="accordion-collapse collapse"
-                      data-bs-parent="#accordionExample"
-                    />
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+          <SJSlideBar id="menu-area" :value="menus" />
         </div>
       </aside>
 
@@ -207,39 +78,11 @@
             </ul>
           </div>
         </div>
+        <!-- Body 영역 시작-->
         <div class="navi-wrap">
-          <div class="navi">
-            <i class="navi-icon active fa-solid fa-star" />
-            <div class="navi-link">
-              home
-            </div>
-            <i class="navi-icon fa-solid fa-chevron-right" />
-            <div class="navi-link">
-              기준정보관리
-            </div>
-            <i class="navi-icon fa-solid fa-chevron-right" />
-            <div class="navi-link">
-              기준정보관리
-            </div>
-          </div>
-          <div class="d-flex">
-            <div class="btn-bar">
-              <button class="btn-gray-bg">
-                조회
-              </button>
-              <button class="btn-gray-bg">
-                조회
-              </button>
-              <button class="btn-gray-bg">
-                조회
-              </button>
-              <button class="btn-gray-bg">
-                조회
-              </button>
-            </div>
-          </div>
+          <SJNavbar />
+          <SJPageButtons />
         </div>
-
         <div class="code-search">
           <div class="code-search-form">
             <label>공통코드유형</label>
@@ -425,6 +268,7 @@
             </div>
           </div>
         </div>
+        <!-- Body 영역 끝-->
       </section>
     </main>
 
@@ -611,7 +455,6 @@ export default {
         this.cacheArray.push(this.$route.name) // cache추가
         this.tabs.push(menu)
       }
-      console.log(this.$refs.view.$children)
     },
     change18n (lang) {
       this.$i18n.setLocale(lang)

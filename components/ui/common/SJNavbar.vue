@@ -1,12 +1,16 @@
 <template>
-  <ul v-if="path.length>0" class="breadcrumb bc2x m-lg-1">
-    <li v-for="p in path" :key="p">
-      <div>{{ p }}</div>
-    </li>
-    <li>
-      <div>{{ menu? menu.menuName:'' }}</div>
-    </li>
-  </ul>
+  <div class="navi">
+    <i class="navi-icon active fa-solid fa-star" />
+    <template v-for="p in path">
+      <div :key="p" class="navi-link">
+        {{ p }}
+      </div>
+      <i :key="p" class="navi-icon fa-solid fa-chevron-right" />
+    </template>
+    <div class="navi-link">
+      {{ menu? menu.menuName:'' }}
+    </div>
+  </div>
 </template>
 
 <script>
