@@ -186,7 +186,7 @@
       </aside>
 
       <section class="section">
-        <div class="home-wrap" style="padding:5px 0">
+        <div class="home-wrap">
           <div class="d-flex align-items-center">
             <div class="home-wrap-icon">
               <i class="fa-solid fa-house" />
@@ -632,8 +632,6 @@ export default {
 }
 </script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-
 body {
   background: #E8ECF4;
 }
