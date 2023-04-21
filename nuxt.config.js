@@ -17,14 +17,21 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { httpEquiv: 'X-UA-Compatible', content: 'ie=edge' }
+      { 'http-equiv': 'X-UA-Compatible', content: 'ie=edge' }
 
     ],
     script: [
     ],
     link: [
       // { rel: 'icon', type: 'image/x-icon', href: `${process.env.CDN_STATIC}favicon.ico` }
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+        integrity: 'sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==',
+        crossorigin: 'anonymous',
+        referrerpolicy: 'no-referrer'
+      }
     ],
     bodyAttrs: {
       class: 'd-flex flex-column'
@@ -33,9 +40,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['~/assets/style/scss/custom.scss', '~/assets/style/scss/reset.css',
-    '~/assets/transition.css',
-    '~/assets/style/grid.css',
-    '@fortawesome/fontawesome-svg-core/styles.css'],
+    '~/assets/transition.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -52,8 +57,7 @@ export default {
     { src: '~/plugins/lib/veevalidate.js' },
     { src: '~/plugins/lib/vue2datepicker.js' },
     { src: '~/plugins/client.js' },
-    { src: '~/plugins/api.js' },
-    { src: '~/plugins/lib/fontawesome.js' }
+    { src: '~/plugins/api.js' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

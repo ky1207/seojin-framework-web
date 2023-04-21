@@ -13,16 +13,16 @@
           <nav class="header-nav">
             <ul class="header-nav-list d-flex">
               <li class="header-nav-item position-relative">
-                <FontAwesomeIcon icon="fa-solid fa-user " />
+                <i class="fa-solid fa-user " />
                 <p class="position-absolute">
                   99
                 </p>
               </li>
               <li class="header-nav-item">
-                <FontAwesomeIcon icon="fa-solid fa-power-off" />
+                <i class="fa-solid fa-power-off" />
               </li>
               <li class="header-nav-item">
-                <FontAwesomeIcon icon="fa-solid fa-bars" />
+                <i class="fa-solid fa-bars" />
               </li>
             </ul>
           </nav>
@@ -43,13 +43,13 @@
               aria-expanded="false"
               aria-controls="#menu-area"
             >
-              <FontAwesomeIcon icon="fa-solid fa-circle-arrow-left" class="text-white" />
+              <i class="fa-solid fa-circle-arrow-left text-white" />
             </button>
             <div class="inb-wrap-link">
-              <FontAwesomeIcon icon="fa-solid fa-list" class="text-white" />
+              <i class="fa-solid fa-list text-white" />
             </div>
             <div class="inb-wrap-link">
-              <FontAwesomeIcon icon="fa-solid fa-star " class="text-white" />
+              <i class="fa-solid fa-star text-white" />
             </div>
           </div>
           <div id="menu-area" class="menu-area collapse-in">
@@ -324,16 +324,14 @@
                   <fieldset>
                     <legend>대분류코드<i class="fa-solid fa-asterisk fa-2xs" /></legend>
                     <div>
-                      <input type="text" class="inp-field">
+                      <input type="text">
                       <span class="inp-alert">대분류명 항목은 필수 정보입니다.</span>
                     </div>
                   </fieldset>
-                </div>
-                <div class="sj-form-field">
                   <fieldset>
                     <legend>사용모듈</legend>
                     <div>
-                      <input type="text" class="inp-field">
+                      <input type="text">
                       <span class="inp-alert">대분류명 항목은 필수 정보입니다.</span>
                     </div>
                   </fieldset>
@@ -342,8 +340,20 @@
                   <fieldset>
                     <legend>공통코드유형<i class="fa-solid fa-asterisk fa-2xs" /></legend>
                     <div>
-                      <input type="text" class="inp-field">
+                      <input type="text">
                       <span class="inp-alert">대분류명 항목은 필수 정보입니다.</span>
+                    </div>
+                  </fieldset>
+                  <fieldset>
+                    <legend>사용여부</legend>
+                    <div>
+                      <input type="text">
+                    </div>
+                  </fieldset>
+                  <fieldset>
+                    <legend>사용여부</legend>
+                    <div>
+                      <input type="text">
                     </div>
                   </fieldset>
                 </div>
@@ -351,7 +361,7 @@
                   <fieldset>
                     <legend>사용여부</legend>
                     <div>
-                      <input type="text" class="inp-field">
+                      <input type="text">
                       <span class="inp-alert">대분류명 항목은 필수 정보입니다.</span>
                     </div>
                   </fieldset>
@@ -370,7 +380,7 @@
                   <fieldset>
                     <legend>비고</legend>
                     <div>
-                      <textarea name="combox" class="inp-field" rows="3" />
+                      <textarea name="combox" rows="3" />
                     </div>
                   </fieldset>
                 </div>
@@ -486,109 +496,109 @@ export default {
       this.addTab(menu)
     }
 
+    // //
+    // // this.pushCnt = 5
+    // // 예제.. 추후 처리 컴포넌트로 처리해야함
+    // /**
+    //  * Easy selector helper function
+    //  */
+    // const select = (el, all = false) => {
+    //   el = el.trim()
+    //   if (all) {
+    //     return [...document.querySelectorAll(el)]
+    //   } else {
+    //     return document.querySelector(el)
+    //   }
+    // }
     //
-    // this.pushCnt = 5
-    // 예제.. 추후 처리 컴포넌트로 처리해야함
-    /**
-     * Easy selector helper function
-     */
-    const select = (el, all = false) => {
-      el = el.trim()
-      if (all) {
-        return [...document.querySelectorAll(el)]
-      } else {
-        return document.querySelector(el)
-      }
-    }
-
-    /**
-     * Easy event listener function
-     */
-    const on = (type, el, listener, all = false) => {
-      if (all) {
-        select(el, all).forEach(e => e.addEventListener(type, listener))
-      } else {
-        select(el, all).addEventListener(type, listener)
-      }
-    }
-
-    /**
-     * Easy on scroll event listener
-     */
-    const onscroll = (el, listener) => {
-      el.addEventListener('scroll', listener)
-    }
-
-    /**
-     * Sidebar toggle
-     */
-    if (select('.toggle-sidebar-btn')) {
-      on('click', '.toggle-sidebar-btn', function (e) {
-        select('body').classList.toggle('toggle-sidebar')
-        window.dispatchEvent(new Event('resize'))
-      })
-    }
-
-    /**
-     * Search bar toggle
-     */
-    if (select('.search-bar-toggle')) {
-      on('click', '.search-bar-toggle', function (e) {
-        select('.search-bar').classList.toggle('search-bar-show')
-      })
-    }
-
-    /**
-     * Navbar links active state on scroll
-     */
-    const navbarlinks = select('#navbar .scrollto', true)
-    const navbarlinksActive = () => {
-      const position = window.scrollY + 200
-      navbarlinks.forEach((navbarlink) => {
-        if (!navbarlink.hash) { return }
-        const section = select(navbarlink.hash)
-        if (!section) { return }
-        if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-          navbarlink.classList.add('active')
-        } else {
-          navbarlink.classList.remove('active')
-        }
-      })
-    }
-    window.addEventListener('load', navbarlinksActive)
-    onscroll(document, navbarlinksActive)
-
-    /**
-     * Toggle .header-scrolled class to #header when page is scrolled
-     */
-    const selectHeader = select('#header')
-    if (selectHeader) {
-      const headerScrolled = () => {
-        if (window.scrollY > 100) {
-          selectHeader.classList.add('header-scrolled')
-        } else {
-          selectHeader.classList.remove('header-scrolled')
-        }
-      }
-      window.addEventListener('load', headerScrolled)
-      onscroll(document, headerScrolled)
-    }
-
-    /**
-     * Back to top button
-     */
-    const backtotop = select('.back-to-top')
-    if (backtotop) {
-      const toggleBacktotop = () => {
-        if (window.scrollY > 100) {
-          backtotop.classList.add('active')
-        } else {
-          backtotop.classList.remove('active')
-        }
-      }
-      window.addEventListener('load', toggleBacktotop)
-      onscroll(document, toggleBacktotop)
-    }
+    // /**
+    //  * Easy event listener function
+    //  */
+    // const on = (type, el, listener, all = false) => {
+    //   if (all) {
+    //     select(el, all).forEach(e => e.addEventListener(type, listener))
+    //   } else {
+    //     select(el, all).addEventListener(type, listener)
+    //   }
+    // }
+    //
+    // /**
+    //  * Easy on scroll event listener
+    //  */
+    // const onscroll = (el, listener) => {
+    //   el.addEventListener('scroll', listener)
+    // }
+    //
+    // /**
+    //  * Sidebar toggle
+    //  */
+    // if (select('.toggle-sidebar-btn')) {
+    //   on('click', '.toggle-sidebar-btn', function (e) {
+    //     select('body').classList.toggle('toggle-sidebar')
+    //     window.dispatchEvent(new Event('resize'))
+    //   })
+    // }
+    //
+    // /**
+    //  * Search bar toggle
+    //  */
+    // if (select('.search-bar-toggle')) {
+    //   on('click', '.search-bar-toggle', function (e) {
+    //     select('.search-bar').classList.toggle('search-bar-show')
+    //   })
+    // }
+    //
+    // /**
+    //  * Navbar links active state on scroll
+    //  */
+    // const navbarlinks = select('#navbar .scrollto', true)
+    // const navbarlinksActive = () => {
+    //   const position = window.scrollY + 200
+    //   navbarlinks.forEach((navbarlink) => {
+    //     if (!navbarlink.hash) { return }
+    //     const section = select(navbarlink.hash)
+    //     if (!section) { return }
+    //     if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
+    //       navbarlink.classList.add('active')
+    //     } else {
+    //       navbarlink.classList.remove('active')
+    //     }
+    //   })
+    // }
+    // window.addEventListener('load', navbarlinksActive)
+    // onscroll(document, navbarlinksActive)
+    //
+    // /**
+    //  * Toggle .header-scrolled class to #header when page is scrolled
+    //  */
+    // const selectHeader = select('#header')
+    // if (selectHeader) {
+    //   const headerScrolled = () => {
+    //     if (window.scrollY > 100) {
+    //       selectHeader.classList.add('header-scrolled')
+    //     } else {
+    //       selectHeader.classList.remove('header-scrolled')
+    //     }
+    //   }
+    //   window.addEventListener('load', headerScrolled)
+    //   onscroll(document, headerScrolled)
+    // }
+    //
+    // /**
+    //  * Back to top button
+    //  */
+    // const backtotop = select('.back-to-top')
+    // if (backtotop) {
+    //   const toggleBacktotop = () => {
+    //     if (window.scrollY > 100) {
+    //       backtotop.classList.add('active')
+    //     } else {
+    //       backtotop.classList.remove('active')
+    //     }
+    //   }
+    //   window.addEventListener('load', toggleBacktotop)
+    //   onscroll(document, toggleBacktotop)
+    // }
   },
   methods: {
     removeLast () {
@@ -622,6 +632,8 @@ export default {
 }
 </script>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
 body {
   background: #E8ECF4;
 }

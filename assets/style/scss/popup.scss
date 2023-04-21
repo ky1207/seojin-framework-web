@@ -9,7 +9,6 @@
 }
 
 //popup modal
-
 .popup-contents {
   width: 400px;
   height: 178px;
@@ -70,35 +69,10 @@
         margin-right: 5px;}
     }
   }
-  .btn-bar {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    .btn-grayBg {
-      width: 55px;
-      height: 23px;
+  .modal-body{
+    width: 100%;
+    .contents{
+      height: 630px;
     }
   }
-}
-.modal-body{
-  .code-search{
-    width: 1270px;}
-  .contents{
-    height: 670px;
-    .sj-form-field{
-      &:nth-child(3),
-      &:nth-child(4),
-      &:nth-child(5) {
-        width: 100%;
-        .inp-field {
-          width: 510px;
-        }
-      }
-      .inp-field{
-        width: 200px;
-      }
-    }
-
-  }
-
 }
