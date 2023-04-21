@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height:100vh;">
     <header id="header" class="header fixed-top">
       <div class="navbar">
         <div class="logo">
