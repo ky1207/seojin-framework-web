@@ -9,10 +9,7 @@
     </SJSearch>
     <div ref="autoHeight" class="contents" autoHeight>
       <div class="left-contents">
-        <div class="txt-wrap">
-          <h3><i class="fa-regular fa-folder-open" />  <slot name="leftTitle" /> </h3>
-        </div>
-
+        <slot name="leftTitle" />
         <!-- left -->
         <slot name="left" />
         <!-- End left-->

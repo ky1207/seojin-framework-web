@@ -36,7 +36,9 @@
     </template>
 
     <template #leftTitle>
-      {{ $t('page.system.00021') }}
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00021') }}</h3>
+      </div>
     </template>
     <template #left>
       <SJGrid ref="large" v-model="large.data" :columns="large.columns" @click="onMasterClick" />

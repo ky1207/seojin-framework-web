@@ -4,49 +4,39 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <div class="search-area">
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00104') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="business"
-            v-model="search.bsnsId"
-            :name="$t('page.system.00104')"
-            :options="common.BUSINESS"
-            disabled-validation
-            disabled-first-message
-          />
-        </div>
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00013') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="menuGroup"
-            v-model="search.menuGroupCode"
-            :name="$t('page.system.00013')"
-            :options="common.MENU_GROUP"
-            item-text="val"
-            item-value="subCode"
-            disabled-validation
-            disabled-first-message
-          />
-        </div>
-      </div>
+      <SJSearchField :label="$t('page.system.00104')">
+        <SJSelect
+          id="business"
+          v-model="search.bsnsId"
+          :name="$t('page.system.00104')"
+          :options="common.BUSINESS"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
+      <SJSearchField :label="$tc('page.system.00013')">
+        <SJSelect
+          id="menuGroup"
+          v-model="search.menuGroupCode"
+          :name="$t('page.system.00013')"
+          :options="common.MENU_GROUP"
+          item-text="val"
+          item-value="subCode"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
     </template>
 
     <template #leftTitle>
-      <div class="row align-items-center">
-        <div class="col">
-          {{ $t('page.system.00014') }}
-        </div>
-        <div class="col-auto">
-          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="addMenu">
-            {{ $t('page.system.00026') }} <i class="bi bi-file-plus" />
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00014') }}</h3>
+        <div class="btn-bar">
+          <button class="btn-white-bg" @click="addMenu">
+            {{ $t('page.system.00026') }}
           </button>
-          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="deleteMenu">
-            {{ $t('page.system.00012') }} <i class="bi bi-file-minus" />
+          <button class="btn-white-bg" @click="deleteMenu">
+            {{ $t('page.system.00012') }}
           </button>
         </div>
       </div>
