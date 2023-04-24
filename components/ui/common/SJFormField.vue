@@ -20,14 +20,3 @@ export default {
 
 }
 </script>
-<style>
-/*.SJFormField {*/
-/*  display:flex;*/
-/*}*/
-/*.SJFormField  .label {*/
-/* width: 80px;*/
-/*}*/
-/*.SJFormField .input {*/
-/* flex: 1 0 0%*/
-/*}*/
-</style>
