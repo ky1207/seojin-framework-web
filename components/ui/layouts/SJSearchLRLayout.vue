@@ -19,12 +19,10 @@
       </div>
       <span class="bar" />
       <div class="right-contents">
-        <div class="top-form">
-          <div class="txt-wrap">
-            <slot name="rightTitle" />
-          </div>
-          <slot name="right" />
+        <div class="txt-wrap">
+          <slot name="rightTitle" />
         </div>
+        <slot name="right" />
       </div>
     </div>
   </div>

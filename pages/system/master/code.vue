@@ -103,25 +103,24 @@
           </SJFormField>
         </SJFormRow>
       </SJForm>
-      <div v-if="isUpdate" class="right-grid">
-        <div class="txt-wrap">
-          <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00025') }}</h3>
-          <div class="btn-bar">
-            <button class="btn-white-bg" @click="appendRow">
-              {{ $t('page.system.00026') }}
-            </button>
-            <button class="btn-white-bg" @click="removeRow">
-              {{ $t('page.system.00012') }}
-            </button>
-          </div>
+      <div v-if="isUpdate" class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00025') }}</h3>
+        <div class="btn-bar">
+          <button class="btn-white-bg" @click="appendRow">
+            {{ $t('page.system.00026') }}
+          </button>
+          <button class="btn-white-bg" @click="removeRow">
+            {{ $t('page.system.00012') }}
+          </button>
         </div>
-        <SJGrid
-          ref="detail"
-          v-model="detail.data"
-          :columns="detail.columns"
-          :options="detail.options"
-        />
       </div>
+      <SJGrid
+        v-if="isUpdate"
+        ref="detail"
+        v-model="detail.data"
+        :columns="detail.columns"
+        :options="detail.options"
+      />
     </template>
   </SJSearchLRLayout>
 </template>
