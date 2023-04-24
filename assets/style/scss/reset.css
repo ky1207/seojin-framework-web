@@ -2,9 +2,11 @@
 body{
   overflow:hidden;
 }
+html,body, #__nuxt, #__layout{
+  height:100%!important;
+}
 html,body{
   font-family: 'Nanum Gothic', sans-serif !important;
-  height: 100% !important;
 }
 *{
   margin: 0; padding: 0; box-sizing: border-box;
