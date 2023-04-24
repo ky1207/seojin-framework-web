@@ -571,12 +571,14 @@ form {
     }
   }
 
-  input {
+  input , select {
     width: 100%;
     height: 25px;
     border: solid 1px #BCC1D0;
     margin-right: auto;
   }
+
+
 
   span {
     width: 100%;
