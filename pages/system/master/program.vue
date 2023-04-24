@@ -4,26 +4,19 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <div class="search-area">
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00029') }}
-        </div>
-        <div class="col-md-2">
-          <SJInput id="search" v-model="search.progName" :name="$t('page.system.00029')" type="text" disabled-validation />
-        </div>
-      </div>
+      <SJSearchField :label="$t('page.system.00029')">
+        <SJInput id="search" v-model="search.progName" :name="$t('page.system.00029')" type="text" disabled-validation />
+      </SJSearchField>
     </template>
     <template #bodyTitle>
-      <div class="row align-items-center">
-        <div class="col">
-          {{ $t('page.system.00034') }}
-        </div>
-        <div class="col-auto">
-          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="appendRow">
-            {{ $t('page.system.00026') }} <i class="bi bi-file-plus" />
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00034') }}</h3>
+        <div class="btn-bar">
+          <button class="btn-white-bg" @click="appendRow">
+            {{ $t('page.system.00026') }}
           </button>
-          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="removeRow">
-            {{ $t('page.system.00012') }} <i class="bi bi-file-minus" />
+          <button class="btn-white-bg" @click="removeRow">
+            {{ $t('page.system.00012') }}
           </button>
         </div>
       </div>
