@@ -346,7 +346,7 @@ section {
   }
 }
 
-.code-search {
+.search {
   height: 60px;
   font-size: 11px;
   font-weight: bold;
@@ -354,7 +354,7 @@ section {
   display: flex;
   margin: 10px 20px 20px 20px;
 
-  .code-search-form {
+  .search-field {
     display: flex;
     align-items: center;
     color: #464C5D;
@@ -378,8 +378,8 @@ section {
     }
   }
 
-  &-input,
-  &-select {
+  input,
+  select {
     width: 200px;
     height: 25px;
     color: #999;

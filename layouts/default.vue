@@ -75,10 +75,10 @@
           <SJNavbar />
           <SJPageButtons />
         </div>
-        <div class="code-search">
-          <div class="code-search-form">
+        <div class="search">
+          <div class="search-field">
             <label>공통코드유형</label>
-            <select class="code-search-select" name="code">
+            <select name="code">
               <option value="선택하세요">
                 선택하세요
               </option>
@@ -90,21 +90,21 @@
               </option>
             </select>
           </div>
-          <div class="code-search-form">
+          <div class="search-field">
             <label>대분류코드</label>
-            <input class="code-search-input" type="text">
+            <input type="text">
           </div>
-          <div class="code-search-form">
+          <div class="search-field">
             <label>대분류명 </label>
-            <input class="code-search-input" type="text">
+            <input type="text">
           </div>
-          <div class="code-search-form">
+          <div class="search-field">
             <label>대분류명</label>
-            <input class="code-search-input" type="text">
+            <input type="text">
           </div>
-          <div class="code-search-form">
+          <div class="search-field">
             <label>사용여부 </label>
-            <select class="code-search-select" name="code">
+            <select name="code">
               <option value="선택하세요">
                 선택하세요
               </option>
