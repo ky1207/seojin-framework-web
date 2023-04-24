@@ -443,6 +443,9 @@ export default {
       this.linkTo(this.tabs[this.tabs.length - 1])
     },
     addTab (menu) {
+      if (this.tabs.length >= this.$consts.MENU_LIMIT) {
+        return false
+      }
       if (this.tabs.findIndex(e => e.progPath === menu.progPath) < 0) {
         // 최초이면
         this.cacheArray.push(this.$route.name) // cache추가
