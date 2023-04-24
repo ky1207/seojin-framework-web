@@ -1,5 +1,5 @@
 <template>
-  <SJSearch style="height:100vh;">
+  <div style="height:100vh;">
     <header id="header" class="header fixed-top">
       <div class="navbar">
         <div class="logo">
@@ -263,8 +263,7 @@
         </button>
       </div>
     </footer>
-    </div>
-  </sjsearch>
+  </div>
 </template>
 <script>
 export default {
