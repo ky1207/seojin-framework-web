@@ -16,9 +16,7 @@
       </div>
       <span class="bar" />
       <div class="right-contents">
-        <div class="txt-wrap">
-          <slot name="rightTitle" />
-        </div>
+        <slot name="rightTitle" />
         <slot name="right" />
       </div>
     </div>

@@ -4,16 +4,14 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #leftTitle>
-      <div class="row align-items-center">
-        <div class="col">
-          {{ $t('page.system.00055') }}
-        </div>
-        <div class="col-auto">
-          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="addDept">
-            {{ $t('page.system.00026') }} <i class="bi bi-file-plus" />
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" />   {{ $t('page.system.00055') }}</h3>
+        <div class="btn-bar">
+          <button class="btn-white-bg" @click="addDept">
+            {{ $t('page.system.00026') }}
           </button>
-          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="deleteDept">
-            {{ $t('page.system.00012') }} <i class="bi bi-file-minus" />
+          <button class="btn-white-bg" @click="deleteDept">
+            {{ $t('page.system.00012') }}
           </button>
         </div>
       </div>
@@ -32,7 +30,9 @@
     </template>
 
     <template #rightTitle>
-      {{ $t('page.system.00056') }}
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00056') }}</h3>
+      </div>
     </template>
     <template #right>
       <SJForm ref="form">
@@ -48,7 +48,6 @@
               :disabled="isUpdate"
             />
           </SJFormField>
-          <SJFormRow />
           <SJFormField :label="$tc('page.system.00058')">
             <SJInput
               id="form_deptName"

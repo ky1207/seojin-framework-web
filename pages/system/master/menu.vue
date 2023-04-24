@@ -55,7 +55,11 @@
     </template>
 
     <template #rightTitle>
-      {{ $t('page.system.00027') }}
+      <div class="txt-wrap">
+        <h3>
+          <i class="fa-regular fa-folder-open" />  {{ $t('page.system.00027') }}
+        </h3>
+      </div>
     </template>
     <template #right>
       <SJForm ref="form">

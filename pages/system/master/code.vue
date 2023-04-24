@@ -45,11 +45,13 @@
     </template>
 
     <template #rightTitle>
-      <h3><i class="fa-regular fa-folder-open" />   {{ $t('page.system.00022') }}</h3>
-      <div class="btn-bar">
-        <button class="btn-blue-bg" @click="createCodeGroup">
-          신규코드
-        </button>
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" />   {{ $t('page.system.00022') }}</h3>
+        <div class="btn-bar">
+          <button class="btn-blue-bg" @click="createCodeGroup">
+            신규코드
+          </button>
+        </div>
       </div>
     </template>
     <template #right>

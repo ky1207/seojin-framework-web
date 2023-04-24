@@ -4,49 +4,38 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <div class="search-area">
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00074') }}
-        </div>
-        <div class="col-md-1">
-          <SJInput id="companyId" v-model="search.coId" :name="$t('page.system.00074')" type="text" disabled-validation />
-        </div>
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00075') }}
-        </div>
-        <div class="col-md-1">
-          <SJInput id="companyName" v-model="search.coName" :name="$t('page.system.00075')" type="text" disabled-validation />
-        </div>
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00004') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="useYN"
-            v-model="search.useFlag"
-            :name="$t('page.system.00004')"
-            :options="$api.common.getYNCodes()"
-            disabled-validation
-          />
-        </div>
-      </div>
+      <SJSearchField :label="$t('page.system.00074')">
+        <SJInput id="companyId" v-model="search.coId" :name="$t('page.system.00074')" type="text" disabled-validation />
+      </SJSearchField>
+      <SJSearchField :label="$t('page.system.00075')">
+        <SJInput id="companyName" v-model="search.coName" :name="$t('page.system.00075')" type="text" disabled-validation />
+      </SJSearchField>
+      <SJSearchField :label="$t('page.system.00004')">
+        <SJSelect
+          id="useYN"
+          v-model="search.useFlag"
+          :name="$t('page.system.00004')"
+          :options="$api.common.getYNCodes()"
+          disabled-validation
+        />
+      </SJSearchField>
     </template>
 
     <template #leftTitle>
-      {{ $t('page.system.00001') }}
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" />   {{ $t('page.system.00001') }}</h3>
+      </div>
     </template>
     <template #left>
       <SJGrid ref="company" v-model="company.data" :columns="company.columns" @click="onMasterClick" />
     </template>
 
     <template #rightTitle>
-      <div class="row align-items-center">
-        <div class="col">
-          {{ $t('page.system.00038') }}
-        </div>
-        <div class="col-auto">
-          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="createCompany">
-            {{ $t('page.system.00039') }} <i class="bi bi-pencil-fill" />
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00038') }}</h3>
+        <div class="btn-bar">
+          <button class="btn-blue-bg" @click="createCompany">
+            {{ $t('page.system.00039') }}
           </button>
         </div>
       </div>

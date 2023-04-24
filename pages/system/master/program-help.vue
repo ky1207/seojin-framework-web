@@ -41,7 +41,9 @@
       />
     </template>
     <template #rightTitle>
-      <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00100') }}</h3>
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00100') }}</h3>
+      </div>
     </template>
     <template #right>
       <SJForm ref="form">
