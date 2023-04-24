@@ -4,39 +4,27 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <div class="search-area">
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00029') }}
-        </div>
-        <div class="col-md-1">
-          <SJInput
-            id="authName"
-            v-model="search.progName"
-            :name="$t('page.system.00029')"
-            type="text"
-            disabled-validation
-          />
-        </div>
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00098') }}
-        </div>
-        <div class="col-md-1">
-          <SJInput
-            id="authName"
-            v-model="search.progPath"
-            :name="$t('page.system.00098')"
-            type="text"
-            disabled-validation
-          />
-        </div>
-      </div>
+      <SJSearchField :label="$t('page.system.00029')">
+        <SJInput
+          id="authName"
+          v-model="search.progName"
+          :name="$t('page.system.00029')"
+          type="text"
+          disabled-validation
+        />
+      </SJSearchField>
+      <SJSearchField :label="$t('page.system.00098')">
+        <SJInput
+          id="authName"
+          v-model="search.progPath"
+          :name="$t('page.system.00098')"
+          type="text"
+          disabled-validation
+        />
+      </SJSearchField>
     </template>
     <template #leftTitle>
-      <div class="row align-items-center">
-        <div class="col">
-          {{ $t('page.system.00034') }}
-        </div>
-      </div>
+      {{ $t('page.system.00034') }}
     </template>
     <template #left>
       <SJGrid
@@ -48,11 +36,7 @@
       />
     </template>
     <template #rightTitle>
-      <div class="row align-items-center">
-        <div class="col">
-          {{ $t('page.system.00100') }}
-        </div>
-      </div>
+      <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00100') }}</h3>
     </template>
     <template #right>
       <SJForm ref="form">
