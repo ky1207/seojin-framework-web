@@ -1,15 +1,20 @@
 <template>
-  <div class="code-search-form">
-    <label>공통코드유형</label>
+  <div class="search-field">
+    <label>{{ $props.label }}</label>
     <slot />
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    label: {
+      type: String,
+      default () {
+        return ''
+      }
+    }
+  }
+
 }
 </script>
-
-<style scoped>
-
-</style>

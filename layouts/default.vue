@@ -1,5 +1,5 @@
 <template>
-  <div style="height:100vh;">
+  <SJSearch style="height:100vh;">
     <header id="header" class="header fixed-top">
       <div class="navbar">
         <div class="logo">
@@ -75,48 +75,23 @@
           <SJNavbar />
           <SJPageButtons />
         </div>
-        <div class="search">
-          <div class="search-field">
-            <label>공통코드유형</label>
-            <select name="code">
-              <option value="선택하세요">
-                선택하세요
-              </option>
-              <option value="선택하세요">
-                선택하세요
-              </option>
-              <option value="선택하세요">
-                선택하세요
-              </option>
-            </select>
-          </div>
-          <div class="search-field">
-            <label>대분류코드</label>
-            <input type="text">
-          </div>
-          <div class="search-field">
-            <label>대분류명 </label>
-            <input type="text">
-          </div>
-          <div class="search-field">
-            <label>대분류명</label>
-            <input type="text">
-          </div>
-          <div class="search-field">
-            <label>사용여부 </label>
-            <select name="code">
-              <option value="선택하세요">
-                선택하세요
-              </option>
-              <option value="선택하세요">
-                선택하세요
-              </option>
-              <option value="선택하세요">
-                선택하세요
-              </option>
-            </select>
-          </div>
-        </div>
+        <SJSearch>
+          <SJSearchField label="공통코드유형">
+            <SJSelect />
+          </SJSearchField>
+          <SJSearchField label="대분류코드">
+            <SJInput />
+          </SJSearchField>
+          <SJSearchField label="대분류명">
+            <SJInput />
+          </SJSearchField>
+          <SJSearchField label="대분류명">
+            <SJInput />
+          </SJSearchField>
+          <SJSearchField label="사용여부">
+            <SJSelect />
+          </SJSearchField>
+        </SJSearch>
         <div class="contents">
           <div class="left-contents">
             <div class="txt-wrap">
@@ -288,7 +263,8 @@
         </button>
       </div>
     </footer>
-  </div>
+    </div>
+  </sjsearch>
 </template>
 <script>
 export default {
