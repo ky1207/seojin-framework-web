@@ -1,12 +1,10 @@
 <template>
-  <div class="col SJFormField">
-    <div class="label">
-      {{ $props.label }}
-    </div>
-    <div class="input">
+  <fieldset>
+    <legend>{{ $props.label }}<i class="fa-solid fa-asterisk fa-2xs" /></legend>
+    <div>
       <slot />
     </div>
-  </div>
+  </fieldset>
 </template>
 
 <script>
@@ -23,13 +21,13 @@ export default {
 }
 </script>
 <style>
-.SJFormField {
-  display:flex;
-}
-.SJFormField  .label {
- width: 80px;
-}
-.SJFormField .input {
- flex: 1 0 0%
-}
+/*.SJFormField {*/
+/*  display:flex;*/
+/*}*/
+/*.SJFormField  .label {*/
+/* width: 80px;*/
+/*}*/
+/*.SJFormField .input {*/
+/* flex: 1 0 0%*/
+/*}*/
 </style>

@@ -2,7 +2,6 @@
   <ValidationProvider v-slot="{ errors,classes }" :rules="rules" :name="name" tag="div" :disabled="disabledValidation">
     <textarea
       v-model="inputVal"
-      class="form-control"
       :class="disabledValidation?'':classes"
       :aria-describedby="id+'-feedback'"
       :disabled="disabled"
@@ -48,7 +47,7 @@ export default {
     },
     rows: {
       type: Number,
-      default: 2
+      default: 3
     }
   },
   computed: {

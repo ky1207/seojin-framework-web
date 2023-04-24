@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="sj-form-field">
     <slot />
   </div>
 </template>

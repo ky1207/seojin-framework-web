@@ -154,72 +154,82 @@
                   </button>
                 </div>
               </div>
-              <form>
-                <div class="sj-form-field">
-                  <fieldset>
-                    <legend>대분류코드<i class="fa-solid fa-asterisk fa-2xs" /></legend>
-                    <div>
-                      <input type="text">
-                      <span class="inp-alert">대분류명 항목은 필수 정보입니다.</span>
-                    </div>
-                  </fieldset>
-                  <fieldset>
-                    <legend>사용모듈</legend>
-                    <div>
-                      <input type="text">
-                      <span class="inp-alert">대분류명 항목은 필수 정보입니다.</span>
-                    </div>
-                  </fieldset>
-                </div>
-                <div class="sj-form-field">
-                  <fieldset>
-                    <legend>공통코드유형<i class="fa-solid fa-asterisk fa-2xs" /></legend>
-                    <div>
-                      <input type="text">
-                      <span class="inp-alert">대분류명 항목은 필수 정보입니다.</span>
-                    </div>
-                  </fieldset>
-                  <fieldset>
-                    <legend>사용여부</legend>
-                    <div>
-                      <input type="text">
-                    </div>
-                  </fieldset>
-                  <fieldset>
-                    <legend>사용여부</legend>
-                    <div>
-                      <input type="text">
-                    </div>
-                  </fieldset>
-                </div>
-                <div class="sj-form-field">
-                  <fieldset>
-                    <legend>사용여부</legend>
-                    <div>
-                      <input type="text">
-                      <span class="inp-alert">대분류명 항목은 필수 정보입니다.</span>
-                    </div>
-                  </fieldset>
-                </div>
-                <div class="sj-form-field">
-                  <fieldset>
-                    <legend>대분류명</legend>
-                    <div>
-                      <input type="text" disabled class="inp-field">
-                      <input type="text" disabled class="inp-field">
-                      <input type="text" disabled class="inp-field">
-                    </div>
-                  </fieldset>
-                </div>
-                <div class="sj-form-field">
-                  <fieldset>
-                    <legend>비고</legend>
-                    <div>
-                      <textarea name="combox" rows="3" />
-                    </div>
-                  </fieldset>
-                </div>
-              </form>
+              <SJForm>
+                <SJFormRow>
+                  <SJFormField label="대분류코드">
+                    <SJInput
+                      id="form_large"
+                      name="대분류코드"
+                      type="text"
+                      rules="required"
+                    />
+                  </SJFormField>
+                  <SJFormField label="사용모듈">
+                    <SJInput
+                      id="form_large"
+                      name="사용모듈"
+                      type="text"
+                      rules="required"
+                    />
+                  </SJFormField>
+                </SJFormRow>
+                <SJFormRow>
+                  <SJFormField label="공통코드유형">
+                    <SJInput
+                      id="form_large"
+                      name="공통코드유형"
+                      type="text"
+                      rules="required"
+                    />
+                  </SJFormField>
+                  <SJFormField label="사용여부">
+                    <SJInput
+                      id="form_large"
+                      name="사용여부"
+                      type="text"
+                      rules="required"
+                    />
+                  </SJFormField>
+                  <SJFormField label="사용여부">
+                    <SJInput
+                      id="form_large"
+                      name="사용여부"
+                      type="text"
+                      rules="required"
+                    />
+                  </SJFormField>
+                </SJFormRow>
+                <SJFormRow>
+                  <SJFormField label="사용여부">
+                    <SJInput
+                      id="form_large"
+                      name="사용여부"
+                      type="text"
+                      rules="required"
+                    />
+                  </SJFormField>
+                </SJFormRow>
+                <SJFormRow>
+                  <SJFormField label="대분류명">
+                    <SJMultiInput
+                      id="form_large"
+                      name="대분류명"
+                      type="text"
+                      rules="required"
+                    />
+                  </SJFormField>
+                </SJFormRow>
+                <SJFormRow>
+                  <SJFormField label="비고">
+                    <SJTextarea
+                      id="form_large"
+                      name="비고"
+                      type="text"
+                      rules="required"
+                    />
+                  </SJFormField>
+                </SJFormRow>
+              </SJForm>
             </div>
 
             <div class="right-grid">

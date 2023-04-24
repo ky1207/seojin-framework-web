@@ -3,7 +3,6 @@
     <input
       v-model="inputVal"
       :type="type"
-      class="form-control"
       :class="disabledValidation?'':classes"
       :aria-describedby="id+'-feedback'"
       :disabled="disabled"

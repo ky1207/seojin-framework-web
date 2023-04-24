@@ -5,7 +5,6 @@
         :key="l.langCode"
         v-model="l.val"
         type="text"
-        class="form-control"
         :aria-describedby="id+'-feedback'"
         :disabled="disabled"
         :readonly="readonly"

@@ -3,7 +3,6 @@
     <select
       :value="selected"
       :aria-describedby="id+'-feedback'"
-      class="form-select"
       aria-label="Default select"
       :class="disabledValidation?'':classes"
       :disabled="disabled"
