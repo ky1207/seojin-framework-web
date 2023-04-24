@@ -245,6 +245,8 @@
             </div>
           </div>
         </div>
+        <!--        <Nuxt keep-alive :keep-alive-props="{include:cacheArray}" />--> <!--클로즈 탭할때.. -->
+
         <!-- Body 영역 끝-->
       </section>
     </main>

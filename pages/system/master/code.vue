@@ -4,53 +4,35 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <div class="search-area">
-        <div class="col-md-1 search-label ">
-          {{ $t('page.system.00017') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="commonCode"
-            v-model="search.systemCodeType"
-            name="$t('page.system.00017')"
-            :options="common.CD_TYPE"
-            item-text="val"
-            item-value="subCode"
-            disabled-validation
-          />
-        </div>
-
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00018') }}
-        </div>
-        <div class="col-md-1">
-          <SJInput id="large" v-model="search.codeGroupId" :name="$t('page.system.00018')" type="text" disabled-validation />
-        </div>
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00019') }}
-        </div>
-        <div class="col-md-1">
-          <SJInput id="lname" v-model="search.codeGroupName" :name="$t('page.system.00019')" type="text" disabled-validation />
-        </div>
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00009') }}
-        </div>
-        <div class="col-md-1">
-          <SJInput id="small" v-model="search.codeName" :name="$t('page.system.00009')" type="text" disabled-validation />
-        </div>
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00004') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="useYN"
-            v-model="search.useFlag"
-            :name=" $t('page.system.00004')"
-            :options="$api.common.getYNCodes()"
-            disabled-validation
-          />
-        </div>
-      </div>
+      <SJSearchField :label="$t('page.system.00017')">
+        <SJSelect
+          id="commonCode"
+          v-model="search.systemCodeType"
+          name="$t('page.system.00017')"
+          :options="common.CD_TYPE"
+          item-text="val"
+          item-value="subCode"
+          disabled-validation
+        />
+      </SJSearchField>
+      <SJSearchField :label="$t('page.system.00018')">
+        <SJInput id="large" v-model="search.codeGroupId" :name="$t('page.system.00018')" type="text" disabled-validation />
+      </SJSearchField>
+      <SJSearchField :label="$t('page.system.00019')">
+        <SJInput id="lname" v-model="search.codeGroupName" :name="$t('page.system.00019')" type="text" disabled-validation />
+      </SJSearchField>
+      <SJSearchField :label="$t('page.system.00009')">
+        <SJInput id="small" v-model="search.codeName" :name="$t('page.system.00009')" type="text" disabled-validation />
+      </SJSearchField>
+      <SJSearchField :label=" $t('page.system.00004') ">
+        <SJSelect
+          id="useYN"
+          v-model="search.useFlag"
+          :name=" $t('page.system.00004')"
+          :options="$api.common.getYNCodes()"
+          disabled-validation
+        />
+      </SJSearchField>
     </template>
 
     <template #leftTitle>
@@ -61,15 +43,11 @@
     </template>
 
     <template #rightTitle>
-      <div class="row align-items-center">
-        <div class="col">
-          {{ $t('page.system.00022') }}
-        </div>
-        <div class="col-auto">
-          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="createCodeGroup">
-            {{ $t('page.system.00023') }} <i class="bi bi-pencil-fill" />
-          </button>
-        </div>
+      <h3><i class="fa-regular fa-folder-open" />   {{ $t('page.system.00022') }}</h3>
+      <div class="btn-bar">
+        <button class="btn-blue-bg" @click="createCodeGroup">
+          신규코드
+        </button>
       </div>
     </template>
     <template #right>
@@ -125,22 +103,18 @@
           </SJFormField>
         </SJFormRow>
       </SJForm>
-      <div v-if="isUpdate">
-        <h5 class="card-title">
-          <div class="row align-items-center">
-            <div class="col">
-              {{ $t('page.system.00025') }}
-            </div>
-            <div class="col-auto">
-              <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="appendRow">
-                {{ $t('page.system.00026') }} <i class="bi bi-file-plus" />
-              </button>
-              <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="removeRow">
-                {{ $t('page.system.00012') }} <i class="bi bi-file-minus" />
-              </button>
-            </div>
+      <div v-if="isUpdate" class="right-grid">
+        <div class="txt-wrap">
+          <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00025') }}</h3>
+          <div class="btn-bar">
+            <button class="btn-white-bg" @click="appendRow">
+              {{ $t('page.system.00026') }}
+            </button>
+            <button class="btn-white-bg" @click="removeRow">
+              {{ $t('page.system.00012') }}
+            </button>
           </div>
-        </h5>
+        </div>
         <SJGrid
           ref="detail"
           v-model="detail.data"
