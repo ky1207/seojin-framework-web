@@ -1,67 +1,55 @@
 <template>
-  <section class="h-100 gradient-form" style="background-color: #eee;">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-xl-10">
-          <div class="card rounded-3 text-black">
-            <div class="row g-0">
-              <div class="col-lg-6">
-                <div class="card-body p-md-5 mx-md-4">
-                  <div class="text-center">
-                    <img
-                      src="@/assets/images/seojin.png"
-                      style="width: 185px;"
-                      alt="logo"
-                    >
-                    <h4 class="mt-1 mb-5 pb-1">
-                      신정보시스템
-                    </h4>
-                  </div>
-                  <SJForm ref="form">
-                    <div class="form-outline mb-4">
-                      <SJInput
-                        id="name"
-                        v-model="username"
-                        name="ID"
-                        type="text"
-                        rules="required"
-                        placeholder="ID"
-                      />
-                    </div>
-
-                    <div class="form-outline mb-4">
-                      <SJInput
-                        id="name"
-                        v-model="password"
-                        name="Password"
-                        type="password"
-                        rules="required"
-                        placeholder="Password"
-                      />
-                    </div>
-
-                    <div class="text-center pt-1 mb-5 pb-1">
-                      <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button" @click="login">
-                        Log in
-                      </button>
-                    </div>
-                  </SJForm>
-                </div>
-              </div>
-              <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
-                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                  <h4 class="mb-4">
-                    서진시스템
-                  </h4>
-                  <p class="small mb-0">
-                    ....
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <section class="login-layer-wrap">
+    <div><img src="~/assets/images/seojin.png"></div>
+    <div class="login-layout">
+      <div class="login-layout-title">
+        <p><i class="fa-regular fa-user" /></p>
+        <h2>LOGIN</h2>
       </div>
+      <SJForm ref="form" class="login-layout-form">
+        <div class="form-outline" style="margin-bottom: 20px;">
+          <i class="fa-solid fa-building" style="margin-right: 10px;" />
+          <SJSearchField label="Company">
+            <SJSelect class="select" />
+          </SJSearchField>
+        </div>
+        <div class="form-outline" style="margin-bottom: 20px;">
+          <i class="fa-solid fa-user" style="margin-right: 10px;" />
+          <SJSearchField label="ID">
+            <SJInput
+              id="name"
+              v-model="username"
+              name="ID"
+              type="text"
+              rules="required"
+              placeholder="ID"
+              class="select"
+            />
+          </SJSearchField>
+        </div>
+        <div class="form-outline" style="margin-bottom: 20px;">
+          <i class="fa-solid fa-key" style="margin-right: 10px;" />
+          <SJSearchField label="Password">
+            <SJInput
+              id="name"
+              v-model="password"
+              name="Password"
+              type="password"
+              rules="required"
+              placeholder="Password"
+              class="select"
+            />
+          </SJSearchField>
+        </div>
+      </SJForm>
+      <div class="id-box">
+        <input type="checkbox" name="check" style="margin-right: 5px;">
+        <p>계정저장</p>
+        <p>비밀번호 찾기</p>
+      </div>
+      <button class="btn btn-blue-bg" type="button" @click="login">
+        Login
+      </button>
     </div>
   </section>
 </template>
@@ -102,27 +90,22 @@ export default {
 }
 </script>
 <style scoped>
-.gradient-custom-2 {
-  /* fallback for old browsers */
-  background: #fccb90;
-
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+section{
+  width: 100%;
+  height: 100vh;
+  background-image: url("~assets/images/login_bg.png");
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
-
-@media (min-width: 768px) {
-  .gradient-form {
-    height: 100vh !important;
-  }
-}
-@media (min-width: 769px) {
-  .gradient-custom-2 {
-    border-top-right-radius: .3rem;
-    border-bottom-right-radius: .3rem;
-  }
+img{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 160px;
+  height: 80px;
+  margin: 20px 0 0 30px;
 }
 
 </style>

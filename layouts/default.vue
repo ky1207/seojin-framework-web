@@ -120,128 +120,123 @@
           </div>
           <span class="bar" />
           <div class="right-contents">
-            <div class="top-form">
-              <div class="txt-wrap">
-                <h3><i class="fa-regular fa-folder-open" /> 대분류상세</h3>
-                <div class="btn-bar">
-                  <button class="btn-blue-bg">
-                    신규코드
-                  </button>
-                </div>
+            <div class="txt-wrap">
+              <h3><i class="fa-regular fa-folder-open" /> 대분류상세</h3>
+              <div class="btn-bar">
+                <button class="btn-blue-bg">
+                  신규코드
+                </button>
               </div>
-              <SJForm>
-                <SJFormRow>
-                  <SJFormField label="대분류코드">
-                    <SJInput
-                      id="form_large"
-                      name="대분류코드"
-                      type="text"
-                      rules="required"
-                    />
-                  </SJFormField>
-                  <SJFormField label="사용모듈">
-                    <SJInput
-                      id="form_large"
-                      name="사용모듈"
-                      type="text"
-                      rules="required"
-                    />
-                  </SJFormField>
-                </SJFormRow>
-                <SJFormRow>
-                  <SJFormField label="공통코드유형">
-                    <SJInput
-                      id="form_large"
-                      name="공통코드유형"
-                      type="text"
-                      rules="required"
-                    />
-                  </SJFormField>
-                  <SJFormField label="사용여부">
-                    <SJInput
-                      id="form_large"
-                      name="사용여부"
-                      type="text"
-                      rules="required"
-                    />
-                  </SJFormField>
-                  <SJFormField label="사용여부">
-                    <SJInput
-                      id="form_large"
-                      name="사용여부"
-                      type="text"
-                      rules="required"
-                    />
-                  </SJFormField>
-                </SJFormRow>
-                <SJFormRow>
-                  <SJFormField label="사용여부">
-                    <SJInput
-                      id="form_large"
-                      name="사용여부"
-                      type="text"
-                      rules="required"
-                    />
-                  </SJFormField>
-                </SJFormRow>
-                <SJFormRow>
-                  <SJFormField label="대분류명">
-                    <SJMultiInput
-                      id="form_large"
-                      name="대분류명"
-                      type="text"
-                      rules="required"
-                    />
-                  </SJFormField>
-                </SJFormRow>
-                <SJFormRow>
-                  <SJFormField label="비고">
-                    <SJTextarea
-                      id="form_large"
-                      name="비고"
-                      type="text"
-                      rules="required"
-                    />
-                  </SJFormField>
-                </SJFormRow>
-              </SJForm>
             </div>
-
-            <div class="right-grid">
-              <div class="txt-wrap">
-                <h3><i class="fa-regular fa-folder-open" /> 소분류</h3>
-                <div class="btn-bar">
-                  <button class="btn-white-bg">
-                    추가
-                  </button>
-                  <button class="btn-white-bg">
-                    제외
-                  </button>
-                </div>
+            <SJForm>
+              <SJFormRow>
+                <SJFormField label="대분류코드">
+                  <SJInput
+                    id="form_large"
+                    name="대분류코드"
+                    type="text"
+                    rules="required"
+                  />
+                </SJFormField>
+                <SJFormField label="사용모듈">
+                  <SJInput
+                    id="form_large"
+                    name="사용모듈"
+                    type="text"
+                    rules="required"
+                  />
+                </SJFormField>
+              </SJFormRow>
+              <SJFormRow>
+                <SJFormField label="공통코드유형">
+                  <SJInput
+                    id="form_large"
+                    name="공통코드유형"
+                    type="text"
+                    rules="required"
+                  />
+                </SJFormField>
+                <SJFormField label="사용여부">
+                  <SJInput
+                    id="form_large"
+                    name="사용여부"
+                    type="text"
+                    rules="required"
+                  />
+                </SJFormField>
+                <SJFormField label="사용여부">
+                  <SJInput
+                    id="form_large"
+                    name="사용여부"
+                    type="text"
+                    rules="required"
+                  />
+                </SJFormField>
+              </SJFormRow>
+              <SJFormRow>
+                <SJFormField label="사용여부">
+                  <SJInput
+                    id="form_large"
+                    name="사용여부"
+                    type="text"
+                    rules="required"
+                  />
+                </SJFormField>
+              </SJFormRow>
+              <SJFormRow>
+                <SJFormField label="대분류명">
+                  <SJMultiInput
+                    id="form_large"
+                    name="대분류명"
+                    type="text"
+                    rules="required"
+                  />
+                </SJFormField>
+              </SJFormRow>
+              <SJFormRow>
+                <SJFormField label="비고">
+                  <SJTextarea
+                    id="form_large"
+                    name="비고"
+                    type="text"
+                    rules="required"
+                  />
+                </SJFormField>
+              </SJFormRow>
+            </SJForm>
+            <div class="txt-wrap">
+              <h3><i class="fa-regular fa-folder-open" /> 소분류</h3>
+              <div class="btn-bar">
+                <button class="btn-white-bg">
+                  추가
+                </button>
+                <button class="btn-white-bg">
+                  제외
+                </button>
               </div>
-              <div class="grid d-flex">
-                <div><input type="checkbox" name="check"></div>
-                <div class="flex-fill text-center">
-                  대분류코드
-                </div>
-                <div class="flex-fill">
-                  소분류명
-                </div>
-                <div class="flex-fill">
-                  정렬
-                </div>
-                <div class="flex-fill">
-                  사용여부
-                </div>
-                <div class="flex-fill">
-                  비고
-                </div>
-                <div>Option</div>
-                <div>Option</div>
+            </div>
+            <div class="grid d-flex">
+              <div><input type="checkbox" name="check"></div>
+              <div class="flex-fill text-center">
+                대분류코드
               </div>
-              <div class="data-box">
-                <p>데이터가 존재하지 않습니다.</p>
+              <div class="flex-fill">
+                소분류명
               </div>
+              <div class="flex-fill">
+                정렬
+              </div>
+              <div class="flex-fill">
+                사용여부
+              </div>
+              <div class="flex-fill">
+                비고
+              </div>
+              <div>Option</div>
+              <div>Option</div>
+            </div>
+            <div class="data-box">
+              <p>데이터가 존재하지 않습니다.</p>
             </div>
           </div>
         </div>
