@@ -7,16 +7,18 @@
     <SJSearch v-if="!disabledSearch">
       <slot />
     </SJSearch>
-    <div class="contents" style="height: 30%; display:flex;flex-direction: column;">
-      <slot name="topTitle" />
-      <slot name="top" />
+    <div class="contents row" style="height: 30%;">
+      <div class="col-md-12" style="padding: 0">
+        <slot name="topTitle" />
+        <slot name="top" />
+      </div>
     </div>
-    <div class="contents">
-      <div ref="autoHeight" class="left-contents" autoHeight>
+    <div class="contents row">
+      <div ref="autoHeight" class="left-contents col-md-6" autoHeight>
         <slot name="leftTitle" />  <!--left 타이틀명 -->
         <slot name="left" />
       </div>
-      <div ref="topAutoHeight" class="right-contents" style="margin-left: 10px;">
+      <div ref="topAutoHeight" class="right-contents col-md-6">
         <slot name="rightTitle1" />
         <slot name="right1" />
         <slot name="rightTitle2" />

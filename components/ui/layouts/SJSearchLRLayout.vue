@@ -7,13 +7,13 @@
     <SJSearch v-if="!disabledSearch">
       <slot />
     </SJSearch>
-    <div class="contents">
-      <div ref="autoHeight" class="left-contents" autoHeight>
+    <div class="contents row" style="position: relative;">
+      <div ref="autoHeight" class="left-contents col-md-6" autoHeight>
         <slot name="leftTitle" />
         <slot name="left" />
       </div>
-      <span class="bar" />
-      <div ref="autoHeight2" class="right-contents" autoHeight>
+      <span class="bar px-1" />
+      <div ref="autoHeight2" class="right-contents col-md-6" autoHeight>
         <slot name="rightTitle" />
         <slot name="right" />
       </div>

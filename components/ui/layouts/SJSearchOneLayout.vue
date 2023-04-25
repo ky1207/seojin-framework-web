@@ -7,9 +7,11 @@
     <SJSearch v-if="!disabledSearch">
       <slot />
     </SJSearch><!-- End Page Title -->
-    <div ref="autoHeight" class="contents" style="flex-direction: column;" autoHeight>
-      <slot name="bodyTitle" />
-      <slot name="body" />
+    <div ref="autoHeight" class="contents row" style="flex-direction: column;" autoHeight>
+      <div class="col-md-12 p-0">
+        <slot name="bodyTitle" />
+        <slot name="body" />
+      </div>
     </div>
   </div>
 </template>

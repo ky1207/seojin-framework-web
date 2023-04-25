@@ -1,7 +1,7 @@
 <template>
   <fieldset>
     <legend>{{ $props.label }}<i class="fa-solid fa-asterisk fa-2xs" /></legend>
-    <div>
+    <div class="field-area">
       <slot />
     </div>
   </fieldset>

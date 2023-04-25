@@ -4,9 +4,11 @@
       <SJNavbar v-if="!disabledNavigator" />
       <slot name="master-btn" />
     </div>
-    <div ref="autoHeight" class="contents" style="flex-direction: column;" autoHeight>
-      <slot name="title" />
-      <slot />
+    <div ref="autoHeight" class="contents row" style="flex-direction: column;" autoHeight>
+      <div class="col-md-12 p-0">
+        <slot name="title" />
+        <slot />
+      </div>
     </div>
   </div>
 </template>

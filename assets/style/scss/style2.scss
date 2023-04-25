@@ -245,7 +245,6 @@ section {
   height: 100%;
   background: #fff;
   display: flex; flex-direction: column;
-  padding-right:10px ;
 }
 
 .home-wrap {
@@ -437,12 +436,28 @@ footer {
   }
 }
 
+//bar
+.bar {
+  width: 5px;
+  height: 100%;
+  border-radius: 10px;
+  background: #007DB6;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+//.bar::before {
+//  content: "";
+//  flex-grow: 1;
+//}
+
 //공통 contents
 .contents {
   height: 100%;
   margin: 0 20px;
   display: flex;
-
+  justify-content: space-between;
 }
 
 //공통 타이틀
@@ -531,8 +546,8 @@ form {
       width: 100%;
       display: flex;
       margin-left: 10px;
-
-      div {
+      textarea,
+      .field-area {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -610,15 +625,6 @@ form {
   }
 }
 
-//bar
-.bar {
-  display: block;
-  width: 10px;
-  border-radius: 10px;
-  background: #007DB6;
-  color: #007DB6;
-  margin: 0 10px;
-}
 
 //pagination
 .pagination {
@@ -641,10 +647,11 @@ form {
 
 //left contents
 .left-contents {
-  width: 50%;
   display: flex;
   flex-shrink: 0;
   flex-direction: column;
+  position: relative;
+  padding-left: 0;
 
   //.grid-wrap {
   //  height: 100%;
@@ -672,9 +679,10 @@ form {
 //right contents
 .right-contents {
   //font-weight: bold;
-  width: 50%;
   display: flex;
   flex-direction: column;
+  padding-right: 0;
+
 
   //.right-grid {
   //  height: 100%;
@@ -752,7 +760,7 @@ form {
   .one-contents {
     width: 100%;
     height: 200px;
-    padding:0 10px;
+    padding:0;
 
     .txt-wrap {
       margin: 0 10px ;
@@ -841,6 +849,8 @@ form {
       min-width: 250px;
     }
   }
+  .bar{
+    right: 0;}
 }
 
 
@@ -848,4 +858,6 @@ form {
   .left-contents {
     width: 100%;
   }
+  .bar{
+    display: none;}
 }
