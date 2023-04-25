@@ -244,9 +244,13 @@ export default {
 </script>
 <style>
 /*** tui-grid ***/
-.tui-grid-btn-sorting , .tui-grid-btn-filter {
- filter: brightness(0) invert(1);
+/*.tui-grid-btn-sorting , .tui-grid-btn-filter {*/
+/*  filter: brightness(0) invert(1);*/
+/*}*/
+.tui-grid-content-area {
+  border-top: solid 2px #6B758E !important;
 }
+
 .SJGrid_total {
   border-bottom: 1px solid black;
   text-align: right;
