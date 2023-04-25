@@ -18,11 +18,6 @@
     </div>
   </div>
 </template>
-
-Diff
-Copy
-Insert
-New
 <script>
 export default {
   layout: 'empty',
