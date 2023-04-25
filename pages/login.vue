@@ -107,5 +107,8 @@ img{
   height: 80px;
   margin: 20px 0 0 30px;
 }
-
+.btn:hover{
+  background: #0365A9;
+  color: #fff;
+}
 </style>
