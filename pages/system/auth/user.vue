@@ -4,49 +4,37 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <div class="search-area">
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00059') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="search_department"
-            v-model="search.deptId"
-            :name="$t('page.system.00059')"
-            :options="common.DEPARTMENT"
-            disabled-validation
-          />
-        </div>
-        <div class="col-md-1 search-label">
-          ID
-        </div>
-        <div class="col-md-1">
-          <SJInput id="search_loginId" v-model="search.loginId" name="ID" type="text" disabled-validation />
-        </div>
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00060') }}
-        </div>
-        <div class="col-md-1">
-          <SJInput id="search_userName" v-model="search.userName" :name="$t('page.system.00060')" type="text" disabled-validation />
-        </div>
-      </div>
+      <SJSearchField :label="$t('page.system.00059')">
+        <SJSelect
+          id="search_department"
+          v-model="search.deptId"
+          :name="$t('page.system.00059')"
+          :options="common.DEPARTMENT"
+          disabled-validation
+        />
+      </SJSearchField>
+      <SJSearchField label="ID">
+        <SJInput id="search_loginId" v-model="search.loginId" name="ID" type="text" disabled-validation />
+      </SJSearchField>
+      <SJSearchField :label="$t('page.system.00060')">
+        <SJInput id="search_userName" v-model="search.userName" :name="$t('page.system.00060')" type="text" disabled-validation />
+      </SJSearchField>
     </template>
-
     <template #leftTitle>
-      {{ $t('page.system.00061') }}
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00061') }}</h3>
+      </div>
     </template>
     <template #left>
       <SJGrid ref="user" v-model="user.data" :columns="user.columns" @click="onMasterClick" />
     </template>
 
     <template #rightTitle>
-      <div class="row align-items-center">
-        <div class="col">
-          {{ $t('page.system.00062') }}
-        </div>
-        <div class="col-auto">
-          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="createUser">
-            {{ $t('page.system.00063') }} <i class="bi bi-pencil-fill" />
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" />   {{ $t('page.system.00062') }}</h3>
+        <div class="btn-bar">
+          <button class="btn-blue-bg" @click="createUser">
+            {{ $t('page.system.00063') }}
           </button>
         </div>
       </div>

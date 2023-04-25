@@ -4,40 +4,34 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <div class="search-area">
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00104') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="company"
-            v-model="search.bsnsId"
-            name="$t('page.system.00104')"
-            :options="common.BUSINESS"
-            disabled-validation
-            disabled-first-message
-          />
-        </div>
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00013') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="menuGroup"
-            v-model="search.menuGroupCode"
-            name="$t('page.system.00013')"
-            :options="common.MENU_GROUP"
-            item-text="val"
-            item-value="subCode"
-            disabled-validation
-            disabled-first-message
-          />
-        </div>
-      </div>
+      <SJSearchField :label="$t('page.system.00104')">
+        <SJSelect
+          id="company"
+          v-model="search.bsnsId"
+          name="$t('page.system.00104')"
+          :options="common.BUSINESS"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
+      <SJSearchField :label="$t('page.system.00013')">
+        <SJSelect
+          id="menuGroup"
+          v-model="search.menuGroupCode"
+          name="$t('page.system.00013')"
+          :options="common.MENU_GROUP"
+          item-text="val"
+          item-value="subCode"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
     </template>
 
     <template #leftTitle>
-      {{ $t('page.system.00014') }}
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00014') }}</h3>
+      </div>
     </template>
 
     <template #left>
@@ -52,7 +46,9 @@
     </template>
 
     <template #rightTitle>
-      {{ $t('page.system.00015') }}
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00015') }}</h3>
+      </div>
     </template>
     <template #right>
       <SJGrid

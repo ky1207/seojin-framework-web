@@ -4,49 +4,36 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <div class="search-area">
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00104') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="search_company"
-            v-model="search.bsnsId"
-            :name="$t('page.system.00104')"
-            :options="common.BUSINESS"
-            disabled-validation
-            disabled-first-message
-          />
-        </div>
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00059') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="search_department"
-            v-model="search.deptId"
-            :name="$t('page.system.00059')"
-            :options="common.DEPARTMENT"
-            disabled-validation
-          />
-        </div>
-        <div class="col-md-1 search-label">
-          ID
-        </div>
-        <div class="col-md-1">
-          <SJInput id="loginId" v-model="search.loginId" name="ID" type="text" disabled-validation />
-        </div>
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00060') }}
-        </div>
-        <div class="col-md-1">
-          <SJInput id="userName" v-model="search.userName" :name="$t('page.system.00060')" type="text" disabled-validation />
-        </div>
-      </div>
+      <SJSearchField :label="$t('page.system.00104')">
+        <SJSelect
+          id="search_company"
+          v-model="search.bsnsId"
+          :name="$t('page.system.00104')"
+          :options="common.BUSINESS"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
+      <SJSearchField :label="$t('page.system.00059')">
+        <SJSelect
+          id="search_department"
+          v-model="search.deptId"
+          :name="$t('page.system.00059')"
+          :options="common.DEPARTMENT"
+          disabled-validation
+        />
+      </SJSearchField>
+      <SJSearchField label="ID">
+        <SJInput id="loginId" v-model="search.loginId" name="ID" type="text" disabled-validation />
+      </SJSearchField>
+      <SJSearchField :label="$t('page.system.00060')">
+        <SJInput id="userName" v-model="search.userName" :name="$t('page.system.00060')" type="text" disabled-validation />
+      </SJSearchField>
     </template>
-
     <template #bodyTitle>
-      {{ $t('page.system.00061') }}
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00061') }}</h3>
+      </div>
     </template>
     <template #body>
       <SJGrid ref="user" v-model="user.data" :columns="user.columns" />

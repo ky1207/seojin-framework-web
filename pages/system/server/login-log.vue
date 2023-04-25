@@ -4,23 +4,20 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <div class="search-area">
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00035') }}
-        </div>
-        <div class="col-md-1">
-          <SJInput
-            id="authName"
-            v-model="search.userName"
-            :name="$t('page.system.00035')"
-            type="text"
-            disabled-validation
-          />
-        </div>
-      </div>
+      <SJSearchField :label="$t('page.system.00035')">
+        <SJInput
+          id="authName"
+          v-model="search.userName"
+          :name="$t('page.system.00035')"
+          type="text"
+          disabled-validation
+        />
+      </SJSearchField>
     </template>
     <template #bodyTitle>
-      {{ $t('page.system.00037') }}
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00037') }}</h3>
+      </div>
     </template>
     <template #body>
       <SJGrid

@@ -4,40 +4,47 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <div class="search-area">
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00091') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="search_appType"
-            v-model="search.appType"
-            :name="$t('page.system.00091')"
-            :options="common.UPDATE_TYPE"
-            item-text="val"
-            item-value="subCode"
-            disabled-validation
-            disabled-first-message
-          />
-        </div>
-      </div>
+      <SJSearchField :label="$t('page.system.00091')">
+        <SJSelect
+          id="search_appType"
+          v-model="search.appType"
+          :name="$t('page.system.00091')"
+          :options="common.UPDATE_TYPE"
+          item-text="val"
+          item-value="subCode"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
+      <SJSearchField :label="$t('page.system.00091')">
+        <SJSelect
+          id="search_appType"
+          v-model="search.appType"
+          :name="$t('page.system.00091')"
+          :options="common.UPDATE_TYPE"
+          item-text="val"
+          item-value="subCode"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
     </template>
 
     <template #leftTitle>
-      {{ $t('page.system.00095') }}
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00095') }}</h3>
+      </div>
     </template>
     <template #left>
       <SJGrid ref="appUpdate" v-model="appUpdate.data" :columns="appUpdate.columns" @click="onMasterClick" />
     </template>
 
     <template #rightTitle>
-      <div class="row align-items-center">
-        <div class="col">
-          {{ $t('page.system.00102') }}
-        </div>
-        <div class="col-auto">
-          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="createAppUpdate">
-            {{ $t('page.system.00096') }} <i class="bi bi-pencil-fill" />
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" />   {{ $t('page.system.00102') }}</h3>
+        <div class="btn-bar">
+          <button class="btn-blue-bg" @click="createAppUpdate">
+            {{ $t('page.system.00096') }}
           </button>
         </div>
       </div>

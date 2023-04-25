@@ -4,72 +4,58 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <div class="search-area">
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00104') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="business"
-            v-model="search.bsnsId"
-            :name="$t('page.system.00104')"
-            :options="common.BUSINESS"
-            disabled-validation
-            disabled-first-message
-          />
-        </div>
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00077') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="menuGroupId"
-            v-model="search.menuGroupCode"
-            :name="$t('page.system.00077')"
-            :options="common.MENU_GROUP"
-            item-text="val"
-            item-value="subCode"
-            disabled-validation
-            disabled-first-message
-          />
-        </div>
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00002') }}
-        </div>
-        <div class="col-md-1">
-          <SJInput
-            id="authCode"
-            v-model="search.authGroupCode"
-            :name="$t('page.system.00002')"
-            type="text"
-            disabled-validation
-          />
-        </div>
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00003') }}
-        </div>
-        <div class="col-md-1">
-          <SJInput
-            id="authName"
-            v-model="search.authName"
-            :name="$t('page.system.00003')"
-            type="text"
-            disabled-validation
-          />
-        </div>
-      </div>
+      <SJSearchField :label="$t('page.system.00104')">
+        <SJSelect
+          id="business"
+          v-model="search.bsnsId"
+          :name="$t('page.system.00104')"
+          :options="common.BUSINESS"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
+      <SJSearchField :label="$t('page.system.00077')">
+        <SJSelect
+          id="menuGroupId"
+          v-model="search.menuGroupCode"
+          :name="$t('page.system.00077')"
+          :options="common.MENU_GROUP"
+          item-text="val"
+          item-value="subCode"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
+      <SJSearchField :label="$t('page.system.00002')">
+        <SJInput
+          id="authCode"
+          v-model="search.authGroupCode"
+          :name="$t('page.system.00002')"
+          type="text"
+          disabled-validation
+        />
+      </SJSearchField>
+      <SJSearchField :label="$t('page.system.00003')">
+        <SJInput
+          id="authName"
+          v-model="search.authName"
+          :name="$t('page.system.00003')"
+          type="text"
+          disabled-validation
+        />
+      </SJSearchField>
     </template>
     <template #leftTitle>
-      {{ $t('page.system.00005') }}
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00005') }}</h3>
+      </div>
     </template>
     <template #left>
       <SJGrid ref="authGrid" v-model="authGrid.data" :columns="authGrid.columns" @click="onMasterClick" />
     </template>
     <template #rightTitle>
-      <div class="row align-items-center">
-        <div class="col">
-          {{ $t('page.system.00076') }}
-        </div>
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00076') }}</h3>
       </div>
     </template>
     <template #right>

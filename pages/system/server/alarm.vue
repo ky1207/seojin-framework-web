@@ -4,52 +4,40 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <div class="search-area">
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00104') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="company"
-            v-model="search.bsnsId"
-            :name="$t('page.system.00104')"
-            :options="common.BUSINESS"
-            disabled-validation
-            disabled-first-message
-          />
-        </div>
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00083') }}
-        </div>
-        <div class="col-md-1">
-          <SJDatePicker
-            id="sentStartDtm"
-            v-model="search.sentStartDtm"
-            :name="$t('page.system.00083')"
-            show-current="true"
-            disabled-validation
-          />
-        </div>
+      <SJSearchField :label="$t('page.system.00104')">
+        <SJSelect
+          id="company"
+          v-model="search.bsnsId"
+          :name="$t('page.system.00104')"
+          :options="common.BUSINESS"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
+      <SJSearchField :label="$t('page.system.00083')">
+        <SJDatePicker
+          id="sentStartDtm"
+          v-model="search.sentStartDtm"
+          :name="$t('page.system.00083')"
+          show-current="true"
+          disabled-validation
+        />
         <div>
           ~
         </div>
-        <div class="col-md-1">
-          <SJDatePicker
-            id="sentEndDtm"
-            v-model="search.sentEndDtm"
-            :name="$t('page.system.00083')"
-            disabled-validation
-          />
-        </div>
-      </div>
+        <SJDatePicker
+          id="sentEndDtm"
+          v-model="search.sentEndDtm"
+          :name="$t('page.system.00083')"
+          disabled-validation
+        />
+      </SJSearchField>
     </template>
     <template #bodyTitle>
-      <div class="row align-items-center">
-        <div class="col">
-          {{ $t('page.system.00084') }}
-        </div>
-        <div class="col-auto">
-          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="sendAlarm">
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" />   {{ $t('page.system.00084') }}</h3>
+        <div class="btn-bar">
+          <button class="btn-blue-bg" @click="sendAlarm">
             {{ $t('page.system.00085') }}
           </button>
         </div>

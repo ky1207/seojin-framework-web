@@ -4,45 +4,37 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <div class="search-area">
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00104') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="company"
-            v-model="search.bsnsId"
-            :name="$t('page.system.00104')"
-            :options="common.BUSINESS"
-            disabled-validation
-            disabled-first-message
-          />
-        </div>
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00004') }}
-        </div>
-        <div class="col-md-1">
-          <SJSelect
-            id="useYN"
-            v-model="search.useFlag"
-            :name="$t('page.system.00004')"
-            :options="common.USE_YN"
-            disabled-validation
-          />
-        </div>
-      </div>
+      <SJSearchField :label="$t('page.system.00104')">
+        <SJSelect
+          id="company"
+          v-model="search.bsnsId"
+          :name="$t('page.system.00104')"
+          :options="common.BUSINESS"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
+      <SJSearchField :label="$t('page.system.00004')">
+        <SJSelect
+          id="useYN"
+          v-model="search.useFlag"
+          :name="$t('page.system.00004')"
+          :options="common.USE_YN"
+          disabled-validation
+        />
+      </SJSearchField>
     </template>
     <template #leftTitle>
-      {{ $t('page.system.00078') }}
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00078') }}</h3>
+      </div>
     </template>
     <template #left>
       <SJGrid ref="alarmGrid" v-model="alarmGrid.data" :columns="alarmGrid.columns" @click="onMasterClick" />
     </template>
     <template #rightTitle>
-      <div class="row align-items-center">
-        <div class="col">
-          {{ $t('page.system.00079') }}
-        </div>
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00079') }}</h3>
       </div>
     </template>
     <template #right>
