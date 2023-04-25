@@ -7,9 +7,8 @@
     <SJSearch v-if="!disabledSearch">
       <slot />
     </SJSearch><!-- End Page Title -->
-    <div class="contents" style="flex-direction: column;">
+    <div ref="autoHeight" class="contents" style="flex-direction: column;" autoHeight>
       <slot name="bodyTitle" />
-
       <slot name="body" />
     </div>
   </div>
@@ -43,15 +42,15 @@ export default {
   },
   methods: {
     refresh () {
-    //   const height = window.innerHeight
-    //   if (this.$refs.autoHeight.closest('.modal-dialog')) {
-    //     // height = window.innerHeight / 2
-    //     return
-    //   }
-    //   const absoluteTop = this.$refs.autoHeight.getBoundingClientRect().top
-    //   const absoluteBottom = this.$refs.autoHeight.getBoundingClientRect().bottom
-    //
-    //   this.$refs.autoHeight.style.height = (height - absoluteBottom + (absoluteBottom - absoluteTop)) + 'px'
+      const height = window.innerHeight
+      if (this.$refs.autoHeight.closest('.modal-dialog')) {
+        // height = window.innerHeight / 2
+        return
+      }
+      const absoluteTop = this.$refs.autoHeight.getBoundingClientRect().top
+      // const absoluteBottom = this.$refs.autoHeight.getBoundingClientRect().bottom
+
+      this.$refs.autoHeight.style.height = (height - absoluteTop - 45) + 'px'
     }
   }
 }

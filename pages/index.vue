@@ -1,13 +1,13 @@
 
 <template>
-  <SJOneLayout>
+  <SJSearchOneLayout disabled-search>
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
     </template>
-    <template #title>
+    <template #bodyTitle>
       게시판
     </template>
-    <template #default>
+    <template #body>
       <SJGrid
         ref="grid"
         v-model="gridProps.data"
@@ -28,7 +28,7 @@
       <SampleInsert ref="exampleModal" /> {{ $t('sample') }}
       <SampleWrite ref="writeModal" />
     </template>
-  </SJOneLayout>
+  </SJSearchOneLayout>
 </template>
 
 <script>

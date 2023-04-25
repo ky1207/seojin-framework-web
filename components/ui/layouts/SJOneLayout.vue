@@ -1,22 +1,12 @@
 <template>
   <div>
-    <div class="row pagetitle mt-1">
-      <div v-if="!disabledNavigator" class="col">
-        <SJNavbar />
-      </div>
-      <div class="col-auto">
-        <slot name="master-btn" />
-      </div>
-    </div><!-- End Page Title -->
-    <div ref="autoHeight" autoHeight class="card">
-      <div class="card-body">
-        <h5 class="card-title">
-          <slot name="title" />
-        </h5>
-        <div>
-          <slot />
-        </div>
-      </div>
+    <div class="navi-wrap">
+      <SJNavbar v-if="!disabledNavigator" />
+      <slot name="master-btn" />
+    </div>
+    <div ref="autoHeight" class="contents" style="flex-direction: column;" autoHeight>
+      <slot name="title" />
+      <slot />
     </div>
   </div>
 </template>
@@ -50,9 +40,8 @@ export default {
         return
       }
       const absoluteTop = this.$refs.autoHeight.getBoundingClientRect().top
-      const absoluteBottom = this.$refs.autoHeight.getBoundingClientRect().bottom
 
-      this.$refs.autoHeight.style.height = (height - absoluteBottom + (absoluteBottom - absoluteTop)) + 'px'
+      this.$refs.autoHeight.style.height = (height - absoluteTop - 45) + 'px'
     }
   }
 }
