@@ -134,13 +134,11 @@
           </SJFormField>
         </SJFormRow>
       </SJForm>
-      <h5 class="card-title mt-3">
-        <div class="row align-items-center">
-          <div class="col">
-            {{ $t('page.system.00032') }}
-          </div>
-        </div>
-      </h5>
+      <div class="txt-wrap">
+        <h3>
+          <i class="fa-regular fa-folder-open" />  {{ $t('page.system.00032') }}
+        </h3>
+      </div>
       <SJGrid
         ref="authGrid"
         v-model="auth.data"
@@ -316,6 +314,7 @@ export default {
         this.$notify.warning(this.$t('message.00015')) // 메뉴를 입력중입니다.
         return
       }
+
       this.isUpdate = false
       this.auth.data = {}
 
