@@ -201,31 +201,30 @@ export default {
   },
   methods: {
     async refresh () {
-      // if (this.$refs.grid.$el.closest('.modal-dialog')) {
-      //   return
-      // }
-      // if (this.$refs.grid.$el.closest('[autoHeight]')) {
-      //   const autoHeightArea = this.$refs.grid.$el.closest('[autoHeight]').getBoundingClientRect()
-      //   const parent = this.$refs.grid.$el.parentElement.parentElement.closest('[autoHeight]').getBoundingClientRect()
-      //   const grid = this.$refs.grid.$el.getBoundingClientRect()
-      //
-      //   let height = grid.height + (autoHeightArea.bottom - parent.bottom - 30)
-      //   console.log('height=' + height)
-      //
-      //   if (autoHeightArea.top === parent.top) {
-      //     height = autoHeightArea.bottom - grid.bottom
-      //   }
-      //   if (this.$props.pageable) {
-      //     height -= 50
-      //   }
-      //   this.$refs.grid.invoke('setBodyHeight', height)
-      // }
-      // const _this = this
-      // await new Promise((resolve) => {
-      //   setTimeout(() => {
-      //     _this.invoke('customRefresh')
-      //   }, 300)
-      // })
+      if (this.$refs.grid.$el.closest('.modal-dialog')) {
+        return
+      }
+      if (this.$refs.grid.$el.closest('[autoHeight]')) {
+        const autoHeightArea = this.$refs.grid.$el.closest('[autoHeight]').getBoundingClientRect()
+        const parent = this.$refs.grid.$el.parentElement.closest('div').getBoundingClientRect()
+        const grid = this.$refs.grid.$el.getBoundingClientRect()
+
+        let height = grid.height + (autoHeightArea.bottom - parent.bottom - 30)
+
+        if (autoHeightArea.top === parent.top) {
+          height = autoHeightArea.bottom - grid.bottom
+        }
+        if (this.$props.pageable) {
+          height -= 50
+        }
+        this.$refs.grid.invoke('setBodyHeight', height)
+      }
+      const _this = this
+      await new Promise((resolve) => {
+        setTimeout(() => {
+          _this.invoke('customRefresh')
+        }, 300)
+      })
     },
     moveToGridPage (e) {
       this.page = e.page

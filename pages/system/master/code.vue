@@ -107,7 +107,7 @@
           </SJFormField>
         </SJFormRow>
       </SJForm>
-      <div class="txt-wrap">
+      <div v-if="isUpdate" class="txt-wrap">
         <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00025') }}</h3>
         <div class="btn-bar">
           <button class="btn-white-bg" @click="appendRow">
@@ -120,6 +120,7 @@
       </div>
 
       <SJGrid
+        v-if="isUpdate"
         ref="detail"
         v-model="detail.data"
         :columns="detail.columns"

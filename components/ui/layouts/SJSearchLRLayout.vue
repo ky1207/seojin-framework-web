@@ -7,15 +7,13 @@
     <SJSearch v-if="!disabledSearch">
       <slot />
     </SJSearch>
-    <div ref="autoHeight" class="contents" autoHeight>
-      <div class="left-contents">
+    <div class="contents">
+      <div ref="autoHeight" class="left-contents" autoHeight>
         <slot name="leftTitle" />
-        <!-- left -->
         <slot name="left" />
-        <!-- End left-->
       </div>
       <span class="bar" />
-      <div class="right-contents">
+      <div ref="autoHeight2" class="right-contents" autoHeight>
         <slot name="rightTitle" />
         <slot name="right" />
       </div>
@@ -57,10 +55,10 @@ export default {
         return
       }
       const absoluteTop = this.$refs.autoHeight.getBoundingClientRect().top
-      const absoluteBottom = this.$refs.autoHeight.getBoundingClientRect().bottom
+      // const absoluteBottom = this.$refs.autoHeight.getBoundingClientRect().bottom
 
-      this.$refs.autoHeight.style.height = (height - absoluteBottom + (absoluteBottom - absoluteTop)) + 'px'
-      // this.$refs.autoHeight2.style.height = this.$refs.autoHeight.style.height
+      this.$refs.autoHeight.style.height = (height - absoluteTop - 45) + 'px'
+      this.$refs.autoHeight2.style.height = this.$refs.autoHeight.style.height
     }
   }
 
