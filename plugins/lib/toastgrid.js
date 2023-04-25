@@ -18,11 +18,11 @@ TuiGrid.applyTheme('striped',
         background: '#ebf9fa'
       },
       header: {
-        background: '#3f4d71',
-        text: '#FFF'
+        background: '#F7F7F7',
+        text: '#6B758E'
       },
       rowHeader: {
-        background: '',
+        background: '#F7F7F7',
         text: ''
       }
     }

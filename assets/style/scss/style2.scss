@@ -468,42 +468,42 @@ footer {
 }
 
 //공통 grid
-.grid {
-  height: 33px;
-  border-top: solid 2px #6B758E;
-  font-size: 11px;
-  background: #F7F7F7;
-  display: flex;
-  font-weight: bold;
-
-  div {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 5px;
-    border: solid 1px #DFE3EC;
-  }
-}
-
-.data-box {
-  width: 100%;
-  height: 100%;
-  color: #999;
-  font-size: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  p {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
+//.grid {
+//  height: 33px;
+//  border-top: solid 2px #6B758E;
+//  font-size: 11px;
+//  background: #F7F7F7;
+//  display: flex;
+//  font-weight: bold;
+//
+//  div {
+//    height: 100%;
+//    display: flex;
+//    align-items: center;
+//    justify-content: center;
+//    padding: 0 5px;
+//    border: solid 1px #DFE3EC;
+//  }
+//}
+//
+//.data-box {
+//  width: 100%;
+//  height: 100%;
+//  color: #999;
+//  font-size: 10px;
+//  display: flex;
+//  flex-direction: column;
+//  justify-content: center;
+//  align-items: center;
+//
+//  p {
+//    width: 100%;
+//    height: 100%;
+//    display: flex;
+//    justify-content: center;
+//    align-items: center;
+//  }
+//}
 
 //form
 form {
@@ -550,8 +550,8 @@ form {
   }
 
   legend {
-    width: 100px;
-    min-width: 100px;
+    width: 110px;
+    min-width: 110px;
     font-size: 11px;
     align-items: center;
     display: flex;
@@ -647,15 +647,15 @@ form {
   flex-shrink: 0;
   flex-direction: column;
 
-  .grid-wrap {
-    height: 100%;
-    position: relative;
-
-    .grid {
-      min-width: 70px;
-      overflow: hidden;
-    }
-  }
+  //.grid-wrap {
+  //  height: 100%;
+  //  position: relative;
+  //
+  //  .grid {
+  //    min-width: 70px;
+  //    overflow: hidden;
+  //  }
+ // }
 
   .number {
     width: 100%;
@@ -673,17 +673,15 @@ form {
 //right contents
 .right-contents {
   //font-weight: bold;
-  width: 100%;
   display: flex;
-  flex-shrink: 1;
   flex-direction: column;
 
-  .right-grid {
-    height: 100%;
-    position: relative;
-    border-bottom: solid 1px #DFE3EC;
-    margin-bottom: 10px;
-  }
+  //.right-grid {
+  //  height: 100%;
+  //  position: relative;
+  //  border-bottom: solid 1px #DFE3EC;
+  //  margin-bottom: 10px;
+  //}
 }
 
 
@@ -691,17 +689,17 @@ form {
 .one-contents {
   width: 100%;
 
-  .grid-wrap {
-    height: 90%;
-    width: 100%;
-    padding: 0 10px;
-
-    .data-box {
-      width: 100%;
-      height: 90%;
-      border-bottom: solid 1px #DFE2E9;
-    }
-  }
+  //.grid-wrap {
+  //  height: 90%;
+  //  width: 100%;
+  //  padding: 0 10px;
+  //
+  //  .data-box {
+  //    width: 100%;
+  //    height: 90%;
+  //    border-bottom: solid 1px #DFE2E9;
+  //  }
+  //}
 }
 
 //2분할 contents (서치 없음)
@@ -770,19 +768,19 @@ form {
     height: 60%;
     margin-right: 5px;
 
-    .grid-wrap {
-      height: 100%;
-      border-bottom: solid 1px #DFE2E9;
-
-      .data-box {
-        height: 100%;
-        position: relative;
-      }
-      .page-navigation {
-        position: absolute;
-        bottom: -50px;
-      }
-    }
+    //.grid-wrap {
+    //  height: 100%;
+    //  border-bottom: solid 1px #DFE2E9;
+    //
+    //  .data-box {
+    //    height: 100%;
+    //    position: relative;
+    //  }
+    //  .page-navigation {
+    //    position: absolute;
+    //    bottom: -50px;
+    //  }
+    //}
   }
 
   .right-contents {
@@ -795,10 +793,10 @@ form {
       margin-bottom: 3px;
     }
 
-    .grid-wrap {
-      height: 200px;
-      border-bottom: solid 1px #DFE2E9;
-    }
+    //.grid-wrap {
+    //  height: 200px;
+    //  border-bottom: solid 1px #DFE2E9;
+    //}
   }
 }
 
@@ -832,11 +830,11 @@ form {
       }
     }
 
-    .grid {
-      div {
-        min-width: 75px;
-      }
-    }
+    //.grid {
+    //  div {
+    //    min-width: 75px;
+    //  }
+    //}
   }
   .sj-form-field {
     fieldset {
