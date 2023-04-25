@@ -16,17 +16,19 @@
         pageable
         @moveToGridPage="page"
       />
-      <button type="button" class="btn btn-primary" @click="open()">
-        Launch demo modal
-      </button>
-      <button type="button" class="btn btn-primary" @click="write()">
-        쓰기
-      </button>
-      <div @click="doDownload(43)">
-        파일 다운로드
+      <div>
+        <button type="button" class="btn btn-primary" style="margin-right: 5px;" @click="open()">
+          Launch demo modal
+        </button>
+        <button type="button" class="btn btn-primary" @click="write()">
+          쓰기
+        </button>
+        <div @click="doDownload(43)">
+          파일 다운로드
+        </div>
+        <SampleInsert ref="exampleModal" /> {{ $t('sample') }}
+        <SampleWrite ref="writeModal" />
       </div>
-      <SampleInsert ref="exampleModal" /> {{ $t('sample') }}
-      <SampleWrite ref="writeModal" />
     </template>
   </SJSearchOneLayout>
 </template>
