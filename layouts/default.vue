@@ -13,13 +13,13 @@
           <nav class="header-nav">
             <ul class="header-nav-list d-flex">
               <li class="header-nav-item position-relative">
-                <i class="fa-solid fa-user " />
+                <a href="#"><i class="fa-solid fa-user " @click="alarmModalOpen" /></a>
                 <p class="position-absolute">
                   99
                 </p>
               </li>
               <li class="header-nav-item">
-                <i class="fa-solid fa-power-off" />
+                <a href="#"><i class="fa-solid fa-power-off" @click="logout" /></a>
               </li>
               <li class="header-nav-item">
                 <i class="fa-solid fa-bars" />
