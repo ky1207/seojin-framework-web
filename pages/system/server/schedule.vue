@@ -6,23 +6,16 @@
       <SystemScheduleManage ref="manage" />
     </template>
     <template #default>
-      <div class="search-area">
-        <div class="col-md-1 search-label">
-          JOB Name
-        </div>
-        <div class="col-md-2">
-          <SJInput id="search" v-model="search.jobName" name="배치명" type="text" disabled-validation />
-        </div>
-      </div>
+      <SJSearchField label="JOB Name">
+        <SJInput id="search" v-model="search.jobName" name="배치명" type="text" disabled-validation />
+      </SJSearchField>
     </template>
     <template #topTitle>
-      <div class="row search-label">
-        <div class="col">
-          Schedule
-        </div>
-        <div class="col-auto">
-          <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="add">
-            {{ $t('page.system.00026') }} <i class="bi bi-file-plus" />
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" /> Schedule</h3>
+        <div class="btn-bar">
+          <button class="btn-white-bg" @click="add">
+            {{ $t('page.system.00026') }}
           </button>
         </div>
       </div>
@@ -31,7 +24,9 @@
       <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" @click="scheduleClick" />
     </template>
     <template #leftTitle>
-      Schedule Log
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" />       Schedule Log</h3>
+      </div>
     </template>
     <template #left>
       <SJGrid
@@ -45,13 +40,17 @@
       />
     </template>
     <template #rightTitle1>
-      Batch Job Log
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" /> Batch Job Log</h3>
+      </div>
     </template>
     <template #right1>
       <SJGrid ref="batchJobLogGrid" v-model="batchJobLogGrid.data" :columns="batchJobLogGrid.columns" :options="batchJobLogGrid.options" @click="batchJobLogGridClick" />
     </template>
     <template #rightTitle2>
-      Batch Job Step Log
+      <div class="txt-wrap">
+        <h3><i class="fa-regular fa-folder-open" />  Batch Job Step Log</h3>
+      </div>
     </template>
     <template #right2>
       <SJGrid ref="batchStepLogGrid" v-model="batchStepLogGrid.data" :columns="batchStepLogGrid.columns" :options="batchStepLogGrid.options" />

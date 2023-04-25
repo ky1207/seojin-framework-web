@@ -1,77 +1,27 @@
 <template>
   <div>
-    <div class="row pagetitle mt-1">
-      <div v-if="!disabledNavigator" class="col">
-        <SJNavbar />
-      </div>
-      <div class="col-auto">
-        <slot name="master-btn" />
-      </div>
+    <div class="navi-wrap">
+      <SJNavbar v-if="!disabledNavigator" />
+      <slot name="master-btn" />
     </div><!-- End Page Title -->
-    <div class="row">
-      <div v-if="!disabledSearch" class="SJSearchTLRLayout_full">
-        <div class="card">
-          <div class="card-body">
-            <slot />
-          </div>
-        </div>
+    <SJSearch v-if="!disabledSearch">
+      <slot />
+    </SJSearch>
+    <div class="contents" style="height: 30%; display:flex;flex-direction: column;">
+      <slot name="topTitle" />
+      <slot name="top" />
+    </div>
+    <div class="contents">
+      <div ref="autoHeight" class="left-contents" autoHeight>
+        <slot name="leftTitle" />  <!--left 타이틀명 -->
+        <slot name="left" />
       </div>
-      <div class="SJSearchTLRLayout_full">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">
-              <slot name="topTitle" />  <!--left 타이틀명 -->
-            </h5>
-            <div>
-              <slot name="top" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="SJSearchTLRLayout_half">
-        <div ref="autoHeight" class="card" autoHeight>
-          <div class="card-body">
-            <h5 class="card-title">
-              <slot name="leftTitle" />  <!--left 타이틀명 -->
-            </h5>
-
-            <!-- left -->
-            <div>
-              <slot name="left" />
-            </div>
-            <!-- End left-->
-          </div>
-        </div>
-      </div>
-
-      <div class="SJSearchTLRLayout_half">
-        <div class="row">
-          <div ref="topAutoHeight" class="card">
-            <div class="card-body">
-              <h5 class="card-title">
-                <slot name="rightTitle1" />  <!--right 타이틀명 -->
-              </h5>
-              <!-- left -->
-              <div>
-                <slot name="right1" />
-              </div>
-            <!-- End left-->
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div ref="autoHeight2" class="card" autoHeight>
-            <div class="card-body">
-              <h5 class="card-title">
-                <slot name="rightTitle2" />  <!--right 타이틀명 -->
-              </h5>
-              <!-- left -->
-              <div>
-                <slot name="right2" />
-              </div>
-              <!-- End left-->
-            </div>
-          </div>
+      <div ref="topAutoHeight" class="right-contents" style="margin-left: 10px;">
+        <slot name="rightTitle1" />
+        <slot name="right1" />
+        <slot name="rightTitle2" />
+        <div ref="autoHeight2" autoHeight>
+          <slot name="right2" />
         </div>
       </div>
     </div>
@@ -112,22 +62,21 @@ export default {
         return
       }
       const absoluteTop = this.$refs.autoHeight.getBoundingClientRect().top
-      const absoluteBottom = this.$refs.autoHeight.getBoundingClientRect().bottom
 
-      this.$refs.autoHeight.style.height = (height - absoluteBottom + (absoluteBottom - absoluteTop)) + 'px'
-      this.$refs.autoHeight2.style.height = ((height - absoluteBottom + (absoluteBottom - absoluteTop)) - this.$refs.topAutoHeight.getBoundingClientRect().height - 10) + 'px'
+      this.$refs.autoHeight.style.height = (height - absoluteTop - 45) + 'px'
+      this.$refs.autoHeight2.style.height = ((height - absoluteTop - 45) - this.$refs.topAutoHeight.getBoundingClientRect().height - 10) + 'px'
     }
   }
 
 }
 </script>
 <style scoped>
-.SJSearchTLRLayout_full {
-  flex: 0 0 auto;
-  width: 100%;
-}
-.SJSearchTLRLayout_half {
-  flex: 0 0 auto;
-  width: 50%;
-}
+/*.SJSearchTLRLayout_full {*/
+/*  flex: 0 0 auto;*/
+/*  width: 100%;*/
+/*}*/
+/*.SJSearchTLRLayout_half {*/
+/*  flex: 0 0 auto;*/
+/*  width: 50%;*/
+/*}*/
 </style>
