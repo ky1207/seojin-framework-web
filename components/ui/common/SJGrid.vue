@@ -5,7 +5,7 @@
       :data="getData"
       :columns="mergedColumns"
       :options="mergedOptions"
-      class="grid"
+      class="SJGrid"
       v-on="$listeners"
     />
     <div v-if="!$props.pageable" class="SJGrid_total">
@@ -253,7 +253,7 @@ export default {
   font-size: 11px;
 }
 div{font-family: 'Nanum Gothic', sans-serif !important;}
-.grid{
+.SJGrid{
   width: 100% !important;
 }
 .tui-grid-cell-header{
