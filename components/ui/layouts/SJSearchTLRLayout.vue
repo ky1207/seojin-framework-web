@@ -12,8 +12,6 @@
         <slot name="topTitle" />
         <slot name="top" />
       </div>
-    </div>
-    <div class="contents row">
       <div ref="autoHeight" class="left-contents col-md-6" autoHeight>
         <slot name="leftTitle" />  <!--left 타이틀명 -->
         <slot name="left" />
@@ -81,4 +79,11 @@ export default {
 /*  flex: 0 0 auto;*/
 /*  width: 50%;*/
 /*}*/
+
+.contents{
+  width: 100%;
+  display: flex;
+  padding-right: 40px;
+}
+
 </style>

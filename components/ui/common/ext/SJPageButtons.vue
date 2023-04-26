@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex">
+  <div class="btn-bar d-flex">
     <div class="btn-bar">
       <button class="btn-gray-bg" @click="refresh">
         <i class="bi bi-arrow-clockwise" />

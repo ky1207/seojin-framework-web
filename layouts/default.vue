@@ -30,7 +30,7 @@
       </div>
     </header>
 
-    <main id="main" class="main">
+    <main id="main" class="main" style="">
       <aside class="aside">
         <div class="slider d-flex">
           <div class="inb-wrap">
@@ -57,7 +57,7 @@
         </div>
       </aside>
 
-      <section class="section">
+      <section class="section" style="overflow: visible;">
         <div class="home-wrap">
           <div class="d-flex align-items-center">
             <div class="home-wrap-icon">
