@@ -255,5 +255,6 @@ export default {
   border-bottom: 1px solid black;
   text-align: right;
   height: 18px;
+  font-size: 10px;
 }
 </style>
