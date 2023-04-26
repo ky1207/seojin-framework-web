@@ -42,11 +42,12 @@
               data-bs-target="#menu-area"
               aria-expanded="true"
               aria-controls="#menu-area"
+              @click="resize"
             >
               <i class="fa-solid fa-circle-arrow-left text-white" />
             </button>
             <div class="inb-wrap-link">
-              <i class="fa-solid fa-list text-white" />
+              <i class="fa-solid fa-list text-white" @click="resize" />
             </div>
             <div class="inb-wrap-link">
               <i class="fa-solid fa-star text-white" />
@@ -70,12 +71,10 @@
             </ul>
           </div>
         </div>
-        <Nuxt keep-alive :keep-alive-props="{include:cacheArray}" /> <!--클로즈 탭할때.. -->
+        <RouterTab ref="tab" :tabs="tabs" />
         <SJNotify />
         <SJSpinner ref="spinner" />
-
         <CommonAlarm ref="alarmModal" />
-
         <!-- Body 영역 끝-->
       </section>
     </main>
@@ -102,7 +101,6 @@ export default {
     return {
       tabs: [],
       menus: [],
-      cacheArray: ['index'],
       pushCnt: 0,
       search: {}
     }
@@ -247,6 +245,11 @@ export default {
     // }
   },
   methods: {
+    resize () {
+      setTimeout(() => {
+        window.dispatchEvent(new Event('resize'))
+      }, 100)
+    },
     linkTo (menu) {
       if (menu?.progPath) {
         this.$router.push(menu.progPath)
@@ -255,7 +258,7 @@ export default {
     remove (menu) {
       const index = this.tabs.findIndex(e => e.menuId === menu.menuId)
       this.tabs.splice(index, 1)
-      this.cacheArray.splice(index, 1) // cache 삭제
+      this.$tabs.closeTab(menu.progPath)
       this.linkTo(this.tabs[this.tabs.length - 1])
     },
     addTab (menu) {
@@ -264,7 +267,6 @@ export default {
       }
       if (this.tabs.findIndex(e => e.progPath === menu.progPath) < 0) {
         // 최초이면
-        this.cacheArray.push(this.$route.name) // cache추가
         this.tabs.push(menu)
       }
     },
@@ -283,6 +285,7 @@ export default {
     async alarmModalOpen () {
       await this.$refs.alarmModal.open()
     }
+
   }
 }
 </script>
@@ -290,5 +293,7 @@ export default {
 body {
   background: #E8ECF4;
 }
-
+.router-tab__header {
+  display: none;
+}
 </style>
