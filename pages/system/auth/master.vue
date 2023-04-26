@@ -112,21 +112,17 @@
         </SJFormRow>
       </SJForm>
       <div v-if="isUpdate">
-        <h5 class="card-title">
-          <div class="row align-items-center">
-            <div class="col">
-              {{ $t('page.system.00010') }}
-            </div>
-            <div class="col-auto">
-              <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="addUser">
-                {{ $t('page.system.00011') }} <i class="bi bi-file-plus" />
-              </button>
-              <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="removeRow">
-                {{ $t('page.system.00012') }} <i class="bi bi-file-minus" />
-              </button>
-            </div>
+        <div class="txt-wrap">
+          <h3><i class="fa-regular fa-folder-open" />   {{ $t('page.system.00010') }}</h3>
+          <div class="btn-bar">
+            <button class="btn-white-bg" @click="addUser">
+              {{ $t('page.system.00011') }}
+            </button>
+            <button class="btn-white-bg" @click="removeRow">
+              {{ $t('page.system.00012') }}
+            </button>
           </div>
-        </h5>
+        </div>
         <SJGrid
           ref="detail"
           v-model="detailGrid.data"
