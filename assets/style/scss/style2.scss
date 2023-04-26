@@ -1,3 +1,4 @@
+
 //Top Frame
 div{
   #header {
@@ -89,6 +90,7 @@ div{
   height: 100%;
   display: flex;
   background: #e8ecf4;
+
   //Aside
   aside {
     height: 100%;
@@ -306,10 +308,10 @@ section {
 
 .navi-wrap {
   display: flex;
-  justify-content: space-between;
   margin: 0 20px;
   height: 40px;
-
+  justify-content: space-between;
+  flex-wrap: wrap;
   .navi {
     color: #999;
     font-size: 11px;
@@ -458,8 +460,10 @@ footer {
   margin: 0 20px;
   display: flex;
   justify-content: space-between;
+  position: absolute;
 }
-
+.router-tab{
+  height: 100%}
 //공통 타이틀
 .txt-wrap {
   height: 30px;
@@ -825,19 +829,12 @@ form {
     //aside {
     //  overflow: hidden;
     //}
-
-    .navi {
-      min-width: 100vw;
-    }
-
     .code-search {
       min-width: 100vw;
-
       label {
         min-width: 100px;
       }
     }
-
     //.grid {
     //  div {
     //    min-width: 75px;
@@ -852,12 +849,25 @@ form {
   .bar{
     right: 0;}
 }
+@media (max-width: 1600px) {
+  #main{ width: 100%;
+    .navi-wrap{
+      width: 100%;
+      .btn-bar{
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+  }
+
+}
 
 
 @media (max-width: 850px) {
   .left-contents {
     width: 100%;
   }
+
   .bar{
     display: none;}
 }

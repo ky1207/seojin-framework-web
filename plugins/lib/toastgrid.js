@@ -19,7 +19,8 @@ TuiGrid.applyTheme('striped',
       },
       header: {
         background: '#F7F7F7',
-        text: '#6B758E'
+        text: '#6B758E',
+        border: '#DFE3EC'
       },
       rowHeader: {
         background: '#F7F7F7',
