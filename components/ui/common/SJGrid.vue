@@ -250,6 +250,7 @@ export default {
 /*}*/
 .tui-grid-content-area {
   border-top: solid 2px #6B758E !important;
+  font-size: 11px;
 }
 div{font-family: 'Nanum Gothic', sans-serif !important;}
 .grid{
@@ -258,11 +259,6 @@ div{font-family: 'Nanum Gothic', sans-serif !important;}
 .tui-grid-cell-header{
   padding: 0;
 }
-.SJGrid_total {
-  border-bottom: 1px solid black;
-  text-align: right;
-  height: 18px;
-  font-size: 10px;
-}
+
 .tui-grid-header-area{border:solid 1px #DFE3EC !important}
 </style>
