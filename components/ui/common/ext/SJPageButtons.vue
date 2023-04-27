@@ -2,7 +2,7 @@
   <div class="btn-bar d-flex">
     <div class="btn-bar">
       <button class="btn-gray-bg" @click="refresh">
-        <i class="bi bi-arrow-clockwise" />
+        <i class="bi bi-arrow-clockwise d-flex align-items-center" />
       </button>
       <button v-if="result.inqryAuth" class="btn-gray-bg" @click="call('searchClick')">
         {{ $t('components.ui.00001') }}

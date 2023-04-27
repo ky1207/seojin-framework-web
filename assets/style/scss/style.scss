@@ -540,6 +540,7 @@ form {
     &:first-child {
       legend {
         padding: 0;
+        height: 25px;
       }
     }
   }
@@ -553,6 +554,10 @@ form {
       width: 100%;
       display: flex;
       margin-left: 10px;
+      #form_coUser_1{
+        width: 15px;
+        height: 15px;
+      }
       textarea,
       .field-area {
         display: flex;
@@ -599,6 +604,19 @@ form {
     height: 25px;
     border: solid 1px #BCC1D0;
     margin-right: auto;
+  }
+  .check-box{
+    input{
+      border: 2px solid #bcbcbc;
+      width: 15px;
+      height: 15px;
+      display: flex;
+      justify-content: center;
+    }
+    .text{
+      color: #333;
+      display: flex;align-items: center;
+    }
   }
 
   textarea {

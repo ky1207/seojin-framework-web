@@ -1,43 +1,40 @@
 .btn-gray-bg{
-  width: 60px;
+  width: 80px;
   height: 23px;
   border-radius: 3px;
   margin-right: 5px;
   background: #6b758e;
   color: #fff;
-  font-size: 12px;
-  display: flex;
+  font-size: 11px;
   justify-content: center;
   align-items: center;
-  font-weight: bold;
   border: none;
+  display: flex;
 }
 
 .btn-blue-bg{
-  width: 85px;
+  width: 80px;
   height: 23px;
   color: #fff;
   background: #0365A9;
-  font-weight: bold;
   border: solid 1px #414C68;
   border-radius: 3px;
+  font-size: 11px;
 }
 .btn-white-bg{
-  width: 60px;
+  width: 80px;
   height: 23px;
   border-radius: 3px;
   background: #fff;
   color: #414C68;
   border: solid 1px #414C68;
-  font-size: 12px;
+  font-size: 11px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: bold;
 }
 
 .btn-alert{
-  font-weight: bold;
   font-size: 12px;
   width: 110px;
   height: 40px;

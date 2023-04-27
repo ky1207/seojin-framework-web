@@ -4,10 +4,10 @@
       {{ $t('components.modal.00001') }}
     </template>
     <template #button>
-      <button class="btn-blue-bg" @click="list">
+      <button class="btn-blue-bg" style="margin-right: 5px;" @click="list">
         {{ $t('components.modal.00002') }}
       </button>
-      <button class="btn-blue-bg" @click="confirm">
+      <button class="btn-blue-bg" style="margin-right: 5px;" @click="confirm">
         {{ $t('components.modal.00003') }}
       </button>
       <button class="btn-gray-bg" @click="close">

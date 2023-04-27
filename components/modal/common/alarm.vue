@@ -22,7 +22,7 @@
           <div class="row align-items-center">
             <div class="col" />
             <div class="col-auto">
-              <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="readPush">
+              <button class="btn btn-mb3 btn-mr3 btn-blue-gray" style="margin-right: 5px;" @click="readPush">
                 {{ $t('components.modal.00019') }}
               </button>
               <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="deletePush">

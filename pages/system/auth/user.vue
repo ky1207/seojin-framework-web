@@ -121,6 +121,7 @@
               :items="common.BUSINESS"
               rules="required"
               :name="$t('page.system.00104')"
+              class="check-box"
             />
           </SJFormField>
         </SJFormRow>

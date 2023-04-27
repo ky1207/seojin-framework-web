@@ -17,7 +17,7 @@
         :disabled="disabled"
         :class="disabledValidation?'':classes"
       >
-      <span style="margin-right : 20px;">{{ item.text }}</span>
+      <span class="text" style="margin-right : 20px;">{{ item.text }}</span>
     </label>
     <span :id="value+'-feedback'" class="invalid-feedback">
       {{ errors[0] }}
