@@ -13,7 +13,7 @@
           <h5 id="exampleModalLabel" class="modal-title">
             <slot name="title" />
           </h5>
-          <div>
+          <div class="btn-bar">
             <slot name="button" />
           </div>
         </div>

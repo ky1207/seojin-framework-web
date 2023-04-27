@@ -4,13 +4,13 @@
       {{ $t('components.modal.00001') }}
     </template>
     <template #button>
-      <button type="button" class="btn btn-primary" @click="list">
+      <button class="btn-blue-bg" @click="list">
         {{ $t('components.modal.00002') }}
       </button>
-      <button type="button" class="btn btn-primary" @click="confirm">
+      <button class="btn-blue-bg" @click="confirm">
         {{ $t('components.modal.00003') }}
       </button>
-      <button type="button" class="btn btn-secondary" @click="close">
+      <button class="btn-gray-bg" @click="close">
         {{ $t('components.modal.00004') }}
       </button>
     </template>
