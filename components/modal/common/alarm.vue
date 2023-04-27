@@ -4,32 +4,29 @@
       {{ $t('components.modal.00015') }}
     </template>
     <template #button>
-      <button type="button" class="btn btn-primary" @click="list(1)">
+      <button class="btn-gray-bg" @click="list(1)">
         {{ $t('components.modal.00002') }}
       </button>
-      <button type="button" class="btn btn-secondary" @click="close">
+      <button class="btn-gray-bg" @click="close">
         {{ $t('components.modal.00004') }}
       </button>
     </template>
     <template #default>
-      <SJSearchLRLayout disabled-navigator>
+      <SJSearchLRLayout disabled-navigator-wrap>
         <template #default>
           <SJSearchField :label="$t('page.system.00082')">
             <SJInput id="search_title" v-model="search.title" :name="$t('page.system.00082')" type="text" disabled-validation />
           </SJSearchField>
         </template>
         <template #leftTitle>
-          <div class="row align-items-center">
-            <div class="col" />
-            <div class="col-auto">
-              <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="readPush">
-                {{ $t('components.modal.00019') }}
-              </button>
-              <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="deletePush">
-                {{ $t('components.modal.00013') }}
-              </button>
-            </div>
-          </div>
+          <SJTitle :title="$t('components.modal.00015')">
+            <button class="btn-white-bg" @click="readPush">
+              {{ $t('components.modal.00019') }}
+            </button>
+            <button class="btn-white-bg" @click="deletePush">
+              {{ $t('components.modal.00013') }}
+            </button>
+          </SJTitle>
         </template>
         <template #left>
           <SJGrid

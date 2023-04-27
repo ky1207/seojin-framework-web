@@ -4,10 +4,10 @@
       {{ $t('components.modal.00001') }}
     </template>
     <template #button>
-      <button class="btn-blue-bg" @click="list">
+      <button class="btn-gray-bg" @click="list">
         {{ $t('components.modal.00002') }}
       </button>
-      <button class="btn-blue-bg" @click="confirm">
+      <button class="btn-gray-bg" @click="confirm">
         {{ $t('components.modal.00003') }}
       </button>
       <button class="btn-gray-bg" @click="close">
@@ -15,7 +15,7 @@
       </button>
     </template>
     <template #default>
-      <SJSearchOneLayout disabled-navigator>
+      <SJSearchOneLayout disabled-navigator-wrap>
         <template #default>
           <SJSearchField :label="$t('components.modal.00005')">
             <SJSelect
@@ -42,6 +42,7 @@
           </SJSearchField>
         </template>
         <template #body>
+          <SJTitle :title="$t('components.modal.00001')" />
           <SJGrid
             ref="grid"
             v-model="gridProps.data"

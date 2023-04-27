@@ -4,29 +4,29 @@
       {{ $t('components.modal.00008') }}
     </template>
     <template #button>
-      <button v-if="parameter&&schedule.triggerState==='PAUSED'" type="button" class="btn btn-secondary" @click="resume">
+      <button v-if="parameter&&schedule.triggerState==='PAUSED'" class="btn-gray-bg" @click="resume">
         {{ $t('components.modal.00010') }}
       </button>
-      <button v-if="parameter&&schedule.triggerState!=='PAUSED'" type="button" class="btn btn-secondary" @click="pause">
+      <button v-if="parameter&&schedule.triggerState!=='PAUSED'" class="btn-gray-bg" @click="pause">
         {{ $t('components.modal.00011') }}
       </button>
-      <button v-if="parameter" type="button" class="btn btn-secondary" @click="execute">
+      <button v-if="parameter" class="btn-gray-bg" @click="execute">
         {{ $t('components.modal.00012') }}
       </button>
-      <button v-if="parameter" type="button" class="btn btn-secondary" @click="remove">
+      <button v-if="parameter" class="btn-gray-bg" @click="remove">
         {{ $t('components.modal.00013') }}
       </button>
-      <button type="button" class="btn btn-primary" @click="save">
+      <button class="btn-gray-bg" @click="save">
         {{ $t('components.modal.00009') }}
       </button>
-      <button type="button" class="btn btn-secondary" @click="close">
+      <button class="btn-gray-bg" @click="close">
         {{ $t('components.modal.00004') }}
       </button>
     </template>
     <template #default>
-      <SJOneLayout disabled-navigator>
+      <SJOneLayout disabled-navigator-wrap>
         <template #title>
-          Schedule
+          <SJTitle title="Schedule" />
         </template>
         <template #default>
           <SJForm ref="form">

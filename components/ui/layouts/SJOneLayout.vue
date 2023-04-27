@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="navi-wrap">
+    <div v-if="!disabledNavigatorWrap" class="navi-wrap">
       <SJNavbar v-if="!disabledNavigator" />
       <slot name="master-btn" />
     </div>
@@ -16,6 +16,11 @@
 export default {
   props: {
     disabledNavigator: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    disabledNavigatorWrap: {
       type: Boolean,
       required: false,
       default: false
