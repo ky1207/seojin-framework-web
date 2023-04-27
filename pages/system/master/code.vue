@@ -92,7 +92,7 @@
         </SJFormRow>
         <SJFormRow>
           <SJFormField :label="$tc('page.system.00019') ">
-            <SJMultiInput id="form_lname" v-model="codeGroup.langs" :name="$t('page.system.00019')" type="text" rules="required" />
+            <SJMultiInput id="form_lname" v-model="codeGroup.langs" :name="$t('page.system.00019')" rules="required" />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
