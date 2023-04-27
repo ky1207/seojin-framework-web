@@ -13,13 +13,13 @@
           <nav class="header-nav">
             <ul class="header-nav-list d-flex">
               <li class="header-nav-item position-relative">
-                <a href="#"><i class="fa-solid fa-user " @click="alarmModalOpen" /></a>
+                <i class="fa-solid fa-user" style="cursor:pointer;" @click="alarmModalOpen" />
                 <p class="position-absolute">
                   99
                 </p>
               </li>
               <li class="header-nav-item">
-                <a href="#"><i class="fa-solid fa-power-off" @click="logout" /></a>
+                <i class="fa-solid fa-power-off" style="cursor:pointer;" @click="logout" />
               </li>
               <li class="header-nav-item">
                 <i class="fa-solid fa-bars" />
@@ -60,10 +60,10 @@
       <section class="section" style="overflow: visible;">
         <div class="home-wrap">
           <div class="d-flex align-items-center">
-            <div class="home-wrap-icon">
+            <div class="home-wrap-icon" style="cursor:pointer;" @click="$router.push('/')">
               <i class="fa-solid fa-house" />
             </div>
-            <ul class="home-bar">
+            <ul class="home-bar" style="cursor:pointer;">
               <li v-for="(tab) in tabs" :key="tab.menuId" class="home-bar-item" :class="tab?.progPath===$route.path?'active':''" @click="linkTo(tab)">
                 {{ tab.menuName }}
                 <i class="fa-solid fa-xmark" @click="remove(tab)" />
@@ -96,6 +96,8 @@
   </div>
 </template>
 <script>
+
+// const HOME = { menuName: 'Home', progPath: '/', menuId: '0' }
 export default {
   data () {
     return {
@@ -118,10 +120,8 @@ export default {
   },
   watch: {
     $route (to, from) {
-      console.log(to)
-      // console.log(this.$route.name)
       const menu = this.$store.getters.getMenu(to.path)
-      this.addTab(menu)
+      if (menu !== null) { this.addTab(menu) }
     }
   },
   async created () {
@@ -139,110 +139,6 @@ export default {
       const menu = this.$store.getters.getMenu(this.$route.path)
       this.addTab(menu)
     }
-
-    // //
-    // // this.pushCnt = 5
-    // // 예제.. 추후 처리 컴포넌트로 처리해야함
-    // /**
-    //  * Easy selector helper function
-    //  */
-    // const select = (el, all = false) => {
-    //   el = el.trim()
-    //   if (all) {
-    //     return [...document.querySelectorAll(el)]
-    //   } else {
-    //     return document.querySelector(el)
-    //   }
-    // }
-    //
-    // /**
-    //  * Easy event listener function
-    //  */
-    // const on = (type, el, listener, all = false) => {
-    //   if (all) {
-    //     select(el, all).forEach(e => e.addEventListener(type, listener))
-    //   } else {
-    //     select(el, all).addEventListener(type, listener)
-    //   }
-    // }
-    //
-    // /**
-    //  * Easy on scroll event listener
-    //  */
-    // const onscroll = (el, listener) => {
-    //   el.addEventListener('scroll', listener)
-    // }
-    //
-    // /**
-    //  * Sidebar toggle
-    //  */
-    // if (select('.toggle-sidebar-btn')) {
-    //   on('click', '.toggle-sidebar-btn', function (e) {
-    //     select('body').classList.toggle('toggle-sidebar')
-    //     window.dispatchEvent(new Event('resize'))
-    //   })
-    // }
-    //
-    // /**
-    //  * Search bar toggle
-    //  */
-    // if (select('.search-bar-toggle')) {
-    //   on('click', '.search-bar-toggle', function (e) {
-    //     select('.search-bar').classList.toggle('search-bar-show')
-    //   })
-    // }
-    //
-    // /**
-    //  * Navbar links active state on scroll
-    //  */
-    // const navbarlinks = select('#navbar .scrollto', true)
-    // const navbarlinksActive = () => {
-    //   const position = window.scrollY + 200
-    //   navbarlinks.forEach((navbarlink) => {
-    //     if (!navbarlink.hash) { return }
-    //     const section = select(navbarlink.hash)
-    //     if (!section) { return }
-    //     if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-    //       navbarlink.classList.add('active')
-    //     } else {
-    //       navbarlink.classList.remove('active')
-    //     }
-    //   })
-    // }
-    // window.addEventListener('load', navbarlinksActive)
-    // onscroll(document, navbarlinksActive)
-    //
-    // /**
-    //  * Toggle .header-scrolled class to #header when page is scrolled
-    //  */
-    // const selectHeader = select('#header')
-    // if (selectHeader) {
-    //   const headerScrolled = () => {
-    //     if (window.scrollY > 100) {
-    //       selectHeader.classList.add('header-scrolled')
-    //     } else {
-    //       selectHeader.classList.remove('header-scrolled')
-    //     }
-    //   }
-    //   window.addEventListener('load', headerScrolled)
-    //   onscroll(document, headerScrolled)
-    // }
-    //
-    // /**
-    //  * Back to top button
-    //  */
-    // const backtotop = select('.back-to-top')
-    // if (backtotop) {
-    //   const toggleBacktotop = () => {
-    //     if (window.scrollY > 100) {
-    //       backtotop.classList.add('active')
-    //     } else {
-    //       backtotop.classList.remove('active')
-    //     }
-    //   }
-    //   window.addEventListener('load', toggleBacktotop)
-    //   onscroll(document, toggleBacktotop)
-    // }
   },
   methods: {
     resize () {
@@ -253,6 +149,8 @@ export default {
     linkTo (menu) {
       if (menu?.progPath) {
         this.$router.push(menu.progPath)
+      } else {
+        this.$router.push('/')
       }
     },
     remove (menu) {
@@ -263,7 +161,8 @@ export default {
     },
     addTab (menu) {
       if (this.tabs.length >= this.$consts.MENU_LIMIT) {
-        return false
+        const first = this.tabs.shift()
+        this.$tabs.removeTab(first.progPath)
       }
       if (this.tabs.findIndex(e => e.progPath === menu.progPath) < 0) {
         // 최초이면
