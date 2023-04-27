@@ -17,32 +17,29 @@
     <template #default>
       <SJSearchOneLayout disabled-navigator>
         <template #default>
-          <div class="d-flex align-items-center flex-wrap">
-            <div class="col-md-1 text-center">
-              {{ $t('components.modal.00005') }}
-            </div>
-            <div class="col-md-1">
-              <SJSelect
-                id="search_department"
-                v-model="search.deptId"
-                :name="$t('components.modal.00005')"
-                :options="common.DEPARTMENT"
-                disabled-validation
-              />
-            </div>
-            <div class="col-md-1 text-center">
-              {{ $t('components.modal.00006') }}
-            </div>
-            <div class="col-md-1">
-              <SJInput id="search_loginId" v-model="search.loginId" :name="$t('components.modal.00006')" type="text" disabled-validation />
-            </div>
-            <div class="col-md-1 text-center">
-              {{ $t('components.modal.00007') }}
-            </div>
-            <div class="col-md-1">
-              <SJInput id="search_userName" v-model="search.userName" :name="$t('components.modal.00007')" type="text" disabled-validation />
-            </div>
-          </div>
+          <SJSearchField :label="$t('components.modal.00005')">
+            <SJSelect
+              id="search_department"
+              v-model="search.deptId"
+              :name="$t('components.modal.00005')"
+              :options="common.DEPARTMENT"
+              disabled-validation
+            />
+          </SJSearchField>
+          <SJSearchField :label="$t('components.modal.00006')">
+            <SJSelect
+              id="commonCode"
+              v-model="search.systemCodeType"
+              name="$t('page.system.00017')"
+              :options="common.CD_TYPE"
+              item-text="val"
+              item-value="subCode"
+              disabled-validation
+            />
+          </SJSearchField>
+          <SJSearchField :label="$t('components.modal.00007')">
+            <SJInput id="search_userName" v-model="search.userName" :name="$t('components.modal.00007')" type="text" disabled-validation />
+          </SJSearchField>
         </template>
         <template #body>
           <SJGrid
