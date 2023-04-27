@@ -25,17 +25,13 @@
       </SJSearchField>
     </template>
     <template #leftTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00078') }}</h3>
-      </div>
+      <SJTitle :title="$t('page.system.00078')" />
     </template>
     <template #left>
       <SJGrid ref="alarmGrid" v-model="alarmGrid.data" :columns="alarmGrid.columns" @click="onMasterClick" />
     </template>
     <template #rightTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00079') }}</h3>
-      </div>
+      <SJTitle :title="$t('page.system.00079')" />
     </template>
     <template #right>
       <SJForm ref="form">
@@ -82,21 +78,15 @@
         </SJFormRow>
       </SJForm>
       <div v-if="isUpdate">
-        <h5 class="card-title">
-          <div class="row align-items-center">
-            <div class="col">
-              {{ $t('page.system.00010') }}
-            </div>
-            <div class="col-auto">
-              <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="addUser">
-                {{ $t('page.system.00011') }} <i class="bi bi-file-plus" />
-              </button>
-              <button class="btn btn-mb3 btn-mr3 btn-blue-gray" @click="removeRow">
-                {{ $t('page.system.00012') }} <i class="bi bi-file-minus" />
-              </button>
-            </div>
-          </div>
-        </h5>
+        <SJTitle :title="$t('page.system.00010') ">
+          <button class="btn-white-bg" @click="addUser">
+            {{ $t('page.system.00011') }}
+          </button>
+          <button class="btn-white-bg" @click="removeRow">
+            {{ $t('page.system.00012') }}
+          </button>
+        </SJTitle>
+
         <SJGrid
           ref="detailGrid"
           v-model="detailGrid.data"

@@ -34,14 +34,11 @@
       </SJSearchField>
     </template>
     <template #bodyTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" />   {{ $t('page.system.00084') }}</h3>
-        <div class="btn-bar">
-          <button class="btn-blue-bg" @click="sendAlarm">
-            {{ $t('page.system.00085') }}
-          </button>
-        </div>
-      </div>
+      <SJTitle :title-="$t('page.system.00084')">
+        <button class="btn-blue-bg" @click="sendAlarm">
+          {{ $t('page.system.00085') }}
+        </button>
+      </SJTitle>
     </template>
     <template #body>
       <SJGrid

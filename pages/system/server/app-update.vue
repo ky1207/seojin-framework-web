@@ -31,23 +31,18 @@
     </template>
 
     <template #leftTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00095') }}</h3>
-      </div>
+      <SJTitle :title-="$t('page.system.00095')" />
     </template>
     <template #left>
       <SJGrid ref="appUpdate" v-model="appUpdate.data" :columns="appUpdate.columns" @click="onMasterClick" />
     </template>
 
     <template #rightTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" />   {{ $t('page.system.00102') }}</h3>
-        <div class="btn-bar">
-          <button class="btn-blue-bg" @click="createAppUpdate">
-            {{ $t('page.system.00096') }}
-          </button>
-        </div>
-      </div>
+      <SJTitle :title-="$t('page.system.00102')">
+        <button class="btn-blue-bg" @click="createAppUpdate">
+          {{ $t('page.system.00096') }}
+        </button>
+      </SJTitle>
     </template>
     <template #right>
       <SJForm ref="form">

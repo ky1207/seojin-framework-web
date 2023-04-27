@@ -29,17 +29,14 @@
     </template>
 
     <template #leftTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00014') }}</h3>
-        <div class="btn-bar">
-          <button class="btn-white-bg" @click="addMenu">
-            {{ $t('page.system.00026') }}
-          </button>
-          <button class="btn-white-bg" @click="deleteMenu">
-            {{ $t('page.system.00012') }}
-          </button>
-        </div>
-      </div>
+      <SJTitle :title="$t('page.system.00014')">
+        <button class="btn-white-bg" @click="addMenu">
+          {{ $t('page.system.00026') }}
+        </button>
+        <button class="btn-white-bg" @click="deleteMenu">
+          {{ $t('page.system.00012') }}
+        </button>
+      </SJTitle>
     </template>
 
     <template #left>
@@ -55,11 +52,7 @@
     </template>
 
     <template #rightTitle>
-      <div class="txt-wrap">
-        <h3>
-          <i class="fa-regular fa-folder-open" />  {{ $t('page.system.00027') }}
-        </h3>
-      </div>
+      <SJTitle :title="$t('page.system.00027')" />
     </template>
     <template #right>
       <SJForm ref="form">
@@ -134,11 +127,7 @@
           </SJFormField>
         </SJFormRow>
       </SJForm>
-      <div class="txt-wrap">
-        <h3>
-          <i class="fa-regular fa-folder-open" />  {{ $t('page.system.00032') }}
-        </h3>
-      </div>
+      <SJTitle :title="$t('page.system.00032')" />
       <SJGrid
         ref="authGrid"
         v-model="auth.data"

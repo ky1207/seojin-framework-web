@@ -43,22 +43,17 @@
       </SJSearchField>
     </template>
     <template #leftTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00005') }}</h3>
-      </div>
+      <SJTitle :title="$t('page.system.00005')" />
     </template>
     <template #left>
       <SJGrid ref="authGrid" v-model="authGrid.data" :columns="authGrid.columns" @click="onMasterClick" />
     </template>
     <template #rightTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" />   {{ $t('page.system.00006') }}</h3>
-        <div class="btn-bar">
-          <button class="btn-blue-bg" @click="createAuthGroup">
-            {{ $t('page.system.00007') }}
-          </button>
-        </div>
-      </div>
+      <SJTitle :title="$t('page.system.00006')">
+        <button class="btn-blue-bg" @click="createAuthGroup">
+          {{ $t('page.system.00007') }}
+        </button>
+      </SJTitle>
     </template>
     <template #right>
       <SJForm ref="form">
@@ -112,17 +107,14 @@
         </SJFormRow>
       </SJForm>
       <div v-if="isUpdate">
-        <div class="txt-wrap">
-          <h3><i class="fa-regular fa-folder-open" />   {{ $t('page.system.00010') }}</h3>
-          <div class="btn-bar">
-            <button class="btn-white-bg" @click="addUser">
-              {{ $t('page.system.00011') }}
-            </button>
-            <button class="btn-white-bg" @click="removeRow">
-              {{ $t('page.system.00012') }}
-            </button>
-          </div>
-        </div>
+        <SJTitle :title="$t('page.system.00010')">
+          <button class="btn-white-bg" @click="addUser">
+            {{ $t('page.system.00011') }}
+          </button>
+          <button class="btn-white-bg" @click="removeRow">
+            {{ $t('page.system.00012') }}
+          </button>
+        </SJTitle>
         <SJGrid
           ref="detail"
           v-model="detailGrid.data"

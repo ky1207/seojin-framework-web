@@ -24,12 +24,7 @@
       </SJSearchField>
     </template>
     <template #leftTitle>
-      <div class="txt-wrap">
-        <h3>
-          <i class="fa-regular fa-folder-open" />
-          {{ $t('page.system.00034') }}
-        </h3>
-      </div>
+      <SJTitle :title=" $t('page.system.00034') " />
     </template>
     <template #left>
       <SJGrid
@@ -41,9 +36,7 @@
       />
     </template>
     <template #rightTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00100') }}</h3>
-      </div>
+      <SJTitle :title=" $t('page.system.00100') " />
     </template>
     <template #right>
       <SJForm ref="form">

@@ -21,23 +21,17 @@
       </SJSearchField>
     </template>
     <template #leftTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00061') }}</h3>
-      </div>
+      <SJTitle :title="$t('page.system.00061') " />
     </template>
     <template #left>
       <SJGrid ref="user" v-model="user.data" :columns="user.columns" @click="onMasterClick" />
     </template>
-
     <template #rightTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" />   {{ $t('page.system.00062') }}</h3>
-        <div class="btn-bar">
-          <button class="btn-blue-bg" @click="createUser">
-            {{ $t('page.system.00063') }}
-          </button>
-        </div>
-      </div>
+      <SJTitle :title="$t('page.system.00062') ">
+        <button class="btn-blue-bg" @click="createUser">
+          {{ $t('page.system.00063') }}
+        </button>
+      </SJTitle>
     </template>
     <template #right>
       <SJForm ref="form">

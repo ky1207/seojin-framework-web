@@ -36,23 +36,17 @@
     </template>
 
     <template #leftTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00021') }}</h3>
-      </div>
+      <SJTitle :title="$t('page.system.00021')" />
     </template>
     <template #left>
       <SJGrid ref="large" v-model="large.data" :columns="large.columns" @click="onMasterClick" />
     </template>
-
     <template #rightTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" />   {{ $t('page.system.00022') }}</h3>
-        <div class="btn-bar">
-          <button class="btn-blue-bg" @click="createCodeGroup">
-            {{ $t('page.system.00023') }}
-          </button>
-        </div>
-      </div>
+      <SJTitle :title="$t('page.system.00022')">
+        <button class="btn-blue-bg" @click="createCodeGroup">
+          {{ $t('page.system.00023') }}
+        </button>
+      </SJTitle>
     </template>
     <template #right>
       <SJForm ref="form">
@@ -107,17 +101,14 @@
           </SJFormField>
         </SJFormRow>
       </SJForm>
-      <div v-if="isUpdate" class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00025') }}</h3>
-        <div class="btn-bar">
-          <button class="btn-white-bg" @click="appendRow">
-            {{ $t('page.system.00026') }}
-          </button>
-          <button class="btn-white-bg" @click="removeRow">
-            {{ $t('page.system.00012') }}
-          </button>
-        </div>
-      </div>
+      <SJTitle v-if="isUpdate" :title="$t('page.system.00025')">
+        <button class="btn-white-bg" @click="appendRow">
+          {{ $t('page.system.00026') }}
+        </button>
+        <button class="btn-white-bg" @click="removeRow">
+          {{ $t('page.system.00012') }}
+        </button>
+      </SJTitle>
 
       <SJGrid
         v-if="isUpdate"

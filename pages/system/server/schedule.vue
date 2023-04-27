@@ -11,22 +11,17 @@
       </SJSearchField>
     </template>
     <template #topTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> Schedule</h3>
-        <div class="btn-bar">
-          <button class="btn-white-bg" @click="add">
-            {{ $t('page.system.00026') }}
-          </button>
-        </div>
-      </div>
+      <SJTitle title="Schedule">
+        <button class="btn-white-bg" @click="add">
+          {{ $t('page.system.00026') }}
+        </button>
+      </SJTitle>
     </template>
     <template #top>
       <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" @click="scheduleClick" />
     </template>
     <template #leftTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" />       Schedule Log</h3>
-      </div>
+      <SJTitle title="Schedule Log" />
     </template>
     <template #left>
       <SJGrid
@@ -40,17 +35,13 @@
       />
     </template>
     <template #rightTitle1>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> Batch Job Log</h3>
-      </div>
+      <SJTitle title="Batch Job Log" />
     </template>
     <template #right1>
       <SJGrid ref="batchJobLogGrid" v-model="batchJobLogGrid.data" :columns="batchJobLogGrid.columns" :options="batchJobLogGrid.options" @click="batchJobLogGridClick" />
     </template>
     <template #rightTitle2>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" />  Batch Job Step Log</h3>
-      </div>
+      <SJTitle title="Batch Job Step Log" />
     </template>
     <template #right2>
       <SJGrid ref="batchStepLogGrid" v-model="batchStepLogGrid.data" :columns="batchStepLogGrid.columns" :options="batchStepLogGrid.options" />

@@ -4,17 +4,14 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #leftTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" />   {{ $t('page.system.00055') }}</h3>
-        <div class="btn-bar">
-          <button class="btn-white-bg" @click="addDept">
-            {{ $t('page.system.00026') }}
-          </button>
-          <button class="btn-white-bg" @click="deleteDept">
-            {{ $t('page.system.00012') }}
-          </button>
-        </div>
-      </div>
+      <SJTitle :title="$t('page.system.00055')">
+        <button class="btn-white-bg" @click="addDept">
+          {{ $t('page.system.00026') }}
+        </button>
+        <button class="btn-white-bg" @click="deleteDept">
+          {{ $t('page.system.00012') }}
+        </button>
+      </SJTitle>
     </template>
 
     <template #left>
@@ -30,9 +27,7 @@
     </template>
 
     <template #rightTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00056') }}</h3>
-      </div>
+      <SJTitle :title="$t('page.system.00056')" />
     </template>
     <template #right>
       <SJForm ref="form">

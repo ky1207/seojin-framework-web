@@ -22,23 +22,18 @@
     </template>
 
     <template #leftTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" />   {{ $t('page.system.00001') }}</h3>
-      </div>
+      <SJTitle :title="$t('page.system.00001')" />
     </template>
     <template #left>
       <SJGrid ref="company" v-model="company.data" :columns="company.columns" @click="onMasterClick" />
     </template>
 
     <template #rightTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00038') }}</h3>
-        <div class="btn-bar">
-          <button class="btn-blue-bg" @click="createCompany">
-            {{ $t('page.system.00039') }}
-          </button>
-        </div>
-      </div>
+      <SJTitle :title="$t('page.system.00038')">
+        <button class="btn-blue-bg" @click="createCompany">
+          {{ $t('page.system.00039') }}
+        </button>
+      </SJTitle>
     </template>
     <template #right>
       <SJForm ref="form">

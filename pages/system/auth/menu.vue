@@ -29,9 +29,7 @@
     </template>
 
     <template #leftTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00014') }}</h3>
-      </div>
+      <SJTitle :title="$t('page.system.00014')" />
     </template>
 
     <template #left>
@@ -46,9 +44,7 @@
     </template>
 
     <template #rightTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00015') }}</h3>
-      </div>
+      <SJTitle :title="$t('page.system.00015')" />
     </template>
     <template #right>
       <SJGrid

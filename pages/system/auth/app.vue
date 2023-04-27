@@ -31,9 +31,7 @@
       </SJSearchField>
     </template>
     <template #bodyTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00061') }}</h3>
-      </div>
+      <SJTitle :title="$t('page.system.00061')" />
     </template>
     <template #body>
       <SJGrid ref="user" v-model="user.data" :columns="user.columns" />

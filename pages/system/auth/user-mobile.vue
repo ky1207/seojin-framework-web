@@ -4,24 +4,16 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <div class="search-area">
-        <div class="col-md-1 search-label">
-          ID
-        </div>
-        <div class="col-md-1">
-          <SJInput id="loginId" v-model="search.loginId" name="ID" type="text" disabled-validation />
-        </div>
-        <div class="col-md-1 search-label">
-          {{ $t('page.system.00060') }}
-        </div>
-        <div class="col-md-1">
-          <SJInput id="userName" v-model="search.userName" :name="$t('page.system.00060')" type="text" disabled-validation />
-        </div>
-      </div>
+      <SJSearchField label="ID">
+        <SJInput id="loginId" v-model="search.loginId" name="ID" type="text" disabled-validation />
+      </SJSearchField>
+      <SJSearchField :label="$t('page.system.00060')">
+        <SJInput id="userName" v-model="search.userName" :name="$t('page.system.00060')" type="text" disabled-validation />
+      </SJSearchField>
     </template>
 
     <template #bodyTitle>
-      {{ $t('page.system.00061') }}
+      <SJTitle :title="$t('page.system.00061') " />
     </template>
     <template #body>
       <SJGrid ref="user" v-model="user.data" :columns="user.columns" />

@@ -46,17 +46,13 @@
       </SJSearchField>
     </template>
     <template #leftTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00005') }}</h3>
-      </div>
+      <SJTitle :title="$t('page.system.00005')" />
     </template>
     <template #left>
       <SJGrid ref="authGrid" v-model="authGrid.data" :columns="authGrid.columns" @click="onMasterClick" />
     </template>
     <template #rightTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00076') }}</h3>
-      </div>
+      <SJTitle :title="$t('page.system.00076')" />
     </template>
     <template #right>
       <SJGrid ref="authMenuGrid" v-model="authMenuGrid.data" :columns="authMenuGrid.columns" />

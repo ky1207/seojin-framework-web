@@ -25,14 +25,11 @@
       </SJSearchField>
     </template>
     <template #leftTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00078') }}</h3>
-        <div class="btn-bar">
-          <button class="btn-white-bg" @click="removeRow">
-            {{ $t('page.system.00012') }}
-          </button>
-        </div>
-      </div>
+      <SJTitle :title="$t('page.system.00078')">
+        <button class="btn-white-bg" @click="removeRow">
+          {{ $t('page.system.00012') }}
+        </button>
+      </SJTitle>
     </template>
     <template #left>
       <SJGrid
@@ -44,14 +41,11 @@
       />
     </template>
     <template #rightTitle>
-      <div class="txt-wrap">
-        <h3><i class="fa-regular fa-folder-open" /> {{ $t('page.system.00079') }}</h3>
-        <div class="btn-bar">
-          <button class="btn-blue-bg" @click="createAlarmForm">
-            {{ $t('page.system.00089') }}
-          </button>
-        </div>
-      </div>
+      <SJTitle :title="$t('page.system.00079')">
+        <button class="btn-blue-bg" @click="createAlarmForm">
+          {{ $t('page.system.00089') }}
+        </button>
+      </SJTitle>
     </template>
     <template #right>
       <SJForm ref="form">
