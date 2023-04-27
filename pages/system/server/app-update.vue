@@ -31,14 +31,14 @@
     </template>
 
     <template #leftTitle>
-      <SJTitle :title-="$t('page.system.00095')" />
+      <SJTitle :title="$t('page.system.00095')" />
     </template>
     <template #left>
       <SJGrid ref="appUpdate" v-model="appUpdate.data" :columns="appUpdate.columns" @click="onMasterClick" />
     </template>
 
     <template #rightTitle>
-      <SJTitle :title-="$t('page.system.00102')">
+      <SJTitle :title="$t('page.system.00102')">
         <button class="btn-blue-bg" @click="createAppUpdate">
           {{ $t('page.system.00096') }}
         </button>
