@@ -8,7 +8,7 @@
       <slot />
     </SJSearch>
     <div class="contents row d-flex" style="flex-wrap: nowrap">
-      <div ref="autoHeight" class="left-contents">
+      <div ref="autoHeight" class="left-contents" autoHeight>
         <slot name="leftTitle" />
         <slot name="left" />
       </div>
