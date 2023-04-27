@@ -65,6 +65,7 @@ export default {
 .contents{
   width: 100%;
   display: flex;
-  padding-right: 40px;
+  margin: 0;
+  padding: 0 20px;
 }
 </style>

@@ -7,7 +7,7 @@
     <SJSearch v-if="!disabledSearch">
       <slot />
     </SJSearch>
-    <div class="contents row" style="height: 30%;">
+    <div class="contents row" style="height: 30%;position: relative;">
       <div class="col-md-12" style="padding: 0">
         <slot name="topTitle" />
         <slot name="top" />
@@ -83,7 +83,8 @@ export default {
 .contents{
   width: 100%;
   display: flex;
-  padding-right: 40px;
+  margin: 0;
+  padding: 0 20px;
 }
 
 </style>

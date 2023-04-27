@@ -4,7 +4,7 @@
       <SJNavbar v-if="!disabledNavigator" />
       <slot name="master-btn" />
     </div>
-    <div ref="autoHeight" class="contents row" style="flex-direction: column;" autoHeight>
+    <div ref="autoHeight" class="contents row" style="flex-direction: column;position: relative;" autoHeight>
       <div class="col-md-12 p-0">
         <slot name="title" />
         <slot />
@@ -48,3 +48,12 @@ export default {
   }
 }
 </script>
+<style scoped>
+.contents{
+  width: 100%;
+  display: flex;
+  margin: 0;
+  padding: 0 20px;
+}
+
+</style>
