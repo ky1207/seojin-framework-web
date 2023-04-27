@@ -4,7 +4,7 @@
       {{ $t('components.modal.00020') }}
     </template>
     <template #button>
-      <button type="button" class="btn btn-secondary" @click="close">
+      <button class="btn-gray-bg" @click="close">
         {{ $t('components.modal.00004') }}
       </button>
     </template>

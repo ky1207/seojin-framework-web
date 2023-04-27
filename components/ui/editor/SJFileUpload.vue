@@ -13,7 +13,7 @@
     >
       <div ref="uploadDiv" class="col-sm-10">
         <input style="display:none;" type="file" multiple @change="onChange">
-        <button type="button" class="btn btn-primary" @click="OnSelect">
+        <button type="button" class="btn-blue-bg" @click="OnSelect">
           첨부파일
         </button>
       </div>

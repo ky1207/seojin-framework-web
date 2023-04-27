@@ -10,7 +10,7 @@
     <div class="modal-dialog" :class="size">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 id="exampleModalLabel" class="modal-title">
+          <h5 class="modal-title">
             <slot name="title" />
           </h5>
           <div class="btn-bar">
