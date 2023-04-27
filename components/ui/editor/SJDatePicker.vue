@@ -11,7 +11,7 @@
       v-model="data"
       :type="type"
       :clearable="false"
-      :input-class="disabledValidation?'':{'form-control':true ,...classes}"
+      :input-class="disabledValidation?'':{...classes}"
       :aria-describedby="id+'-feedback'"
       @input="handleInput"
       @change="handleChange"
