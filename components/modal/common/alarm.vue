@@ -14,14 +14,9 @@
     <template #default>
       <SJSearchLRLayout disabled-navigator>
         <template #default>
-          <div class="d-flex align-items-center flex-wrap">
-            <div class="col-md-1 text-center">
-              {{ $t('page.system.00082') }}
-            </div>
-            <div class="col-md-10">
-              <SJInput id="search_title" v-model="search.title" :name="$t('page.system.00082')" type="text" disabled-validation />
-            </div>
-          </div>
+          <SJSearchField :label="$t('page.system.00082')">
+            <SJInput id="search_title" v-model="search.title" :name="$t('page.system.00082')" type="text" disabled-validation />
+          </SJSearchField>
         </template>
         <template #leftTitle>
           <div class="row align-items-center">
@@ -127,7 +122,14 @@ export default {
             name: 'notifyTmpltName',
             filter: null,
             sortable: false,
-            editor: null
+            editor: null,
+            width: 150
+          },
+          {
+            name: 'title',
+            width: 200,
+            filter: null,
+            sortable: false
           },
           {
             name: 'sndrId',
@@ -140,13 +142,8 @@ export default {
             filter: null,
             sortable: false,
             width: 100
-          },
-          {
-            name: 'title',
-            width: 200,
-            filter: null,
-            sortable: false
           }
+
         ],
         options: {
           rowHeaders: ['rowNum', 'checkbox'],
