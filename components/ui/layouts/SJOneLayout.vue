@@ -4,8 +4,8 @@
       <SJNavbar v-if="!disabledNavigator" />
       <slot name="master-btn" />
     </div>
-    <div ref="autoHeight" class="contents row" style="flex-direction: column;position: relative;" autoHeight>
-      <div class="col-md-12 p-0">
+    <div ref="autoHeight" class="contents" style="flex-direction: column;" autoHeight>
+      <div style="">
         <slot name="title" />
         <slot />
       </div>

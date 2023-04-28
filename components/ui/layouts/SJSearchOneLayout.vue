@@ -7,8 +7,8 @@
     <SJSearch v-if="!disabledSearch">
       <slot />
     </SJSearch><!-- End Page Title -->
-    <div ref="autoHeight" class="contents row" style="flex-direction: column;" autoHeight>
-      <div class="col-md-12 p-0">
+    <div ref="autoHeight" class="contents" style="flex-wrap: nowrap" autoHeight>
+      <div style="position:relative;flex:1 1 0;">
         <slot name="bodyTitle" />
         <slot name="body" />
       </div>
