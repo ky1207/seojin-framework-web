@@ -15,7 +15,7 @@
       </button>
     </template>
     <template #default>
-      <SJSearchOneLayout disabled-navigator-wrap>
+      <SJSearchOneLayout disabled-navigator>
         <template #default>
           <SJSearchField :label="$t('components.modal.00005')">
             <SJSelect
