@@ -12,11 +12,11 @@
         <slot name="topTitle" />
         <slot name="top" />
       </div>
-      <div ref="autoHeight" class="left-contents col-md-6" autoHeight>
+      <div ref="autoHeight" class="left-content col-md-6" autoHeight>
         <slot name="leftTitle" />  <!--left 타이틀명 -->
         <slot name="left" />
       </div>
-      <div ref="topAutoHeight" class="right-contents col-md-6">
+      <div ref="topAutoHeight" class="right-content col-md-6" style="padding: 0">
         <slot name="rightTitle1" />
         <slot name="right1" />
         <slot name="rightTitle2" />
@@ -91,5 +91,4 @@ export default {
   margin: 0;
   padding: 0 20px;
 }
-
 </style>

@@ -247,18 +247,17 @@ export default {
 .tui-grid-btn-sorting , .tui-grid-btn-filter {
   filter: brightness(0.9) invert(0.5);
 }
+.SJGrid{ width: 100%;
+  position: relative;}
 .tui-grid-content-area {
   border-top: solid 2px #6B758E !important;
   font-size: 11px;
 }
 div{font-family: 'Nanum Gothic', sans-serif !important;}
-.SJGrid{
-  width: 100% !important;
-}
+
 .tui-grid-cell-header{
   padding: 0;
 }
-
 .SJGrid_total {
   border-bottom: 1px solid black;
   text-align: right;

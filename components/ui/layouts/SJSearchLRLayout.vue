@@ -8,12 +8,12 @@
       <slot />
     </SJSearch>
     <div class="contents row d-flex" style="flex-wrap: nowrap">
-      <div ref="autoHeight" class="left-contents" autoHeight>
+      <div ref="autoHeight" class="left-contents" autoHeight style="flex-grow: 1;flex-shrink: 1">
         <slot name="leftTitle" />
         <slot name="left" />
       </div>
       <span class="bar" />
-      <div ref="autoHeight2" class="right-contents" autoHeight>
+      <div ref="autoHeight2" class="right-contents" autoHeight style="flex-grow: 1;flex-shrink: 1">
         <slot name="rightTitle" />
         <slot name="right" />
       </div>
@@ -78,4 +78,5 @@ export default {
   flex: 0 0 auto;
   width: 50%;
 }
+
 </style>
