@@ -876,6 +876,9 @@ form {
   }
   .bar{
     right: 0;}
+  .left-contents{
+    width: 100%;
+  }
 }
 @media (max-width: 1600px) {
   #main{ width: 100%;
@@ -886,16 +889,25 @@ form {
         justify-content: flex-start;
       }
     }
+    .left-contents{
+      width: 70%;
+    }
+    .right-contents{
+      width: 30%;
+    }
   }
+
 
 }
 
 
 @media (max-width: 850px) {
-  .left-contents {
-    width: 100%;
-  }
-
   .bar{
     display: none;}
+  .left-contents{
+    width: 100%;
+  }
+  .right-contents{
+    display: none;
+  }
 }
