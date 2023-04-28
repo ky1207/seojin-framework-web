@@ -534,12 +534,10 @@ form {
   padding-left: 10px;
 
   fieldset {
-    legend {
-      height: 25px;
-    }
     &:first-child {
       legend {
         padding: 0;
+        height: 25px;
       }
     }
   }
@@ -563,9 +561,11 @@ form {
         flex-direction: column;
         width: 100%;
       }
+
       .inp-field {
         margin-bottom: 5px;
       }
+
       &:first-child {
         margin: 0;
       }
@@ -673,10 +673,7 @@ form {
   display: flex;
   flex-direction: column;
   padding-left: 0;
-  .SJGrid{
-    .tui-grid-content-area{
-      position: absolute;}
-  }
+  flex: auto;
   //.grid-wrap {
   //  height: 100%;
   //  position: relative;
@@ -706,10 +703,7 @@ form {
   display: flex;
   flex-direction: column;
   padding-right: 0;
-  .SJGrid{
-    .tui-grid-content-area{
-      position: absolute;}
-  }
+  flex: auto;
 
 
   //.right-grid {
@@ -869,10 +863,6 @@ form {
     fieldset {
       min-width: 250px;
     }
-  }
-  .field-area{
-    div{
-      display: flex;flex-direction: column;}
   }
   .bar{
     right: 0;}

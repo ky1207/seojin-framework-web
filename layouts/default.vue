@@ -57,7 +57,7 @@
         </div>
       </aside>
 
-      <section class="section" style="">
+      <section class="section" style="overflow: visible;">
         <div class="home-wrap">
           <div class="d-flex align-items-center">
             <div class="home-wrap-icon" style="cursor:pointer;" @click="$router.push('/')">
