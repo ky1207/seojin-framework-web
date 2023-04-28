@@ -1,14 +1,11 @@
 <template>
-  <div
-    class="SJgrid"
-    style="display: flex;"
-  >
+  <div>
     <Grid
       ref="grid"
       :data="getData"
       :columns="mergedColumns"
       :options="mergedOptions"
-      style="flex: 1 1 0;"
+      class="SJGrid"
       v-on="$listeners"
     />
     <div v-if="!$props.pageable" class="SJGrid_total">
@@ -250,29 +247,22 @@ export default {
 .tui-grid-btn-sorting , .tui-grid-btn-filter {
   filter: brightness(0.9) invert(0.5);
 }
-div{font-family: 'Nanum Gothic', sans-serif !important;
-}
-
+.SJGrid{ width: 100%;
+  position: relative;}
 .tui-grid-content-area {
   border-top: solid 2px #6B758E !important;
   font-size: 11px;
-  position: absolute;
 }
+div{font-family: 'Nanum Gothic', sans-serif !important;}
+
 .tui-grid-cell-header{
   padding: 0;
 }
 .SJGrid_total {
-  display: flex;
   border-bottom: 1px solid black;
   text-align: right;
-  width: 100%;
   height: 18px;
   font-size: 10px;
-  position: absolute;
-  bottom: 0;
-  justify-content: flex-end;
-  z-index: 22;
 }
 .tui-grid-header-area{border:solid 1px #DFE3EC !important}
-span{content: "";display: block;}
 </style>

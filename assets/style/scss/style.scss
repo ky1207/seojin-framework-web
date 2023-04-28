@@ -454,6 +454,9 @@ footer {
 //}
 
 //공통 contents
+.router-alive{
+  width: 100%;
+  position: absolute;}
 .contents {
   height: 100%;
   margin: 0 20px;
@@ -669,9 +672,11 @@ form {
 .left-contents {
   display: flex;
   flex-direction: column;
-  position: relative;
-  padding: 0;
-  margin-right: 10px;
+  padding-left: 0;
+  .SJGrid{
+    .tui-grid-content-area{
+      position: absolute;}
+  }
   //.grid-wrap {
   //  height: 100%;
   //  position: relative;
@@ -700,9 +705,11 @@ form {
   //font-weight: bold;
   display: flex;
   flex-direction: column;
-  position: relative;
-  padding: 0;
-  margin-left: 10px;
+  padding-right: 0;
+  .SJGrid{
+    .tui-grid-content-area{
+      position: absolute;}
+  }
 
 
   //.right-grid {

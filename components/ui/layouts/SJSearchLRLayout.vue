@@ -7,13 +7,13 @@
     <SJSearch v-if="!disabledSearch">
       <slot />
     </SJSearch>
-    <div class="contents d-flex" style="flex-wrap: nowrap">
-      <div ref="autoHeight" class="left-contents" autoHeight style="flex: 1 1 50%">
+    <div class="contents row d-flex" style="flex-wrap: nowrap">
+      <div ref="autoHeight" class="left-contents" autoHeight style="flex-grow: 1;flex-shrink: 1">
         <slot name="leftTitle" />
         <slot name="left" />
       </div>
       <span class="bar" />
-      <div ref="autoHeight2" class="right-contents" autoHeight style="flex: 1 1 50%">
+      <div ref="autoHeight2" class="right-contents" autoHeight style="flex-grow: 1;flex-shrink: 1">
         <slot name="rightTitle" />
         <slot name="right" />
       </div>
