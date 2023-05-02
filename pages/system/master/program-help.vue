@@ -115,7 +115,8 @@ export default {
             width: 250
           },
           {
-            name: 'remark'
+            name: 'remark',
+            width: null
           }
         ]
       }

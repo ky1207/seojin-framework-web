@@ -93,5 +93,6 @@ export default {
 .default-theme .splitpanes--vertical>.splitpanes__splitter,.default-theme.splitpanes--vertical>.splitpanes__splitter {
   border-left: unset;
   width: 10px;
+  margin:1px;
 }
 </style>
