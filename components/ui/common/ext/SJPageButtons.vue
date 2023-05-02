@@ -14,19 +14,19 @@
         {{ action.f1Label }}
       </button>
       <button v-if="result.fn2Auth" class="btn-gray-bg" @click="call('f2Click')">
-        {{ action.f1Label }}
+        {{ action.f2Label }}
       </button>
       <button v-if="result.fn3Auth" class="btn-gray-bg" @click="call('f3Click')">
-        {{ action.f1Label }}
+        {{ action.f3Label }}
       </button>
       <button v-if="result.fn4Auth" class="btn-gray-bg" @click="call('f4Click')">
-        {{ action.f1Label }}
+        {{ action.f4Label }}
       </button>
       <button v-if="result.fn5Auth" class="btn-gray-bg" @click="call('f5Click')">
-        {{ action.f1Label }}
+        {{ action.f5Label }}
       </button>
       <button v-if="result.delAuth" class="btn-gray-bg" @click="call('delClick')">
-        {{ action.f1Label }}
+        삭제
       </button>
       <button class="btn-blue-bg" @click="openProgramHelpModal()">
         HELP
