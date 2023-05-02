@@ -14,18 +14,18 @@
             <ul class="header-nav-list d-flex">
               <li class="nav-item dropdown header-nav-item">
                 <a href="#" class="nav-link nav-icon" data-bs-toggle="dropdown" aria-expanded="false">
-                  언어변경
+                  {{ currentLang }}
                   <i class="fa-solid fa-caret-down px-1" />
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow language">
-                  <li class="dropdown-item d-flex align-items-center" @click="linkTo('ko')">
+                  <li class="dropdown-item d-flex align-items-center" @click="change18n('ko')">
                     <img src="~/assets/images/flag/ko.png" alt="">한국어
                   </li>
-                  <li class="dropdown-item d-flex align-items-center" @click="linkTo('en')">
-                    <img src="~/assets/images/flag/en.png" alt="">영어
+                  <li class="dropdown-item d-flex align-items-center" @click="change18n('en')">
+                    <img src="~/assets/images/flag/en.png" alt="">English
                   </li>
-                  <li class="dropdown-item d-flex align-items-center" @click="linkTo('vi')">
-                    <img src="~/assets/images/flag/vi.png" alt="">베트남어
+                  <li class="dropdown-item d-flex align-items-center" @click="change18n('vi')">
+                    <img src="~/assets/images/flag/vi.png" alt="">Việt Nam
                   </li>
                 </ul>
               </li>
@@ -130,7 +130,7 @@ export default {
       if (this.$i18n.getLocaleCookie() === 'en') {
         return 'English'
       } else if (this.$i18n.getLocaleCookie() === 'vi') {
-        return '베트남어'
+        return 'Việt Nam'
       }
       return '한국어'
     }
