@@ -37,7 +37,6 @@
               id="form_deptCode"
               v-model="dept.deptCode"
               :name="$t('page.system.00057')"
-              type="text"
               :disabled-validation="isUpdate"
               rules="required"
               :disabled="isUpdate"
@@ -48,7 +47,6 @@
               id="form_deptName"
               v-model="dept.deptName"
               :name="$t('page.system.00058')"
-              type="text"
               rules="required"
             />
           </SJFormField>

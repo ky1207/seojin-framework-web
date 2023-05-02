@@ -64,7 +64,6 @@
               id="form_updateTitle"
               v-model="appUpdateDetail.updateVersion"
               :name="$t('page.system.00093')"
-              type="text"
               rules="required"
               :disabled="isUpdate"
             />
@@ -76,7 +75,6 @@
               id="form_updateTitle"
               v-model="appUpdateDetail.updateTitle"
               :name="$t('page.system.00082')"
-              type="text"
               rules="required"
               :disabled="isUpdate"
             />

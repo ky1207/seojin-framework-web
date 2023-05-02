@@ -19,7 +19,6 @@
           id="authCode"
           v-model="search.authGroupId"
           :name="$t('page.system.00002')"
-          type="text"
           disabled-validation
         />
       </SJSearchField>
@@ -28,7 +27,6 @@
           id="authName"
           v-model="search.authName"
           :name="$t('page.system.00003')"
-          type="text"
           disabled-validation
         />
       </SJSearchField>
@@ -63,7 +61,6 @@
               id="form_authGroupCode"
               v-model="auth.authGroupCode"
               :name="$t('page.system.00002')"
-              type="text"
               :disabled-validation="isUpdate"
               rules="required"
               :disabled="isUpdate"
@@ -75,7 +72,6 @@
               id="form_authName"
               v-model="auth.authName"
               :name="$t('page.system.00003')"
-              type="text"
               rules="required"
             />
           </SJFormField>

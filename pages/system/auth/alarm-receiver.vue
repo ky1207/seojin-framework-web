@@ -41,7 +41,6 @@
               id="form_notifyTmpltCode"
               v-model="alarm.notifyTmpltCode"
               :name="$t('page.system.00080')"
-              type="text"
               disabled-validation
               disabled
             />
@@ -53,7 +52,6 @@
               id="form_notifyTmpltName"
               v-model="alarm.notifyTmpltName"
               :name="$t('page.system.00081')"
-              type="text"
               disabled-validation
               disabled
             />
@@ -65,7 +63,6 @@
               id="form_title"
               v-model="alarm.title"
               :name="$t('page.system.00082')"
-              type="text"
               disabled-validation
               disabled
             />

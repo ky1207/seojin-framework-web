@@ -16,13 +16,13 @@
         />
       </SJSearchField>
       <SJSearchField :label="$t('page.system.00018')">
-        <SJInput id="large" v-model="search.codeGroupId" :name="$t('page.system.00018')" type="text" disabled-validation />
+        <SJInput id="large" v-model="search.codeGroupId" :name="$t('page.system.00018')" disabled-validation />
       </SJSearchField>
       <SJSearchField :label="$t('page.system.00019')">
-        <SJInput id="lname" v-model="search.codeGroupName" :name="$t('page.system.00019')" type="text" disabled-validation />
+        <SJInput id="lname" v-model="search.codeGroupName" :name="$t('page.system.00019')" disabled-validation />
       </SJSearchField>
       <SJSearchField :label="$t('page.system.00009')">
-        <SJInput id="small" v-model="search.codeName" :name="$t('page.system.00009')" type="text" disabled-validation />
+        <SJInput id="small" v-model="search.codeName" :name="$t('page.system.00009')" disabled-validation />
       </SJSearchField>
       <SJSearchField :label=" $t('page.system.00004') ">
         <SJSelect
@@ -56,7 +56,6 @@
               id="form_large"
               v-model="codeGroup.codeGroupId"
               :name="$t('page.system.00018')"
-              type="text"
               rules="required"
               :disabled="isUpdate"
             />

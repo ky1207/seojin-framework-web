@@ -14,10 +14,10 @@
         />
       </SJSearchField>
       <SJSearchField label="ID">
-        <SJInput id="search_loginId" v-model="search.loginId" name="ID" type="text" disabled-validation />
+        <SJInput id="search_loginId" v-model="search.loginId" name="ID" disabled-validation />
       </SJSearchField>
       <SJSearchField :label="$t('page.system.00060')">
-        <SJInput id="search_userName" v-model="search.userName" :name="$t('page.system.00060')" type="text" disabled-validation />
+        <SJInput id="search_userName" v-model="search.userName" :name="$t('page.system.00060')" disabled-validation />
       </SJSearchField>
     </template>
     <template #leftTitle>
@@ -41,7 +41,6 @@
               id="form_loginId"
               v-model="userDetail.loginId"
               :name="$t('page.system.00064')"
-              type="text"
               rules="required|max:12"
               :disabled="isUpdate"
             />
@@ -56,7 +55,6 @@
               id="form_userName"
               v-model="userDetail.userName"
               :name="$t('page.system.00035')"
-              type="text"
               rules="required|max:50"
             />
           </SJFormField>
@@ -65,7 +63,6 @@
               id="form_userEnName"
               v-model="userDetail.userEnName"
               :name="$t('page.system.00065')"
-              type="text"
               rules="max:50"
               disabled-validation
             />
@@ -98,7 +95,6 @@
               id="form_email"
               v-model="userDetail.email"
               name="email"
-              type="text"
               rules="email|max:50"
               disabled-validation
             />
@@ -108,7 +104,6 @@
               id="form_mobile"
               v-model="userDetail.mobile"
               :name="$t('page.system.00069')"
-              type="text"
               rules="numeric|max:20"
               disabled-validation
             />

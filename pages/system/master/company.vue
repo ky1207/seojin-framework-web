@@ -5,10 +5,10 @@
     </template>
     <template #default>
       <SJSearchField :label="$t('page.system.00074')">
-        <SJInput id="companyId" v-model="search.coId" :name="$t('page.system.00074')" type="text" disabled-validation />
+        <SJInput id="companyId" v-model="search.coId" :name="$t('page.system.00074')" disabled-validation />
       </SJSearchField>
       <SJSearchField :label="$t('page.system.00075')">
-        <SJInput id="companyName" v-model="search.coName" :name="$t('page.system.00075')" type="text" disabled-validation />
+        <SJInput id="companyName" v-model="search.coName" :name="$t('page.system.00075')" disabled-validation />
       </SJSearchField>
       <SJSearchField :label="$t('page.system.00004')">
         <SJSelect
@@ -43,7 +43,6 @@
               id="form_coCode"
               v-model="companyDetail.coCode"
               :name="$t('page.system.00074')"
-              type="text"
               rules="required|max:12"
               :disabled="isUpdate"
             />
@@ -55,7 +54,6 @@
               id="form_coName"
               v-model="companyDetail.coName"
               :name="$t('page.system.00075')"
-              type="text"
               rules="required|max:50"
             />
           </SJFormField>
@@ -64,7 +62,6 @@
               id="form_emCoName"
               v-model="companyDetail.enCoName"
               :name="$t('page.system.00107')"
-              type="text"
               rules="required|max:50"
             />
           </SJFormField>
@@ -75,7 +72,6 @@
               id="form_biznum"
               v-model="companyDetail.biznum"
               :name="$t('page.system.00040')"
-              type="text"
               rules="max:50"
               disabled-validation
             />
@@ -85,7 +81,6 @@
               id="form_coNum"
               v-model="companyDetail.coNum"
               :name="$t('page.system.00041')"
-              type="text"
               rules="max:50"
               disabled-validation
             />
@@ -97,7 +92,6 @@
               id="form_repName"
               v-model="companyDetail.repName"
               :name="$t('page.system.00042')"
-              type="text"
               rules="max:50"
               disabled-validation
             />
@@ -107,7 +101,6 @@
               id="form_email"
               v-model="companyDetail.email"
               :name="$t('page.system.00043')"
-              type="text"
               rules="email|max:50"
               disabled-validation
             />
@@ -119,7 +112,6 @@
               id="form_phone"
               v-model="companyDetail.phone"
               :name="$t('page.system.00044')"
-              type="text"
               rules="max:20"
               disabled-validation
             />
@@ -129,7 +121,6 @@
               id="form_fax"
               v-model="companyDetail.fax"
               :name="$t('page.system.00045')"
-              type="text"
               rules="max:20"
               disabled-validation
             />
@@ -144,7 +135,6 @@
               id="form_biztype"
               v-model="companyDetail.biztype"
               :name="$t('page.system.00047')"
-              type="text"
               rules="max:12"
               disabled-validation
             />
@@ -156,7 +146,6 @@
               id="form_bizitem"
               v-model="companyDetail.bizitem"
               :name="$t('page.system.00048')"
-              type="text"
               rules="max:12"
               disabled-validation
             />
@@ -190,14 +179,12 @@
               id="form_addr1"
               v-model="companyDetail.addr1"
               :name="$t('page.system.00051')"
-              type="text"
               disabled-validation
             />
             <SJInput
               id="form_addr2"
               v-model="companyDetail.addr2"
               :name="$t('page.system.00051')"
-              type="text"
               disabled-validation
             />
           </SJFormField>
@@ -208,7 +195,6 @@
               id="form_addr3"
               v-model="companyDetail.addr3"
               :name="$t('page.system.00052')"
-              type="text"
               disabled-validation
             />
           </SJFormField>
@@ -219,7 +205,6 @@
               id="form_coType"
               v-model="companyDetail.coType"
               :name="$t('page.system.00053')"
-              type="text"
               rules="required|max:12"
             />
           </SJFormField>
@@ -228,7 +213,6 @@
               id="form_logoName"
               v-model="companyDetail.logoName"
               :name="$t('page.system.00054')"
-              type="text"
               rules="required|max:50"
             />
           </SJFormField>

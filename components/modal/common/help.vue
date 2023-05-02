@@ -16,7 +16,6 @@
               id="form_title"
               v-model="help.title"
               :name="$t('page.system.00082')"
-              type="text"
               disabled
             />
           </SJFormField>

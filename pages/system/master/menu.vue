@@ -72,7 +72,6 @@
               id="form_menuCode"
               v-model="menu.menuCode"
               :name="$t('page.system.00030')"
-              type="text"
               :disabled-validation="isUpdate"
               rules="required"
               :disabled="isUpdate"
@@ -83,7 +82,6 @@
               id="form_menuIcon"
               v-model="menu.iconName"
               :name="$t('page.system.00028')"
-              type="text"
               disabled-validation
             />
           </SJFormField>
@@ -116,14 +114,13 @@
               id="form_applnMenuCode"
               v-model="menu.applnMenuCode"
               :name="$t('page.system.00031')"
-              type="text"
               disabled-validation
             />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
           <SJFormField :label="$tc('page.system.00033') ">
-            <SJMultiInput id="form_lname" v-model="menu.langs" :name="$t('page.system.00033')" type="text" rules="required" />
+            <SJMultiInput id="form_lname" v-model="menu.langs" :name="$t('page.system.00033')" rules="required" />
           </SJFormField>
         </SJFormRow>
       </SJForm>

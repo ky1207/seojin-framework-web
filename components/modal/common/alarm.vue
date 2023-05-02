@@ -15,7 +15,7 @@
       <SJSearchLRLayout disabled-navigator-wrap>
         <template #default>
           <SJSearchField :label="$t('page.system.00082')">
-            <SJInput id="search_title" v-model="search.title" :name="$t('page.system.00082')" type="text" disabled-validation />
+            <SJInput id="search_title" v-model="search.title" :name="$t('page.system.00082')" disabled-validation />
           </SJSearchField>
         </template>
         <template #leftTitle>
@@ -47,7 +47,6 @@
                   id="form_sndrId"
                   v-model="alarmDetail.sndrId"
                   :name="$t('components.modal.00016')"
-                  type="text"
                   disabled
                 />
               </SJFormField>
@@ -56,7 +55,6 @@
                   id="form_sndrName"
                   v-model="alarmDetail.sndrName"
                   :name="$t('components.modal.00017')"
-                  type="text"
                   disabled
                 />
               </SJFormField>
@@ -67,7 +65,6 @@
                   id="form_sndrEmail"
                   v-model="alarmDetail.sndrEmail"
                   :name="$t('components.modal.00018')"
-                  type="text"
                   disabled
                 />
               </SJFormField>
@@ -78,7 +75,6 @@
                   id="form_title"
                   v-model="alarmDetail.title"
                   :name="$t('page.system.00082')"
-                  type="text"
                   disabled
                 />
               </SJFormField>

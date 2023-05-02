@@ -38,7 +38,7 @@
             />
           </SJSearchField>
           <SJSearchField :label="$t('components.modal.00007')">
-            <SJInput id="search_userName" v-model="search.userName" :name="$t('components.modal.00007')" type="text" disabled-validation />
+            <SJInput id="search_userName" v-model="search.userName" :name="$t('components.modal.00007')" disabled-validation />
           </SJSearchField>
         </template>
         <template #body>

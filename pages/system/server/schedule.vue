@@ -7,7 +7,7 @@
     </template>
     <template #default>
       <SJSearchField label="JOB Name">
-        <SJInput id="search" v-model="search.jobName" name="배치명" type="text" disabled-validation />
+        <SJInput id="search" v-model="search.jobName" name="배치명" disabled-validation />
       </SJSearchField>
     </template>
     <template #topTitle>

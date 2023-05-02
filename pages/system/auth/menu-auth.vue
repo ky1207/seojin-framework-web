@@ -31,7 +31,6 @@
           id="authCode"
           v-model="search.authGroupCode"
           :name="$t('page.system.00002')"
-          type="text"
           disabled-validation
         />
       </SJSearchField>
@@ -40,7 +39,6 @@
           id="authName"
           v-model="search.authName"
           :name="$t('page.system.00003')"
-          type="text"
           disabled-validation
         />
       </SJSearchField>

@@ -24,10 +24,10 @@
         />
       </SJSearchField>
       <SJSearchField label="ID">
-        <SJInput id="loginId" v-model="search.loginId" name="ID" type="text" disabled-validation />
+        <SJInput id="loginId" v-model="search.loginId" name="ID" disabled-validation />
       </SJSearchField>
       <SJSearchField :label="$t('page.system.00060')">
-        <SJInput id="userName" v-model="search.userName" :name="$t('page.system.00060')" type="text" disabled-validation />
+        <SJInput id="userName" v-model="search.userName" :name="$t('page.system.00060')" disabled-validation />
       </SJSearchField>
     </template>
     <template #bodyTitle>

@@ -50,7 +50,6 @@
                   id="jobName"
                   v-model="schedule.jobName"
                   name="Job Name"
-                  type="text"
                   rules="required"
                   :disabled="!!parameter"
                 />
@@ -62,7 +61,6 @@
                   id="description"
                   v-model="schedule.description"
                   name="Description"
-                  type="text"
                   rules="required"
                 />
               </SJFormField>
@@ -73,7 +71,6 @@
                   id="cronExpression"
                   v-model="schedule.cronExpression"
                   name="Cron Expression"
-                  type="text"
                   rules="required"
                 />
                 <span class="text" v-html="$t('components.modal.00014')" />
@@ -85,7 +82,6 @@
                   id="parameters"
                   v-model="schedule.parameters"
                   name="Parameters"
-                  type="text"
                   disabled-validation
                 />
                 <span class="text">

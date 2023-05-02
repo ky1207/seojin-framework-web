@@ -9,7 +9,6 @@
           id="authName"
           v-model="search.userName"
           :name="$t('page.system.00035')"
-          type="text"
           disabled-validation
         />
       </SJSearchField>

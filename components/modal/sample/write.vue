@@ -10,7 +10,6 @@
           id="name"
           v-model="item.title"
           :name="$t('sample')"
-          type="text"
           rules="required"
           placeholder="입력하세요"
         />

@@ -5,14 +5,13 @@
     </template>
     <template #default>
       <SJSearchField :label="$t('page.system.00029')">
-        <SJInput id="search" v-model="search.progName" :name="$t('page.system.00029')" type="text" disabled-validation />
+        <SJInput id="search" v-model="search.progName" :name="$t('page.system.00029')" disabled-validation />
       </SJSearchField>
       <SJSearchField :label="$t('page.system.00035')">
         <SJInput
           id="authName"
           v-model="search.userName"
           :name="$t('page.system.00035')"
-          type="text"
           disabled-validation
         />
       </SJSearchField>

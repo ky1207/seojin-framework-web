@@ -9,7 +9,6 @@
           id="authName"
           v-model="search.progName"
           :name="$t('page.system.00029')"
-          type="text"
           disabled-validation
         />
       </SJSearchField>
@@ -18,7 +17,6 @@
           id="authName"
           v-model="search.progPath"
           :name="$t('page.system.00098')"
-          type="text"
           disabled-validation
         />
       </SJSearchField>
@@ -46,7 +44,6 @@
               id="form_progName"
               v-model="help.progName"
               :name="$t('page.system.00029')"
-              type="text"
               disabled-validation
               disabled
             />
@@ -58,7 +55,6 @@
               id="form_title"
               v-model="help.title"
               :name="$t('page.system.00082')"
-              type="text"
               rules="required"
             />
           </SJFormField>

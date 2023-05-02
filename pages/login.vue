@@ -20,7 +20,6 @@
               id="name"
               v-model="username"
               name="ID"
-              type="text"
               rules="required"
               placeholder="ID"
               class="select"
