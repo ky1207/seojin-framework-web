@@ -16,18 +16,6 @@
           disabled-first-message
         />
       </SJSearchField>
-      <SJSearchField :label="$t('page.system.00091')">
-        <SJSelect
-          id="search_appType"
-          v-model="search.appType"
-          :name="$t('page.system.00091')"
-          :options="common.UPDATE_TYPE"
-          item-text="val"
-          item-value="subCode"
-          disabled-validation
-          disabled-first-message
-        />
-      </SJSearchField>
     </template>
 
     <template #leftTitle>
