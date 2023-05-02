@@ -94,5 +94,7 @@ export default {
   border-left: unset;
   width: 10px;
   margin:1px;
+  background: #007DB6;
+  border-radius: 10px;
 }
 </style>

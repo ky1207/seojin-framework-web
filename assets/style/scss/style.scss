@@ -546,14 +546,9 @@ form {
   overflow: hidden;
   font-size: 11px;
   padding-left: 10px;
-
-  fieldset {
-    &:first-child {
-      legend {
-        padding: 0;
-        height: 25px;
-      }
-    }
+  legend {
+    padding: 0;
+    height: 25px;
   }
 
   .sj-form-field {
