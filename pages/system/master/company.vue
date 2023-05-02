@@ -38,7 +38,7 @@
     <template #right>
       <SJForm ref="form">
         <SJFormRow>
-          <SJFormField class="col-6" :label="$tc('page.system.00074')">
+          <SJFormField :label="$tc('page.system.00074')">
             <SJInput
               id="form_coCode"
               v-model="companyDetail.coCode"
