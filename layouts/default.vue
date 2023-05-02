@@ -10,10 +10,27 @@
             <input type="text" name="search" placeholder="SEARCH" class="search-bar-input">
             <i class="search-bar-icon fa-solid fa-magnifying-glass" />
           </div>
-          <nav class="header-nav">
+          <nav class="header-nav ms-auto">
             <ul class="header-nav-list d-flex">
+              <li class="nav-item dropdown header-nav-item">
+                <a href="#" class="nav-link nav-icon" data-bs-toggle="dropdown" aria-expanded="false">
+                  언어변경
+                  <i class="fa-solid fa-caret-down px-1" />
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow language">
+                  <li class="dropdown-item d-flex align-items-center" @click="linkTo('ko')">
+                    <img src="~/assets/images/flag/ko.png" alt="">한국어
+                  </li>
+                  <li class="dropdown-item d-flex align-items-center" @click="linkTo('en')">
+                    <img src="~/assets/images/flag/en.png" alt="">영어
+                  </li>
+                  <li class="dropdown-item d-flex align-items-center" @click="linkTo('vi')">
+                    <img src="~/assets/images/flag/vi.png" alt="">베트남어
+                  </li>
+                </ul>
+              </li>
               <li class="header-nav-item position-relative">
-                <i class="fa-solid fa-user" style="cursor:pointer;" @click="alarmModalOpen" />
+                <i class="fa-regular fa-bell" style="cursor:pointer;" @click="alarmModalOpen" />
                 <p class="position-absolute">
                   99
                 </p>
@@ -22,7 +39,7 @@
                 <i class="fa-solid fa-power-off" style="cursor:pointer;" @click="logout" />
               </li>
               <li class="header-nav-item">
-                <i class="fa-solid fa-bars" />
+                <i class="fa-solid fa-plus" />
               </li>
             </ul>
           </nav>
