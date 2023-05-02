@@ -26,7 +26,7 @@
         {{ action.f5Label }}
       </button>
       <button v-if="result.delAuth" class="btn-gray-bg" @click="call('delClick')">
-        삭제
+        {{ $t('components.ui.00003') }}
       </button>
       <button class="btn-blue-bg" @click="openProgramHelpModal()">
         HELP
