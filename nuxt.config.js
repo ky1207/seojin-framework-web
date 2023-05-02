@@ -53,6 +53,7 @@ export default {
     { src: '~/plugins/lib/common.js' },
     { src: '~/plugins/lib/routertab.js' },
     { src: '~/plugins/lib/bootstrap.js' },
+    { src: '~/plugins/lib/splitpane.js' },
     { src: '~/plugins/lib/veevalidate.js' },
     { src: '~/plugins/lib/vue2datepicker.js' },
     { src: '~/plugins/client.js' },

@@ -8,15 +8,20 @@
       <slot />
     </SJSearch>
     <div class="contents row d-flex" style="flex-wrap: nowrap">
-      <div ref="autoHeight" class="left-contents" autoHeight>
-        <slot name="leftTitle" />
-        <slot name="left" />
-      </div>
-      <span class="bar" />
-      <div ref="autoHeight2" class="right-contents" autoHeight>
-        <slot name="rightTitle" />
-        <slot name="right" />
-      </div>
+      <Splitpanes class="default-theme" @resize="onResize">
+        <Pane size="50" min-size="30">
+          <div ref="autoHeight" class="left-contents" autoHeight>
+            <slot name="leftTitle" />
+            <slot name="left" />
+          </div>
+        </Pane>
+        <Pane size="50" min-size="30">
+          <div ref="autoHeight2" class="right-contents" autoHeight>
+            <slot name="rightTitle" />
+            <slot name="right" />
+          </div>
+        </Pane>
+      </Splitpanes>
     </div>
   </div>
 </template>
@@ -53,6 +58,9 @@ export default {
     window.removeEventListener('resize', this.refresh)
   },
   methods: {
+    onResize () {
+      window.dispatchEvent(new Event('resize'))
+    },
     refresh () {
       const height = window.innerHeight
       if (this.$refs.autoHeight.closest('.modal-dialog')) {
@@ -69,7 +77,7 @@ export default {
 
 }
 </script>
-<style scoped>
+<style>
 .SJSearchLRLayout_full {
   flex: 0 0 auto;
   width: 100%;
@@ -77,5 +85,13 @@ export default {
 .SJSearchLRLayout_half {
   flex: 0 0 auto;
   width: 50%;
+}
+
+.splitpanes.default-theme .splitpanes__pane {
+  background: white;
+}
+.default-theme .splitpanes--vertical>.splitpanes__splitter,.default-theme.splitpanes--vertical>.splitpanes__splitter {
+  border-left: unset;
+  width: 10px;
 }
 </style>
