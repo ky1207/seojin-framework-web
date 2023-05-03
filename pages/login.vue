@@ -9,8 +9,16 @@
       <SJForm ref="form" class="login-layout-form">
         <div class="form-outline" style="margin-bottom: 20px;">
           <i class="fa-solid fa-building" style="margin-right: 10px;" />
-          <SJSearchField label="Company">
-            <SJSelect class="select" />
+          <SJSearchField :label="$t('page.system.00104')">
+            <SJSelect
+              id="business"
+              v-model="bsnsId"
+              class="select"
+              :name="$t('page.system.00104')"
+              :options="common.BUSINESS"
+              disabled-validation
+              disabled-first-message
+            />
           </SJSearchField>
         </div>
         <div class="form-outline" style="margin-bottom: 20px;">
@@ -60,9 +68,13 @@ export default {
     return {
       username: 'devel',
       password: 'test',
-      bsnsId: 1
-
+      bsnsId: null,
+      common: {}
     }
+  },
+  async created () {
+    const result = await this.$api.common.getBusinessIds()
+    this.common.BUSINESS = result.data
   },
   mounted () {
     // popup일경우, 자신 창을 닫기
