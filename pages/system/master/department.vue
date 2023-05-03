@@ -1,5 +1,5 @@
 <template>
-  <SJSearchLRLayout disabled-search left-size="40" right-size="60">
+  <SJSearchLRLayout disabled-search :left-size="40" :right-size="60">
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
     </template>
