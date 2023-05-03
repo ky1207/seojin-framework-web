@@ -126,6 +126,7 @@ export default {
   // },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    analyze: false, // 라이브러리분석
     // Babel transpile dependencies
     transpile: ['vue-router-tab', 'vee-validate/dist/rules', /ckeditor5-[^/\\]+[/\\]src[/\\].+\.js$/],
     plugins: [
