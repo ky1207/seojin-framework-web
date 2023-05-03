@@ -96,7 +96,10 @@
       </section>
     </main>
 
-    <footer class=" fixed-bottom d-flex justify-content-end align-items-center">
+    <footer class="fixed-bottom d-flex align-items-center">
+      <div class="ft-title">
+        (주)서진시스템 :: 신정보시스템
+      </div>
       <div class="ft-txt">
         <i class="fa-regular fa-circle-user" />
         <p>{{ $auth.user?.userName }}</p>
