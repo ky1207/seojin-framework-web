@@ -9,13 +9,13 @@
     </SJSearch>
     <div class="contents row d-flex" style="flex-wrap: nowrap">
       <Splitpanes class="default-theme" @resize="onResize">
-        <Pane size="50" min-size="30">
+        <Pane :size="leftSize" min-size="30">
           <div ref="autoHeight" class="left-contents" autoHeight>
             <slot name="leftTitle" />
             <slot name="left" />
           </div>
         </Pane>
-        <Pane size="50" min-size="30">
+        <Pane :size="rightSize" min-size="30">
           <div ref="autoHeight2" class="right-contents" autoHeight>
             <slot name="rightTitle" />
             <slot name="right" />
@@ -42,6 +42,14 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    leftSize: {
+      type: Number,
+      default: 50
+    },
+    rightSize: {
+      type: Number,
+      default: 50
     }
   },
   activated () {
