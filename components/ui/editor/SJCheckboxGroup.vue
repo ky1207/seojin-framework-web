@@ -9,7 +9,6 @@
   >
     <label v-for="item in items" :key="item.value">
       <input
-        :id="'form_coUser_'+item.value"
         v-model="checkedData"
         type="checkbox"
         :label="item.text"
