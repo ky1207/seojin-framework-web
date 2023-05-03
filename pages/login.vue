@@ -73,8 +73,12 @@ export default {
     }
   },
   async created () {
-    const result = await this.$api.common.getBusinessIds()
-    this.common.BUSINESS = result.data
+    await Promise.all([this.$api.common.getBusinessIds()])
+      .then((response) => {
+        this.common = {
+          BUSINESS: response[0].data
+        }
+      })
   },
   mounted () {
     // popup일경우, 자신 창을 닫기
