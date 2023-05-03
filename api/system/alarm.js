@@ -24,8 +24,8 @@ export default axios => ({
     search.pageNum = page
     return axios.get('/api/v1.0/alarm/alarm', { params: search })
   },
-  alarmCnt (search) {
-    return axios.get('/api/v1.0/alarm/alarmCnt', { params: search })
+  alarmCnt () {
+    return axios.get('/api/v1.0/alarm/alarmCnt')
   },
   loadAlarm (notifyId) {
     return axios.get(`/api/v1.0/alarm/detailAlarm/${notifyId}`)

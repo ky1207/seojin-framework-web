@@ -32,7 +32,7 @@
               <li class="header-nav-item position-relative">
                 <i class="fa-regular fa-bell" style="cursor:pointer;" @click="alarmModalOpen" />
                 <p class="position-absolute">
-                  99
+                  {{ pushCnt }}
                 </p>
               </li>
               <li class="header-nav-item">
@@ -99,16 +99,16 @@
     <footer class=" fixed-bottom d-flex justify-content-end align-items-center">
       <div class="ft-txt">
         <i class="fa-regular fa-circle-user" />
-        <p>개발자님 안녕하세요.</p>
+        <p>{{ $auth.user?.userName }}</p>
       </div>
-      <div class="ft-btn d-flex align-items-center">
-        <button class="btn d-flex justify-content-center align-items-center">
-          조회
-        </button>
-        <button class="btn d-flex justify-content-center align-items-center">
-          조회
-        </button>
-      </div>
+      <!--      <div class="ft-btn d-flex align-items-center">-->
+      <!--        <button class="btn d-flex justify-content-center align-items-center">-->
+      <!--          조회-->
+      <!--        </button>-->
+      <!--        <button class="btn d-flex justify-content-center align-items-center">-->
+      <!--          조회-->
+      <!--        </button>-->
+      <!--      </div>-->
     </footer>
   </div>
 </template>
@@ -146,9 +146,7 @@ export default {
     this.menus = sortedTree?._children
 
     /* 상단 푸시 알림 숫자 */
-    this.search.rcvrId = this.$auth.user.userId
-    this.search.pushInqryFlag = false
-    const pushCntData = await this.$api.system.alarm.alarmCnt(this.search)
+    const pushCntData = await this.$api.system.alarm.alarmCnt()
     this.pushCnt = pushCntData.data
   },
   mounted () {

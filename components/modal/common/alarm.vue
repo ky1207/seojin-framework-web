@@ -192,7 +192,6 @@ export default {
       this.list(e.page)
     },
     async list (page) {
-      this.search.rcvrId = this.$auth.user.userId
       const result = await this.$api.system.alarm.alarmList(this.search, page)
       this.gridProps.data = result.data
     },
