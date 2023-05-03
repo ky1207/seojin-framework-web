@@ -141,13 +141,15 @@ export default {
       if (menu !== null) { this.addTab(menu) }
     }
   },
-  async created () {
+  created () {
     const sortedTree = this.$store.getters.getMenus()
     this.menus = sortedTree?._children
 
     /* 상단 푸시 알림 숫자 */
-    const pushCntData = await this.$api.system.alarm.alarmCnt()
-    this.pushCnt = pushCntData.data
+    this.getAlarmCount()
+    setInterval(() => {
+      this.getAlarmCount()
+    }, 60 * 1000)
   },
   mounted () {
     if (this.$route.path !== '/') {
@@ -156,6 +158,10 @@ export default {
     }
   },
   methods: {
+    async  getAlarmCount () {
+      const pushCntData = await this.$api.system.alarm.alarmCnt()
+      this.pushCnt = pushCntData.data
+    },
     resize () {
       setTimeout(() => {
         window.dispatchEvent(new Event('resize'))
