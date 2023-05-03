@@ -181,6 +181,9 @@ export default {
       this.linkTo(this.tabs[this.tabs.length - 1])
     },
     addTab (menu) {
+      if (this.tabs.findIndex(e => e.progPath === menu.progPath) > -1) {
+        return false
+      }
       if (this.tabs.length >= this.$consts.MENU_LIMIT) {
         const first = this.tabs.shift()
         this.$tabs.removeTab(first.progPath)
@@ -192,8 +195,6 @@ export default {
     },
     change18n (lang) {
       this.$i18n.setLocale(lang)
-
-      // iframe 사라짐
       window.location.reload()
     },
     isActive (url) {
