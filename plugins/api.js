@@ -10,6 +10,7 @@ import schedule from '~/api/system/schedule'
 import alarm from '~/api/system/alarm'
 import userMobile from '~/api/system/userMobile'
 import appUpdate from '~/api/system/appUpdate'
+import business from '~/api/system/business'
 
 import common from '~/api/common/common'
 
@@ -19,6 +20,7 @@ export default ({ $axios }, inject) => {
   const api = {
     system: {
       code: code($axios),
+      business: business($axios),
       program: program($axios),
       menu: menu($axios),
       authority: authority($axios),

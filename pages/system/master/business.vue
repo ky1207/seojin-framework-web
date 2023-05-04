@@ -5,10 +5,10 @@
     </template>
     <template #default>
       <SJSearchField label="회사코드">
-        <SJInput id="companyId" name="회사코드" />
+        <SJInput id="form_bsnsCode" v-model="search.bsnsCode" name="사업자코드" />
       </SJSearchField>
-      <SJSearchField label="회사명">
-        <SJInput id="companyName" name="회사명" />
+      <SJSearchField label="사업장명">
+        <SJInput id="form_bsnsName" v-model="search.bsnsName" name="사업장명" />
       </SJSearchField>
       <SJSearchField label="사용여부">
         <SJSelect id="useYN" name="사용여부" />
@@ -26,13 +26,13 @@
     <template #right>
       <SJForm>
         <SJFormRow>
-          <SJFormField label="회사코드">
-            <SJInput id="ci" name="회사코드" rules="required" />
+          <SJFormField label="사업자코드">
+            <SJInput id="companyId" name="회사코드" />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField label="회사명">
-            <SJInput id="cp_name" name="회사명" rules="required" />
+          <SJFormField label="사업장명">
+            <SJInput id="companyName" name="회사명" />
           </SJFormField>
           <SJFormField label="영문회사명">
             <SJInput id="cp_engName" name="영문회사명" rules="required" />
@@ -116,14 +116,13 @@ export default {
   mixins: [ACTION, MENU],
   data () {
     return {
+      search: {},
       grid: {
         data: {},
         columns: [
-          { name: 'coCode' },
-          { name: 'coName', sortable: false, filter: null },
-          { header: '사업자번호' },
-          { header: '대표자명' },
-          { header: '사용여부' }
+          { name: 'bsnsCode', header: '사업장코드' },
+          { name: 'bsnsName', header: '사업장명' },
+          { name: 'useFlag', header: '사용여부' }
         ]
       }
     }
@@ -136,8 +135,9 @@ export default {
         f3Label: 'f3',
         f4Label: 'f4',
         f5Label: 'f5',
-        searchClick: () => {
-          this.$notify.success('searchClick')
+        searchClick: async () => {
+          const result = await this.$api.system.business.list(this.search)
+          this.grid.data = result.data
         },
         saveClick: () => {
           this.$notify.info('saveClick')
