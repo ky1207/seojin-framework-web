@@ -331,6 +331,7 @@ section {
     font-size: 11px;
     display: flex;
     align-self: center;
+    height: 100%;
 
 
     &-icon {
@@ -381,7 +382,7 @@ section {
     display: flex;
     align-items: center;
     margin-right: 10px;
-    min-width: 50px;
+    min-width: 60px;
 
     &::before {
       content: "";
@@ -880,19 +881,24 @@ form .check-box input{
     .logo {
       position: fixed;
     }
-
     .nav-wrap {
       margin-left: auto;
     }
   }
   #main {
     white-space: nowrap;
-
     //aside {
     //  overflow: hidden;
     //}
     .search {
       min-width: 100%;
+      input,select{
+        width: 100%;
+        min-width: 100px;
+      }
+      .search-field{
+        //width: 100%
+      }
       label {
         //min-width: 100px;
       }
@@ -905,15 +911,14 @@ form .check-box input{
   }
   .sj-form-field {
     fieldset {
-      min-width: 250px;
+      //min-width: 100%;
     }
     .field-area{
       div{
-        display: flex;flex-direction: column;}
+        display: flex;flex-direction: column;
+      }
     }
   }
-  .bar{
-    right: 0;}
   .ck.ck-toolbar>.ck-toolbar__items{
     width: 100%;
   }
@@ -922,13 +927,21 @@ form .check-box input{
 
 
 @media (max-width: 850px) {
+  #header{
+    .search-bar{display: none;}
+  }
   .navi-wrap{
     .btn-bar{display: none;}
   }
   .left-contents {
     width: 100%;
   }
-
-  .bar{
-    display: none;}
+  .right-contents{
+    .btn-bar{display: none}
+  }
+  .sj-form-field {
+    fieldset {
+      min-width: 100%;
+    }
+  }
 }
