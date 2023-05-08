@@ -100,6 +100,12 @@ export default {
             name: 'menuName'
           },
           {
+            name: 'useFlag',
+            renderer: CustomCheckRenderer,
+            align: 'center',
+            filter: null
+          },
+          {
             name: 'inqryAuth',
             renderer: CustomCheckRenderer
           },
