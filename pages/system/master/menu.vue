@@ -92,7 +92,7 @@
               id="form_folderFlag"
               v-model="menu.folderFlag"
               :name="$t('page.system.00097')"
-              :options="$api.common.getYNCodes()"
+              :options="common.USE_YN"
               rules="required"
               @change="changeUseFolder"
             />

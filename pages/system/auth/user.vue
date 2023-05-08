@@ -46,7 +46,7 @@
             />
           </SJFormField>
           <SJFormField :label="$tc('page.system.00004')">
-            <SJSelect id="form_useYN" v-model="userDetail.useFlag" :name="$t('page.system.00004')" :options="$api.common.getYNCodes()" rules="required" />
+            <SJSelect id="form_useYN" v-model="userDetail.useFlag" :name="$t('page.system.00004')" :options="common.USE_YN" rules="required" />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>

@@ -83,7 +83,7 @@
               id="form_useYN"
               v-model="alarm.useFlag"
               :name="$t('page.system.00004')"
-              :options="$api.common.getYNCodes()"
+              :options="common.USE_YN"
               rules="required"
               disabled-first-message
             />
@@ -93,7 +93,7 @@
               id="form_emailFlag"
               v-model="alarm.emailFlag"
               name="EMAIL"
-              :options="$api.common.getYNCodes()"
+              :options="common.USE_YN"
               rules="required"
               disabled-first-message
             />
@@ -103,7 +103,7 @@
               id="form_pushFlag"
               v-model="alarm.pushFlag"
               name="PUSH"
-              :options="$api.common.getYNCodes()"
+              :options="common.USE_YN"
               rules="required"
               disabled-first-message
             />
