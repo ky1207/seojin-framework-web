@@ -121,7 +121,7 @@ export default {
 <style>
  .SJFileUpload {
    height: 100px;
-   overflow-y: scroll;
+   overflow-y: auto;
  }
  .SJFileUpload_item {
    display: flex;
