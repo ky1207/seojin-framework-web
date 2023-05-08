@@ -17,9 +17,9 @@
           첨부파일 ( {{ inputValue.length }} )
         </button>
       </div>
-      <div style="height: 100px;overflow-y: scroll;">
+      <div class="SJFileUpload">
         <ul v-for="(file,i) in inputValue" :key="file.fileId" class="list-group">
-          <li v-if="file.method !== 'delete'" class="list-group-item" style="display: flex;">
+          <li v-if="file.method !== 'delete'" class="list-group-item SJFileUpload_item">
             <div style="cursor : pointer; margin-right: 2px;" @click="file.fileId !== null ? doDownload(file.fileId) : doDownloadByFile(file.file)">
               {{ file.filename }} ( {{ file.filesize }} byte)
             </div>
@@ -118,3 +118,12 @@ export default {
   }
 }
 </script>
+<style>
+ .SJFileUpload {
+   height: 100px;
+   overflow-y: scroll;
+ }
+ .SJFileUpload_item {
+   display: flex;
+ }
+</style>
