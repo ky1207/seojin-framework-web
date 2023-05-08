@@ -15,7 +15,7 @@
           id="useYN"
           v-model="search.useFlag"
           :name="$t('page.system.00004')"
-          :options="$api.common.getYNCodes()"
+          :options="common.USE_YN"
           disabled-validation
         />
       </SJSearchField>
@@ -170,7 +170,7 @@
             />
           </SJFormField>
           <SJFormField :label="$tc('page.system.00004')">
-            <SJSelect id="form_useYN" v-model="companyDetail.useFlag" :name="$t('page.system.00004')" :options="$api.common.getYNCodes()" rules="required" />
+            <SJSelect id="form_useYN" v-model="companyDetail.useFlag" :name="$t('page.system.00004')" :options="common.USE_YN" rules="required" />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
@@ -248,6 +248,7 @@ export default {
   },
   created () {
     this.common.LANGUAGES = this.$api.common.getLanguageCode()
+    this.common.USE_YN = this.$api.common.getYNCodes()
   },
   methods: {
     async onMasterClick (ev) {
