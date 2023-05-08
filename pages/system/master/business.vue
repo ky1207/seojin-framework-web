@@ -11,7 +11,7 @@
         <SJInput id="form_bsnsName" v-model="search.bsnsName" name="사업장명" />
       </SJSearchField>
       <SJSearchField label="사용여부">
-        <SJSelect id="useYN" name="사용여부" />
+        <SJSelect id="useYN" name="사용여부" :options="common.USE_YN" />
       </SJSearchField>
     </template>
     <template #leftTitle>
@@ -72,10 +72,10 @@
         </SJFormRow>
         <SJFormRow>
           <SJFormField label="종목">
-            <SJInput id="cp_event" name="종목" />
+            <SJInput id="cp_event" name="종목" rules="max:12" />
           </SJFormField>
           <SJFormField label="언어">
-            <SJInput id="cp_lang" name="언어" rules="required" />
+            <SJSelect id="cp_lang" name="언어" rules="required" :options="common.LANGUAGES" />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
@@ -83,7 +83,7 @@
             <SJInput id="cp_sort" name="정렬" rules="required" />
           </SJFormField>
           <SJFormField label="사용여부">
-            <SJInput id="cn_ame" name="사용여부" rules="required" />
+            <SJSelect id="cn_ame" name="사용여부" rules="required" :options="common.USE_YN" />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
@@ -116,6 +116,7 @@ export default {
   mixins: [ACTION, MENU],
   data () {
     return {
+      common: {},
       search: {},
       grid: {
         data: {},
@@ -126,6 +127,10 @@ export default {
         ]
       }
     }
+  },
+  created () {
+    this.common.USE_YN = this.$api.common.getYNCodes()
+    this.common.LANGUAGES = this.$api.common.getLanguageCode()
   },
   methods: {
     ACTION_REGISTRY () {
