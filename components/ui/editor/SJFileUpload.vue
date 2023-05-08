@@ -14,7 +14,7 @@
       <div ref="uploadDiv" class="col-sm-10">
         <input style="display:none;" type="file" multiple @change="onChange">
         <button type="button" class="btn-blue-bg" @click="OnSelect">
-          첨부파일 ( {{ inputValue.length }} )
+          {{ $t('components.ui.00005') }} ( {{ inputValue.length }} )
         </button>
       </div>
       <div class="SJFileUpload">
@@ -24,7 +24,7 @@
               {{ file.filename }} ( {{ file.filesize }} byte)
             </div>
             <button class="btn-gray-bg" @click="onDelete(i)">
-              삭제
+              {{ $t('components.ui.00003') }}
             </button>
           </li>
         </ul>
