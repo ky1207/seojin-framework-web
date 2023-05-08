@@ -14,18 +14,24 @@
       <div ref="uploadDiv" class="col-sm-10">
         <input style="display:none;" type="file" multiple @change="onChange">
         <button type="button" class="btn-blue-bg" @click="OnSelect">
-          첨부파일
+          첨부파일 ( {{ inputValue.length }} )
         </button>
       </div>
-      <ul v-for="(file,i) in inputValue" :key="file.fileId" class="list-group">
-        <li v-if="file.method !== 'delete'" class="list-group-item" style="cursor : pointer;" @click="file.fileId !== null ? doDownload(file.fileId) : doDownloadByFile(file.file)">
-          {{ file.filename }} ( {{ file.filesize }} byte)
-          <span class="badge bg-secondary" @click="onDelete(i)">삭제</span>
-        </li>
-      </ul>
-      <span :id="id+'-feedback'" class="invalid-feedback">
-        {{ errors[0] }}
-      </span>
+      <div style="height: 100px;overflow-y: scroll;">
+        <ul v-for="(file,i) in inputValue" :key="file.fileId" class="list-group">
+          <li v-if="file.method !== 'delete'" class="list-group-item" style="display: flex;">
+            <div style="cursor : pointer; margin-right: 2px;" @click="file.fileId !== null ? doDownload(file.fileId) : doDownloadByFile(file.file)">
+              {{ file.filename }} ( {{ file.filesize }} byte)
+            </div>
+            <button class="btn-gray-bg" @click="onDelete(i)">
+              삭제
+            </button>
+          </li>
+        </ul>
+        <span :id="id+'-feedback'" class="invalid-feedback">
+          {{ errors[0] }}
+        </span>
+      </div>
     </div>
   </ValidationProvider>
 </template>
