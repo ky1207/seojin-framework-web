@@ -1,4 +1,12 @@
-
+@mixin flex-set {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin size-set ($width, $height){
+  width: $width;
+  height: $height;
+}
 //Top Frame
 div{
   #header {
@@ -6,16 +14,14 @@ div{
   }
 }
 .navbar {
-  width: 100%;
-  height: 100%;
+  @include size-set(100%,100%);
   padding: 0;
-  background: #ffffff;
+  background: #fff;
   border-bottom: 2px solid #007db6;
 
   .logo {
     &-image {
-      width: 165px;
-      height: 43px;
+      @include size-set(165px,43px);
       margin-left: 30px;
     }
   }
@@ -30,8 +36,7 @@ div{
       align-items: center;
 
       &-input {
-        width: 200px;
-        height: 25px;
+        @include size-set(200px,25px);
         padding-left: 10px;
         color: #141414;
         border: 1px solid #eee;
@@ -52,28 +57,22 @@ div{
       }
 
       &-item {
-        width: 40px;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flex-set;
+        @include size-set(40px,100%);
         margin-right: 18px;
         color: #3B4158;
         &:last-child {
           margin-right: 0;
         }
         p {
+          @include flex-set;
+          @include size-set(19px,19px);
           position: absolute;
-          width: 19px;
-          height: 19px;
           background: #80c242;
           font-size: 12px;
           color: #fff;
           top: 10px;
           right: 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
           border-radius: 10px;
         }
       }
@@ -88,8 +87,8 @@ div{
         position: absolute; inset: 10px 5px auto auto; margin: 0; transform: translate(5px, 45px);
         .dropdown-item{
           img{
-            width: 15px;
-            height: 15px;margin-right: 10px;
+            @include size-set(15px,15px);
+            margin-right: 10px;
           }
         }
       }
@@ -99,9 +98,8 @@ div{
 
 //main
 .main {
+  @include size-set(100%,100%);
   padding: 75px 0 45px 0;
-  width: 100%;
-  height: 100%;
   display: flex;
   background: #e8ecf4;
 
@@ -112,8 +110,7 @@ div{
     background: #fff;
 
     .slider {
-      width: 100%;
-      height: 100%;
+      @include size-set(100%,100%);
     }
 
     button {
@@ -134,11 +131,8 @@ div{
   }
 
   &-link {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-set;
+    @include size-set(50px,50px);
   }
 }
 
@@ -155,8 +149,7 @@ div{
 }
 
 .menu-area {
-  width: 195px;
-  height: 100%;
+  @include size-set(195px,100%);
   display: flex;
 
   #menu-area {
@@ -172,8 +165,7 @@ div{
   }
 
   .main-menu {
-    width: 100%;
-    height: 100%;
+    @include size-set(100%,100%);
     padding: 0;
     overflow: hidden;
     margin: 0;
@@ -185,8 +177,7 @@ div{
     }
 
     &-link {
-      width: 100%;
-      height: 100%;
+      @include size-set(100%,100%);
       font-size: 12px;
       font-weight: bold;
       display: flex;
@@ -209,13 +200,12 @@ div{
       padding: 0;
 
       &-list {
+        @include size-set(100%,35px);
         padding: 0;
         margin: 0;
         border: none;
         display: flex;
         align-items: center;
-        width: 100%;
-        height: 35px;
         font-weight: lighter;
         font-size: 11px;
         color: #777;
@@ -257,15 +247,13 @@ div{
 
 //Work Frame
 section {
-  width: 100%;
-  height: 100%;
+  @include size-set(100%,100%);
   background: #fff;
   display: flex; flex-direction: column;
 }
 
 .home-wrap {
-  width: 110%;
-  height: 40px;
+  @include size-set(110%,40px);
   display: flex;
   align-items: center;
   background: #E8ECF4;
@@ -273,13 +261,11 @@ section {
   padding:5px 0;
 
   &-icon {
-    width: 30px;
-    height: 100%;
+    @include size-set(30px,100%);
     color: #6B758E;
 
     i {
-      width: 100%;
-      height: 100%;
+      @include size-set(100%,100%);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -301,8 +287,7 @@ section {
     }
 
     &-item {
-      width: 145px;
-      height: 100%;
+      @include size-set(145px,100%);
       margin-right: 5px;
       background: #f4f6fa;
       color: #939496;
@@ -337,9 +322,7 @@ section {
     &-icon {
       height: 100%;
       padding: 0 5px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flex-set;
     }
 
     .active {
@@ -385,20 +368,18 @@ section {
     min-width: 60px;
 
     &::before {
+      @include size-set(3px,3px);
       content: "";
       display: flex;
       margin-right: 5px;
       justify-content: center;
-      width: 3px;
-      height: 3px;
       background: #5C5C5C;
     }
   }
 
   input,
   select {
-    width: 200px;
-    height: 25px;
+    @include size-set(200px,25px);
     border: solid 1px #BCC1D0;
   }
 
@@ -406,8 +387,7 @@ section {
 
 //Status Frame
 footer {
-  width: 100%;
-  height: 40px;
+  @include size-set(100%,40px);
   background: #6b758e;
   padding: 20px;
   .ft-title,.ft-txt{
@@ -436,8 +416,7 @@ footer {
     margin-left: 45px;
 
     .btn {
-      width: 78px;
-      height: 23px;
+      @include size-set(78px,23px);
       color: #fff;
       border-radius: 3px;
       font-size: 12px;
@@ -491,9 +470,7 @@ footer {
     height: 100%;
     font-size: 12px;
     font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-set;
 
     i {
       margin-right: 5px;
@@ -586,9 +563,8 @@ form {
     padding-left: 20px;
 
     &:before {
+      @include size-set(3px,3px);
       content: "";
-      width: 3px;
-      height: 3px;
       background: #5C5C5C;
       border-radius: 10px;
       margin-right: 5px;
@@ -601,17 +577,15 @@ form {
     }
   }
   input,select {
-    width: 100%;
-    height: 25px;
+    @include size-set(100%,25px);
     border: solid 1px #BCC1D0;
     margin-right: auto;
     border-radius: 0;
   }
   .check-box{
     input{
+      @include size-set(15px,15px);
       border: 2px solid #bcbcbc;
-      width: 15px;
-      height: 15px;
       display: flex;
       justify-content: center;
     }
@@ -642,10 +616,9 @@ form {
 }
 //checkbox 스타일
 input[type="checkbox"] {
+  @include size-set(13px,13px);
   -webkit-appearance: none;
   position: relative;
-  width: 13px;
-  height: 13px;
   cursor: pointer;
   outline: none !important;
   background: #fbfbfb;
@@ -819,17 +792,15 @@ form .check-box input{
 }
 
 .split-contents {
+  @include size-set(100%,100%);
   flex-wrap: wrap;
-  width: 100%;
-  height: 100%;
 
   .data-box {
     height: 100%;
   }
 
   .one-contents {
-    width: 100%;
-    height: 200px;
+    @include size-set(100%,200px);
     padding:0;
 
     .txt-wrap {
@@ -842,8 +813,7 @@ form .check-box input{
   }
 
   .left-contents {
-    width: 50%;
-    height: 60%;
+    @include size-set(50%,60%);
     margin-right: 5px;
 
     //.grid-wrap {
@@ -862,8 +832,7 @@ form .check-box input{
   }
 
   .right-contents {
-    width: 50%;
-    height: 100%;
+    @include size-set(50%,100%);
     margin-left: 5px;
     right: 0;
 
