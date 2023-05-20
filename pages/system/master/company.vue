@@ -5,7 +5,7 @@
     </template>
     <template #default>
       <SJSearchField :label="$t('page.system.00074')">
-        <SJInput id="companyId" v-model="search.coId" :name="$t('page.system.00074')" disabled-validation />
+        <SJInput id="companyId" v-model="search.coCode" :name="$t('page.system.00074')" disabled-validation />
       </SJSearchField>
       <SJSearchField :label="$t('page.system.00075')">
         <SJInput id="companyName" v-model="search.coName" :name="$t('page.system.00075')" disabled-validation />
@@ -277,7 +277,7 @@ export default {
           if (result) {
             if (this.isUpdate) {
               /* const data = { company: this.companyDetail } */
-              await this.$api.system.company.update(this.coId, this.companyDetail)
+              await this.$api.system.company.update(this.companyDetail.coId, this.companyDetail)
             } else {
               await this.$api.system.company.save(this.companyDetail)
             }
