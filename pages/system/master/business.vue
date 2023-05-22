@@ -4,46 +4,45 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <SJSearchField label="회사코드">
-        <SJInput id="form_bsnsCode" v-model="search.bsnsCode" name="사업자코드" />
+      <SJSearchField :label="$t('page.system.00108')">
+        <SJInput id="bsnsCode" v-model="search.bsnsCode" :name="$t('page.system.00108')" disabled-validation />
       </SJSearchField>
-      <SJSearchField label="사업장명">
-        <SJInput id="form_bsnsName" v-model="search.bsnsName" name="사업장명" />
+      <SJSearchField :label="$t('page.system.00109')">
+        <SJInput id="bsnsName" v-model="search.bsnsName" :name="$t('page.system.00109')" disabled-validation>
+          />
+        </sjinput>
       </SJSearchField>
-      <SJSearchField label="사용여부">
-        <SJSelect id="useYN" name="사용여부" :options="common.USE_YN" />
+      <SJSearchField :label="$t('page.system.00004')">
+        <SJSelect id="useYN" v-model="search.useFlag" :name="$t('page.system.00004')" :options="common.USE_YN" disabled-validation />
       </SJSearchField>
     </template>
     <template #leftTitle>
-      <SJTitle title="회사" />
+      <SJTitle :title="$t('page.system.00104')" />
     </template>
     <template #left>
-      <SJGrid v-model="grid.data" :columns="grid.columns" />
+      <SJGrid ref="business" v-model="grid.data" :columns="grid.columns" />
     </template>
     <template #rightTitle>
-      <SJTitle title="회사상세" />
+      <SJTitle :title="$t('page.system.00110')" />
     </template>
     <template #right>
       <SJForm>
         <SJFormRow>
-          <SJFormField label="사업자코드">
-            <SJInput id="companyId" name="회사코드" />
+          <SJFormField label="사업장코드">
+            <SJInput id="companyId" name="사업장코드" />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
           <SJFormField label="사업장명">
-            <SJInput id="companyName" name="회사명" />
-          </SJFormField>
-          <SJFormField label="영문회사명">
-            <SJInput id="cp_engName" name="영문회사명" rules="required" />
+            <SJInput id="companyName" name="사업장명" />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField label="사업자번호">
-            <SJInput id="cp_Num" name="사업자번호" />
+          <SJFormField label="영문사업장명">
+            <SJInput id="cp_Num" name="사업장번호" />
           </SJFormField>
-          <SJFormField label="법인번호">
-            <SJInput id="cp_coNum" name="법인번호" />
+          <SJFormField label="사업자번호">
+            <SJInput id="cp_coNum" name="사업자번호" />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
@@ -55,24 +54,16 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField label="회사 전화">
-            <SJInput id="cp_tel" name="회사 전화" />
+          <SJFormField label="사업장 전화">
+            <SJInput id="cp_tel" name="사업장 전화" />
           </SJFormField>
-          <SJFormField label="회사 FAX">
-            <SJInput id="cp_fax" name="회사 FAX" />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="설립일">
-            <SJDatePicker id="cp_day" name="설립일" />
-          </SJFormField>
-          <SJFormField label="업태">
-            <SJInput id="cp_business" name="업태" />
+          <SJFormField label="사업장 FAX">
+            <SJInput id="cp_fax" name="사업장 FAX" />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField label="종목">
-            <SJInput id="cp_event" name="종목" rules="max:12" />
+          <SJFormField label="개업일자">
+            <SJDatePicker id="cp_day" name="개업일자" />
           </SJFormField>
           <SJFormField label="언어">
             <SJSelect id="cp_lang" name="언어" rules="required" :options="common.LANGUAGES" />
@@ -98,11 +89,8 @@
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField label="코드약어">
+          <SJFormField label="비고">
             <SJInput id="cp_code" name="코드약어" rules="required" />
-          </SJFormField>
-          <SJFormField label="로고파일명">
-            <SJInput id="cp_file" name="회사코드" rules="required" />
           </SJFormField>
         </SJFormRow>
       </SJForm>
@@ -118,11 +106,15 @@ export default {
     return {
       common: {},
       search: {},
+      businessCode: {
+      },
       grid: {
         data: {},
         columns: [
           { name: 'bsnsCode' },
           { name: 'bsnsName' },
+          { name: 'biznum' },
+          { name: 'repName' },
           { name: 'useFlag' }
         ]
       }

@@ -70,6 +70,9 @@ export default ctx => ({
     bsnsName: {
       header: ctx.i18n.t('grid.bsnsName')
     },
+    bsnsCode: {
+      header: ctx.i18n.t('grid.bsnsCode')
+    },
     // C
     coId: {
       header: ctx.i18n.t('grid.coId'),
