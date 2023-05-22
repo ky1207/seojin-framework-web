@@ -121,9 +121,9 @@ export default {
       grid: {
         data: {},
         columns: [
-          { name: 'bsnsCode', header: '사업장코드' },
-          { name: 'bsnsName', header: '사업장명' },
-          { name: 'useFlag', header: '사용여부' }
+          { name: 'bsnsCode' },
+          { name: 'bsnsName' },
+          { name: 'useFlag' }
         ]
       }
     }
