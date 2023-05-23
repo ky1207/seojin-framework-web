@@ -20,77 +20,154 @@
       <SJTitle :title="$t('page.system.00104')" />
     </template>
     <template #left>
-      <SJGrid ref="business" v-model="grid.data" :columns="grid.columns" />
+      <SJGrid
+        ref="grid"
+        v-model="grid.data"
+        :columns="grid.columns"
+        @click="onMasterClick"
+      />
     </template>
     <template #rightTitle>
-      <SJTitle :title="$t('page.system.00110')" />
+      <SJTitle :title="$t('page.system.00110')">
+        <button class="btn-blue-bg" @click="createBusiness">
+          {{ $t('page.system.00115') }}
+        </button>
+      </SJTitle>
     </template>
     <template #right>
-      <SJForm>
+      <SJForm ref="form">
         <SJFormRow>
-          <SJFormField label="사업장코드">
-            <SJInput id="companyId" name="사업장코드" />
+          <SJFormField :label="$tc('page.system.00108')">
+            <SJInput
+              id="form_bsnsCode"
+              v-model="businessCode.bsnsCode"
+              :name="$t('page.system.00108')"
+              rules="required|max:12"
+              :disabled="isUpdate"
+            />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField label="사업장명">
-            <SJInput id="companyName" name="사업장명" />
+          <SJFormField :label="$tc('page.system.00109')">
+            <SJInput
+              id="form_bsnsName"
+              v-model="businessCode.bsnsName"
+              :name="$t('page.system.00109')"
+              rules="required"
+            />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField label="영문사업장명">
-            <SJInput id="cp_Num" name="사업장번호" />
+          <SJFormField :label="$tc('page.system.00111')">
+            <SJInput
+              id="form_enBsnsName"
+              v-model="businessCode.enBsnsName"
+              :name="$t('page.system.00111')"
+              rules="required"
+            />
           </SJFormField>
-          <SJFormField label="사업자번호">
-            <SJInput id="cp_coNum" name="사업자번호" />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="대표자명">
-            <SJInput id="cp_coName" name="대표자명" />
-          </SJFormField>
-          <SJFormField label="담당자 이메일">
-            <SJInput id="cp_email" name="담당자 이메일" />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="사업장 전화">
-            <SJInput id="cp_tel" name="사업장 전화" />
-          </SJFormField>
-          <SJFormField label="사업장 FAX">
-            <SJInput id="cp_fax" name="사업장 FAX" />
+          <SJFormField :label="$tc('page.system.00040')">
+            <SJInput
+              id="form_biznum"
+              v-model="businessCode.biznum"
+              :name="$t('page.system.00040')"
+              rules="required"
+            />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField label="개업일자">
-            <SJDatePicker id="cp_day" name="개업일자" />
+          <SJFormField :label="$tc('page.system.00042')">
+            <SJInput
+              id="form_repName"
+              v-model="businessCode.repName"
+              :name="$t('page.system.00042')"
+              disabled-validation
+            />
           </SJFormField>
-          <SJFormField label="언어">
-            <SJSelect id="cp_lang" name="언어" rules="required" :options="common.LANGUAGES" />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="정렬">
-            <SJInput id="cp_sort" name="정렬" rules="required" />
-          </SJFormField>
-          <SJFormField label="사용여부">
-            <SJSelect id="cn_ame" name="사용여부" rules="required" :options="common.USE_YN" />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="주소">
-            <SJInput id="cp_add" name="주소" />
-            <SJInput id="cp_add" name="주소" />
+          <SJFormField :label="$tc('page.system.00043')">
+            <SJInput
+              id="form_email"
+              v-model="businessCode.email"
+              :name="$t('page.system.00043')"
+              disabled-validation
+            />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField label="영문주소">
-            <SJInput id="cp_engAdd" name="영문주소" rules="required" />
+          <SJFormField :label="$tc('page.system.00112')">
+            <SJInput
+              id="form_phone"
+              v-model="businessCode.phone"
+              :name="$t('page.system.00112')"
+              disabled-validation
+            />
+          </SJFormField>
+          <SJFormField :label="$tc('page.system.00113')">
+            <SJInput
+              id="form_fax"
+              v-model="businessCode.fax"
+              :name="$t('page.system.00113')"
+              disabled-validation
+            />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField label="비고">
-            <SJInput id="cp_code" name="코드약어" rules="required" />
+          <SJFormField :label="$tc('page.system.00114')">
+            <SJDatePicker
+              id="form_openDt"
+              v-model="businessCode.openDt"
+              :name="$t('page.system.00114')"
+            />
+          </SJFormField>
+          <SJFormField :label="$tc('page.system.00049')">
+            <SJSelect
+              id="form_lang"
+              v-model="businessCode.lang"
+              :options="common.LANGUAGES"
+              :name="$t('page.system.00049')"
+              rules="required"
+            />
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField :label="$tc('page.system.00050')">
+            <SJStepper
+              id="form_sort"
+              v-model="businessCode.sort"
+              name="stepper"
+              rules="required|min_value:1"
+            />
+          </SJFormField>
+          <SJFormField :label="$tc('page.system.00004')">
+            <SJSelect id="form_useYN" v-model="businessCode.useFlag" :name="$t('page.system.00004')" :options="common.USE_YN" rules="required" />
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField :label="$tc('page.system.00051')">
+            <SJInput
+              id="form_addr1"
+              v-model="businessCode.addr1"
+              :name="$t('page.system.00051')"
+            />
+            <SJInput
+              id="form_addr2"
+              v-model="businessCode.addr2"
+              :name="$t('page.system.00051')"
+            />
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField :label="$tc('page.system.00052')">
+            <SJInput
+              id="form_addr3"
+              v-model="businessCode.addr3"
+              :name="$t('page.system.00052')"
+            />
+          </SJFormField>
+        </SJFormRow>
+        <SJFormRow>
+          <SJFormField :label="$tc('page.system.00009')">
+            <SJTextarea id="form_remark" v-model="businessCode.remark" :name="$t('page.system.00009')" disabled-validation />
           </SJFormField>
         </SJFormRow>
       </SJForm>
@@ -104,6 +181,7 @@ export default {
   mixins: [ACTION, MENU],
   data () {
     return {
+      isUpdate: false,
       common: {},
       search: {},
       businessCode: {
@@ -125,39 +203,47 @@ export default {
     this.common.LANGUAGES = this.$api.common.getLanguageCode()
   },
   methods: {
+    async onMasterClick (ev) {
+      if (ev.rowKey === undefined) { return }
+      const item = this.$refs.grid.invoke('getRow', ev.rowKey)
+      const result = await this.$api.system.business.load(item.bsnsId)
+      this.businessCode = result.data
+      this.isUpdate = true
+      this.businessCode.data = {
+        Data: this.businessCode.codes
+      }
+    },
+    createBusiness () {
+      this.isUpdate = false
+      this._resetForm()
+    },
     ACTION_REGISTRY () {
       return {
-        f1Label: 'f1',
-        f2Label: 'f2',
-        f3Label: 'f3',
-        f4Label: 'f4',
-        f5Label: 'f5',
         searchClick: async () => {
+          this._resetForm()
           const result = await this.$api.system.business.list(this.search)
           this.grid.data = result.data
         },
-        saveClick: () => {
-          this.$notify.info('saveClick')
+        saveClick: async () => {
+          const result = await this.$refs.form.validate()
+          if (result) {
+            if (this.isUpdate) {
+              await this.$api.system.business.update(this.businessCode.bsnsId, this.businessCode)
+            } else {
+              await this.$api.system.business.save(this.businessCode)
+            }
+            this._resetForm()
+            this.$notify.success(this.$t('message.00002'))
+            await this.ACTION_REGISTRY().searchClick()
+          }
         },
         delClick: () => {
-          this.$notify.error('delClick')
-        },
-        f1Click: () => {
-          this.$notify.warning('f1Click')
-        },
-        f2Click: () => {
-          this.$notify.warning('f2Click')
-        },
-        f3Click: () => {
-          this.$notify.warning('f3Click')
-        },
-        f4Click: () => {
-          this.$notify.warning('f4Click')
-        },
-        f5Click: () => {
-          this.$notify.warning('f5Click')
         }
       }
+    },
+    _resetForm () {
+      this.$refs.form.reset()
+      this.businessCode = {}
     }
   }
 }
