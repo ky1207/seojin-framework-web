@@ -109,10 +109,14 @@ export default ctx => ({
     deptCode: {
       header: ctx.i18n.t('grid.deptCode'),
       align: 'center',
-      width: '150'
+      width: '150',
+      sortable: false,
+      filter: null
     },
     deptName: {
-      header: ctx.i18n.t('grid.deptName')
+      header: ctx.i18n.t('grid.deptName'),
+      sortable: false,
+      filter: null
     },
 
     // E
