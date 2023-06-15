@@ -17,6 +17,18 @@
         @moveToGridPage="page"
       />
       <div>
+        <button type="button" class="btn btn-primary" @click="success()">
+          success
+        </button>
+        <button type="button" class="btn btn-primary" @click="info()">
+          info
+        </button>
+        <button type="button" class="btn btn-primary" @click="warning()">
+          warning
+        </button>
+        <button type="button" class="btn btn-primary" @click="error()">
+          error
+        </button>
         <button type="button" class="btn btn-primary" style="margin-right: 5px;" @click="open()">
           Launch demo modal
         </button>
@@ -71,6 +83,18 @@ export default {
     this.gridProps.data = result.data
   },
   methods: {
+    success () {
+      this.$notify.success('success')
+    },
+    warning () {
+      this.$notify.warning('warn')
+    },
+    error () {
+      this.$notify.error('error')
+    },
+    info () {
+      this.$notify.info('info')
+    },
     doDownload (id) {
       this.$api.sample.download(id)
     },
