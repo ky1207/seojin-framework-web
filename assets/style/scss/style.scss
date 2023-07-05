@@ -524,7 +524,7 @@ form {
   color: #4C5263;
   overflow: hidden;
   font-size: 11px;
-  padding-left: 10px;
+  //padding-left: 10px;
   legend {
     padding: 0;
     height: 25px;
@@ -537,7 +537,7 @@ form {
     fieldset {
       width: 100%;
       display: flex;
-      margin-left: 10px;
+      //margin-left: 10px;
       .mx-datepicker,
       textarea,.field-area {
         display: flex;

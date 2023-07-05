@@ -11,7 +11,15 @@
   border: none;
   display: flex;
 }
-
+.btn-blue{
+  width: 50px;
+  background: none;
+  color: #0365A9;
+  border: solid 1px #0365A9;
+  border-radius: 3px;
+  font-size: 11px;
+  padding: 0 5px;
+}
 .btn-blue-bg{
   width: 80px;
   height: 23px;
@@ -41,4 +49,11 @@
   border-radius: 8px;
   border: solid 1px #000;
   background: #fff;
+}
+.btn-none{
+  border: none;
+  background: none;
+  padding: 0 10px;
+  color: #BCC1D0;
+  font-size: 13px;
 }
