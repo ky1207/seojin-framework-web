@@ -20,6 +20,7 @@
         >
           <li v-for="sub in m._children" :key="sub.menuId" class="accordion-item accordion-header" data-bs-parent="#menuAccordion">
             <a
+              v-if="sub._children"
               class="btn sub-menu-item accordion-button collapsed"
               href="#"
               :data-bs-target="'#m'+sub.menuId+'-collapse'"
@@ -27,6 +28,14 @@
             >
               {{ sub.menuName }}
             </a>
+            <nuxt-link
+              v-else
+              :to="sub.progPath?sub.progPath:'/'"
+              :class="isActive(sub.progPath)"
+              class="sub-menu-list accordion-body"
+            >
+              {{ sub.menuName }}
+            </nuxt-link>
             <ul
               v-if="sub._children"
               :id="'m'+sub.menuId+'-collapse'"
