@@ -28,14 +28,16 @@
             >
               {{ sub.menuName }}
             </a>
-            <nuxt-link
-              v-else
-              :to="sub.progPath?sub.progPath:'/'"
-              :class="isActive(sub.progPath)"
-              class="sub-menu-list accordion-body"
-            >
-              {{ sub.menuName }}
-            </nuxt-link>
+            <ul v-else class="accordion-collapse ">
+              <li class="sub-menu-list accordion-body">
+                <nuxt-link
+                  :to="sub.progPath?sub.progPath:'/'"
+                  :class="isActive(sub.progPath)"
+                >
+                  {{ sub.menuName }}
+                </nuxt-link>
+              </li>
+            </ul>
             <ul
               v-if="sub._children"
               :id="'m'+sub.menuId+'-collapse'"
