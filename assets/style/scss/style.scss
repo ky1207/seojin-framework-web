@@ -171,9 +171,9 @@ div{
     margin: 0;
 
     &-item {
-      height: 35px;
       margin: 0 10px;
       border-bottom: solid 1px #E9E8E7;
+      padding: 10px 0;
     }
 
     &-link {
@@ -222,7 +222,7 @@ div{
       }
 
       .accordion-collapse {
-        padding: 5px
+        padding: 5px;
       }
 
       .accordion-item {
