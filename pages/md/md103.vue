@@ -5,15 +5,14 @@
     </template>
     <template>
       <SJSearchField label="기준단위코드">
-        <SJInput id="md1" v-model="search.md1" name="md2" />
-      </SJSearchField>
+        <SJInput id="md1" v-model="search.md1" name="md1" />
+      </sjsearchfield>
+      <SJSearchField label="환산단위코드">
+        <SJInput id="md2" v-model="search.md2" name="md2" />
+      </sjsearchfield>
       <LazySJSearchField label="사용여부">
-        <SJSelect
-          id="md2"
-          name="md2"
-          :options="MD_01"
-        />
-      </lazysjsearchfield>
+        <SJSelect id="md3" name="md3" :options="MD_01" />
+      </LazySJSearchField>
     </template>
     <template #bodyTitle>
       <SJTitle title="창고정보">
@@ -37,22 +36,23 @@
 
 <script>
 import { ACTION } from '~/mixins'
+
 export default {
   mixins: [ACTION],
   data () {
     return {
-      common: {},
       search: {},
       grid: {
         data: {},
         columns: [
-          { name: '기준단위코드', width: 200 },
-          { name: '기준단위명', width: 200 },
-          { name: '우선순위', width: 200 },
-          { name: '사용여부', width: 200 }
+          { name: '기준단위코드', width: 150 },
+          { name: '환산단위코드', width: 150 },
+          { name: '기준계수', width: 150 },
+          { name: '변환계수', width: 200 },
+          { name: '비고', width: 200 },
+          { name: '사용여부', width: 150 }
         ]
       }
-
     }
   },
   created () {
