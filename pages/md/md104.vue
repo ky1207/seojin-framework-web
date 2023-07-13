@@ -4,13 +4,19 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template>
+      <SJSearchField label="품목명">
+        <SJInput id="md1" v-model="search.md1" name="md1" />
+      </SJSearchField>
       <SJSearchField label="기준단위코드">
-        <SJInput id="md1" v-model="search.md1" name="md2" />
+        <SJInput id="md2" v-model="search.md2" name="md2" />
+      </SJSearchField>
+      <SJSearchField label="환산단위코드">
+        <SJInput id="md3" v-model="search.md3" name="md3" />
       </SJSearchField>
       <SJSearchField label="사용여부">
         <SJSelect
-          id="md2"
-          name="md2"
+          id="md4"
+          name="md4"
           :options="MD_01"
         />
       </Sjsearchfield>
@@ -37,19 +43,22 @@
 
 <script>
 import { ACTION } from '~/mixins'
+
 export default {
   mixins: [ACTION],
   data () {
     return {
-      common: {},
       search: {},
       grid: {
         data: {},
         columns: [
-          { name: '기준단위코드', width: 200 },
-          { name: '기준단위명', width: 200 },
-          { name: '우선순위', width: 200 },
-          { name: '사용여부', width: 200 }
+          { name: '품목코드', width: 100 },
+          { name: '품목명', width: 100 },
+          { name: '기준단위코드', width: 100 },
+          { name: '환산단위코드', width: 100 },
+          { name: '기준계수', width: 100 },
+          { name: '변환계수', width: 200 },
+          { name: '사용여부', width: 100 }
         ]
       }
     }
@@ -86,6 +95,7 @@ export default {
       ]
     }
   }
+
 }
 </script>
 
