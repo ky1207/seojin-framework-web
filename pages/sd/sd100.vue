@@ -39,11 +39,11 @@
       </SJTitle>
     </template>
     <template #right>
-      <SJAccordion :accordion-id="'myAccordion'" :sections="accordionSections">
-        <template #section="{ section }">
-          <!-- 사업자정보 -->
-          <template v-if="section.title === '사업자정보'">
-            <SJForm ref="form">
+      <SJForm ref="form">
+        <SJAccordion :accordion-id="'myAccordion'" :sections="accordionSections">
+          <template #section="{ section }">
+            <!-- 사업자정보 -->
+            <template v-if="section.title === '사업자정보'">
               <SJFormRow>
                 <SJFormField label="거래처코드">
                   <SJInput id="coCode" v-model="inputData.CO_CODE" name="거래처코드" rules="required" />
@@ -100,11 +100,9 @@
                   <SJInput id="tradeEndDay" v-model="inputData.TRADE_END_DAY" name="거래종료일" />
                 </SJFormField>
               </SJFormRow>
-            </SJForm>
-          </template>
-          <!-- 일반정보 -->
-          <template v-if="section.title === '일반정보'">
-            <SJForm ref="form">
+            </template>
+            <!-- 일반정보 -->
+            <template v-if="section.title === '일반정보'">
               <SJFormRow>
                 <SJFormField label="거래처분류">
                   <SJInput id="coGroup" v-model="inputData.CO_GROUP" name="거래처분류" rules="required" />
@@ -147,11 +145,9 @@
                   <SJInput id="traderTelNo2" v-model="inputData.TRADER_TEL_NO2" name="영업담당자연락처2" />
                 </SJFormField>
               </SJFormRow>
-            </SJForm>
-          </template>
-          <!-- 업무정보 -->
-          <template v-if="section.title === '업무정보'">
-            <SJForm ref="form">
+            </template>
+            <!-- 업무정보 -->
+            <template v-if="section.title === '업무정보'">
               <SJFormRow>
                 <SJFormField label="운송방법">
                   <SJSelect id="transWay" name="운송방법" :options="common.USE_YN" />
@@ -202,11 +198,9 @@
                   <SJInput id="fileUpload" v-model="inputData.FILE_UPLOAD" name="파일첨부" />
                 </SJFormField>
               </SJFormRow>
-            </SJForm>
-          </template>
-          <!-- 회계정보 -->
-          <template v-if="section.title === '회계정보'">
-            <SJForm ref="form">
+            </template>
+            <!-- 회계정보 -->
+            <template v-if="section.title === '회계정보'">
               <SJFormRow>
                 <SJFormField label="통화">
                   <SJSelect id="currency" name="통화" :options="common.USE_YN" rules="required" />
@@ -244,11 +238,9 @@
                   <SJInput id="emailBill" v-model="inputData.EMAIL_BILL" name="이메일계산서" />
                 </SJFormField>
               </SJFormRow>
-            </SJForm>
+            </template>
           </template>
-        </template>
-      </SJAccordion>
-      <SJForm>
+        </SJAccordion>
         <SJFormRow>
           <SJFormField label="등록일시">
             2023-06-01 01:01:59
