@@ -10,9 +10,9 @@
       <SJSearchField label="환산단위코드">
         <SJInput id="md2" v-model="search.md2" name="md2" />
       </sjsearchfield>
-      <LazySJSearchField label="사용여부">
+      <SJSearchField label="사용여부">
         <SJSelect id="md3" name="md3" :options="MD_01" />
-      </LazySJSearchField>
+      </SJSearchField>
     </template>
     <template #bodyTitle>
       <SJTitle title="창고정보">
