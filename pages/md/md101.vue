@@ -4,13 +4,13 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <LazySJSearchField label="사업장">
+      <SJSearchField label="사업장">
         <SJSelect
           id="md1"
           name="md1"
           :options="MD_01"
         />
-      </LazySJSearchField>
+      </SJSearchField>
     </template>
     <template #leftTitle>
       <SJTitle title="창고정보" />
