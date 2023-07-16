@@ -4,63 +4,17 @@
       <SJTitle :title="$t('page.system.00104')" />
     </template>
     <template #left>
-      <SJTab :list="tabList">
-        <template #tab-1>
-          <SJGrid
-            ref="grid"
-            v-model="grid.data"
-            :columns="grid.columns"
-          />
-        </template>
-        <template #tab-2>
-          <SJForm ref="form">
-            <SJFormRow>
-              <SJFormField :label="$tc('page.system.00108')">
-                <SJInput
-                  id="form_bsnsCode"
-                  v-model="businessCode.bsnsCode"
-                  :name="$t('page.system.00108')"
-                  rules="required|max:12"
-                  :disabled="isUpdate"
-                />
-              </SJFormField>
-            </SJFormRow>
-            <SJFormRow>
-              <SJFormField :label="$tc('page.system.00109')">
-                <SJInput
-                  id="form_bsnsName"
-                  v-model="businessCode.bsnsName"
-                  :name="$t('page.system.00109')"
-                  rules="required"
-                />
-              </SJFormField>
-            </SJFormRow>
-          </SJForm>
-        </template>
-        <template #tab-3>
-          <SJForm ref="form">
-            <SJFormRow>
-              <SJFormField :label="$tc('page.system.00004')">
-                <SJSelect id="form_useYN" v-model="businessCode.useFlag" :name="$t('page.system.00004')" :options="common.USE_YN" rules="required" />
-              </SJFormField>
-            </SJFormRow>
-          </SJForm>
-        </template>
-      </SJTab>
-    </template>
-    <template #rightTitle>
-      <SJTitle :title="$t('page.system.00110')">
-        <button class="btn-blue-bg" @click="createBusiness">
-          {{ $t('page.system.00115') }}
-        </button>
-      </SJTitle>
-    </template>
-    <template #right>
-      <SJAccordion :accordion-id="'myAccordion'" :sections="accordionSections">
-        <template #section="{ section }">
-          <!-- Section 1 -->
-          <template v-if="section.title === 'Section 1'">
-            <SJForm ref="form">
+      <SJForm>
+        <SJTab :list="tabList">
+          <template #tab-1>
+            <SJGrid
+              ref="grid"
+              v-model="grid.data"
+              :columns="grid.columns"
+            />
+          </template>
+          <template #tab-2>
+            <SJForm>
               <SJFormRow>
                 <SJFormField :label="$tc('page.system.00108')">
                   <SJInput
@@ -82,11 +36,55 @@
                   />
                 </SJFormField>
               </SJFormRow>
-            </SJForm>
+            </sjform>
           </template>
-          <!-- Section 2 -->
-          <template v-if="section.title === 'Section 2'">
-            <SJForm ref="form">
+          <template #tab-3>
+            <SJFormRow>
+              <SJFormField :label="$tc('page.system.00004')">
+                <SJSelect id="form_useYN" v-model="businessCode.useFlag" :name="$t('page.system.00004')" :options="common.USE_YN" rules="required" />
+              </SJFormField>
+            </SJFormRow>
+          </template>
+        </SJTab>
+      </SJForm>
+    </template>
+    <template #rightTitle>
+      <SJTitle :title="$t('page.system.00110')">
+        <button class="btn-blue-bg" @click="createBusiness">
+          {{ $t('page.system.00115') }}
+        </button>
+      </SJTitle>
+    </template>
+    <template #right>
+      <SJForm ref="form">
+        <SJAccordion :accordion-id="'myAccordion'" :sections="accordionSections">
+          <template #section="{ section }">
+            <!-- Section 1 -->
+            <template v-if="section.id === 'section1'">
+              <SJFormRow>
+                <SJFormField :label="$tc('page.system.00108')">
+                  <SJInput
+                    id="form_bsnsCode"
+                    v-model="businessCode.bsnsCode"
+                    :name="$t('page.system.00108')"
+                    rules="required|max:12"
+                    :disabled="isUpdate"
+                  />
+                </SJFormField>
+              </SJFormRow>
+              <SJFormRow>
+                <SJFormField :label="$tc('page.system.00109')">
+                  <SJInput
+                    id="form_bsnsName"
+                    v-model="businessCode.bsnsName"
+                    :name="$t('page.system.00109')"
+                    rules="required"
+                  />
+                </SJFormField>
+              </SJFormRow>
+            </template>
+            <!-- Section 2 -->
+            <template v-if="section.id === 'section2'">
               <SJFormRow>
                 <SJFormField :label="$tc('page.system.00050')">
                   <SJStepper
@@ -100,11 +98,9 @@
                   <SJSelect id="form_useYN" v-model="businessCode.useFlag" :name="$t('page.system.00004')" :options="common.USE_YN" rules="required" />
                 </SJFormField>
               </SJFormRow>
-            </SJForm>
-          </template>
-          <!-- Section 3 -->
-          <template v-if="section.title === 'Section 3'">
-            <SJForm ref="form">
+            </template>
+            <!-- Section 3 -->
+            <template v-if="section.id === 'section3'">
               <SJFormRow>
                 <SJFormField :label="$tc('page.system.00050')">
                   <SJStepper
@@ -118,28 +114,28 @@
                   <SJSelect id="form_useYN" v-model="businessCode.useFlag" :name="$t('page.system.00004')" :options="common.USE_YN" rules="required" />
                 </SJFormField>
               </SJFormRow>
-            </SJForm>
+            </template>
+            <!-- Section 4 -->
+            <template v-if="section.id === 'section4'">
+              <SJForm ref="form">
+                <SJFormRow>
+                  <SJFormField :label="$tc('page.system.00050')">
+                    <SJStepper
+                      id="form_sort"
+                      v-model="businessCode.sort"
+                      name="stepper"
+                      rules="required|min_value:1"
+                    />
+                  </SJFormField>
+                  <SJFormField :label="$tc('page.system.00004')">
+                    <SJSelect id="form_useYN" v-model="businessCode.useFlag" :name="$t('page.system.00004')" :options="common.USE_YN" rules="required" />
+                  </SJFormField>
+                </SJFormRow>
+              </SJForm>
+            </template>
           </template>
-          <!-- Section 4 -->
-          <template v-if="section.title === 'Section 4'">
-            <SJForm ref="form">
-              <SJFormRow>
-                <SJFormField :label="$tc('page.system.00050')">
-                  <SJStepper
-                    id="form_sort"
-                    v-model="businessCode.sort"
-                    name="stepper"
-                    rules="required|min_value:1"
-                  />
-                </SJFormField>
-                <SJFormField :label="$tc('page.system.00004')">
-                  <SJSelect id="form_useYN" v-model="businessCode.useFlag" :name="$t('page.system.00004')" :options="common.USE_YN" rules="required" />
-                </SJFormField>
-              </SJFormRow>
-            </SJForm>
-          </template>
-        </template>
-      </SJAccordion>
+        </SJAccordion>
+      </SJForm>
       <SJForm ref="form">
         <SJFormRow>
           <SJFormField :label="$tc('page.system.00004')">
@@ -183,18 +179,22 @@ export default {
       ],
       accordionSections: [
         {
+          id: 'section1',
           title: 'Section 1',
           expanded: false
         },
         {
+          id: 'section2',
           title: 'Section 2',
           expanded: false
         },
         {
+          id: 'section3',
           title: 'Section 3',
           expanded: false
         },
         {
+          id: 'section4',
           title: 'Section 4',
           expanded: false
         }
