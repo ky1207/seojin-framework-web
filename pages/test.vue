@@ -5,7 +5,7 @@
         <SJInput id="md1" v-model="search.md1" name="md1" />
       </SJSearchField>
       <SJSearchField label="거래처">
-        <SJSelectInput />
+        <SJSelectInput id="si" />
       </SJSearchField>
     </template>
     <template #leftTitle>
@@ -58,7 +58,7 @@
     </template>
     <template #rightTitle>
       <SJTitle :title="$t('page.system.00110')">
-        <button class="btn-blue-bg" @click="createBusiness">
+        <button class="btn-blue-bg">
           {{ $t('page.system.00115') }}
         </button>
       </SJTitle>
@@ -71,12 +71,12 @@
             <template v-if="section.id === 'section1'">
               <SJFormRow>
                 <SJFormField label="사업장명">
-                  <SJSelectInput />
+                  <SJSelectInput id="bsi1" />
                 </SJFormField>
               </SJFormRow>
               <SJFormRow>
                 <SJFormField label="검색">
-                  <SJAutoComplete />
+                  <SJAutoComplete :options="autocomplete" />
                 </SJFormField>
               </SJFormRow>
             </template>
@@ -152,6 +152,12 @@ export default {
   layout: 'empty',
   data () {
     return {
+      autocomplete: [
+        { value: '', label: 'AA' },
+        { value: '', label: 'AB' },
+        { value: '', label: 'AC' },
+        { value: '', label: 'AE' }
+      ],
       isUpdate: false,
       common: {},
       search: {},
@@ -160,7 +166,7 @@ export default {
         bsnsName: ''
       },
       grid: {
-        data: [],
+        data: {},
         columns: [
           { name: 'bsnsCode' },
           { name: 'bsnsName' },

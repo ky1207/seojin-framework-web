@@ -23,7 +23,7 @@ export default {
     }
   },
   mounted () {
-    this.isRequired = (this.$children[0]?.rules.indexOf('required') >= 0)
+    this.isRequired = (this.$children[0]?.rules?.indexOf('required') >= 0)
   }
 }
 </script>

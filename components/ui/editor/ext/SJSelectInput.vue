@@ -39,11 +39,8 @@ export default {
     readonly: {
       type: Boolean,
       default: false
-    },
-    rules: {
-      type: String,
-      default: ''
     }
+
   },
   data () {
     return {
@@ -55,21 +52,17 @@ export default {
     options () {
       return [
         { value: '', label: '선택하세요' },
-        { value: '', label: 'AA' },
-        { value: '', label: 'AB' },
-        { value: '', label: 'AC' },
-        { value: '', label: 'AE' }
+        { value: '2', label: 'AA' },
+        { value: '3', label: 'AB' },
+        { value: '4', label: 'AC' },
+        { value: '5', label: 'AE' }
       ]
     },
     errors () {
       return []
     }
   },
-  watch: {
-    value (newVal) {
-      this.selectedValue = newVal || ''
-    }
-  },
+
   methods: {
     handleSelectChange () {
       this.$emit('input', this.selectedValue)

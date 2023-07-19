@@ -17,7 +17,7 @@
     >
     <div v-if="showOptions" class="complete-options">
       <div
-        v-for="option in filteredOptions"
+        v-for="option in options"
         :key="option.value"
         class="option"
         @click="selectOption(option)"
@@ -31,9 +31,9 @@
 <script>
 export default {
   props: {
-    rules: {
-      type: String,
-      default: ''
+    options: {
+      type: Array,
+      default: () => []
     },
     multiple: {
       type: Boolean,
@@ -43,26 +43,12 @@ export default {
   data () {
     return {
       selectedOptions: [],
-      options: [
-        { value: 'AA', label: 'AAAA' },
-        { value: 'AB', label: 'AB' },
-        { value: 'AC', label: 'AC' },
-        { value: 'BA', label: 'BA' },
-        { value: 'BB', label: 'BB' },
-        { value: 'BC', label: 'BC' }
-      ],
       searchText: '',
       showOptions: false,
       focusOnInput: false
     }
   },
-  computed: {
-    filteredOptions () {
-      return this.options.filter(option =>
-        option.label.toLowerCase().includes(this.searchText.toLowerCase())
-      )
-    }
-  },
+
   mounted () {
     // 외부 클릭 시 complete-options 닫히는 이벤트 리스너 추가
     window.addEventListener('click', this.handleExternalClick)
@@ -77,7 +63,7 @@ export default {
     selectOption (option) {
       this.selectedOptions.push(option)
       this.searchText = ''
-      this.showOptions = true
+      this.showOptions = false
     },
     handleEnter () {
       if (this.filteredOptions.length === 1) {
