@@ -1,5 +1,13 @@
 <template>
   <SJSearchLRLayout>
+    <template #default>
+      <SJSearchField label="거래처">
+        <SJInput id="md1" v-model="search.md1" name="md1" />
+      </SJSearchField>
+      <SJSearchField label="거래처">
+        <SJSelectInput />
+      </SJSearchField>
+    </template>
     <template #leftTitle>
       <SJTitle :title="$t('page.system.00104')" />
     </template>
@@ -62,24 +70,13 @@
             <!-- Section 1 -->
             <template v-if="section.id === 'section1'">
               <SJFormRow>
-                <SJFormField :label="$tc('page.system.00108')">
-                  <SJInput
-                    id="form_bsnsCode"
-                    v-model="businessCode.bsnsCode"
-                    :name="$t('page.system.00108')"
-                    rules="required|max:12"
-                    :disabled="isUpdate"
-                  />
+                <SJFormField label="사업장명">
+                  <SJSelectInput />
                 </SJFormField>
               </SJFormRow>
               <SJFormRow>
-                <SJFormField :label="$tc('page.system.00109')">
-                  <SJInput
-                    id="form_bsnsName"
-                    v-model="businessCode.bsnsName"
-                    :name="$t('page.system.00109')"
-                    rules="required"
-                  />
+                <SJFormField label="검색">
+                  <SJAutoComplete />
                 </SJFormField>
               </SJFormRow>
             </template>
