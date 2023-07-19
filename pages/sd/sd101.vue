@@ -2,7 +2,8 @@
   <SJSearchOneLayout>
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
-      <SdItem ref="itemList" />
+      <SdItem ref="itemPop" />
+      <SdHistory ref="historyPop" />
     </template>
     <template #default>
       <SJSearchField label="회사">
@@ -92,13 +93,17 @@ export default {
   methods: {
     async itemPop () {
       // this.$notify.info('품목별/거래처별 조회 팝업 호출')
-      const result = await this.$refs.itemList.open()
+      const result = await this.$refs.itemPop.open()
       if (result) {
         console.log('check')
       }
     },
-    historyPop () {
-      this.$notify.info('이력조회 팝업 호출')
+    async historyPop () {
+      // 이력팝업
+      const result = await this.$refs.historyPop.open()
+      if (result) {
+        console.log('check')
+      }
     },
     ACTION_REGISTRY () {
       const fnc = this
