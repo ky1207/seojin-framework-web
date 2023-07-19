@@ -4,34 +4,41 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <SJSearchField :label="$t('page.system.00104')">
+      <SJSearchField label="사업장">
         <SJSelect
-          id=""
-          :options="common.BUSINESS"
-          disabled-validation
-          disabled-first-message
+          id="md1"
+          name="md1"
+          :options="MD_01"
         />
       </SJSearchField>
       <SJSearchField label="창고유형">
-        <SJSelect id="c1" :options="USE_MD" />
+        <SJSelect
+          id="md2"
+          name="md2"
+          :options="MD_02"
+        />
       </SJSearchField>
       <SJSearchField label="창고코드">
-        <SJInput id="c2" v-model="search.md1" />
+        <SJInput id="md3" v-model="search.md1" name="md3" />
       </SJSearchField>
       <SJSearchField label="창고명">
-        <SJInput id="c3" v-model="search.md2" />
+        <SJInput id="md4" v-model="search.md2" name="md4" />
       </SJSearchField>
-      <SJSearchField :label="$t('page.system.00004')">
-        <SJSelect id="c4" :options="common.USE_YN" />
+      <SJSearchField label="사용여부">
+        <SJSelect
+          id="md5"
+          name="md5"
+          :options="MD_03"
+        />
       </SJSearchField>
     </template>
     <template #bodyTitle>
       <SJTitle title="창고">
         <button class="btn-white-bg">
-          {{ $t('page.system.00026') }}
+          추가
         </button>
         <button class="btn-white-bg">
-          {{ $t('page.system.00012') }}
+          삭제
         </button>
       </SJTitle>
     </template>
@@ -69,11 +76,10 @@ export default {
       }
     }
   },
-  async created () {
-    const business = await this.$api.common.getBusinessIds()
-    this.common = { BUSINESS: business.data }
-    this.common.USE_YN = this.$api.common.getYNCodes()
-    this.USE_MD = this.getMDCodes()
+  created () {
+    this.MD_01 = this.getMD01()
+    this.MD_02 = this.getMD02()
+    this.MD_03 = this.getMD03()
   },
   methods: {
     ACTION_REGISTRY () {
@@ -87,7 +93,17 @@ export default {
         }
       }
     },
-    getMDCodes () {
+    getMD01 () {
+      return [{
+        text: 'A사업부',
+        value: 'A사업부'
+      }, {
+        text: 'B사업부',
+        value: 'B사업부'
+      }
+      ]
+    },
+    getMD02 () {
       return [{
         text: '자재창고',
         value: '자재창고'
@@ -104,6 +120,22 @@ export default {
         text: '...',
         value: '...'
       }
+      ]
+    },
+    getMD03 () {
+      return [
+        {
+          text: '전체',
+          value: '전체'
+        },
+        {
+          text: '사용',
+          value: '사용'
+        },
+        {
+          text: '미사용',
+          value: '미사용'
+        }
       ]
     }
   }
