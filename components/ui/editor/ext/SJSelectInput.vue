@@ -1,9 +1,15 @@
 <template>
   <div>
-    <div style="display: flex;flex-grow: 1;width: 100%;">
-      <select v-model="selectedValue" :disabled="disabled" @change="handleSelectChange">
-        <option v-for="option in options" :key="option.value" :value="option.value">
-          {{ option.label }}
+    <div style="display: flex; flex-grow: 1; width: 100%;">
+      <select
+        v-model="selectedValue"
+        :aria-describedby="id+'-feedback'"
+        aria-label="Default select"
+        :disabled="disabled"
+        @change="handleChange"
+      >
+        <option v-for="option in options" :key="option[itemValue]" :value="option[itemValue]">
+          {{ option[itemText] }}
         </option>
       </select>
       <input
@@ -25,12 +31,20 @@
 export default {
   props: {
     value: {
-      type: String,
-      default: ''
+      type: [String, Boolean, Number],
+      default: null
     },
     id: {
       type: String,
       required: true
+    },
+    disabledValidation: {
+      type: Boolean,
+      default: false
+    },
+    itemText: {
+      type: String,
+      default: 'text'
     },
     disabled: {
       type: Boolean,
@@ -39,8 +53,15 @@ export default {
     readonly: {
       type: Boolean,
       default: false
+    },
+    itemValue: {
+      type: String,
+      default: 'value'
+    },
+    options: {
+      type: Array,
+      default: () => []
     }
-
   },
   data () {
     return {
@@ -49,36 +70,27 @@ export default {
     }
   },
   computed: {
-    options () {
-      return [
-        { value: '', label: '선택하세요' },
-        { value: '2', label: 'AA' },
-        { value: '3', label: 'AB' },
-        { value: '4', label: 'AC' },
-        { value: '5', label: 'AE' }
-      ]
-    },
     errors () {
       return []
     }
   },
-
   methods: {
-    handleSelectChange () {
-      this.$emit('input', this.selectedValue)
+    handleChange (e) {
+      this.$emit('change', e)
     }
   }
 }
 </script>
 
 <style scoped>
-.MultiInput-wrap{
+.MultiInput-wrap {
   display: flex;
 }
-.field-wrap div{
+.field-wrap div {
   width: 50%;
 }
-input,select{
+input,
+select {
   width: 100% !important;
 }
 </style>
