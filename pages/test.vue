@@ -5,11 +5,11 @@
         <SJInput id="md1" v-model="search.md1" name="md1" />
       </SJSearchField>
       <SJSearchField label="거래처">
-        <SJSelectInput id="si" />
+        <SJSelectInput id="si" :options="selectinput" />
       </SJSearchField>
     </template>
     <template #leftTitle>
-      <SJTitle :title="$t('page.system.00104')" />
+      <SJTitle name="사업장" :title="$t('page.system.00104')" />
     </template>
     <template #left>
       <SJForm>
@@ -210,14 +210,36 @@ export default {
   //   //   this.$emit('change', newTab)
   //   // }
   // },
+  created () {
+    this.selectinput = this.getSelectinput()
+  },
   methods: {
     ACTION_REGISTRY () {
       return {
-
       }
     },
     fileDownload (fileId) {
       this.$api.system.program.downloadHelp(fileId)
+    },
+    getSelectinput () {
+      return [
+        {
+          text: 'AA',
+          value: 'AA'
+        },
+        {
+          text: 'BB',
+          value: 'BB'
+        },
+        {
+          text: 'CC',
+          value: 'CC'
+        },
+        {
+          text: 'DD',
+          value: 'DD'
+        }
+      ]
     }
   }
 }
