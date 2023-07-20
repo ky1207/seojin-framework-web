@@ -68,7 +68,7 @@
             <SJInput id="coCode" v-model="inputData.CO_CODE" name="수주금액" rules="required" />
           </SJFormField>
           <SJFormField label="처리결과">
-            <SJSelect id="searchCoType" name="searchCoType" :options="common.USE_YN" rules="required" />
+            <SJSelect id="searchCoType" name="처리결과" :options="common.USE_YN" rules="required" />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
@@ -76,7 +76,7 @@
             <SJDatePicker
               id="sentStartDtm"
               v-model="inputData.sentStartDtm"
-              :name="$t('page.system.00083')"
+              name="매출발생예상일"
               show-current="true"
               disabled-validation
             />

@@ -2,7 +2,7 @@
   <SJSearchOneLayout>
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
-      <Sd210 ref="sd210Pop" />
+      <Sd201 ref="sd201Pop" />
     </template>
     <template #default>
       <SJSearchField label="영업성명">
@@ -39,7 +39,7 @@
     </template>
     <template #bodyTitle>
       <SJTitle title="목록">
-        <button class="btn-white-bg" @click="sd210Pop">
+        <button class="btn-white-bg" @click="sd201Pop">
           신규
         </button>
       </SJTitle>
@@ -85,9 +85,9 @@ export default {
     }
   },
   methods: {
-    async sd210Pop () {
+    async sd201Pop () {
       // this.$notify.info('품목별/거래처별 조회 팝업 호출')
-      const result = await this.$refs.sd210Pop.open()
+      const result = await this.$refs.sd201Pop.open()
       if (result) {
         console.log('check')
       }
