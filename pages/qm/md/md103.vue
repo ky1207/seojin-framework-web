@@ -43,7 +43,7 @@
     </template>
 
     <template #bottomTitle>
-      <SJTitle title="기타이동요청 상세" />
+      <SJTitle title="목록" />
     </template>
     <template #bottom>
       <SJTab :list="tabList">

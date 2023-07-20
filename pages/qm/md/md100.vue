@@ -39,6 +39,7 @@
       </sjsearchfield>
     </template>
     <template #body>
+      <SJTitle title="목록" />
       <SJGrid
         ref="grid"
         v-model="grid.data"
