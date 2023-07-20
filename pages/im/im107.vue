@@ -31,14 +31,14 @@
       </SJSearchField>
     </template>
     <template #topTitle>
-      <SJTitle title="기타이동" />
+      <SJTitle title="실사목록" />
     </template>
     <template #top>
       <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
     </template>
 
     <template #bottomTitle>
-      <SJTitle title="기타이동 상세" />
+      <SJTitle title="실사상세" />
     </template>
     <template #bottom>
       <SJGrid ref="grid_detail" v-model="grid_detail.data" :columns="grid_detail.columns" />
