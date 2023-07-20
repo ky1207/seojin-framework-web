@@ -1,11 +1,11 @@
 <template>
   <div class="navi">
     <i class="navi-icon active fa-solid fa-star" />
-    <template v-for="p in path">
-      <div :key="p.menuId" class="navi-link">
+    <template v-for="(p,index) in path">
+      <div :key="index" class="navi-link">
         {{ p }}
       </div>
-      <i :key="p" class="navi-icon fa-solid fa-chevron-right" />
+      <i :key="'i'+index" class="navi-icon fa-solid fa-chevron-right" />
     </template>
     <div class="navi-link">
       {{ menu? menu.menuName:'' }}
