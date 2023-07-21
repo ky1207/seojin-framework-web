@@ -58,6 +58,7 @@
         </template>
       </SJtab>
     </template>
+    <md100 v-if="showModal" ref="qmModal" @close="showModal = false" />
   </SJSearchTBLayout>
 </template>
 
@@ -68,6 +69,7 @@ export default {
   data () {
     return {
       search: {},
+      showModal: false,
       grid: {
         data: {},
         columns: [
@@ -137,9 +139,18 @@ export default {
         async searchClick () {
           await fnc.$notify.info('조회')
         },
-        async saveClick () {
-          await fnc.$notify.success('저장')
-        }
+        f1Click: async () => {
+          this.showModal = true
+          const result = await this.$refs.qmModal.open()
+          if (result) {
+            console.log(result)
+          }
+        },
+        async f2Click () {
+          await fnc.$notify.success('수정')
+        },
+        f1Label: '신규',
+        f2Label: '수정'
       }
     },
     getMD01 () {
