@@ -1,5 +1,5 @@
 <template>
-  <SJSearchTLRLayout>
+  <SJSearchLRLayout>
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
     </template>
@@ -28,10 +28,10 @@
         :columns="grid1.columns"
       />
     </template>
-    <template #rightTitle1>
+    <template #rightTitle>
       <SJTitle title="대분류 상세" />
     </template>
-    <template #right1>
+    <template #right>
       <SJForm>
         <SJFormRow>
           <SJFormField label="대분류코드">
@@ -69,8 +69,6 @@
           </SJFormField>
         </SJFormRow>
       </SJForm>
-    </template>
-    <template #rightTitle2>
       <SJTitle title="권한그룹별 사용자">
         <button class="btn-white-bg">
           추가
@@ -79,15 +77,13 @@
           삭제
         </button>
       </SJTitle>
-    </template>
-    <template #right2>
       <SJGrid
         ref="grid2"
         v-model="grid2.data"
         :columns="grid2.columns"
       />
     </template>
-  </SJSearchTLRLayout>
+  </SJSearchLRLayout>
 </template>
 
 <script>

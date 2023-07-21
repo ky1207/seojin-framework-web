@@ -47,6 +47,7 @@
         v-model="grid1.data"
         :columns="grid1.columns"
       />
+      <SJTitle title="부적합처리이력" />
       <SJGrid
         ref="grid2"
         v-model="grid2.data"

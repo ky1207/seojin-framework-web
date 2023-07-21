@@ -2,6 +2,7 @@
   <SJSearchTBLayout>
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
+      <md100 v-if="showModal" ref="mdModal" @close="showModal = false" />
     </template>
     <template #default>
       <SJSearchField label="사업장">
@@ -58,13 +59,14 @@
         </template>
       </SJtab>
     </template>
-    <md100 v-if="showModal" ref="qmModal" @close="showModal = false" />
   </SJSearchTBLayout>
 </template>
 
 <script>
 import { ACTION } from '~/mixins'
+import Md100 from '~/components/modal/qm/md100.vue'
 export default {
+  components: { Md100 },
   mixins: [ACTION],
   data () {
     return {
@@ -81,10 +83,7 @@ export default {
           { name: '점검품목', width: 150 },
           { name: '비고', width: 200 },
           { name: '사용여부', width: 100 }
-        ],
-        options: {
-          bodyHeight: 250
-        }
+        ]
       },
       grid_tab1: {
         data: {},
@@ -141,7 +140,7 @@ export default {
         },
         f1Click: async () => {
           this.showModal = true
-          const result = await this.$refs.qmModal.open()
+          const result = await this.$refs.mdModal.open()
           if (result) {
             console.log(result)
           }
