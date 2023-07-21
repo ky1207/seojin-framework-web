@@ -1,5 +1,5 @@
 <template>
-  <div class="SJTab">
+  <div class="">
     <ul class="nav SJTab-tabs">
       <li v-for="item in list" :key="item.id" class="SJTab-item active">
         <span
@@ -54,6 +54,9 @@ export default {
   methods: {
     onTabClick (tabId) {
       this.currentTab = tabId
+      setTimeout(() => {
+        window.dispatchEvent(new Event('resize'))
+      }, 10)
     }
   }
 }
