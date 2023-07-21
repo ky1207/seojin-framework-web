@@ -218,7 +218,9 @@ export default {
         if (this.$props.pageable) {
           height -= 50
         }
-        this.$refs.grid.invoke('setBodyHeight', height)
+        if (!this.options.bodyHeight) {
+          this.$refs.grid.invoke('setBodyHeight', height)
+        }
       }
       const _this = this
       await new Promise((resolve) => {
