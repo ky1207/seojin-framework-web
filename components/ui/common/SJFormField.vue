@@ -1,6 +1,8 @@
 <template>
   <fieldset>
-    <legend>{{ $props.label }}<i v-if="isRequired" class="fa-solid fa-asterisk fa-2xs" /></legend>
+    <legend v-if="$props.label!==''">
+      {{ $props.label }}<i v-if="isRequired" class="fa-solid fa-asterisk fa-2xs" />
+    </legend>
     <div class="field-area">
       <slot />
     </div>
