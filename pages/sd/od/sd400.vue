@@ -4,6 +4,7 @@
       <SJPageButtons :action="ACTION" />
       <Sd401 ref="sd401Pop" />
       <Sd402 ref="sd402Pop" />
+      <Sd403 ref="sd403Pop" />
     </template>
     <template #default>
       <SJSearchField label="회사">
@@ -70,6 +71,9 @@
         </button>
         <button class="btn-white-bg" @click="sd402Pop">
           수주출하현황
+        </button>
+        <button class="btn-white-bg" @click="sd403Pop">
+          판매계획
         </button>
       </SJTitle>
     </template>
@@ -144,6 +148,13 @@ export default {
     async sd402Pop () {
       // 수주출하현황 조회
       const result = await this.$refs.sd402Pop.open()
+      if (result) {
+        console.log('check')
+      }
+    },
+    async sd403Pop () {
+      // 판매계획
+      const result = await this.$refs.sd403Pop.open()
       if (result) {
         console.log('check')
       }
