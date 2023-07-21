@@ -47,9 +47,9 @@
 </template>
 
 <script>
-import { ACTION } from '~/mixins'
+import { ACTION, MENU } from '~/mixins'
 export default {
-  mixins: [ACTION],
+  mixins: [ACTION, MENU],
   data () {
     return {
       grid: {
