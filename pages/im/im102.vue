@@ -98,7 +98,11 @@
                 />
               </SJFormField>
             </SJFormRow>
-            <SJTitle title="재고현황" />
+            <SJTitle title="재고현황">
+              <button class="btn-blue-bg">
+                출고
+              </button>
+            </SJTitle>
             <SJGrid
               ref="grid2"
               v-model="grid2.data"
