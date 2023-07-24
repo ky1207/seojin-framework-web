@@ -1,5 +1,5 @@
 <template>
-  <SJSearchTBLayout>
+  <SJSearchLRLayout>
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
     </template>
@@ -71,39 +71,95 @@
         />
       </SJSearchField>
     </template>
-    <template #topTitle>
+
+    <template #leftTitle>
       <SJTitle title="출하요청" />
     </template>
-    <template #top>
+    <template #left>
       <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
     </template>
-
-    <template #bottomTitle>
-      <SJTitle title="목록" />
+    <template #right>
+      <SJForm ref="form">
+        <SJTab :list="tabList">
+          <template #tab-1>
+            <SJTitle title="출하상세" />
+            <SJFormRow>
+              <SJFormField label="거래처">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="거래처" />
+              </SJFormField>
+              <SJFormField label="요청수량">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="요청수량" />
+              </SJFormField>
+              <SJFormField label="출하수량">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="출하수량" />
+              </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField label="출하잔량">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="출하잔량" />
+              </SJFormField>
+              <SJFormField label="출하방법">
+                <SJSelect
+                  id="searchCompany"
+                  name=""
+                  :options="common.USE_YN"
+                  disabled-validation
+                  disabled-first-message
+                />
+              </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField label="출하창고">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="출하창고" />
+              </SJFormField>
+              <SJFormField label="출하일">
+                <SJDatePicker
+                  id="sentStartDtm"
+                  v-model="search.sentStartDtm"
+                  name="출하일"
+                  show-current="true"
+                  disabled-validation
+                  rules="required"
+                />
+              </SJFormField>
+              <SJFormField label="출하수량">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="출하수량" rules="required" />
+              </SJFormField>
+            </SJFormRow>
+            <SJTitle title="창고재고">
+              <button class="btn-blue-bg">
+                재품출하
+              </button>
+            </SJTitle>
+            <SJGrid ref="grid_tab1" v-model="grid_tab1.data" :columns="grid_tab1.columns" />
+          </template>
+          <template #tab-2>
+            <SJTitle title="출하현황">
+              <button class="btn-blue-bg">
+                출하취소
+              </button>
+            </SJTitle>
+            <SJGrid ref="grid_tab2" v-model="grid_tab2.data" :columns="grid_tab2.columns" />
+          </template>
+        </SJtab>
+      </SJForm>
     </template>
-    <template #bottom>
-      <SJTab :list="tabList">
-        <template #tab-1>
-          ㄴㄴㄴㄴㄴ
-          <SJGrid ref="grid_tab1" v-model="grid_tab1.data" :columns="grid_tab1.columns" />
-        </template>
-        <template #tab-2>
-          ㄹㄹㄹㄹㄹ
-          <SJGrid ref="grid_tab2" v-model="grid_tab2.data" :columns="grid_tab2.columns" />
-        </template>
-      </SJtab>
-    </template>
-  </SJSearchTBLayout>
+  </SJSearchLRLayout>
 </template>
 
 <script>
-import { ACTION } from '~/mixins'
+import { ACTION, MENU } from '~/mixins'
 export default {
-  mixins: [ACTION],
+  mixins: [ACTION, MENU],
   data () {
     return {
       common: {},
       search: {},
+      inputData: {
+        coCode: '',
+        coType: '',
+        coForm: ''
+      },
       grid: {
         data: {},
         columns: [
@@ -157,11 +213,7 @@ export default {
       ]
     }
   },
-  created () {
-    this.MD_01 = this.getMD01()
-    this.MD_02 = this.getMD02()
-    this.MD_03 = this.getMD03()
-  },
+
   methods: {
     ACTION_REGISTRY () {
       const fnc = this
@@ -173,56 +225,7 @@ export default {
           await fnc.$notify.success('저장')
         }
       }
-    },
-    getMD01 () {
-      return [{
-        text: 'A사업부',
-        value: 'A사업부'
-      }, {
-        text: 'B사업부',
-        value: 'B사업부'
-      }
-      ]
-    },
-    getMD02 () {
-      return [
-        {
-          text: '전체',
-          value: '전체'
-        },
-        {
-          text: '수입검사',
-          value: '수입검사'
-        },
-        {
-          text: '출하검사',
-          value: '출하검사'
-        },
-        {
-          text: '공정검사',
-          value: '공정검사'
-        }
-      ]
-    },
-    getMD03 () {
-      return [
-        {
-          text: '전체',
-          value: '전체'
-        },
-        {
-          text: '사용',
-          value: '사용'
-        },
-        {
-          text: '미사용',
-          value: '미사용'
-        }
-      ]
     }
   }
 }
 </script>
-<style scoped>
-
-</style>
