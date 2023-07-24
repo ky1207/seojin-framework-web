@@ -20,6 +20,7 @@
               name="클레임일자"
               show-current="true"
               disabled-validation
+              rules="required"
             />
           </SJFormField>
           <SJFormField label="담당자">
@@ -66,6 +67,7 @@
               id="textarea"
               v-model="inputData.content"
               name="textarea"
+              rules="required"
             />
           </SJFormField>
         </SJFormRow>
@@ -85,6 +87,7 @@
               name="조치일자"
               show-current="true"
               disabled-validation
+              rules="required"
             />
           </SJFormField>
           <SJFormField label="완료예정일">
@@ -94,6 +97,7 @@
               name="완료예정일"
               show-current="true"
               disabled-validation
+              rules="required"
             />
           </SJFormField>
           <SJFormField label="완료일자">
@@ -111,7 +115,7 @@
         </SJFormRow>
         <SJFormRow>
           <SJFormField label="조치담당자">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="조치담당자" />
+            <SJInput id="coCode" v-model="inputData.CO_CODE" name="조치담당자" rules="required" />
           </SJFormField>
           <SJFormField label="조치유형">
             <SJSelect id="searchCoType" name="조치유형" :options="common.USE_YN" rules="required" />
@@ -123,6 +127,7 @@
               id="textarea"
               v-model="inputData.content"
               name="textarea"
+              rules="required"
             />
           </SJFormField>
         </SJFormRow>
