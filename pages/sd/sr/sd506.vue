@@ -2,7 +2,7 @@
   <SJSearchTBLayout>
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
-      <Sd502 ref="sd502Pop" />
+      <Sd507 ref="sd507Pop" />
     </template>
     <template #default>
       <SJSearchField label="회사">
@@ -73,7 +73,7 @@
 
     <template #bottomTitle>
       <SJTitle title="LOT별">
-        <button class="btn-white-bg" @click="sd502Pop">
+        <button class="btn-white-bg" @click="sd507Pop">
           이력
         </button>
       </SJTitle>
@@ -133,9 +133,9 @@ export default {
     }
   },
   methods: {
-    async sd502Pop () {
+    async sd507Pop () {
       // 출하창고재고이력
-      const result = await this.$refs.sd502Pop.open()
+      const result = await this.$refs.sd507Pop.open()
       if (result) {
         console.log('check')
       }
