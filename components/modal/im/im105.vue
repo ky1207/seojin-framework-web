@@ -1,7 +1,7 @@
 <template>
   <SJModal ref="modal" size="modal-xl">
     <template #title>
-      기타이동요청등록
+      재고실상등록
     </template>
     <template #button>
       <button class="btn-blue-bg">
@@ -29,62 +29,42 @@
               <SJFormField label="담당자">
                 TODO:SELECTINPUT
               </SJFormField>
-              <SJFormField label="요청번호">
-                <SJInput id="md2" v-model="search.md2" name="요청번호" disabled />
+              <SJFormField label="실사번호">
+                <SJInput id="md2" v-model="search.md2" name="실사번호" disabled />
               </SJFormField>
-              <SJFormField label="요청일자">
+              <SJFormField label="등록일자">
                 <SJDatePicker
                   id="md3"
-                  name="요청일자"
+                  name="등록일자"
                   rules="required|max:12"
                 />
               </SJFormField>
             </SJFormRow>
             <SJFormRow>
-              <SJFormField label="이동유형">
+              <SJFormField label="실사창고">
                 <SJSelect
                   id="md4"
-                  name="이동유형"
+                  name="실사창고"
                   :options="MD_02"
+                  rules="required|max:12"
                 />
-              </SJFormField>
-            </SJFormRow>
-            <SJFormRow>
-              <SJFormField label="이동전창고">
-                <SJSelect
-                  id="md5"
-                  name="이동전창고"
-                  disabled
-                />
-              </SJFormField>
-              <SJFormField label="이동후창고">
-                <SJSelect
-                  id="md6"
-                  name="이동후창고"
-                  disabled
-                />
-              </SJFormField>
-            </SJFormRow>
-            <SJFormRow>
-              <SJFormField label="이동전품목">
-                TODO:SELECTINPUT
-              </SJFormField>
-              <SJFormField label="이동후품목">
-                TODO:SELECTINPUT
               </SJFormField>
             </SJFormRow>
             <SJFormRow>
               <SJFormField label="비고">
-                <SJTextarea id="md7" name="비고" />
+                <SJTextarea id="md5" name="비고" />
               </SJFormField>
             </SJFormRow>
           </sjform>
-          <SJTitle title="이동요청 상세">
+          <SJTitle title="실사 상세">
             <button class="btn-blue-bg">
-              품목적용
+              LOT적용
+            </button>
+            <button class="btn-blue-bg">
+              품목정보 적용
             </button>
             <button class="btn-white-bg">
-              추가
+              일괄등록
             </button>
             <button class="btn-white-bg">
               삭제
@@ -119,11 +99,13 @@ export default {
           { name: 'CE!여부', width: 80 },
           { name: '크리티컬여부', width: 80 },
           { name: '크리티컬등급', width: 80 },
-          { name: '기준단위', width: 100 },
-          { name: '수량', width: 80 },
+          { name: '기준단위', width: 80 },
+          { name: '창고', width: 100 },
+          { name: 'LOT', width: 100 },
+          { name: '후LOT', width: 100 },
           { name: '이동수량', width: 80 },
-          { name: '사유', width: 200 },
-          { name: '비고', width: 150 }
+          { name: '현재고', width: 80 },
+          { name: '비고', width: 200 }
         ]
       }
     }
@@ -153,24 +135,28 @@ export default {
     getMD02 () {
       return [
         {
-          text: '창고이동',
-          value: '창고이동'
+          text: '반도체 원자재(화성)',
+          value: '반도체 원자재(화성)'
         },
         {
-          text: '양품>불량이동',
-          value: '양품>불량이동'
+          text: '반도체 재공(화성)',
+          value: '반도체 재공(화성)'
         },
         {
-          text: '불량>양품이동',
-          value: '불량>양품이동'
+          text: '반도체 완제품(화성)',
+          value: '반도체 완제품(화성)'
         },
         {
-          text: '품목간이동',
-          value: '품목간이동'
+          text: '반도체 원자재불량(화성)',
+          value: '반도체 원자재불량(화성)'
         },
         {
-          text: '품목간이동(계정)',
-          value: '품목간이동(계정)'
+          text: '반도체 반품(화성)',
+          value: '반도체 반품(화성)'
+        },
+        {
+          text: '...',
+          value: '...'
         }
       ]
     }

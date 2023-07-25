@@ -1,7 +1,7 @@
 <template>
   <SJModal ref="modal" size="modal-xl">
     <template #title>
-      기타이동요청등록
+      기타이동등록
     </template>
     <template #button>
       <button class="btn-blue-bg">
@@ -29,13 +29,13 @@
               <SJFormField label="담당자">
                 TODO:SELECTINPUT
               </SJFormField>
-              <SJFormField label="요청번호">
-                <SJInput id="md2" v-model="search.md2" name="요청번호" disabled />
+              <SJFormField label="이동번호">
+                <SJInput id="md2" v-model="search.md2" name="이동번호" disabled />
               </SJFormField>
-              <SJFormField label="요청일자">
+              <SJFormField label="이동일자">
                 <SJDatePicker
                   id="md3"
-                  name="요청일자"
+                  name="이동일자"
                   rules="required|max:12"
                 />
               </SJFormField>
@@ -54,14 +54,14 @@
                 <SJSelect
                   id="md5"
                   name="이동전창고"
-                  disabled
+                  :options="MD_03"
                 />
               </SJFormField>
               <SJFormField label="이동후창고">
                 <SJSelect
                   id="md6"
                   name="이동후창고"
-                  disabled
+                  :options="MD_03"
                 />
               </SJFormField>
             </SJFormRow>
@@ -79,12 +79,9 @@
               </SJFormField>
             </SJFormRow>
           </sjform>
-          <SJTitle title="이동요청 상세">
+          <SJTitle title="기타요청 상세">
             <button class="btn-blue-bg">
-              품목적용
-            </button>
-            <button class="btn-white-bg">
-              추가
+              LOT적용
             </button>
             <button class="btn-white-bg">
               삭제
@@ -119,11 +116,13 @@ export default {
           { name: 'CE!여부', width: 80 },
           { name: '크리티컬여부', width: 80 },
           { name: '크리티컬등급', width: 80 },
-          { name: '기준단위', width: 100 },
-          { name: '수량', width: 80 },
+          { name: '기준단위', width: 80 },
+          { name: '창고', width: 100 },
+          { name: 'LOT', width: 100 },
+          { name: '후LOT', width: 100 },
           { name: '이동수량', width: 80 },
-          { name: '사유', width: 200 },
-          { name: '비고', width: 150 }
+          { name: '현재고', width: 80 },
+          { name: '비고', width: 200 }
         ]
       }
     }
@@ -132,6 +131,7 @@ export default {
     this.options = []
     this.MD_01 = this.getMD01()
     this.MD_02 = this.getMD02()
+    this.MD_03 = this.getMD03()
   },
   methods: {
     open () {
@@ -171,6 +171,34 @@ export default {
         {
           text: '품목간이동(계정)',
           value: '품목간이동(계정)'
+        }
+      ]
+    },
+    getMD03 () {
+      return [
+        {
+          text: '반도체 원자재(화성)',
+          value: '반도체 원자재(화성)'
+        },
+        {
+          text: '반도체 재공(화성)',
+          value: '반도체 재공(화성)'
+        },
+        {
+          text: '반도체 완제품(화성)',
+          value: '반도체 완제품(화성)'
+        },
+        {
+          text: '반도체 원자재불량(화성)',
+          value: '반도체 원자재불량(화성)'
+        },
+        {
+          text: '반도체 반품(화성)',
+          value: '반도체 반품(화성)'
+        },
+        {
+          text: '...',
+          value: '...'
         }
       ]
     }
