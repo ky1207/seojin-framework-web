@@ -68,7 +68,7 @@
             </SJFormRow>
             <SJFormRow>
               <SJFormField label="비고">
-                <SJTextarea />
+                <SJTextarea id="md7" name="비고" />
               </SJFormField>
             </SJFormRow>
           </sjform>

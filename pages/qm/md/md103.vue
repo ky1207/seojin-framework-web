@@ -142,9 +142,11 @@ export default {
         },
         f1Click: async () => {
           this.showModal = true
-          const result = await this.$refs.md1Modal.open()
-          if (result) {
-            console.log(result)
+          if (this.$refs.md1Modal) {
+            const result = await this.$refs.md1Modal.open()
+            if (result) {
+              console.log(result)
+            }
           }
         },
         async f2Click () {
@@ -152,9 +154,11 @@ export default {
         },
         f3Click: async () => {
           this.showModal = true
-          const result = await this.$refs.md2Modal.open()
-          if (result) {
-            console.log(result)
+          if (this.$refs.md2Modal) {
+            const result = await this.$refs.md2Modal.open()
+            if (result) {
+              console.log(result)
+            }
           }
         },
         f1Label: '신규',

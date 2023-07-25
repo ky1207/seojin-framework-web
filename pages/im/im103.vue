@@ -98,9 +98,11 @@ export default {
         },
         f1Click: async () => {
           this.showModal = true
-          const result = await this.$refs.imModal.open()
-          if (result) {
-            console.log(result)
+          if (this.$refs.imModal) {
+            const result = await this.$refs.imModal.open()
+            if (result) {
+              console.log(result)
+            }
           }
         }
       }

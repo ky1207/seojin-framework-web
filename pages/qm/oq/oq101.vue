@@ -106,9 +106,11 @@ export default {
         },
         f1Click: async () => {
           this.showModal = true
-          const result = await this.$refs.oqModal.open()
-          if (result) {
-            console.log(result)
+          if (this.$refs.oqModal) {
+            const result = await this.$refs.oqModal.open()
+            if (result) {
+              console.log(result)
+            }
           }
         },
         f1Label: '출하검사'
