@@ -14,21 +14,7 @@
         />
       </SJSearchField>
       <SJSearchField label="매출일자">
-        <SJDatePicker
-          id="sentStartDtm"
-          v-model="search.sentStartDtm"
-          :name="$t('page.system.00083')"
-          show-current="true"
-          disabled-validation
-        />
-        <div>~</div>
-        <SJDatePicker
-          id="sentStartDtm"
-          v-model="search.sentStartDtm"
-          :name="$t('page.system.00083')"
-          show-current="true"
-          disabled-validation
-        />
+        <SJPeriodSearch id="md2" name="md2" />
       </SJSearchField>
       <SJSearchField label="거래처">
         <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />

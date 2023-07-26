@@ -14,21 +14,7 @@
         />
       </SJSearchField>
       <SJSearchField label="입고일자">
-        <SJDatePicker
-          id="sentStartDtm"
-          v-model="search.sentStartDtm"
-          name="입고일자"
-          show-current="true"
-          disabled-validation
-        />
-        <div>~</div>
-        <SJDatePicker
-          id="sentStartDtm"
-          v-model="search.sentStartDtm"
-          name="입고일자"
-          show-current="true"
-          disabled-validation
-        />
+        <SJPeriodSearch id="md2" name="md2" />
       </SJSearchField>
       <SJSearchField label="창고">
         <SJSelect
