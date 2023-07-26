@@ -4,6 +4,7 @@
       v-model="startDtm"
       :type="type"
       :clearable="false"
+      input-class="SJPeriodSearch"
       @input="handleStartInput"
       @change="handleStartChange"
     />
@@ -14,6 +15,7 @@
       v-model="endDtm"
       :type="type"
       :clearable="false"
+      input-class="SJPeriodSearch"
       @input="handleEndInput"
       @change="handleEndChange"
     />
@@ -90,6 +92,7 @@ export default {
 
 <style scoped>
 .search-field .mx-datepicker {
-  width:102px;
+  width:98px;
 }
+
 </style>
