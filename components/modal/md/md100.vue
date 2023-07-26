@@ -502,7 +502,4 @@ export default {
 form .sj-form-field fieldset{
   width: 250px ;
 }
-.SJTab{
-  margin-bottom: 50px;
-}
 </style>
