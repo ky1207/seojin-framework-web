@@ -12,16 +12,9 @@
         />
       </SJSearchField>
       <SJSearchField label="납품일">
-        <SJDatePicker
+        <SJPeriodSearch
           id="md2"
           name="납품일"
-          show-current="true"
-        />
-        <div>~</div>
-        <SJDatePicker
-          id="md2"
-          name="납품일"
-          show-current="true"
         />
       </SJSearchField>
       <SJSearchField label="납품번호">
