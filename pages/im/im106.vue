@@ -14,7 +14,7 @@
         />
       </SJSearchField>
       <SJSearchField label="등록일">
-        TODO:기간검색
+        <SJPeriodSearch id="search2" name="search2" />
       </SJSearchField>
       <SJSearchField label="이동번호">
         <SJInput id="search3" name="search2" />

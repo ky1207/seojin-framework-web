@@ -13,7 +13,7 @@
         />
       </SJSearchField>
       <SJSearchField label="기준일자">
-        TODO:기간검색
+        <SJPeriodSearch id="search2" name="search2" />
       </SJSearchField>
       <SJSearchField label="창고">
         <SJSelect
