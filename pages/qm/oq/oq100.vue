@@ -45,6 +45,7 @@
         ref="grid"
         v-model="grid.data"
         :columns="grid.columns"
+        :options="grid.options"
       />
     </template>
   </SJSearchOneLayout>
@@ -61,22 +62,34 @@ export default {
         data: {},
         columns: [
           { name: '품목유형', width: 80 },
-          { name: '품목코드', width: 100 },
-          { name: '품목명', width: 150 },
+          { name: '품목코드' },
+          { name: '품목명' },
           { name: 'REV', width: 80 },
-          { name: '규격', width: 150 },
+          { name: '규격', width: 100 },
           { name: 'CE!여부', width: 80 },
           { name: '크리티컬여부', width: 80 },
           { name: '크리티컬등급', width: 100 },
+          { name: '기준단위', width: 80 },
           { name: '양품여부', width: 80 },
-          { name: 'LOT', width: 150 },
-          { name: '창고', width: 150 },
+          { name: 'LOT', width: 100 },
+          { name: '창고', width: 100 },
           { name: '현재고', width: 80 },
           { name: '검사일자', width: 80 },
           { name: '검사#', width: 80 },
-          { name: '검사번호', width: 80 },
+          { name: '검사번호', width: 100 },
           { name: '검사결과', width: 80 }
-        ]
+        ],
+        options: {
+          summary: {
+            columnContent: {
+              현재고: {
+                template: (valueMap) => {
+                  return `TOTAL:${valueMap.sum}`
+                }
+              }
+            }
+          }
+        }
       }
     }
   },

@@ -49,6 +49,7 @@
         ref="grid"
         v-model="grid.data"
         :columns="grid.columns"
+        :options="grid.options"
       />
     </template>
   </SJSearchOneLayout>
@@ -89,7 +90,28 @@ export default {
           { name: '크리티컬여부', width: 80 },
           { name: '크리티컬등급', width: 80 },
           { name: 'Z-TAG Serial', width: 80 }
-        ]
+        ],
+        options: {
+          summary: {
+            columnContent: {
+              내용: {
+                template: (valueMap) => {
+                  return `TOTAL:${valueMap.sum}`
+                }
+              },
+              'CE!여부': {
+                template: (valueMap) => {
+                  return `TOTAL:${valueMap.sum}`
+                }
+              },
+              크리티컬여부: {
+                template: (valueMap) => {
+                  return `TOTAL:${valueMap.sum}`
+                }
+              }
+            }
+          }
+        }
       }
     }
   },

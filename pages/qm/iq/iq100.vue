@@ -43,6 +43,7 @@
         ref="grid"
         v-model="grid.data"
         :columns="grid.columns"
+        :options="grid.options"
       />
     </template>
   </SJSearchOneLayout>
@@ -58,23 +59,61 @@ export default {
       grid: {
         data: {},
         columns: [
-          { name: '납품일자' },
-          { name: '검사일자' },
-          { name: '품목코드' },
-          { name: '품목명' },
-          { name: '거래처' },
+          { name: '납품일자', width: 80 },
+          { name: '검사일자', width: 80 },
+          { name: '품목코드', width: 100 },
+          { name: '품목명', width: 150 },
+          { name: '거래처', width: 100 },
           { name: 'REV', width: 80 },
           { name: 'CE!여부', width: 80 },
-          { name: '크리티컬등급' },
-          { name: '검사방법' },
-          { name: 'LOT' },
+          { name: '크리티컬여부', width: 80 },
+          { name: '크리티컬등급', width: 80 },
+          { name: '검사방법', width: 80 },
+          { name: 'LOT', width: 100 },
           { name: '입고수량', width: 80 },
-          { name: '검사수량' },
-          { name: '입고잔량' },
-          { name: '구매단위' },
-          { name: '검사결과' },
-          { name: '품목유형' }
-        ]
+          { name: '검사수량', width: 80 },
+          { name: '입고잔량', width: 80 },
+          { name: '구매단위', width: 80 },
+          { name: '검사결과', width: 80 },
+          { name: '품목유형', width: 80 },
+          { name: '합격', width: 80 },
+          { name: '불량', width: 80 },
+          { name: '납품요청일', width: 80 },
+          { name: '납품창고', width: 100 },
+          { name: '검사번호', width: 80 },
+          { name: '검사#', width: 80 }
+        ],
+        options: {
+          summary: {
+            columnContent: {
+              입고수량: {
+                template: (valueMap) => {
+                  return `TOTAL:${valueMap.sum}`
+                }
+              },
+              검사수량: {
+                template: (valueMap) => {
+                  return `TOTAL:${valueMap.sum}`
+                }
+              },
+              입고잔량: {
+                template: (valueMap) => {
+                  return `TOTAL:${valueMap.sum}`
+                }
+              },
+              합격: {
+                template: (valueMap) => {
+                  return `TOTAL:${valueMap.sum}`
+                }
+              },
+              불량: {
+                template: (valueMap) => {
+                  return `TOTAL:${valueMap.sum}`
+                }
+              }
+            }
+          }
+        }
       }
     }
   },

@@ -91,11 +91,7 @@ export default {
         },
         async saveClick () {
           await fnc.$notify.success('저장')
-        },
-        async f1Click () {
-          await fnc.$notify.info('엑셀')
-        },
-        f1Label: '엑셀'
+        }
       }
     },
     getMD01 () {
