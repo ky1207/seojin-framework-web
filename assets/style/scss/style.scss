@@ -354,14 +354,14 @@ section {
   display: flex;
   flex-wrap: wrap;
   margin: 0 20px;
-  padding: 10px 0;
+  padding: 10px;
 
   .search-field {
     display: flex;
     align-items: center;
     color: #464C5D;
-    margin: 0 10px;
-    width: 290px;
+    margin: 0 10px 5px 10px;
+    width: 300px;
     div{
       width: 100%;}
   }
@@ -370,7 +370,7 @@ section {
     display: flex;
     align-items: center;
     margin-right: 10px;
-    min-width: 80px;
+    min-width: 90px;
 
     &::before {
       @include size-set(3px,3px);
@@ -875,7 +875,7 @@ form .check-box input{
         min-width: 100px;
       }
       .search-field{
-        min-width: 150px;
+        min-width: 250px;
       }
       label {
         //min-width: 100px;
