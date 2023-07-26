@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="display: flex; flex-grow: 1; width: 100%;">
+    <div style="display: flex;">
       <select
         v-model="selectedValue"
         :aria-describedby="id+'-feedback'"
@@ -85,12 +85,5 @@ export default {
 <style scoped>
 .MultiInput-wrap {
   display: flex;
-}
-.field-wrap div {
-  width: 50%;
-}
-input,
-select {
-  width: 100% !important;
 }
 </style>

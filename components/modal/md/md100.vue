@@ -501,10 +501,6 @@ export default {
 <style>
 .md-input{
   width: auto;}
-.md-input input,
-.md-select select{
-  width: 120px;
-}
 </style>
 <style scoped>
 form .sj-form-field fieldset{
