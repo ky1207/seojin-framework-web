@@ -37,7 +37,7 @@
       <SJTitle title="기타입고상세" />
     </template>
     <template #bottom>
-      <SJGrid ref="grid_detail" v-model="grid_detail.data" :columns="grid_detail.columns" />
+      <SJGrid ref="grid_detail" v-model="grid_detail.data" :columns="grid_detail.columns" :options="grid_detail.options" />
     </template>
   </SJSearchTBLayout>
 </template>
@@ -56,7 +56,7 @@ export default {
         columns: [
           { name: '입고번호', width: 100 },
           { name: '등록일', width: 150 },
-          { name: '창고', width: 100 },
+          { name: 'LOT', width: 100 },
           { name: '사용자명', width: 100 },
           { name: '품목(수)', width: 100 },
           { name: '수정일', width: 150 },
@@ -67,7 +67,7 @@ export default {
         }
       },
       grid_detail: {
-        data: {},
+        data: { },
         columns: [
           { name: '품목유형', width: 100 },
           { name: '품목코드', width: 120 },
@@ -83,7 +83,23 @@ export default {
           { name: '수량', width: 100 },
           { name: '현재고', width: 100 },
           { name: '비고', width: 300 }
-        ]
+        ],
+        options: {
+          summary: {
+            columnContent: {
+              수량: {
+                template: (valueMap) => {
+                  return `TOTAL:${valueMap.sum}`
+                }
+              },
+              현재고: {
+                template: (valueMap) => {
+                  return `TOTAL:${valueMap.sum}`
+                }
+              }
+            }
+          }
+        }
       }
     }
   },

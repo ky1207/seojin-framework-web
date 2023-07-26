@@ -19,6 +19,7 @@
 <script>
 import Pagination from 'tui-pagination'
 
+const SUMMARY_HEIGHT = 20
 export default {
   props: {
     value: {
@@ -127,6 +128,9 @@ export default {
       if (options.pageOptions?.useClient) {
         options.pageOptions.perPage = 30
       }
+      if (options.summary) {
+        options.summary.height = SUMMARY_HEIGHT
+      }
       return options
     },
     mergedColumns () {
@@ -218,6 +222,10 @@ export default {
         if (this.$props.pageable) {
           height -= 50
         }
+        if (this.options.summary) {
+          height -= SUMMARY_HEIGHT
+        }
+
         if (!this.options.bodyHeight) {
           this.$refs.grid.invoke('setBodyHeight', height)
         }
