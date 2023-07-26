@@ -38,11 +38,11 @@
         />
       </SJSearchField>
       <SJSearchField label="품목분류">
-        TODO:SELECTSELECT
-        <SJSearchField label="품목">
-          <SJInput id="search7" name="search7" />
-        </SJSearchField>
-      </sjsearchfield>
+        <div>TODO:SELECTSELECT</div>
+      </SJSearchField>
+      <SJSearchField label="품목">
+        <SJInput id="search7" name="search7" />
+      </SJSearchField>
     </template>
     <template #topTitle>
       <SJTitle title="기타이동요청" />
