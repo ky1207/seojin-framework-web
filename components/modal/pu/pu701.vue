@@ -1,7 +1,7 @@
 <template>
   <SJModal ref="modal" size="modal-xl">
     <template #title>
-      구매입고 등록
+      매입마감 등록
     </template>
 
     <template #default>
@@ -13,14 +13,14 @@
           <SJFormField label="담당자">
             <SJInput id="coCode" v-model="inputData.CO_CODE" name="담당자" rules="required" />
           </SJFormField>
-          <SJFormField label="구매번호">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="구매번호" rules="required" />
+          <SJFormField label="마감번호">
+            <SJInput id="coCode" v-model="inputData.CO_CODE" name="마감번호" rules="required" />
           </SJFormField>
-          <SJFormField label="등록일">
+          <SJFormField label="마감일자">
             <SJDatePicker
               id="sentStartDtm"
               v-model="inputData.sentStartDtm"
-              name="등록일"
+              name="마감일자"
               show-current="true"
               disabled-validation
               rules="required"
@@ -39,11 +39,6 @@
           </SJFormField>
           <SJFormField label="통화">
             <SJInput id="coCode" v-model="inputData.CO_CODE" name="통화" rules="required" />
-            <SJSelect id="searchCoType" name="통화" :options="common.USE_YN" rules="required" />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="입고유형">
             <SJSelect id="searchCoType" name="통화" :options="common.USE_YN" rules="required" />
           </SJFormField>
         </SJFormRow>
@@ -72,8 +67,11 @@
         </SJFormRow>
 
         <SJTitle title="상세정보">
-          <button class="btn-white-bg" @click="blocApply">
-            구매납품적용
+          <button class="btn-white-bg" @click="orderApply">
+            구매입고적용
+          </button>
+          <button class="btn-white-bg" @click="itemApply">
+            품목정보적용
           </button>
           <button class="btn-white-bg" @click="rowDel">
             삭제
@@ -117,8 +115,7 @@ export default {
           bodyHeight: 250
         },
         columns: [
-          { name: 'P/O번호', width: 100 },
-          { name: '양품여부', width: 100 },
+          { name: '입고번호', width: 100 },
           { name: '품목유형', width: 100 },
           { name: '품목코드', width: 100 },
           { name: '품목명', width: 100 },
@@ -131,15 +128,8 @@ export default {
           { name: '수량', width: 100 },
           { name: '단가', width: 100 },
           { name: '공급가', width: 100 },
-          { name: '합계', width: 100 },
-          { name: '창고', width: 100 },
-          { name: 'LOT', width: 100 },
-          { name: '기준단위', width: 100 },
-          { name: '기준수량', width: 100 },
-          { name: '현재고', width: 100 },
-          { name: '검사여부', width: 100 },
-          { name: '위치코드', width: 100 },
-          { name: '거래처LOT', width: 100 }
+          { name: '부가세', width: 100 },
+          { name: '합계', width: 100 }
         ]
       },
       resolve: null,
@@ -170,14 +160,11 @@ export default {
         this.resolve(true)
       }
     },
-    async blocApply () {
-      await this.$notify.success('일괄적용')
-    },
     async orderApply () {
-      await this.$notify.success('발주적용')
+      await this.$notify.success('구매입고 팝업호출')
     },
-    async scmApply () {
-      await this.$notify.success('SCM적용')
+    async itemApply () {
+      await this.$notify.success('품목정보 팝업호출')
     },
     async rowDel () {
       await this.$notify.success('삭제')

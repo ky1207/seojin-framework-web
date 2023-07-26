@@ -1,7 +1,7 @@
 <template>
   <SJModal ref="modal" size="modal-xl">
     <template #title>
-      구매입고 등록
+      구매반품 등록
     </template>
 
     <template #default>
@@ -73,7 +73,7 @@
 
         <SJTitle title="상세정보">
           <button class="btn-white-bg" @click="blocApply">
-            구매납품적용
+            구매입고적용
           </button>
           <button class="btn-white-bg" @click="rowDel">
             삭제
@@ -118,7 +118,7 @@ export default {
         },
         columns: [
           { name: 'P/O번호', width: 100 },
-          { name: '양품여부', width: 100 },
+          { name: '입고번호', width: 100 },
           { name: '품목유형', width: 100 },
           { name: '품목코드', width: 100 },
           { name: '품목명', width: 100 },
@@ -131,15 +131,13 @@ export default {
           { name: '수량', width: 100 },
           { name: '단가', width: 100 },
           { name: '공급가', width: 100 },
+          { name: '부가세', width: 100 },
           { name: '합계', width: 100 },
           { name: '창고', width: 100 },
           { name: 'LOT', width: 100 },
           { name: '기준단위', width: 100 },
           { name: '기준수량', width: 100 },
-          { name: '현재고', width: 100 },
-          { name: '검사여부', width: 100 },
-          { name: '위치코드', width: 100 },
-          { name: '거래처LOT', width: 100 }
+          { name: '현재고', width: 100 }
         ]
       },
       resolve: null,
@@ -171,13 +169,7 @@ export default {
       }
     },
     async blocApply () {
-      await this.$notify.success('일괄적용')
-    },
-    async orderApply () {
-      await this.$notify.success('발주적용')
-    },
-    async scmApply () {
-      await this.$notify.success('SCM적용')
+      await this.$notify.success('구매입고적용 팝업호출')
     },
     async rowDel () {
       await this.$notify.success('삭제')
