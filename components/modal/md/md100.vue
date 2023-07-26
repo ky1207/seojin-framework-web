@@ -16,10 +16,10 @@
       <SJSearchOneLayout disabled-navigator-wrap>
         <template #default>
           <SJSearchField label="품목코드">
-            <SJInput id="md1" v-model="search.md1" name="품목코드" class="md-input" />
+            <SJInput id="md1" v-model="search.md1" name="품목코드" />
           </SJSearchField>
           <SJSearchField label="코드명">
-            <SJInput id="md2" v-model="search.md2" name="코드명" class="md-input" />
+            <SJInput id="md2" v-model="search.md2" name="코드명" />
           </SJSearchField>
           <SJSearchField label="품목유형">
             <SJSelect
@@ -30,17 +30,16 @@
             />
           </SJSearchField>
           <SJSearchField label="품목분류">
-            <SJInput id="md4" v-model="search.md4" name="품목분류" class="md-input" />
+            <SJInput id="md4" v-model="search.md4" name="품목분류" />
           </SJSearchField>
           <SJSearchField label="품목코드">
-            <SJInput id="md5" v-model="search.md5" name="품목코드" class="md-input" />
+            <SJInput id="md5" v-model="search.md5" name="품목코드" />
           </SJSearchField>
           <SJSearchField label="기준단위">
             <SJSelect
               id="md5"
               name="기준단위"
               :options="MD_02"
-              class="md-select"
             />
           </SJSearchField>
           <SJSearchField label="사용여부">
@@ -48,7 +47,6 @@
               id="md6"
               name="사용여부"
               :options="MD_03"
-              class="md-select"
             />
           </SJSearchField>
         </template>
@@ -498,13 +496,11 @@ export default {
   }
 }
 </script>
-<style>
-.md-input{
-  width: auto;}
-</style>
 <style scoped>
+.search-field{
+  width: 200px !important;}
 form .sj-form-field fieldset{
-  width: auto;
+  width: 250px ;
 }
 .SJTab{
   margin-bottom: 50px;
