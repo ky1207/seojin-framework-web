@@ -15,26 +15,15 @@
         />
       </SJSearchField>
       <SJSearchField :label="$t('page.system.00083')">
-        <SJDatePicker
+        <SJPeriodSearch
           id="sentStartDtm"
-          v-model="search.sentStartDtm"
+          v-model="search.period"
           :name="$t('page.system.00083')"
-          show-current="true"
-          disabled-validation
-        />
-        <div>
-          ~
-        </div>
-        <SJDatePicker
-          id="sentEndDtm"
-          v-model="search.sentEndDtm"
-          :name="$t('page.system.00083')"
-          disabled-validation
         />
       </SJSearchField>
     </template>
     <template #bodyTitle>
-      <SJTitle :title-="$t('page.system.00084')">
+      <SJTitle :title="$t('page.system.00084')">
         <button class="btn-blue-bg" @click="sendAlarm">
           {{ $t('page.system.00085') }}
         </button>
@@ -65,8 +54,7 @@ export default {
       common: { },
       afterOneWeek: {},
       search: {
-        sentStartDtm: new Date().getTime(),
-        sentEndDtm: new Date(new Date().setDate(new Date().getDate() + 7)).getTime()
+        period: { }
       },
       grid: {
         data: {},

@@ -22,7 +22,7 @@ export default axios => ({
   },
   alarmList (search, page = 1) {
     search.pageNum = page
-    return axios.get('/api/v1.0/alarm/alarm', { params: search })
+    return axios.post('/api/v1.0/alarm/alarm', search)
   },
   alarmCnt () {
     return axios.get('/api/v1.0/alarm/alarmCnt')
