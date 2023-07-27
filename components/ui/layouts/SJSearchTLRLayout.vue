@@ -16,7 +16,7 @@
         <slot name="leftTitle" />  <!--left 타이틀명 -->
         <slot name="left" />
       </div>
-      <div ref="topAutoHeight" class="right-contents col-md-6">
+      <div ref="rightAutoHeight" class="right-contents col-md-6">
         <slot name="rightTitle1" />
         <slot name="right1" />
         <slot name="rightTitle2" />
@@ -69,7 +69,7 @@ export default {
       const absoluteTop = this.$refs.autoHeight.getBoundingClientRect().top
 
       this.$refs.autoHeight.style.height = (height - absoluteTop - 45) + 'px'
-      this.$refs.autoHeight2.style.height = ((height - absoluteTop - 45) - this.$refs.topAutoHeight.getBoundingClientRect().height - 10) + 'px'
+      this.$refs.autoHeight2.style.height = ((height - absoluteTop - 45) - this.$refs.rightAutoHeight.getBoundingClientRect().height - 10) + 'px'
     }
   }
 
