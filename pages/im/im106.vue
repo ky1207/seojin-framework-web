@@ -45,7 +45,6 @@ export default {
   mixins: [ACTION, MENU],
   data () {
     return {
-      showModal: false,
       grid: {
         data: {},
         columns: [

@@ -68,7 +68,7 @@
         :columns="grid.columns"
       />
     </template>
-    <md100 v-if="showModal" ref="mdModal" @close="showModal = false" />
+    <md100 ref="mdModal" />
   </SJSearchOneLayout>
 </template>
 
@@ -98,8 +98,7 @@ export default {
           { name: 'Country or Origin' },
           { name: '가공시간' }
         ]
-      },
-      showModal: false
+      }
     }
   },
   created () {
@@ -115,7 +114,6 @@ export default {
           await fnc.$notify.info('조회')
         },
         f1Click: async () => {
-          this.showModal = true
           const result = await this.$refs.mdModal.open()
           if (result) {
             console.log(result)
