@@ -66,7 +66,6 @@ export default {
   data () {
     return {
       search: {},
-      showModal: false,
       grid: {
         data: {},
         columns: [
