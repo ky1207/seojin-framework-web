@@ -84,6 +84,7 @@
             ref="grid"
             v-model="grid.data"
             :columns="grid.columns"
+            :options="grid.options"
           />
         </template>
       </SJOneLayout>
@@ -114,7 +115,10 @@ export default {
           { name: '출고수량', width: 80 },
           { name: '사유', width: 200 },
           { name: '비고', width: 150 }
-        ]
+        ],
+        options: {
+          bodyHeight: 320
+        }
       }
     }
   },
