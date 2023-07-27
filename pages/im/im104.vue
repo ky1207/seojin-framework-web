@@ -2,7 +2,7 @@
   <SJSearchTBLayout>
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
-      <im103 v-if="showModal" ref="imModal" @close="showModal = false" />
+      <Im103 ref="imModal" />
     </template>
     <template #default>
       <SJSearchField label="사업장">
@@ -62,13 +62,10 @@
 
 <script>
 import { ACTION, MENU } from '~/mixins'
-import Im103 from '~/components/modal/im/im103.vue'
 export default {
-  components: { Im103 },
   mixins: [ACTION, MENU],
   data () {
     return {
-      showModal: false,
       grid: {
         data: {},
         columns: [
@@ -119,12 +116,9 @@ export default {
           await fnc.$notify.info('조회')
         },
         f1Click: async () => {
-          this.showModal = true
-          if (this.$refs.imModal) {
-            const result = await this.$refs.imModal.open()
-            if (result) {
-              console.log(result)
-            }
+          const result = await this.$refs.imModal.open()
+          if (result) {
+            console.log(result)
           }
         }
       }

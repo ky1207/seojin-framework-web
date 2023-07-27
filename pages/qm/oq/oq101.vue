@@ -2,7 +2,7 @@
   <SJSearchOneLayout>
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
-      <oq100 v-if="showModal" ref="oqModal" @close="showModal = false" />
+      <QmOq100 ref="oqModal" />
     </template>
     <template #default>
       <SJSearchField label="사업장">
@@ -52,13 +52,10 @@
 
 <script>
 import { ACTION } from '~/mixins'
-import Oq100 from '~/components/modal/qm/oq100.vue'
 export default {
-  components: { Oq100 },
   mixins: [ACTION],
   data () {
     return {
-      showModal: false,
       search: {},
       grid: {
         data: {},
@@ -122,12 +119,9 @@ export default {
           await fnc.$notify.info('조회')
         },
         f1Click: async () => {
-          this.showModal = true
-          if (this.$refs.oqModal) {
-            const result = await this.$refs.oqModal.open()
-            if (result) {
-              console.log(result)
-            }
+          const result = await this.$refs.oqModal.open()
+          if (result) {
+            console.log(result)
           }
         },
         f1Label: '출하검사'

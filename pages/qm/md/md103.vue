@@ -2,8 +2,8 @@
   <SJSearchTBLayout>
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
-      <md100 v-if="showModal" ref="md1Modal" @close="showModal = false" />
-      <md101 v-if="showModal" ref="md2Modal" @close="showModal = false" />
+      <QmMd100 ref="md1Modal" />
+      <QmMd101 ref="md2Modal" />
     </template>
     <template #default>
       <SJSearchField label="사업장">
@@ -65,15 +65,11 @@
 
 <script>
 import { ACTION } from '~/mixins'
-import Md100 from '~/components/modal/qm/md100.vue'
-import Md101 from '~/components/modal/qm/md101.vue'
 export default {
-  components: { Md100, Md101 },
   mixins: [ACTION],
   data () {
     return {
       search: {},
-      showModal: false,
       grid: {
         data: {},
         columns: [
@@ -141,24 +137,18 @@ export default {
           await fnc.$notify.info('조회')
         },
         f1Click: async () => {
-          this.showModal = true
-          if (this.$refs.md1Modal) {
-            const result = await this.$refs.md1Modal.open()
-            if (result) {
-              console.log(result)
-            }
+          const result = await this.$refs.md1Modal.open()
+          if (result) {
+            console.log(result)
           }
         },
         async f2Click () {
           await fnc.$notify.success('수정')
         },
         f3Click: async () => {
-          this.showModal = true
-          if (this.$refs.md2Modal) {
-            const result = await this.$refs.md2Modal.open()
-            if (result) {
-              console.log(result)
-            }
+          const result = await this.$refs.md2Modal.open()
+          if (result) {
+            console.log(result)
           }
         },
         f1Label: '신규',
