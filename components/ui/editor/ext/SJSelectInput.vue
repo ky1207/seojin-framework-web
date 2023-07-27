@@ -1,23 +1,21 @@
 <template>
-  <div>
-    <div style="display: flex;">
-      <SJSelect
-        :id="id+'-select'"
-        v-model="selectedValue"
-        :options="options"
-        :name="name+'-select'"
-        disabled-validation
-        :disabled-first-message="disabledFirstMessage"
-        @change="handleChange"
-      />
-      <SJInput
-        :id="id+'-input'"
-        v-model="inputValue"
-        :name="name+'-input'"
-        disabled-validation
-        @input="handleChange"
-      />
-    </div>
+  <div style="display: flex;">
+    <SJSelect
+      :id="id+'-select'"
+      v-model="selectedValue"
+      :options="options"
+      :name="name+'-select'"
+      disabled-validation
+      :disabled-first-message="disabledFirstMessage"
+      @change="handleChange"
+    />
+    <SJInput
+      :id="id+'-input'"
+      v-model="inputValue"
+      :name="name+'-input'"
+      disabled-validation
+      @input="handleChange"
+    />
   </div>
 </template>
 
