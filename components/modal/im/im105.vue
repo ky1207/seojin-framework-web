@@ -74,6 +74,7 @@
             ref="grid"
             v-model="grid.data"
             :columns="grid.columns"
+            :options="grid.options"
           />
         </template>
       </SJOneLayout>
@@ -106,7 +107,10 @@ export default {
           { name: '이동수량', width: 80 },
           { name: '현재고', width: 80 },
           { name: '비고', width: 200 }
-        ]
+        ],
+        options: {
+          bodyHeight: 320
+        }
       }
     }
   },

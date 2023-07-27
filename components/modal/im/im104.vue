@@ -32,15 +32,6 @@
               <SJFormField label="이동번호">
                 <SJInput id="md2" v-model="search.md2" name="이동번호" disabled />
               </SJFormField>
-              <SJFormField label="이동일자">
-                <SJDatePicker
-                  id="md3"
-                  name="이동일자"
-                  rules="required|max:12"
-                />
-              </SJFormField>
-            </SJFormRow>
-            <SJFormRow>
               <SJFormField label="이동유형">
                 <SJSelect
                   id="md4"
@@ -49,6 +40,7 @@
                 />
               </SJFormField>
             </SJFormRow>
+
             <SJFormRow>
               <SJFormField label="이동전창고">
                 <SJSelect
@@ -64,8 +56,7 @@
                   :options="MD_03"
                 />
               </SJFormField>
-            </SJFormRow>
-            <SJFormRow>
+
               <SJFormField label="이동전품목">
                 TODO:SELECTINPUT
               </SJFormField>
@@ -91,6 +82,7 @@
             ref="grid"
             v-model="grid.data"
             :columns="grid.columns"
+            :options="grid.options"
           />
         </template>
       </SJOneLayout>
@@ -123,7 +115,10 @@ export default {
           { name: '이동수량', width: 80 },
           { name: '현재고', width: 80 },
           { name: '비고', width: 200 }
-        ]
+        ],
+        options: {
+          bodyHeight: 320
+        }
       }
     }
   },
