@@ -1,29 +1,23 @@
 <template>
   <div>
     <div style="display: flex;">
-      <select
+      <SJSelect
+        :id="id+'-select'"
         v-model="selectedValue"
-        :aria-describedby="id+'-feedback'"
-        aria-label="Default select"
-        :disabled="disabled"
+        :options="options"
+        :name="name+'-select'"
+        disabled-validation
+        :disabled-first-message="disabledFirstMessage"
         @change="handleChange"
-      >
-        <option v-for="option in options" :key="option[itemValue]" :value="option[itemValue]">
-          {{ option[itemText] }}
-        </option>
-      </select>
-      <input
+      />
+      <SJInput
+        :id="id+'-input'"
         v-model="inputValue"
-        type="text"
-        :aria-describedby="id + '-feedback'"
-        :disabled="disabled"
-        :readonly="readonly"
-        :class="{ 'MultiInput-wrap': true }"
-      >
+        :name="name+'-input'"
+        disabled-validation
+        @input="handleChange"
+      />
     </div>
-    <span :id="id+'-feedback'" class="invalid-feedback">
-      {{ errors[0] }}
-    </span>
   </div>
 </template>
 
@@ -31,32 +25,28 @@
 export default {
   props: {
     value: {
-      type: [String, Boolean, Number],
+      type: Object,
       default: null
     },
     id: {
       type: String,
       required: true
     },
-    disabledValidation: {
-      type: Boolean,
-      default: false
+    name: {
+      type: String,
+      required: true
     },
     itemText: {
       type: String,
       default: 'text'
     },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    readonly: {
-      type: Boolean,
-      default: false
-    },
     itemValue: {
       type: String,
       default: 'value'
+    },
+    disabledFirstMessage: {
+      type: Boolean,
+      default: false
     },
     options: {
       type: Array,
@@ -65,25 +55,14 @@ export default {
   },
   data () {
     return {
-      selectedValue: this.value || '',
-      inputValue: ''
-    }
-  },
-  computed: {
-    errors () {
-      return []
+      selectedValue: this.value?.option || '',
+      inputValue: this.value?.value || ''
     }
   },
   methods: {
     handleChange (e) {
-      this.$emit('change', e)
+      this.$emit('input', { option: this.selectedValue, value: this.inputValue })
     }
   }
 }
 </script>
-
-<style scoped>
-.MultiInput-wrap {
-  display: flex;
-}
-</style>

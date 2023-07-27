@@ -5,7 +5,7 @@
         <SJInput id="md1" v-model="search.md1" name="md1" />
       </SJSearchField>
       <SJSearchField label="거래처">
-        <SJSelectInput id="si" :options="selectinput" />
+        <SJSelectInput id="si" v-model="search.company" name="t1" :options="selectinput" />
       </SJSearchField>
     </template>
     <template #leftTitle>
@@ -71,7 +71,7 @@
             <template v-if="section.id === 'section1'">
               <SJFormRow>
                 <SJFormField label="사업장명">
-                  <SJSelectInput id="bsi1" />
+                  <SJSelectInput id="bsi1" name="bsi1" />
                 </SJFormField>
               </SJFormRow>
               <SJFormRow>
@@ -225,19 +225,19 @@ export default {
       return [
         {
           text: 'AA',
-          value: 'AA'
+          value: 'A1'
         },
         {
           text: 'BB',
-          value: 'BB'
+          value: 'B1'
         },
         {
           text: 'CC',
-          value: 'CC'
+          value: 'C1'
         },
         {
           text: 'DD',
-          value: 'DD'
+          value: 'D1'
         }
       ]
     }
