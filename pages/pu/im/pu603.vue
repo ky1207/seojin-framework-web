@@ -1,0 +1,154 @@
+<template>
+  <SJSearchLRLayout>
+    <template #master-btn>
+      <SJPageButtons :action="ACTION" />
+    </template>
+    <template #default>
+      <SJSearchField label="회사">
+        <SJSelect
+          id="searchCompany"
+          name=""
+          :options="common.USE_YN"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
+      <SJSearchField label="창고">
+        <SJSelect
+          id="searchCompany"
+          name=""
+          :options="search.USE_YN"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
+      <SJSearchField label="양품여부">
+        <SJSelect
+          id="searchCompany"
+          name=""
+          :options="search.USE_YN"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
+      <SJSearchField label="재고여부">
+        <SJSelect
+          id="searchCompany"
+          name=""
+          :options="search.USE_YN"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
+      <SJSearchField label="품목유형">
+        <SJSelect
+          id="searchCompany"
+          name=""
+          :options="search.USE_YN"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
+      <SJSearchField label="품목분류">
+        <SJSelect
+          id="searchCompany"
+          name=""
+          :options="search.USE_YN"
+          disabled-validation
+          disabled-first-message
+        />
+        <SJSelect
+          id="searchCompany"
+          name=""
+          :options="search.USE_YN"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
+      <SJSearchField label="품목">
+        <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
+      </SJSearchField>
+    </template>
+
+    <template #leftTitle>
+      <SJTitle title="목록" />
+    </template>
+    <template #left>
+      <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
+    </template>
+    <template #rightTitle>
+      <SJTitle title="LOT별">
+        <button class="btn-blue-bg" @click="history">
+          이력
+        </button>
+      </SJTitle>
+    </template>
+    <template #right>
+      <SJGrid ref="grid" v-model="grid2.data" :columns="grid2.columns" :options="grid2.options" />
+    </template>
+  </SJSearchLRLayout>
+</template>
+
+<script>
+import { ACTION, MENU } from '~/mixins'
+export default {
+  mixins: [ACTION, MENU],
+  data () {
+    return {
+      common: {},
+      search: {},
+      inputData: {
+        coCode: '',
+        coType: '',
+        coForm: ''
+      },
+      grid: {
+        data: {},
+        columns: [
+          { name: '품목유형', width: 100 },
+          { name: '품목코드', width: 100 },
+          { name: '품목명', width: 100 },
+          { name: 'REV', width: 100 },
+          { name: '규격', width: 100 },
+          { name: 'CE!여부', width: 100 },
+          { name: '크리티컬여부', width: 100 },
+          { name: '크리티컬등급', width: 100 },
+          { name: '창고', width: 100 },
+          { name: '이월', width: 100 },
+          { name: '기초', width: 100 },
+          { name: '입고(+)', width: 100 },
+          { name: '출고(-)', width: 100 },
+          { name: '현재고', width: 100 },
+          { name: '기준단위', width: 100 }
+        ]
+      },
+      grid2: {
+        data: {},
+        columns: [
+          { name: 'LOT', width: 100 },
+          { name: '거래처', width: 100 },
+          { name: '창고', width: 100 },
+          { name: '현재고', width: 100 },
+          { name: '양품여부', width: 100 },
+          { name: '검사여부', width: 100 }
+        ]
+      }
+    }
+  },
+
+  methods: {
+    async history () {
+      // 이력
+      await this.$notify.info('이력')
+    },
+    ACTION_REGISTRY () {
+      const fnc = this
+      return {
+        async searchClick () {
+          await fnc.$notify.info('조회')
+        }
+      }
+    }
+  }
+}
+</script>
