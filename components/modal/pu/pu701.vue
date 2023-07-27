@@ -3,91 +3,96 @@
     <template #title>
       매입마감 등록
     </template>
-
-    <template #default>
-      <SJForm ref="form">
-        <SJFormRow>
-          <SJFormField label="회사">
-            <SJSelect id="searchCoType" name="회사" :options="common.USE_YN" rules="required" />
-          </SJFormField>
-          <SJFormField label="담당자">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="담당자" rules="required" />
-          </SJFormField>
-          <SJFormField label="마감번호">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="마감번호" rules="required" />
-          </SJFormField>
-          <SJFormField label="마감일자">
-            <SJDatePicker
-              id="sentStartDtm"
-              v-model="inputData.sentStartDtm"
-              name="마감일자"
-              show-current="true"
-              disabled-validation
-              rules="required"
-            />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="거래처">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="거래처" rules="required" />
-          </SJFormField>
-          <SJFormField label="내/외자구분">
-            <SJSelect id="searchCoType" name="내/외자구분" :options="common.USE_YN" rules="required" />
-          </SJFormField>
-          <SJFormField label="부가세적용">
-            <SJSelect id="searchCoType" name="부가세적용" :options="common.USE_YN" rules="required" />
-          </SJFormField>
-          <SJFormField label="통화">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="통화" rules="required" />
-            <SJSelect id="searchCoType" name="통화" :options="common.USE_YN" rules="required" />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="비고">
-            <SJTextarea
-              id="textarea"
-              v-model="inputData.content"
-              name="textarea"
-            />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="등록일시">
-            2023-07-20 18:00:00
-          </SJFormField>
-          <SJFormField label="등록자">
-            홍길동
-          </SJFormField>
-          <SJFormField label="수정일시">
-            2023-07-20 18:00:00
-          </SJFormField>
-          <SJFormField label="수정자">
-            홍길동
-          </SJFormField>
-        </SJFormRow>
-
-        <SJTitle title="상세정보">
-          <button class="btn-white-bg" @click="orderApply">
-            구매입고적용
-          </button>
-          <button class="btn-white-bg" @click="itemApply">
-            품목정보적용
-          </button>
-          <button class="btn-white-bg" @click="rowDel">
-            삭제
-          </button>
-        </SJTitle>
-        <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
-      </SJForm>
+    <template #button>
+      <button class="btn-blue-bg" @click="save()">
+        저장
+      </button>
+      <button class="btn-gray-bg" @click="close">
+        닫기
+      </button>
     </template>
+    <template #default>
+      <SJOneLayout disabled-navigator-wrap>
+        <template #title>
+          <SJTitle title="매입마감 등록" />
+        </template>
+        <template #default>
+          <SJForm ref="form">
+            <SJFormRow>
+              <SJFormField label="회사">
+                <SJSelect id="searchCoType" name="회사" :options="common.USE_YN" rules="required" />
+              </SJFormField>
+              <SJFormField label="담당자">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="담당자" rules="required" />
+              </SJFormField>
+              <SJFormField label="마감번호">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="마감번호" rules="required" />
+              </SJFormField>
+              <SJFormField label="마감일자">
+                <SJDatePicker
+                  id="sentStartDtm"
+                  v-model="inputData.sentStartDtm"
+                  name="마감일자"
+                  show-current="true"
+                  disabled-validation
+                  rules="required"
+                />
+              </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField label="거래처">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="거래처" rules="required" />
+              </SJFormField>
+              <SJFormField label="내/외자구분">
+                <SJSelect id="searchCoType" name="내/외자구분" :options="common.USE_YN" rules="required" />
+              </SJFormField>
+              <SJFormField label="부가세적용">
+                <SJSelect id="searchCoType" name="부가세적용" :options="common.USE_YN" rules="required" />
+              </SJFormField>
+              <SJFormField label="통화">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="통화" rules="required" />
+                <SJSelect id="searchCoType" name="통화" :options="common.USE_YN" rules="required" />
+              </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField label="비고" style="width: 100%;">
+                <SJTextarea
+                  id="textarea"
+                  v-model="inputData.content"
+                  name="textarea"
+                />
+              </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField label="등록일시">
+                2023-07-20 18:00:00
+              </SJFormField>
+              <SJFormField label="등록자">
+                홍길동
+              </SJFormField>
+              <SJFormField label="수정일시">
+                2023-07-20 18:00:00
+              </SJFormField>
+              <SJFormField label="수정자">
+                홍길동
+              </SJFormField>
+            </SJFormRow>
 
-    <template #footer>
-      <button type="button" class="btn btn-secondary" @click="close()">
-        Close
-      </button>
-      <button type="button" class="btn btn-primary" @click="save()">
-        Save changes
-      </button>
+            <SJTitle title="상세정보">
+              <button class="btn-white-bg" @click="orderApply">
+                구매입고적용
+              </button>
+              <button class="btn-white-bg" @click="itemApply">
+                품목정보적용
+              </button>
+              <button class="btn-white-bg" @click="rowDel">
+                삭제
+              </button>
+            </SJTitle>
+            <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
+          </SJForm>
+        </template>
+      </SJOneLayout>
     </template>
   </SJModal>
 </template>
@@ -174,4 +179,7 @@ export default {
 </script>
 
 <style scoped>
+form .sj-form-field fieldset{
+  width: 250px ;
+}
 </style>

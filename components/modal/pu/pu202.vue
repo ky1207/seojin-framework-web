@@ -8,8 +8,11 @@
       <button class="btn-white-bg">
         조회
       </button>
-      <button class="btn-white-bg">
+      <button class="btn-blue-bg">
         저장
+      </button>
+      <button class="btn-gray-bg" @click="close">
+        닫기
       </button>
     </template>
 
@@ -74,12 +77,6 @@
           <SJGrid ref="grid" v-model="grid2.data" :columns="grid2.columns" :options="grid2.options" />
         </template>
       </SJSearchLRLayout>
-    </template>
-
-    <template #footer>
-      <button type="button" class="btn btn-secondary" @click="close()">
-        Close
-      </button>
     </template>
   </SJModal>
 </template>

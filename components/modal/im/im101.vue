@@ -67,7 +67,7 @@
               </SJFormField>
             </SJFormRow>
             <SJFormRow>
-              <SJFormField label="비고">
+              <SJFormField label="비고" style="width: 100%;">
                 <SJTextarea id="md7" name="비고" />
               </SJFormField>
             </SJFormRow>
@@ -221,3 +221,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+form .sj-form-field fieldset{
+  width: 250px ;
+}
+</style>

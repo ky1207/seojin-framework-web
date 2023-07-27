@@ -11,7 +11,7 @@
       <button class="btn-white-bg">
         적용
       </button>
-      <button class="btn-white-bg" @click="close">
+      <button class="btn-gray-bg" @click="close">
         닫기
       </button>
     </template>

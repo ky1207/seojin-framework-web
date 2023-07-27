@@ -4,7 +4,7 @@
       입고검사 등록
     </template>
     <template #button>
-      <button class="btn-gray-bg" @click="reg">
+      <button class="btn-blue-bg" @click="reg">
         저장
       </button>
       <button class="btn-gray-bg" @click="del">

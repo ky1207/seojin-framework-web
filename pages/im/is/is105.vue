@@ -13,12 +13,7 @@
         />
       </SJSearchField>
       <SJSearchField label="입출고일">
-        <SJDatePicker
-          id="search2"
-          name="입출고일"
-        />
-        <div>~</div>
-        <SJDatePicker
+        <SJPeriodSearch
           id="search2"
           name="입출고일"
         />
