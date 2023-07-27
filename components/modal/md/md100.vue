@@ -12,45 +12,51 @@
       </button>
     </template>
     <template #default>
-      <SJTitle title="기준정보" />
-      <SJSearchOneLayout disabled-navigator-wrap>
-        <template #default>
-          <SJSearchField label="품목코드">
-            <SJInput id="md1" v-model="search.md1" name="품목코드" />
-          </SJSearchField>
-          <SJSearchField label="코드명">
-            <SJInput id="md2" v-model="search.md2" name="코드명" />
-          </SJSearchField>
-          <SJSearchField label="품목유형">
-            <SJSelect
-              id="md3"
-              name="품목유형"
-              :options="MD_01"
-              class="md-select"
-            />
-          </SJSearchField>
-          <SJSearchField label="품목분류">
-            <SJInput id="md4" v-model="search.md4" name="품목분류" />
-          </SJSearchField>
-          <SJSearchField label="품목코드">
-            <SJInput id="md5" v-model="search.md5" name="품목코드" />
-          </SJSearchField>
-          <SJSearchField label="기준단위">
-            <SJSelect
-              id="md5"
-              name="기준단위"
-              :options="MD_02"
-            />
-          </SJSearchField>
-          <SJSearchField label="사용여부">
-            <SJSelect
-              id="md6"
-              name="사용여부"
-              :options="MD_03"
-            />
-          </SJSearchField>
+      <SJOneLayout disabled-navigator-wrap>
+        <template #title>
+          <SJTitle title="기준정보" />
         </template>
-        <template #body>
+        <template #default>
+          <SJForm>
+            <SJFormRow>
+              <SJFormField label="품목코드">
+                <SJInput id="md1" name="품목코드" />
+              </SJFormField>
+              <SJFormField label="품목명">
+                <SJInput id="md2" name="품목명" />
+              </SJFormField>
+              <SJFormField label="품목유형">
+                <SJSelect
+                  id="md3"
+                  name="품목유형"
+                  :options="MD_01"
+                  class="md-select"
+                />
+              </SJFormField>
+              <SJFormField label="품목분류">
+                <SJInput id="md4" name="품목분류" />
+              </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField label="품목코드">
+                <SJInput id="md5" name="품목코드" />
+              </SJFormField>
+              <SJFormField label="기준단위">
+                <SJSelect
+                  id="md5"
+                  name="기준단위"
+                  :options="MD_02"
+                />
+              </SJFormField>
+              <SJFormField label="사용여부">
+                <SJSelect
+                  id="md6"
+                  name="사용여부"
+                  :options="MD_03"
+                />
+              </SJFormField>
+            </SJFormRow>
+          </SJForm>
           <SJForm>
             <SJTab :list="tabList">
               <template #tab-1>
@@ -304,7 +310,7 @@
             </SJtab>
           </SJform>
         </template>
-      </SJSearchOneLayout>
+      </SJOneLayout>
     </template>
   </SJModal>
 </template>
