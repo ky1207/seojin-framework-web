@@ -12,29 +12,13 @@
         <SJSelect id="searchCoType" name="searchCoType" :options="common.USE_YN" />
       </SJSearchField>
       <SJSearchField label="결과">
-        <SJSelect id="searchCoType" name="searchCoType" :options="common.USE_YN" />
+        <SJSelect id="searchCoType" name="searchCoType" />
       </SJSearchField>
       <SJSearchField label="사업명">
         <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
       </SJSearchField>
       <SJSearchField label="구분">
-        <SJSelect id="searchCoType" name="searchCoType" :options="common.USE_YN" />
-        <SJDatePicker
-          id="sentStartDtm"
-          v-model="search.sentStartDtm"
-          :name="$t('page.system.00083')"
-          show-current="true"
-          disabled-validation
-        />
-        <div>
-          ~
-        </div>
-        <SJDatePicker
-          id="sentEndDtm"
-          v-model="search.sentEndDtm"
-          :name="$t('page.system.00083')"
-          disabled-validation
-        />
+        <SJSelect id="searchCoType" name="searchCoType" />
       </SJSearchField>
     </template>
     <template #bodyTitle>
