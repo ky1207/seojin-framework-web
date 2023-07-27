@@ -3,7 +3,14 @@
     <template #title>
       구매요청등록
     </template>
-
+    <template #button>
+      <button class="btn-blue-bg" @click="save()">
+        저장
+      </button>
+      <button class="btn-white-bg" @click="close">
+        닫기
+      </button>
+    </template>
     <template #default>
       <SJForm ref="form">
         <SJFormRow>
@@ -61,15 +68,6 @@
         </SJTitle>
         <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
       </SJForm>
-    </template>
-
-    <template #footer>
-      <button type="button" class="btn btn-secondary" @click="close()">
-        Close
-      </button>
-      <button type="button" class="btn btn-primary" @click="save()">
-        Save changes
-      </button>
     </template>
   </SJModal>
 </template>

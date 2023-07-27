@@ -11,58 +11,46 @@
       <button class="btn-white-bg">
         적용
       </button>
+      <button class="btn-white-bg" @click="close">
+        닫기
+      </button>
     </template>
-
     <template #default>
-      <SJSearchOneLayout disabled-navigator-wrap>
-        <template #default>
-          <SJSearchField label="회사">
-            <SJSelect
-              id="searchCompany"
-              name=""
-              :options="common.USE_YN"
-              disabled-validation
-              disabled-first-message
-            />
-          </SJSearchField>
-          <SJSearchField label="품목">
-            <SJInput id="searchCoCode" v-model="search.coCode" name="searchCoCode" />
-          </SJSearchField>
-          <SJSearchField label="등록일">
-            <SJDatePicker
-              id="sentStartDtm"
-              v-model="search.sentStartDtm"
-              :name="$t('page.system.00083')"
-              show-current="true"
-              disabled-validation
-            />
-            <div>~</div>
-            <SJDatePicker
-              id="sentStartDtm"
-              v-model="search.sentStartDtm"
-              :name="$t('page.system.00083')"
-              show-current="true"
-              disabled-validation
-            />
-          </SJSearchField>
+      <SJOneLayout disabled-navigator-wrap>
+        <template #title>
+          <SJTitle title="등록" />
         </template>
-        <template #bodyTitle>
+        <template #default>
+          <SJForm>
+            <SJFormRow>
+              <SJFormField label="회사">
+                <SJSelect
+                  id="searchCompany"
+                  name=""
+                  :options="common.USE_YN"
+                  disabled-validation
+                  disabled-first-message
+                />
+              </SJFormField>
+              <SJFormField label="품목">
+                <SJInput id="searchCoCode" v-model="search.coCode" name="searchCoCode" />
+              </SJFormField>
+              <SJFormField label="등록일">
+                <SJPeriodSearch
+                  id="sentStartDtm"
+                  name="등록일"
+                />
+              </SJFormField>
+            </SJFormRow>
+          </SJForm>
           <SJTitle title="구매요청목록">
             <button class="btn-white-bg">
               그룹생성
             </button>
           </SJTitle>
-        </template>
-        <template #body>
           <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" />
         </template>
-      </SJSearchOneLayout>
-    </template>
-
-    <template #footer>
-      <button type="button" class="btn btn-secondary" @click="close()">
-        Close
-      </button>
+      </SJOneLayout>
     </template>
   </SJModal>
 </template>
@@ -138,4 +126,7 @@ export default {
 </script>
 
 <style scoped>
+form .sj-form-field fieldset{
+  width: 300px ;
+}
 </style>

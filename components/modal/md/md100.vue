@@ -503,8 +503,6 @@ export default {
 }
 </script>
 <style scoped>
-.search-field{
-  width: 200px !important;}
 form .sj-form-field fieldset{
   width: 250px ;
 }

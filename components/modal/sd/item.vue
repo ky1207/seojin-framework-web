@@ -3,27 +3,30 @@
     <template #title>
       품목조회
     </template>
-
+    <template #button>
+      <button class="btn-white-bg" @click="close">
+        닫기
+      </button>
+    </template>
     <template #default>
-      <SJSearchOneLayout disabled-navigator-wrap>
-        <template #default>
-          <SJSearchField label="거래처">
-            <SJInput id="searchCoCode" v-model="search.coCode" name="searchCoCode" />
-          </SJSearchField>
-          <SJSearchField label="품목">
-            <SJInput id="searchCoCode" v-model="search.item" name="searchItem" />
-          </SJSearchField>
+      <SJOneLayout disabled-navigator-wrap>
+        <template #title>
+          <SJTitle title="조회" />
         </template>
-        <template #body>
+        <template #default>
+          <SJForm>
+            <SJFormRow>
+              <SJFormField label="거래처">
+                <SJInput id="searchCoCode" v-model="search.coCode" name="searchCoCode" />
+              </SJFormField>
+              <SJFormField label="품목">
+                <SJInput id="searchCoCode" v-model="search.item" name="searchItem" />
+              </SJFormField>
+            </SJFormRow>
+          </SJForm>
           <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" />
         </template>
-      </SJSearchOneLayout>
-    </template>
-
-    <template #footer>
-      <button type="button" class="btn btn-secondary" @click="close()">
-        Close
-      </button>
+      </SJOneLayout>
     </template>
   </SJModal>
 </template>
@@ -81,4 +84,7 @@ export default {
 </script>
 
 <style scoped>
+form .sj-form-field fieldset{
+  width: 250px ;
+}
 </style>
