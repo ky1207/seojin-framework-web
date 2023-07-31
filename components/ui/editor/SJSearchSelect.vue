@@ -1,28 +1,25 @@
 <template>
-  <div ref="close" class="complete-wrap">
-    <div v-for="option in selectedOptions" :key="option.value" class="complete-tag" @click="deselectOption(option)">
-      {{ option.label }}
+  <div class="SJSearchSelect-wrap">
+    <div v-for="option in selectedOptions" :key="option[itemValue]" class="SJSearchSelect-tag" @click="deselectOption(option)">
+      {{ option[itemText] }}
       <span><i class="fa-solid fa-xmark" /></span>
     </div>
     <input
       ref="text"
       v-model="searchText"
-      class="complete-text"
+      class="SJAutoComplete-text"
       placeholder="검색하세요"
-      @keydown.enter="handleEnter"
-      @keydown.188="addTag"
       @input="handleSearch"
-      @click="toggleOptions"
       @mousedown="onInputMouseDown"
     >
-    <div v-if="showOptions" class="complete-options">
+    <div v-if="showOptions" class="SJSearchSelect-options">
       <div
         v-for="option in options"
-        :key="option.value"
-        class="option"
+        :key="option[itemValue]"
+        class="SJSearchSelect-option"
         @click="selectOption(option)"
       >
-        {{ option.label }}
+        {{ option[itemText] }}
       </div>
     </div>
   </div>
@@ -31,21 +28,33 @@
 <script>
 export default {
   props: {
-    options: {
-      type: Array,
-      default: () => []
-    },
     multiple: {
       type: Boolean,
       default: false
+    },
+    searchUrl: {
+      type: String,
+      required: true
+    },
+    itemText: {
+      type: String,
+      default: 'text'
+    },
+    itemValue: {
+      type: String,
+      default: 'value'
+    },
+    param: {
+      type: String,
+      default: 'p'
     }
   },
   data () {
     return {
+      options: [],
       selectedOptions: [],
       searchText: '',
-      showOptions: false,
-      focusOnInput: false
+      showOptions: false
     }
   },
 
@@ -55,26 +64,21 @@ export default {
   },
   methods: {
     deselectOption (option) {
-      this.selectedOptions = this.selectedOptions.filter(selectedOption => selectedOption.value !== option.value)
+      this.selectedOptions = this.selectedOptions.filter(selectedOption => selectedOption[this.itemValue] !== option[this.itemValue])
     },
-    handleSearch () {
+    async handleSearch () {
+      const p = { [this.$props.param]: this.searchText }
+      const result = await this.$axios.get(this.searchUrl, { params: p })
+      this.options = result.data
       this.showOptions = true
     },
     selectOption (option) {
+      // TODO:중복검사
       this.selectedOptions.push(option)
       this.searchText = ''
       this.showOptions = false
     },
-    handleEnter () {
-      if (this.filteredOptions.length === 1) {
-        this.selectOption(this.filteredOptions[0])
-      }
-    },
-    toggleOptions (event) {
-      if (!this.showOptions) {
-        this.showOptions = true
-      }
-    },
+
     onInputMouseDown (event) {
       event.stopPropagation()
     },
@@ -82,40 +86,20 @@ export default {
       if (!this.$el.contains(event.target)) {
         this.showOptions = false
       }
-    },
-    addTag (event) {
-      event.preventDefault()
-      const val = event.target.value.trim()
-      if (this.filteredOptions.length === 1) {
-        this.selectOption(this.filteredOptions[0])
-      }
-      if (val.length > 0) {
-        if (this.length >= 1) {
-          for (let i = 0; i < this.length; i++) {
-            if (this.tags[i] === val) {
-              return false
-            }
-          }
-        }
-        this.push(val)
-        event.target.value = ''
-        console.log(this)
-      }
     }
   }
 }
 </script>
 
 <style scoped>
-.complete-wrap{
+.SJSearchSelect-wrap{
   position: relative;
-  border: 1px solid #D9DFE7;
-  border-radius: 4px;
+  border: 1px solid #bcc1d0;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
-.complete-tag {
+.SJSearchSelect-tag {
   display: flex;
   width: auto;
   height: 20px;
@@ -128,18 +112,17 @@ export default {
   border-radius: 10px;
   flex-wrap: nowrap;
 }
-.complete-tag > span{
+.SJSearchSelect-tag > span{
   cursor: pointer;
   opacity: 0.75;
   display: inline-block;
   margin-left: 8px;
 }
-.complete-text{
+.SJAutoComplete-text{
   width: auto;
   border: none;
 }
-.selected-option i{ padding-left: 5px;}
-.complete-options {
+.SJSearchSelect-options {
   width: 100%;
   position: absolute;
   top: 100%;
@@ -150,12 +133,11 @@ export default {
   max-height: 100px;
   overflow-y: auto;
 }
-.option {
+.SJSearchSelect-option {
   padding: 4px 8px;
   cursor: pointer;
 }
-.option:hover {
+.SJSearchSelect-option:hover {
   background-color: #f0f0f0;
 }
-
 </style>

@@ -76,7 +76,7 @@
               </SJFormRow>
               <SJFormRow>
                 <SJFormField label="검색">
-                  <SJAutoComplete :options="autocomplete" />
+                  <SJSearchSelect search-url="/api/v1.0/department/codes" />
                 </SJFormField>
               </SJFormRow>
             </template>
@@ -152,12 +152,6 @@ export default {
   layout: 'empty',
   data () {
     return {
-      autocomplete: [
-        { value: '', label: 'AA' },
-        { value: '', label: 'AB' },
-        { value: '', label: 'AC' },
-        { value: '', label: 'AE' }
-      ],
       isUpdate: false,
       common: {},
       search: {},
