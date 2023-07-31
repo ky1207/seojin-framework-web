@@ -1,7 +1,9 @@
 <template>
   <div class="SJSearchSelect-wrap">
     <div v-for="option in selectedOptions" :key="option[itemValue]" class="SJSearchSelect-tag" @click="deselectOption(option)">
-      {{ option[itemText] }}
+      <div style="min-width: 100%;">
+        {{ option[itemText] }}
+      </div>
       <span><i class="fa-solid fa-xmark" /></span>
     </div>
     <input
@@ -104,7 +106,7 @@ export default {
   width: auto;
   height: 20px;
   background-color: #e5e5e5;
-  padding: 0 10px;
+  padding: 0 15px;
   margin-right: 5px;
   cursor: pointer;
   justify-content: center;
@@ -116,7 +118,6 @@ export default {
   cursor: pointer;
   opacity: 0.75;
   display: inline-block;
-  margin-left: 8px;
 }
 .SJAutoComplete-text{
   width: auto;
