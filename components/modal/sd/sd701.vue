@@ -3,7 +3,14 @@
     <template #title>
       클레임
     </template>
-
+    <template #button>
+      <button class="btn-blue-bg" @click="save()">
+        저장
+      </button>
+      <button class="btn-gray-bg" @click="close">
+        닫기
+      </button>
+    </template>
     <template #default>
       <SJForm ref="form">
         <SJFormRow>
@@ -148,14 +155,7 @@
       </SJForm>
     </template>
 
-    <template #footer>
-      <button type="button" class="btn btn-secondary" @click="close()">
-        Close
-      </button>
-      <button type="button" class="btn btn-primary" @click="save()">
-        Save changes
-      </button>
-    </template>
+    <template #footer />
   </SJModal>
 </template>
 

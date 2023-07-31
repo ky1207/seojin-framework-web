@@ -3,7 +3,11 @@
     <template #title>
       출하창고 재고 이력
     </template>
-
+    <template #button>
+      <button class="btn-gray-bg" @click="close">
+        닫기
+      </button>
+    </template>
     <template #default>
       <SJSearchOneLayout disabled-navigator-wrap>
         <template #default>
@@ -17,11 +21,7 @@
       </SJSearchOneLayout>
     </template>
 
-    <template #footer>
-      <button type="button" class="btn btn-secondary" @click="close()">
-        Close
-      </button>
-    </template>
+    <template #footer />
   </SJModal>
 </template>
 

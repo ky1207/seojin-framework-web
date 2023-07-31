@@ -3,7 +3,11 @@
     <template #title>
       수주출하현황
     </template>
-
+    <template #button>
+      <button class="btn-white-bg" @click="close">
+        닫기
+      </button>
+    </template>
     <template #default>
       <SJForm ref="form">
         <SJFormRow>
@@ -81,11 +85,7 @@
       </SJForm>
     </template>
 
-    <template #footer>
-      <button type="button" class="btn btn-secondary" @click="close()">
-        Close
-      </button>
-    </template>
+    <template #footer />
   </SJModal>
 </template>
 
