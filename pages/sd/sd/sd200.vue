@@ -9,16 +9,22 @@
         <SJInput id="searchCoCode" v-model="search.coCode" name="searchCoCode" />
       </SJSearchField>
       <SJSearchField label="상태">
-        <SJSelect id="searchCoType" name="searchCoType" :options="common.USE_YN" />
+        <SJSelect id="searchCoType" name="searchCoType" :options="[{text: '전체',value: '전체'},{text: '등록',value: '등록'},{text: '검토중',value: '검토중'},{text: '제안중',value: '제안중'},{text: '영업종료',value: '영업종료'}]" />
       </SJSearchField>
       <SJSearchField label="결과">
-        <SJSelect id="searchCoType" name="searchCoType" />
+        <SJSelect id="searchCoType" name="searchCoType" :options="[{text: '전체',value: '전체'},{text: '유찰',value: '유찰'},{text: '낙찰',value: '낙찰'}]" />
       </SJSearchField>
       <SJSearchField label="사업명">
         <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
       </SJSearchField>
-      <SJSearchField label="구분">
-        <SJSelect id="searchCoType" name="searchCoType" />
+      <SJSearchField label="작성일">
+        <SJPeriodSearch id="md1" name="md1" />
+      </SJSearchField>
+      <SJSearchField label="공고일">
+        <SJPeriodSearch id="md2" name="md2" />
+      </SJSearchField>
+      <SJSearchField label="마감일">
+        <SJPeriodSearch id="md3" name="md3" />
       </SJSearchField>
     </template>
     <template #bodyTitle>

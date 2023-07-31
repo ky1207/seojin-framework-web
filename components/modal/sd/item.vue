@@ -4,6 +4,9 @@
       품목조회
     </template>
     <template #button>
+      <button class="btn-blue-bg" @click="choice">
+        선택
+      </button>
       <button class="btn-white-bg" @click="close">
         닫기
       </button>
@@ -20,11 +23,16 @@
                 <SJInput id="searchCoCode" v-model="search.coCode" name="searchCoCode" />
               </SJFormField>
               <SJFormField label="품목">
-                <SJInput id="searchCoCode" v-model="search.item" name="searchItem" />
+                <SJSelectInput id="si" v-model="search.company" name="t1" :options="selectinput" />
               </SJFormField>
             </SJFormRow>
           </SJForm>
-          <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" />
+          <SJTitle title="목록">
+            <button class="btn-blue-bg" @click="select">
+              조회
+            </button>
+          </SJTitle>
+          <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
         </template>
       </SJOneLayout>
     </template>
@@ -39,7 +47,8 @@ export default {
       grid: {
         data: {},
         options: {
-          rowHeaders: ['checkbox', 'rowNum']
+          rowHeaders: ['checkbox', 'rowNum'],
+          bodyHeight: 400
         },
         columns: [
           { name: '거래처코드', width: 100 },
@@ -47,7 +56,6 @@ export default {
           { name: '품목유형', width: 100 },
           { name: '품목코드', width: 100 },
           { name: '품목명', width: 100 },
-          { name: '품목코드', width: 100 },
           { name: 'REV', width: 100 },
           { name: '규격', width: 100 },
           { name: 'CE!여부', width: 100 },
@@ -63,7 +71,7 @@ export default {
     }
   },
   created () {
-    this.options = [{ value: 1, text: '사과' }, { value: 2, text: '바나나' }]
+    this.selectinput = this.getSelectinput()
   },
   methods: {
     open () {
@@ -73,11 +81,29 @@ export default {
         this.reject = reject
       })
     },
+    async choice () {
+      await this.$notify.info('픔목선택')
+    },
     close () {
       // this.$refs.form.reset()
 
       this.$refs.modal.hide()
       this.resolve(false) // response의 응답
+    },
+    async select () {
+      await this.$notify.info('픔목조회')
+    },
+    getSelectinput () {
+      return [
+        {
+          text: '품목코드',
+          value: 'A1'
+        },
+        {
+          text: '품목명',
+          value: 'B1'
+        }
+      ]
     }
   }
 }

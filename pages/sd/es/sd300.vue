@@ -9,7 +9,7 @@
         <SJSelect
           id="searchCompany"
           name=""
-          :options="common.USE_YN"
+          :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]"
           disabled-validation
           disabled-first-message
         />
@@ -27,7 +27,7 @@
         <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
       </SJSearchField>
       <SJSearchField label="진행상태">
-        <SJSelect id="searchCoType" name="searchCoType" :options="common.USE_YN" />
+        <SJSelect id="searchCoType" name="searchCoType" :options="[{text: '마감',value: '마감'},{text: '미결',value: '미결'}]" />
       </SJSearchField>
       <SJSearchField label="품목">
         <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />

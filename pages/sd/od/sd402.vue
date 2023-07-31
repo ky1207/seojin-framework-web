@@ -2,9 +2,6 @@
   <SJSearchOneLayout>
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
-      <Sd401 ref="sd401Pop" />
-      <Sd402 ref="sd402Pop" />
-      <Sd403 ref="sd403Pop" />
     </template>
     <template #default>
       <SJSearchField label="회사">
@@ -37,12 +34,21 @@
       <SJSearchField label="FCID">
         <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
       </SJSearchField>
+      <SJSearchField label="진행상태">
+        <SJSelect
+          id="searchCompany"
+          name=""
+          :options="[{text: '마감',value: '마감'},{text: '미결',value: '미결'}]"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
     </template>
     <template #bodyTitle>
       <SJTitle title="목록" />
     </template>
     <template #body>
-      <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" />
+      <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
     </template>
   </SJSearchOneLayout>
 </template>
@@ -105,29 +111,20 @@ export default {
     ACTION_REGISTRY () {
       const fnc = this
       return {
-        f1Label: '신규',
-        f2Label: '수정',
-        f3Label: '수주복사',
+        f1Label: '일괄마감',
+        f2Label: '마감취소',
+        f3Label: '삭제마감',
         async searchClick () {
           await fnc.$notify.info('조회')
         },
         f1Click: async () => {
-          const result = await this.$refs.sd401Pop.open()
-          if (result) {
-            console.log('check')
-          }
+          await fnc.$notify.info('일괄마감')
         },
         f2Click: async () => {
-          const result = await this.$refs.sd401Pop.open()
-          if (result) {
-            console.log('check')
-          }
+          await fnc.$notify.info('마감취소')
         },
         f3Click: async () => {
-          const result = await this.$refs.sd401Pop.open()
-          if (result) {
-            console.log('check')
-          }
+          await fnc.$notify.info('삭제마감')
         }
       }
     }

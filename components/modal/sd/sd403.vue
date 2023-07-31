@@ -3,18 +3,32 @@
     <template #title>
       판매계획
     </template>
-
+    <template #button>
+      <button class="btn-blue-bg" @click="save">
+        저장
+      </button>
+      <button class="btn-white-bg" @click="close">
+        닫기
+      </button>
+    </template>
     <template #default>
       <SJForm ref="form">
         <SJFormRow>
           <SJFormField label="회사">
-            <SJSelect id="searchCoType" name="회사" :options="common.USE_YN" rules="required" />
+            <SJSelect
+              id="searchCoType"
+              name="회사"
+              :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]"
+              disabled-validation
+              disabled-first-message
+              rules="required"
+            />
           </SJFormField>
           <SJFormField label="수주번호">
             <SJInput id="coCode" v-model="inputData.CO_CODE" name="견적번호" rules="required" />
           </SJFormField>
           <SJFormField label="영업구분">
-            <SJSelect id="searchCoType" name="영업구분" :options="common.USE_YN" rules="required" />
+            <SJSelect id="searchCoType" name="영업구분" :options="[{text: 'PO(구매주문)',value: 'PO(구매주문)'},{text: 'FCST(수요예측)',value: 'FCST(수요예측)'}]" rules="required" />
           </SJFormField>
           <SJFormField label="MPS요청번호">
             <SJInput id="coCode" v-model="inputData.CO_CODE" name="MPS요청번호" />
@@ -63,25 +77,18 @@
         </SJFormRow>
 
         <SJTitle title="목록">
-          <button class="btn-white-bg" @click="rowAdd">
+          <button class="btn-blue-bg" @click="rowAdd">
             추가
           </button>
           <button class="btn-white-bg" @click="rowDel">
             삭제
           </button>
         </SJTitle>
-        <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" />
+        <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
       </SJForm>
     </template>
 
-    <template #footer>
-      <button type="button" class="btn btn-secondary" @click="close()">
-        Close
-      </button>
-      <button type="button" class="btn btn-primary" @click="save()">
-        Save changes
-      </button>
-    </template>
+    <template #footer />
   </SJModal>
 </template>
 
@@ -104,7 +111,8 @@ export default {
       grid: {
         data: {},
         options: {
-          rowHeaders: ['checkbox', 'rowNum']
+          rowHeaders: ['checkbox', 'rowNum'],
+          bodyHeight: 400
         },
         columns: [
           { name: '판매계획번호', width: 100 },

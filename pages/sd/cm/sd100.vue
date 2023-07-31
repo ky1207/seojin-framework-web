@@ -8,20 +8,19 @@
         <SJSelect
           id="searchCompany"
           name=""
-          :options="common.USE_YN"
+          :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]"
           disabled-validation
           disabled-first-message
         />
       </SJSearchField>
       <SJSearchField label="거래처유형">
-        <SJSelect id="c1" name="c1" :options="common.USE_YN" />
+        <SJSelect id="c1" name="c1" :options="[{text: '매입처',value: '매입처'},{text: '매출처',value: '매출처'}]" />
       </SJSearchField>
       <SJSearchField label="거래처">
-        <SJSelect id="c1" name="c1" :options="common.USE_YN" />
-        <SJInput id="c2" v-model="search.md1" name="c2" />
+        <SJSelectInput id="si" v-model="search.company" name="t1" :options="selectinput" />
       </SJSearchField>
       <SJSearchField label="사용여부">
-        <SJSelect id="c4" name="c4" :options="common.USE_YN" />
+        <SJSelect id="c4" name="c4" :options="[{text: '사용함',value: '사용함'},{text: '사용안함',value: '사용안함'}]" />
       </SJSearchField>
     </template>
 
@@ -49,15 +48,15 @@
                   <SJInput id="coCode" v-model="inputData.CO_CODE" name="거래처코드" rules="required" />
                 </SJFormField>
                 <SJFormField label="사용여부">
-                  <SJSelect id="useYn" name="사용여부" :options="common.USE_YN" rules="required" />
+                  <SJSelect id="useYn" name="사용여부" :options="[{text: '사용함',value: '사용함'},{text: '사용안함',value: '사용안함'}]" rules="required" />
                 </SJFormField>
               </SJFormRow>
               <SJFormRow>
                 <SJFormField label="거래처유형">
-                  <SJSelect id="coType" name="거래처유형" :options="common.USE_YN" rules="required" />
+                  <SJSelect id="coType" name="거래처유형" :options="[{text: '매입처',value: '매입처'},{text: '매출처',value: '매출처'}]" rules="required" />
                 </SJFormField>
                 <SJFormField label="거래처형태">
-                  <SJSelect id="coForm" name="거래처형태" :options="common.USE_YN" rules="required" />
+                  <SJSelect id="coForm" name="거래처형태" :options="[{text: '공급처',value: '공급처'},{text: '세금계산서발행처',value: '세금계산서발행처'},{text: '지급처',value: '지급처'}]" rules="required" />
                 </SJFormField>
               </SJFormRow>
               <SJFormRow>
@@ -81,15 +80,15 @@
                   <SJInput id="representativeEmail" v-model="inputData.REPRESENTATIVE_EMAIL" name="대표이메일" />
                 </SJFormField>
                 <SJFormField label="사내/외">
-                  <SJSelect id="companyType" name="사내/외" :options="common.USE_YN" />
+                  <SJSelect id="companyType" name="사내/외" :options="[{text: '사내',value: '사내'},{text: '사외',value: '사외'}]" />
                 </SJFormField>
               </SJFormRow>
               <SJFormRow>
                 <SJFormField label="업태">
-                  <SJSelect id="businessStatus" name="업태" :options="common.USE_YN" rules="required" />
+                  <SJSelect id="businessStatus" name="업태" :options="[{text: '서비스',value: '서비스'},{text: '전자부품',value: '전자부품'},{text: '기타',value: '기타'}]" rules="required" />
                 </SJFormField>
                 <SJFormField label="업종">
-                  <SJSelect id="businessType" name="업종" :options="common.USE_YN" rules="required" />
+                  <SJSelect id="businessType" name="업종" :options="[{text: '제조업',value: '제조업'},{text: '도매',value: '도매'}]" rules="required" />
                 </SJFormField>
               </SJFormRow>
               <SJFormRow>
@@ -108,7 +107,7 @@
                   <SJInput id="coGroup" v-model="inputData.CO_GROUP" name="거래처분류" rules="required" />
                 </SJFormField>
                 <SJFormField label="국가">
-                  <SJSelect id="nation" name="국가" :options="common.USE_YN" rules="required" />
+                  <SJSelect id="nation" name="국가" :options="[{text: '대한민국',value: '대한민국'},{text: '베트남',value: '베트남'}]" rules="required" />
                 </SJFormField>
               </SJFormRow>
               <SJFormRow>
@@ -157,14 +156,6 @@
                 </SJFormField>
               </SJFormRow>
               <SJFormRow>
-                <SJFormField label="내/외자구분">
-                  <SJSelect id="c1" name="내/외자구분" :options="common.USE_YN" />
-                </SJFormField>
-                <SJFormField label="부가세포함여부">
-                  <SJSelect id="surtaxYn" name="부가세포함여부" :options="common.USE_YN" />
-                </SJFormField>
-              </SJFormRow>
-              <SJFormRow>
                 <SJFormField label="거래처담당자명">
                   <SJInput id="clientName" v-model="inputData.CLIENT_NAME" name="거래처담당자명" />
                 </SJFormField>
@@ -182,10 +173,15 @@
               </SJFormRow>
               <SJFormRow>
                 <SJFormField label="SCM사용여부">
-                  <SJSelect id="scmYn" name="SCM사용여부" :options="common.USE_YN" />
+                  <SJSelect id="scmYn" name="SCM사용여부" :options="[{text: '사용함',value: '사용함'},{text: '사용안함',value: '사용안함'}]" />
                 </SJFormField>
                 <SJFormField label="발주형태">
                   <SJInput id="orderType" v-model="inputData.ORDER_TYPE" name="발주형태" />
+                </SJFormField>
+              </SJFormRow>
+              <SJFormRow>
+                <SJFormField label="부가세포함여부">
+                  <SJSelect id="surtaxYn" name="부가세포함여부" :options="[{text: '포함',value: '포함'},{text: '포함안함',value: '포함안함'}]" />
                 </SJFormField>
               </SJFormRow>
               <SJFormRow>
@@ -203,12 +199,12 @@
             <template v-if="section.title === '회계정보'">
               <SJFormRow>
                 <SJFormField label="통화">
-                  <SJSelect id="currency" name="통화" :options="common.USE_YN" rules="required" />
+                  <SJSelect id="currency" name="통화" :options="[{text: 'WON',value: 'WON'},{text: 'DOLLAR',value: 'DOLLAR'}]" rules="required" />
                 </SJFormField>
               </SJFormRow>
               <SJFormRow>
                 <SJFormField label="부가세형태">
-                  <SJSelect id="supertaxType" name="부가세형태" :options="common.USE_YN" rules="required" />
+                  <SJSelect id="supertaxType" name="부가세형태" :options="[{text: '',value: ''},{text: '',value: ''}]" rules="required" />
                 </SJFormField>
                 <SJFormField label="부가세율">
                   <SJInput id="supertaxRate" v-model="inputData.SUPERTAX_RATE" name="부가세율" />
@@ -224,7 +220,7 @@
               </SJFormRow>
               <SJFormRow>
                 <SJFormField label="금융기관">
-                  <SJSelect id="financialCompany" name="금융기관" :options="common.USE_YN" />
+                  <SJSelect id="financialCompany" name="금융기관" :options="[{text: '기업은행',value: '기업은행'},{text: '신한은행',value: '신한은행'}]" />
                 </SJFormField>
                 <SJFormField label="예금주">
                   <SJInput id="accountHolder" v-model="inputData.ACCOUNT_HOLDER" name="예금주" />
@@ -308,7 +304,9 @@ export default {
       ]
     }
   },
-
+  created () {
+    this.selectinput = this.getSelectinput()
+  },
   methods: {
     ACTION_REGISTRY () {
       const fnc = this
@@ -320,6 +318,18 @@ export default {
           await fnc.$notify.success('저장')
         }
       }
+    },
+    getSelectinput () {
+      return [
+        {
+          text: '거래처코드',
+          value: 'A1'
+        },
+        {
+          text: '거래처명',
+          value: 'B1'
+        }
+      ]
     }
   }
 }

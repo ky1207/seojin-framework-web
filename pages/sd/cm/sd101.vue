@@ -10,7 +10,7 @@
         <SJSelect
           id="searchCompany"
           name=""
-          :options="common.USE_YN"
+          :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]"
           disabled-first-message
         />
       </SJSearchField>
@@ -21,16 +21,17 @@
         <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
       </SJSearchField>
       <SJSearchField label="품목유형">
-        <SJSelect id="searchCoType" name="searchCoType" :options="common.USE_YN" />
+        <SJSelect id="searchCoType" name="searchCoType" :options="[{text: '전체',value: '전체'},{text: '제품',value: '제품'},{text: '반제품',value: '반제품'}]" />
       </SJSearchField>
       <SJSearchField label="품목분류">
-        <SJSelect id="searchCoType" name="searchCoType" :options="common.USE_YN" />
+        <SJSelect id="searchCoType" name="searchCoType" :options="[{text: '전체',value: '전체'},{text: 'LAM',value: 'LAM'}]" />
+        <SJSelect id="searchCoType" name="searchCoType" :options="[{text: '전체',value: '전체'},{text: '핸들러',value: '핸들러'},{text: 'TOP PLATE',value: 'TOP PLATE'},{text: 'MACH',value: 'MACHI'}]" />
       </SJSearchField>
       <SJSearchField label="단가유무">
-        <SJSelect id="searchCoType" name="searchCoType" :options="common.USE_YN" />
+        <SJSelect id="searchCoType" name="searchCoType" :options="[{text: '전체',value: '전체'},{text: '있음',value: '있음'},{text: '없음',value: '없음'}]" />
       </SJSearchField>
       <SJSearchField label="사용여부">
-        <SJSelect id="searchCoType" name="searchCoType" :options="common.USE_YN" />
+        <SJSelect id="searchCoType" name="searchCoType" :options="[{text: '전체',value: '전체'},{text: '사용함',value: '사용함'},{text: '사용안함',value: '사용안함'}]" />
       </SJSearchField>
     </template>
     <template #bodyTitle>

@@ -3,12 +3,19 @@
     <template #title>
       견적서
     </template>
-
+    <template #button>
+      <button class="btn-blue-bg" @click="save">
+        저장
+      </button>
+      <button class="btn-white-bg" @click="close">
+        닫기
+      </button>
+    </template>
     <template #default>
       <SJForm ref="form">
         <SJFormRow>
           <SJFormField label="회사">
-            <SJSelect id="searchCoType" name="회사" :options="common.USE_YN" rules="required" />
+            <SJSelect id="searchCoType" name="회사" :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]" rules="required" />
           </SJFormField>
           <SJFormField label="담당자">
             <SJInput id="coCode" v-model="inputData.CO_CODE" name="담당자" rules="required" />
@@ -51,14 +58,13 @@
             <SJInput id="coCode" v-model="inputData.CO_CODE" name="거래처" rules="required" />
           </SJFormField>
           <SJFormField label="내/외자구분">
-            <SJSelect id="searchCoType" name="내/외자구분" :options="common.USE_YN" rules="required" />
+            <SJSelect id="searchCoType" name="내/외자구분" :options="[{text: '내자',value: '내자'},{text: '외자',value: '외자'}]" rules="required" />
           </SJFormField>
           <SJFormField label="부가세적용">
-            <SJSelect id="searchCoType" name="부가세적용" :options="common.USE_YN" rules="required" />
+            <SJSelect id="searchCoType" name="부가세적용" :options="[{text: '적용',value: '적용'},{text: '미적용',value: '미적용'}]" rules="required" />
           </SJFormField>
           <SJFormField label="통화">
-            <SJSelect id="searchCoType" name="통화" :options="common.USE_YN" rules="required" />
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="통화" rules="required" />
+            <SJSelectInput id="si" v-model="inputData.company" name="t1" :options="selectinput" />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
@@ -105,10 +111,10 @@
         </SJFormRow>
 
         <SJTitle title="목록">
-          <button class="btn-white-bg" @click="bomApply">
+          <button class="btn-blue-bg" @click="bomApply">
             BOM적용
           </button>
-          <button class="btn-white-bg" @click="costPrice">
+          <button class="btn-blue-bg" @click="costPrice">
             원가적용
           </button>
           <button class="btn-white-bg" @click="rowDel">
@@ -119,14 +125,7 @@
       </SJForm>
     </template>
 
-    <template #footer>
-      <button type="button" class="btn btn-secondary" @click="close()">
-        Close
-      </button>
-      <button type="button" class="btn btn-primary" @click="save()">
-        Save changes
-      </button>
-    </template>
+    <template #footer />
   </SJModal>
 </template>
 
@@ -187,7 +186,7 @@ export default {
     }
   },
   created () {
-    this.options = [{ value: 1, text: '사과' }, { value: 2, text: '바나나' }]
+    this.selectinput = this.getSelectinput()
   },
   methods: {
     open () {
@@ -221,6 +220,18 @@ export default {
     },
     async rowDel () {
       await this.$notify.success('삭제')
+    },
+    getSelectinput () {
+      return [
+        {
+          text: 'WON',
+          value: 'A1'
+        },
+        {
+          text: 'DOLLAR',
+          value: 'B1'
+        }
+      ]
     }
   }
 }

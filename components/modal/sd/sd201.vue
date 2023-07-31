@@ -3,16 +3,23 @@
     <template #title>
       영업활동
     </template>
-
+    <template #button>
+      <button class="btn-blue-bg" @click="save">
+        저장
+      </button>
+      <button class="btn-white-bg" @click="close">
+        닫기
+      </button>
+    </template>
     <template #default>
       <SJForm ref="form">
         <SJTitle title="관리년월" />
         <SJFormRow>
           <SJFormField label="연도">
-            <SJSelect id="searchCoType" name="연도" :options="common.USE_YN" rules="required" />
+            <SJSelect id="searchCoType" name="연도" :options="[{text: '2023',value: '2023'},{text: '2024',value: '2024'}]" rules="required" />
           </SJFormField>
           <SJFormField label="월">
-            <SJSelect id="searchCoType" name="월" :options="common.USE_YN" rules="required" />
+            <SJSelect id="searchCoType" name="월" :options="[{text: '1',value: '1'},{text: '2',value: '2'},{text: '3',value: '3'},{text: '4',value: '4'},{text: '5',value: '5'},{text: '6',value: '6'}]" rules="required" />
           </SJFormField>
         </SJFormRow>
         <SJTitle title="사업정보" />
@@ -68,7 +75,7 @@
             <SJInput id="coCode" v-model="inputData.CO_CODE" name="수주금액" rules="required" />
           </SJFormField>
           <SJFormField label="처리결과">
-            <SJSelect id="searchCoType" name="처리결과" :options="common.USE_YN" rules="required" />
+            <SJSelect id="searchCoType" name="처리결과" :options="[{text: '등록',value: '등록'},{text: '검토중',value: '검토중'},{text: '제안중',value: '제안중'},{text: '영업종료',value: '영업종료'}]" rules="required" />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
@@ -94,14 +101,7 @@
       </SJForm>
     </template>
 
-    <template #footer>
-      <button type="button" class="btn btn-secondary" @click="close()">
-        Close
-      </button>
-      <button type="button" class="btn btn-primary" @click="save()">
-        Save changes
-      </button>
-    </template>
+    <template #footer />
   </SJModal>
 </template>
 
