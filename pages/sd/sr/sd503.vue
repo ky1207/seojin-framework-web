@@ -171,7 +171,7 @@ export default {
 
         ],
         options: {
-          bodyHeight: 250
+
         }
       },
       grid_tab1: {
