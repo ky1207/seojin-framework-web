@@ -14,6 +14,7 @@
       @input="handleSearch"
       @mousedown="onInputMouseDown"
     >
+    <i class="search-bar-icon fa-solid fa-magnifying-glass" />
     <div v-if="showOptions" class="SJSearchSelect-options">
       <div
         v-for="option in options"
@@ -100,6 +101,10 @@ export default {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+}
+.SJSearchSelect-wrap i{
+  cursor: pointer;
+  padding: 0 5px;
 }
 .SJSearchSelect-tag {
   display: flex;
