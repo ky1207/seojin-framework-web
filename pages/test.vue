@@ -22,29 +22,27 @@
             />
           </template>
           <template #tab-2>
-            <SJForm>
-              <SJFormRow>
-                <SJFormField :label="$tc('page.system.00108')">
-                  <SJInput
-                    id="form_bsnsCode"
-                    v-model="businessCode.bsnsCode"
-                    :name="$t('page.system.00108')"
-                    rules="required|max:12"
-                    :disabled="isUpdate"
-                  />
-                </SJFormField>
-              </SJFormRow>
-              <SJFormRow>
-                <SJFormField :label="$tc('page.system.00109')">
-                  <SJInput
-                    id="form_bsnsName"
-                    v-model="businessCode.bsnsName"
-                    :name="$t('page.system.00109')"
-                    rules="required"
-                  />
-                </SJFormField>
-              </SJFormRow>
-            </sjform>
+            <SJFormRow>
+              <SJFormField :label="$tc('page.system.00108')">
+                <SJInput
+                  id="form_bsnsCode"
+                  v-model="businessCode.bsnsCode"
+                  :name="$t('page.system.00108')"
+                  rules="required|max:12"
+                  :disabled="isUpdate"
+                />
+              </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField :label="$tc('page.system.00109')">
+                <SJInput
+                  id="form_bsnsName"
+                  v-model="businessCode.bsnsName"
+                  :name="$t('page.system.00109')"
+                  rules="required"
+                />
+              </SJFormField>
+            </SJFormRow>
           </template>
           <template #tab-3>
             <SJFormRow>
@@ -76,7 +74,13 @@
               </SJFormRow>
               <SJFormRow>
                 <SJFormField label="검색">
-                  <SJSearchSelect search-url="/api/v1.0/department/codes" />
+                  <SJSearchSelect
+                    id="search"
+                    v-model="search.options"
+                    rules="required"
+                    name="search"
+                    search-url="/api/v1.0/department/codes"
+                  />
                 </SJFormField>
               </SJFormRow>
             </template>
@@ -132,8 +136,6 @@
             </template>
           </template>
         </SJAccordion>
-      </SJForm>
-      <SJForm ref="form">
         <SJFormRow>
           <SJFormField :label="$tc('page.system.00004')">
             <SJFileUpload2 id="form_files" v-model="businessCode.files" name="files" @fileDownload="fileDownload" />
@@ -154,7 +156,7 @@ export default {
     return {
       isUpdate: false,
       common: {},
-      search: {},
+      search: { options: { value: 1, text: '정보전략1' } },
       businessCode: {
         bsnsCode: '',
         bsnsName: ''
