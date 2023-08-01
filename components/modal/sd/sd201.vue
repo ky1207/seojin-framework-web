@@ -58,7 +58,7 @@
         </SJFormRow>
         <SJFormRow>
           <SJFormField label="RFP등관련자료">
-            <SJFileUpload id="form_files" v-model="inputData.files" name="files" @fileDownload="fileDownload" />
+            <SJFileUpload2 id="form_files" v-model="inputData.files" name="files" @fileDownload="fileDownload" />
           </SJFormField>
         </SJFormRow>
         <SJTitle title="영업정보" />
