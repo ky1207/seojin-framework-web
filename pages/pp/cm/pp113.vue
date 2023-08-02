@@ -13,17 +13,20 @@
           disabled-first-message
         />
       </SJSearchField>
-      <SJSearchField label="출고일자">
+      <SJSearchField label="변경일자">
         <SJPeriodSearch id="md2" name="md2" />
       </SJSearchField>
-      <SJSearchField label="창고">
+      <SJSearchField label="변경유형">
         <SJSelect
           id="searchCompany"
           name=""
-          :options="common.USE_YN"
+          :options="[{text: '전체',value: '전체'},{text: '신규',value: '신규'},{text: '수정',value: '수정'},{text: '삭제',value: '삭제'}]"
           disabled-validation
           disabled-first-message
         />
+      </SJSearchField>
+      <SJSearchField label="품목">
+        <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
       </SJSearchField>
       <SJSearchField label="품목유형">
         <SJSelect
@@ -35,17 +38,24 @@
         />
       </SJSearchField>
       <SJSearchField label="품목분류">
-        <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
-      </SJSearchField>
-      <SJSearchField label="품목">
-        <SJItemEditor id="search" name="search" />
-      </SJSearchField>
-      <SJSearchField label="LOT">
-        <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
+        <SJSelect
+          id="searchCompany"
+          name=""
+          :options="common.USE_YN"
+          disabled-validation
+          disabled-first-message
+        />
+        <SJSelect
+          id="searchCompany"
+          name=""
+          :options="common.USE_YN"
+          disabled-validation
+          disabled-first-message
+        />
       </SJSearchField>
     </template>
     <template #bodyTitle>
-      <SJTitle title="목록" />
+      <SJTitle title="변경 목록" />
     </template>
     <template #body>
       <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" />
@@ -70,20 +80,22 @@ export default {
           rowHeaders: ['checkbox', 'rowNum']
         },
         columns: [
-          { name: '수주번호', width: 100 },
-          { name: '출하일자', width: 100 },
-          { name: '거래처', width: 100 },
+          { name: '모품목코드', width: 100 },
+          { name: '모품목명', width: 100 },
           { name: '품목유형', width: 100 },
           { name: '품목코드', width: 100 },
+          { name: '품목명', width: 100 },
           { name: 'REV', width: 100 },
           { name: '규격', width: 100 },
           { name: 'CE!여부', width: 100 },
           { name: '크리티컬여부', width: 100 },
           { name: '크리티컬등급', width: 100 },
-          { name: '출하수량', width: 100 },
-          { name: '기준단위', width: 100 },
-          { name: '창고', width: 100 },
-          { name: 'LOT', width: 100 },
+          { name: '투입단위', width: 100 },
+          { name: '이전소요량', width: 100 },
+          { name: '소요량', width: 100 },
+          { name: '변경유형', width: 100 },
+          { name: '변경일자', width: 100 },
+          { name: '변경사유', width: 200 },
           { name: '등록일시', width: 100 },
           { name: '등록자', width: 100 },
           { name: '수정일시', width: 100 },
@@ -98,9 +110,6 @@ export default {
       return {
         async searchClick () {
           await fnc.$notify.info('조회')
-        },
-        async saveClick () {
-          await fnc.$notify.success('저장')
         }
       }
     }
