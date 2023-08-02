@@ -41,7 +41,7 @@
         <div>TODO:SELECTSELECT</div>
       </SJSearchField>
       <SJSearchField label="품목">
-        <SJInput id="search7" name="search7" />
+        <SJItemEditor id="search7" name="search7" />
       </SJSearchField>
     </template>
     <template #topTitle>

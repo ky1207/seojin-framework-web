@@ -12,14 +12,34 @@
       </button>
     </template>
     <template #default>
-      <SJOneLayout disabled-navigator-wrap>
-        <template #title>
+      <SJSearchOneLayout disabled-navigator-wrap>
+        <template #default>
+          <SJSearchField label="품목유형">
+            <SJSelect
+              id="md1"
+              name="md1"
+            />
+          </SJSearchField>
+          <SJSearchField label="품목분류">
+            <SJInput id="md2" name="md2" />
+          </SJSearchField>
+          <SJSearchField label="품목코드">
+            <SJInput id="md3" name="md3" />
+          </SJSearchField>
+          <SJSearchField label="품명">
+            <SJInput id="md3" name="md3" />
+          </SJSearchField>
+          <SJSearchField label="규격">
+            <SJInput id="md3" name="md3" />
+          </SJSearchField>
+        </template>
+        <template #bodyTitle>
           <SJTitle title="목록" />
         </template>
-        <template #default>
+        <template #body>
           <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
         </template>
-      </SJOneLayout>
+      </SJSearchOneLayout>
     </template>
   </SJModal>
 </template>
@@ -32,7 +52,20 @@ export default {
       grid: {
         data: {},
         columns: [
-
+          { name: '품목유형' },
+          { name: '품목코드' },
+          { name: '품목명' },
+          { name: 'REV번호' },
+          { name: '크리티컬여부' },
+          { name: '크리티컬등급' },
+          { name: '품목대분류' },
+          { name: '품목소분류' },
+          { name: '기준단위' },
+          { name: '거래처명' },
+          { name: '단가' },
+          { name: '조달구분' },
+          { name: 'Country or Origin' },
+          { name: '가공시간' }
         ],
         options: {
           rowHeaders: ['rowNum', 'checkbox'],
