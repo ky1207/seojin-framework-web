@@ -9,10 +9,10 @@
   >
     <div class="SJSearchSelect-wrap">
       <div v-for="option in selectedOptions" :key="option[itemValue]" class="SJSearchSelect-tag" @click="deselectOption(option)">
-        <div style="min-width: 100%;">
-          {{ option[itemText] }}
+        <div class="d-flex align-items-center" style="width:100%;">
+          <p>{{ option[itemText] }}</p>
         </div>
-        <span><i class="fa-solid fa-xmark" /></span>
+        <span class="d-flex"><i class="fa-solid fa-xmark" /></span>
       </div>
       <input
         ref="searchText"
@@ -155,38 +155,44 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .SJSearchSelect-wrap{
   position: relative;
+  background: #fff;
   border: 1px solid #bcc1d0;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-}
-.SJSearchSelect-wrap i{
-  cursor: pointer;
-  padding: 0 5px;
+  flex-direction: row!important;
+  i{
+    cursor: pointer;
+    padding: 0 5px;
+  }
 }
 .SJSearchSelect-tag {
   display: flex;
-  width: auto;
-  height: 20px;
-  background-color: #e5e5e5;
-  padding: 0 15px;
-  margin-right: 5px;
-  cursor: pointer;
+  flex-direction: row !important;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
-  flex-wrap: nowrap;
-}
-.SJSearchSelect-tag > span{
+  height: 20px;
+  background-color: #e5e5e5;
   cursor: pointer;
-  opacity: 0.75;
-  display: inline-block;
+  border-radius: 10px;
+  span{
+    cursor: pointer;
+    opacity: 0.75;
+    display: inline-block;
+    width: auto;
+  }
+  p{
+    width: 100%;
+    min-width: 60px;
+    height: 100%;
+    margin: 0;
+    padding-left:5px;
+  }
 }
 .SJAutoComplete-text{
-  width: auto;
+  width: 100%;
   border: none;
 }
 .SJSearchSelect-options {
