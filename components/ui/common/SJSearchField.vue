@@ -18,3 +18,8 @@ export default {
 
 }
 </script>
+<style scoped>
+.search .search-field div{
+  width: 100%;
+}
+</style>
