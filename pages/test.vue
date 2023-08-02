@@ -8,12 +8,9 @@
         <SJSelectInput id="si" v-model="search.company" name="t1" :options="selectinput" />
       </SJSearchField>
       <SJSearchField label="품목">
-        <SJSearchSelect
+        <SJItemEditor
           id="search"
-          v-model="search.options"
-          rules="required"
           name="search"
-          search-url="/api/v1.0/department/codes"
         />
       </SJSearchField>
     </template>

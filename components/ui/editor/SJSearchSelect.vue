@@ -24,7 +24,7 @@
         @input="handleSearch"
         @mousedown="onInputMouseDown"
       >
-      <i v-if="enablePopup" class="search-bar-icon fa-solid fa-magnifying-glass" />
+      <i v-if="enablePopup" class="search-bar-icon fa-solid fa-magnifying-glass" @click="searchClick" />
       <div v-if="showOptions" class="SJSearchSelect-options">
         <div
           v-for="option in options"
@@ -92,6 +92,9 @@ export default {
     param: {
       type: String,
       default: 'p'
+    },
+    searchClick: {
+      type: Function
     }
   },
   data () {
