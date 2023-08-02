@@ -50,7 +50,7 @@
         SelectSelect
       </SJSearchField>
       <SJSearchField label="품목">
-        SelectSelect
+        <SJItemEditor id="search" name="search" />
       </SJSearchField>
     </template>
     <template #bodyTitle>

@@ -34,7 +34,7 @@
         />
       </SJSearchField>
       <SJSearchField label="품목">
-        TODO:SELECTINPUT
+        <SJItemEditor id="search" name="search" />
       </SJSearchField>
     </template>
     <template #topTitle>

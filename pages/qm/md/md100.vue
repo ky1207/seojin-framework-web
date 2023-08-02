@@ -28,7 +28,7 @@
         TODO:SELECTSELECT
       </sjsearchfield>
       <SJSearchField label="품목">
-        TODO:SELECTINPUT
+        <SJItemEditor id="search" name="search" />
       </sjsearchfield>
     </template>
     <template #body>

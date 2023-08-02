@@ -40,8 +40,8 @@
           <SJSearchField label="그룹코드">
             <SJInput id="md3" v-model="search.md3" name="그룹코드" class="md-input" />
           </SJSearchField>
-          <SJSearchField label="품목">
-            TODO:SELECTSELECT
+          목
+          TODO:SELECTSELECT
           </SJSearchField>
           <SJSearchField label="생성일">
             <SJDatePicker

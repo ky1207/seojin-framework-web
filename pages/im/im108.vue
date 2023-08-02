@@ -58,7 +58,7 @@
         SelectSelect
       </SJSearchField>
       <SJSearchField label="품목">
-        <SJInput id="search8" name="search8" />
+        <SJItemEditor id="search" name="search" />
       </SJSearchField>
       <SJSearchField label="LOT">
         <SJInput id="search8" name="search8" />

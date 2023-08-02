@@ -30,7 +30,7 @@
         <SJSelect id="searchCoType" name="searchCoType" :options="[{text: '마감',value: '마감'},{text: '미결',value: '미결'}]" />
       </SJSearchField>
       <SJSearchField label="품목">
-        <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
+        <SJItemEditor id="search" name="search" />
       </SJSearchField>
       <SJSearchField label="거래처">
         <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />

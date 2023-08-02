@@ -32,7 +32,7 @@
         />
       </SJSearchField>
       <SJSearchField label="품목">
-        TODO:SELECTINPUT
+        <SJItemEditor id="search" name="search" />
       </sjsearchfield>
       <SJSearchField label="FCID">
         <SJInput id="md6" v-model="search.md6" name="FCID" />

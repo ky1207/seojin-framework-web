@@ -29,20 +29,7 @@
         <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
       </SJSearchField>
       <SJSearchField label="품목">
-        <SJSelect
-          id="searchCompany"
-          name=""
-          :options="search.USE_YN"
-          disabled-validation
-          disabled-first-message
-        />
-        <SJSelect
-          id="searchCompany"
-          name=""
-          :options="search.USE_YN"
-          disabled-validation
-          disabled-first-message
-        />
+        <SJItemEditor id="search" name="search" />
       </SJSearchField>
       <SJSearchField label="거래처">
         <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />

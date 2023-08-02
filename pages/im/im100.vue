@@ -26,7 +26,7 @@
         <SJSelect id="search4" name="search4" :options="[{text: 'A창고',value: 'A'},{text: 'B창고',value: 'B'}]" />
       </SJSearchField>
       <SJSearchField label="품목">
-        <SJInput id="search5" name="search5" />
+        <SJItemEditor id="search5" name="search5" />
       </SJSearchField>
     </template>
     <template #topTitle>

@@ -32,7 +32,7 @@
         />
       </SJSearchField>
       <SJSearchField label="품목">
-        SelectSelect
+        <SJItemEditor id="search" name="search" />
       </SJSearchField>
       <SJSearchField label="창고">
         <SJSelect

@@ -19,7 +19,7 @@
         <SJInput id="search3" name="search2" />
       </SJSearchField>
       <SJSearchField label="품목">
-        <SJInput id="search4" name="search5" />
+        <SJItemEditor id="search" name="search" />
       </SJSearchField>
       <SJSearchField label="출고잔량">
         <SJSelect

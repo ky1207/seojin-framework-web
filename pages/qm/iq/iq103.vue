@@ -25,7 +25,7 @@
         />
       </SJSearchField>
       <SJSearchField label="품목">
-        TODO:SELECTINPUT
+        <SJItemEditor id="search" name="search" />
       </SJSearchField>
       <SJSearchField label="LOT">
         <SJInput id="md4" name="납품번호" />

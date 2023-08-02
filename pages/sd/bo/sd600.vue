@@ -36,7 +36,7 @@
         <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
       </SJSearchField>
       <SJSearchField label="품목">
-        <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
+        <SJItemEditor id="search" name="search" />
       </SJSearchField>
       <SJSearchField label="품목분류">
         <SJSelect

@@ -24,7 +24,7 @@
         <SJInput id="md4" v-model="search.md4" name="LOT번호" />
       </sjsearchfield>
       <SJSearchField label="품목">
-        TODO:SELECTSELECT
+        <SJItemEditor id="search" name="search" />
       </sjsearchfield>
       <SJSearchField label="검사잔량">
         TODO:radio

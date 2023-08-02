@@ -1,7 +1,7 @@
 <template>
   <SJModal ref="modal" size="modal-xl">
     <template #title>
-      품목별 거래처 등록
+      별 거래처 등록
     </template>
 
     <template #button>
@@ -53,8 +53,8 @@
               disabled-first-message
             />
           </SJSearchField>
-          <SJSearchField label="품목">
-            <SJInput id="searchCoCode" v-model="search.coCode" name="searchCoCode" />
+          목
+          <SJInput id="searchCoCode" v-model="search.coCode" name="searchCoCode" />
           </SJSearchField>
         </template>
         <template #leftTitle>

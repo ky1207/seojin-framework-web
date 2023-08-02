@@ -28,7 +28,7 @@
         />
       </SJSearchField>
       <SJSearchField label="품목">
-        TODO:SELECTINPUT
+        <SJItemEditor id="search" name="search" />
       </SJSearchField>
       <SJSearchField label="LOT번호">
         <SJInput id="md5" v-model="search.md5" name="LOT번호" />
