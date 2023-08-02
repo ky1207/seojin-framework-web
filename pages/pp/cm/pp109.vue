@@ -1,8 +1,8 @@
 <template>
-  <SJSearchOneLayout>
+  <SJSearchTBLayout>
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
-      <Sd501 ref="sd501Pop" />
+      <Pp104 ref="pp104Pop" />
     </template>
     <template #default>
       <SJSearchField label="회사">
@@ -18,7 +18,7 @@
         <SJSelect
           id="searchCompany"
           name=""
-          :options="common.USE_YN"
+          :options="[{text: '제품',value: '제품'},{text: '반제품',value: '반제품'},{text: '원재료',value: '원재료'}]"
           disabled-validation
           disabled-first-message
         />
@@ -29,32 +29,29 @@
       <SJSearchField label="품목">
         <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
       </SJSearchField>
-      <SJSearchField label="규격">
-        <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
-      </SJSearchField>
-      <SJSearchField label="고객PO">
-        <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
-      </SJSearchField>
-    </template>
-    <template #bodyTitle>
-      <SJTitle title="목록">
-        입고창고 :
+      <SJSearchField label="BOM사용">
         <SJSelect
-          id="searchCompany"
-          name=""
-          :options="common.USE_YN"
-          disabled-validation
+          id="md1"
+          name="BOM사용"
+          :options="[{text: '전체',value: '전체'},{text: '사용',value: '사용'},{text: '미사용',value: '미사용'}]"
           disabled-first-message
         />
-        <button class="btn-white-bg" @click="storageApply">
-          일괄적용
-        </button>
-      </SJTitle>
+      </SJSearchField>
     </template>
-    <template #body>
-      <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" />
+    <template #topTitle>
+      <SJTitle title="품목목록" />
     </template>
-  </SJSearchOneLayout>
+    <template #top>
+      <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
+    </template>
+
+    <template #bottomTitle>
+      <SJTitle title="BOM목록" />
+    </template>
+    <template #bottom>
+      <SJGrid ref="grid" v-model="grid2.data" :columns="grid2.columns" />
+    </template>
+  </SJSearchTBLayout>
 </template>
 
 <script>
@@ -75,44 +72,64 @@ export default {
         },
         columns: [
           { name: '품목유형', width: 100 },
-          { name: '품목코드', width: 100 },
+          { name: '품목코드', width: 200 },
           { name: '품목명', width: 100 },
           { name: 'REV', width: 100 },
           { name: '규격', width: 100 },
           { name: 'CE!여부', width: 100 },
           { name: '크리티컬여부', width: 100 },
           { name: '크리티컬등급', width: 100 },
-          { name: 'LOT', width: 100 },
+          { name: '품목대분류', width: 100 },
+          { name: '품목소분류', width: 100 },
           { name: '기준단위', width: 100 },
-          { name: '창고', width: 100 },
-          { name: '입고(+)', width: 100 },
-          { name: '출고(-)', width: 100 },
-          { name: '조정', width: 100 },
-          { name: '현재고', width: 100 },
-          { name: '입고창고', width: 100 },
-          { name: '입고수량', width: 100 },
-          { name: '고객번호PO', width: 100 },
+          { name: '비고', width: 200 },
+          { name: 'BOM(수)', width: 100 },
           { name: '등록일시', width: 100 },
           { name: '등록자', width: 100 },
           { name: '수정일시', width: 100 },
           { name: '수정자', width: 100 }
         ]
+      },
+      grid2: {
+        data: {},
+        options: {
+          rowHeaders: ['checkbox', 'rowNum']
+        },
+        columns: [
+          { name: '품목유형', width: 100 },
+          { name: '품목코드', width: 100 },
+          { name: '품목명', width: 200 },
+          { name: 'REV', width: 100 },
+          { name: '규격', width: 100 },
+          { name: 'CE!여부', width: 100 },
+          { name: '크리티컬여부', width: 100 },
+          { name: '크리티컬등급', width: 100 },
+          { name: '기준단위', width: 100 },
+          { name: '투입단위', width: 100 },
+          { name: '소요량', width: 100 },
+          { name: 'LOSS(%)', width: 100 },
+          { name: 'LOSS', width: 100 },
+          { name: '총소요량', width: 100 },
+          { name: '비고', width: 200 },
+          { name: '우선순위', width: 100 }
+        ]
       }
     }
   },
   methods: {
-    async storageApply () {
-      // 입고창고 일괄적용
-      await this.$notify.success('입고창고일괄적용')
-    },
     ACTION_REGISTRY () {
       const fnc = this
       return {
+        f1Label: '수정',
         async searchClick () {
           await fnc.$notify.info('조회')
         },
-        async saveClick () {
-          await fnc.$notify.success('저장')
+        // 수정
+        f1Click: async () => {
+          const result = await this.$refs.pp104Pop.open()
+          if (result) {
+            console.log('check')
+          }
         }
       }
     }

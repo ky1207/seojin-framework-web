@@ -13,23 +13,14 @@
           disabled-first-message
         />
       </SJSearchField>
-      <SJSearchField label="기준일자">
+      <SJSearchField label="변경일자">
         <SJPeriodSearch id="md2" name="md2" />
       </SJSearchField>
-      <SJSearchField label="창고">
+      <SJSearchField label="변경유형">
         <SJSelect
           id="searchCompany"
           name=""
-          :options="common.USE_YN"
-          disabled-validation
-          disabled-first-message
-        />
-      </SJSearchField>
-      <SJSearchField label="재고여부">
-        <SJSelect
-          id="searchCompany"
-          name=""
-          :options="common.USE_YN"
+          :options="[{text: '전체',value: '전체'},{text: '신규',value: '신규'},{text: '수정',value: '수정'},{text: '삭제',value: '삭제'}]"
           disabled-validation
           disabled-first-message
         />
@@ -62,15 +53,12 @@
           disabled-first-message
         />
       </SJSearchField>
-      <SJSearchField label="규격">
-        <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
-      </SJSearchField>
     </template>
     <template #bodyTitle>
-      <SJTitle title="자재 재고 목록" />
+      <SJTitle title="변경 목록" />
     </template>
     <template #body>
-      <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
+      <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" />
     </template>
   </SJSearchOneLayout>
 </template>
@@ -89,23 +77,11 @@ export default {
       grid: {
         data: {},
         options: {
-          rowHeaders: ['checkbox', 'rowNum'],
-          header: {
-            complexColumns: [
-              {
-                header: '기준일자 이전',
-                name: 'mergeColumn1',
-                childNames: ['이전재고']
-              },
-              {
-                header: '기준일자 내',
-                name: 'mergeColumn2',
-                childNames: ['기초', '입고(+)', '출고(-)']
-              }
-            ]
-          }
+          rowHeaders: ['checkbox', 'rowNum']
         },
         columns: [
+          { name: '모품목코드', width: 100 },
+          { name: '모품목명', width: 100 },
           { name: '품목유형', width: 100 },
           { name: '품목코드', width: 100 },
           { name: '품목명', width: 100 },
@@ -114,15 +90,16 @@ export default {
           { name: 'CE!여부', width: 100 },
           { name: '크리티컬여부', width: 100 },
           { name: '크리티컬등급', width: 100 },
-          { name: '출고수량', width: 100 },
-          { name: '기준단위', width: 100 },
-          { name: '창고', width: 100 },
-          { name: '이전재고', width: 100 },
-          { name: '기초', width: 100 },
-          { name: '입고(+)', width: 100 },
-          { name: '출고(-)', width: 100 },
-          { name: '최종재고', width: 100 },
-          { name: '기준단위', width: 100 }
+          { name: '투입단위', width: 100 },
+          { name: '이전소요량', width: 100 },
+          { name: '소요량', width: 100 },
+          { name: '변경유형', width: 100 },
+          { name: '변경일자', width: 100 },
+          { name: '변경사유', width: 200 },
+          { name: '등록일시', width: 100 },
+          { name: '등록자', width: 100 },
+          { name: '수정일시', width: 100 },
+          { name: '수정자', width: 100 }
         ]
       }
     }
