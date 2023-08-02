@@ -1,7 +1,9 @@
 <template>
   <div class="search-field">
     <label>{{ $props.label }}</label>
-    <slot />
+    <div class="field-wrap">
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -19,7 +21,7 @@ export default {
 }
 </script>
 <style scoped>
-.search .search-field div{
+.field-wrap{
   width: 100%;
 }
 </style>
