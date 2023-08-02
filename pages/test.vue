@@ -7,6 +7,15 @@
       <SJSearchField label="거래처">
         <SJSelectInput id="si" v-model="search.company" name="t1" :options="selectinput" />
       </SJSearchField>
+      <SJSearchField label="품목">
+        <SJSearchSelect
+          id="search"
+          v-model="search.options"
+          rules="required"
+          name="search"
+          search-url="/api/v1.0/department/codes"
+        />
+      </SJSearchField>
     </template>
     <template #leftTitle>
       <SJTitle name="사업장" :title="$t('page.system.00104')" />
@@ -156,7 +165,7 @@ export default {
     return {
       isUpdate: false,
       common: {},
-      search: { options: { value: 1, text: '정보전략1' } },
+      search: {},
       businessCode: {
         bsnsCode: '',
         bsnsName: ''

@@ -54,7 +54,8 @@ export default {
       required: true
     },
     value: {
-      type: Object
+      type: Object,
+      default: null
     },
     multiple: {
       type: Boolean,
@@ -96,7 +97,7 @@ export default {
   data () {
     return {
       options: [],
-      selectedOptions: Array.isArray(this.value) ? [...this.value] : [this.value],
+      selectedOptions: this.value === null ? [] : (Array.isArray(this.value) ? [...this.value] : [this.value]),
       showOptions: false
     }
   },
