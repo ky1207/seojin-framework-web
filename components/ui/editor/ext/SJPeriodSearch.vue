@@ -83,8 +83,8 @@ export default {
     handleEndChange (p) {
       this.handleEndInput(p)
     },
-    clearTime (date) {
-      return new Date(date.getFullYear(), date.getMonth(), date.getDay())
+    clearTime (p) {
+      return new Date(p.getFullYear(), p.getMonth(), p.getDate())
     }
   }
 }
