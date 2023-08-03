@@ -1,10 +1,8 @@
 <template>
   <div style="display: flex;">
     <select
-      :value="selected"
-      aria-label="Default select"
-      @input="handleInput"
-      @change="handleChange"
+      :value="value?.largeValue"
+      @change="handleLargeChange"
     >
       <option v-if="!disabledFirstMessage" value="">
         {{ $t('components.ui.00004') }}
@@ -14,16 +12,14 @@
       </option>
     </select>
     <select
-      :value="selected"
-      aria-label="Default select"
-      @input="handleInput"
-      @change="handleChange"
+      :value="value?.smallValue"
+      @change="handleSmallChange"
     >
       <option v-if="!disabledFirstMessage" value="">
         {{ $t('components.ui.00004') }}
       </option>
-      <option v-for="option in options" :key="option[itemValue]" :value="option[itemValue]">
-        {{ option[itemText] }}
+      <option v-for="smallOption in smallOptions" :key="smallOption[itemValue]" :value="smallOption[itemValue]">
+        {{ smallOption[itemText] }}
       </option>
     </select>
   </div>
@@ -34,8 +30,8 @@ import Utils from '~/api/utils'
 export default {
   props: {
     value: {
-      type: [String, Boolean, Number],
-      default: null
+      type: Object,
+      default: () => {}
     },
     options: {
       type: Array,
@@ -69,31 +65,42 @@ export default {
     }
   },
   data () {
-    return { selected: this.$props.value }
-  },
-  watch: {
-    value (newValue) {
-      this.selected = newValue
-    },
-    selected () {
-      this.$emit('input', this.selected)
-    },
-    options () {
-      if (this.$props.options.length > 0 && Utils.isEmpty(this.$props.value) && this.$props.disabledFirstMessage) {
-        this.selected = this.$props.options[0][this.$props.itemValue]
+    return {
+      smallOptions: [],
+      category: {
+        largeValue: this.$props.value?.largeValue,
+        smallValue: this.$props.value?.smallValue
       }
     }
   },
+  mounted () {
+    this.getSmallOptions(this.category.largeValue)
+  },
   methods: {
-    handleInput (e) {
-      if (Utils.isEmpty(e.target.value)) {
-        this.selected = null
-        return
-      }
-      this.selected = e.target.value
+    async getSmallOptions (code) {
+      if (Utils.isEmpty(code)) { return }
+      // TODO: url api 교체할것
+      const result = await this.$axios.get('/api/v1.0/department/codes', { params: { code } })
+      this.smallOptions = result.data
     },
-    handleChange (e) {
-      this.$emit('change', e)
+    handleLargeChange (e) {
+      this.smallOptions = []
+      if (Utils.isEmpty(e.target.value)) {
+        this.category.largeValue = null
+      } else {
+        this.category.largeValue = e.target.value
+        this.getSmallOptions(this.category.largeValue)
+      }
+      this.category.smallValue = null
+      this.$emit('input', this.category)
+    },
+    handleSmallChange (e) {
+      if (Utils.isEmpty(e.target.value)) {
+        this.category.smallValue = null
+      } else {
+        this.category.smallValue = e.target.value
+      }
+      this.$emit('input', this.category)
     }
   }
 }

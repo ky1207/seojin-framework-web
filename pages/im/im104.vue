@@ -38,7 +38,10 @@
         />
       </SJSearchField>
       <SJSearchField label="품목분류">
-        <SJItemCategory id="search2" name="search2" />
+        <SJItemCategory
+          id="search2"
+          name="search2"
+        />
       </SJSearchField>
       <SJSearchField label="품목">
         <SJItemEditor id="search7" name="search7" />
@@ -66,6 +69,7 @@ export default {
   mixins: [ACTION, MENU],
   data () {
     return {
+
       grid: {
         data: {},
         columns: [
