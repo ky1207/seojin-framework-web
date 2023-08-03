@@ -8,10 +8,10 @@
         <SJSelectInput id="si" v-model="search.company" name="t1" :options="selectinput" />
       </SJSearchField>
       <SJSearchField label="품목">
-        <SJItemEditor
-          id="search"
-          name="search"
-        />
+        <SJItemEditor id="search" name="search" />
+      </SJSearchField>
+      <SJSearchField label="품목분류">
+        <SJItemCategory id="search2" name="search2" />
       </SJSearchField>
     </template>
     <template #leftTitle>
