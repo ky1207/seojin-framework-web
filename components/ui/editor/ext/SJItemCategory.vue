@@ -1,40 +1,56 @@
 <template>
   <div style="display: flex;">
-    <SJSelect
-      :id="id+'-select'"
-      v-model="selectedValue"
-      :options="options"
-      :name="name+'-select'"
-      disabled-validation
-      :disabled-first-message="disabledFirstMessage"
+    <select
+      :value="selected"
+      aria-label="Default select"
+      @input="handleInput"
       @change="handleChange"
-    />
-    <SJSelect
-      :id="id+'-input'"
-      v-model="inputValue"
-      :name="name+'-input'"
-      :options="dataOptions"
-      disabled-validation
+    >
+      <option v-if="!disabledFirstMessage" value="">
+        {{ $t('components.ui.00004') }}
+      </option>
+      <option v-for="option in options" :key="option[itemValue]" :value="option[itemValue]">
+        {{ option[itemText] }}
+      </option>
+    </select>
+    <select
+      :value="selected"
+      aria-label="Default select"
+      @input="handleInput"
       @change="handleChange"
-    />
+    >
+      <option v-if="!disabledFirstMessage" value="">
+        {{ $t('components.ui.00004') }}
+      </option>
+      <option v-for="option in options" :key="option[itemValue]" :value="option[itemValue]">
+        {{ option[itemText] }}
+      </option>
+    </select>
   </div>
 </template>
 
 <script>
+import Utils from '~/api/utils'
 export default {
   props: {
     value: {
-      type: Object,
+      type: [String, Boolean, Number],
       default: null
+    },
+    options: {
+      type: Array,
+      default: () => []
+    },
+
+    name: {
+      type: String,
+      required: true
     },
     id: {
       type: String,
       required: true
     },
-    name: {
-      type: String,
-      required: true
-    },
+
     itemText: {
       type: String,
       default: 'text'
@@ -47,21 +63,37 @@ export default {
       type: Boolean,
       default: false
     },
-    options: {
-      type: Array,
-      default: () => []
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
-    return {
-      dataOptions: [],
-      selectedValue: this.value?.option || '',
-      inputValue: this.value?.value || ''
+    return { selected: this.$props.value }
+  },
+  watch: {
+    value (newValue) {
+      this.selected = newValue
+    },
+    selected () {
+      this.$emit('input', this.selected)
+    },
+    options () {
+      if (this.$props.options.length > 0 && Utils.isEmpty(this.$props.value) && this.$props.disabledFirstMessage) {
+        this.selected = this.$props.options[0][this.$props.itemValue]
+      }
     }
   },
   methods: {
+    handleInput (e) {
+      if (Utils.isEmpty(e.target.value)) {
+        this.selected = null
+        return
+      }
+      this.selected = e.target.value
+    },
     handleChange (e) {
-      this.$emit('input', { option: this.selectedValue, value: this.inputValue })
+      this.$emit('change', e)
     }
   }
 }
