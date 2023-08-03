@@ -1,0 +1,106 @@
+<template>
+  <SJSearchOneLayout>
+    <template #master-btn>
+      <SJPageButtons :action="ACTION" />
+    </template>
+    <template #default>
+      <SJSearchField label="회사">
+        <SJSelect
+          id="searchCompany"
+          name=""
+          :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
+      <SJSearchField label="변경일자">
+        <SJPeriodSearch id="md2" name="md2" />
+      </SJSearchField>
+      <SJSearchField label="변경유형">
+        <SJSelect
+          id="searchCompany"
+          name=""
+          :options="[{text: '전체',value: '전체'},{text: '신규',value: '신규'},{text: '수정',value: '수정'},{text: '삭제',value: '삭제'}]"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
+      <SJSearchField label="품목">
+        <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
+      </SJSearchField>
+      <SJSearchField label="품목유형">
+        <SJSelect
+          id="searchCompany"
+          name=""
+          :options="common.USE_YN"
+          disabled-validation
+          disabled-first-message
+        />
+      </SJSearchField>
+      <SJSearchField label="품목분류">
+        <SJItemCategory id="search2" name="search2" />
+      </SJSearchField>
+    </template>
+    <template #bodyTitle>
+      <SJTitle title="변경 목록" />
+    </template>
+    <template #body>
+      <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" />
+    </template>
+  </SJSearchOneLayout>
+</template>
+
+<script>
+// 메뉴 화면
+// 기능권한버튼을 사용하는 경우
+import { MENU, ACTION } from '~/mixins'
+
+export default {
+  mixins: [MENU, ACTION],
+  data () {
+    return {
+      common: {},
+      search: {},
+      grid: {
+        data: {},
+        options: {
+          rowHeaders: ['checkbox', 'rowNum']
+        },
+        columns: [
+          { name: '모품목코드', width: 100 },
+          { name: '모품목명', width: 100 },
+          { name: '투입공정', width: 100 },
+          { name: '품목유형', width: 100 },
+          { name: '품목코드', width: 100 },
+          { name: '품목명', width: 100 },
+          { name: 'REV', width: 100 },
+          { name: '규격', width: 100 },
+          { name: 'CE!여부', width: 100 },
+          { name: '크리티컬여부', width: 100 },
+          { name: '크리티컬등급', width: 100 },
+          { name: '투입단위', width: 100 },
+          { name: '이전소요량', width: 100 },
+          { name: '소요량', width: 100 },
+          { name: '변경유형', width: 100 },
+          { name: '변경일자', width: 100 },
+          { name: '변경사유', width: 200 },
+          { name: '등록일시', width: 100 },
+          { name: '등록자', width: 100 },
+          { name: '수정일시', width: 100 },
+          { name: '수정자', width: 100 }
+        ]
+      }
+    }
+  },
+  methods: {
+    ACTION_REGISTRY () {
+      const fnc = this
+      return {
+        async searchClick () {
+          await fnc.$notify.info('조회')
+        }
+      }
+    }
+  }
+}
+</script>
