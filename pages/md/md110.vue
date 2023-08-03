@@ -12,7 +12,7 @@
         />
       </SJSearchField>
       <SJSearchField label="품목분류">
-        <SJInput id="md2" v-model="search.md2" name="md2" />
+        <SJItemCategory id="search2" name="search2" />
       </SJSearchField>
       <SJSearchField label="규격">
         <SJInput id="md3" v-model="search.md3" name="md3" />

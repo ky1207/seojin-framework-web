@@ -33,7 +33,7 @@
         />
       </SJSearchField>
       <SJSearchField label="품목분류">
-        TODO:SELECTSELECT
+        <SJItemCategory id="search2" name="search2" />
       </sjsearchfield>
       <SJSearchField label="품목">
         <SJItemEditor id="search" name="search" />

@@ -24,7 +24,7 @@
         <SJSelect id="searchCoType" name="searchCoType" :options="common.USE_YN" />
       </SJSearchField>
       <SJSearchField label="품목분류">
-        <SJSelect id="searchCoType" name="searchCoType" :options="common.USE_YN" />
+        <SJItemCategory id="search2" name="search2" />
       </SJSearchField>
       <SJSearchField label="단가유무">
         <SJSelect id="searchCoType" name="searchCoType" :options="common.USE_YN" />

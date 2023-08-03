@@ -21,7 +21,7 @@
             />
           </SJSearchField>
           <SJSearchField label="품목분류">
-            <SJInput id="md2" name="md2" />
+            <SJItemCategory id="search2" name="search2" />
           </SJSearchField>
           <SJSearchField label="품목코드">
             <SJInput id="md3" name="md3" />

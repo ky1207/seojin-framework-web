@@ -38,23 +38,7 @@
             />
           </SJSearchField>
           <SJSearchField label="품목분류">
-            <SJSelect
-              id="searchCompany"
-              name=""
-              :options="common.USE_YN"
-              disabled-validation
-              disabled-first-message
-            />
-            <SJSelect
-              id="searchCompany"
-              name=""
-              :options="common.USE_YN"
-              disabled-validation
-              disabled-first-message
-            />
-          </SJSearchField>
-          목
-          <SJInput id="searchCoCode" v-model="search.coCode" name="searchCoCode" />
+            <SJItemCategory id="search2" name="search2" />
           </SJSearchField>
         </template>
         <template #leftTitle>

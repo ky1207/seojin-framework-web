@@ -25,11 +25,7 @@
         <SJInput id="md4" v-model="search.md4" name="LOT번호" />
       </SJSearchField>
       <SJSearchField label="품목분류">
-        <SJSelect
-          id="md5"
-          name="품목분류"
-          :options="MD_02"
-        />
+        <SJItemCategory id="search2" name="search2" />
       </SJSearchField>
       <SJSearchField label="품목">
         <SJItemEditor id="search" name="search" />

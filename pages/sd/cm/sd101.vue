@@ -24,8 +24,7 @@
         <SJSelect id="searchCoType" name="searchCoType" :options="[{text: '전체',value: '전체'},{text: '제품',value: '제품'},{text: '반제품',value: '반제품'}]" />
       </SJSearchField>
       <SJSearchField label="품목분류">
-        <SJSelect id="searchCoType" name="searchCoType" :options="[{text: '전체',value: '전체'},{text: 'LAM',value: 'LAM'}]" />
-        <SJSelect id="searchCoType" name="searchCoType" :options="[{text: '전체',value: '전체'},{text: '핸들러',value: '핸들러'},{text: 'TOP PLATE',value: 'TOP PLATE'},{text: 'MACH',value: 'MACHI'}]" />
+        <SJItemCategory id="search2" name="search2" />
       </SJSearchField>
       <SJSearchField label="단가유무">
         <SJSelect id="searchCoType" name="searchCoType" :options="[{text: '전체',value: '전체'},{text: '있음',value: '있음'},{text: '없음',value: '없음'}]" />

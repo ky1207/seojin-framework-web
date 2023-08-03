@@ -47,7 +47,7 @@
         />
       </SJSearchField>
       <SJSearchField label="품목분류">
-        SelectSelect
+        <SJItemCategory id="search2" name="search2" />
       </SJSearchField>
       <SJSearchField label="품목">
         <SJItemEditor id="search" name="search" />

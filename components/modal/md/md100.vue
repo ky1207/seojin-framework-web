@@ -34,7 +34,7 @@
                 />
               </SJFormField>
               <SJFormField label="품목분류">
-                <SJInput id="md4" name="품목분류" />
+                <SJItemCategory id="search2" name="search2" />
               </SJFormField>
             </SJFormRow>
             <SJFormRow>

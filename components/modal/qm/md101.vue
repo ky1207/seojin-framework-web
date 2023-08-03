@@ -35,7 +35,7 @@
             />
           </SJSearchField>
           <SJSearchField label="품목분류">
-            TODO:SELECTSELECT
+            <SJItemCategory id="search2" name="search2" />
           </SJSearchField>
           <SJSearchField label="그룹코드">
             <SJInput id="md3" v-model="search.md3" name="그룹코드" class="md-input" />

@@ -50,20 +50,7 @@
         />
       </SJSearchField>
       <SJSearchField label="품목분류">
-        <SJSelect
-          id="searchCompany"
-          name=""
-          :options="search.USE_YN"
-          disabled-validation
-          disabled-first-message
-        />
-        <SJSelect
-          id="searchCompany"
-          name=""
-          :options="search.USE_YN"
-          disabled-validation
-          disabled-first-message
-        />
+        <SJItemCategory id="search2" name="search2" />
       </SJSearchField>
       <SJSearchField label="품목">
         <SJItemEditor id="search" name="search" />

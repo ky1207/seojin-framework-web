@@ -24,7 +24,7 @@
         />
       </SJSearchField>
       <SJSearchField label="품목분류">
-        <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
+        <SJItemCategory id="search2" name="search2" />
       </SJSearchField>
       <SJSearchField label="품목">
         <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
