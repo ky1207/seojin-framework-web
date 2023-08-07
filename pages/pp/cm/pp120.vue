@@ -13,44 +13,20 @@
           disabled-first-message
         />
       </SJSearchField>
-      <SJSearchField label="등록일">
+      <SJSearchField label="변경일자">
         <SJPeriodSearch id="md2" name="md2" />
       </SJSearchField>
-      <SJSearchField label="요청번호">
+      <SJSearchField label="제조오더번호">
         <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
-      </SJSearchField>
-      <SJSearchField label="진행상태">
-        <SJSelect
-          id="searchCompany"
-          name=""
-          :options="common.USE_YN"
-          disabled-validation
-          disabled-first-message
-        />
-      </SJSearchField>
-      <SJSearchField label="확정여부">
-        <SJSelect
-          id="searchCompany"
-          name=""
-          :options="common.USE_YN"
-          disabled-validation
-          disabled-first-message
-        />
       </SJSearchField>
       <SJSearchField label="품목">
         <SJItemEditor id="search" name="search" />
       </SJSearchField>
-      <SJSearchField label="거래처">
-        <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
-      </SJSearchField>
-      <SJSearchField label="요청자">
-        <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
-      </SJSearchField>
-      <SJSearchField label="대상구분">
+      <SJSearchField label="변경유형">
         <SJSelect
           id="searchCompany"
           name=""
-          :options="common.USE_YN"
+          :options="[{text: '전체',value: '전체'},{text: '신규',value: '신규'},{text: '수정',value: '수정'},{text: '삭제',value: '삭제'}]"
           disabled-validation
           disabled-first-message
         />
@@ -82,11 +58,11 @@ export default {
           rowHeaders: ['checkbox', 'rowNum']
         },
         columns: [
-          { name: '요청일자', width: 100 },
-          { name: '요청번호', width: 100 },
-          { name: '확정여부', width: 100 },
-          { name: '진행상태', width: 100 },
-          { name: '거래처', width: 100 },
+          { name: '제조오더번호', width: 100 },
+          { name: '모품목코드', width: 100 },
+          { name: '모품목명', width: 100 },
+          { name: '공정코드', width: 100 },
+          { name: '투입공정', width: 100 },
           { name: '품목유형', width: 100 },
           { name: '품목코드', width: 100 },
           { name: '품목명', width: 100 },
@@ -95,18 +71,17 @@ export default {
           { name: 'CE!여부', width: 100 },
           { name: '크리티컬여부', width: 100 },
           { name: '크리티컬등급', width: 100 },
-          { name: '구매발주필요일', width: 100 },
-          { name: '납품요청일', width: 100 },
+          { name: '기준단위', width: 100 },
+          { name: '이전소요량', width: 100 },
+          { name: '소요량', width: 100 },
+          { name: '총소요량', width: 100 },
+          { name: '변경타입', width: 100 },
           { name: '변경일자', width: 100 },
-          { name: '취소일자', width: 100 },
-          { name: '창고', width: 100 },
-          { name: '구매단위', width: 100 },
-          { name: '요청수량', width: 100 },
-          { name: '변경수량', width: 100 },
-          { name: '발주수량', width: 100 },
-          { name: '요청잔량', width: 100 },
-          { name: '마감일자', width: 100 },
-          { name: '마감사유', width: 100 }
+          { name: '변경사유', width: 200 },
+          { name: '작성일자', width: 100 },
+          { name: '작성자', width: 100 },
+          { name: '수정일자', width: 100 },
+          { name: '수정자', width: 100 }
         ]
       }
     }
@@ -115,18 +90,8 @@ export default {
     ACTION_REGISTRY () {
       const fnc = this
       return {
-        f1Label: '확정',
-        f2Label: '확정취소',
         async searchClick () {
           await fnc.$notify.info('조회')
-        },
-        // 확정
-        f1Click: async () => {
-          await fnc.$notify.info('확정')
-        },
-        // 확정취소
-        f2Click: async () => {
-          await fnc.$notify.info('확정취소')
         }
       }
     }
