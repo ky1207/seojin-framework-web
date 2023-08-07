@@ -192,7 +192,7 @@ export default {
       this.list(e.page)
     },
     async list (page) {
-      const result = await this.$api.system.alarm.alarmList(this.search, page)
+      const result = await this.$api.system.alarm.myAlamList(this.search, page)
       this.gridProps.data = result.data
     },
     confirm () {

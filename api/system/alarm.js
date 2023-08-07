@@ -20,9 +20,9 @@ export default axios => ({
   updateAlarmReceiver (data) {
     return axios.post('/api/v1.0/alarm/updateAlarmReceiver', data)
   },
-  alarmList (search, page = 1) {
+  myAlamList (search, page = 1) {
     search.pageNum = page
-    return axios.post('/api/v1.0/alarm/alarm', search)
+    return axios.post('/api/v1.0/alarm/my-alarm', search)
   },
   alarmCnt () {
     return axios.get('/api/v1.0/alarm/alarmCnt')
