@@ -6,21 +6,21 @@
     <template #default>
       <SJSearchField label="회사">
         <SJSelect
-          id="searchCompany"
-          name=""
+          id="sd1"
+          name="sd1"
           :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]"
           disabled-validation
           disabled-first-message
         />
       </SJSearchField>
       <SJSearchField label="거래처유형">
-        <SJSelect id="c1" name="c1" :options="[{text: '매입처',value: '매입처'},{text: '매출처',value: '매출처'}]" />
+        <SJSelect id="sd2" name="sd2" :options="[{text: '매입처',value: '매입처'},{text: '매출처',value: '매출처'}]" />
       </SJSearchField>
       <SJSearchField label="거래처">
-        <SJSelectInput id="si" v-model="search.company" name="t1" :options="selectinput" />
+        <SJSelectInput id="sd3" v-model="search.company" name="sd3" :options="selectinput" />
       </SJSearchField>
       <SJSearchField label="사용여부">
-        <SJSelect id="c4" name="c4" :options="[{text: '사용함',value: '사용함'},{text: '사용안함',value: '사용안함'}]" />
+        <SJSelect id="sd4" name="sd4" :options="[{text: '사용함',value: '사용함'},{text: '사용안함',value: '사용안함'}]" />
       </SJSearchField>
     </template>
 
@@ -69,7 +69,7 @@
               </SJFormRow>
               <SJFormRow>
                 <SJFormField label="거래처명(전명)">
-                  <SJInput id="coType" v-model="inputData.CO_TYPE" name="거래처명(전명)" rules="required" />
+                  <SJInput id="coType1" v-model="inputData.CO_TYPE" name="거래처명(전명)" rules="required" />
                 </SJFormField>
                 <SJFormField label="거래처명(약명)">
                   <SJInput id="representativeName" v-model="inputData.REPRESENTATIVE_NAME" name="거래처명(약명)" />

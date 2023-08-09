@@ -23,7 +23,7 @@
                 <SJSelect
                   id="md1"
                   name="회사"
-                  :options="MD_01"
+                  :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]"
                 />
               </SJFormField>
               <SJFormField label="워크센터코드">

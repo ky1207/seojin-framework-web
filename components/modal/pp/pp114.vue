@@ -1,56 +1,39 @@
 <template>
   <SJModal ref="modal" size="modal-xl">
     <template #title>
-      COMPARE BOM
+      생산자재예약해지
     </template>
     <template #button>
+      <button class="btn-blue-bg" @click="appendRow">
+        추가
+      </button>
       <button class="btn-blue-bg" @click="save()">
         저장
       </button>
-      <button class="btn-white-bg" @click="close">
+      <button class="btn-gray-bg" @click="close">
         닫기
       </button>
     </template>
     <template #default>
       <SJForm ref="form">
-        <SJTitle title="Compare정보" />
         <SJFormRow>
           <SJFormField label="회사">
             <SJSelect id="searchCoType" name="회사" :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]" rules="required" />
           </SJFormField>
-          <SJFormField label="BOM번호">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="BOM번호" rules="required" />
-          </SJFormField>
-          <SJFormField label="BOM명">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="BOM명" rules="required" />
-          </SJFormField>
-          <SJFormField label="사용여부">
+          <SJFormField label="창고">
             <SJSelect
               id="md4"
-              name="사용여부"
-              :options="[{text: '사용함',value: '사용함'},{text: '사용안함',value: '사용안함'}]"
+              name="창고"
+              :options="[{text: '반도체원자재(화성)',value: '반도체원자재(화성)'},{text: '반도체재공(화성)',value: '반도체재공(화성)'}]"
               rules="required"
             />
           </SJFormField>
-        </SJFormRow>
-
-        <SJFormRow>
-          <SJFormField label="담당자">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="담당자" rules="required" />
-          </SJFormField>
-          <SJFormField label="등록일">
-            <SJDatePicker
-              id="sentStartDtm"
-              v-model="inputData.sentStartDtm"
-              name="등록일"
-              show-current="true"
-              disabled-validation
-              rules="required"
-            />
+          <SJFormField label="LOT">
+            <SJInput id="coCode" v-model="inputData.CO_CODE" name="품명" rules="required" />
           </SJFormField>
         </SJFormRow>
         <SJFormRow>
-          <SJFormField label="비고">
+          <SJFormField label="비고" style="width: 100%;">
             <SJTextarea
               id="textarea"
               v-model="inputData.content"
@@ -59,17 +42,16 @@
           </SJFormField>
         </SJFormRow>
 
-        <SJTitle title="BOM">
-          <button class="btn-white-bg" @click="addRow">
-            추가
-          </button>
-          <button class="btn-white-bg" @click="rowDel">
+        <SJTitle title="상세정보">
+          <button class="btn-blue-bg" @click="rowDel">
             삭제
           </button>
         </SJTitle>
         <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
       </SJForm>
     </template>
+
+    <template #footer />
   </SJModal>
 </template>
 
@@ -84,6 +66,7 @@ export default {
       options: null,
       common: {},
       inputData: { CO_CODE: null },
+      search: {},
       item: {
         title: null,
         content: null,
@@ -96,22 +79,21 @@ export default {
           bodyHeight: 400
         },
         columns: [
-          { name: '품목유형', width: 100 },
+          { name: '수주번호', width: 100 },
+          { name: '생산계획번호', width: 100 },
+          { name: '제조오더번호', width: 100 },
+          { name: '불출지시번호', width: 100 },
+          { name: 'LOT', width: 100 },
+          { name: '창고', width: 100 },
           { name: '품목코드', width: 100 },
           { name: '품목명', width: 100 },
+          { name: '수량', width: 100 },
+          { name: '기준단위', width: 100 },
           { name: 'REV', width: 100 },
           { name: '규격', width: 100 },
           { name: 'CE!여부', width: 100 },
           { name: '크리티컬여부', width: 100 },
-          { name: '크리티컬등급', width: 100 },
-          { name: '납품요청일', width: 100 },
-          { name: '변경일자', width: 100 },
-          { name: '취소일자', width: 100 },
-          { name: '창고', width: 100 },
-          { name: '구매단위', width: 100 },
-          { name: '요청수량', width: 100 },
-          { name: '변경수량', width: 100 },
-          { name: '거래처', width: 100 }
+          { name: '크리티컬등급', width: 100 }
         ]
       },
       resolve: null,
@@ -119,7 +101,6 @@ export default {
     }
   },
   created () {
-    this.options = [{ value: 1, text: '사과' }, { value: 2, text: '바나나' }]
   },
   methods: {
     open () {
@@ -142,8 +123,8 @@ export default {
         this.resolve(true)
       }
     },
-    async addRow () {
-      await this.$notify.success('추가')
+    appendRow () {
+      this.$refs.grid.invoke('appendRow')
     },
     async rowDel () {
       await this.$notify.success('삭제')

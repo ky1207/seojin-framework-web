@@ -54,9 +54,6 @@
         <template #tab-2>
           <SJGrid ref="grid_tab2" v-model="grid_tab2.data" :columns="grid_tab2.columns" />
         </template>
-        <template #tab-3>
-          <SJGrid ref="grid_tab3" v-model="grid_tab3.data" :columns="grid_tab3.columns" />
-        </template>
       </SJtab>
     </template>
   </SJSearchTBLayout>
