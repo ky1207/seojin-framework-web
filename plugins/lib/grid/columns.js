@@ -369,7 +369,12 @@ export default ctx => ({
       width: 180
     },
     subCode: {
-      header: ctx.i18n.t('grid.subCode')
+      header: ctx.i18n.t('grid.subCode'),
+      editor: {
+        type: 'text'
+      },
+      width: 150,
+      validation: { required: true }
     },
     // U
     useFlag: {

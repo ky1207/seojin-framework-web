@@ -115,6 +115,7 @@
         v-model="detail.data"
         :columns="detail.columns"
         :options="detail.options"
+        @editingStart="editing"
       />
     </template>
   </SJSearchLRLayout>
@@ -225,6 +226,15 @@ export default {
     this.common.USE_YN = this.$api.common.getYNCodes()
   },
   methods: {
+    editing (e) {
+      if (e.columnName === 'subCode') {
+        // 등록된 서브코드는  key 값이므로 수정되면 안됨.
+        // 수정이 필요하면 기존 사용중인 Data 에 대한 Migration 으로 처리해야함.
+        if (e.instance.getModifiedRows().createdRows.findIndex(row => row.rowKey === e.rowKey) < 0) {
+          e.stop()
+        }
+      }
+    },
     async onMasterClick (ev) {
       if (ev.rowKey === undefined) { return }
       const item = this.$refs.large.invoke('getRow', ev.rowKey)
@@ -249,9 +259,12 @@ export default {
         this.$notify.warning(this.$t('message.00001'))
         return false
       }
+      // this.detail.columns[0].editor.disabled = false
       this.$refs.detail.invoke('appendRow')
+      // this.detail.columns[0].editor.disabled = true
     },
     removeRow () {
+      // 특정 컬럼의 에디터를 활성화
       this.$refs.detail.invoke('removeCheckedRows', false) //  confirm을 true로 하려면 베트남어 삽입해야 함.
     },
     ACTION_REGISTRY () {
@@ -264,8 +277,14 @@ export default {
         },
         saveClick: async () => {
           const result = await this.$refs.form.validate()
+
           if (result) {
             if (this.isUpdate) {
+              const error = this.$refs.detail.invoke('validate')
+              if (error.length > 0) {
+                this.$notify.warning(this.$t('message.00007')) // Grid 입력값을 확인하세요.
+                return false
+              }
               const { codes, ...rest } = this.codeGroup
               const data = { codeGroup: rest, gridRequest: this.$refs.detail.invoke('getModifiedRows') }
               await this.$api.system.code.update(rest.codeGroupId, data)
