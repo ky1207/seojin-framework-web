@@ -89,14 +89,10 @@ export default {
       }
     }
   },
-  async created () {
-    await Promise.all([this.$api.common.getCommonCodes(['DEPT_GROUP'])])
-      .then((response) => {
-        this.common = {
-          ...response[0].data,
-          USE_YN: this.$api.common.getYNCodes()
-        }
-      })
+  created () {
+    this.common.USE_YN = this.$api.common.getYNCodes()
+  },
+  async mounted () {
     await this.ACTION_REGISTRY().searchClick()
   },
   methods: {
