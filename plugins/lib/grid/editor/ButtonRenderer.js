@@ -1,7 +1,7 @@
 export class ButtonRenderer {
   constructor (props) {
     const el = document.createElement('button')
-    el.className = 'btn btn-mb3 btn-mr3 btn-secondary'
+    el.className = 'btn-gray-bg'
     this.el = el
 
     this.render(props)

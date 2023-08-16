@@ -1,5 +1,5 @@
 <template>
-  <SJModal ref="modal">
+  <SJModal ref="modal" size="modal-lg">
     <template #title>
       {{ $t('components.modal.00008') }}
     </template>
