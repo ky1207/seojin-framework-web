@@ -61,16 +61,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-:deep() {
-  .search{
-    .search-field{
-      flex-basis: 33% !important;
-      label{
-        min-width: 120px;
-      }
-    }
-  }
-}
-</style>

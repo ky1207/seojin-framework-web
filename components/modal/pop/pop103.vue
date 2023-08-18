@@ -4,7 +4,9 @@
       작업자조회
     </template>
     <template #button>
-      <SJSearchField label="주야간구분">
+      <SJSearchField
+        label="주야간구분"
+      >
         <SJSelect
           id="search"
           disabled-first-message
@@ -77,15 +79,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-:deep() {
-  .search-field{
+:deep(.search-field) {
     display: flex;
     align-items: center;
     margin-right: 2px;
     .field-wrap{
       width: auto;
     }
-  }
 }
 
 </style>

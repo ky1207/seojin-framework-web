@@ -133,8 +133,7 @@ export default {
   font-size: 18px;
 }
 button i{margin-right: 5px;}
-:deep() {
-  .search{
+:deep(.search) {
     border: 0;
     margin-bottom: 10px;
     .search-field{
@@ -147,12 +146,15 @@ button i{margin-right: 5px;}
       height: 35px;
     }
   }
+:deep(.contents){
   .tui-grid-header-area{
     font-size: 15px;
   }
   .txt-wrap{
     h3{font-size: 20px;}
   }
+}
+:deep(*){
   .btn-white-bg{
     border: solid 1px #bcc1d0;
     border-radius: 3px;
@@ -170,4 +172,5 @@ button i{margin-right: 5px;}
     font-size: 15px;
   }
 }
+
 </style>

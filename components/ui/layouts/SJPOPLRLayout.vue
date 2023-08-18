@@ -116,26 +116,31 @@ export default {
   align-items: center;
 }
 button i{margin-right: 5px;}
-:deep() {
-  .search{
-    border: 0;
-    margin-bottom: 10px;
-    .search-field{
-      flex-basis: 25%;
-    }
-    label{
-      min-width:100px;
-    }
+:deep(.search) {
+  border: 0;
+  margin-bottom: 10px;
+
+  .search-field {
+    flex-basis: 25%;
   }
-  input,select{
+
+  label {
+    min-width: 100px;
+  }
+
+  input, select {
     height: 35px;
   }
+}
+:deep(.contents){
   .tui-grid-header-area{
     font-size: 15px;
   }
   .txt-wrap{
     h3{font-size: 20px;}
   }
+}
+:deep(*){
   .btn-white-bg{
     border: solid 1px #bcc1d0;
     border-radius: 3px;

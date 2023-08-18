@@ -4,10 +4,15 @@
       자재투입
     </template>
     <template #button>
-      <SJSearchField label="바코드 스캔::" style="margin-right: 5px;">
+      <SJSearchField
+        label="바코드 스캔::"
+      >
         <SJInput />
       </SJSearchField>
-      <button class="btn-white-bg">
+      <button
+        class="
+        btn-white-bg"
+      >
         <i class="bi bi-arrow-clockwise" />
       </button>
       <button class="btn-blue-bg" style="background: #3A83B7; color: #fff;">
@@ -147,11 +152,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-:deep() {
-  .search-field{
+:deep(.search-field) {
+    margin-right: 5px;
     display: flex;
     align-items: center;
-    margin-right: 2px;
     label{
       width: 100px;
     }
@@ -159,6 +163,4 @@ export default {
       width: auto;
     }
   }
-}
-
 </style>
