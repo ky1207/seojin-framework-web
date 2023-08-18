@@ -42,7 +42,7 @@
       <SJPOPOneLayout disabled-navigator-wrap disabled-status-wrap>
         <template #title>
           <SJTitle title="재고현황" />
-        </template>
+        </template>.3211
         <template #body>
           <SJGrid
             v-model="grid_invent.data"

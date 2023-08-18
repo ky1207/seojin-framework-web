@@ -55,7 +55,8 @@ export default {
           { name: '작업자명', width: 200 }
         ],
         options: {
-          header: 200
+          header: 200,
+          bodyHeight: 400
         }
       },
       resolve: null,

@@ -39,7 +39,8 @@ export default {
         ],
         options: {
           header: 200,
-          rowHeaders: ['checkbox']
+          rowHeaders: ['checkbox'],
+          bodyHeight: 400
         }
       },
       resolve: null,
