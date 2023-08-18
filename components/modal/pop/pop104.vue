@@ -94,7 +94,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-::v-deep{
+:deep() {
   .search-field{
     display: flex;
     align-items: center;

@@ -116,7 +116,7 @@ export default {
   align-items: center;
 }
 button i{margin-right: 5px;}
-::v-deep{
+:deep() {
   .search{
     border: 0;
     margin-bottom: 10px;
