@@ -29,7 +29,6 @@
         <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
       </SJSearchField>
     </template>
-
     <template #bodyTitle>
       <SJForm ref="form">
         <SJTab :list="tabList">
