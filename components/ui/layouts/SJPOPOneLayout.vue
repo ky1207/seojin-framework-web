@@ -60,32 +60,6 @@ export default {
       required: false,
       default: false
     }
-  },
-  activated () {
-    window.addEventListener('resize', this.refresh)
-  },
-  deactivated () {
-    window.removeEventListener('resize', this.refresh)
-  },
-  mounted () {
-    this.refresh()
-    window.dispatchEvent(new Event('resize'))
-  },
-  beforeDestroy () {
-    window.removeEventListener('resize', this.refresh)
-  },
-  methods: {
-    refresh () {
-      const height = window.innerHeight
-      if (this.$refs.autoHeight.closest('.modal-dialog')) {
-        // height = window.innerHeight / 2
-        return
-      }
-      const absoluteTop = this.$refs.autoHeight.getBoundingClientRect().top
-      // const absoluteBottom = this.$refs.autoHeight.getBoundingClientRect().bottom
-
-      this.$refs.autoHeight.style.height = (height - absoluteTop - 5) + 'px'
-    }
   }
 }
 </script>

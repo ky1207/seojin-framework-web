@@ -174,7 +174,8 @@ export default {
         options: {
           header: 200,
           rowHeaders: ['rowNum'],
-          selectionUnit: 'row'
+          selectionUnit: 'row',
+          bodyHeight: 650
         }
       }
     }
@@ -219,23 +220,17 @@ export default {
     toggleFullScreen () {
       if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen()
-        this._resize()
       }
     },
     toggleExitScreen () {
       if (document.fullscreenElement) {
         document.exitFullscreen()
-        this._resize()
       }
     },
     refresh () {
       this.$router.go()
-    },
-    _resize () {
-      setTimeout(() => {
-        window.dispatchEvent(new Event('resize'))
-      }, 200)
     }
+
   }
 }
 </script>
