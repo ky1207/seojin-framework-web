@@ -219,19 +219,22 @@ export default {
     toggleFullScreen () {
       if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen()
-      } else {
-        document.exitFullscreen()
+        this._resize()
       }
     },
     toggleExitScreen () {
-      if (!document.fullscreenElement) {
+      if (document.fullscreenElement) {
         document.exitFullscreen()
-      } else {
-        document.exitFullscreen()
+        this._resize()
       }
     },
     refresh () {
       this.$router.go()
+    },
+    _resize () {
+      setTimeout(() => {
+        window.dispatchEvent(new Event('resize'))
+      }, 200)
     }
   }
 }
