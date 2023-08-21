@@ -7,7 +7,7 @@
       <SJSearchField
         label="바코드 스캔::"
       >
-        <SJInput />
+        <SJInput id="scan" name="scan" />
       </SJSearchField>
       <button
         class="
