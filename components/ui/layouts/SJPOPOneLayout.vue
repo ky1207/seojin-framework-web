@@ -15,23 +15,9 @@
     <SJSearch v-if="!disabledSearch">
       <slot />
     </SJSearch>
-    <div ref="autoHeight" class="contents row" style="display: flex;" autoHeight>
-      <div class="col-md-12 p-0" style="display: flex;">
-        <div style="width: 100%;">
-          <slot name="title" />
-          <slot name="body" />
-        </div>
-        <div v-if="!disabledGridWrap" class="grid-wrap" style="display:flex;flex-direction: column;height: 100%; align-items: center;margin: 0 10px;">
-          <slot name="grid-btn">
-            <button class="btn-pop-none">
-              <i class="fa-solid fa-caret-up" />
-            </button>
-            <button class="btn-pop-none">
-              <i class="fa-solid fa-caret-down" />
-            </button>
-          </slot>
-        </div>
-      </div>
+    <div class="contents row">
+      <slot name="title" />
+      <slot name="body" />
     </div>
   </div>
 </template>

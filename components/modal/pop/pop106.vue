@@ -13,19 +13,19 @@
         <template #body>
           <SJTab :list="tabList">
             <template #tab-1>
-              <SJGrid ref="grid_tab1" v-model="grid_tab1.data" :columns="grid_tab1.columns" />
+              <SJPOPGrid ref="grid_tab1" v-model="grid_tab1.data" :columns="grid_tab1.columns" :options="grid_options" />
             </template>
             <template #tab-2>
-              <SJGrid ref="grid_tab2" v-model="grid_tab2.data" :columns="grid_tab2.columns" />
+              <SJPOPGrid ref="grid_tab2" v-model="grid_tab2.data" :columns="grid_tab2.columns" :options="grid_options" />
             </template>
             <template #tab-3>
-              <SJGrid ref="grid_tab3" v-model="grid_tab3.data" :columns="grid_tab3.columns" />
+              <SJPOPGrid ref="grid_tab3" v-model="grid_tab3.data" :columns="grid_tab3.columns" :options="grid_options" />
             </template>
             <template #tab-4>
-              <SJGrid ref="grid_tab4" v-model="grid_tab4.data" :columns="grid_tab4.columns" />
+              <SJPOPGrid ref="grid_tab4" v-model="grid_tab4.data" :columns="grid_tab4.columns" :options="grid_options" />
             </template>
             <template #tab-5>
-              <SJGrid ref="grid_tab5" v-model="grid_tab5.data" :columns="grid_tab5.columns" />
+              <SJPOPGrid ref="grid_tab5" v-model="grid_tab5.data" :columns="grid_tab5.columns" :options="grid_options" />
             </template>
           </SJtab>
         </template>
@@ -42,6 +42,9 @@ export default {
     return {
       resolve: null,
       reject: null,
+      grid_options: {
+        bodyHeight: 600
+      },
       grid_tab1: {
         data: {},
         columns: [

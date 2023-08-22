@@ -32,7 +32,7 @@
           <SJTitle title="BOM" />
         </template>
         <template #body>
-          <SJGrid
+          <SJPOPGrid
             v-model="grid_bom.data"
             :columns="grid_bom.columns"
             :options="grid_bom.options"
@@ -42,9 +42,9 @@
       <SJPOPOneLayout disabled-navigator-wrap disabled-status-wrap>
         <template #title>
           <SJTitle title="재고현황" />
-        </template>.3211
+        </template>
         <template #body>
-          <SJGrid
+          <SJPOPGrid
             v-model="grid_invent.data"
             :columns="grid_invent.columns"
             :options="grid_invent.options"
@@ -56,7 +56,7 @@
           <SJTitle title="투입현황" />
         </template>
         <template #body>
-          <SJGrid
+          <SJPOPGrid
             v-model="grid_input.data"
             :columns="grid_input.columns"
             :options="grid_input.options"

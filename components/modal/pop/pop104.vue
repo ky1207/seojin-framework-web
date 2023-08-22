@@ -45,7 +45,7 @@
           </SJSearchField>
         </template>
         <template #body>
-          <SJGrid
+          <SJPOPGrid
             v-model="grid.data"
             :columns="grid.columns"
             :options="grid.options"

@@ -17,7 +17,7 @@
     <template #default>
       <SJPOPOneLayout disabled-navigator-wrap disabled-status-wrap>
         <template #body>
-          <SJGrid
+          <SJPOPGrid
             v-model="grid.data"
             :columns="grid.columns"
             :options="grid.options"
