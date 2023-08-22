@@ -2,7 +2,6 @@
   <SJSearchOneLayout>
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
-      <Sd401 ref="sd401Pop" />
     </template>
     <template #default>
       <SJSearchField label="회사">
@@ -129,15 +128,11 @@ export default {
     ACTION_REGISTRY () {
       const fnc = this
       return {
-        f1Label: '변경마감(A1)',
         async searchClick () {
           await fnc.$notify.info('조회')
         },
-        f1Click: async () => {
-          const result = await this.$refs.sd401Pop.open()
-          if (result) {
-            console.log('check')
-          }
+        async saveClick () {
+          await fnc.$notify.success('저장')
         }
       }
     }

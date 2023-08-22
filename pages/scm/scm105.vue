@@ -114,6 +114,7 @@ export default {
           { name: '납품상태', width: 100 }
         ],
         options: {
+          rowHeaders: ['checkbox', 'rowNum'],
           summary: {
             columnContent: {
               지시: {
@@ -182,15 +183,8 @@ export default {
     ACTION_REGISTRY () {
       const fnc = this
       return {
-        f1Label: '변경마감(A1)',
         async searchClick () {
           await fnc.$notify.info('조회')
-        },
-        f1Click: async () => {
-          const result = await this.$refs.sd401Pop.open()
-          if (result) {
-            console.log('check')
-          }
         }
       }
     }

@@ -123,29 +123,11 @@ export default {
     ACTION_REGISTRY () {
       const fnc = this
       return {
-        f1Label: '신규',
-        f2Label: '수정',
-        f3Label: '수주복사',
         async searchClick () {
           await fnc.$notify.info('조회')
         },
-        f1Click: async () => {
-          const result = await this.$refs.sd401Pop.open()
-          if (result) {
-            console.log('result')
-          }
-        },
-        f2Click: async () => {
-          const result = await this.$refs.sd401Pop.open()
-          if (result) {
-            console.log('result')
-          }
-        },
-        f3Click: async () => {
-          const result = await this.$refs.sd401Pop.open()
-          if (result) {
-            console.log('result')
-          }
+        async saveClick () {
+          await fnc.$notify.success('저장')
         }
       }
     }

@@ -39,10 +39,10 @@
     </template>
     <template #bodyTitle>
       <SJTitle title="승인요청 내역">
-        <button class="btn-white-bg" @click="itemPop">
+        <button class="btn-white-bg">
           확정
         </button>
-        <button class="btn-white-bg" @click="historyPop">
+        <button class="btn-white-bg">
           미확정
         </button>
       </SJTitle>
@@ -91,6 +91,7 @@ export default {
           { name: '납기가능일자', width: 100 }
         ],
         options: {
+          rowHeaders: ['checkbox', 'rowNum'],
           summary: {
             columnContent: {
               수량: {
@@ -125,20 +126,6 @@ export default {
     }
   },
   methods: {
-    async itemPop () {
-      // this.$notify.info('품목별/거래처별 조회 팝업 호출')
-      const result = await this.$refs.itemPop.open()
-      if (result) {
-        console.log('check')
-      }
-    },
-    async historyPop () {
-      // 이력팝업
-      const result = await this.$refs.historyPop.open()
-      if (result) {
-        console.log('check')
-      }
-    },
     ACTION_REGISTRY () {
       const fnc = this
       return {
