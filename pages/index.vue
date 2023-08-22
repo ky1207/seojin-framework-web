@@ -35,9 +35,13 @@
         <button type="button" class="btn btn-primary" @click="write()">
           쓰기
         </button>
+        <button type="button" class="btn btn-primary" @click="modalTest()">
+          modal TEST
+        </button>
         <div @click="doDownload(43)">
           파일 다운로드
         </div>
+        <Im100 ref="testModal" />
         <SampleInsert ref="exampleModal" /> {{ $t('sample') }}
         <SampleWrite ref="writeModal" />
       </div>
@@ -110,6 +114,12 @@ export default {
     },
     async write () {
       const response = await this.$refs.writeModal.open()
+      //  if (response) {
+      console.log(response)
+      // }
+    },
+    async modalTest () {
+      const response = await this.$refs.testModal.open()
       //  if (response) {
       console.log(response)
       // }
