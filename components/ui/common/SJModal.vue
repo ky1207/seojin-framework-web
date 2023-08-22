@@ -48,6 +48,7 @@ export default {
       this.w.show()
       setTimeout(() => {
         this.$nuxt.$emit('modal.show')
+        window.dispatchEvent(new Event('resize'))
       }, 200)
     },
     hide () {
