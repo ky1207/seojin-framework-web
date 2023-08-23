@@ -13,6 +13,7 @@
     </template>
     <template #default>
       <SJForm ref="form">
+        <SJTitle title="등록" />
         <SJFormRow>
           <SJFormField label="회사">
             <SJSelect id="searchCoType" name="회사" :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]" rules="required" />
@@ -47,6 +48,7 @@
               rules="required"
             />
           </SJFormField>
+          <SJFormField />
         </SJFormRow>
 
         <SJTitle title="공정">

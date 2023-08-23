@@ -45,6 +45,8 @@
               rules="required"
             />
           </SJFormField>
+          <SJFormField />
+          <SJFormField />
         </SJFormRow>
         <SJFormRow>
           <SJFormField label="비고">
