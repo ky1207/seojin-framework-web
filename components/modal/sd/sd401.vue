@@ -57,6 +57,7 @@
           <SJFormField label="변경전수주">
             <SJInput id="coCode" v-model="inputData.CO_CODE" name="변경전수주" />
           </SJFormField>
+          <SJFormField />
         </SJFormRow>
         <SJFormRow>
           <SJFormField label="비고">
