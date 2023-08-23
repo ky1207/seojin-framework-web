@@ -40,7 +40,7 @@
         </div>
         <SJInput id="pop" v-model="popup" name="pop" />
         <button type="button" class="btn btn-primary" @click="modalTest()">
-          modal TEST
+          {{ popup }} TEST
         </button>
 
         <component :is="popup" ref="testModal" />
@@ -58,7 +58,7 @@ export default {
   mixins: [ACTION],
   data () {
     return {
-      popup: 'Im100',
+      popup: '',
       test: 'test',
       modal: null,
       gridProps: {
