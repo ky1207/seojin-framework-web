@@ -16,7 +16,7 @@
         pageable
         @moveToGridPage="page"
       />
-      <div>
+      <div style="display: flex">
         <button type="button" class="btn btn-primary" @click="success()">
           success
         </button>
@@ -35,13 +35,15 @@
         <button type="button" class="btn btn-primary" @click="write()">
           쓰기
         </button>
-        <button type="button" class="btn btn-primary" @click="modalTest()">
-          modal TEST
-        </button>
         <div @click="doDownload(43)">
           파일 다운로드
         </div>
-        <Im100 ref="testModal" />
+        <SJInput id="pop" v-model="popup" name="pop" />
+        <button type="button" class="btn btn-primary" @click="modalTest()">
+          modal TEST
+        </button>
+
+        <component :is="popup" ref="testModal" />
         <SampleInsert ref="exampleModal" /> {{ $t('sample') }}
         <SampleWrite ref="writeModal" />
       </div>
@@ -56,6 +58,7 @@ export default {
   mixins: [ACTION],
   data () {
     return {
+      popup: 'Im100',
       test: 'test',
       modal: null,
       gridProps: {
