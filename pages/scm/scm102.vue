@@ -10,7 +10,6 @@
           name=""
           :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]"
           disabled-validation
-          disabled-first-message
         />
       </SJSearchField>
       <SJSearchField label="일자구분">
@@ -31,9 +30,8 @@
       <SJSearchField label="확정여부">
         <SJSelect
           id="search2"
-          disabled-first-message
           name="확정여부"
-          :options="[{text: '전체',value: ''},{text: '미확정',value: ''},{text: '확정',value: ''}]"
+          :options="[{text: '전체',value: '전체'},{text: '미확정',value: '미확정'},{text: '확정',value: '확정'}]"
         />
       </SJSearchField>
     </template>

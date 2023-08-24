@@ -10,7 +10,6 @@
           name=""
           :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]"
           disabled-validation
-          disabled-first-message
         />
       </SJSearchField>
       <SJSearchField label="P/O일자">

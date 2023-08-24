@@ -10,7 +10,6 @@
           name=""
           :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]"
           disabled-validation
-          disabled-first-message
         />
       </SJSearchField>
       <SJSearchField label="P/O일자">
@@ -28,9 +27,8 @@
       <SJSearchField label="잔량여부">
         <SJSelect
           id="search2"
-          disabled-first-message
           name="확정여부"
-          :options="[{text: '전체',value: ''},{text: '없음',value: ''},{text: '있음',value: ''}]"
+          :options="[{text: '전체',value: '전체'},{text: '없음',value: '없음'},{text: '있음',value: '있음'}]"
         />
       </SJSearchField>
     </template>
@@ -165,16 +163,10 @@ export default {
           await fnc.$notify.info('조회')
         },
         f1Click: async () => {
-          const result = await this.$refs.sd401Pop.open()
-          if (result) {
-            console.log('check')
-          }
+          await fnc.$notify.info('납품등록(A1)')
         },
         f2Click: async () => {
-          const result = await this.$refs.sd401Pop.open()
-          if (result) {
-            console.log('check')
-          }
+          await fnc.$notify.info('일괄등록(A2)')
         }
       }
     }

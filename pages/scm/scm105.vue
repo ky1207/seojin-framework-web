@@ -10,7 +10,6 @@
           name=""
           :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]"
           disabled-validation
-          disabled-first-message
         />
       </SJSearchField>
       <SJSearchField label="납기요청일자">
@@ -62,9 +61,6 @@
         </SJtab>
       </SJForm>
     </template>
-    <!--    <template #body>
-      <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" />
-    </template>-->
   </SJSearchOneLayout>
 </template>
 
