@@ -12,9 +12,7 @@
       </button>
     </template>
     <template #default>
-      <template>
-        <SJTitle title="생산현황" />
-      </template>
+      <SJTitle title="생산현황" />
       <SJPOPOneLayout disabled-navigator-wrap disabled-status-wrap>
         <template #default>
           <SJSearchField label="작업시작">
