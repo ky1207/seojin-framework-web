@@ -1,6 +1,6 @@
 <template>
   <div class="search-field">
-    <label>{{ $props.label }}</label>
+    <label v-if="$props.label!==''">{{ $props.label }}</label>
     <div class="field-wrap">
       <slot />
     </div>
