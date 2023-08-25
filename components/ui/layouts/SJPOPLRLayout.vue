@@ -70,17 +70,17 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  background: #fff;
+  padding: 5px;
+  background: #e8ecf4;
 }
 .search{
-  font-size: 18px;
+  font-size: 15px;
 }
 .contents{
   width: 100%;
   display: flex;
   margin: 0;
-  padding: 0 10px;
+  padding-left:20px;
   background: #fff;
 }
 .grid-wrap{
@@ -91,9 +91,8 @@ export default {
 }
 button i{margin-right: 5px;}
 :deep(.search) {
-  border: 0;
-  margin-bottom: 10px;
-
+  margin: 5px;
+  padding: 5px;
   .search-field {
     flex-basis: 25%;
   }

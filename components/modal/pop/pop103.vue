@@ -20,7 +20,7 @@
       <button class="btn-blue-bg">
         조회
       </button>
-      <button class="btn-blue-bg" style="background: #0CA896; color: #fff;">
+      <button class="btn-blue-bg">
         작업자선택
       </button>
       <button class="btn-white-bg" @click="close">
@@ -28,7 +28,7 @@
       </button>
     </template>
     <template #default>
-      <SJPOPOneLayout disabled-navigator-wrap disabled-status-wrap>
+      <SJPOPOneLayout disabled-navigator-wrap disabled-status-wrap disabled-search>
         <template #body>
           <SJPOPGrid
             v-model="grid.data"
@@ -51,8 +51,8 @@ export default {
       grid: {
         data: {},
         columns: [
-          { name: '작업자ID', width: 200 },
-          { name: '작업자명', width: 200 }
+          { name: '작업자ID', width: 400 },
+          { name: '작업자명' }
         ],
         options: {
           header: 200,
@@ -81,12 +81,16 @@ export default {
 
 <style lang="scss" scoped>
 :deep(.search-field) {
-    display: flex;
-    align-items: center;
-    margin-right: 2px;
-    .field-wrap{
-      width: auto;
-    }
+  width: 250px;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  label{
+    width: 120px;
+  }
+  input,select{
+    width: 100%;
+    height: 50px;
+  }
 }
-
 </style>

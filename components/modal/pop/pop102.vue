@@ -10,7 +10,7 @@
       <button class="btn-blue-bg">
         변경
       </button>
-      <button class="btn-blue-bg" style="background: #0CA896; color: #fff;">
+      <button class="btn-blue-bg">
         로그아웃
       </button>
       <button class="btn-white-bg" @click="close">
@@ -24,12 +24,14 @@
             <SJInput
               id="search"
               name="아이디"
+              disabled
             />
           </SJSearchField>
           <SJSearchField label="사용자명">
             <SJInput
               id="search"
               name="사용자명"
+              disabled
             />
           </SJSearchField>
           <SJSearchField label="워크상태코드">
@@ -76,7 +78,7 @@ export default {
       grid: {
         data: {},
         columns: [
-          { name: '설비', width: 300 }
+          { name: '설비' }
         ],
         options: {
           header: 200,
@@ -87,7 +89,7 @@ export default {
       grid_right: {
         data: {},
         columns: [
-          { name: '등록설비', width: 300 }
+          { name: '등록설비' }
         ],
         options: {
           header: 200,
@@ -114,14 +116,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-:deep(.search) {
-    .search-field{
-      flex-basis: 30% !important;
-      label{
-        min-width: 120px;
-      }
-    }
-  }
-</style>

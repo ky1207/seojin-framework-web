@@ -7,7 +7,7 @@
       <button class="btn-white-bg">
         <i class="bi bi-arrow-clockwise" />
       </button>
-      <button class="btn-blue-bg" style="background: #0CA896; color: #fff;">
+      <button class="btn-blue-bg">
         비가동 등록
       </button>
       <button class="btn-white-bg" @click="close">
@@ -15,7 +15,7 @@
       </button>
     </template>
     <template #default>
-      <SJPOPOneLayout disabled-navigator-wrap disabled-status-wrap>
+      <SJPOPOneLayout disabled-navigator-wrap disabled-status-wrap disabled-search>
         <template #body>
           <SJPOPGrid
             v-model="grid.data"
@@ -35,7 +35,7 @@ export default {
       grid: {
         data: {},
         columns: [
-          { name: '비가동명', width: 500 }
+          { name: '비가동명' }
         ],
         options: {
           header: 200,

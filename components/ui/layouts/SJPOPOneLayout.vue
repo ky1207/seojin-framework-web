@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background:#fff;">
     <div v-if="!disabledStatusWrap" class="status-wrap">
       <slot name="status-bar" />
     </div>
@@ -86,16 +86,16 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  background: #fff;
+  padding: 5px;
+  background: #e8ecf4;
 }
 .search{
-  font-size: 18px;
+  font-size: 15px;
 }
 button i{margin-right: 5px;}
 :deep(.search) {
-    border: 0;
-    margin-bottom: 10px;
+    margin: 5px;
+    padding: 5px;
     .search-field{
       flex-basis: 25%;
     }
@@ -107,6 +107,8 @@ button i{margin-right: 5px;}
     }
   }
 :deep(.contents){
+  padding: 0;
+  div{padding: 0}
   .tui-grid-header-area{
     font-size: 15px;
   }
@@ -132,5 +134,4 @@ button i{margin-right: 5px;}
     font-size: 15px;
   }
 }
-
 </style>

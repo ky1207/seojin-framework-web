@@ -1,5 +1,5 @@
 <template>
-  <SJModal ref="modal" size="modal-xl">
+  <SJModal ref="modal" class="modal-xxl">
     <template #title>
       제조오더조회
     </template>
@@ -10,7 +10,7 @@
       <button class="btn-blue-bg">
         조회
       </button>
-      <button class="btn-blue-bg" style="background: #0CA896; color: #fff;">
+      <button class="btn-blue-bg">
         작업지시 선택
       </button>
       <button class="btn-white-bg" @click="close">
@@ -57,14 +57,14 @@ export default {
         data: {},
         columns: [
           { name: '지시일자', width: 120 },
-          { name: '제조오더번호', width: 120 },
-          { name: '오더상태', width: 100 },
-          { name: '재작업', width: 80 },
-          { name: '품목코드', width: 150 },
-          { name: '품목명', width: 200 },
-          { name: '지시', width: 50 },
-          { name: '양품', width: 50 },
-          { name: '불량', width: 50 }
+          { name: '제조오더번호', width: 200 },
+          { name: '오더상태', width: 120 },
+          { name: '재작업', width: 120 },
+          { name: '품목코드', width: 200 },
+          { name: '품목명' },
+          { name: '지시', width: 120 },
+          { name: '양품', width: 120 },
+          { name: '불량', width: 120 }
         ],
         options: {
           header: 200,
@@ -91,11 +91,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.search{
-  .search-field{
-    flex-basis: 30% !important;
-  }
-}
-</style>

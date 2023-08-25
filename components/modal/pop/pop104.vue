@@ -66,8 +66,14 @@ export default {
       grid: {
         data: {},
         columns: [
-          { name: '작업자ID', width: 200 },
-          { name: '작업자명', width: 200 }
+          { name: '품목코드', width: 100 },
+          { name: '품목명' },
+          { name: '규격', width: 100 },
+          { name: '기준단위', width: 100 },
+          { name: '창고', width: 150 },
+          { name: 'LOT', width: 150 },
+          { name: '현재고', width: 100 },
+          { name: '선택', width: 100 }
         ],
         options: {
           header: 200,
@@ -97,13 +103,10 @@ export default {
 <style lang="scss" scoped>
 :deep(.search) {
   .search-field{
-    display: flex;
-    align-items: center;
     flex-basis: 30% !important;
     .field-wrap{
       width: 100%;
     }
   }
 }
-
 </style>

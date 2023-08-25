@@ -22,43 +22,44 @@
         <i class="fa-solid fa-magnifying-glass" />
         작업조회
       </button>
-      <button class="btn-pop-bg" style="background: #3A83B7;" @click="operModal">
+      <button class="btn-pop-bg" @click="operModal">
         <i class="fa-solid fa-triangle-exclamation" />
         비가동
       </button>
-      <button class="btn-pop-bg" style="background: #3A83B7;" @click="inputModal">
+      <button class="btn-pop-bg" @click="inputModal">
         <i class="fa-solid fa-boxes-stacked" />
         자재투입/불량
       </button>
-      <button class="btn-pop-bg" style="background: #A814A0;">
+      <button class="btn-pop-bg" style="background: #A81714;">
         <i class="fa-solid fa-circle-minus" />
         불량등록
       </button>
-      <button class="btn-pop-bg" style="background: #13b077;">
+      <button class="btn-pop-bg" style="background: #80c242;">
         <i class="fa-solid fa-play" />
         작업시작
       </button>
-      <button class="btn-pop-bg" style="background: #0CA896;">
+      <button class="btn-pop-bg">
         <i class="fa-solid fa-circle-plus" />
         양품등록
       </button>
-      <button class="btn-pop-bg" style="background: #3A83B7;" @click="workerModal">
+      <button class="btn-pop-bg" @click="workerModal">
         <i class="fa-solid fa-user-plus" />
         작업자등록
       </button>
       <button class="btn-pop-bg" style="background: #3A83B7;" @click="workModal">
         설비등록
       </button>
-      <button class="btn-pop-bg" style="background: #3A83B7;">
+      <button class="btn-pop-bg" @click="standardModal">
         <i class="fa-solid fa-file-circle-check" />
         작업표준서
       </button>
-      <button class="btn-pop-bg" style="background: #A81714;">
+      <button class="btn-pop-bg" style="background: #CC045B;" @click="stopModal">
         <i class="fa-solid fa-stop" />
         작업종료
       </button>
       <pop100 ref="checkModal" /> <pop101 ref="inputModal" /> <pop102 ref="authModal" />
       <pop103 ref="workerModal" /> <pop105 ref="operModal" /> <pop106 ref="workModal" />
+      <pop107 ref="standardModal" /> <pop108 ref="stopModal" />
     </template>
     <template #default>
       <SJSearchField label="제조오더">
@@ -160,16 +161,16 @@ export default {
       grid: {
         data: {},
         columns: [
-          { name: '지시일자', width: 100 },
-          { name: '우선순위', width: 100 },
-          { name: '작업자', width: 150 },
+          { name: '지시일자' },
+          { name: '우선순위' },
+          { name: '작업자' },
           { name: '공정', width: 300 },
-          { name: '상태', width: 100 },
-          { name: '생산', width: 100 },
-          { name: '양품', width: 100 },
-          { name: '불량', width: 100 },
-          { name: '자재', width: 100 },
-          { name: '작업상세', width: 100 }
+          { name: '상태' },
+          { name: '생산' },
+          { name: '양품' },
+          { name: '불량' },
+          { name: '자재' },
+          { name: '작업상세' }
         ],
         options: {
           header: 200,
@@ -213,6 +214,18 @@ export default {
     },
     async workModal () {
       const result = await this.$refs.workModal.open()
+      if (result) {
+        console.log('check')
+      }
+    },
+    async standardModal () {
+      const result = await this.$refs.standardModal.open()
+      if (result) {
+        console.log('check')
+      }
+    },
+    async stopModal () {
+      const result = await this.$refs.stopModal.open()
       if (result) {
         console.log('check')
       }

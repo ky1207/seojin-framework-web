@@ -9,7 +9,7 @@
       </button>
     </template>
     <template #default>
-      <SJPOPOneLayout disabled-navigator-wrap disabled-status-wrap disabled-grid-wrap>
+      <SJPOPOneLayout disabled-navigator-wrap disabled-status-wrap disabled-search>
         <template #body>
           <SJTab :list="tabList">
             <template #tab-1>
@@ -43,13 +43,14 @@ export default {
       resolve: null,
       reject: null,
       grid_options: {
-        bodyHeight: 600
+        bodyHeight: 600,
+        header: 200
       },
       grid_tab1: {
         data: {},
         columns: [
           { name: '주/야간', width: 100 },
-          { name: '사용자명', width: 200 },
+          { name: '사용자명' },
           { name: '시작시간', width: 200 },
           { name: '종료시간', width: 200 },
           { name: '작업종료', width: 150 }
@@ -60,13 +61,13 @@ export default {
         columns: [
           { name: '품목코드', width: 120 },
           { name: '품목명', width: 200 },
-          { name: '자동투입', width: 100 },
-          { name: '투입단위', width: 100 },
-          { name: '예약수량', width: 100 },
-          { name: '생산입고', width: 100 },
-          { name: '투입수량', width: 100 },
-          { name: '불량수량', width: 100 },
-          { name: '투입잔량', width: 100 }
+          { name: '자동투입' },
+          { name: '투입단위' },
+          { name: '예약수량' },
+          { name: '생산입고수량' },
+          { name: '투입수량' },
+          { name: '불량수량' },
+          { name: '투입잔량' }
         ]
       },
       grid_tab3: {
@@ -74,30 +75,30 @@ export default {
         columns: [
           { name: '품목코드', width: 150 },
           { name: '품목명', width: 200 },
-          { name: '창고', width: 100 },
-          { name: '불량유형', width: 100 },
-          { name: 'LOT', width: 100 },
-          { name: '불량수량', width: 100 },
-          { name: '투입단위', width: 100 }
+          { name: '창고' },
+          { name: '불량유형' },
+          { name: 'LOT' },
+          { name: '불량수량' },
+          { name: '투입단위' }
         ]
       },
       grid_tab4: {
         data: {},
         columns: [
           { name: '불량명', width: 200 },
-          { name: 'LOT', width: 150 },
-          { name: '불량수량', width: 120 },
-          { name: '기준단위', width: 120 },
-          { name: '실적시간', width: 120 }
+          { name: 'LOT', width: 200 },
+          { name: '불량수량' },
+          { name: '기준단위' },
+          { name: '실적시간' }
         ]
       },
       grid_tab5: {
         data: {},
         columns: [
-          { name: 'LOT', width: 200 },
+          { name: 'LOT' },
           { name: '수량', width: 150 },
           { name: '기준단위', width: 150 },
-          { name: '수정일', width: 200 }
+          { name: '수정일' }
         ]
       },
       tabList: [
@@ -124,6 +125,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-</style>
