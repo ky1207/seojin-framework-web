@@ -27,7 +27,7 @@
       <SJSearchField label="잔량여부">
         <SJSelect
           id="search2"
-          name="확정여부"
+          name=""
           :options="[{text: '전체',value: '전체'},{text: '없음',value: '없음'},{text: '있음',value: '있음'}]"
         />
       </SJSearchField>
