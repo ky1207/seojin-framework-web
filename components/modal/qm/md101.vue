@@ -15,7 +15,6 @@
       </button>
     </template>
     <template #default>
-      <SJTitle title="기준정보" />
       <SJSearchOneLayout disabled-navigator-wrap>
         <template #default>
           <SJSearchField label="사업장">
@@ -40,22 +39,11 @@
           <SJSearchField label="그룹코드">
             <SJInput id="md3" v-model="search.md3" name="그룹코드" class="md-input" />
           </SJSearchField>
-          목
-          TODO:SELECTSELECT
-          </SJSearchField>
           <SJSearchField label="생성일">
-            <SJDatePicker
-              id="md4"
-              name="생성일"
-            />
-            <div>~</div>
-            <SJDatePicker
-              id="md4"
-              name="생성일"
-            />
+            <SJPeriodSearch id="md2" name="md2" />
           </SJSearchField>
         </template>
-        <template #body>
+        <template #bodyTitle>
           <SJTitle title=" EXCEL (행추가 후 항목수에 맡게 붙여넣기, key값 새로 부여-신규등록시 사용)">
             <button class="btn-blue-bg">
               VALIDATION
@@ -67,6 +55,8 @@
               삭제
             </button>
           </SJTitle>
+        </template>
+        <template #body>
           <SJGrid
             ref="grid"
             v-model="grid.data"
