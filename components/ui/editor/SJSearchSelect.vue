@@ -9,7 +9,7 @@
   >
     <div class="SJSearchSelect-wrap">
       <div v-for="option in selectedOptions" :key="option[itemValue]" class="SJSearchSelect-tag" @click="deselectOption(option)">
-        <div class="d-flex align-items-center" style="width:100%;">
+        <div class="d-flex align-items-center" style="padding: 2px; width:100%;min-width: 75px;">
           <p>{{ option[itemText] }}</p>
         </div>
         <span class="d-flex"><i class="fa-solid fa-xmark" /></span>
@@ -43,8 +43,6 @@
 </template>
 
 <script>
-import Utils from '~/api/utils'
-
 export default {
   props: {
     id: {
@@ -116,11 +114,7 @@ export default {
       this.validate()
     },
     async handleSearch (e) {
-      if (Utils.isEmpty(this.$refs.searchText.value)) {
-        return false
-      }
       const p = { [this.$props.param]: this.$refs.searchText.value }
-
       const result = await this.$axios.get(this.searchUrl, { params: p })
       this.options = result.data
       this.showOptions = true
@@ -182,7 +176,9 @@ export default {
   flex-direction: row !important;
   justify-content: center;
   align-items: center;
-  height: 20px;
+  width: 100%;
+  height: 100%;
+  min-height: 20px;
   background-color: #e5e5e5;
   cursor: pointer;
   border-radius: 10px;
@@ -194,7 +190,6 @@ export default {
   }
   p{
     width: 100%;
-    min-width: 60px;
     height: 100%;
     margin: 0;
     padding-left:5px;
@@ -206,6 +201,7 @@ export default {
 }
 .SJSearchSelect-options {
   width: 100%;
+  height: 100%;
   position: absolute;
   top: 100%;
   left: 0;
