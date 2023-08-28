@@ -27,7 +27,7 @@
                 />
               </SJFormField>
               <SJFormField label="담당자">
-                TODO:SELECTINPUT
+                <SJUserEditor id="user" name="user" />
               </SJFormField>
               <SJFormField label="입고일자">
                 <SJDatePicker

@@ -27,7 +27,7 @@
                 />
               </SJFormField>
               <SJFormField label="담당자">
-                TODO:SELECTINPUT
+                <SJUserEditor id="user" name="user" />
               </SJFormField>
               <SJFormField label="이동번호">
                 <SJInput id="md2" v-model="search.md2" name="이동번호" disabled />

@@ -87,7 +87,7 @@
             />
           </SJSearchField>
           <SJSearchField label="담당자">
-            TODO:SELECTINPUT
+            <SJUserEditor id="user" name="user" />
           </SJSearchField>
           <SJSearchField label="검사결과">
             <SJSelect

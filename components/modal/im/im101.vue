@@ -30,7 +30,7 @@
                 <SJInput id="md2" v-model="search.md2" name="요청번호" disabled />
               </SJFormField>
               <SJFormField label="담당자">
-                TODO:SELECTINPUT
+                <SJUserEditor id="user" name="user" />
               </SJFormField>
               <SJFormField label="요청일자">
                 <SJDatePicker

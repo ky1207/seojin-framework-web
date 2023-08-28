@@ -26,9 +26,7 @@
                   :options="MD_01"
                 />
               </SJFormField>
-              <SJFormField label="담당자">
-                TODO:SELECTINPUT
-              </SJFormField>
+              <SJFormField label="담당자" />
               <SJFormField label="출고일자">
                 <SJDatePicker
                   id="md2"
