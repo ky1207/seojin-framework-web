@@ -98,7 +98,7 @@
                       <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
                     </SJFormField>
                     <SJFormField label="담당자">
-                      <SJItemEditor id="search" name="search" />
+                      <SJUserEditor id="search" name="search" />
                     </SJFormField>
                     <SJFormField label="계획번호(MPS)">
                       <SJInput id="searchCoName" v-model="search.coName" name="searchCoName" />
