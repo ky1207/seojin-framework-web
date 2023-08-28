@@ -881,9 +881,8 @@ form .check-box input{
     //  overflow: hidden;
     //}
     .search {
-      min-width: 100%;
+      height: 92px;
       overflow: hidden;
-      flex-wrap: nowrap;
       input,select{
         width: 100%;
         min-width: 100px;
