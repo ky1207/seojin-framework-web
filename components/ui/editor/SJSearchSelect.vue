@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import Utils from '~/api/utils'
+
 export default {
   props: {
     id: {
@@ -114,7 +116,11 @@ export default {
       this.validate()
     },
     async handleSearch (e) {
+      if (Utils.isEmpty(this.$refs.searchText.value)) {
+        return false
+      }
       const p = { [this.$props.param]: this.$refs.searchText.value }
+
       const result = await this.$axios.get(this.searchUrl, { params: p })
       this.options = result.data
       this.showOptions = true
