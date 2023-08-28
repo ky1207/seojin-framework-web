@@ -48,6 +48,9 @@
                   :options="MD_02"
                 />
               </SJFormField>
+              <SJFormField />
+              <SJFormField />
+              <SJFormField />
             </SJFormRow>
             <SJFormRow>
               <SJFormField label="이동전창고">
@@ -64,6 +67,8 @@
                   disabled
                 />
               </SJFormField>
+              <SJFormField />
+              <SJFormField />
             </SJFormRow>
             <SJFormRow>
               <SJFormField label="이동전품목">
@@ -72,6 +77,8 @@
               <SJFormField label="이동후품목">
                 TODO:SELECTINPUT
               </SJFormField>
+              <SJFormField />
+              <SJFormField />
             </SJFormRow>
             <SJFormRow>
               <SJFormField label="비고" style="width: 100%;">
@@ -103,7 +110,9 @@
 </template>
 
 <script>
+import SJFormField from '~/components/ui/common/SJFormField'
 export default {
+  components: { SJFormField },
   data () {
     return {
       search: {},
@@ -181,8 +190,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-form .sj-form-field fieldset{
-  width: 250px ;
-}
-</style>

@@ -170,8 +170,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-form .sj-form-field fieldset{
-  width: 250px ;
-}
-</style>
