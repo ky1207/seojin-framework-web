@@ -26,7 +26,7 @@
                 <SJInput id="coCode" v-model="inputData.CO_CODE" name="포장번호" rules="required" />
               </SJFormField>
               <SJFormField label="담당자">
-                <SJItemEditor id="search" name="search" />
+                <SJUserEditor id="user" name="user" />
               </SJFormField>
               <SJFormField label="포장일자">
                 <SJDatePicker
