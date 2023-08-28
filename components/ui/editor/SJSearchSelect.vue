@@ -208,8 +208,8 @@ export default {
   background-color: #fff;
   border: 1px solid #ccc;
   border-top: none;
-  max-height: 100px;
-  overflow-y: auto;
+  min-height: 50px;
+  overflow-y: scroll;
 }
 .SJSearchSelect-option {
   padding: 4px 8px;
