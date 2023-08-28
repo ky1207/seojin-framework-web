@@ -4,7 +4,7 @@
       품목정보등록
     </template>
     <template #button>
-      <button class="btn-gray-bg">
+      <button class="btn-blue-bg">
         저장
       </button>
       <button class="btn-gray-bg" @click="close">
@@ -55,6 +55,7 @@
                   :options="MD_03"
                 />
               </SJFormField>
+              <SJFormField />
             </SJFormRow>
           </SJForm>
           <SJForm>
@@ -76,6 +77,7 @@
                   <SJFormField label="CE!구분">
                     <SJInput id="md9" v-model="search.md9" name="CE!구분" rules="required|min_value:1" />
                   </SJFormField>
+                  <SJFormField />
                 </SJFormRow>
                 <SJFormRow>
                   <SJFormField label="REV번호">
@@ -91,6 +93,7 @@
                   <SJFormField label="크리티컬등급">
                     <SJInput id="md12" v-model="search.md12" name="크리티컬등급" />
                   </SJFormField>
+                  <SJFormField />
                 </SJFormRow>
                 <SJFormRow>
                   <SJFormField label="사진" style="width: 100%;">
@@ -110,6 +113,7 @@
                   <SJFormField label="TEST시간">
                     <SJInput id="md16" v-model="search.md16" name="TEST시간" />
                   </SJFormField>
+                  <SJFormField />
                 </SJFormRow>
                 <SJFormRow>
                   <SJFormField label="TEST임율">
@@ -118,6 +122,8 @@
                   <SJFormField label="Country of Origin">
                     <SJInput id="md18" v-model="search.md18" name="Country of Origin" />
                   </SJFormField>
+                  <SJFormField />
+                  <SJFormField />
                 </SJFormRow>
               </template>
               <template #tab-3>
@@ -172,6 +178,7 @@
                       :options="MD_07"
                     />
                   </SJFormField>
+                  <SJFormField />
                 </SJFormRow>
                 <SJFormRow>
                   <SJFormField label="선입선출">
@@ -188,6 +195,8 @@
                       :options="MD_02"
                     />
                   </SJFormField>
+                  <SJFormField />
+                  <SJFormField />
                 </SJFormRow>
               </template>
               <template #tab-5>
@@ -214,6 +223,7 @@
                       :options="MD_05"
                     />
                   </SJFormField>
+                  <SJFormField />
                 </SJFormRow>
                 <SJFormRow>
                   <SJFormField label="생산Gap(일)">
@@ -225,6 +235,7 @@
                   <SJFormField label="기준수량(S/T)">
                     <SJInput id="md33" v-model="search.md33" name="기준수량(S/T)" rules="required|min_value:1" />
                   </SJFormField>
+                  <SJFormField />
                 </SJFormRow>
                 <SJFormRow>
                   <SJFormField label="생산Gap(일)">
@@ -236,6 +247,7 @@
                   <SJFormField label="제조L/T(일)">
                     <SJInput id="md36" v-model="search.md36" name="제조L/T(일)" rules="required|min_value:1" />
                   </SJFormField>
+                  <SJFormField />
                 </SJFormRow>
                 <SJFormRow>
                   <SJFormField label="최소LOT수량">
@@ -247,6 +259,7 @@
                   <SJFormField label="안전재고">
                     <SJInput id="md39" v-model="search.md39" name="안전재고" />
                   </SJFormField>
+                  <SJFormField />
                 </SJFormRow>
                 <SJFormRow>
                   <SJFormField label="대상구분">
@@ -266,6 +279,7 @@
                   <SJFormField label="HS CODE">
                     <SJInput id="md42" v-model="search.md42" name="HS CODE" />
                   </SJFormField>
+                  <SJFormField />
                 </SJFormRow>
               </template>
               <template #tab-6>
@@ -284,6 +298,7 @@
                   <SJFormField label="입고필요일">
                     <SJInput id="md45" v-model="search.md45" name="입고필요일" />
                   </SJFormField>
+                  <SJFormField />
                 </SJFormRow>
                 <SJFormRow>
                   <SJFormField label="구매조직">
@@ -292,17 +307,19 @@
                   <SJFormField label="초품여부">
                     <SJInput id="md47" v-model="search.md47" name="초품여부" />
                   </SJFormField>
+                  <SJFormField />
+                  <SJFormField />
                 </SJFormRow>
               </template>
               <template #tab-7>
                 <SJTitle title="기타" />
                 <SJFormRow>
-                  <SJFormField label="비고" style="width: 100%;">
+                  <SJFormField label="비고">
                     <SJTextarea id="md48" name="비고" />
                   </SJFormField>
                 </SJFormRow>
                 <SJFormRow>
-                  <SJFormField label="파일첨부" style="width: 100%;">
+                  <SJFormField label="파일첨부">
                     <SJFileUpload2 id="md48" name="파일첨부" />
                   </SJFormField>
                 </SJFormRow>
@@ -317,6 +334,8 @@
 
 <script>
 export default {
+  components: {},
+
   data () {
     return {
       search: {},
@@ -502,8 +521,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-form .sj-form-field fieldset{
-  width: 250px ;
-}
-</style>
