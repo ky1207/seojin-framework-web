@@ -114,7 +114,7 @@ export default {
       this.validate()
     },
     async handleSearch (e) {
-      const p = { [this.$props.param]: e.value }
+      const p = { [this.$props.param]: this.$refs.searchText.value }
       const result = await this.$axios.get(this.searchUrl, { params: p })
       this.options = result.data
       this.showOptions = true
