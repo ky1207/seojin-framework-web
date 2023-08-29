@@ -56,13 +56,18 @@
                   :options="MD_03"
                 />
               </SJFormField>
-
+              <SJFormField />
+              <SJFormField />
+            </SJFormRow>
+            <SJFormRow>
               <SJFormField label="이동전품목">
-                TODO:SELECTINPUT
+                <SJItemEditor id="before" name="before" />
               </SJFormField>
               <SJFormField label="이동후품목">
-                TODO:SELECTINPUT
+                <SJItemEditor id="after" name="after" />
               </SJFormField>
+              <SJFormField />
+              <SJFormField />
             </SJFormRow>
             <SJFormRow>
               <SJFormField label="비고" style="width: 100%;">
