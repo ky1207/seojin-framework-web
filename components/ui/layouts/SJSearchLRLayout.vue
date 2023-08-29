@@ -7,7 +7,7 @@
     <SJSearch v-if="!disabledSearch">
       <slot />
     </SJSearch>
-    <div class="contents row d-flex" style="flex-wrap: nowrap">
+    <div class="contents d-flex" style="flex-wrap: nowrap">
       <Splitpanes class="default-theme" @resize="onResize">
         <Pane :size="leftSize" min-size="30">
           <div ref="autoHeight" class="left-contents" autoHeight>
