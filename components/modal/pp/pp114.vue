@@ -15,43 +15,47 @@
       </button>
     </template>
     <template #default>
-      <SJForm ref="form">
-        <SJFormRow>
-          <SJFormField label="회사">
-            <SJSelect id="searchCoType" name="회사" :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]" rules="required" />
-          </SJFormField>
-          <SJFormField label="창고">
-            <SJSelect
-              id="md4"
-              name="창고"
-              :options="[{text: '반도체원자재(화성)',value: '반도체원자재(화성)'},{text: '반도체재공(화성)',value: '반도체재공(화성)'}]"
-              rules="required"
-            />
-          </SJFormField>
-          <SJFormField label="LOT">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="품명" rules="required" />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="비고" style="width: 100%;">
-            <SJTextarea
-              id="textarea"
-              v-model="inputData.content"
-              name="textarea"
-            />
-          </SJFormField>
-        </SJFormRow>
+      <SJOneLayout disabled-navigator-wrap>
+        <template #title>
+          <SJTitle title="등록" />
+        </template>
+        <SJForm ref="form">
+          <SJFormRow>
+            <SJFormField label="회사">
+              <SJSelect id="searchCoType" name="회사" :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]" rules="required" />
+            </SJFormField>
+            <SJFormField label="창고">
+              <SJSelect
+                id="md4"
+                name="창고"
+                :options="[{text: '반도체원자재(화성)',value: '반도체원자재(화성)'},{text: '반도체재공(화성)',value: '반도체재공(화성)'}]"
+                rules="required"
+              />
+            </SJFormField>
+            <SJFormField label="LOT">
+              <SJInput id="coCode" v-model="inputData.CO_CODE" name="품명" rules="required" />
+            </SJFormField>
+            <SJFormField />
+          </SJFormRow>
+          <SJFormRow>
+            <SJFormField label="비고">
+              <SJTextarea
+                id="textarea"
+                v-model="inputData.content"
+                name="textarea"
+              />
+            </SJFormField>
+          </SJFormRow>
+        </SJForm>
 
         <SJTitle title="상세정보">
-          <button class="btn-blue-bg" @click="rowDel">
+          <button class="btn-white-bg" @click="rowDel">
             삭제
           </button>
         </SJTitle>
         <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
-      </SJForm>
+      </SJOneLayout>
     </template>
-
-    <template #footer />
   </SJModal>
 </template>
 

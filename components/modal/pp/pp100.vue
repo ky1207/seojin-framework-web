@@ -67,6 +67,7 @@
               <SJFormField label="외주거래처">
                 <SJInput id="searchCoCode" v-model="search.coCode" name="searchCoCode" />
               </SJFormField>
+              <SJFormField />
             </SJFormRow>
             <SJFormRow>
               <SJFormField label="자재출고창고">
@@ -98,7 +99,7 @@
                 />
               </SJFormField>
             </SJFormRow>
-          </sjform>
+          </SJForm>
           <SJTab :list="tabList">
             <template #tab-1>
               <SJTitle title="목록">
@@ -109,7 +110,7 @@
                   삭제
                 </button>
               </SJTitle>
-              <SJGrid ref="grid_tab1" v-model="grid_tab1.data" :columns="grid_tab1.columns" />
+              <SJGrid ref="grid_tab1" v-model="grid_tab1.data" :columns="grid_tab1.columns" :options="grid_tab1.options" />
             </template>
             <template #tab-2>
               <SJTitle title="목록">
@@ -120,7 +121,7 @@
                   삭제
                 </button>
               </SJTitle>
-              <SJGrid ref="grid_tab2" v-model="grid_tab2.data" :columns="grid_tab2.columns" />
+              <SJGrid ref="grid_tab2" v-model="grid_tab2.data" :columns="grid_tab2.columns" :options="grid_tab2.options" />
             </template>
             <template #tab-3>
               <SJTitle title="목록">
@@ -131,7 +132,7 @@
                   삭제
                 </button>
               </SJTitle>
-              <SJGrid ref="grid_tab3" v-model="grid_tab3.data" :columns="grid_tab3.columns" />
+              <SJGrid ref="grid_tab3" v-model="grid_tab3.data" :columns="grid_tab3.columns" :options="grid_tab3.options" />
             </template>
           </SJtab>
         </template>
@@ -157,7 +158,10 @@ export default {
           { name: '최대인원(수)', width: 100 },
           { name: 'CAPA선정구분', width: 100 },
           { name: '사용여부', width: 100 }
-        ]
+        ],
+        options: {
+          bodyHeight: 300
+        }
       },
       grid_tab2: {
         data: {},
@@ -165,7 +169,10 @@ export default {
           { name: '설비코드', width: 100 },
           { name: '설비명', width: 120 },
           { name: '사용여부', width: 100 }
-        ]
+        ],
+        options: {
+          bodyHeight: 300
+        }
       },
       grid_tab3: {
         data: {},
@@ -173,7 +180,10 @@ export default {
           { name: '작업자ID', width: 100 },
           { name: '작업자명', width: 120 },
           { name: '사용여부', width: 200 }
-        ]
+        ],
+        options: {
+          bodyHeight: 300
+        }
       },
       tabList: [
         { id: 1, title: '워크센터별라인' },

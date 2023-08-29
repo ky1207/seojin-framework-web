@@ -9,7 +9,7 @@
       </button>
     </template>
     <template #default>
-      <SJForm ref="form">
+      <SJOneLayout disabled-navigator-wrap>
         <SJTitle title="BOM" />
         <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
         <SJTitle title="자재재고현황">
@@ -27,7 +27,7 @@
           </button>
         </SJTitle>
         <SJGrid ref="grid3" v-model="grid3.data" :columns="grid3.columns" :options="grid3.options" />
-      </SJForm>
+      </SJOneLayout>
     </template>
   </SJModal>
 </template>

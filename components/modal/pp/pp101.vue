@@ -43,6 +43,7 @@
                   rules="required"
                 />
               </SJFormField>
+              <SJFormField />
             </SJFormRow>
             <SJFormRow>
               <SJFormField label="공정코드">
@@ -58,8 +59,9 @@
                   :options="[{text: '사용함',value: '사용함'},{text: '사용안함',value: '사용안함'}]"
                 />
               </SJFormField>
+              <SJFormField />
             </SJFormRow>
-          </sjform>
+          </SJForm>
           <SJTab :list="tabList">
             <template #tab-1>
               <SJTitle title="목록">
@@ -70,7 +72,7 @@
                   삭제
                 </button>
               </SJTitle>
-              <SJGrid ref="grid_tab1" v-model="grid_tab1.data" :columns="grid_tab1.columns" />
+              <SJGrid ref="grid_tab1" v-model="grid_tab1.data" :columns="grid_tab1.columns" :options="grid_tab1.options" />
             </template>
             <template #tab-2>
               <SJTitle title="목록">
@@ -81,7 +83,7 @@
                   삭제
                 </button>
               </SJTitle>
-              <SJGrid ref="grid_tab2" v-model="grid_tab2.data" :columns="grid_tab2.columns" />
+              <SJGrid ref="grid_tab2" v-model="grid_tab2.data" :columns="grid_tab2.columns" :options="grid_tab2.options" />
             </template>
           </SJtab>
         </template>
@@ -104,7 +106,10 @@ export default {
           { name: '비가동명', width: 120 },
           { name: '비고', width: 300 },
           { name: '사용여부', width: 100 }
-        ]
+        ],
+        options: {
+          bodyHeight: 400
+        }
       },
       grid_tab2: {
         data: {},
@@ -113,7 +118,10 @@ export default {
           { name: '불량명', width: 120 },
           { name: '비고', width: 300 },
           { name: '사용여부', width: 100 }
-        ]
+        ],
+        options: {
+          bodyHeight: 400
+        }
       },
       tabList: [
         { id: 1, title: '공정별비가동' },

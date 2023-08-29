@@ -12,65 +12,71 @@
       </button>
     </template>
     <template #default>
-      <SJForm ref="form">
-        <SJTitle title="품목정보" />
-        <SJFormRow>
-          <SJFormField label="회사">
-            <SJSelect id="searchCoType" name="회사" :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]" rules="required" />
-          </SJFormField>
-          <SJFormField label="품목코드">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="품목코드" rules="required" />
-          </SJFormField>
-          <SJFormField label="품명">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="품명" rules="required" />
-          </SJFormField>
-          <SJFormField label="규격">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="규격" rules="required" />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="품목유형">
-            <SJSelect
-              id="md4"
-              name="품목유형"
-              :options="[{text: '제품',value: '제품'},{text: '반제품',value: '반제품'},{text: '원재료',value: '원재료'}]"
-              rules="required"
-            />
-          </SJFormField>
-          <SJFormField label="기준단위">
-            <SJSelect
-              id="md4"
-              name="기준단위"
-              :options="[{text: 'EA',value: 'EA'}]"
-              rules="required"
-            />
-          </SJFormField>
-          <SJFormField />
-          <SJFormField />
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="비고">
-            <SJTextarea
-              id="textarea"
-              v-model="inputData.content"
-              name="textarea"
-            />
-          </SJFormField>
-        </SJFormRow>
+      <SJOneLayout disabled-navigator-wrap>
+        <template #title>
+          <SJTitle title="품목정보" />
+        </template>
+        <template #default>
+          <SJForm ref="form">
+            <SJFormRow>
+              <SJFormField label="회사">
+                <SJSelect id="searchCoType" name="회사" :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]" rules="required" />
+              </SJFormField>
+              <SJFormField label="품목코드">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="품목코드" rules="required" />
+              </SJFormField>
+              <SJFormField label="품명">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="품명" rules="required" />
+              </SJFormField>
+              <SJFormField label="규격">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="규격" rules="required" />
+              </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField label="품목유형">
+                <SJSelect
+                  id="md4"
+                  name="품목유형"
+                  :options="[{text: '제품',value: '제품'},{text: '반제품',value: '반제품'},{text: '원재료',value: '원재료'}]"
+                  rules="required"
+                />
+              </SJFormField>
+              <SJFormField label="기준단위">
+                <SJSelect
+                  id="md4"
+                  name="기준단위"
+                  :options="[{text: 'EA',value: 'EA'}]"
+                  rules="required"
+                />
+              </SJFormField>
+              <SJFormField />
+              <SJFormField />
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField label="비고">
+                <SJTextarea
+                  id="textarea"
+                  v-model="inputData.content"
+                  name="textarea"
+                />
+              </SJFormField>
+            </SJFormRow>
+          </SJForm>
 
-        <SJTitle title="BOM">
-          <button class="btn-blue-bg" @click="bomCopy">
-            타제품BOM복사
-          </button>
-          <button class="btn-blue-bg" @click="itemSet">
-            품목적용
-          </button>
-          <button class="btn-blue-bg" @click="rowDel">
-            삭제
-          </button>
-        </SJTitle>
-        <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
-      </SJForm>
+          <SJTitle title="BOM">
+            <button class="btn-blue-bg" @click="bomCopy">
+              타제품BOM복사
+            </button>
+            <button class="btn-blue-bg" @click="itemSet">
+              품목적용
+            </button>
+            <button class="btn-white-bg" @click="rowDel">
+              삭제
+            </button>
+          </SJTitle>
+          <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
+        </template>
+      </SJOneLayout>
     </template>
   </SJModal>
 </template>

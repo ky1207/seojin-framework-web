@@ -50,6 +50,8 @@
                   rules="required"
                 />
               </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
               <SJFormField label="예시일자">
                 <SJDatePicker
                   id="sentStartDtm"
@@ -60,8 +62,6 @@
                   rules="required"
                 />
               </SJFormField>
-            </SJFormRow>
-            <SJFormRow>
               <SJFormField label="휴일여부">
                 <SJSelect
                   id="md5"
@@ -83,6 +83,8 @@
                   :options="[{text: '적용',value: '적용'},{text: '미적용',value: '미적용'}]"
                 />
               </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
               <SJFormField label="올림수">
                 <SJSelect
                   id="md5"
@@ -90,8 +92,11 @@
                   :options="[{text: '적용',value: '적용'},{text: '미적용',value: '미적용'}]"
                 />
               </SJFormField>
+              <SJFormField />
+              <SJFormField />
+              <SJFormField />
             </SJFormRow>
-          </sjform>
+          </SJForm>
           <SJTab :list="tabList">
             <template #tab-1>
               <SJTitle title="목록" />

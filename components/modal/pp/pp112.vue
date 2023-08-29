@@ -43,8 +43,9 @@
                   rules="required"
                 />
               </SJFormField>
+              <SJFormField />
             </SJFormRow>
-          </sjform>
+          </SJForm>
           <SJTitle title="MRP생성목록" />
           <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
         </template>

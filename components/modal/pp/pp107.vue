@@ -4,7 +4,7 @@
       제품별공정절차 일괄등록
     </template>
     <template #button>
-      <button class="btn-blue-bg" @click="save()">
+      <button class="btn-white-bg" @click="save()">
         조회
       </button>
       <button class="btn-blue-bg" @click="save()">
@@ -15,49 +15,46 @@
       </button>
     </template>
     <template #default>
-      <SJForm ref="form">
-        <SJTitle title="품목정보" />
-        <SJFormRow>
-          <SJFormField label="회사">
-            <SJSelect id="searchCoType" name="회사" :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]" rules="required" />
-          </SJFormField>
-          <SJFormField label="품목유형">
+      <SJSearchOneLayout disabled-navigator-wrap>
+        <template #default>
+          <SJSearchField label="회사">
+            <SJSelect id="searchCoType" name="회사" :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]" />
+          </SJSearchField>
+          <SJSearchField label="품목유형">
             <SJSelect
               id="md4"
               name="품목유형"
               :options="[{text: '제품',value: '제품'},{text: '반제품',value: '반제품'},{text: '원재료',value: '원재료'}]"
-              rules="required"
             />
-          </SJFormField>
-          <SJFormField label="품목분류">
+          </SJSearchField>
+          <SJSearchField label="품목분류">
             <SJItemCategory id="search2" name="search2" />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="품목">
+          </SJSearchField>
+          <SJSearchField label="품목">
             <SJInput id="searchCoCode" v-model="search.searchCoCode" name="searchCoCode" />
-          </SJFormField>
-          <SJFormField label="라우팅코드">
+          </SJSearchField>
+          <SJSearchField label="라우팅코드">
             <SJInput id="searchCoCode" v-model="search.searchCoCode" name="searchCoCode" />
-          </SJFormField>
-          <SJFormField label="생성일">
+          </SJSearchField>
+          <SJSearchField label="생성일">
             <SJPeriodSearch id="md2" name="md2" />
-          </SJFormField>
-        </SJFormRow>
-
-        <SJTitle title="BOM">
-          <button class="btn-blue-bg" @click="validation">
-            VALIDATION
-          </button>
-          <button class="btn-blue-bg" @click="rowAdd">
-            추가
-          </button>
-          <button class="btn-blue-bg" @click="rowDel">
-            삭제
-          </button>
-        </SJTitle>
-        <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
-      </SJForm>
+          </SJSearchField>
+        </template>
+        <template #body>
+          <SJTitle title="BOM">
+            <button class="btn-blue-bg" @click="validation">
+              VALIDATION
+            </button>
+            <button class="btn-white-bg" @click="rowAdd">
+              추가
+            </button>
+            <button class="btn-white-bg" @click="rowDel">
+              삭제
+            </button>
+          </SJTitle>
+          <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
+        </template>
+      </SJSearchOneLayout>
     </template>
   </SJModal>
 </template>

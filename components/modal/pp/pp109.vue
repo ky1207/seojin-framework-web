@@ -12,62 +12,67 @@
       </button>
     </template>
     <template #default>
-      <SJForm ref="form">
-        <SJFormRow>
-          <SJFormField label="회사">
-            <SJSelect id="searchCoType" name="회사" :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]" rules="required" />
-          </SJFormField>
-          <SJFormField label="라우팅명">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="라우팅명" rules="required" />
-          </SJFormField>
-          <SJFormField label="품목코드">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="품목코드" rules="required" />
-          </SJFormField>
-          <SJFormField label="품명">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="품명" rules="required" />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="규격">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="규격" rules="required" />
-          </SJFormField>
-          <SJFormField label="품목유형">
-            <SJSelect
-              id="md1"
-              name="품목유형"
-              :options="[{text: '제품',value: '제품'},{text: '반제품',value: '반제품'},{text: '원료',value: '원료'}]"
-              rules="required"
-            />
-          </SJFormField>
-          <SJFormField label="기준단위">
-            <SJSelect
-              id="md4"
-              name="기준단위"
-              :options="[{text: 'EA',value: 'EA'},{text: 'L',value: 'L'}]"
-              rules="required"
-            />
-          </SJFormField>
-          <SJFormField label="지시수량">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="지시수량" rules="required" />
-          </SJFormField>
-        </SJFormRow>
+      <SJOneLayout disabled-navigator-wrap>
+        <template #title>
+          <SJTitle title="등록" />
+        </template>
+        <template #default>
+          <SJForm ref="form">
+            <SJFormRow>
+              <SJFormField label="회사">
+                <SJSelect id="searchCoType" name="회사" :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]" rules="required" />
+              </SJFormField>
+              <SJFormField label="라우팅명">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="라우팅명" rules="required" />
+              </SJFormField>
+              <SJFormField label="품목코드">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="품목코드" rules="required" />
+              </SJFormField>
+              <SJFormField label="품명">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="품명" rules="required" />
+              </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField label="규격">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="규격" rules="required" />
+              </SJFormField>
+              <SJFormField label="품목유형">
+                <SJSelect
+                  id="md1"
+                  name="품목유형"
+                  :options="[{text: '제품',value: '제품'},{text: '반제품',value: '반제품'},{text: '원료',value: '원료'}]"
+                  rules="required"
+                />
+              </SJFormField>
+              <SJFormField label="기준단위">
+                <SJSelect
+                  id="md4"
+                  name="기준단위"
+                  :options="[{text: 'EA',value: 'EA'},{text: 'L',value: 'L'}]"
+                  rules="required"
+                />
+              </SJFormField>
+              <SJFormField label="지시수량">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="지시수량" rules="required" />
+              </SJFormField>
+            </SJFormRow>
+          </SJForm>
 
-        <SJTitle title="공정" />
-        <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
+          <SJTitle title="공정" />
+          <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
 
-        <SJTitle title="공정BOM">
-          <button class="btn-blue-bg" @click="itemPop">
-            품목적용
-          </button>
-          <button class="btn-white-bg" @click="rowDel">
-            삭제
-          </button>
-        </SJTitle>
-        <SJGrid ref="grid" v-model="grid2.data" :columns="grid2.columns" :options="grid2.options" />
-      </SJForm>
+          <SJTitle title="공정BOM">
+            <button class="btn-blue-bg" @click="itemPop">
+              품목적용
+            </button>
+            <button class="btn-white-bg" @click="rowDel">
+              삭제
+            </button>
+          </SJTitle>
+          <SJGrid ref="grid" v-model="grid2.data" :columns="grid2.columns" :options="grid2.options" />
+        </template>
+      </SJOneLayout>
     </template>
-
-    <template #footer />
   </SJModal>
 </template>
 
@@ -91,7 +96,8 @@ export default {
       grid: {
         data: {},
         options: {
-          rowHeaders: ['checkbox', 'rowNum']
+          rowHeaders: ['checkbox', 'rowNum'],
+          bodyHeight: 150
         },
         columns: [
           { name: '공정#', width: 100 },
@@ -108,7 +114,8 @@ export default {
       grid2: {
         data: {},
         options: {
-          rowHeaders: ['checkbox', 'rowNum']
+          rowHeaders: ['checkbox', 'rowNum'],
+          bodyHeight: 150
         },
         columns: [
           { name: '공정#', width: 100 },

@@ -31,21 +31,25 @@
               <SJFormField label="MRP실행번호">
                 <SJInput id="coCode" v-model="inputData.CO_CODE" name="MRP실행번호" rules="required" />
               </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
               <SJFormField label="생산계획번호">
                 <SJInput id="coCode" v-model="inputData.CO_CODE" name="생산계획번호" rules="required" />
               </SJFormField>
+              <SJFormField />
+              <SJFormField />
+              <SJFormField />
             </SJFormRow>
-
-            <SJTitle title="FCID별 요청등록정보">
-              <button class="btn-blue-bg" @click="itemSet">
-                품목적용
-              </button>
-              <button class="btn-blue-bg" @click="rowDel">
-                삭제
-              </button>
-            </SJTitle>
-            <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
           </SJForm>
+          <SJTitle title="FCID별 요청등록정보">
+            <button class="btn-blue-bg" @click="itemSet">
+              품목적용
+            </button>
+            <button class="btn-white-bg" @click="rowDel">
+              삭제
+            </button>
+          </SJTitle>
+          <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
         </template>
       </SJOneLayout>
     </template>
@@ -72,7 +76,7 @@ export default {
         data: {},
         options: {
           rowHeaders: ['checkbox', 'rowNum'],
-          bodyHeight: 250
+          bodyHeight: 400
         },
         columns: [
           { name: '품목유형', width: 100 },
@@ -126,9 +130,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-form .sj-form-field fieldset{
-  width: 250px ;
-}
-</style>

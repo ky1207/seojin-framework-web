@@ -23,7 +23,7 @@
             <SJSelect
               id="searchCompany"
               name=""
-              :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]"
+              :options="[{text: '서진본사',value: ''},{text: '서진베트남',value: '서진베트남'}]"
               disabled-validation
               disabled-first-message
             />
@@ -32,7 +32,7 @@
             <SJSelect
               id="searchCompany"
               name=""
-              :options="[{text: '전체',value: '전체'},{text: '제품',value: '제품'},{text: '반제품',value: '반제품'}]"
+              :options="[{text: '전체',value: ''},{text: '제품',value: '제품'},{text: '반제품',value: '반제품'}]"
               disabled-validation
               disabled-first-message
             />
