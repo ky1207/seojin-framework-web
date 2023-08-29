@@ -12,62 +12,69 @@
       </button>
     </template>
     <template #default>
-      <SJForm ref="form">
-        <SJFormRow>
-          <SJFormField label="회사">
-            <SJSelect id="searchCoType" name="회사" :options="common.USE_YN" rules="required" />
-          </SJFormField>
-          <SJFormField label="요청자">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="요청자" rules="required" />
-          </SJFormField>
-          <SJFormField label="요청번호">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="요청번호" rules="required" />
-          </SJFormField>
-          <SJFormField label="등록일">
-            <SJDatePicker
-              id="sentStartDtm"
-              v-model="inputData.sentStartDtm"
-              name="등록일"
-              show-current="true"
-              disabled-validation
-              rules="required"
-            />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="비고">
-            <SJTextarea
-              id="textarea"
-              v-model="inputData.content"
-              name="textarea"
-            />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="등록일시">
-            2023-07-20 18:00:00
-          </SJFormField>
-          <SJFormField label="등록자">
-            홍길동
-          </SJFormField>
-          <SJFormField label="수정일시">
-            2023-07-20 18:00:00
-          </SJFormField>
-          <SJFormField label="수정자">
-            홍길동
-          </SJFormField>
-        </SJFormRow>
+      <SJOneLayout disabled-navigator-wrap>
+        <template #title>
+          <SJTitle title="등록" />
+        </template>
+        <template #default>
+          <SJForm ref="form">
+            <SJFormRow>
+              <SJFormField label="회사">
+                <SJSelect id="searchCoType" name="회사" :options="common.USE_YN" rules="required" />
+              </SJFormField>
+              <SJFormField label="요청자">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="요청자" rules="required" />
+              </SJFormField>
+              <SJFormField label="요청번호">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="요청번호" rules="required" />
+              </SJFormField>
+              <SJFormField label="등록일">
+                <SJDatePicker
+                  id="sentStartDtm"
+                  v-model="inputData.sentStartDtm"
+                  name="등록일"
+                  show-current="true"
+                  disabled-validation
+                  rules="required"
+                />
+              </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField label="비고">
+                <SJTextarea
+                  id="textarea"
+                  v-model="inputData.content"
+                  name="textarea"
+                />
+              </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField label="등록일시">
+                2023-07-20 18:00:00
+              </SJFormField>
+              <SJFormField label="등록자">
+                홍길동
+              </SJFormField>
+              <SJFormField label="수정일시">
+                2023-07-20 18:00:00
+              </SJFormField>
+              <SJFormField label="수정자">
+                홍길동
+              </SJFormField>
+            </SJFormRow>
+          </SJForm>
 
-        <SJTitle title="상세정보">
-          <button class="btn-white-bg" @click="bomApply">
-            품목정보 적용
-          </button>
-          <button class="btn-white-bg" @click="rowDel">
-            삭제
-          </button>
-        </SJTitle>
-        <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
-      </SJForm>
+          <SJTitle title="상세정보">
+            <button class="btn-white-bg" @click="bomApply">
+              품목정보 적용
+            </button>
+            <button class="btn-white-bg" @click="rowDel">
+              삭제
+            </button>
+          </SJTitle>
+          <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
+        </template>
+      </SJOneLayout>
     </template>
   </SJModal>
 </template>

@@ -8,49 +8,44 @@
       <button class="btn-white-bg">
         조회
       </button>
-      <button class="btn-white-bg">
+      <button class="btn-blue-bg">
         적용
       </button>
-      <button class="btn-gray-bg" @click="close">
+      <button class="btn-white-bg" @click="close">
         닫기
       </button>
     </template>
     <template #default>
-      <SJOneLayout disabled-navigator-wrap>
-        <template #title>
-          <SJTitle title="등록" />
-        </template>
+      <SJSearchOneLayout disabled-navigator-wrap>
         <template #default>
-          <SJForm>
-            <SJFormRow>
-              <SJFormField label="회사">
-                <SJSelect
-                  id="searchCompany"
-                  name=""
-                  :options="common.USE_YN"
-                  disabled-validation
-                  disabled-first-message
-                />
-              </SJFormField>
-              <SJFormField label="품목">
-                <SJInput id="searchCoCode" v-model="search.coCode" name="searchCoCode" />
-              </SJFormField>
-              <SJFormField label="등록일">
-                <SJPeriodSearch
-                  id="sentStartDtm"
-                  name="등록일"
-                />
-              </SJFormField>
-            </SJFormRow>
-          </SJForm>
+          <SJSearchField label="회사">
+            <SJSelect
+              id="searchCompany"
+              name=""
+              :options="common.USE_YN"
+              disabled-validation
+              disabled-first-message
+            />
+          </SJSearchField>
+          <SJSearchField label="품목">
+            <SJInput id="searchCoCode" v-model="search.coCode" name="searchCoCode" />
+          </SJSearchField>
+          <SJSearchField label="등록일">
+            <SJPeriodSearch
+              id="sentStartDtm"
+              name="등록일"
+            />
+          </SJSearchField>
+        </template>
+        <template #body>
           <SJTitle title="구매요청목록">
             <button class="btn-white-bg">
               그룹생성
             </button>
           </SJTitle>
-          <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" />
+          <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
         </template>
-      </SJOneLayout>
+      </SJSearchOneLayout>
     </template>
   </SJModal>
 </template>
@@ -75,7 +70,8 @@ export default {
       grid: {
         data: {},
         options: {
-          rowHeaders: ['checkbox', 'rowNum']
+          rowHeaders: ['checkbox', 'rowNum'],
+          bodyHeight: 400
         },
         columns: [
           { name: '요청일자', width: 100 },
@@ -124,9 +120,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-form .sj-form-field fieldset{
-  width: 300px ;
-}
-</style>

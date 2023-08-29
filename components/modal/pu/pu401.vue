@@ -50,8 +50,7 @@
                 <SJSelect id="searchCoType" name="부가세적용" :options="common.USE_YN" rules="required" />
               </SJFormField>
               <SJFormField label="통화">
-                <SJInput id="coCode" v-model="inputData.CO_CODE" name="통화" rules="required" />
-                <SJSelect id="searchCoType" name="통화" :options="common.USE_YN" rules="required" />
+                <SJSelectInput id="searchCoType" name="searchCoType" />
               </SJFormField>
             </SJFormRow>
             <SJFormRow>
@@ -77,25 +76,26 @@
                 홍길동
               </SJFormField>
             </SJFormRow>
-
-            <SJTitle title="상세정보">
-              납품창고
-              <SJSelect id="searchCoType" name="회사" :options="common.USE_YN" />
-              <button class="btn-white-bg" @click="blocApply">
-                일괄적용
-              </button>
-              <button class="btn-white-bg" @click="orderApply">
-                발주적용
-              </button>
-              <button class="btn-white-bg" @click="scmApply">
-                SCM적용
-              </button>
-              <button class="btn-white-bg" @click="rowDel">
-                삭제
-              </button>
-            </SJTitle>
-            <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
           </SJForm>
+          <SJTitle title="상세정보">
+            <div style="display:flex; margin-right: 5px;">
+              납품창고:
+              <SJSelect id="searchCoType" name="회사" :options="common.USE_YN" />
+            </div>
+            <button class="btn-white-bg" @click="blocApply">
+              일괄적용
+            </button>
+            <button class="btn-white-bg" @click="orderApply">
+              발주적용
+            </button>
+            <button class="btn-white-bg" @click="scmApply">
+              SCM적용
+            </button>
+            <button class="btn-white-bg" @click="rowDel">
+              삭제
+            </button>
+          </SJTitle>
+          <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
         </template>
       </SJOneLayout>
     </template>
@@ -122,7 +122,7 @@ export default {
         data: {},
         options: {
           rowHeaders: ['checkbox', 'rowNum'],
-          bodyHeight: 250
+          bodyHeight: 300
         },
         columns: [
           { name: '품목유형', width: 100 },

@@ -7,16 +7,19 @@
       <button class="btn-blue-bg" @click="reg">
         저장
       </button>
-      <button class="btn-gray-bg" @click="del">
+      <button class="btn-white-bg" @click="del">
         삭제
       </button>
-      <button class="btn-gray-bg" @click="close">
+      <button class="btn-white-bg" @click="close">
         닫기
       </button>
     </template>
     <template #default>
-      <SJSearchLRLayout disabled-navigator-wrap>
-        <template #default>
+      <SJSearchTLRLayout disabled-navigator-wrap disabled-search>
+        <template #topTitle>
+          <SJTitle title="등록" />
+        </template>
+        <template #top>
           <SJForm ref="form">
             <SJFormRow>
               <SJFormField label="회사">
@@ -95,7 +98,7 @@
         <template #left>
           <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
         </template>
-        <template #rightTitle>
+        <template #rightTitle1>
           <SJTitle title="불량내역">
             <button class="btn-white-bg" @click="poorReg">
               불량적용
@@ -108,10 +111,10 @@
             </button>
           </SJTitle>
         </template>
-        <template #right>
+        <template #right1>
           <SJGrid ref="grid" v-model="grid2.data" :columns="grid2.columns" :options="grid2.options" />
         </template>
-      </SJSearchLRLayout>
+      </SJSearchTLRLayout>
     </template>
   </SJModal>
 </template>

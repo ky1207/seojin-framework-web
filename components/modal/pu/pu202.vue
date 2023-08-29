@@ -11,7 +11,7 @@
       <button class="btn-blue-bg">
         저장
       </button>
-      <button class="btn-gray-bg" @click="close">
+      <button class="btn-white-bg" @click="close">
         닫기
       </button>
     </template>

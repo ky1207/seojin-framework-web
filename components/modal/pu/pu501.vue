@@ -50,17 +50,19 @@
                 <SJSelect id="searchCoType" name="부가세적용" :options="common.USE_YN" rules="required" />
               </SJFormField>
               <SJFormField label="통화">
-                <SJInput id="coCode" v-model="inputData.CO_CODE" name="통화" rules="required" />
-                <SJSelect id="searchCoType" name="통화" :options="common.USE_YN" rules="required" />
+                <SJSelectInput id="searchCoType" name="searchCoType" />
               </SJFormField>
             </SJFormRow>
             <SJFormRow>
               <SJFormField label="입고유형">
                 <SJSelect id="searchCoType" name="통화" :options="common.USE_YN" rules="required" />
               </SJFormField>
+              <SJFormField />
+              <SJFormField />
+              <SJFormField />
             </SJFormRow>
             <SJFormRow>
-              <SJFormField label="비고" style="width: 100%;">
+              <SJFormField label="비고">
                 <SJTextarea
                   id="textarea"
                   v-model="inputData.content"
@@ -82,17 +84,17 @@
                 홍길동
               </SJFormField>
             </SJFormRow>
-
-            <SJTitle title="상세정보">
-              <button class="btn-white-bg" @click="blocApply">
-                구매납품적용
-              </button>
-              <button class="btn-white-bg" @click="rowDel">
-                삭제
-              </button>
-            </SJTitle>
-            <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
           </SJForm>
+
+          <SJTitle title="상세정보">
+            <button class="btn-white-bg" @click="blocApply">
+              구매납품적용
+            </button>
+            <button class="btn-white-bg" @click="rowDel">
+              삭제
+            </button>
+          </SJTitle>
+          <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
         </template>
       </SJOneLayout>
     </template>
@@ -190,9 +192,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-form .sj-form-field fieldset{
-  width: 250px ;
-}
-</style>
