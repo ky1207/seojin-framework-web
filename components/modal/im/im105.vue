@@ -54,11 +54,11 @@
               <SJFormField />
             </SJFormRow>
             <SJFormRow>
-              <SJFormField label="비고" style="width: 100%;">
+              <SJFormField label="비고">
                 <SJTextarea id="md5" name="비고" />
               </SJFormField>
             </SJFormRow>
-          </sjform>
+          </SJForm>
           <SJTitle title="실사 상세">
             <button class="btn-blue-bg">
               LOT적용
@@ -87,8 +87,6 @@
 
 <script>
 export default {
-  components: {},
-
   data () {
     return {
       search: {},

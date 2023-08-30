@@ -30,7 +30,6 @@
                   id="md3"
                   name="품목유형"
                   :options="MD_01"
-                  class="md-select"
                 />
               </SJFormField>
               <SJFormField label="품목분류">
@@ -57,9 +56,7 @@
               </SJFormField>
               <SJFormField />
             </SJFormRow>
-          </SJForm>
-          <SJForm>
-            <SJTab :list="tabList">
+            <SJTab :list="tabList" style="height: 400px;">
               <template #tab-1>
                 <SJTitle title="표준항목" />
                 <SJFormRow>
@@ -96,7 +93,7 @@
                   <SJFormField />
                 </SJFormRow>
                 <SJFormRow>
-                  <SJFormField label="사진" style="width: 100%;">
+                  <SJFormField label="사진">
                     <SJTextarea id="md13" name="사진" />
                   </SJFormField>
                 </SJFormRow>
@@ -135,7 +132,6 @@
                   <SJFormField label="입고검사">
                     <SJSelect
                       id="md20"
-                      class="md-select"
                       name="입고검사"
                       :options="MD_05"
                     />
@@ -143,7 +139,6 @@
                   <SJFormField label="검사방법(출하)">
                     <SJSelect
                       id="md21"
-                      class="md-select"
                       name="검사방법(출하)"
                       :options="MD_06"
                     />
@@ -151,7 +146,6 @@
                   <SJFormField label="출하검사">
                     <SJSelect
                       id="md22"
-                      class="md-select"
                       name="출하검사"
                       :options="MD_05"
                     />
@@ -324,8 +318,8 @@
                   </SJFormField>
                 </SJFormRow>
               </template>
-            </SJtab>
-          </SJform>
+            </SJTab>
+          </SJForm>
         </template>
       </SJOneLayout>
     </template>
@@ -334,8 +328,6 @@
 
 <script>
 export default {
-  components: {},
-
   data () {
     return {
       search: {},

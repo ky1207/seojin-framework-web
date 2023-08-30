@@ -22,7 +22,6 @@
               id="md1"
               name="사업장"
               :options="MD_01"
-              class="md-select"
             />
           </SJSearchField>
           <SJSearchField label="품목유형">
@@ -30,20 +29,19 @@
               id="md2"
               name="품목유형"
               :options="MD_02"
-              class="md-select"
             />
           </SJSearchField>
           <SJSearchField label="품목분류">
             <SJItemCategory id="search2" name="search2" />
           </SJSearchField>
           <SJSearchField label="그룹코드">
-            <SJInput id="md3" v-model="search.md3" name="그룹코드" class="md-input" />
+            <SJInput id="md3" v-model="search.md3" name="그룹코드" />
           </SJSearchField>
           <SJSearchField label="생성일">
             <SJPeriodSearch id="md2" name="md2" />
           </SJSearchField>
         </template>
-        <template #bodyTitle>
+        <template #body>
           <SJTitle title=" EXCEL (행추가 후 항목수에 맡게 붙여넣기, key값 새로 부여-신규등록시 사용)">
             <button class="btn-blue-bg">
               VALIDATION
@@ -55,12 +53,11 @@
               삭제
             </button>
           </SJTitle>
-        </template>
-        <template #body>
           <SJGrid
             ref="grid"
             v-model="grid.data"
             :columns="grid.columns"
+            :options="grid.options"
           />
         </template>
       </SJSearchOneLayout>
@@ -84,7 +81,10 @@ export default {
           { name: '정렬', width: 80 },
           { name: '사용여부', width: 80 },
           { name: '생성일', width: 100 }
-        ]
+        ],
+        options: {
+          bodyHeight: 400
+        }
       }
     }
   },

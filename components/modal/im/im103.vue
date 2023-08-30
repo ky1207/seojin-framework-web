@@ -85,7 +85,7 @@
                 <SJTextarea id="md7" name="비고" />
               </SJFormField>
             </SJFormRow>
-          </sjform>
+          </SJForm>
           <SJTitle title="이동요청 상세">
             <button class="btn-blue-bg">
               품목적용
@@ -110,9 +110,7 @@
 </template>
 
 <script>
-import SJFormField from '~/components/ui/common/SJFormField'
 export default {
-  components: { SJFormField },
   data () {
     return {
       search: {},

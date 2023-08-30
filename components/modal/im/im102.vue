@@ -68,7 +68,7 @@
                 <SJTextarea id="md7" name="비고" />
               </SJFormField>
             </SJFormRow>
-          </sjform>
+          </SJForm>
           <SJTitle title="출고 상세">
             <button class="btn-blue-bg">
               LOT 적용
@@ -91,8 +91,6 @@
 
 <script>
 export default {
-  components: {},
-
   data () {
     return {
       search: {},
@@ -115,7 +113,7 @@ export default {
           { name: '비고', width: 150 }
         ],
         options: {
-          bodyHeight: 320
+          bodyHeight: 400
         }
       }
     }

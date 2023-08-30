@@ -96,17 +96,17 @@
               <SJFormField />
               <SJFormField />
             </SJFormRow>
+            <SJTab :list="tabList">
+              <template #tab-1>
+                <SJTitle title="목록" />
+                <SJGrid ref="grid_tab1" v-model="grid_tab1.data" :columns="grid_tab1.columns" :options="grid_tab1.options" />
+              </template>
+              <template #tab-2>
+                <SJTitle title="목록" />
+                <SJGrid ref="grid_tab2" v-model="grid_tab2.data" :columns="grid_tab2.columns" :options="grid_tab2.options" />
+              </template>
+            </SJTab>
           </SJForm>
-          <SJTab :list="tabList">
-            <template #tab-1>
-              <SJTitle title="목록" />
-              <SJGrid ref="grid_tab1" v-model="grid_tab1.data" :columns="grid_tab1.columns" :options="grid_tab1.options" />
-            </template>
-            <template #tab-2>
-              <SJTitle title="목록" />
-              <SJGrid ref="grid_tab2" v-model="grid_tab2.data" :columns="grid_tab2.columns" :options="grid_tab2.options" />
-            </template>
-          </SJtab>
         </template>
       </SJOneLayout>
     </template>

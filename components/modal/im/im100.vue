@@ -49,7 +49,7 @@
                 <SJTextarea id="md4" name="비고" />
               </SJFormField>
             </SJFormRow>
-          </sjform>
+          </SJForm>
           <SJTitle title="입고상세">
             <button class="btn-blue-bg">
               품목정보적용

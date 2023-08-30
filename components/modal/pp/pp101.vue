@@ -61,31 +61,31 @@
               </SJFormField>
               <SJFormField />
             </SJFormRow>
+            <SJTab :list="tabList">
+              <template #tab-1>
+                <SJTitle title="목록">
+                  <button class="btn-blue-bg" @click="tab1_save">
+                    비가동적용
+                  </button>
+                  <button class="btn-white-bg" @click="tab1_del">
+                    삭제
+                  </button>
+                </SJTitle>
+                <SJGrid ref="grid_tab1" v-model="grid_tab1.data" :columns="grid_tab1.columns" :options="grid_tab1.options" />
+              </template>
+              <template #tab-2>
+                <SJTitle title="목록">
+                  <button class="btn-blue-bg" @click="tab2_save">
+                    불량적용
+                  </button>
+                  <button class="btn-white-bg" @click="tab2_del">
+                    삭제
+                  </button>
+                </SJTitle>
+                <SJGrid ref="grid_tab2" v-model="grid_tab2.data" :columns="grid_tab2.columns" :options="grid_tab2.options" />
+              </template>
+            </SJTab>
           </SJForm>
-          <SJTab :list="tabList">
-            <template #tab-1>
-              <SJTitle title="목록">
-                <button class="btn-blue-bg" @click="tab1_save">
-                  비가동적용
-                </button>
-                <button class="btn-white-bg" @click="tab1_del">
-                  삭제
-                </button>
-              </SJTitle>
-              <SJGrid ref="grid_tab1" v-model="grid_tab1.data" :columns="grid_tab1.columns" :options="grid_tab1.options" />
-            </template>
-            <template #tab-2>
-              <SJTitle title="목록">
-                <button class="btn-blue-bg" @click="tab2_save">
-                  불량적용
-                </button>
-                <button class="btn-white-bg" @click="tab2_del">
-                  삭제
-                </button>
-              </SJTitle>
-              <SJGrid ref="grid_tab2" v-model="grid_tab2.data" :columns="grid_tab2.columns" :options="grid_tab2.options" />
-            </template>
-          </SJtab>
         </template>
       </SJOneLayout>
     </template>

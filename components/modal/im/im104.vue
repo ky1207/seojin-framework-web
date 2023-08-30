@@ -40,7 +40,6 @@
                 />
               </SJFormField>
             </SJFormRow>
-
             <SJFormRow>
               <SJFormField label="이동전창고">
                 <SJSelect
@@ -74,7 +73,7 @@
                 <SJTextarea id="md7" name="비고" />
               </SJFormField>
             </SJFormRow>
-          </sjform>
+          </SJForm>
           <SJTitle title="기타요청 상세">
             <button class="btn-blue-bg">
               LOT적용

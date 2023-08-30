@@ -59,6 +59,9 @@
                   :options="MD_03"
                 />
               </SJFormField>
+              <SJFormField />
+              <SJFormField />
+              <SJFormField />
             </SJFormRow>
             <SJFormRow>
               <SJFormField label="파일첨부">
@@ -70,42 +73,43 @@
                 <SJTextarea id="md7" name="비고" />
               </SJFormField>
             </SJFormRow>
-          </sjform>
-          <SJTab :list="tabList">
-            <template #tab-1>
-              <SJTitle title="목록">
-                <button class="btn-blue-bg">
-                  검사항목적용
-                </button>
-                <button class="btn-white-bg">
-                  삭제
-                </button>
-              </SJTitle>
-              <SJGrid ref="grid_tab1" v-model="grid_tab1.data" :columns="grid_tab1.columns" />
-            </template>
-            <template #tab-2>
-              <SJTitle title="목록">
-                <button class="btn-blue-bg">
-                  검사불량적용
-                </button>
-                <button class="btn-white-bg">
-                  삭제
-                </button>
-              </SJTitle>
-              <SJGrid ref="grid_tab2" v-model="grid_tab2.data" :columns="grid_tab2.columns" />
-            </template>
-            <template #tab-3>
-              <SJTitle title="목록">
-                <button class="btn-blue-bg">
-                  품목적용
-                </button>
-                <button class="btn-white-bg">
-                  삭제
-                </button>
-              </SJTitle>
-              <SJGrid ref="grid_tab3" v-model="grid_tab3.data" :columns="grid_tab3.columns" />
-            </template>
-          </SJtab>
+
+            <SJTab :list="tabList">
+              <template #tab-1>
+                <SJTitle title="목록">
+                  <button class="btn-blue-bg">
+                    검사항목적용
+                  </button>
+                  <button class="btn-white-bg">
+                    삭제
+                  </button>
+                </SJTitle>
+                <SJGrid ref="grid_tab1" v-model="grid_tab1.data" :columns="grid_tab1.columns" />
+              </template>
+              <template #tab-2>
+                <SJTitle title="목록">
+                  <button class="btn-blue-bg">
+                    검사불량적용
+                  </button>
+                  <button class="btn-white-bg">
+                    삭제
+                  </button>
+                </SJTitle>
+                <SJGrid ref="grid_tab2" v-model="grid_tab2.data" :columns="grid_tab2.columns" />
+              </template>
+              <template #tab-3>
+                <SJTitle title="목록">
+                  <button class="btn-blue-bg">
+                    품목적용
+                  </button>
+                  <button class="btn-white-bg">
+                    삭제
+                  </button>
+                </SJTitle>
+                <SJGrid ref="grid_tab3" v-model="grid_tab3.data" :columns="grid_tab3.columns" />
+              </template>
+            </SJTab>
+          </SJForm>
         </template>
       </SJOneLayout>
     </template>
