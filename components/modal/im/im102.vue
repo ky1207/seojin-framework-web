@@ -26,7 +26,9 @@
                   :options="MD_01"
                 />
               </SJFormField>
-              <SJFormField label="담당자" />
+              <SJFormField label="담당자">
+                <SJUserEditor id="user" name="user" />
+              </SJFormField>
               <SJFormField label="출고일자">
                 <SJDatePicker
                   id="md2"
@@ -64,7 +66,7 @@
               <SJFormField />
             </SJFormRow>
             <SJFormRow>
-              <SJFormField label="비고" style="width: 100%;">
+              <SJFormField label="비고">
                 <SJTextarea id="md7" name="비고" />
               </SJFormField>
             </SJFormRow>

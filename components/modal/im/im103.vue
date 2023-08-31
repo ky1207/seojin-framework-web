@@ -67,21 +67,15 @@
                   disabled
                 />
               </SJFormField>
-              <SJFormField />
-              <SJFormField />
-            </SJFormRow>
-            <SJFormRow>
               <SJFormField label="이동전품목">
                 <SJItemEditor id="before" name="before" />
               </SJFormField>
               <SJFormField label="이동후품목">
                 <SJItemEditor id="after" name="after" />
               </SJFormField>
-              <SJFormField />
-              <SJFormField />
             </SJFormRow>
             <SJFormRow>
-              <SJFormField label="비고" style="width: 100%;">
+              <SJFormField label="비고">
                 <SJTextarea id="md7" name="비고" />
               </SJFormField>
             </SJFormRow>
