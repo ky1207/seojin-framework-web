@@ -12,83 +12,88 @@
       </button>
     </template>
     <template #default>
-      <SJForm ref="form">
-        <SJFormRow>
-          <SJFormField label="회사">
-            <SJSelect
-              id="searchCoType"
-              name="회사"
-              :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]"
-              disabled-validation
-              disabled-first-message
-              rules="required"
-            />
-          </SJFormField>
-          <SJFormField label="수주번호">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="견적번호" rules="required" />
-          </SJFormField>
-          <SJFormField label="영업구분">
-            <SJSelect id="searchCoType" name="영업구분" :options="[{text: 'PO(구매주문)',value: 'PO(구매주문)'},{text: 'FCST(수요예측)',value: 'FCST(수요예측)'}]" rules="required" />
-          </SJFormField>
-          <SJFormField label="MPS요청번호">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="MPS요청번호" />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="납기일">
-            <SJDatePicker
-              id="sentStartDtm"
-              v-model="inputData.sentStartDtm"
-              name="납기일"
-              show-current="true"
-              disabled-validation
-              rules="required"
-            />
-          </SJFormField>
-          <SJFormField label="품목">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="품목" />
-          </SJFormField>
-          <SJFormField label="수량">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="수량" rules="required" />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="비고">
-            <SJTextarea
-              id="textarea"
-              v-model="inputData.content"
-              name="textarea"
-            />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="등록일시">
-            2023-07-20 18:00:00
-          </SJFormField>
-          <SJFormField label="등록자">
-            홍길동
-          </SJFormField>
-          <SJFormField label="수정일시">
-            2023-07-20 18:00:00
-          </SJFormField>
-          <SJFormField label="수정자">
-            홍길동
-          </SJFormField>
-        </SJFormRow>
-
-        <SJTitle title="목록">
-          <button class="btn-blue-bg" @click="rowAdd">
-            추가
-          </button>
-          <button class="btn-white-bg" @click="rowDel">
-            삭제
-          </button>
-        </SJTitle>
-        <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
-      </SJForm>
+      <SJOneLayout disabled-navigator-wrap>
+        <template #title>
+          <SJTitle title="등록" />
+        </template>
+        <template #default>
+          <SJForm ref="form">
+            <SJFormRow>
+              <SJFormField label="회사">
+                <SJSelect
+                  id="searchCoType"
+                  name="회사"
+                  :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]"
+                  disabled-validation
+                  disabled-first-message
+                  rules="required"
+                />
+              </SJFormField>
+              <SJFormField label="수주번호">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="견적번호" rules="required" />
+              </SJFormField>
+              <SJFormField label="영업구분">
+                <SJSelect id="searchCoType" name="영업구분" :options="[{text: 'PO(구매주문)',value: 'PO(구매주문)'},{text: 'FCST(수요예측)',value: 'FCST(수요예측)'}]" rules="required" />
+              </SJFormField>
+              <SJFormField label="MPS요청번호">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="MPS요청번호" />
+              </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField label="납기일">
+                <SJDatePicker
+                  id="sentStartDtm"
+                  v-model="inputData.sentStartDtm"
+                  name="납기일"
+                  show-current="true"
+                  disabled-validation
+                  rules="required"
+                />
+              </SJFormField>
+              <SJFormField label="품목">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="품목" />
+              </SJFormField>
+              <SJFormField label="수량">
+                <SJInput id="coCode" v-model="inputData.CO_CODE" name="수량" rules="required" />
+              </SJFormField>
+              <SJFormField />
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField label="비고">
+                <SJTextarea
+                  id="textarea"
+                  v-model="inputData.content"
+                  name="textarea"
+                />
+              </SJFormField>
+            </SJFormRow>
+            <SJFormRow>
+              <SJFormField label="등록일시">
+                2023-07-20 18:00:00
+              </SJFormField>
+              <SJFormField label="등록자">
+                홍길동
+              </SJFormField>
+              <SJFormField label="수정일시">
+                2023-07-20 18:00:00
+              </SJFormField>
+              <SJFormField label="수정자">
+                홍길동
+              </SJFormField>
+            </SJFormRow>
+          </SJForm>
+          <SJTitle title="목록">
+            <button class="btn-white-bg" @click="rowAdd">
+              추가
+            </button>
+            <button class="btn-white-bg" @click="rowDel">
+              삭제
+            </button>
+          </SJTitle>
+          <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
+        </template>
+      </SJOneLayout>
     </template>
-
-    <template #footer />
   </SJModal>
 </template>
 

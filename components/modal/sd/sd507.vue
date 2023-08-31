@@ -9,19 +9,26 @@
       </button>
     </template>
     <template #default>
-      <SJSearchOneLayout disabled-navigator-wrap>
+      <SJOneLayout disabled-navigator-wrap>
+        <template #title>
+          <SJTitle title="등록" />
+        </template>
         <template #default>
-          <SJSearchField label="항목">
-            <SJInput id="searchCoCode" v-model="search.coCode" name="searchCoCode" />
-          </SJSearchField>
+          <SJForm ref="form">
+            <SJFormRow>
+              <SJFormField label="항목">
+                <SJInput id="searchCoCode" v-model="search.coCode" name="searchCoCode" />
+              </SJFormField>
+              <SJFormField />
+              <SJFormField />
+              <SJFormField />
+            </SJFormRow>
+          </SJForm>
+          <SJTitle title="목록" />
+          <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
         </template>
-        <template #body>
-          <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" />
-        </template>
-      </SJSearchOneLayout>
+      </SJOneLayout>
     </template>
-
-    <template #footer />
   </SJModal>
 </template>
 
@@ -33,7 +40,8 @@ export default {
       grid: {
         data: {},
         options: {
-          rowHeaders: ['checkbox', 'rowNum']
+          rowHeaders: ['checkbox', 'rowNum'],
+          bodyHeight: 400
         },
         columns: [
           { name: '항목', width: 100 },

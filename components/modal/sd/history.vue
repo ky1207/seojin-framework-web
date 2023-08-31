@@ -19,9 +19,12 @@
               <SJFormField label="항목">
                 <SJInput id="searchCoCode" v-model="search.coCode" name="searchCoCode" />
               </SJFormField>
+              <SJFormField />
+              <SJFormField />
+              <SJFormField />
             </SJFormRow>
           </SJForm>
-          <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" />
+          <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
         </template>
       </SJOneLayout>
     </template>
@@ -36,7 +39,8 @@ export default {
       grid: {
         data: {},
         options: {
-          rowHeaders: ['checkbox', 'rowNum']
+          rowHeaders: ['checkbox', 'rowNum'],
+          bodyHeight: 400
         },
         columns: [
           { name: '항목', width: 100 },
@@ -70,9 +74,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-form .sj-form-field fieldset{
-  width: 250px ;
-}
-</style>

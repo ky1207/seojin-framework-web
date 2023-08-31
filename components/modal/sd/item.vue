@@ -25,6 +25,8 @@
               <SJFormField label="품목">
                 <SJSelectInput id="si" v-model="search.company" name="t1" :options="selectinput" />
               </SJFormField>
+              <SJFormField />
+              <SJFormField />
             </SJFormRow>
           </SJForm>
           <SJTitle title="목록">
@@ -108,9 +110,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-form .sj-form-field fieldset{
-  width: 250px ;
-}
-</style>

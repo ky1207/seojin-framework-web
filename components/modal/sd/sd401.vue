@@ -12,77 +12,81 @@
       </button>
     </template>
     <template #default>
-      <SJForm ref="form">
-        <SJFormRow>
-          <SJFormField label="회사">
-            <SJSelect id="searchCoType" name="회사" :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]" rules="required" />
-          </SJFormField>
-          <SJFormField label="담당자">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="담당자" rules="required" />
-          </SJFormField>
-          <SJFormField label="수주번호">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="견적번호" rules="required" />
-          </SJFormField>
-          <SJFormField label="수주일">
-            <SJDatePicker
-              id="sentStartDtm"
-              v-model="inputData.sentStartDtm"
-              name="수주일"
-              show-current="true"
-              disabled-validation
-            />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="거래처">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="통화" rules="required" />
-          </SJFormField>
-          <SJFormField label="내/외자구분">
-            <SJSelect id="searchCoType" name="내/외자구분" :options="[{text: '내자',value: '내자'},{text: '외자',value: '외자'}]" rules="required" />
-          </SJFormField>
-          <SJFormField label="부가세적용">
-            <SJSelect id="searchCoType" name="부가세적용" :options="[{text: '적용',value: '적용'},{text: '미적용',value: '미적용'}]" rules="required" />
-          </SJFormField>
-          <SJFormField label="통화">
-            <SJSelectInput id="si" v-model="inputData.company" name="t1" :options="selectinput" />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="영업구분">
-            <SJSelect id="searchCoType" name="영업구분" :options="[{text: 'PO(구매주문)',value: 'PO(구매주문)'},{text: 'FCST(수요예측)',value: 'FCST(수요예측)'}]" rules="required" />
-          </SJFormField>
-          <SJFormField label="FCST수주">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="FCST수주" />
-          </SJFormField>
-          <SJFormField label="변경전수주">
-            <SJInput id="coCode" v-model="inputData.CO_CODE" name="변경전수주" />
-          </SJFormField>
-          <SJFormField />
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="비고">
-            <SJTextarea
-              id="textarea"
-              v-model="inputData.content"
-              name="textarea"
-            />
-          </SJFormField>
-        </SJFormRow>
-        <SJFormRow>
-          <SJFormField label="등록일시">
-            2023-07-20 18:00:00
-          </SJFormField>
-          <SJFormField label="등록자">
-            홍길동
-          </SJFormField>
-          <SJFormField label="수정일시">
-            2023-07-20 18:00:00
-          </SJFormField>
-          <SJFormField label="수정자">
-            홍길동
-          </SJFormField>
-        </SJFormRow>
-
+      <SJOneLayout disabled-navigator-wrap>
+        <template #title>
+          <SJTitle title="등록" />
+        </template>
+        <SJForm ref="form">
+          <SJFormRow>
+            <SJFormField label="회사">
+              <SJSelect id="searchCoType" name="회사" :options="[{text: '서진본사',value: '서진본사'},{text: '서진베트남',value: '서진베트남'}]" rules="required" />
+            </SJFormField>
+            <SJFormField label="담당자">
+              <SJInput id="coCode" v-model="inputData.CO_CODE" name="담당자" rules="required" />
+            </SJFormField>
+            <SJFormField label="수주번호">
+              <SJInput id="coCode" v-model="inputData.CO_CODE" name="견적번호" rules="required" />
+            </SJFormField>
+            <SJFormField label="수주일">
+              <SJDatePicker
+                id="sentStartDtm"
+                v-model="inputData.sentStartDtm"
+                name="수주일"
+                show-current="true"
+                disabled-validation
+              />
+            </SJFormField>
+          </SJFormRow>
+          <SJFormRow>
+            <SJFormField label="거래처">
+              <SJInput id="coCode" v-model="inputData.CO_CODE" name="통화" rules="required" />
+            </SJFormField>
+            <SJFormField label="내/외자구분">
+              <SJSelect id="searchCoType" name="내/외자구분" :options="[{text: '내자',value: '내자'},{text: '외자',value: '외자'}]" rules="required" />
+            </SJFormField>
+            <SJFormField label="부가세적용">
+              <SJSelect id="searchCoType" name="부가세적용" :options="[{text: '적용',value: '적용'},{text: '미적용',value: '미적용'}]" rules="required" />
+            </SJFormField>
+            <SJFormField label="통화">
+              <SJSelectInput id="si" v-model="inputData.company" name="t1" :options="selectinput" />
+            </SJFormField>
+          </SJFormRow>
+          <SJFormRow>
+            <SJFormField label="영업구분">
+              <SJSelect id="searchCoType" name="영업구분" :options="[{text: 'PO(구매주문)',value: 'PO(구매주문)'},{text: 'FCST(수요예측)',value: 'FCST(수요예측)'}]" rules="required" />
+            </SJFormField>
+            <SJFormField label="FCST수주">
+              <SJInput id="coCode" v-model="inputData.CO_CODE" name="FCST수주" />
+            </SJFormField>
+            <SJFormField label="변경전수주">
+              <SJInput id="coCode" v-model="inputData.CO_CODE" name="변경전수주" />
+            </SJFormField>
+            <SJFormField />
+          </SJFormRow>
+          <SJFormRow>
+            <SJFormField label="비고">
+              <SJTextarea
+                id="textarea"
+                v-model="inputData.content"
+                name="textarea"
+              />
+            </SJFormField>
+          </SJFormRow>
+          <SJFormRow>
+            <SJFormField label="등록일시">
+              2023-07-20 18:00:00
+            </SJFormField>
+            <SJFormField label="등록자">
+              홍길동
+            </SJFormField>
+            <SJFormField label="수정일시">
+              2023-07-20 18:00:00
+            </SJFormField>
+            <SJFormField label="수정자">
+              홍길동
+            </SJFormField>
+          </SJFormRow>
+        </SJForm>
         <SJTitle title="목록">
           <button class="btn-blue-bg" @click="bomApply">
             품목정보적용
@@ -95,10 +99,8 @@
           </button>
         </SJTitle>
         <SJGrid ref="grid" v-model="grid.data" :columns="grid.columns" :options="grid.options" />
-      </SJForm>
+      </SJOneLayout>
     </template>
-
-    <template #footer />
   </SJModal>
 </template>
 
