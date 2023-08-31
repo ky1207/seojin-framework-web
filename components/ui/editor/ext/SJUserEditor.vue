@@ -14,12 +14,11 @@
       param="search"
       :search-click="open"
     />
-    <CommonItem ref="item" />
+    <CommonUser ref="user" />
   </div>
 </template>
 
 <script>
-// TODO: api url 작업후 확인
 export default {
   props: {
     id: {
@@ -48,8 +47,12 @@ export default {
     }
   },
   methods: {
-    open () {
-      this.$refs.item.open()
+    async  open () {
+      // TODO: modal에 단일선택만 가능하게 및 선택된 값 전달.
+      const data = await this.$refs.user.open()
+      if (data.length > 0) {
+        console.log(data)
+      }
     }
   }
 }
