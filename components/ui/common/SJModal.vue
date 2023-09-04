@@ -10,7 +10,8 @@
     <div class="modal-dialog" :class="size">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">
+          <h5 class="modal-title d-flex align-items-center">
+            <i class="fa-regular fa-window-maximize" style="margin-right: 5px;" />
             <slot name="title" />
           </h5>
           <div class="btn-bar">
