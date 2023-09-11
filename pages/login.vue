@@ -1,62 +1,66 @@
 <template>
   <section class="login-layer-wrap">
-    <div><img src="~/assets/images/seojin.png"></div>
-    <div class="login-layout">
-      <div class="login-layout-title">
-        <p><i class="fa-regular fa-user" /></p>
-        <h2>LOGIN</h2>
+    <div class="login-layout-title">
+      <p>(주)서진시스템 :: 신정보시스템</p>
+    </div>
+    <div class="login-layout d-flex">
+      <div class="login-left">
+        <img class="logo" src="~/assets/images/login_icon.png">
       </div>
-      <SJForm ref="form" class="login-layout-form">
-        <div class="form-outline" style="margin-bottom: 20px;">
-          <i class="fa-solid fa-building" style="margin-right: 10px;" />
-          <SJSearchField :label="$t('page.system.00104')">
-            <SJSelect
-              id="business"
-              v-model="bsnsId"
-              class="select"
-              :name="$t('page.system.00104')"
-              :options="common.BUSINESS"
-              disabled-validation
-              disabled-first-message
-            />
-          </SJSearchField>
+      <div class="login-right">
+        <img class="logo" src="~/assets/images/seojin.png">
+        <SJForm ref="form" class="login-layout-form">
+          <div class="form-outline">
+            <i class="fa-solid fa-building" />
+            <SJSearchField :label="$t('page.system.00104')">
+              <SJSelect
+                id="business"
+                v-model="bsnsId"
+                class="select"
+                :name="$t('page.system.00104')"
+                :options="common.BUSINESS"
+                disabled-validation
+                disabled-first-message
+              />
+            </SJSearchField>
+          </div>
+          <div class="form-outline">
+            <i class="fa-solid fa-user" />
+            <SJSearchField label="ID">
+              <SJInput
+                id="name"
+                v-model="username"
+                name="ID"
+                rules="required"
+                placeholder="ID"
+                class="select"
+              />
+            </SJSearchField>
+          </div>
+          <div class="form-outline">
+            <i class="fa-solid fa-key" />
+            <SJSearchField label="Password">
+              <SJInput
+                id="name"
+                v-model="password"
+                name="Password"
+                type="password"
+                rules="required"
+                placeholder="Password"
+                class="select"
+              />
+            </SJSearchField>
+          </div>
+        </SJForm>
+        <div class="id-box">
+          <input type="checkbox" name="check" style="border:solid 1px #999; margin-right: 5px;">
+          <p>계정저장</p>
+          <p>비밀번호 찾기</p>
         </div>
-        <div class="form-outline" style="margin-bottom: 20px;">
-          <i class="fa-solid fa-user" style="margin-right: 10px;" />
-          <SJSearchField label="ID">
-            <SJInput
-              id="name"
-              v-model="username"
-              name="ID"
-              rules="required"
-              placeholder="ID"
-              class="select"
-            />
-          </SJSearchField>
-        </div>
-        <div class="form-outline" style="margin-bottom: 20px;">
-          <i class="fa-solid fa-key" style="margin-right: 10px;" />
-          <SJSearchField label="Password">
-            <SJInput
-              id="name"
-              v-model="password"
-              name="Password"
-              type="password"
-              rules="required"
-              placeholder="Password"
-              class="select"
-            />
-          </SJSearchField>
-        </div>
-      </SJForm>
-      <div class="id-box">
-        <input type="checkbox" name="check" style="margin-right: 5px;">
-        <p>계정저장</p>
-        <p>비밀번호 찾기</p>
+        <button class="btn btn-blue-bg" type="button" @click="login">
+          LOGIN
+        </button>
       </div>
-      <button class="btn btn-blue-bg" type="button" @click="login">
-        Login
-      </button>
     </div>
   </section>
 </template>
@@ -108,22 +112,7 @@ export default {
 section{
   width: 100%;
   height: 100vh;
-  background-image: url("~assets/images/login_bg.png");
-  background-position:center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: #007DB6;
   position: relative;
-}
-img{
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 160px;
-  height: 80px;
-  margin: 20px 0 0 30px;
-}
-.btn:hover{
-  background: #0365A9;
-  color: #fff;
 }
 </style>
