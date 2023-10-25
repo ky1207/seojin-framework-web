@@ -501,25 +501,17 @@ export default {
       grid: {
         data: {},
         columns: [
-          { name: '요청일자', width: 100 },
-          { name: '출고요청번호', width: 100 },
-          { name: '수주번호', width: 100 },
-          { name: '진행상태', width: 100 },
+          { name: '거래처코드', width: 100 },
           { name: '거래처', width: 100 },
-          { name: '품목유형', width: 100 },
-          { name: '품목코드', width: 100 },
-          { name: 'REV', width: 100 },
-          { name: '규격', width: 100 },
-          { name: 'CE!여부', width: 100 },
-          { name: '크리티컬여부', width: 100 },
-          { name: '크리티컬등급', width: 100 },
-          { name: '창고', width: 100 },
-          { name: '납품요청일', width: 100 },
-          { name: '기준단위', width: 100 },
-          { name: '요청수량', width: 100 },
-          { name: '출하수량', width: 100 },
-          { name: '요청잔량', width: 100 },
-          { name: '고객PO번호', width: 100 }
+          { name: '거래처유형', width: 100 },
+          { name: '사업자등록번호', width: 100 },
+          { name: '대표자', width: 100 },
+          { name: '업태', width: 100 },
+          { name: '업종', width: 100 },
+          { name: 'Email', width: 100 },
+          { name: '전화번호', width: 100 },
+          { name: '팩스', width: 100 },
+          { name: '비고', width: 300 }
         ]
       },
       tabList: [
