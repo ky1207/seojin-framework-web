@@ -4,6 +4,9 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template>
+      <SJSearchField label="품목번호">
+        <SJInput id="md6" v-model="search.md6" name="md6" />
+      </SJSearchField>
       <SJSearchField label="품목유형">
         <SJSelect
           id="md1"
@@ -17,39 +20,20 @@
       <SJSearchField label="규격">
         <SJInput id="md3" v-model="search.md3" name="md3" />
       </SJSearchField>
-      <SJSearchField label="CE!구분">
-        <SJSelect
-          id="md4"
-          name="md4"
-          :options="MD_02"
-        />
-      </SJSearchField>
       <SJSearchField label="구매L/T">
         <SJInput id="md5" v-model="search.md5" name="md5" />
       </SJSearchField>
-      <SJSearchField label="규격">
-        <SJInput id="md6" v-model="search.md6" name="md6" />
-      </SJSearchField>
+
       <SJSearchField label="거래처">
         <SJInput id="md7" v-model="search.md7" name="md7" />
       </SJSearchField>
-      <SJSearchField label="사용여부">
-        <SJSelect
-          id="md8"
-          name="md8"
-          :options="MD_03"
-        />
-      </SJSearchField>
-      <SJSearchField label="크리티컬여부">
-        <SJSelect
-          id="md9"
-          name="md9"
-          :options="MD_02"
-        />
-      </SJSearchField>
-      <SJSearchField label="크리티컬등급">
-        <SJInput id="md10" v-model="search.md10" name="md10" />
-      </SJSearchField>
+      <!--      <SJSearchField label="사용여부">-->
+      <!--        <SJSelect-->
+      <!--          id="md8"-->
+      <!--          name="md8"-->
+      <!--          :options="MD_03"-->
+      <!--        />-->
+      <!--      </SJSearchField>-->
     </template>
     <template #bodyTitle>
       <SJTitle title="품목목록">
@@ -86,9 +70,6 @@ export default {
           { name: '품목유형' },
           { name: '품목코드' },
           { name: '품목명' },
-          { name: 'REV번호' },
-          { name: '크리티컬여부' },
-          { name: '크리티컬등급' },
           { name: '품목대분류' },
           { name: '품목소분류' },
           { name: '기준단위' },

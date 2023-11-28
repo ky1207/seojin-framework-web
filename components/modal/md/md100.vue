@@ -19,8 +19,8 @@
         <template #default>
           <SJForm>
             <SJFormRow>
-              <SJFormField label="품목코드">
-                <SJInput id="md1" name="품목코드" />
+              <SJFormField label="품목번호">
+                <SJInput id="md1" name="품목번호" />
               </SJFormField>
               <SJFormField label="품목명">
                 <SJInput id="md2" name="품목명" />
@@ -37,8 +37,8 @@
               </SJFormField>
             </SJFormRow>
             <SJFormRow>
-              <SJFormField label="품목코드">
-                <SJInput id="md5" name="품목코드" />
+              <SJFormField label="규격">
+                <SJInput id="md5" name="규격" />
               </SJFormField>
               <SJFormField label="기준단위">
                 <SJSelect
@@ -47,13 +47,13 @@
                   :options="MD_02"
                 />
               </SJFormField>
-              <SJFormField label="사용여부">
-                <SJSelect
-                  id="md6"
-                  name="사용여부"
-                  :options="MD_03"
-                />
-              </SJFormField>
+              <!--              <SJFormField label="사용여부">-->
+              <!--                <SJSelect-->
+              <!--                  id="md6"-->
+              <!--                  name="사용여부"-->
+              <!--                  :options="MD_03"-->
+              <!--                />-->
+              <!--              </SJFormField>-->
               <SJFormField />
             </SJFormRow>
             <SJTab :list="tabList" style="height: 400px;">
