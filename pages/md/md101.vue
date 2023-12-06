@@ -1,16 +1,7 @@
 <template>
-  <SJSearchLRLayout>
+  <SJSearchLRLayout disabled-search>
     <template #master-btn>
       <SJPageButtons :action="ACTION" />
-    </template>
-    <template #default>
-      <SJSearchField label="사업장">
-        <SJSelect
-          id="md1"
-          name="md1"
-          :options="MD_01"
-        />
-      </SJSearchField>
     </template>
     <template #leftTitle>
       <SJTitle title="창고정보" />

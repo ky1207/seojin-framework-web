@@ -4,13 +4,6 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <SJSearchField label="사업장">
-        <SJSelect
-          id="md1"
-          name="md1"
-          :options="MD_01"
-        />
-      </SJSearchField>
       <SJSearchField label="창고유형">
         <SJSelect
           id="md2"
