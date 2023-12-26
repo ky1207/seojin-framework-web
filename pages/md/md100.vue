@@ -27,10 +27,10 @@
     </template>
     <template #bodyTitle>
       <SJTitle title="창고">
-        <button class="btn-white-bg">
+        <button class="btn-white-bg" @click="appendRow">
           추가
         </button>
-        <button class="btn-white-bg">
+        <button class="btn-white-bg" @click="removeRow">
           삭제
         </button>
       </SJTitle>
@@ -55,16 +55,19 @@ export default {
       search: {},
       grid: {
         data: {},
+        options: {
+          rowHeaders: ['checkbox', 'rowNum']
+        },
         columns: [
-          { name: '창고코드', width: 100 },
-          { name: '창고명' },
-          { name: '창고유형', width: 100 },
-          { name: '시외창고', width: 100 },
-          { name: '거래처' },
-          { name: '부서' },
-          { name: '우선순위', width: 100 },
-          { name: '가용재고', width: 100 },
-          { name: '사용여부', width: 100 }
+          { name: 'whseCode' },
+          { name: 'whseName' },
+          { name: 'whseType' },
+          { name: 'osdWhseFlag' },
+          { name: 'customer' },
+          { name: 'respDeptId' },
+          { name: 'sort' },
+          { name: 'availInvntryFlag' },
+          { name: 'useFlag' }
         ]
       }
     }
@@ -75,14 +78,20 @@ export default {
     this.MD_03 = this.getMD03()
   },
   methods: {
+    appendRow () {
+      this.$refs.grid.invoke('appendRow')
+    },
+    removeRow () {
+      this.$refs.grid.invoke('removeCheckedRows', false)
+    },
     ACTION_REGISTRY () {
-      const fnc = this
       return {
-        async searchClick () {
-          await fnc.$notify.info('조회')
+        searchClick: async () => {
+          const result = await this.$api.master.warehouseManage.list(this.search)
+          this.grid.data = result.data
         },
         async saveClick () {
-          await fnc.$notify.success('저장')
+
         }
       }
     },

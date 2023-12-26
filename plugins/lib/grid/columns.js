@@ -58,6 +58,12 @@ export default ctx => ({
       header: ctx.i18n.t('grid.appType'),
       formatter: CodeFormatter
     },
+    availInvntryFlag: {
+      header: ctx.i18n.t('grid.availInvntryFlag'),
+      renderer: CustomCheckBoxRenderer,
+      align: 'center',
+      filter: null
+    },
     // B
     biznum: {
       header: ctx.i18n.t('grid.biznum')
@@ -93,6 +99,9 @@ export default ctx => ({
     },
     coName: {
       header: ctx.i18n.t('grid.coName')
+    },
+    customer: {
+      header: ctx.i18n.t('grid.customer')
     },
     // D
     defaultAuthFlag: {
@@ -225,13 +234,16 @@ export default ctx => ({
       formatter: DateFormatter,
       align: 'center'
     },
+    modUserId: {
+      header: ctx.i18n.t('grid.modUserId')
+    },
+    modUserName: {
+      header: ctx.i18n.t('grid.modUserName')
+    },
     moduleCodeType: {
       header: ctx.i18n.t('grid.moduleCodeType'),
       formatter: CodeFormatter,
       align: 'center'
-    },
-    modUserName: {
-      header: ctx.i18n.t('grid.modUserName')
     },
     // N
     notifyTmpltCode: {
@@ -254,6 +266,13 @@ export default ctx => ({
       filter: null,
       sortable: false,
       align: 'center'
+    },
+    // O
+    osdWhseFlag: {
+      header: ctx.i18n.t('grid.osdWhseFlag'),
+      renderer: CustomCheckBoxRenderer,
+      align: 'center',
+      filter: null
     },
     // P
     pos: {
@@ -328,7 +347,15 @@ export default ctx => ({
       header: ctx.i18n.t('grid.regDtm'),
       formatter: DateFormatter,
       align: 'center'
-
+    },
+    regUserId: {
+      header: ctx.i18n.t('grid.regUserId')
+    },
+    regUserName: {
+      header: ctx.i18n.t('grid.regUserName')
+    },
+    respDeptId: {
+      header: ctx.i18n.t('grid.respDeptId')
     },
     rcvrId: {
       header: ctx.i18n.t('grid.rcvrId')
@@ -338,6 +365,9 @@ export default ctx => ({
       width: 180
     },
     // S
+    sort: {
+      header: ctx.i18n.t('grid.sort')
+    },
     sortSeq: {
       name: 'sortSeq',
       header: ctx.i18n.t('grid.sortSeq')
@@ -394,6 +424,22 @@ export default ctx => ({
     },
     updateCntn: {
       header: ctx.i18n.t('grid.cntn')
+    },
+    // W
+    whseCode: {
+      header: ctx.i18n.t('grid.whseCode')
+    },
+    whseId: {
+      header: ctx.i18n.t('grid.whseId'),
+      name: 'whseId',
+      width: 100
+    },
+    whseName: {
+      header: ctx.i18n.t('grid.whseName'),
+      width: 180
+    },
+    whseType: {
+      header: ctx.i18n.t('grid.whseType')
     }
   },
   getColumns (c) {
