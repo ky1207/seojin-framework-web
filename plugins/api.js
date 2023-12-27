@@ -16,7 +16,7 @@ import common from '~/api/common/common'
 
 import sample from '~/api/sample/sample'
 
-import warehouseManage from '~/api/master/warehouseManage'
+import warehouse from '~/api/master/warehouse'
 
 export default ({ $axios }, inject) => {
   const api = {
@@ -36,7 +36,7 @@ export default ({ $axios }, inject) => {
       appUpdate: appUpdate($axios)
     },
     master: {
-      warehouseManage: warehouseManage($axios)
+      warehouse: warehouse($axios)
     },
     common: common($axios),
     sample: sample($axios)

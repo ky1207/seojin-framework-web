@@ -4,34 +4,33 @@
       <SJPageButtons :action="ACTION" />
     </template>
     <template #default>
-      <SJSearchField label="창고유형">
+      <SJSearchField :label="$t('page.master.00001')">
         <SJSelect
-          id="md2"
-          name="md2"
-          :options="MD_02"
+          id="whseType"
+          v-model="search.whseTypeCode"
+          :name="$t('page.master.00001')"
+          :options="common.WHSE_TYPE"
+          item-value="subCode"
+          disabled-validation
         />
       </SJSearchField>
-      <SJSearchField label="창고코드">
-        <SJInput id="md3" v-model="search.md1" name="md3" />
+      <SJSearchField :label="$t('page.master.00002')">
+        <SJInput id="search" v-model="search.whseCode" :name="$t('page.master.00002')" disabled-validation />
       </SJSearchField>
-      <SJSearchField label="창고명">
-        <SJInput id="md4" v-model="search.md2" name="md4" />
+      <SJSearchField :label="$t('page.master.00003')">
+        <SJInput id="md4" v-model="search.whseName" :name="$t('page.master.00003')" disabled-validation />
       </SJSearchField>
-      <SJSearchField label="사용여부">
-        <SJSelect
-          id="md5"
-          name="md5"
-          :options="MD_03"
-        />
+      <SJSearchField :label="$t('page.master.00004')">
+        <SJSelect id="useYN" v-model="search.useFlag" :name="$t('page.master.00004')" :options="common.USE_YN" disabled-validation />
       </SJSearchField>
     </template>
     <template #bodyTitle>
-      <SJTitle title="창고">
+      <SJTitle :title="$t('page.master.00011')">
         <button class="btn-white-bg" @click="appendRow">
-          추가
+          {{ $t('page.master.00009') }}
         </button>
         <button class="btn-white-bg" @click="removeRow">
-          삭제
+          {{ $t('page.master.00010') }}
         </button>
       </SJTitle>
     </template>
@@ -40,6 +39,7 @@
         ref="grid"
         v-model="grid.data"
         :columns="grid.columns"
+        :options="grid.options"
       />
     </template>
   </SJSearchOneLayout>
@@ -51,8 +51,8 @@ export default {
   mixins: [ACTION, MENU],
   data () {
     return {
-      common: {},
       search: {},
+      common: {},
       grid: {
         data: {},
         options: {
@@ -72,10 +72,12 @@ export default {
       }
     }
   },
-  created () {
-    this.MD_01 = this.getMD01()
-    this.MD_02 = this.getMD02()
-    this.MD_03 = this.getMD03()
+  async created () {
+    const codes = await this.$api.common.getWarehouseCodes(['WHSE_TYPE'])
+    const whseType = await this.$api.common.getWarehouseCodes()
+    this.common = codes.data
+    this.common.WHSE_TYPE = whseType.data
+    this.common.USE_YN = this.$api.common.getYNCodes()
   },
   methods: {
     appendRow () {
@@ -87,58 +89,21 @@ export default {
     ACTION_REGISTRY () {
       return {
         searchClick: async () => {
-          const result = await this.$api.master.warehouseManage.list(this.search)
+          const result = await this.$api.master.warehouse.list(this.search)
           this.grid.data = result.data
         },
-        async saveClick () {
-
+        saveClick: async () => {
+          const error = this.$refs.grid.invoke('validate')
+          if (error.length > 0) {
+            this.$notify.warning(this.$t('message.00007')) // Grid 입력값을 확인하세요.
+            return false
+          }
+          const data = this.$refs.grid.invoke('getModifiedRows')
+          await this.$api.master.warehouse.update(data)
+          this.$notify.success(this.$t('message.00002'))
+          await this.ACTION_REGISTRY().searchClick()
         }
       }
-    },
-    getMD01 () {
-      return [{
-        text: 'A사업부',
-        value: 'A사업부'
-      }, {
-        text: 'B사업부',
-        value: 'B사업부'
-      }
-      ]
-    },
-    getMD02 () {
-      return [{
-        text: '자재창고',
-        value: '자재창고'
-      }, {
-        text: '투입대기창고',
-        value: '투입대기창고'
-      }, {
-        text: '제품창고',
-        value: '제품창고'
-      }, {
-        text: '생산창고',
-        value: '생산창고'
-      }, {
-        text: '...',
-        value: '...'
-      }
-      ]
-    },
-    getMD03 () {
-      return [
-        {
-          text: '전체',
-          value: '전체'
-        },
-        {
-          text: '사용',
-          value: '사용'
-        },
-        {
-          text: '미사용',
-          value: '미사용'
-        }
-      ]
     }
   }
 }
