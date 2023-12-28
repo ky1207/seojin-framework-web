@@ -32,11 +32,6 @@ export default axios => ({
     const result = await axios.get('/api/v1.0/program/codes')
     return result
   },
-  async getWarehouseCodes (params) {
-    const result = await axios.get('/api/v1.0/warehouse/codes')
-    GLOBAL_CODES.setWarehouse(result.data)
-    return result
-  },
   /**
    * Map을 이용하는 경우 1=>true
    * Boolean true

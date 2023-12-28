@@ -2,7 +2,7 @@ import {
   BusinessFormatter,
   CodeFormatter,
   CompanyFormatter,
-  DateFormatter, WarehouseFormatter,
+  DateFormatter,
   YNFormatter
 } from '~/plugins/lib/grid/Formatter'
 import { CustomCheckBoxRenderer } from '~/plugins/lib/grid/editor/CustomCheckBoxRenderer'
@@ -366,7 +366,10 @@ export default ctx => ({
     },
     // S
     sort: {
-      header: ctx.i18n.t('grid.sort')
+      header: ctx.i18n.t('grid.sort'),
+      editor: {
+        type: 'text'
+      }
     },
     sortSeq: {
       name: 'sortSeq',
@@ -400,9 +403,6 @@ export default ctx => ({
     },
     subCode: {
       header: ctx.i18n.t('grid.subCode'),
-      editor: {
-        type: 'text'
-      },
       width: 150,
       validation: { required: true }
     },
@@ -447,7 +447,13 @@ export default ctx => ({
     },
     whseType: {
       header: ctx.i18n.t('grid.whseType'),
-      formatter: WarehouseFormatter
+      name: 'whseType',
+      editor: {
+        type: 'select',
+        options: {
+          listItems: []
+        }
+      }
     }
   },
   getColumns (c) {

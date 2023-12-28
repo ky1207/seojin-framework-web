@@ -7,10 +7,10 @@
       <SJSearchField :label="$t('page.master.00001')">
         <SJSelect
           id="whseType"
-          v-model="search.whseTypeCode"
+          v-model="search.whseType"
           :name="$t('page.master.00001')"
           :options="common.WHSE_TYPE"
-          item-value="subCode"
+          item-text="val"
           disabled-validation
         />
       </SJSearchField>
@@ -41,12 +41,14 @@
         :columns="grid.columns"
         :options="grid.options"
       />
+      <CommonDepartment ref="departmentModal" />
     </template>
   </SJSearchOneLayout>
 </template>
 
 <script>
 import { ACTION, MENU } from '~/mixins'
+
 export default {
   mixins: [ACTION, MENU],
   data () {
@@ -56,7 +58,8 @@ export default {
       grid: {
         data: {},
         options: {
-          rowHeaders: ['checkbox', 'rowNum']
+          rowHeaders: ['checkbox', 'rowNum'],
+          common: []
         },
         columns: [
           { name: 'whseCode' },
@@ -64,7 +67,9 @@ export default {
           { name: 'whseType' },
           { name: 'osdWhseFlag' },
           { name: 'customer' },
-          { name: 'respDeptId' },
+          {
+            name: 'respDeptId'
+          },
           { name: 'sort' },
           { name: 'availInvntryFlag' },
           { name: 'useFlag' }
@@ -72,14 +77,38 @@ export default {
       }
     }
   },
+  mounted () {
+    this.initGrid()
+  },
   async created () {
-    const codes = await this.$api.common.getWarehouseCodes(['WHSE_TYPE'])
-    const whseType = await this.$api.common.getWarehouseCodes()
+    const codes = await this.$api.common.getCommonCodes(['WHSE_TYPE'])
     this.common = codes.data
-    this.common.WHSE_TYPE = whseType.data
     this.common.USE_YN = this.$api.common.getYNCodes()
+
+    this.grid.columns.find(column => column.name === 'whseType').editor.options.listItems = this.common.WHSE_TYPE.map((item) => {
+      return {
+        text: item.val, value: item.subCode
+      }
+    })
   },
   methods: {
+    initGrid () {
+      this.$refs.grid.invoke('on', 'click', (ev) => {
+        if (ev.columnName === 'respDeptId') {
+          this.openDepartmentModal()
+        }
+      })
+    },
+    async openDepartmentModal () {
+      const deptName = await this.$refs.departmentModal.open()
+      this.updateRespDeptIdCell(deptName)
+    },
+    updateRespDeptIdCell (deptName) {
+      const focusedCell = this.$refs.grid.invoke('getFocusedCell')
+      if (focusedCell) {
+        this.$refs.grid.invoke('setValue', focusedCell.rowKey, 'respDeptId', deptName)
+      }
+    },
     appendRow () {
       this.$refs.grid.invoke('appendRow')
     },
